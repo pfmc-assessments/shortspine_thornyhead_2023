@@ -32,6 +32,7 @@ library(nwfscSurvey)
 library(dplyr)
 
 dir.create('data')
+dir.create('data/surveys')
 
 len_bins <- seq(6, 72, 2) # from 2013 assessment
 
@@ -39,11 +40,11 @@ len_bins <- seq(6, 72, 2) # from 2013 assessment
 # to 0.50, fish larger than this size will have unsexed fish assigned by the
 # calculated sex ratio in the data. (proposed method: ~75% of unsexed fish below this
 # size looking across all data sources?)
-thorny_maxSizeUnsexed <- thorny_maxSizeUnsexed
+thorny_maxSizeUnsexed <- 16
 
 # Shallow (<= 366 m) AFSC triennial shelf survey ----
 
-tri1_path <- 'data/Triennial1'; dir.create(tri1_path)
+tri1_path <- 'data/surveys/Triennial1'; dir.create(tri1_path)
 
 tri1_catch <- PullCatch.fn(Name = 'shortspine thornyhead', SurveyName = 'Triennial') %>% 
   filter(Depth_m <= 366)
@@ -116,7 +117,7 @@ plot_comps(dir = tri1_path,
 
 # Deep (> 366 m) AFSC triennial shelf survey ----
 
-tri2_path <- 'data/Triennial2'; dir.create(tri2_path)
+tri2_path <- 'data/surveys/Triennial2'; dir.create(tri2_path)
 
 tri2_catch <- PullCatch.fn(Name = 'shortspine thornyhead', SurveyName = 'Triennial') %>% 
   filter(Depth_m > 366)
@@ -189,7 +190,7 @@ plot_comps(dir = tri2_path,
 
 # AFSC slope survey ----
 
-afsc_slope_path <- 'data/AFSCslope'; dir.create(afsc_slope_path)
+afsc_slope_path <- 'data/surveys/AFSCslope'; dir.create(afsc_slope_path)
 
 # NOTE: There are 93 records with no area swept calculation. These record will be
 # filled with the mean swept area across all tows.
@@ -279,7 +280,7 @@ plot_comps(dir = afsc_slope_path,
 
 # NWFSC slope survey ----
 
-nwfsc_slope_path <- 'data/NWFSCslope'; dir.create(nwfsc_slope_path)
+nwfsc_slope_path <- 'data/surveys/NWFSCslope'; dir.create(nwfsc_slope_path)
 
 # NOTE: There are 4 records with no area swept calculation. These record will be
 # filled with the mean swept area across all tows.
@@ -360,7 +361,7 @@ plot_comps(dir = nwfsc_slope_path,
 
 # also called West Coast Groundfish Bottom Trawl Survey (WCGBT)?
 
-combo_path <- 'data/NWFSCcombo'; dir.create(combo_path)
+combo_path <- 'data/surveys/NWFSCcombo'; dir.create(combo_path)
 
 combo_catch <- PullCatch.fn(Name = 'shortspine thornyhead',
                                  SurveyName = 'NWFSC.Combo',
@@ -471,9 +472,3 @@ combo_lenfreq2 <- SurveyLFs.fn(fleet = 9, # SS3 fleet/survey index
 
 plot_comps(dir = combo_path, 
            data = combo_lenfreq2)
-
-# NWFSC shelf survey ----
-
-# No thornyhead on the shelf!
-# PullCatch.fn(Name = 'shortspine thornyhead',
-#              SurveyName = 'NWFSC.Shelf')

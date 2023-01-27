@@ -8,6 +8,10 @@
 
 # see Assessment_Class/code/process_pacfin_bds_example.R
 
+# PacFIN.Utilities::cleanPacFIN() function converts fishery lengths from mm to
+# cm, so when converting lengths to weights, use allometric parameters that are
+# estimated using length in cm
+
 # set up ----
 
 # install.packages("dplyr")
