@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 
-catches
+# tells github to ignore confidential data
+fishery_confidential
