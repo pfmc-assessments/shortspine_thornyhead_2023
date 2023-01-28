@@ -364,7 +364,7 @@ plot_comps(dir = nwfsc_slope_path,
 combo_path <- 'data/surveys/NWFSCcombo'; dir.create(combo_path)
 
 combo_catch <- PullCatch.fn(Name = 'shortspine thornyhead',
-                                 SurveyName = 'NWFSC.Combo',
+                            SurveyName = 'NWFSC.Combo',
                             Dir = combo_path,
                             SaveFile = TRUE)
 
