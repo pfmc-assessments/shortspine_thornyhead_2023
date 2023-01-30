@@ -9,7 +9,10 @@ lapply(libs, library, character.only = TRUE)
 outpath <- 'results'; dir.create(outpath)
 outpath <- 'results/data_summaries'; dir.create(outpath)
 
-# Function that reshapes SS3 length comps into a long format
+# Function that reshapes SS3 length comps (e.g.,
+# 'forSS/Survey_Sex3_Bins_6_72_LengthComps.csv' output from
+# nwfscSurvey::SurveyLFs.fn) into a long format and calculates proportions from
+# frequencies
 reshape_SScomps <- function(df = nwslope, 
                             fleet_name = 'Triennial1', 
                             sex = 0) {
