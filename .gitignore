@@ -5,6 +5,7 @@
 
 # remove raw data as could be confidential
 data/raw/*
+!data/raw/README.md
 
 # remove exploratory plots, can be generated is interested
 outputs/plots/exploratory/*
