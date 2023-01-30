@@ -3,5 +3,12 @@
 .RData
 .Ruserdata
 
-# tells github to ignore confidential data
-fishery_confidential
+# remove raw data as could be confidential
+data/raw/*
+
+# remove exploratory plots, can be generated is interested
+outputs/plots/exploratory/*
+
+# remove intermediate .RMarkdown LaTeX compilation files
+*.tex
+*.log
