@@ -1,0 +1,147 @@
+---
+title: "nwfsc_slope_survey"
+author: "Joshua Zahner"
+date: "1/30/2023"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## NWFSC Slope Survey
+
+```{r}
+library(nwfscSurvey)
+library(tidyverse)
+
+data.dir <- here::here("data/") # location of data directory
+catch.fname <- paste0(data.dir, "raw/nwfsc_survey_catch.csv") # raw survey catch filename
+bio.fname <- paste0(data.dir, "raw/nwfsc_survey_bio.csv")     # raw survey bio filename
+```
+
+```{r, echo=FALSE, message=FALSE, results="hide"}
+# Fancy way of automatically using the raw data if its available as a file
+# or pulling it from the server and saving it if its not already there.
+tryCatch({
+    catch <- read.csv(catch.fname)
+    bio <- read.csv(bio.fname)
+}, error = function(e){
+    catch = PullCatch.fn(Name = "shortspine thornyhead", 
+                     SurveyName = "NWFSC.Slope")
+                     
+    bio   = PullBio.fn(Name = "shortspine thornyhead", 
+                       SurveyName = "NWFSC.Slope")
+    
+    write.csv(catch, catch.fname)
+    write.csv(bio, bio.fname)
+})
+head(catch)
+head(bio)
+```
+
+```{r}
+plot.dir <- here::here("outputs/plots/exploratory/") # All plots in this dir
+
+plot_cpue(
+  dir = plot.dir, 
+  catch = catch
+)
+
+plot_bio_patterns(
+  dir = plot.dir, 
+  bio = bio, 
+  col_name = "Length_cm")
+
+```
+CPUE seems to be pretty flat across latitude over time, though there is definitely a decrease in middle latitudes (~38˚-42˚). Maybe a slight positive trend in CPUE with depth (higher CPUE as greater depth). Definitely something going on in 2002.
+
+Clear positive trend in length with depth, and no obvious trends between length and latitude. Indicates we need to be thoughful as to where to set depth strata, but latitudinal strata can be set pretty much anywhere.
+
+NOTE that almost all samples in this survey are unsexed. Will need to be VERY careful how we deal with length compositions form this survey if we assume sex-specific growth parameters.
+
+```{r}
+# Made a small change to the default wh_plot_proportion() function in nwfscSurvey so
+# that the plots are shown in line as well as saved to files.
+wh_plot_proportion <- function (data_catch, data_bio, dir = file.path(getwd(), "plots"), 
+    bar_width = c("n", "equal")) 
+{
+    stopifnot(any(c(!missing(data_catch), !missing(data_bio))))
+    files_all <- file.path(dir, t(outer(X = c(if (!missing(data_catch)) {
+        "presence-absence"
+    }, if (!missing(data_bio)) {
+        "sex"
+    }), Y = paste0("_by_", c("depth", "latitude"), ".png"), FUN = paste0)))
+    data <- c(if (!missing(data_catch)) {
+        dplyr::mutate(data_catch, the_factor = factor(cpue_kg_km2 <= 
+            0, levels = c(FALSE, TRUE), labels = c("Present", 
+            "Absent"))) %>% purrr::rerun(.n = 2)
+    }, if (!missing(data_bio)) {
+        dplyr::mutate(data_bio, the_factor = codify_sex(Sex)) %>% 
+            purrr::rerun(.n = 2)
+    })
+    gg_all <- purrr::pmap(.l = list(pdata = data, x = rep(ggplot2::quos(Depth_m, 
+        Latitude_dd), length(data)/2), width = rep(c(50, 1), 
+        length(data)/2)), .f = function(pdata, x, width, bar_width) {
+        gg <- plot_proportion(data = pdata, column_factor = the_factor, 
+            column_bin = !!x, width = width, bar_width = bar_width, 
+            boundary = 0)
+    }, bar_width = match.arg(bar_width))
+    files_out <- purrr::map2_chr(.x = files_all, .y = gg_all, 
+        .f = ggplot2::ggsave, height = 7, width = 7)
+    return(list(files_out, gg_all))
+}
+
+wh_plot_proportion(
+  dir = plot.dir,
+  data_catch = catch,
+  data_bio = bio
+)
+```
+Presence-absence plots indicate the species is most prevalent in ~350-1000m of water, and is much prevalent in shallower waters. There are no obvious presence-absence trends across latitude. These both again imply that depth strata should be set thoughtfully, but that latitudinal strata can be set at convenience.
+
+No trends in sex-specific presence-absence across depth or latitude is discernible due to the large proportion of unsexed fish.
+
+```{r}
+# Set spatial strata
+strata = CreateStrataDF.fn(
+  names          = c("shallow_south", "deep_south", "shallow_cen", "deep_cen", "shallow_north", "deep_north"), 
+  depths.shallow = c(55,    500,  55,   500,   55,  500),
+  depths.deep    = c(500,  1280,  500,  1280, 500, 1280),
+  lats.south     = c(32,     32, 40.5,  40.5,  43,   43),
+  lats.north     = c(40.5, 40.5,   43 ,   43,  49, 	 49)
+)
+```
+Strata are set to the same as they were in 2014 (p. 27).
+I dont see any particularly strong reason to change the latitudinal bins, since CPUE and presence-absence are very consistent over latitude.
+Only using two depth bins seems like it could be revised though. Maybe use 55-350 m, 350-7 5m, 750+ m?
+
+
+```{r}
+## Calculate design-based index
+
+biomass.idx = Biomass.fn(dir = file.path(getwd(), "designed_indices"), 
+                         dat = catch,  
+                         strat.df = strata,
+                         printfolder = "")
+file.rename(
+  file.path(getwd(), "designed_indices", "design_based_indices.csv"),
+  file.path(getwd(), "designed_indices", "nwfsc_slope_design_based_indices.csv")
+)
+
+
+PlotBio.fn(
+  dir = plot.dir, 
+  dat = biomass.idx,
+) # produces '_designed_based_index.png'
+  
+PlotBioStrata.fn(
+  dir = plot.dir,
+  dat = biomass.idx
+) # produces '_designed_based_by_strata_index.png'
+
+```
+Something is wrong here. Look at the plots. I dont think the index is supposed to be indicating 6mt of fish...
+The indices in the design_based_indices.csv file look good though, they're just 1000x higher than the plots indicate.
