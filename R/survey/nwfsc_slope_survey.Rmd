@@ -1,7 +1,7 @@
 ---
-title: "nwfsc_slope_survey"
+title: "nwfsc_combo_survey"
 author: "Joshua Zahner"
-date: "1/30/2023"
+date: "1/31/2023"
 output: 
   pdf_document:
     latex_engine: xelatex
@@ -11,47 +11,61 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## NWFSC Slope Survey
+# NWFSC Slope Survey
 
 ```{r}
 library(nwfscSurvey)
 library(tidyverse)
 
+species <- "shortspine thornyhead"
+survey.name <- "NWFSC.Slope"
+survey.name.path <- str_replace(tolower(survey.name), "[.]", "_")
+
 data.dir <- here::here("data/") # location of data directory
-catch.fname <- paste0(data.dir, "raw/nwfsc_survey_catch.csv") # raw survey catch filename
-bio.fname <- paste0(data.dir, "raw/nwfsc_survey_bio.csv")     # raw survey bio filename
+outputs.dir <- here::here("outputs/")
+
+raw.data.dir <- file.path(data.dir, "raw")
+catch.fname <- file.path(raw.data.dir, paste0(survey.name.path, "_survey_catch.csv")) # raw survey catch filename
+bio.fname <- file.path(raw.data.dir, paste0(survey.name.path, "_survey_bio.csv"))     # raw survey bio filename
+out.dir <- file.path(outputs.dir, "surveys", survey.name.path) # send all plot/data outputs here
 ```
+
+```{r}
+dir.create(raw.data.dir, recursive=TRUE)
+dir.create(out.dir, recursive=TRUE)
+```
+
 
 ```{r, echo=FALSE, message=FALSE, results="hide"}
 # Fancy way of automatically using the raw data if its available as a file
 # or pulling it from the server and saving it if its not already there.
-tryCatch({
-    catch <- read.csv(catch.fname)
-    bio <- read.csv(bio.fname)
-}, error = function(e){
-    catch = PullCatch.fn(Name = "shortspine thornyhead", 
-                     SurveyName = "NWFSC.Slope")
+
+if(!file.exists(catch.fname) | !file.exists(bio.fname)){
+    catch <- PullCatch.fn(Name = species, 
+                     SurveyName = survey.name)
                      
-    bio   = PullBio.fn(Name = "shortspine thornyhead", 
-                       SurveyName = "NWFSC.Slope")
+    bio   <- PullBio.fn(Name = species, 
+                       SurveyName = survey.name)
     
     write.csv(catch, catch.fname)
     write.csv(bio, bio.fname)
-})
+}
+
+catch <- read.csv(catch.fname)
+bio <- read.csv(bio.fname)
+
 head(catch)
 head(bio)
 ```
 
 ```{r}
-plot.dir <- here::here("outputs/plots/exploratory/") # All plots in this dir
-
 plot_cpue(
-  dir = plot.dir, 
+  dir = out.dir, 
   catch = catch
 )
 
 plot_bio_patterns(
-  dir = plot.dir, 
+  dir = out.dir, 
   bio = bio, 
   col_name = "Length_cm")
 
@@ -95,7 +109,7 @@ wh_plot_proportion <- function (data_catch, data_bio, dir = file.path(getwd(), "
 }
 
 wh_plot_proportion(
-  dir = plot.dir,
+  dir = file.path(out.dir, "plots"),
   data_catch = catch,
   data_bio = bio
 )
@@ -119,29 +133,88 @@ I dont see any particularly strong reason to change the latitudinal bins, since 
 Only using two depth bins seems like it could be revised though. Maybe use 55-350 m, 350-7 5m, 750+ m?
 
 
+## Design Based Indices
 ```{r}
 ## Calculate design-based index
 
-biomass.idx = Biomass.fn(dir = file.path(getwd(), "designed_indices"), 
+biomass.idx = Biomass.fn(dir = out.dir, 
                          dat = catch,  
-                         strat.df = strata,
-                         printfolder = "")
-file.rename(
-  file.path(getwd(), "designed_indices", "design_based_indices.csv"),
-  file.path(getwd(), "designed_indices", "nwfsc_slope_design_based_indices.csv")
-)
-
+                         strat.df = strata)
 
 PlotBio.fn(
-  dir = plot.dir, 
+  dir = NULL, # set to `out.dir`to save as file
   dat = biomass.idx,
+  scalar = 1000, # convert to kg like csv file
 ) # produces '_designed_based_index.png'
-  
+
 PlotBioStrata.fn(
-  dir = plot.dir,
-  dat = biomass.idx
+  dir = NULL, # set to `out.dir`to save as file
+  dat = biomass.idx,
+  scalar = 1000, # convert to kg like csv file
 ) # produces '_designed_based_by_strata_index.png'
 
 ```
-Something is wrong here. Look at the plots. I dont think the index is supposed to be indicating 6mt of fish...
-The indices in the design_based_indices.csv file look good though, they're just 1000x higher than the plots indicate.
+
+
+## Length Compositions
+
+```{r}
+n <- GetN.fn(dir = out.dir, 
+         dat = bio, 
+         type = "length", 
+         species = "thorny")
+         
+len_bins <- seq(6, 72, 2) # from last assessment (p. 125)
+
+Length_Freq <- SurveyLFs.fn(dir = out.dir, 
+                        datL =  bio, 
+                        datTows = catch,
+                       strat.df = strata,
+                        lgthBins = len_bins)
+
+
+PlotFreqData.fn(dir = NULL, # set to `out.dir`to save as file 
+                dat = Length_Freq)
+
+## this function doesn't seem to work
+plot_comps(dir = out.dir, data = Length_Freq)
+```
+
+## Age Compositions
+```{r}
+n <- GetN.fn(dir = out.dir, 
+         dat = bio,
+         type = "age", 
+         species = "thorny")
+         
+age_bins <- 1:22 # arbitrarily set right now as not used in previous assessment
+
+Ages <- SurveyAFs.fn(dir = out.dir, 
+                     datA = bio,
+                     datTows = catch, 
+                     strat.df = strata,
+                     ageBins = age_bins,
+                     nSamps = n)
+                     
+PlotFreqData.fn(
+  dir = out.dir, 
+  dat = Ages
+)
+
+## this function doesn't seem to work
+plot_comps(
+  dir = out.dir, 
+  data = Ages
+)
+```
+
+## Conditional Age-at-Length
+```{r}
+caal <- SurveyAgeAtLen.fn(dir = out.dir, 
+                          datAL = bio, 
+                          datTows = catch,
+                          strat.df = strata,
+                          lgthBins = len_bins, 
+                          ageBins = age_bins)
+```
+
