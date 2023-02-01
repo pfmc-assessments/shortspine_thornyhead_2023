@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(nwfscSurvey)
 library(tidyverse)
+source(file=file.path(here::here(), "R", "utils", "plot_comps.R"))
 
 species <- "shortspine thornyhead"
 survey.name <- "NWFSC.Slope"
@@ -137,9 +138,12 @@ Only using two depth bins seems like it could be revised though. Maybe use 55-35
 ```{r}
 ## Calculate design-based index
 
-biomass.idx = Biomass.fn(dir = out.dir, 
-                         dat = catch,  
+biomass.idx = Biomass.fn(dir = out.dir,
+                         dat = catch,
                          strat.df = strata)
+
+
+
 
 PlotBio.fn(
   dir = NULL, # set to `out.dir`to save as file
@@ -158,54 +162,71 @@ PlotBioStrata.fn(
 
 ## Length Compositions
 
+Lengths only available for the year 2000. Male length comps look generally consistent with other surveys, though female comps look less similar. Could be due to low sample sizes or lack of sexed data from this survey. Length comps from this survey may not be of sufficient quality to warrant use in the assessment. 
 ```{r}
-n <- GetN.fn(dir = out.dir, 
+n.len.raw <- nrow(bio[!is.na(bio$Length_cm),]) # check if data available
+
+if(n.len.raw > 0){
+    n <- GetN.fn(dir = out.dir, 
          dat = bio, 
          type = "length", 
          species = "thorny")
-         
-len_bins <- seq(6, 72, 2) # from last assessment (p. 125)
+      
+    len_bins <- seq(6, 72, 2) # from last assessment (p. 125)
+    
+    Length_Freq <- SurveyLFs.fn(dir = out.dir, 
+                            datL =  bio, 
+                            datTows = catch,
+                           strat.df = strata,
+                            lgthBins = len_bins)
+    
+    
+    PlotFreqData.fn(dir = NULL, # set to `out.dir`to save as file 
+                    dat = Length_Freq)
+    
+    plot_comps(dir = out.dir, data = Length_Freq) # uses version in R/utils/ 
+}else{
+  print(n.len.raw)
+}
 
-Length_Freq <- SurveyLFs.fn(dir = out.dir, 
-                        datL =  bio, 
-                        datTows = catch,
-                       strat.df = strata,
-                        lgthBins = len_bins)
-
-
-PlotFreqData.fn(dir = NULL, # set to `out.dir`to save as file 
-                dat = Length_Freq)
-
-## this function doesn't seem to work
-plot_comps(dir = out.dir, data = Length_Freq)
 ```
 
 ## Age Compositions
+
+Small samples sizes available for ages in 2000. Quality of data is unknown, but is likely suffers from similar sample size and sexing issues as the length composition data.
 ```{r}
-n <- GetN.fn(dir = out.dir, 
+n.age.raw <- nrow(bio[!is.na(bio$Age),]) # check is data available
+
+if(n.age.raw > 0){
+  
+  n <- GetN.fn(dir = out.dir,
          dat = bio,
-         type = "age", 
+         type = "age",
          species = "thorny")
-         
-age_bins <- 1:22 # arbitrarily set right now as not used in previous assessment
 
-Ages <- SurveyAFs.fn(dir = out.dir, 
-                     datA = bio,
-                     datTows = catch, 
-                     strat.df = strata,
-                     ageBins = age_bins,
-                     nSamps = n)
-                     
-PlotFreqData.fn(
-  dir = out.dir, 
-  dat = Ages
-)
+  age_bins <- 1:22 # arbitrarily set right now as not used in previous assessment
+  
+  Ages <- SurveyAFs.fn(dir = out.dir,
+                       datA = bio,
+                       datTows = catch,
+                       strat.df = strata,
+                       ageBins = age_bins,
+                       nSamps = n)
+  
+  PlotFreqData.fn(
+    dir = out.dir,
+    dat = Ages
+  )
+  
+  plot_comps(
+    dir = out.dir,
+    data = Ages
+  ) # uses the version in R/utils/
+  
+}else{
+  print(n.age.raw)
+}
 
-## this function doesn't seem to work
-plot_comps(
-  dir = out.dir, 
-  data = Ages
-)
 ```
 
 ## Conditional Age-at-Length
@@ -216,5 +237,8 @@ caal <- SurveyAgeAtLen.fn(dir = out.dir,
                           strat.df = strata,
                           lgthBins = len_bins, 
                           ageBins = age_bins)
+
+plot_age_length_sampling(dir=out.dir, caal)
+
 ```
 

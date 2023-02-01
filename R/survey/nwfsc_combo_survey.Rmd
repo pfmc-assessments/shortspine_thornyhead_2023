@@ -1,5 +1,5 @@
 ---
-title: "nwfsc_slope_survey"
+title: "nwfsc_combo_survey"
 author: "Joshua Zahner"
 date: "1/30/2023"
 output: 
@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(nwfscSurvey)
 library(tidyverse)
+source(file=file.path(here::here(), "R", "utils", "plot_comps.R"))
 
 species <- "shortspine thornyhead"
 survey.name <- "NWFSC.Combo"
@@ -147,62 +148,84 @@ PlotBioStrata.fn(
 ## Length Compositions
 
 ```{r}
-n <- GetN.fn(dir = out.dir, 
+n.len.raw <- nrow(bio[!is.na(bio$Length_cm),]) # check is data available
+
+if(n.len.raw > 0){
+    n <- GetN.fn(dir = out.dir, 
          dat = bio, 
          type = "length", 
          species = "thorny")
-         
-len_bins <- seq(6, 72, 2) # from last assessment (p. 125)
+      
+    len_bins <- seq(6, 72, 2) # from last assessment (p. 125)
+    
+    Length_Freq <- SurveyLFs.fn(dir = out.dir, 
+                            datL =  bio, 
+                            datTows = catch,
+                           strat.df = strata,
+                            lgthBins = len_bins)
+    
+    
+    PlotFreqData.fn(dir = NULL, # set to `out.dir`to save as file 
+                    dat = Length_Freq)
+    
+    plot_comps(dir = out.dir, data = Length_Freq) # uses version in R/utils/ 
+}else{
+  print(n.len.raw)
+}
 
-Length_Freq <- SurveyLFs.fn(dir = out.dir, 
-                        datL =  bio, 
-                        datTows = catch,
-                       strat.df = strata,
-                        lgthBins = len_bins)
+```
+```{r}
 
-
-PlotFreqData.fn(dir = NULL, # set to `out.dir`to save as file 
-                dat = Length_Freq)
-
-## this function doesn't seem to work
-plot_comps(dir = out.dir, data = Length_Freq)
 ```
 
 ## Age Compositions
+
+There is no age data associated with this species and survey, and thus age composition analysis is not possible.
 ```{r}
-n <- GetN.fn(dir = out.dir, 
+n.age.raw <- nrow(bio[!is.na(bio$Age),]) # check is data available
+
+if(n.age.raw > 0){
+  
+  n <- GetN.fn(dir = out.dir,
          dat = bio,
-         type = "age", 
+         type = "age",
          species = "thorny")
-         
-age_bins <- 1:22 # arbitrarily set right now as not used in previous assessment
 
-Ages <- SurveyAFs.fn(dir = out.dir, 
-                     datA = bio,
-                     datTows = catch, 
-                     strat.df = strata,
-                     ageBins = age_bins,
-                     nSamps = n)
-                     
-PlotFreqData.fn(
-  dir = out.dir, 
-  dat = Ages
-)
+  age_bins <- 1:22 # arbitrarily set right now as not used in previous assessment
+  
+  Ages <- SurveyAFs.fn(dir = out.dir,
+                       datA = bio,
+                       datTows = catch,
+                       strat.df = strata,
+                       ageBins = age_bins,
+                       nSamps = n)
+  
+  PlotFreqData.fn(
+    dir = out.dir,
+    dat = Ages
+  )
+  
+  plot_comps(
+    dir = out.dir,
+    data = Ages
+  ) # uses the version in R/utils/
+  
+}else{
+  print(n.age.raw)
+}
 
-## this function doesn't seem to work
-plot_comps(
-  dir = out.dir, 
-  data = Ages
-)
 ```
 
 ## Conditional Age-at-Length
+There are no ages associated with this species and survey, so CAAL analyses are not possible.
 ```{r}
-caal <- SurveyAgeAtLen.fn(dir = out.dir, 
-                          datAL = bio, 
+if(n.age.raw > 0){
+  caal <- SurveyAgeAtLen.fn(dir = out.dir,
+                          datAL = bio,
                           datTows = catch,
                           strat.df = strata,
-                          lgthBins = len_bins, 
-                          ageBins = age_bins)
+                          lgthBins = len_bins,
+                          ageBins = age_bins) 
+}
 ```
 
