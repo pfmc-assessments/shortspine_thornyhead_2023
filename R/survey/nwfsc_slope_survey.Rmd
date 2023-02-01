@@ -16,7 +16,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(nwfscSurvey)
 library(tidyverse)
-source(file=file.path(here::here(), "R", "utils", "plot_comps.R"))
 
 species <- "shortspine thornyhead"
 survey.name <- "NWFSC.Slope"
