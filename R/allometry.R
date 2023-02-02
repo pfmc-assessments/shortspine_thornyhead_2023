@@ -1,6 +1,6 @@
 # Allometry (length-weight relationship)
-
-
+# Contact: POCS
+# Last updated February 2023
 
 # set up -----
 
