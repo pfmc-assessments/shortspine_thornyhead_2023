@@ -6,6 +6,17 @@ library(shiny)
 library(plotly)
 library(ggplot2)
 
+# to use the plotly lasso feature:
+# verbatimTextOutput("brush")
+# output$plot <- renderPlotly({
+#   p <- ggplot(dat, aes(x = Length_cm, y = Weight, key = rn)) + geom_point()
+#   ggplotly(p) %>% layout(dragmode = "lasso")
+# })
+# output$brush <- renderPrint({
+#   d <- event_data("plotly_selected")
+#   if (!is.null(d)) d
+# })
+
 ui <- fluidPage(
   "Point and click to select data points that may be outliers. Selected data will appear in the table below and can be downloaded as a csv for further inspection.",
   br(),
