@@ -57,6 +57,8 @@ ggplot(data = dat, aes(x = log(Length_cm), y = log(Weight), col = factor(Year)))
   facet_wrap(~Sex) +
   geom_smooth(method = 'lm', se = F)
 
+# outliers -----
+
 # run app to identify outliers (only need to do this)
 # source('R/lw_outlier_app.R')
 # shinyApp(ui = ui, server = server)
@@ -69,6 +71,8 @@ dat <- dat %>% filter(!rn %in% c(outliers$rn))
 ggplot(data = dat, aes(x = Length_cm, y = Weight, col = Sex)) +
   geom_point(alpha = 0.4)
 
+# assign unsexed fish ----
+
 # assign <= 16 cm unsexed fish randomly as M or F. get rid of unsexed fish >16
 # cm
 set.seed(907) # gives the same result each time for the first time its run after set.seed
@@ -78,7 +82,8 @@ dat <- dat %>%
   # group_by(Sex) %>% tally()
   bind_rows(dat %>% filter(Sex %in% c('M', 'F')))
 
-#only use NWFSC combo survey
+#only use NWFSC combo survey ----
+
 dat <- dat %>% filter(survey != 'AFSCslope')
 
 ggplot(data = dat, aes(x = log(Length_cm), y = log(Weight), col = Sex)) +
@@ -95,7 +100,7 @@ lmAll <- lm(log(Weight)~log(Length_cm), data = dat)
 # function modified from @okenk, correction for median vs. mean in lognormal
 # distribution
 
-bias_correct <- function(model){
+bias_correct <- function(model, sex = 'unsexed'){
   alpha_med <- exp(model$coefficients[1])
   beta <- model$coefficients[2]
   sdres <- sd(model$residuals)# sigma(model)
@@ -118,8 +123,13 @@ preddf <- data.frame(Length_cm = 1:80) %>%
          Male = results[2,1] * Length_cm ^ results[2,2],
          `Combined` = results[3,1] * Length_cm ^ results[3,2]) %>% 
   pivot_longer(cols = -Length_cm, names_to = 'Sex', values_to = 'Weight')
-write_csv(results, 'results/data_summaries/lw_parameters_NWFSCcombo.csv')
 
+# Write results ----
+write_csv(results %>% 
+            mutate(sex = c('Female', 'Male', 'Sexes_combined')), 
+          'results/data_summaries/lw_parameters_NWFSCcombo.csv')
+
+# Plot results ----
 ggplot(data = dat %>% 
          mutate(Sex = ifelse(Sex == 'M', 'Male', 'Female')), 
        aes(x = Length_cm, y = Weight, col = Sex, lty = Sex)) +
@@ -137,7 +147,7 @@ ggplot(data = dat %>%
 ggsave('results/data_summaries/lw_NWFSCcombo.png', height = 5,
        width = 7, dpi = 300)
 
-# Compare with previous values
+# Compare with previous assessment values ----
 preddf <- data.frame(Length_cm = 6:72) %>% 
   mutate(NWFSCcombo_Female = results[1,1] * Length_cm ^ results[1,2],
          NWFSCcombo_Male = results[2,1] * Length_cm ^ results[2,2],
