@@ -6,6 +6,10 @@
 # R version 4.2.0
 # Platform: x86_64-w64-mingw32/x64 (64-bit)
 
+# processed in two ways:
+# 1) for how it goes into SS3/stock assessment model
+# 2) for expanding fishery length comps
+
 # set up ----
 
 # install.packages("dplyr")
