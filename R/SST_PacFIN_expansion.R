@@ -5,6 +5,7 @@ library(reshape2)
 
 ###############################################################################
 #	PacFIN Data Expansion for Shortspine thornyhead 2023 ----------------------------------------
+################################################################################
 bds_file = "PacFIN.SSPN.bds.17.Jan.2023.RData"
 load(file.path(getwd(), bds_file))
 out = bds.pacfin 
@@ -16,7 +17,7 @@ Pdata <- cleanPacFIN(
   CLEAN = TRUE, 
   verbose = TRUE)
 
-# Set up the expected fleet structure
+# Check fleet structure
 table(Pdata$geargroup)
 
 # create fleet structure in Pdata
@@ -25,13 +26,13 @@ Pdata["geargroup"][Pdata["geargroup"] == "POT"] <- "NONTWL"
 Pdata["geargroup"][Pdata["geargroup"] == "NET"] <- "NONTWL"
 table(Pdata$geargroup)
 
-# rewrite gear group to be all - align catch file (by state and all)
+# Assign fleet - STATE_GEAR
 Pdata$fleet[Pdata$state == "CA"] = paste0("CA", "_", Pdata$geargroup)
 Pdata$fleet[Pdata$state == "OR"] = paste0("OR", "_", Pdata$geargroup)
 Pdata$fleet[Pdata$state == "WA"] = paste0("WA", "_", Pdata$geargroup)
 table(Pdata$fleet)
 
-# Load in sex specific growth estimates from the survey data 
+# Load in sex specific growth estimates from survey data 
 fa = 6.550678e-06 # a param female 
 fb = 3.179796 # b param female
 ma = 6.657707e-06
@@ -41,33 +42,38 @@ ub = (fb + mb) / 2
 
 ################################################################################
 # Data checking -------------------------------------------------------
+################################################################################
 # Check lengths by sex
 # These are just starting values - estimates will be based on sex
-# von berttalanfy parameters (approx right for dover sole)
-k = 0.128; Linf = 47.8; L0 = 10.5; CV1 = 0.20; CV2 = 0.10
+# von berttalanfy parameters
+k = 0.01314229; Linf = 70; L0 = 10; CV1 = 0.20; CV2 = 0.10
 # align column names with survey package 
 Pdata$Length_cm <- Pdata$lengthcm # survey = length_cm 
 Pdata$Sex <- Pdata$SEX
 
-# estimate growth function from the survey package 
+# estimate growth function from the survey package ??
 Pdata <- nwfscSurvey::est_growth(
   dat = Pdata,
-  Par = data.frame(K = k, Linf = Linf, L0 = L0, CV0 = CV1, CV1 = CV2))
+  Par = data.frame(K = k, Linf = Linf, L0 = L0, CV0 = CV1, CV1 = CV2),
+  dir = ".")
 
 # check lengths 
 quantile(Pdata$lengthcm, na.rm = TRUE) 
+quantile(Pdata$length, na.rm = TRUE) 
+summary(Pdata$lengthcm)
+summary(Pdata$length) # same as length cm
 
 # remove observations larger than certain threshold 
 remove = which(Pdata$lengthcm > 100) # none over 100
 Pdata[remove, "Length"] = NA
 
-# This shows only fish with length and age
-ggplot(test, aes(x = weightkg, y = lengthcm)) +
+# W-L plot 
+ggplot(Pdata, aes(x = weightkg, y = lengthcm)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
 
-test <- filter(Pdata, weightkg > 0)
+# look at small weights 
 filter(Pdata, weightkg < 0.15) %>%
   select(lengthcm, weightkg, SEX) %>%
   ggplot(aes(x = weightkg, y = lengthcm)) +
@@ -75,13 +81,17 @@ filter(Pdata, weightkg < 0.15) %>%
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
 
-# This shows only fish with length and age
-ggplot(test, aes(x = lengthcm, y = weightkg)) +
+# correct small weights 
+test <- Pdata %>% mutate(lengthcm = ifelse(lengthcm > 39 & weightkg < 0.05, lengthcm / 10, lengthcm))
+
+ggplot(test, aes(x = weightkg, y = lengthcm)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
 
-Pdata <- Pdata %>% mutate(lengthcm = ifelse(lengthcm > 39 & weightkg < 0.05, lengthcm / 10, lengthcm))
+# check lengths -- something wrong 
+summary(test$lengthcm)
+summary(test$length)
 
 #####################################################################
 # Specify fleets, the stratification for expansion, and calculate expansions
@@ -184,7 +194,6 @@ write.csv(
   file = file.path(dir, "pacfin_bds", "forSS", paste0("Lcomps_for_SS3_", out_name, ".csv")), 
   row.names = FALSE)
 
-
 # Let's create the sample table - goes into assessment report 
 temp = Pdata[!is.na(Pdata$lengthcm) & Pdata$year < 2021,]
 Nfish = table(temp$year, temp$state)
@@ -211,5 +220,3 @@ write.csv(
   samples, 
   file = file.path(dir, "pacfin_bds", "forSS", paste0("PacFIN_Length_Samples_by_State.csv")), 
   row.names = FALSE)
-
-
