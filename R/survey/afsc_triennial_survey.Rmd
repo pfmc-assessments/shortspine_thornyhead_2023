@@ -76,7 +76,7 @@ PlotSexRatio.fn(dir=out.dir, bio$Lengths, data.type="length")
 
 ```
 
-No clear CPUE trend over time across Latitude, though CPUE map clearly shows that effort in early years was concentrated in Washingoyon an Orgeon, and effort only equalized into California in later years. There is a clear positive correlation between CPUE and Depth, with larger depths consistebtly receiving additional effort. It also appears that surveys performed pre 1992, had a maximum depth of ~400m, before the survey was extended to 500m.
+No clear CPUE trend over time across Latitude, though CPUE map clearly shows that effort in early years was concentrated in Washington an Oregon, and effort only equalized into California in later years. There is a clear positive correlation between CPUE and Depth, with larger depths consistently receiving additional effort. It also appears that surveys performed pre-1992, had a maximum depth of ~400m, before the survey was extended to 500m.
 
 Plenty of sexed data is available from 1995 -2004, though many small unsexed fish. Few sexed samples in 1980, 1983, and 1986 to work with, and spotty sexing coverage in 1992.
 
