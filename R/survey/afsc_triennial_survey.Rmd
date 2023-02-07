@@ -40,19 +40,11 @@ dir.create(out.dir, recursive=TRUE)
 # Fancy way of automatically using the raw data if its available as a file
 # or pulling it from the server and saving it if its not already there.
 
-if(!file.exists(catch.fname) | !file.exists(bio.fname)){
-    catch <- PullCatch.fn(Name = species, 
+catch <- PullCatch.fn(Name = species, 
                      SurveyName = survey.name)
                      
-    bio   <- PullBio.fn(Name = species, 
-                       SurveyName = survey.name)
-    
-    write.csv(catch, catch.fname)
-    write.csv(bio, bio.fname)
-}
-
-catch <- read.csv(catch.fname)
-bio <- read.csv(bio.fname)
+bio   <- PullBio.fn(Name = species, 
+                   SurveyName = survey.name) # Has both a $Lengths and $Ages object
 
 head(catch)
 head(bio)
@@ -191,7 +183,7 @@ Length compositions look consistent with other surveys.
 
 There is no age data associated with this species and survey, and thus age composition analysis is not possible.
 ```{r}
-n.age.raw <- nrow(bio$Ages[!is.na(bio$Ages$Age),]) # check is data available
+n.age.raw <- tryCatch({nrow(bio$Ages[!is.na(bio$Ages$Age),])}, error=function(e){0}) # check is data available
 
 if(n.age.raw > 0){
   
