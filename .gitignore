@@ -13,3 +13,7 @@ outputs/plots/exploratory/*
 # remove intermediate .RMarkdown LaTeX compilation files
 *.tex
 *.log
+
+# Mac hidden files
+.DS_store
+.ds_store
