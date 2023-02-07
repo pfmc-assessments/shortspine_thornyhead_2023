@@ -17,3 +17,7 @@ outputs/plots/exploratory/*
 # Mac hidden files
 .DS_store
 .ds_store
+
+# Intermediate RMarkdown Files
+
+*/unnames-chunk*
