@@ -1,5 +1,5 @@
 # Allometry (length-weight relationship)
-# Contact: POCS
+# Contact: jane.sullivan@noaa.gov
 # Last updated February 2023
 
 # set up -----
@@ -11,8 +11,8 @@ if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) 
 lapply(libs, library, character.only = TRUE)
 
 # Available length-weight pairs were indentified in the survey_data.R script
-akslope <- readRDS('data/surveys/AFSCslope/AFSCslope_lengthweight_pairs.rda')
-combo <- readRDS('data/surveys/NWFSCcombo/NWFSCcombo_lengthweight_pairs.rda')
+akslope <- readRDS('data/raw/AFSCslope/AFSCslope_lengthweight_pairs.rda')
+combo <- readRDS('data/raw/NWFSCcombo/NWFSCcombo_lengthweight_pairs.rda')
 names(akslope) == names(combo)
 
 # make sure there are no NAs
@@ -63,7 +63,7 @@ ggplot(data = dat, aes(x = log(Length_cm), y = log(Weight), col = factor(Year)))
 # source('R/lw_outlier_app.R')
 # shinyApp(ui = ui, server = server)
  
-outliers <- read_csv('results/data_summaries/potential_lw_outliers.csv')
+outliers <- read_csv('outputs/length-weight/potential_lw_outliers.csv')
 
 # remove outliers
 dat <- dat %>% filter(!rn %in% c(outliers$rn))
@@ -127,7 +127,7 @@ preddf <- data.frame(Length_cm = 1:80) %>%
 # Write results ----
 write_csv(results %>% 
             mutate(sex = c('Female', 'Male', 'Sexes_combined')), 
-          'results/data_summaries/lw_parameters_NWFSCcombo.csv')
+          'outputs/length-weight/lw_parameters_NWFSCcombo.csv')
 
 # Plot results ----
 ggplot(data = dat %>% 
@@ -144,7 +144,7 @@ ggplot(data = dat %>%
        subtitle = paste0('NWFSC shelf/slope survey data, ', min(dat$Year), '-', max(dat$Year))) +
   theme(legend.position = c(.1, .8))
 
-ggsave('results/data_summaries/lw_NWFSCcombo.png', height = 5,
+ggsave('outputs/length-weight/lw_NWFSCcombo.png', height = 5,
        width = 7, dpi = 300)
 
 # Compare with previous assessment values ----
@@ -167,5 +167,5 @@ ggplot() +
        main = 'Shortspine thornyhead length-weight relationships') +
   theme(legend.position = c(.2, .8))
 
-ggsave('results/data_summaries/lw_comparisons.png', height = 5,
+ggsave('outputs/length-weight/lw_comparisons.png', height = 5,
        width = 7, dpi = 300)
