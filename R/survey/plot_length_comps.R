@@ -1,4 +1,8 @@
 # Length comp plotting function using ggridges
+# jane.sullivan@noaa.gov
+# last updated feb 2023
+
+# note that this code is based on the survey_data.R output
 
 # set up ----
 libs <- c('readr', 'dplyr', 'tidyr', 'ggplot2', 'ggthemes', 'ggridges', 'cowplot')
@@ -6,8 +10,8 @@ if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) 
   install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
 lapply(libs, library, character.only = TRUE)
 
-outpath <- 'results'; dir.create(outpath)
-outpath <- 'results/data_summaries'; dir.create(outpath)
+outpath <- 'outputs'; dir.create(outpath)
+outpath <- 'outputs/surveys'; dir.create(outpath)
 
 # Function that reshapes SS3 length comps (e.g.,
 # 'forSS/Survey_Sex3_Bins_6_72_LengthComps.csv' output from
@@ -66,14 +70,14 @@ reshape_SScomps <- function(df = nwslope,
 # Data ----
 
 # sex-specific comps
-tri1 <- read_csv('data/surveys/Triennial1/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
-tri2 <- read_csv('data/surveys/Triennial2/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
-akslope <- read_csv('data/surveys/AFSCslope/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
-combo <- read_csv('data/surveys/NWFSCcombo/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
+tri1 <- read_csv('data/raw/Triennial1/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
+tri2 <- read_csv('data/raw/Triennial2/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
+akslope <- read_csv('data/raw/AFSCslope/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
+combo <- read_csv('data/raw/NWFSCcombo/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
 
 # unsexed comps
-nwslope <- read_csv('data/surveys/NWFSCslope/forSS/Survey_Sex0_Bins_6_72_LengthComps.csv')
-combo_nosex <- read_csv('data/surveys/NWFSCcombo/forSS/Survey_Sex0_Bins_6_72_LengthComps.csv')
+nwslope <- read_csv('data/raw/NWFSCslope/forSS/Survey_Sex0_Bins_6_72_LengthComps.csv')
+combo_nosex <- read_csv('data/raw/NWFSCcombo/forSS/Survey_Sex0_Bins_6_72_LengthComps.csv')
 
 # length comps -----
 df <- reshape_SScomps(df = tri1, fleet_name = 'Triennial1', sex = 3) %>% 

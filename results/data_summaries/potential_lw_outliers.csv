@@ -1,6 +1,0 @@
-"Project","Trawl_id","Common_name","Year","Vessel","Pass","Tow","Date","Depth_m","Weight","Ageing_Lab","Oto_id","Length_cm","Width_cm","Sex","Age","Latitude_dd","Longitude_dd","survey","state","rn"
-"NWFSC.Combo","200403008130","shortspine thornyhead",2004,"Excalibur",2,130,12683,568.3,2.44,NA,"100068808",39,NA,"F",NA,36.87916667,-122.25888889,"NWFSCcombo","OR",8797
-"AFSC.Slope","200116021109","shortspine thornyhead",2001,"R/V MILLER FREEMAN",NA,109,11619,1151,2.638,NA,"792",49,NA,"F",NA,41.27861111,-124.73027778,"AFSCslope","WA",6458
-"AFSC.Slope","200116021193","shortspine thornyhead",2001,"R/V MILLER FREEMAN",NA,193,11630,869,2.126,NA,"1634",45,NA,"F",NA,35.82277778,-121.70888889,"AFSCslope","OR",7288
-"NWFSC.Combo","202103020128","shortspine thornyhead",2021,"Last Straw",1,128,18805,780.4,1.62,NA,"102152545",59.5,NA,"F",NA,36.21277778,-122.07611111,"NWFSCcombo","OR",23080
-"AFSC.Slope","199716021014","shortspine thornyhead",1997,"R/V MILLER FREEMAN",NA,14,10160,424,1.478,NA,"191",99,NA,"F",NA,35.01555556,-121.42527778,"AFSCslope","OR",191
