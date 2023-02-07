@@ -33,8 +33,8 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # Available length-weight pairs were indentified in the survey_data.R script
-  akslope <- readRDS('data/surveys/AFSCslope/AFSCslope_lengthweight_pairs.rda')
-  combo <- readRDS('data/surveys/NWFSCcombo/NWFSCcombo_lengthweight_pairs.rda')
+  akslope <- readRDS('data/raw/AFSCslope/AFSCslope_lengthweight_pairs.rda')
+  combo <- readRDS('data/raw/NWFSCcombo/NWFSCcombo_lengthweight_pairs.rda')
   names(akslope) == names(combo)
   
   # make sure there are no NAs
