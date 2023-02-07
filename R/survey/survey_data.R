@@ -1,10 +1,16 @@
 # Survey catch and length composition data for shortspine thornyhead
-# Contact: (POCs)
+# Contact: jane.sullivan@noaa.gov
 # Last updated: January 2023
 
 # devtools::session_info()
 # R version 4.2.0
 # Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+# warning: this script was developed by Jane as part of a homework assignment
+# and it's not the official survey data processing script. please see
+# survey-specific rmd files for the official survey data used in the assessment.
+# all the output of this script is saved to subdirectories in data/raw, so that
+# it won't be tracked by github.
 
 # * strata definitions based on 2013 assessment
 # * sex-structured assessment
@@ -32,7 +38,7 @@ library(nwfscSurvey)
 library(dplyr)
 
 dir.create('data')
-dir.create('data/surveys')
+dir.create('data/raw')
 
 len_bins <- seq(6, 72, 2) # from 2013 assessment
 
@@ -44,7 +50,7 @@ thorny_maxSizeUnsexed <- 16
 
 # Shallow (<= 366 m) AFSC triennial shelf survey ----
 
-tri1_path <- 'data/surveys/Triennial1'; dir.create(tri1_path)
+tri1_path <- 'data/raw/Triennial1'; dir.create(tri1_path)
 
 tri1_catch <- PullCatch.fn(Name = 'shortspine thornyhead', SurveyName = 'Triennial') %>% 
   filter(Depth_m <= 366)
@@ -117,7 +123,7 @@ plot_comps(dir = tri1_path,
 
 # Deep (> 366 m) AFSC triennial shelf survey ----
 
-tri2_path <- 'data/surveys/Triennial2'; dir.create(tri2_path)
+tri2_path <- 'data/raw/Triennial2'; dir.create(tri2_path)
 
 tri2_catch <- PullCatch.fn(Name = 'shortspine thornyhead', SurveyName = 'Triennial') %>% 
   filter(Depth_m > 366)
@@ -190,7 +196,7 @@ plot_comps(dir = tri2_path,
 
 # AFSC slope survey ----
 
-afsc_slope_path <- 'data/surveys/AFSCslope'; dir.create(afsc_slope_path)
+afsc_slope_path <- 'data/raw/AFSCslope'; dir.create(afsc_slope_path)
 
 # NOTE: There are 93 records with no area swept calculation. These record will be
 # filled with the mean swept area across all tows.
@@ -280,7 +286,7 @@ plot_comps(dir = afsc_slope_path,
 
 # NWFSC slope survey ----
 
-nwfsc_slope_path <- 'data/surveys/NWFSCslope'; dir.create(nwfsc_slope_path)
+nwfsc_slope_path <- 'data/raw/NWFSCslope'; dir.create(nwfsc_slope_path)
 
 # NOTE: There are 4 records with no area swept calculation. These record will be
 # filled with the mean swept area across all tows.
@@ -333,7 +339,7 @@ PlotBioStrata.fn(dir = nwfsc_slope_path,
 # Length comps
 
 # Most lengths are unsexed (a handful in 2000 were sexed) - assume all are
-# unsexed?
+# unsexed.
 table(nwfsc_slope_bio$Sex, nwfsc_slope_bio$Year)
 nwfsc_slope_bio$Sex <- "U"
 
@@ -361,7 +367,7 @@ plot_comps(dir = nwfsc_slope_path,
 
 # also called West Coast Groundfish Bottom Trawl Survey (WCGBT)?
 
-combo_path <- 'data/surveys/NWFSCcombo'; dir.create(combo_path)
+combo_path <- 'data/raw/NWFSCcombo'; dir.create(combo_path)
 
 combo_catch <- PullCatch.fn(Name = 'shortspine thornyhead',
                             SurveyName = 'NWFSC.Combo',
