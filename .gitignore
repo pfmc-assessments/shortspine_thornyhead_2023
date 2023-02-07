@@ -20,4 +20,4 @@ outputs/plots/exploratory/*
 
 # Intermediate RMarkdown Files
 
-*/unnames-chunk*
+*/unnamed-chunk*
