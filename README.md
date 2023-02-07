@@ -26,7 +26,7 @@ repository | use
 [PacFIN.Utilities](https://pfmc-assessments.github.io/PacFIN.Utilities/) | Manipulate data from the PacFIN database for assessments 
 
 #### Other resources 
-* [Copper Rockfish pre-assessment meeting report Rmd](https://github.com/pfmc-assessments/copper_rockfish_2023/blob/main/documents/pre-assessment_data_workshop/report.Rmd) and [webpage](https://pfmc-assessments.github.io/copper_rockfish_2023/) (can use this structure as an example for our pre-assessment workshop)
+* Copper Rockfish pre-assessment meeting report [Rmd](https://github.com/pfmc-assessments/copper_rockfish_2023/blob/main/documents/pre-assessment_data_workshop/report.Rmd) and [webpage](https://pfmc-assessments.github.io/copper_rockfish_2023/) (can use this structure as an example for our pre-assessment workshop)
 
 ## Disclaimer 
 
