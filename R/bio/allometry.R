@@ -2,6 +2,8 @@
 # Contact: jane.sullivan@noaa.gov
 # Last updated February 2023
 
+# note that this code is based on the survey_data.R output
+
 # set up -----
 
 libs <- c('readr', 'dplyr', 'tidyr', 'ggplot2', 'plotly', 'shiny',
