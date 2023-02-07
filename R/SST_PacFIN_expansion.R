@@ -5,7 +5,6 @@ library(reshape2)
 
 ###############################################################################
 #	PacFIN Data Expansion for Shortspine thornyhead 2023 ----------------------------------------
-################################################################################
 bds_file = "PacFIN.SSPN.bds.17.Jan.2023.RData"
 load(file.path(getwd(), bds_file))
 out = bds.pacfin 
@@ -17,19 +16,21 @@ Pdata <- cleanPacFIN(
   CLEAN = TRUE, 
   verbose = TRUE)
 
+Pdata2 <- Pdata
+
 # Check fleet structure
 table(Pdata$geargroup)
 
-# create fleet structure in Pdata
+# Create fleet structure in Pdata
 Pdata["geargroup"][Pdata["geargroup"] == "HKL"] <- "NONTWL"
 Pdata["geargroup"][Pdata["geargroup"] == "POT"] <- "NONTWL"
 Pdata["geargroup"][Pdata["geargroup"] == "NET"] <- "NONTWL"
 table(Pdata$geargroup)
 
 # Assign fleet - STATE_GEAR
-Pdata$fleet[Pdata$state == "CA"] = paste0("CA", "_", Pdata$geargroup)
-Pdata$fleet[Pdata$state == "OR"] = paste0("OR", "_", Pdata$geargroup)
-Pdata$fleet[Pdata$state == "WA"] = paste0("WA", "_", Pdata$geargroup)
+Pdata$fleet[Pdata$state == "CA"] = paste0("CA", "_", Pdata$geargroup[Pdata$state == "CA"])
+Pdata$fleet[Pdata$state == "OR"] = paste0("OR", "_", Pdata$geargroup[Pdata$state == "OR"])
+Pdata$fleet[Pdata$state == "WA"] = paste0("WA", "_", Pdata$geargroup[Pdata$state == "WA"])
 table(Pdata$fleet)
 
 # Load in sex specific growth estimates from survey data 
@@ -42,7 +43,6 @@ ub = (fb + mb) / 2
 
 ################################################################################
 # Data checking -------------------------------------------------------
-################################################################################
 # Check lengths by sex
 # These are just starting values - estimates will be based on sex
 # von berttalanfy parameters
@@ -64,11 +64,17 @@ summary(Pdata$lengthcm)
 summary(Pdata$length) # same as length cm
 
 # remove observations larger than certain threshold 
-remove = which(Pdata$lengthcm > 100) # none over 100
-Pdata[remove, "Length"] = NA
+#remove = which(Pdata$lengthcm > 100) # none over 100
+#Pdata[remove, "Length"] = NA
 
 # W-L plot 
 ggplot(Pdata, aes(x = weightkg, y = lengthcm)) +
+  geom_jitter() + 
+  geom_point(aes(col = SEX), size = 2) +
+  scale_colour_viridis_d()
+
+# try with length
+ggplot(Pdata, aes(x = weightkg, y = length)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
@@ -82,16 +88,16 @@ filter(Pdata, weightkg < 0.15) %>%
   scale_colour_viridis_d()
 
 # correct small weights 
-test <- Pdata %>% mutate(lengthcm = ifelse(lengthcm > 39 & weightkg < 0.05, lengthcm / 10, lengthcm))
+#test <- Pdata %>% mutate(lengthcm = ifelse(lengthcm > 39 & weightkg < 0.05, lengthcm / 10, lengthcm))
+
+# filter out weird values and wierd fish from 1981 that were messing with the expansion
+test <- Pdata %>% filter(weightkg > 0.025 | is.na(weightkg))
+test <- test %>% filter(AGENCY_SAMPLE_NUMBER != 1981223128134)
 
 ggplot(test, aes(x = weightkg, y = lengthcm)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
-
-# check lengths -- something wrong 
-summary(test$lengthcm)
-summary(test$length)
 
 #####################################################################
 # Specify fleets, the stratification for expansion, and calculate expansions
@@ -102,20 +108,22 @@ summary(test$length)
 # for each gear fleet within that state.
 # landings reported data from pacfin - separate for each state because different sampling and coverage 
 
-# First stage expansion -------------------------------------------
+# First stage expansion ----------NOTE: TEST---------------------------------
 # expand comps to the trip level
 Pdata_exp <- getExpansion_1(
-  Pdata = Pdata,
+  Pdata = test,
   plot = file.path("/Users/haleyoleynik/Documents/UW stock assessment course/SST PacFin data"),
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub) # weight-length params
 
-# Second stage expansion -------------------------------------------
+# Second stage expansion -----------NOTE: TEST--------------------------------
 # expand comps up to the state and fleet (gear group)
 # The stratification.col input below needs to be the same as in the catch csv file
-# read in catch.csv 
+
+catch <- read.csv("/Users/haleyoleynik/Documents/UW stock assessment course/SST PacFin data/SST_PacFIN_catch.csv")
+
 Pdata_exp <- getExpansion_2(
   Pdata = Pdata_exp, 
-  Catch = catch, # catch file - needs to match state and fleet !!!!!!!!!!!!
+  Catch = catch, # catch file - needs to match state and fleet 
   Units = "MT", 
   stratification.cols = c("state", "geargroup"),
   savedir = file.path("/Users/haleyoleynik/Documents/UW stock assessment course/SST PacFin data"))
@@ -193,6 +201,7 @@ write.csv(
   format, 
   file = file.path(dir, "pacfin_bds", "forSS", paste0("Lcomps_for_SS3_", out_name, ".csv")), 
   row.names = FALSE)
+
 
 # Let's create the sample table - goes into assessment report 
 temp = Pdata[!is.na(Pdata$lengthcm) & Pdata$year < 2021,]
