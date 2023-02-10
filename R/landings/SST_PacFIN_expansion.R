@@ -34,12 +34,19 @@ Pdata$fleet[Pdata$state == "WA"] = paste0("WA", "_", Pdata$geargroup[Pdata$state
 table(Pdata$fleet)
 
 # Load in sex specific growth estimates from survey data 
+#LWsurvey <- read.csv("outputs/length-weight/lw_parameters_NWFSCcombo.csv")
 fa = 6.550678e-06 # a param female 
+# fa <- LWsurvey$alpha[LWsurvey$sex=="Female"]
 fb = 3.179796 # b param female
+# fb <- LWsurvey$beta[LWsurvey$sex=="Female"]
 ma = 6.657707e-06
+# ma <- LWsurvey$alpha[LWsurvey$sex=="Male"]
 mb = 3.172393
+# mb <- LWsurvey$beta[LWsurvey$sex=="Male"]
 ua = (fa + ma) / 2
+## ua <- LWsurvey$alpha[LWsurvey$sex=="Sexes_combined"]
 ub = (fb + mb) / 2
+## ub <- LWsurvey$beta[LWsurvey$sex=="Sexes_combined"]
 
 ################################################################################
 # Data checking -------------------------------------------------------
@@ -51,30 +58,38 @@ k = 0.01314229; Linf = 70; L0 = 10; CV1 = 0.20; CV2 = 0.10
 Pdata$Length_cm <- Pdata$lengthcm # survey = length_cm 
 Pdata$Sex <- Pdata$SEX
 
-# estimate growth function from the survey package ??
+##--------------------------------------------------##
+##-----------This part is useless for SST ----------##
+# Fit a von Bertalanffy model
+# For SST we don't have age data associated with catch
 Pdata <- nwfscSurvey::est_growth(
   dat = Pdata,
   Par = data.frame(K = k, Linf = Linf, L0 = L0, CV0 = CV1, CV1 = CV2),
   dir = ".")
+##--------------------------------------------------##
 
 # check lengths 
 quantile(Pdata$lengthcm, na.rm = TRUE) 
 quantile(Pdata$length, na.rm = TRUE) 
 summary(Pdata$lengthcm)
 summary(Pdata$length) # same as length cm
+table(Pdata$geargroup[is.na(Pdata$length)])
+table(Pdata$fleet[is.na(Pdata$length)])
+# Length data is mostly missing for CA NonTrawl. Only a small percentage of the dataset
+
 
 # remove observations larger than certain threshold 
 #remove = which(Pdata$lengthcm > 100) # none over 100
 #Pdata[remove, "Length"] = NA
 
 # W-L plot 
-ggplot(Pdata, aes(x = weightkg, y = lengthcm)) +
+ggplot(Pdata, aes(x = lengthcm, y = weightkg)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
 
 # try with length
-ggplot(Pdata, aes(x = weightkg, y = length)) +
+ggplot(Pdata, aes(x = length, y = weightkg)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
@@ -82,19 +97,40 @@ ggplot(Pdata, aes(x = weightkg, y = length)) +
 # look at small weights 
 filter(Pdata, weightkg < 0.15) %>%
   select(lengthcm, weightkg, SEX) %>%
-  ggplot(aes(x = weightkg, y = lengthcm)) +
+  ggplot(aes(x = lengthcm, y = weightkg)) +
+  geom_jitter() + 
+  geom_point(aes(col = SEX), size = 2) +
+  scale_colour_viridis_d()
+
+# what are this odd data points?
+Pdata %>%
+  filter(lengthcm > 39 & weightkg < 0.05) %>% 
+  dplyr::select(year) %>%
+  table()
+# --> Mainly recent data (2020) from Washington state
+
+Pdata %>%
+  mutate(weightkg=ifelse(lengthcm > 39 & weightkg < 0.05, weightkg*0.453592*1000, weightkg)) %>% 
+  select(lengthcm, weightkg, SEX) %>%
+  ggplot(aes(x = lengthcm, y = weightkg)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
 
 # correct small weights 
-#test <- Pdata %>% mutate(lengthcm = ifelse(lengthcm > 39 & weightkg < 0.05, lengthcm / 10, lengthcm))
+#test <- Pdata %>% mutate(weightkg = ifelse(lengthcm > 39 & weightkg < 0.05, weightkg * 1000, weightkg))
 
 # filter out weird values and wierd fish from 1981 that were messing with the expansion
 test <- Pdata %>% filter(weightkg > 0.025 | is.na(weightkg))
 test <- test %>% filter(AGENCY_SAMPLE_NUMBER != 1981223128134)
 
-ggplot(test, aes(x = weightkg, y = lengthcm)) +
+# or, alternatively, consider the magical conversion
+Pdata %>%
+  mutate(weightkg=ifelse(lengthcm > 39 & weightkg < 0.05, weightkg*0.453592*1000, weightkg)) -> test
+#test <- Pdata %>% filter(weightkg > 0.025 | is.na(weightkg))
+test <- test %>% filter(AGENCY_SAMPLE_NUMBER != 1981223128134)
+
+ggplot(test, aes(x = lengthcm, y = weightkg)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
@@ -112,8 +148,17 @@ ggplot(test, aes(x = weightkg, y = lengthcm)) +
 # expand comps to the trip level
 Pdata_exp <- getExpansion_1(
   Pdata = test,
-  plot = file.path("/Users/haleyoleynik/Documents/UW stock assessment course/SST PacFin data"),
+  plot = getwd(),
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub) # weight-length params
+
+# check the filled weight values are consistent with observations
+Pdata_exp %>%
+  mutate(is.weight=ifelse(is.na(weightkg), "N", "Y")) %>%
+  ggplot(aes(x = lengthcm, y = bestweight)) +
+  geom_jitter() + 
+  geom_point(aes(col = is.weight), size = 2) +
+  scale_colour_viridis_d() +
+  theme_bw()
 
 # Second stage expansion -----------NOTE: TEST--------------------------------
 # expand comps up to the state and fleet (gear group)
