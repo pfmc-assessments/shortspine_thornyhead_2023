@@ -21,3 +21,7 @@ outputs/plots/exploratory/*
 # Intermediate RMarkdown Files
 
 */unnamed-chunk*
+
+# SS Model Files
+model/*/plots/*
+model/*/ad*
