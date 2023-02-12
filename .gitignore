@@ -23,5 +23,8 @@ outputs/plots/exploratory/*
 */unnamed-chunk*
 
 # SS Model Files
-model/*/plots/*
-model/*/ad*
+model/*/plots/*  # Dont track SS plots
+admodel.*        # These are ADMB outputs
+ss.b0*		 # ADMB binary file output
+ss.p0*		 # ADMB binary file output
+ss.r0*		 # ADMB binary file output
