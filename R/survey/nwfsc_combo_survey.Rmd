@@ -75,6 +75,7 @@ PlotSexRatio.fn(dir=out.dir, bio, data.type="length")
 #PlotSexRatio.fn(dir=out.dir, bio, data.type="age") # No ages available
 
 ```
+CPUE looks consistent across latitude and depth. Plenty of sexed data for length compositions starting 2005 (definitely don't want to use 2003 and 2004 for sex-specific length comps).
 
 ```{r}
 # Made a small change to the default wh_plot_proportion() function in nwfscSurvey so
@@ -114,18 +115,19 @@ wh_plot_proportion(
   data_bio = bio
 )
 ```
+Obvious depth trend present, with much higher presence in deeper water (>350m). No obvious latitudinal presence-absence trends. Can probably set the latitudinal strata by convenience, but be careful with depth strata.
 
 ```{r}
-# Set spatial strata (UPDATE THESE)
+# Set spatial strata
 strata = CreateStrataDF.fn(
-  names          = c("shallow_south", "deep_south", "shallow_cen", "deep_cen", "shallow_north", "deep_north"), 
-  depths.shallow = c(55,    500,  55,   500,   55,  500),
-  depths.deep    = c(500,  1280,  500,  1280, 500, 1280),
-  lats.south     = c(32,     32, 40.5,  40.5,  43,   43),
-  lats.north     = c(40.5, 40.5,   43 ,   43,  49, 	 49)
+  names          = c("shallow_south", "deep_south", "shallow_cen", "deep_cen", "shallow_north", "mid_north", "deep_north"), 
+  depths.shallow = c(183, 549, 183, 549, 100, 183, 549), 
+  depths.deep = c(549, 1280, 549, 1280, 183, 549, 1280),
+  lats.south = c(32, 32, 34.5, 34.5, 40.5, 40.5, 40.5),
+  lats.north = c(34.5, 34.5, 40.5, 40.5, 49, 49, 49) 
 )
 ```
-
+Same strata as were used in 213 (p. 27). 2013 assessmet openly justifies all breaks, and I see no strong reasons to change them here.
 
 ## Design Based Indices
 ```{r}
@@ -136,13 +138,13 @@ biomass.idx = Biomass.fn(dir = out.dir,
                          strat.df = strata)
 
 PlotBio.fn(
-  dir = NULL, # set to `out.dir`to save as file
+  dir = out.dir, # set to `out.dir`to save as file
   dat = biomass.idx,
   scalar = 1000, # convert to kg like csv file
 ) # produces '_designed_based_index.png'
 
 PlotBioStrata.fn(
-  dir = NULL, # set to `out.dir`to save as file
+  dir = out.dir, # set to `out.dir`to save as file
   dat = biomass.idx,
   scalar = 1000, # convert to kg like csv file
 ) # produces '_designed_based_by_strata_index.png'
@@ -165,22 +167,23 @@ if(n.len.raw > 0){
     Length_Freq <- SurveyLFs.fn(dir = out.dir, 
                             datL =  bio, 
                             datTows = catch,
-                           strat.df = strata,
+                            strat.df = strata,
                             lgthBins = len_bins)
     
     
     PlotFreqData.fn(dir = NULL, # set to `out.dir`to save as file 
                     dat = Length_Freq)
     
-    plot_comps(dir = out.dir, data = Length_Freq) # uses version in R/utils/ 
+    plot_comps(dir = out.dir, data = Length_Freq) 
+    
+    print(n)
+    
 }else{
   print(n.len.raw)
 }
 
 ```
-```{r}
-
-```
+Length compositions from 2004 onwards all look consistent with other surveys. 2003 length compositions are probably unreliable due to low number of sexed fish (2004 lengths comps are likely suspect for a similar reason). Effective samples sizes are all large (>1000).
 
 ## Age Compositions
 
@@ -195,7 +198,7 @@ if(n.age.raw > 0){
          type = "age",
          species = "thorny")
 
-  age_bins <- 1:22 # arbitrarily set right now as not used in previous assessment
+  age_bins <- 1:70 # arbitrarily set right now as not used in previous assessment
   
   Ages <- SurveyAFs.fn(dir = out.dir,
                        datA = bio,
@@ -212,7 +215,7 @@ if(n.age.raw > 0){
   plot_comps(
     dir = out.dir,
     data = Ages
-  ) # uses the version in R/utils/
+  )
   
 }else{
   print(n.age.raw)
