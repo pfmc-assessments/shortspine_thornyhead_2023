@@ -1,7 +1,7 @@
 ---
-title: "nwfsc_combo_survey"
+title: "afsc_combo_survey"
 author: "Joshua Zahner"
-date: "1/31/2023"
+date: "2/12/2023"
 output: 
   pdf_document:
     latex_engine: xelatex
@@ -18,7 +18,7 @@ library(nwfscSurvey)
 library(tidyverse)
 
 species <- "shortspine thornyhead"
-survey.name <- "NWFSC.Slope"
+survey.name <- "AFSC.Slope"
 survey.name.path <- str_replace(tolower(survey.name), "[.]", "_")
 
 data.dir <- here::here("data/") # location of data directory
@@ -26,7 +26,8 @@ outputs.dir <- here::here("outputs/")
 
 raw.data.dir <- file.path(data.dir, "raw")
 catch.fname <- file.path(raw.data.dir, paste0(survey.name.path, "_survey_catch.csv")) # raw survey catch filename
-bio.fname <- file.path(raw.data.dir, paste0(survey.name.path, "_survey_bio.csv"))     # raw survey bio filename
+bio.lengths.fname <- file.path(raw.data.dir, paste0(survey.name.path, "_survey_bio_lengths.csv"))     # raw survey bio filename
+bio.ages.fname <- file.path(raw.data.dir, paste0(survey.name.path, "_survey_bio_ages.csv"))     # raw survey bio filename
 out.dir <- file.path(outputs.dir, "surveys", survey.name.path) # send all plot/data outputs here
 ```
 
@@ -48,11 +49,13 @@ if(!file.exists(catch.fname) | !file.exists(bio.fname)){
                        SurveyName = survey.name)
     
     write.csv(catch, catch.fname)
-    write.csv(bio, bio.fname)
+    write.csv(bio$Lengths, bio.lengths.fname)
+    write.csv(bio$Ages, bio.ages.fname )
 }
 
 catch <- read.csv(catch.fname)
-bio <- read.csv(bio.fname)
+bio$Lengths <- read.csv(bio.lengths.fname)
+bio$Ages <- read.csv(bio.ages.fname)
 
 head(catch)
 head(bio)
@@ -66,20 +69,25 @@ plot_cpue(
 
 plot_bio_patterns(
   dir = out.dir, 
-  bio = bio, 
+  bio = bio$Lengths, 
   col_name = "Length_cm")
 
 PlotMap.fn(dir=out.dir, dat=catch)
 
-PlotSexRatio.fn(dir=out.dir, bio, data.type="length")
-PlotSexRatio.fn(dir=out.dir, bio, data.type="age")
+PlotSexRatio.fn(dir=out.dir, bio$Lengths, data.type="length")
+PlotSexRatio.fn(dir=out.dir, bio$Ages, data.type="age")
 
 ```
-CPUE seems to be pretty flat across latitude over time. Maybe a slight positive trend in CPUE with depth (higher CPUE as greater depth). Definitely something going on in 2002.
+CPUE appears relatively flat across latitude for which data is available. Extreme differences in latitude included in the survey across years is obvious, with the survey concentrated in mid to high latitudes until 1997, after which it covered the whole of the west coast. There does not appear to be any major trends in CPUE by depth. *Going to exclude pre-1997 data for now, but this should be revisited.*
 
-Clear positive trend in length with depth, and no obvious trends between length and latitude. Indicates we need to be thoughtful as to where to set depth strata, but latitudinal strata can be set pretty much anywhere.
+Lots of available length data from 1988 onward, with obvious trend of larger individuals in deeper waters. Some unsexed, but mostly all small.
 
-NOTE that almost all samples in this survey are unsexed. Will need to be VERY careful how we deal with length compositions form this survey if we assume sex-specific growth parameters.
+```{r}
+catch <- catch %>% filter(Year >= 1997)
+bio$Lengths <- bio$Lengths %>% filter(Year >= 1997)
+bio$Ages <- bio$Ages %>% filter(Year > 1997)
+```
+
 
 ```{r}
 # Made a small change to the default wh_plot_proportion() function in nwfscSurvey so
@@ -116,22 +124,21 @@ wh_plot_proportion <- function (data_catch, data_bio, dir = file.path(getwd(), "
 wh_plot_proportion(
   dir = file.path(out.dir, "plots"),
   data_catch = catch,
-  data_bio = bio
+  data_bio = bio$Lengths
 )
 ```
-Presence-absence plots indicate the species is most prevalent in ~350-1000m of water, and is much prevalent in deeper waters. There are no obvious presence-absence trends across latitude. These both again imply that depth strata should be set thoughtfully, but that latitudinal strata can be set at convenience.
-
-No trends in sex-specific presence-absence across depth or latitude is discernible due to the large proportion of unsexed fish.
+No obvious presence-absence or sex-ratio trends across latitude or depth present.
 
 ```{r}
 # Set spatial strata
 strata = CreateStrataDF.fn(
-  names          = c("shallow_south", "deep_south", "shallow_cen", "deep_cen", "shallow_north", "deep_north"), 
-  depths.shallow = c(55,    500,  55,   500,   55,  500),
-  depths.deep    = c(500,  1280,  500,  1280, 500, 1280),
-  lats.south     = c(32,     32, 40.5,  40.5,  43,   43),
-  lats.north     = c(40.5, 40.5,   43 ,   43,  49, 	 49)
+  names          = c("shallow_south", "deep_south"),
+  depths.shallow = c(55,    500),
+  depths.deep    = c(500,  1280),
+  lats.south     = c(34,     34),
+  lats.north     = c(49, 49)
 )
+
 ```
 Strata are set to the same as they were in 2014 (p. 27).
 I dont see any particularly strong reason to change the latitudinal bins, since CPUE and presence-absence are very consistent over latitude.
@@ -145,9 +152,6 @@ Only using two depth bins seems like it could be revised though. Maybe use 55-35
 biomass.idx = Biomass.fn(dir = out.dir,
                          dat = catch,
                          strat.df = strata)
-
-
-
 
 PlotBio.fn(
   dir = out.dir, # set to `out.dir`to save as file
@@ -166,55 +170,52 @@ PlotBioStrata.fn(
 
 ## Length Compositions
 
-Sex-specific lengths only available for the year 2000. Male length comps look generally consistent with other surveys, though female comps look less similar. Could be due to low sample sizes or lack of sexed data from this survey. Length comps from this survey may not be of sufficient quality to warrant use in the assessment. 
 ```{r}
-n.len.raw <- nrow(bio[!is.na(bio$Length_cm),]) # check if data available
+n.len.raw <- nrow(bio$Lengths[!is.na(bio$Lengths$Length_cm),]) # check if data available
 
 if(n.len.raw > 0){
     n <- GetN.fn(dir = out.dir, 
-         dat = bio, 
+         dat = bio$Lengths, 
          type = "length", 
          species = "thorny")
       
     len_bins <- seq(6, 72, 2) # from last assessment (p. 125)
     
     Length_Freq <- SurveyLFs.fn(dir = out.dir, 
-                            datL =  bio, 
+                            datL =  bio$Lengths, 
                             datTows = catch,
                             strat.df = strata,
                             lgthBins = len_bins)
     
     
-    PlotFreqData.fn(dir = NULL, # set to `out.dir`to save as file 
+    PlotFreqData.fn(dir = out.dir, # set to `out.dir`to save as file 
                     dat = Length_Freq)
     
-    plot_comps(dir = out.dir, data = Length_Freq)
-    
-    print(n)
-    
+    plot_comps(dir = out.dir, data = Length_Freq) # uses version in R/utils/ 
 }else{
   print(n.len.raw)
 }
 
 ```
+Lengths look generally consistent with other surveys. Effective sample sizes are all high (>1000).
+
 
 ## Age Compositions
 
-Small samples sizes available for ages in 2000. Quality of data is unknown, but is likely suffers from similar sample size and sexing issues as the length composition data.
 ```{r}
-n.age.raw <- nrow(bio[!is.na(bio$Age),]) # check is data available
+n.age.raw <- nrow(bio$Ages[!is.na(bio$Ages$Age),]) # check is data available
 
 if(n.age.raw > 0){
   
   n <- GetN.fn(dir = out.dir,
-         dat = bio,
+         dat = bio$Ages,
          type = "age",
          species = "thorny")
 
-  age_bins <- 1:40 # arbitrarily set right now as not used in previous assessment
+  age_bins <- 1:70 # arbitrarily set right now as not used in previous assessment
   
   Ages <- SurveyAFs.fn(dir = out.dir,
-                       datA = bio,
+                       datA = bio$Ages,
                        datTows = catch,
                        strat.df = strata,
                        ageBins = age_bins,
@@ -235,17 +236,5 @@ if(n.age.raw > 0){
 }
 
 ```
-
-## Conditional Age-at-Length
-```{r}
-caal <- SurveyAgeAtLen.fn(dir = out.dir, 
-                          datAL = bio, 
-                          datTows = catch,
-                          strat.df = strata,
-                          lgthBins = len_bins, 
-                          ageBins = age_bins)
-
-plot_age_length_sampling(dir=out.dir, caal)
-
-```
+Age data is available prior to 1997, but the composition seems suspect at best, regardless of the high effective sample sizes. Probably shouldn't use.
 
