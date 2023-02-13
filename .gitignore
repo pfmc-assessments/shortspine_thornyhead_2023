@@ -28,3 +28,12 @@ admodel.*        # These are ADMB outputs
 ss.b0*		 # ADMB binary file output
 ss.p0*		 # ADMB binary file output
 ss.r0*		 # ADMB binary file output
+*.bar
+*.eva
+*.cor
+*.std
+*.ss_new
+posterior_vector.sso
+posterior.sso
+rebuild.sso
+runnumber.ss
