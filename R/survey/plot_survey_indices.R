@@ -30,6 +30,7 @@ dat <- read_csv('data/raw/AFSCslope/forSS/design_based_indices.csv') %>%
   bind_rows(read_csv('data/raw/Triennial2/forSS/design_based_indices.csv') %>% 
               mutate(Survey = 'Triennial2')) %>% 
   mutate(Assessment = '2023_assessment',
+         # convert the seLogB (which is a CV on the arithmetic scale) to a SD
          uci = Value + 1.96 * (Value * seLogB),
          lci = Value - 1.96 * (Value * seLogB))
 
@@ -51,18 +52,16 @@ ggsave('outputs/surveys/survey_indices.png', height = 5,
        width = 7, dpi = 300)
 
 # compare assessment time series ----
-# mutate(Value = Value/1e3,
-#        lci = lci/1e3,
-#        uci = uci/1e3)
+
 compare <- bind_rows(dat %>% 
                        mutate(Value = log(Value),
-                              uci = Value + 1.96 * (Value * seLogB),
-                              lci = Value - 1.96 * (Value * seLogB)) %>% 
+                              uci = Value + 1.96 * seLogB,
+                              lci = Value - 1.96 * seLogB) %>% 
                        select(Year, Survey, Assessment, Value, lci, uci),
                      dat2013 %>%  
                        mutate(Value = log(Value),
-                              uci = Value + 1.96 * (Value * sd_log),
-                              lci = Value - 1.96 * (Value * sd_log)) %>% 
+                              uci = Value + 1.96 * sd_log,
+                              lci = Value - 1.96 * sd_log) %>% 
                        select(Year, Survey, Assessment, Value, lci, uci)) 
 
 ggplot(compare, aes(x = Year, y = Value, col = Assessment, 

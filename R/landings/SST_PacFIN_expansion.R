@@ -2,10 +2,14 @@ library(ggplot2)
 library(PacFIN.Utilities)
 library(nwfscSurvey)
 library(reshape2)
-
+library(ggthemes)
+library(ggridges)
+library(cowplot)
 ###############################################################################
 #	PacFIN Data Expansion for Shortspine thornyhead 2023 ----------------------------------------
-bds_file = "PacFIN.SSPN.bds.17.Jan.2023.RData"
+
+# Pull PacFIN biological (bds) data 
+bds_file = "data/raw/PacFIN.SSPN.bds.17.Jan.2023.RData" # not hosted on github -- confidential
 load(file.path(getwd(), bds_file))
 out = bds.pacfin 
 
@@ -17,6 +21,19 @@ Pdata <- cleanPacFIN(
   verbose = TRUE)
 
 Pdata2 <- Pdata
+
+# Plot length comps 
+Pdata2$year <- as.character(Pdata2$year) # make year a character 
+
+ggplot(Pdata2 %>% 
+               filter((between(lengthcm, 6, 80))), aes(x=lengthcm,y=year, fill = state,color=state)) + 
+  geom_density_ridges(alpha = 0.5) + 
+  facet_wrap(vars(SEX)) + 
+  ylab("") + 
+  xlab("Length (cm)") +
+  theme_classic()
+
+#ggsave("outputs/fishery data/SST_PacFIN_fishery_lencomps.png", dpi=300, height=7, width=10, units='in')
 
 # Check fleet structure
 table(Pdata$geargroup)
@@ -50,37 +67,12 @@ ub = (fb + mb) / 2
 
 ################################################################################
 # Data checking -------------------------------------------------------
-# Check lengths by sex
-# These are just starting values - estimates will be based on sex
-# von berttalanfy parameters
-k = 0.01314229; Linf = 70; L0 = 10; CV1 = 0.20; CV2 = 0.10
-# align column names with survey package 
-Pdata$Length_cm <- Pdata$lengthcm # survey = length_cm 
-Pdata$Sex <- Pdata$SEX
-
-##--------------------------------------------------##
-##-----------This part is useless for SST ----------##
-# Fit a von Bertalanffy model
-# For SST we don't have age data associated with catch
-Pdata <- nwfscSurvey::est_growth(
-  dat = Pdata,
-  Par = data.frame(K = k, Linf = Linf, L0 = L0, CV0 = CV1, CV1 = CV2),
-  dir = ".")
-##--------------------------------------------------##
-
-# check lengths 
+# Check lengths 
 quantile(Pdata$lengthcm, na.rm = TRUE) 
-quantile(Pdata$length, na.rm = TRUE) 
 summary(Pdata$lengthcm)
-summary(Pdata$length) # same as length cm
 table(Pdata$geargroup[is.na(Pdata$length)])
 table(Pdata$fleet[is.na(Pdata$length)])
 # Length data is mostly missing for CA NonTrawl. Only a small percentage of the dataset
-
-
-# remove observations larger than certain threshold 
-#remove = which(Pdata$lengthcm > 100) # none over 100
-#Pdata[remove, "Length"] = NA
 
 # W-L plot 
 ggplot(Pdata, aes(x = lengthcm, y = weightkg)) +
@@ -109,6 +101,7 @@ Pdata %>%
   table()
 # --> Mainly recent data (2020) from Washington state
 
+# Look at small weights  
 Pdata %>%
   mutate(weightkg=ifelse(lengthcm > 39 & weightkg < 0.05, weightkg*0.453592*1000, weightkg)) %>% 
   select(lengthcm, weightkg, SEX) %>%
@@ -117,19 +110,17 @@ Pdata %>%
   geom_point(aes(col = SEX), size = 2) +
   scale_colour_viridis_d()
 
-# correct small weights 
-#test <- Pdata %>% mutate(weightkg = ifelse(lengthcm > 39 & weightkg < 0.05, weightkg * 1000, weightkg))
+# 3 fish from 1981 caught in California are skewing the expansion (sample id = 1981223128134). Filter out these 3 weird fish (tiny proportion of fish sampled).
+test <- Pdata %>% filter(AGENCY_SAMPLE_NUMBER != 1981223128134)
 
-# filter out weird values and wierd fish from 1981 that were messing with the expansion
-test <- Pdata %>% filter(weightkg > 0.025 | is.na(weightkg))
-test <- test %>% filter(AGENCY_SAMPLE_NUMBER != 1981223128134)
+# filter out small weights? 
+#test <- test %>% filter(weightkg > 0.025 | is.na(weightkg))
 
 # or, alternatively, consider the magical conversion
-Pdata %>%
-  mutate(weightkg=ifelse(lengthcm > 39 & weightkg < 0.05, weightkg*0.453592*1000, weightkg)) -> test
-#test <- Pdata %>% filter(weightkg > 0.025 | is.na(weightkg))
-test <- test %>% filter(AGENCY_SAMPLE_NUMBER != 1981223128134)
+test <- test %>%
+  mutate(weightkg=ifelse(lengthcm > 39 & weightkg < 0.05, weightkg*0.453592*1000, weightkg)) 
 
+# check W-L again 
 ggplot(test, aes(x = lengthcm, y = weightkg)) +
   geom_jitter() + 
   geom_point(aes(col = SEX), size = 2) +
@@ -137,18 +128,12 @@ ggplot(test, aes(x = lengthcm, y = weightkg)) +
 
 #####################################################################
 # Specify fleets, the stratification for expansion, and calculate expansions
-#####################################################################
-# Load in the catch file for expansion - the format of this
-# catch file may not match your fleet structure in the model.
-# Each state should be kept seperate for state based expansions
-# for each gear fleet within that state.
-# landings reported data from pacfin - separate for each state because different sampling and coverage 
 
 # First stage expansion ----------NOTE: TEST---------------------------------
 # expand comps to the trip level
 Pdata_exp <- getExpansion_1(
   Pdata = test,
-  plot = getwd(),
+  plot = file.path("outputs/fishery data"),
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub) # weight-length params
 
 # check the filled weight values are consistent with observations
@@ -160,18 +145,24 @@ Pdata_exp %>%
   scale_colour_viridis_d() +
   theme_bw()
 
+# look at Washington 2021 and 2022 - why is expansion factor capped at 1 for so many trips? 
+check.WA <- Pdata_exp %>% filter(year > 2020 & state == "WA")
+
 # Second stage expansion -----------NOTE: TEST--------------------------------
 # expand comps up to the state and fleet (gear group)
-# The stratification.col input below needs to be the same as in the catch csv file
 
-catch <- read.csv("/Users/haleyoleynik/Documents/UW stock assessment course/SST PacFin data/SST_PacFIN_catch.csv")
+# Read in processed PacFIN catch data 
+## Each state should be kept seperate for state based expansions for each gear fleet within that state. Landings reported data from pacfin - separate for each state because different sampling and coverage 
+catch <- read.csv("data/processed/SST_PacFIN_landings_2023.csv")
 
+# second stage expansion 
+## # The stratification.col input below needs to be the same as in the catch csv file
 Pdata_exp <- getExpansion_2(
   Pdata = Pdata_exp, 
   Catch = catch, # catch file - needs to match state and fleet 
   Units = "MT", 
   stratification.cols = c("state", "geargroup"),
-  savedir = file.path("/Users/haleyoleynik/Documents/UW stock assessment course/SST PacFin data"))
+  savedir = file.path("outputs/fishery data"))
 
 # Calculate the final expansion size ------------------------------------
 # look expansion factors and caps (26 is a tight range)
@@ -196,7 +187,6 @@ ggplot(Pdata, aes(x = lengthcm, y = count, fill = SEX))  +
 
 #################################################################################
 # Create the length composition data
-#################################################################################
 # code to do sex ratio: 
 # Commenting out for now because I don't want to assign unsexed 
 # due to the dimorphic growth
@@ -213,7 +203,7 @@ out_name = sub(pattern = "(.*)\\..*$", replacement = "\\1", bds_file)
 
 writeComps(
   inComps = length_comps, 
-  fname = file.path(dir, "pacfin_bds", "forSS", paste0("Lengths_", out_name, ".csv")), # tell file name for .csv
+  fname = file.path("outputs/fishery data", paste0("Lengths_", out_name, ".csv")), # tell file name for .csv
   lbins = len_bins, 
   sum1 = TRUE, # sum comps to 1, SS does this for you 
   partition = 2, # only retained fish 
@@ -244,7 +234,7 @@ colnames(format) = c("year", "month", "fleet", "sex", "part", "InputN", colnames
 format = format[format$year != 2021, ]
 write.csv(
   format, 
-  file = file.path(dir, "pacfin_bds", "forSS", paste0("Lcomps_for_SS3_", out_name, ".csv")), 
+  file = file.path("outputs/fishery data", paste0("Lcomps_for_SS3_", out_name, ".csv")), 
   row.names = FALSE)
 
 
@@ -272,5 +262,5 @@ colnames(samples) = c("Year", "CA Ntows", "CA Nfish",
                       "OR Ntows", "OR Nfish", "WA Ntows", "WA Nfish")
 write.csv(
   samples, 
-  file = file.path(dir, "pacfin_bds", "forSS", paste0("PacFIN_Length_Samples_by_State.csv")), 
+  file = file.path("outputs/fishery data", paste0("PacFIN_Length_Samples_by_State.csv")), 
   row.names = FALSE)
