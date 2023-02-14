@@ -33,7 +33,7 @@ ss.r0*		 # ADMB binary file output
 *.cor
 *.std
 *.ss_new
-posterior_vector.sso
-posterior.sso
+posterior_vector*.sso
+posterior*.sso
 rebuild.sso
 runnumber.ss
