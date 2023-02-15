@@ -1,22 +1,10 @@
-# Length comp plotting function using ggridges
-# jane.sullivan@noaa.gov
-# last updated feb 2023
-
-# note that this code is based on the survey_data.R output
-
-# set up ----
-libs <- c('readr', 'dplyr', 'tidyr', 'ggplot2', 'ggthemes', 'ggridges', 'cowplot')
-if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
-  install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
-lapply(libs, library, character.only = TRUE)
-
-outpath <- 'outputs'; dir.create(outpath)
-outpath <- 'outputs/surveys'; dir.create(outpath)
+library(tidyverse)
 
 # Function that reshapes SS3 length comps (e.g.,
 # 'forSS/Survey_Sex3_Bins_6_72_LengthComps.csv' output from
 # nwfscSurvey::SurveyLFs.fn) into a long format and calculates proportions from
 # frequencies
+# Credit: Jane Sullivan
 reshape_SScomps <- function(df = nwslope, 
                             fleet_name = 'Triennial1', 
                             sex = 0) {
@@ -67,43 +55,69 @@ reshape_SScomps <- function(df = nwslope,
   return(df)
 }
 
-# Data ----
+read.survey.length.comp.data <- function(survey.name, fname="Survey_Sex3_Bins_6_72_LengthComps.csv"){
+  return(
+    read_csv(file.path(here::here(), "outputs", "surveys", survey.name, "forSS", fname), show_col_types = FALSE) %>% print()
+  )
+}
 
-# sex-specific comps
-tri1 <- read_csv('data/raw/Triennial1/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
-tri2 <- read_csv('data/raw/Triennial2/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
-akslope <- read_csv('data/raw/AFSCslope/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
-combo <- read_csv('data/raw/NWFSCcombo/forSS/Survey_Sex3_Bins_6_72_LengthComps.csv')
+triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1")
+triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2")
+afsc.slope.lcs.raw  <- read.survey.length.comp.data("afsc_slope")
+nwfsc.slope.lcs.raw <- read.survey.length.comp.data("nwfsc_slope")
+nwfsc.combo.lcs.raw <- read.survey.length.comp.data("nwfsc_combo")
 
-# unsexed comps
-nwslope <- read_csv('data/raw/NWFSCslope/forSS/Survey_Sex0_Bins_6_72_LengthComps.csv')
-combo_nosex <- read_csv('data/raw/NWFSCcombo/forSS/Survey_Sex0_Bins_6_72_LengthComps.csv')
+nw.slope.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
+nw.combo.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
 
-# length comps -----
-df <- reshape_SScomps(df = tri1, fleet_name = 'Triennial1', sex = 3) %>% 
-  dplyr::bind_rows(reshape_SScomps(df = tri2, fleet_name = 'Triennial2', sex = 3)) %>% 
-  dplyr::bind_rows(reshape_SScomps(df = akslope, fleet_name = 'AFSCslope', sex = 3)) %>% 
-  dplyr::bind_rows(reshape_SScomps(df = combo, fleet_name = 'NWFSCcombo', sex = 3)) %>% 
-  dplyr::bind_rows(reshape_SScomps(df = nwslope, fleet_name = 'NWFSCslope', sex = 0)) %>% 
-  dplyr::bind_rows(reshape_SScomps(df = combo_nosex, fleet_name = 'NWFSCcombo', sex = 0))
+length.comps <- bind_rows(
+    reshape_SScomps(df = triennial1.lcs.raw,     fleet_name = 'Triennial1', sex = 3), 
+    reshape_SScomps(df = triennial2.lcs.raw,     fleet_name = 'Triennial2', sex = 3),
+    reshape_SScomps(df = afsc.slope.lcs.raw,     fleet_name = 'AFSCslope',  sex = 3),
+    reshape_SScomps(df = nwfsc.slope.lcs.raw,    fleet_name = 'NWFSCslope', sex = 3),
+    reshape_SScomps(df = nwfsc.combo.lcs.raw,    fleet_name = 'NWFSCcombo', sex = 3),
+    reshape_SScomps(df = nw.slope.unsex.lcs.raw, fleet_name = 'NWFSCslope', sex = 0),
+    reshape_SScomps(df = nw.combo.unsex.lcs.raw, fleet_name = 'NWFSCcombo', sex = 0)
+)
 
-df <- expand.grid(fleet = unique(df$fleet),
-                  fleet_name = unique(df$fleet_name),
-                  sex = unique(df$sex),
-                  year = min(df$year):max(df$year)) %>% 
-  left_join(df) %>% 
-  mutate(fleet_name = factor(fleet_name))
+length.comps <- length.comps %>% 
+  mutate(
+    survey = recode_factor(
+      fleet_name,
+      !!!c(
+        Triennial1 = "AFSC Triennial Shelf Survey 1",
+        Triennial2 = "AFSC Triennial Shelf Survey 2",
+        AFSCslope  = "AFSC Slope Survey",
+        NWFSCslope = "NWFSC Slope Survey",
+        NWFSCcombo = "West Coast Groundfish Bottom Trawl Survey"
+      )
+    ),
+    sex = recode_factor(
+      sex, 
+      !!!c(
+        F  = "Female",
+        M = "Male",
+        U = "Unsexed"
+      )
+    )
+  ) %>%
+  select(-c(fleet_name)) %>%
+  write_csv(file.path(here::here(), "data", "processed", "survey_length_comps.csv"))
 
-p1 <- ggplot(data = df %>% 
-               filter((between(length_bin, 6, 70))), 
-             aes(x = length_bin, y = factor(year), height = prop, fill = fleet_name)) +
-  geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
-                      panel_scaling = TRUE, size = 0.5) +
-  ggthemes::scale_fill_colorblind() +
-  labs(x = "Length (cm)", y = NULL, fill = NULL, title = "Shortspine thornyhead survey length compositions") + 
-  theme_light() +
-  theme(legend.position = "top") +
-  facet_wrap(~sex)
-p1
+ggplot(data = length.comps, 
+       aes(x = length_bin, y = factor(year), height = prop, fill = survey)) +
+  geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.50, panel_scaling = TRUE, size = 0.5) +
+  scale_x_continuous(breaks=seq(0, 70, 10))+
+  facet_wrap(~sex)+
+  labs(x = "Length (cm)", y="Year", title="Shortspine Thornyhead Survey Length Compositions", fill="Survey")+
+  theme_minimal()+
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(),
+    panel.spacing.x = unit(0.5, "cm"),
+    legend.position = "bottom"
+  )+
+  guides(
+    fill = guide_legend(nrow=2)
+  )
 
-ggsave(paste0(outpath, '/survey_lencomps.png'), dpi=300, height=7, width=10, units='in')
