@@ -16,6 +16,7 @@ survey.indices <- bind_rows(
   nwfsc.combo.idx
 ) %>%
   mutate(
+    Value = Value/1e3               # convert to kg
     lci = Value-1.96*Value*seLogB,  # Lower 95% CI
     uci = Value+1.96*Value*seLogB,  # Upper 95% CI
     survey = recode_factor(         # Change survey to a factor
