@@ -16,7 +16,6 @@ survey.indices <- bind_rows(
   nwfsc.combo.idx
 ) %>%
   mutate(
-    Value = Value/1e3,              # Convert into kg
     lci = Value-1.96*Value*seLogB,  # Lower 95% CI
     uci = Value+1.96*Value*seLogB,  # Upper 95% CI
     survey = recode_factor(         # Change survey to a factor
@@ -38,8 +37,8 @@ survey.indices <- bind_rows(
 ggplot(survey.indices, aes(x=Year, y=Value, color=survey))+
   geom_pointrange(aes(ymin=lci, ymax=uci))+
   scale_x_continuous(breaks=seq(1980, 2022, 5))+
-  scale_y_continuous(breaks=seq(0, 110000, 10000), labels=scales::comma)+
-  coord_cartesian(expand=0, ylim=c(0, 110000))+
+  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
+  coord_cartesian(expand=0, ylim=c(0, 12500))+
   labs(
     x="Year",
     y="Biomass (mt)",
@@ -59,8 +58,8 @@ ggplot(survey.indices, aes(x=Year, y=Value, color=survey, fill=survey)) +
   geom_line()+
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2)+
   scale_x_continuous(breaks=seq(1980, 2022, 5))+
-  scale_y_continuous(breaks=seq(0, 110000, 10000), labels=scales::comma)+
-  coord_cartesian(expand=0, ylim=c(0, 110000))+
+  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
+  coord_cartesian(expand=0, ylim=c(0, 12500))+
   labs(
     x="Year",
     y="Biomass (mt)",
@@ -77,9 +76,9 @@ ggplot(survey.indices, aes(x=Year, y=Value, color=survey, fill=survey)) +
 # Created faceted plot of survey indices as point ranges
 ggplot(survey.indices, aes(x=Year, y=Value, color=survey))+
   geom_pointrange(aes(ymin=lci, ymax=uci))+
-  facet_wrap(~survey, scales="free")+
-  #scale_y_continuous(breaks=seq(0, 110000, 10000), labels=scales::comma)+
-  #coord_cartesian(expand=1, ylim=c(0, 110000))+
+  facet_wrap(~survey, scales="free_x")+
+  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
+  coord_cartesian(expand=1, ylim=c(0, 12500))+
   labs(
     x="Year",
     y="Biomass (mt)",
@@ -99,9 +98,9 @@ ggplot(survey.indices, aes(x=Year, y=Value, color=survey, fill=survey))+
   geom_point()+
   geom_line()+
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2)+
-  facet_wrap(~survey, scales="free")+
-  #scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
-  #coord_cartesian(expand=1, ylim=c(0, 12500))+
+  facet_wrap(~survey, scales="free_x")+
+  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
+  coord_cartesian(expand=1, ylim=c(0, 12500))+
   labs(
     x="Year",
     y="Biomass (mt)",
