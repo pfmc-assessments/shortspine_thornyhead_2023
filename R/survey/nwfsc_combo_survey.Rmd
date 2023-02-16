@@ -140,13 +140,13 @@ biomass.idx = Biomass.fn(dir = out.dir,
 PlotBio.fn(
   dir = out.dir, # set to `out.dir`to save as file
   dat = biomass.idx,
-  scalar = 1000, # convert to kg like csv file
+  scalar = 1e3, # convert to kg like csv file
 ) # produces '_designed_based_index.png'
 
 PlotBioStrata.fn(
   dir = out.dir, # set to `out.dir`to save as file
   dat = biomass.idx,
-  scalar = 1000, # convert to kg like csv file
+  scalar = 1e3, # convert to kg like csv file
 ) # produces '_designed_based_by_strata_index.png'
 
 ```
