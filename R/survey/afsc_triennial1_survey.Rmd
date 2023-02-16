@@ -151,7 +151,7 @@ PlotBio.fn(
   scalar = 1000, # convert to kg like csv file
 ) # produces '_designed_based_index.png'
 
-PlotBioStrata.fn.custom(
+PlotBioStrata.fn(
   dir = out.dir, # set to `out.dir`to save as file
   dat = biomass.idx,
   scalar = 1000, # convert to kg like csv file
