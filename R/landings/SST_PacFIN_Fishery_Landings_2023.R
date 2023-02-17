@@ -1,5 +1,7 @@
 ###############################################################################
 # Fishery landings  ------------------------------------------------
+require(tidyverse)
+require(ggplot2)
 
 # shortspine thornyhead only - read data 
 catch = "data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData" 
@@ -10,13 +12,13 @@ catch = catch.pacfin
 catch.test <- catch %>%
   mutate_at("COUNTY_STATE", ~replace_na(.,"WA"))
 
-# look at landings  by state -----------------------------------
+# look at landings  by state -------------------------------------
 catch2 <- catch.test %>%
   group_by(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE) %>%
   rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
   summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T))
 
-# plot catch by state (use ROUND_WEIGHT_MTONS)
+# plot landings by state (use ROUND_WEIGHT_MTONS)
 ggplot(data = catch2, aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = State)) +
   geom_line() +
   ylab("Total Weight (MT)") +
@@ -24,10 +26,10 @@ ggplot(data = catch2, aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = State)) +
   ggtitle("SSPN") +
   theme_classic()
 
-# look at landings by state AND gear type ----------------------------
+# look at landings by state AND gear type -------------------------------------
 table(catch$PACFIN_GROUP_GEAR_CODE)
 
-# plot by state and gear type
+# plot landings by state and gear type
 ggplot(data = catch2, aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
   geom_line() +
   facet_wrap(vars(State)) + 
@@ -81,7 +83,76 @@ nontrawl.cast <- nontrawl.cast %>%
 catch.final <- cbind(trawl.cast,nontrawl.cast)
 catch.final <- catch.final[,-5]
 
-#write.csv(catch.final, "SST_PacFIN_landings_2023.csv")
+# write catch file to use in fishery length expansions 
+#write.csv(catch.final,"data/processed/SST_PacFIN_landings_2023.csv")
 
-# use ROUND_WEIGHT_MTONS
-colnames(catch) = c("Year", "CA_ALL", "OR_ALL", "WA_ALL") # we want trawl, non-trawl
+###################################################################################################
+# PROPORTION of shortspine to total thornyheads ---------------------------------------------------
+
+# READ DATA 
+# shortspine thornyhead only - read data 
+load("data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData" )
+short.catch = catch.pacfin 
+
+# longspine thornyhead only - read data 
+load("data/raw/PacFIN.LSPN.CompFT.17.Feb.2023.RData" )
+long.catch = catch.pacfin 
+
+# unidentified thornyhead only - read data 
+load("data/raw/PacFIN.THDS.CompFT.30.Jan.2023.RData" )
+un.catch = catch.pacfin 
+
+# CALCULATE TOTAL LANDED WEIGHTS by year - use ROUND_WEIGHT_MTONS
+long.totalcatch <- long.catch %>%
+  group_by(LANDING_YEAR) %>%
+  summarize(LSPN = sum(ROUND_WEIGHT_MTONS, na.rm=T))
+
+short.totalcatch <- short.catch %>%
+  group_by(LANDING_YEAR) %>%
+  summarize(SSPN = sum(ROUND_WEIGHT_MTONS, na.rm=T))
+
+un.totalcatch <- un.catch %>%
+  group_by(LANDING_YEAR) %>%
+  summarize(UNID = sum(ROUND_WEIGHT_MTONS, na.rm=T))
+
+# combine dataframes, calculate ratios (like 2013 assessment did - see Fig. 3, page 60)
+# ratio of shortspine / (shortspine + longspine)
+# ratio of UNID / (shortspine + longspine + UNID) 
+totalcatch <- long.totalcatch %>% 
+  left_join(short.totalcatch, by = "LANDING_YEAR") %>%
+  left_join(un.totalcatch, by = "LANDING_YEAR") %>%
+  rowwise() %>%
+  mutate(IDtotal = sum(SSPN,LSPN),total = sum(SSPN,LSPN,UNID, na.rm=T), SSPNprop = SSPN / IDtotal, UNIDprop = UNID / total, SSPNtotal = SSPN + (UNID*SSPNprop))
+
+# plot shortspine, longspine, and UNID landings by year 
+ggplot(totalcatch, aes(x=LANDING_YEAR)) +
+  geom_line(aes(y = SSPN), color = "red") +
+  geom_line(aes(y = LSPN), color = "blue") + 
+  geom_line(aes(y = UNID), linetype = "dashed") +
+  theme_classic()
+  
+# plot ratios by year (Fig. 3, page 60 in 2013 assessment)
+ggplot(totalcatch, aes(x=LANDING_YEAR)) +
+  geom_line(aes(y = SSPNprop)) +
+  geom_line(aes(y = UNIDprop), col = "red", linetype = "dashed") +
+  ylim(0,1) + 
+  xlab("Year") + 
+  ylab("Ratio") +
+  annotate("text", x = 2010, y = 0.85, label = "shortspine / (shortspine + longspine)") +
+  annotate("text", x = 2005, y = 0.08, label = "UNID thornyhead / (shortspine + longspine + UNID)", color = "red") +
+  theme_classic()
+
+# NEXT STEPS 
+# look at ratio by state 
+# get data into fleet structure - apply yearly ratio from above? 
+ 
+
+
+
+
+
+
+
+
+
+
