@@ -39,16 +39,43 @@ abundance.idxs.2013 <- read_csv(
 # Checking relative difference between 2013 and 2023 indices, since scales
 # dont match up. Didn't really find anything.
 #
-abundance.idxs.2013 %>%
-  left_join(abundance.idxs.2023, by=c("Year", "Survey"), suffix=c(".2013", ".2023")) %>%
-  select(Year, Survey, Value.2013, sd_log.2013, lci.2013, uci.2013, Value.2023, sd_log.2023, lci.2023, uci.2023) %>%
-  mutate(
-    rel = Value.2013/Value.2023
-  ) %>%
-  print(n=100)
+# abundance.idxs.2013 %>%
+#   left_join(abundance.idxs.2023, by=c("Year", "Survey"), suffix=c(".2013", ".2023")) %>%
+#   select(Year, Survey, Value.2013, sd_log.2013, lci.2013, uci.2013, Value.2023, sd_log.2023, lci.2023, uci.2023) %>%
+#   mutate(
+#     rel = Value.2013/Value.2023
+#   ) %>%
+#   print(n=100)
 
 abundance.idxs <- bind_rows(abundance.idxs.2013, abundance.idxs.2023)
 
+# Plot 2013 and 2023 surveys together as point ranges on original scale
+ggplot(abundance.idxs, aes(x=Year, y=Value, col=assessment, linetype=assessment))+
+  geom_pointrange(aes(ymin=lci, ymax=uci))+
+  facet_wrap(~Survey)+
+  scale_y_continuous(
+    breaks=seq(0, 110000, 10000), 
+    labels=scales::comma,
+    #sec.axis = sec_axis( ~ .*1/5, name="2023")
+  )+
+  coord_cartesian(expand=1)+
+  labs(
+    x="Year",
+    y="Biomass",
+    title="Shortspine Thornyhead Survey Abundance Indices",
+    fill="Assessment",
+    color="Assessment",
+    linetype="Assessment"
+  )+
+  theme_minimal()+
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(),
+    legend.position = "bottom",
+    panel.spacing = unit(0.5, "cm")
+  )
+
+# Same plot but on log scale and with free axes
 ggplot(abundance.idxs, aes(x=Year, y=log(Value), col=assessment, linetype=assessment))+
   geom_pointrange(aes(ymin=log(lci), ymax=log(uci)))+
   facet_wrap(~Survey, scale="free")+
@@ -107,16 +134,23 @@ ggplot(abundance.idxs, aes(x=Year, y=Value, col=assessment, fill=assessment, lin
     x="Year",
     y="Biomass (mt)",
     title="Shortspine Thornyhead Survey Abundance Indices",
-    fill="Survey",
-    color="Survey"
+    fill="Assessment",
+    color="Assessment",
+    linetype="Assessment"
   )+
   theme_minimal()+
   theme(
     panel.grid.minor = element_blank(),
     axis.line = element_line(),
-    legend.position = "none"
+    legend.position = "bottom"
   )
 
+
+# All of this standardizes the abundance indices to be relative to the
+# index value in the first year of each survey. This allows for plotting
+# the indexes from 2013 and 2023 on identical scales and analyzing the
+# overall trend in each index, to ensure that index trends match between 
+# the 2013 and 2023 assessments.
 baseline.idx.2013 <- abundance.idxs.2013 %>%
   group_by(Survey) %>%
   filter(row_number()==1) %>%
@@ -182,3 +216,58 @@ ggplot(rel.abundance.idxs, aes(x=Year, y=Value, col=assessment, linetype=assessm
     legend.position = "bottom",
     panel.spacing = unit(0.5, "cm")
   )
+
+
+# Try and manually do the CPUE index calculation to see if there is a problem
+# with the nwfscSurvey package, or if the 2013 assessment is doing something
+# strange that is undocumented.
+#
+# nwfsc.combo.data <- read_csv(file.path(here::here(), "data", "raw", "nwfsc_combo_survey_catch.csv"), show_col_types=FALSE) %>%
+#   select(Trawl_id, Year, Pass, Tow, Area_Swept_ha, Depth_m, Latitude_dd, total_catch_wt_kg, CPUE_kg_per_ha, cpue_kg_km2) %>%
+#   print(n=10)
+# 
+# strata = CreateStrataDF.fn(
+#   names          = c("shallow_south", "deep_south", "shallow_cen", "deep_cen", "shallow_north", "mid_north", "deep_north"), 
+#   depths.shallow = c(183, 549, 183, 549, 100, 183, 549), 
+#   depths.deep    = c(549, 1280, 549, 1280, 183, 549, 1280),
+#   lats.south     = c(32, 32, 34.5, 34.5, 40.5, 40.5, 40.5),
+#   lats.north     = c(34.5, 34.5, 40.5, 40.5, 49, 49, 49) 
+# )
+# 
+# n.strata <- nrow(strata)
+# years <- unique(nwfsc.combo.data$Year)
+# n.years <- length(years)
+# 
+# index <- rep(NA, n.years)
+# j = 0
+# for(y in years){
+#   j <- j+1
+#   strata.indices <- rep(NA, n.strata)
+#   for(i in 1:n.strata){
+#     min.depth <- strata$Depth_m.1[i]
+#     max.depth <- strata$Depth_m.2[i]
+#     min.lat <- strata$Latitude_dd.1[i]
+#     max.lat <- strata$Latitude_dd.2[i]
+#     
+#     strata.cpue <- nwfsc.combo.data %>%
+#       filter(
+#         Year == y,
+#         Depth_m > min.depth,
+#         Depth_m <= max.depth,
+#         Latitude_dd > min.lat,
+#         Latitude_dd <= max.lat
+#       ) %>%
+#       pull(cpue_kg_km2) %>%
+#       mean(., na.rm=TRUE)
+#     
+#     strata.index <- strata.cpue * strata$area[i]
+#     strata.indices[i] <- strata.index
+#   } 
+#   total.index <- sum(strata.indices)
+#   index[j] <- total.index
+# }
+# index 
+#
+# Values match up closely with those from the nwfscSurvey code for 2023.
+# Seems like the 2013 assessment was doing something different all together.
+
