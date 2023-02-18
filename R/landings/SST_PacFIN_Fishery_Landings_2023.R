@@ -2,6 +2,7 @@
 # Fishery landings  ------------------------------------------------
 require(tidyverse)
 require(ggplot2)
+require(reshape2)
 
 # shortspine thornyhead only - read data 
 catch = "data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData" 
@@ -87,7 +88,7 @@ catch.final <- catch.final[,-5]
 #write.csv(catch.final,"data/processed/SST_PacFIN_landings_2023.csv")
 
 ###################################################################################################
-# PROPORTION of shortspine to total thornyheads ---------------------------------------------------
+# PROPORTION of shortspine to total Thornyheads ---------------------------------------------------
 
 # READ DATA 
 # shortspine thornyhead only - read data 
@@ -142,12 +143,52 @@ ggplot(totalcatch, aes(x=LANDING_YEAR)) +
   annotate("text", x = 2005, y = 0.08, label = "UNID thornyhead / (shortspine + longspine + UNID)", color = "red") +
   theme_classic()
 
+# look at ratio of shortspine / total thornyheads by state ------------------------
+long.totalcatch <- long.catch %>%
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA with WA 
+  group_by(LANDING_YEAR, COUNTY_STATE) %>%
+  summarize(LSPN = sum(ROUND_WEIGHT_MTONS, na.rm=T)) %>%
+  spread(COUNTY_STATE, LSPN) %>%
+  rename(CA.LSPN = CA, OR.LSPN = OR, WA.LSPN = WA)
+
+short.totalcatch <- short.catch %>%
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA"))%>%
+  group_by(LANDING_YEAR, COUNTY_STATE) %>%
+  summarize(SSPN = sum(ROUND_WEIGHT_MTONS, na.rm=T)) %>%
+  spread(COUNTY_STATE, SSPN) %>%
+  rename(CA.SSPN = CA, OR.SSPN = OR, WA.SSPN = WA)
+
+un.totalcatch <- un.catch %>%
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>%
+  group_by(LANDING_YEAR, COUNTY_STATE) %>%
+  summarize(UNID = sum(ROUND_WEIGHT_MTONS, na.rm=T)) %>%
+  spread(COUNTY_STATE, UNID) %>%
+  rename(CA.UNID = CA, OR.UNID = OR)
+
+totalcatch <- long.totalcatch %>% 
+  left_join(short.totalcatch, by = "LANDING_YEAR") %>%
+  left_join(un.totalcatch, by = "LANDING_YEAR") %>%
+  rowwise() %>%
+  mutate(WAtotal = sum(WA.SSPN,WA.LSPN,na.rm=T), SSPNpropWA = WA.SSPN / WAtotal,
+         ORtotal = sum(OR.SSPN,OR.LSPN,na.rm=T), SSPNpropOR = OR.SSPN / ORtotal,
+         CAtotal = sum(CA.SSPN,CA.LSPN,na.rm=T), SSPNpropCA = CA.SSPN / CAtotal)
+
+# plot ratio of shortspine / total by state 
+ggplot(totalcatch, aes(x=LANDING_YEAR)) +
+  geom_line(aes(y=SSPNpropWA, color = "firebrick")) + 
+  geom_line(aes(y=SSPNpropOR, color = "darkblue")) + 
+  geom_line(aes(y=SSPNpropCA, color = "orange")) + 
+  ylim(0,1) +
+  xlab("Year") + 
+  ylab("Ratio") +
+  theme_classic() +
+  scale_color_identity(name = "State",
+                       breaks = c("firebrick", "darkblue", "orange"),
+                       labels = c("WA", "OR", "CA"),
+                       guide = "legend")
+
 # NEXT STEPS 
-# look at ratio by state 
 # get data into fleet structure - apply yearly ratio from above? 
- 
-
-
 
 
 
