@@ -1,37 +1,35 @@
 ###############################################################################
-# Fishery landings  ------------------------------------------------
+# Fishery landings  -------------------------------------------------------
 require(tidyverse)
 require(ggplot2)
 require(reshape2)
 
 # shortspine thornyhead only - read data 
-catch = "data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData" 
-load(file.path(getwd(), catch))
-catch = catch.pacfin 
+load("data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData" )
+short.catch = catch.pacfin 
 
-# Some states listed as "NA" - all washington, replace NAs with WA:
-catch.test <- catch %>%
-  mutate_at("COUNTY_STATE", ~replace_na(.,"WA"))
-
-# look at landings  by state -------------------------------------
-catch2 <- catch.test %>%
-  group_by(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE) %>%
-  rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
-  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T))
-
-# plot landings by state (use ROUND_WEIGHT_MTONS)
-ggplot(data = catch2, aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = State)) +
+###############################################################################
+# Plot landings (use ROUND_WEIGHT_MTONS) -------------------------------------
+# plot landings by STATE 
+short.catch %>% 
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
+  group_by(LANDING_YEAR,COUNTY_STATE) %>%
+  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+  rename(State = COUNTY_STATE) %>%
+  ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = State)) +
   geom_line() +
   ylab("Total Weight (MT)") +
   xlab("Year") + 
   ggtitle("SSPN") +
   theme_classic()
 
-# look at landings by state AND gear type -------------------------------------
-table(catch$PACFIN_GROUP_GEAR_CODE)
-
-# plot landings by state and gear type
-ggplot(data = catch2, aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
+# plot landings by STATE and GEAR 
+short.catch %>%
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
+  group_by(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE) %>%
+  rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
+  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
   geom_line() +
   facet_wrap(vars(State)) + 
   ylab("Total Weight (MT)") +
@@ -39,57 +37,27 @@ ggplot(data = catch2, aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
   ggtitle("SSPN") +
   theme_classic()
 
-# create catch.csv to use for expansion -------------------------------------
-catch2 <- catch.test %>%
-  select(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE, ROUND_WEIGHT_MTONS) %>%
-  group_by(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE) %>%
+##################################################################################
+# Create .csv to use for fishery length expansion -------------------------------------
+table(short.catch$Gear) # look at gears 
+
+# change gear type to trawl or non-trawl, create fleets, spread
+length.exp.catch <- short.catch %>% 
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
   rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
-  summarize(Total.weight = sum(ROUND_WEIGHT_MTONS,na.rm=T))
-
-# check 
-sum(catch$ROUND_WEIGHT_MTONS)
-sum(catch2$Total.weight)
-unique(catch2$Gear) # "HKL" "NET" "TWL" "TWS" "POT" "TLS" (troll) "MSC"
-
-trawl <- c("TWL", "TWS")
-
-trawl.catch <- catch2 %>% 
-  filter(Gear %in% trawl) %>%
-  group_by(LANDING_YEAR, State) %>%
-  summarize(Total.weight = sum(Total.weight,na.rm=T))
-
-non.trawl <- c("HKL","NET", "POT", "TLS","MSC")
-
-nontrawl.catch <- catch2 %>% 
-  filter(Gear %in% non.trawl) %>%
-  group_by(LANDING_YEAR, State) %>%
-  summarize(Total.weight = sum(Total.weight,na.rm=T))
-
-# check 
-sum(trawl.catch$Total.weight) + sum(nontrawl.catch$Total.weight) # 65981.3
-
-# put into wide format (cast by state)
-trawl.cast <- dcast(trawl.catch, LANDING_YEAR~State, value.var = "Total.weight")
-
-trawl.cast <- trawl.cast %>%
-  rename(CA_TWL = CA, WA_TWL = WA, OR_TWL = OR, Year = LANDING_YEAR)
-
-# put into wide format (cast by state)
-nontrawl.cast <- dcast(nontrawl.catch, LANDING_YEAR~State, value.var = "Total.weight")
-
-nontrawl.cast <- nontrawl.cast %>%
-  rename(CA_NONTWL = CA, WA_NONTWL = WA, OR_NONTWL = OR, Year = LANDING_YEAR)
-
-# FINAL DATAFRAME 
-catch.final <- cbind(trawl.cast,nontrawl.cast)
-catch.final <- catch.final[,-5]
+  mutate(Gear = case_when(Gear == 'TWS' ~ 'TWL',
+                         Gear == 'TWL' ~ 'TWL',
+                         TRUE ~ 'NONTWL'))  %>% 
+  group_by(LANDING_YEAR, State, Gear) %>%
+  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+  unite("Fleet", State:Gear, sep = "_") %>%
+  spread(Fleet, ROUND_WEIGHT_MTONS)
 
 # write catch file to use in fishery length expansions 
-#write.csv(catch.final,"data/processed/SST_PacFIN_landings_2023.csv")
+# write.csv(length.exp.catch,"data/processed/SST_PacFIN_landings_2023.csv")
 
-###################################################################################################
+#######################################################################################
 # PROPORTION of shortspine to total Thornyheads ---------------------------------------------------
-
 # READ DATA 
 # shortspine thornyhead only - read data 
 load("data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData" )
@@ -187,8 +155,9 @@ ggplot(totalcatch, aes(x=LANDING_YEAR)) +
                        labels = c("WA", "OR", "CA"),
                        guide = "legend")
 
-# NEXT STEPS 
-# get data into fleet structure - apply yearly ratio from above? 
+##################################################################################
+# Create data file with fleet structure for model --------------------------------
+
 
 
 
