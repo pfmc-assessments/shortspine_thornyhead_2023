@@ -145,7 +145,7 @@
 0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_ExtraSD_Triennial1 
   -5	  5	 -2.15589	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial2
   -5	  5	 0.185658	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_AFSCslope 
-  -5	  5	 -1.28671	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope
+  -5	  5	  -1.2867	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope
   -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo
 #_no timevary Q parameters
 #
