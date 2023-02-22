@@ -16,7 +16,7 @@ survey.indices <- bind_rows(
   nwfsc.combo.idx
 ) %>%
   mutate(
-    Value = Value/1e3               # convert to kg
+    Value = Value/1e3,               # convert to kg
     lci = Value-1.96*Value*seLogB,  # Lower 95% CI
     uci = Value+1.96*Value*seLogB,  # Upper 95% CI
     survey = recode_factor(         # Change survey to a factor
@@ -38,8 +38,8 @@ survey.indices <- bind_rows(
 ggplot(survey.indices, aes(x=Year, y=Value, color=survey))+
   geom_pointrange(aes(ymin=lci, ymax=uci))+
   scale_x_continuous(breaks=seq(1980, 2022, 5))+
-  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
-  coord_cartesian(expand=0, ylim=c(0, 12500))+
+  scale_y_continuous(breaks=seq(0, 110000, 20000), labels=scales::comma)+
+  coord_cartesian(expand=0, ylim=c(0, 110000))+
   labs(
     x="Year",
     y="Biomass (mt)",
@@ -59,8 +59,8 @@ ggplot(survey.indices, aes(x=Year, y=Value, color=survey, fill=survey)) +
   geom_line()+
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2)+
   scale_x_continuous(breaks=seq(1980, 2022, 5))+
-  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
-  coord_cartesian(expand=0, ylim=c(0, 12500))+
+  scale_y_continuous(breaks=seq(0, 110000, 20000), labels=scales::comma)+
+  coord_cartesian(expand=0, ylim=c(0, 110000))+
   labs(
     x="Year",
     y="Biomass (mt)",
@@ -72,46 +72,4 @@ ggplot(survey.indices, aes(x=Year, y=Value, color=survey, fill=survey)) +
   theme(
     panel.grid.minor = element_blank(),
     axis.line = element_line()
-  )
-
-# Created faceted plot of survey indices as point ranges
-ggplot(survey.indices, aes(x=Year, y=Value, color=survey))+
-  geom_pointrange(aes(ymin=lci, ymax=uci))+
-  facet_wrap(~survey, scales="free_x")+
-  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
-  coord_cartesian(expand=1, ylim=c(0, 12500))+
-  labs(
-    x="Year",
-    y="Biomass (mt)",
-    title="Shortspine Thornyhead Survey Abundance Indices",
-    fill="Survey",
-    color="Survey"
-  )+
-  theme_minimal()+
-  theme(
-    panel.grid.minor = element_blank(),
-    axis.line = element_line(),
-    legend.position = "none"
-  )
-
-# Create facest plot of survey indices as points and confidence ribbons
-ggplot(survey.indices, aes(x=Year, y=Value, color=survey, fill=survey))+
-  geom_point()+
-  geom_line()+
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2)+
-  facet_wrap(~survey, scales="free_x")+
-  scale_y_continuous(breaks=seq(0, 12500, 2500), labels=scales::comma)+
-  coord_cartesian(expand=1, ylim=c(0, 12500))+
-  labs(
-    x="Year",
-    y="Biomass (mt)",
-    title="Shortspine Thornyhead Survey Abundance Indices",
-    fill="Survey",
-    color="Survey"
-  )+
-  theme_minimal()+
-  theme(
-    panel.grid.minor = element_blank(),
-    axis.line = element_line(),
-    legend.position = "none"
   )
