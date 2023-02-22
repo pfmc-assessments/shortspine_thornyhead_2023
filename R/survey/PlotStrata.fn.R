@@ -1,20 +1,34 @@
 library(ggplot2)
 library(nwfscSurvey)
 
-strata = CreateStrataDF.fn(
-  names          = c("shallow_south", "deep_south", "shallow_cen", "deep_cen", "shallow_north", "mid_north", "deep_north"), 
-  depths.shallow = c(183, 549, 183, 549, 100, 183, 549), 
-  depths.deep = c(549, 1280, 549, 1280, 183, 549, 1280),
-  lats.south = c(32, 32, 34.5, 34.5, 40.5, 40.5, 40.5),
-  lats.north = c(34.5, 34.5, 40.5, 40.5, 49, 49, 49) 
-)
+# strata = CreateStrataDF.fn(
+#   names          = c("shallow_south", "deep_south", "shallow_cen", "deep_cen", "shallow_north", "mid_north", "deep_north"),
+#   depths.shallow = c(183, 549, 183, 549, 100, 183, 549),
+#   depths.deep = c(549, 1280, 549, 1280, 183, 549, 1280),
+#   lats.south = c(32, 32, 34.5, 34.5, 40.5, 40.5, 40.5),
+#   lats.north = c(34.5, 34.5, 40.5, 40.5, 49, 49, 49)
+# )
 
-PlotStrata.fn <- function(strata, strata.groups=1:nrow(strata)){
+# strata <- CreateStrataDF.fn(
+#   names          = c("shallow_south", "deep_south"),
+#   depths.shallow = c(55,    500),
+#   depths.deep    = c(500,  1280),
+#   lats.south     = c(34,     34),
+#   lats.north     = c(49,     49)
+# )
+
+PlotStrata.fn <- function(strata, strata.groups=1:nrow(strata), title="", out.dir=NULL){
   latitudes <- seq(30, 51, length.out = 100)
   depths <- seq(0, 1500, length.out = 100)
   
   lat.depth <- data.frame(expand.grid(latitudes, depths))
   colnames(lat.depth) <- c("latitude", "depth")
+  
+  strata.lats <- strata$Latitude_dd.1
+  
+  if(length(strata.groups) <= length(unique(strata.lats))){
+    strata.groups <- rep(strata.groups, as.vector(table(strata.lats)))
+  }
   
   strata$group <- factor(strata.groups, levels=unique(strata.groups))
   strata$Latitude_dd.2 <- strata$Latitude_dd.2-0.09
@@ -37,12 +51,18 @@ PlotStrata.fn <- function(strata, strata.groups=1:nrow(strata)){
           annotate("text", label="Oregon",     x=44,   y=1450, color="white")+
           annotate("text", label="Washington", x=47.6, y=1450, color="white")+
           coord_cartesian(expand=0, clip="off")+
-          ggtitle("NWFSC Combo Survey Strata")+
+          ggtitle(title)+
           theme(
             panel.background = element_blank()
           )+
           guides(fill="none") 
+  
+  if(!is.null(out.dir)){
+    ggsave(file.path(out.dir, str_replace_all(tolower(title), " ", "_")))
+  }
+  
   return(p)
 }
 
-PlotStrata.fn(strata, strata.groups = c("South", "South", "Central", "Central", "North", "North", "North"))
+#PlotStrata.fn(strata, strata.groups = c("South", "Central", "North"), title="NWFSC Combo Survey Strata", out.dir=file.path("/Users", "jzahner", "Desktop"))
+              
