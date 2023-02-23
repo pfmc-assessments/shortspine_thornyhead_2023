@@ -33,7 +33,8 @@ clean_bat <- function(path = ".", verbose = TRUE) {
     "ss.par",
     "ss.rep",
     "echoinput.sso",
-    "ss_summary.sso"
+    "ss_summary.sso",
+    "CompReport.sso"
   )
   
   starter <-
@@ -42,6 +43,15 @@ clean_bat <- function(path = ".", verbose = TRUE) {
                        fsep = .Platform$file.sep),
       verbose = FALSE
     )
+  
+  if(file_ext(starter$datfile) == "SS"){
+    starter$datfile <- str_replace(starter$datfile, ".SS", ".ss")
+  }
+  
+  if(file_ext(starter$ctlfile) == "SS"){
+    starter$ctlfile <- str_replace(starter$ctlfile, ".SS", ".ss")
+  }
+  
   filesSave <- c(filesSave, starter$datfile, starter$ctlfile)
   
   names <- list.files(path)[!list.files(path) %in% filesSave]

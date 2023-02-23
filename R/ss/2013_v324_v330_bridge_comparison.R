@@ -40,7 +40,7 @@ dirBase <- here::here()
 oldSST_path <- file.path(dirBase, "model/2013_SST")
 # Path to the new SST model (i.e. the 2013 model using SS V3.30.21)
 SST_path <- file.path(dirBase, "model/2013_SST_SSV3_30_21")
-SST_pathRUN <- file.path(SST_path, "run", fsep = fsep)
+#SST_pathRUN <- file.path(SST_path, "run", fsep = fsep)
 
 save.dir <- c('dirBase',
               'oldSST_path',
@@ -50,8 +50,6 @@ save.dir <- c('dirBase',
 
 
 # -----------------------------------------------------------
-
-os <- "osx" # should be one of 'win32', 'win64', 'win', 'osx', or 'linux'
 
 # 1. Run the models ----
 # ----------------------------------------------------------- #
@@ -68,7 +66,7 @@ os <- "osx" # should be one of 'win32', 'win64', 'win', 'osx', or 'linux'
 # Run the SS V3.24 version of the SST 2013 model
 
 # Directory where the executable is stored
-ss_exe_324 <- get.ss.exe.path(os, ss_version="3.24.U", fname.extra = "safe")
+ss_exe_324 <- get.ss.exe.path(ss_version="3.24.U", fname.extra = "safe")
 
 r4ss::run(
   dir = oldSST_path,
@@ -77,10 +75,11 @@ r4ss::run(
   show_in_console = TRUE,
   skipfinished = FALSE
 )
+clean_bat(oldSST_path)
 
 
 # Run the SS V3.30.21 version of the SST 2013 model
-ss_exe_330 <- get.ss.exe.path(os, ss_version="3.30.21")
+ss_exe_330 <- get.ss.exe.path(ss_version="3.30.21")
 
 # Let's copy the file from the transition to the run folder
 # if (!dir.exists(SST_pathRUN)){
@@ -105,6 +104,7 @@ r4ss::run(
   skipfinished = FALSE,
   show_in_console = TRUE
 )
+clean_bat(SST_path)
 
 # -----------------------------------------------------------
 
