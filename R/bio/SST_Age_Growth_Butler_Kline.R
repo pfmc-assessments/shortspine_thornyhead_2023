@@ -1,10 +1,10 @@
 #Shortspine Thornyhead
 #Age and Growth information
-#Data source: Donna Skaggs-Kline for Kline 1996 and Butler et al 1995 data
-#description: 
+#Data: Donna Skaggs-Kline for Kline 1996 and Butler et al 1995 data
+#Description: 
   # Data provided by Donna Skaggs-Kline, Masters thesis, Moss Landing Marine Labs, California
   # Documentation: 
-      #Kline 1996 (no sex data); central California 1991 
+      #Kline 1996 (no sex information); central California 1991 
       #Butler et al. 1995 (sex information available); John Butler study, SWFSC retired; Oregon and northern California 1978-87, 1988, 1990 (missing some data from this study)  
 
       
@@ -19,12 +19,10 @@
       library("ggplot2")
       
       #set working directory
-      #setwd("C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST.Life.History/Donna Kline SST Age Data")
-
-     dirData <- file.path(getwd(), "data/Age Data")
-     dirPlots <- file.path(dirData, "plots") #use this with ggsave
-     if(!dir.exists(dirPlots))  #creates a file if not already there
-       dir.create(dirPlots)
+       dirData <- file.path(getwd(), "data/Age Data")
+       dirPlots <- file.path(dirData, "plots")        #use this with ggsave
+       if(!dir.exists(dirPlots))                      #creates a folder if not already there
+         dir.create(dirPlots)
       
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # 2. Load data----
