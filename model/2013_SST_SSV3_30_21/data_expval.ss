@@ -5,7 +5,7 @@
 #_User_info_available_at:https://vlab.noaa.gov/group/stock-synthesis
 #_Source_code_at:_https://github.com/nmfs-stock-synthesis/stock-synthesis
 
-#_Start_time: Sun Feb 19 19:03:29 2023
+#_Start_time: Thu Feb 23 08:54:30 2023
 #_expected_values
 #C Data file for Shortspine Thornyhead - 2023 Assessment
 #C These data are the one from the 2013 model and updated for
