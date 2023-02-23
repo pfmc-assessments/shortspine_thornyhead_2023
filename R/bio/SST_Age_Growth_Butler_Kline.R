@@ -1,11 +1,11 @@
 #Shortspine Thornyhead
 #Age and Growth information
-#Data: Donna Skaggs-Kline for Kline 1996 and Butler et al 1995 data
+#Data: Kline 1996 and Butler et al 1995 data
 #Description: 
   # Data provided by Donna Skaggs-Kline, Masters thesis, Moss Landing Marine Labs, California
-  # Documentation: 
-      #Kline 1996 (no sex information); central California 1991 
-      #Butler et al. 1995 (sex information available); John Butler study, SWFSC retired; Oregon and northern California 1978-87, 1988, 1990 (missing some data from this study)  
+  # Written Documentation: 
+      #Kline 1996 (no sex information); central California 1991 (Masters thesis)
+      #Butler et al. 1995 (sex information available); John Butler study, SWFSC retired; Oregon and northern California 1978-87, 1988, 1990 (missing some data from this study)(NOAA SWFSC tech memo)  
 
       
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -14,13 +14,17 @@
       #clears all previous variables and functions
       rm(list=ls(all=TRUE)) 
       
+      
       #packages
       library("plyr")
       library("ggplot2")
+      library(magrittr)
+      theme_set(theme_classic(base_size = 16))
+      
       
       #set working directory
        dirData <- file.path(getwd(), "data/Age Data")
-       dirPlots <- file.path(dirData, "plots")        #use this with ggsave
+       dirPlots <- file.path(dirData, "plots")        #use this to save plots with ggsave
        if(!dir.exists(dirPlots))                      #creates a folder if not already there
          dir.create(dirPlots)
       
@@ -36,6 +40,9 @@
       names(Kline.SST.dat)
       dim(Kline.SST.dat)
       
+      #Figure out what to do with "duplicate" fish in Butler et al. dataset
+        #Issue: Some fish had two otoliths collected and multiple reads of both for a single fish (each otolith is a separate row in the file, so the fish is duplicated)
+      
       # append dataframes that have some common and some different columns
       SST.dat<- rbind.fill(Butler.SST.dat,Kline.SST.dat)
       
@@ -47,10 +54,14 @@
       
         #Which age to use in the analysis?
         SST.dat$Age_for_analysis <- NA  #create a new column
+        
         #Butler et al. 1995
-        SST.dat[SST.dat$Data_source=="Butler et al. 1995",]$Age_for_analysis <- SST.dat[SST.dat$Data_source=="Butler et al. 1995",]$mean_AGE_AR_JB #Butler study used the mean age of readers AR and JB
+          #currently using the mean age of AR and JB (this is how age was treated in Butler et al 1995)
+          SST.dat[SST.dat$Data_source=="Butler et al. 1995",]$Age_for_analysis <- SST.dat[SST.dat$Data_source=="Butler et al. 1995",]$mean_AGE_AR_JB #Butler study used the mean age of readers AR and JB
+        
         #Kline 1996
-        SST.dat[SST.dat$Data_source=="Kline 1996",]$Age_for_analysis         <- SST.dat[SST.dat$Data_source=="Kline 1996",]$AGE_2nd_read           #Kline 1996 used the 2nd age read in the analysis
+          #currently using the 2nd age read by DK, as suggested by DK and done for Kline 1996
+          SST.dat[SST.dat$Data_source=="Kline 1996",]$Age_for_analysis         <- SST.dat[SST.dat$Data_source=="Kline 1996",]$AGE_2nd_read           #Kline 1996 used the 2nd age read in the analysis
       
         #rename columns
         SST.dat$length_mm <-SST.dat$LEN_mm
@@ -173,8 +184,8 @@
       
       ##packages needed
       #library(ggplot2)
-      library(magrittr)
-      theme_set(theme_classic(base_size = 16))
+      #library(magrittr)
+      #theme_set(theme_classic(base_size = 16))
       
       #select data
       fish.bio <- SST.dat
@@ -243,13 +254,13 @@
         NULL
       
       #save last plot
-      ggsave("SST.VBGF.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=getwd())
+      ggsave("SST.VBGF.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=dirPlots)
       
 
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       ###Schnute re-parameterization----
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      unique(fish.bio2.ages$sex) #categories modeled
+      unique(fish.bio2.ages$sex) #categories for sex; 1=male, 2=female, U=unknown sex
       
       #choose a_1 = 2 and a_2 = 100
       
@@ -272,7 +283,7 @@
       plot(fitted(vbgf.nls2), resid(vbgf.nls2))
       abline(h=0)
       #don't want "fanning"
-      #if there is fanning-transform the data
+      #if there is fanning then transform the data
       
       #~~~~~~~~~~~~~~~~~~~~~~~~
       ###Lognormal errors----
@@ -348,7 +359,7 @@
         NULL
       
       #save last plot
-      ggsave("SST.Schnute.bias.correction.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=getwd())
+      ggsave("SST.Schnute.bias.correction.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=dirPlots)
  
       
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -378,11 +389,11 @@
         NULL
       
       #save last plot
-      ggsave("SST.2013.compare.to.Schnute.bias.correction.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=getwd())
+      ggsave("SST.2013.compare.to.Schnute.bias.correction.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=dirPlots)
       
       
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      # 6. summary dataset information----
+      # 6. summary information----
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       
       #max age
