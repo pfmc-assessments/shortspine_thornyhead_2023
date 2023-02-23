@@ -1,6 +1,10 @@
 library(stringr)
 
-get.ss.exe.path <- function(os, ss_version="3.30.21", fname.extra=""){
+get.ss.exe.path <- function(os=NULL, ss_version="3.30.21", fname.extra=""){
+  
+  if(is.null(os)){
+    os <- get_os()
+  }
   
   if(!(os %in% c("win32", "win64", "win", "osx", "linux"))){
     stop(
@@ -49,4 +53,26 @@ get.ss.exe.path <- function(os, ss_version="3.30.21", fname.extra=""){
   
 }
 
+get_os <- function(){
+  sysinf <- Sys.info()
+  if (!is.null(sysinf)){
+    os <- sysinf['sysname']
+    if (os == 'Darwin'){
+      os <- "osx"
+    }else if(os == "windows"){
+      if(grepl("64", sysinf["release"])){
+        os <- "win64"
+      }else{
+        os <- "win32"
+      }
+    }
+  } else { ## mystery machine
+    os <- .Platform$OS.type
+    if (grepl("^darwin", R.version$os))
+      os <- "osx"
+    if (grepl("linux-gnu", R.version$os))
+      os <- "linux"
+  }
+  return(tolower(os))
+}
 
