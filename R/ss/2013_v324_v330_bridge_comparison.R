@@ -40,7 +40,7 @@ dirBase <- here::here()
 oldSST_path <- file.path(dirBase, "model/2013_SST")
 # Path to the new SST model (i.e. the 2013 model using SS V3.30.21)
 SST_path <- file.path(dirBase, "model/2013_SST_SSV3_30_21")
-#SST_pathRUN <- file.path(SST_path, "run", fsep = fsep)
+SST_pathRUN <- file.path(SST_path, "run", fsep = fsep)
 
 save.dir <- c('dirBase',
               'oldSST_path',
@@ -82,19 +82,18 @@ clean_bat(oldSST_path)
 ss_exe_330 <- get.ss.exe.path(ss_version="3.30.21")
 
 # Let's copy the file from the transition to the run folder
-# if (!dir.exists(SST_pathRUN)){
-#   dir.create(SST_pathRUN)
-# }
+if (!dir.exists(SST_pathRUN)){
+  dir.create(SST_pathRUN)
+}
 
-# Find the SS input files
-# SS.files <- list.files(path = SST_path,
-#                        pattern = glob2rx("*.ss"),
-#                        full.names = FALSE)
-# file.copy(
-#   from = file.path(SST_path, SS.files, fsep = fsep),
-#   to = file.path(SST_pathRUN, SS.files, fsep = fsep),
-#   overwrite = TRUE
-# )
+SS.files <- list.files(path = SST_path,
+                       pattern = glob2rx("*.ss"),
+                       full.names = FALSE)
+file.copy(
+   from = file.path(SST_path, SS.files, fsep = fsep),
+   to = file.path(SST_pathRUN, SS.files, fsep = fsep),
+   overwrite = TRUE
+)
 
 # run SS
 r4ss::run(
@@ -114,7 +113,7 @@ clean_bat(SST_path)
 
 # Use the SSgetoutput() function that apply the SS_output()
 # to get the outputs from the two versions
-SST_Vs <- SSgetoutput(dirvec = c(oldSST_path, SST_path))
+SST_Vs <- SSgetoutput(dirvec = c(oldSST_path, SST_pathRUN))
 # SST_Vs is a named list with the report files from each version
 names(SST_Vs)
 names(SST_Vs) <- c('V3.24', 'V3.30')
