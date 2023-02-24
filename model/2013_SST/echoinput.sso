@@ -1,5 +1,5 @@
 SS-V3.24U-safe;_08/29/2014;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.2MacOS
-Thu Feb 23 08:07:49 2023
+Thu Feb 23 15:14:04 2023
 
 SST_data.SS  datfilename
 SST_control.SS  ctlfilename
@@ -625,7 +625,7 @@ Processed
  -1 0
  -1 0
  -1 0
- -1 6.69304e+151
+ -1 0
  done reading forecast 
 
 
