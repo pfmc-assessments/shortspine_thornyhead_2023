@@ -271,7 +271,7 @@ pred <- ages %>%
                      Male = par.2013.m[1] + (par.2013.m[2] - par.2013.m[1]) *
                        (1-exp(-par.2013.m[3]*(age-1))) / (1-exp(-par.2013.m[3]*99))) %>%
               pivot_longer(c(Male, Female), names_to = 'sex', values_to = 'length_cm') %>%
-              mutate(assessment = '2013')) %>%
+              mutate(assessment = '2005/2013')) %>%
   bind_rows(ages %>%   
               mutate(Female = optim2.f[1] + (optim2.f[2] - optim2.f[1]) * 
                        (1-exp(-optim2.f[3]*(age-1))) / (1-exp(-optim2.f[3]*99)),
@@ -315,7 +315,7 @@ pred <- ages %>%
                      Male = par.2013.m[1] + (par.2013.m[2] - par.2013.m[1]) *
                        (1-exp(-par.2013.m[3]*(age-1))) / (1-exp(-par.2013.m[3]*99))) %>%
               pivot_longer(c(Male, Female), names_to = 'sex', values_to = 'length_cm') %>%
-              mutate(assessment = '2013')) 
+              mutate(assessment = '2005/2013')) 
 
 sensitivities <- ages %>%
               mutate(Female = optim.f[1]*1.1 + (optim.f[2]*1.1 - optim.f[1]*1.1) * 
@@ -333,7 +333,7 @@ sensitivities <- ages %>%
               mutate(assessment = '2023')) %>% 
   bind_rows(ages %>% 
               mutate(sex = 'Male',
-                     assessment = '2013'))
+                     assessment = '2005/2013'))
 
 ggplot() +
   geom_point(data = butler, aes(x = age, y = length_cm), size = 0.5) +
@@ -343,11 +343,11 @@ ggplot() +
               alpha = 0.3, col = 'white') +
   geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
             size = 0.8) +
-  facet_wrap(~sex) +
+  facet_wrap(~sex, ncol = 1) +
   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
 
 ggsave(paste0(out_path, '/growth_curve_sensitivities.png'), units = 'in', 
-       width = 8, height = 4, dpi = 300)
+       width = 6, height = 8, dpi = 300)
 
 out <- as.data.frame(t(as.matrix(exp(vbgf.optim$par[c(1, 3, 5)])))) %>% 
   mutate(Sex = 'Male',
@@ -377,3 +377,117 @@ out <- out %>%
 
 out %>% write_csv(paste0(out_path, '/growth_curve_sensitivities.csv'))
 butler %>% write_csv(paste0(dat_path, '/cleaned_butler_for_growth_curves_2023.csv'))
+
+
+# kline ----
+
+kline <- read_csv(file.path(dat_path, "S. alascanus_Kline 1996_formatted.csv")) %>% 
+  rename_all(tolower)
+glimpse(kline)
+unique(kline$tow) # data from 13 tows
+length(which(!is.na(kline$age_1st_read))) # 203
+length(which(!is.na(kline$age_2nd_read))) # 80
+length(which(!is.na(kline$age_3rd_read))) # 202
+
+# Everything in notes_1 (DK's notes) looks like good reason to eliminate. Only
+# use rows where notes_1 is NA
+unique(kline$notes_1)
+# [1] "Frozen specimen. Used only for training and pilot study."                             
+# [2] "Frozen specimen. Used only for training and pilot study. Thrown out. Questionable ID."
+# [3] "*Frozen specimen. Used only for training and pilot study."                            
+# [4] "*Frozen specimen. Used only for training and pilot study. Section broken, thrown out."
+# [5] NA                                                                                     
+# [6] "*Broken"                                                                              
+# [7] "alt"                                                                                  
+# [8] "ground away"                                                                          
+# [9] "thin"                                                                                 
+# [10] "alt?"                                                                                 
+# [11] "missing"                                                                              
+# [12] "too thin"                                                                             
+# [13] "Sectioned but not aged."
+
+# reduced N frm 427 to 329
+kline <- kline %>% filter(is.na(notes_1))
+
+# notes_2 (notes that were added by Sabrina Beyer). Hard to interpret the
+# asterisk comments (does it mean the 2nd age is the preferred or the most
+# questionable?). Going to remove those rows. The "core calculation" comment
+# doesn't seem bad.
+table(kline$notes_2)
+# [1] "has core calculation; first five incremenets from fish with <100mm otoliths; ocular measurement"
+# [2] NA                                                                                               
+# [3] "**; *13 2nd age read had an asterisk"                                                           
+# [4] "\"**\" was in the sex column"                                                                   
+# [5] "*22 2nd age read had an asterisk"                                                               
+# [6] "\"**3\" was in sex column"                                                                      
+# [7] "*15 2nd age read had an asterisk" 
+
+# reduced N to 324
+kline <- kline %>% filter(!grepl('asterisk|sex', notes_2))
+
+# age_2nd_read has the most non-NAs of any of the ages and is the one DK used in
+# her thesis. Use these ages only. reduces N to 321
+kline <- kline %>% filter(!is.na(age_2nd_read))
+
+# get rid of any specimens without lengths associated with them. reduces N to
+# 319
+kline <- kline %>% filter(!is.na(len_mm))
+nrow(kline)
+
+# make sure 'specimen' is a unique identifier
+length(unique(kline$specimen)) == nrow(kline)
+
+kline <- kline %>% 
+  mutate(length_cm = len_mm / 10) %>% 
+  select(id = specimen, length_cm, age = age_2nd_read)
+nrow(kline)
+
+names(kline)
+names(butler)
+allages <- bind_rows(kline %>% 
+                       mutate(source = 'Kline',
+                              sex = 'Unknown'),
+                     butler %>% 
+                       mutate(source = 'Butler') %>% 
+                       select(-r1,-r2)) %>% 
+  mutate(newid = paste0('Source=', source, '; Sex=', sex))
+
+ggplot(allages, aes(age, length_cm, col = newid)) +
+  geom_point() +
+  labs(x = 'Age (y)', y = 'Length (cm)', col = NULL) +
+  theme(legend.position = c(0.75, 0.2))
+
+ggsave(paste0(out_path, '/laa_butler_vs_kline.png'), units = 'in', 
+       width = 6.5, height = 4, dpi = 300)
+
+ggplot() +
+  geom_point(data = allages, aes(age, length_cm, col = newid)) +
+  labs(x = 'Age (y)', y = 'Length (cm)', col = NULL) +
+  theme(legend.position = c(0.75, 0.2)) +
+  geom_ribbon(data = sensitivities,
+              aes(x = age, ymin = lower, ymax = upper,
+                  fill = assessment),
+              alpha = 0.3, col = 'white') +
+  geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
+            size = 0.8) 
+
+ggplot() +
+  geom_point(data = kline %>% 
+               mutate(Data = 'Kline (unsexed)'), aes(x = age, y = length_cm, shape = Data), 
+             size = 1, col = 'purple') +
+  geom_point(data = butler %>% 
+               mutate(Data = 'Butler (sexed)'), 
+             aes(x = age, y = length_cm, shape = Data), size = 1, col = 'black') +
+  geom_ribbon(data = sensitivities,
+              aes(x = age, ymin = lower, ymax = upper,
+                  fill = assessment),
+              alpha = 0.3, col = 'white') +
+  geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
+            size = 0.8) +
+  facet_wrap(~sex, ncol = 1) +
+  scale_shape_manual(values = c(1,3)) +
+  labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
+
+ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
+       width = 7, height = 8, dpi = 300)
+
