@@ -1,54 +1,66 @@
-#Shortspine Thornyhead
-#Age and Growth information
-#Data: Kline 1996 and Butler et al 1995 data
-#Description: 
-  # Data provided by Donna Skaggs-Kline, Masters thesis, Moss Landing Marine Labs, California
-  # Written Documentation: 
-      #Kline 1996 (no sex information); central California 1991 (Masters thesis)
-      #Butler et al. 1995 (sex information available); John Butler study, SWFSC retired; Oregon and northern California 1978-87, 1988, 1990 (missing some data from this study)(NOAA SWFSC tech memo)  
+# Shortspine Thornyhead
+# Age and Growth information
+# Data: Kline 1996 and Butler et al 1995 data
+# Description:
+# Data provided by Donna Skaggs-Kline, Masters thesis, Moss Landing Marine
+# Labs, California Written Documentation:
+# Kline 1996 (no sex information); central California 1991 (Masters thesis)
+# Butler et al. 1995 (sex information available); John Butler study, SWFSC
+# retired; Oregon and northern California 1978-87, 1988, 1990 (missing some data
+# from this study)(NOAA SWFSC tech memo)
 
-      
-      #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      # 1. set-up workspace----
-      #~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      #clears all previous variables and functions
-      rm(list=ls(all=TRUE)) 
-      
-      
-      #packages
-      library("plyr")
-      library("ggplot2")
-      library(magrittr)
-      theme_set(theme_classic(base_size = 16))
-      
-      
-      #set working directory
-       dirData <- file.path(getwd(), "data/Age Data")
-       dirPlots <- file.path(dirData, "plots")        #use this to save plots with ggsave
-       if(!dir.exists(dirPlots))                      #creates a folder if not already there
-         dir.create(dirPlots)
-      
-      #~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      # 2. Load data----
-      #~~~~~~~~~~~~~~~~~~~~~~~~~~
-      Butler.SST.dat <-read.csv(file.path(dirData, "Original NMFS S. alascanus data_1991_formatted.csv")) 
-      Kline.SST.dat  <-read.csv(file.path(dirData, "S. alascanus_Kline 1996_formatted.csv"))
 
-      # Check the data
-      names(Butler.SST.dat)
-      dim(Butler.SST.dat)
-      names(Kline.SST.dat)
-      dim(Kline.SST.dat)
-      
-      #Figure out what to do with "duplicate" fish in Butler et al. dataset
-        #Issue: Some fish had two otoliths collected and multiple reads of both for a single fish (each otolith is a separate row in the file, so the fish is duplicated)
-      
-      # append dataframes that have some common and some different columns
-      SST.dat<- rbind.fill(Butler.SST.dat,Kline.SST.dat)
-      
-      names(SST.dat)
-      dim(SST.dat)
-      
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 1. set-up workspace----
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#clears all previous variables and functions
+rm(list=ls(all=TRUE)) 
+
+
+#packages
+library(plyr)
+library(ggplot2)
+library(magrittr)
+theme_set(theme_classic(base_size = 16))
+
+
+#set working directory
+dirData <- file.path(getwd(), "data/experimental_age_data")
+dirPlots <- file.path("outputs/growth") # use this to save plots with ggsave
+if(!dir.exists(dirPlots)) # creates a folder if not already there
+dir.create(dirPlots)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2. Load data----
+#~~~~~~~~~~~~~~~~~~~~~~~~~~
+Butler.SST.dat <-read.csv(file.path(dirData, "Original NMFS S. alascanus data_1991_formatted.csv")) 
+Kline.SST.dat <-read.csv(file.path(dirData, "S. alascanus_Kline 1996_formatted.csv"))
+
+# Check the data
+names(Butler.SST.dat)
+dim(Butler.SST.dat)
+names(Kline.SST.dat)
+dim(Kline.SST.dat)
+
+unique(Butler.SST.dat$Species)
+ 
+# Figure out what to do with "duplicate" fish in Butler et al. dataset Issue:
+# Some fish had two otoliths collected and multiple reads of both for a single
+# fish (each otolith is a separate row in the file, so the fish is duplicated)
+head(Butler.SST.dat)
+nrow(Butler.SST.dat)
+length(unique(Butler.SST.dat$OTO))
+length(unique(Butler.SST.dat$FISH))
+
+View(Butler.SST.dat)
+
+
+# append dataframes that have some common and some different columns
+SST.dat<- rbind.fill(Butler.SST.dat,Kline.SST.dat)
+
+names(SST.dat)
+dim(SST.dat)
+
       
       # Modify data
       
@@ -367,7 +379,7 @@
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       #2013, VBGF, Schnute, bias correction plot, compare models
       
-      x_2013     <-seq(0,100, by=1)   #x's to plot 2013 curve
+      x_2013     <-seq(0, 100, by=1)   #x's to plot 2013 curve
       par.2013.m <-c(7, 67.5, 0.018)  #la1, la2, k a1=2, a2=100
       par.2013.f <-c(7, 75  , 0.018)
       
