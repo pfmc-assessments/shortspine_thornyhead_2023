@@ -367,3 +367,4 @@ out <- out %>%
          Length_at_A2, k) 
 
 out %>% write_csv(paste0(out_path, '/growth_curve_sensitivities.csv'))
+butler %>% write_csv(paste0(dat_path, '/cleaned_butler_for_growth_curves_2023.csv'))
