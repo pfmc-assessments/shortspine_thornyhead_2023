@@ -22,6 +22,7 @@ dir.create(out_path)
 # data clean up ----
   
 butler <- read_csv(paste0(dat_path, '/Original NMFS S. alascanus data_1991_formatted.csv'))
+
 glimpse(butler)
 butler %>% select(1:7) %>% distinct() # great for archiving, but we can get rid of these here
 length(which(is.na(butler$SEX))) # no unsexed data
@@ -60,17 +61,25 @@ sort(pd$pd_r2_r22)
 mean(pd$pd_r2_r22, na.rm = TRUE)
 
 # p-value << 0.05, evidence that the percent difference between the readers is
-# not normally distributed (i.e., there's evidence of ageing bias). the bias is
-# positively skewed, which in this case means that on average, reader 1 (AR) is
-# more likely to age a fish older than reader 2 (JB)
+# not normally distributed (not sure this matters, except that this assumption
+# is commonly made when constructing ageing error matrices). the histogram is
+# skewed, which means there is evidence of reader of bias. in this case means
+# that on average, reader 1 (AR) is more likely to age a fish older than reader
+# 2 (JB)
 shapiro.test(pd$pd_r1_r2) 
 hist(pd$pd_r1_r2)
 mean(pd$pd_r1_r2, na.rm = TRUE)
 
-#  >95% of the data are within 33% absolute difference. limit data to within
-#  that range to try to limit outliers (at least with respect to agreement
-#  between readers)
-quantile(abs(pd$pd_r1_r2), 0.95, na.rm = TRUE) #
+# >95% of the data are within 33% absolute difference. limit data to within that
+# range to eliminate egregious outliers, at least with respect to agreement
+# between readers
+quantile(abs(pd$pd_r1_r2), 0.95, na.rm = TRUE) 
+
+# now the mean is zero, which hopefully means we've evened out any potential
+# bias
+pd <- pd %>% filter(between(pd_r1_r2, -0.33, 0.33))
+mean(pd$pd_r1_r2, na.rm = TRUE) 
+hist(pd$pd_r1_r2)
 
 butler <- butler %>% 
   mutate(pd_r1_r2 = (r1-r2) / r2) %>% 
@@ -89,8 +98,8 @@ butler <- butler %>%
 n_distinct(butler$id); nrow(butler) # one duplicate?
 
 # This one duplicate is probably a data entry issue, going to delete it
-dup <- butler %>% count(id) %>% filter(n > 1)
-butler %>% filter(id == dup$id)
+dup <- butler %>% dplyr::count(id) %>% filter(n > 1)
+butler %>% filter(id == dup$id) # 1310_409_90
 butler <- butler %>% 
   filter(id != dup$id)
 
