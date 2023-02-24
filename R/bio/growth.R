@@ -336,18 +336,18 @@ sensitivities <- ages %>%
                      assessment = '2013'))
 
 ggplot() +
+  geom_point(data = butler, aes(x = age, y = length_cm), size = 0.5) +
   geom_ribbon(data = sensitivities,
               aes(x = age, ymin = lower, ymax = upper,
                   fill = assessment),
-              alpha = 0.2, col = 'white') +
-  geom_point(data = butler, aes(x = age, y = length_cm), size = 0.5) +
+              alpha = 0.3, col = 'white') +
   geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
             size = 0.8) +
   facet_wrap(~sex) +
   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
 
 ggsave(paste0(out_path, '/growth_curve_sensitivities.png'), units = 'in', 
-       width = 7, height = 4, dpi = 300)
+       width = 8, height = 4, dpi = 300)
 
 out <- as.data.frame(t(as.matrix(exp(vbgf.optim$par[c(1, 3, 5)])))) %>% 
   mutate(Sex = 'Male',
