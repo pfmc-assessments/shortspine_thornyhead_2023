@@ -291,3 +291,79 @@ ggplot() +
 
 aic1;aic2;aic3
 
+# sensitivity ----
+
+pred <- ages %>%   
+  mutate(Female = optim.f[1] + (optim.f[2] - optim.f[1]) * 
+           (1-exp(-optim.f[3]*(age-1))) / (1-exp(-optim.f[3]*99)),
+         Male = optim.m[1] + (optim.m[2] - optim.m[1]) * 
+           (1-exp(-optim.m[3]*(age-1))) / (1-exp(-optim.m[3]*99))) %>% 
+  pivot_longer(c(Male, Female), names_to = 'sex', values_to = 'length_cm') %>%
+  mutate(assessment = '2023') %>% 
+  bind_rows(ages %>%
+              mutate(Female = par.2013.f[1] + (par.2013.f[2] - par.2013.f[1]) *
+                       (1-exp(-par.2013.f[3]*(age-1))) / (1-exp(-par.2013.f[3]*99)),
+                     Male = par.2013.m[1] + (par.2013.m[2] - par.2013.m[1]) *
+                       (1-exp(-par.2013.m[3]*(age-1))) / (1-exp(-par.2013.m[3]*99))) %>%
+              pivot_longer(c(Male, Female), names_to = 'sex', values_to = 'length_cm') %>%
+              mutate(assessment = '2013')) 
+
+sensitivities <- ages %>%
+              mutate(Female = optim.f[1]*1.1 + (optim.f[2]*1.1 - optim.f[1]*1.1) * 
+                       (1-exp(-optim.f[3]*(age-1))) / (1-exp(-optim.f[3]*99)),
+                     Male = optim.m[1]*1.1 + (optim.m[2]*1.1 - optim.m[1]*1.1) * 
+                       (1-exp(-optim.m[3]*(age-1))) / (1-exp(-optim.m[3]*99))) %>% 
+              pivot_longer(c(Male, Female), names_to = 'sex', values_to = 'upper') %>%
+              mutate(assessment = '2023') %>% 
+  left_join(ages %>%
+              mutate(Female = optim.f[1]*0.9 + (optim.f[2]*0.9 - optim.f[1]*0.9) * 
+                       (1-exp(-optim.f[3]*(age-1))) / (1-exp(-optim.f[3]*99)),
+                     Male = optim.m[1]*0.9 + (optim.m[2]*0.9 - optim.m[1]*0.9) * 
+                       (1-exp(-optim.m[3]*(age-1))) / (1-exp(-optim.m[3]*99))) %>% 
+              pivot_longer(c(Male, Female), names_to = 'sex', values_to = 'lower') %>%
+              mutate(assessment = '2023')) %>% 
+  bind_rows(ages %>% 
+              mutate(sex = 'Male',
+                     assessment = '2013'))
+
+ggplot() +
+  geom_ribbon(data = sensitivities,
+              aes(x = age, ymin = lower, ymax = upper,
+                  fill = assessment),
+              alpha = 0.2, col = 'white') +
+  geom_point(data = butler, aes(x = age, y = length_cm), size = 0.5) +
+  geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
+            size = 0.8) +
+  facet_wrap(~sex) +
+  labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
+
+ggsave(paste0(out_path, '/growth_curve_sensitivities.png'), units = 'in', 
+       width = 7, height = 4, dpi = 300)
+
+out <- as.data.frame(t(as.matrix(exp(vbgf.optim$par[c(1, 3, 5)])))) %>% 
+  mutate(Sex = 'Male',
+         A1 = 2,
+         A2 = 100) %>% 
+  select(Sex, A1, A2, Length_at_A1 = la1.m, 
+         Length_at_A2 = la2.m, k = k.m) %>% 
+  bind_rows(as.data.frame(t(as.matrix(exp(vbgf.optim$par[c(2, 4, 6)])))) %>% 
+  mutate(Sex = 'Female',
+         A1 = 2,
+         A2 = 100) %>% 
+    select(Sex, A1, A2, Length_at_A1 = la1.f, 
+           Length_at_A2 = la2.f, k = k.f)) %>% 
+  mutate(Sensitivity_Run = 'Base_2023')
+
+out <- out %>% 
+  bind_rows(out %>% 
+              mutate(Length_at_A1 = Length_at_A1 * 1.1,
+                     Length_at_A2 = Length_at_A2 * 1.1,
+                     Sensitivity_Run = 'Increase_Length_at_A1_and_A2_10percent')) %>% 
+  bind_rows(out %>% 
+              mutate(Length_at_A1 = Length_at_A1 * 0.9,
+                     Length_at_A2 = Length_at_A2 * 0.9,
+                     Sensitivity_Run = 'Decrease_Length_at_A1_and_A2_10percent')) %>% 
+  select(Sensitivity_Run, Sex, A1, A2, Length_at_A1, 
+         Length_at_A2, k) 
+
+out %>% write_csv(paste0(out_path, '/growth_curve_sensitivities.csv'))
