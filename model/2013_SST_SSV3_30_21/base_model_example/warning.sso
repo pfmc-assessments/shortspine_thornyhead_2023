@@ -1,0 +1,14 @@
+Warning 1 : fishing fleet: 1 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
+Warning 2 : fishing fleet: 2 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
+Warning 3 : fishing fleet: 3 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
+Warning 4 : fishing fleet: 4 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
+Warning 5 : fishing fleet: 5 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
+Note 1 Information: Max data length bin: 90  < max pop len bins: 98; so will accumulate larger pop len bins
+Warning 6 : Forecast=0 or -1, so rest of forecast file will not be read and can be omitted;
+Warning 7 : A one year forecast using recent F will be done automatically
+Note 2 Suggestion: This model has just one settlement event. Changing to recr_dist_method 4 and removing the recruitment distribution parameters at the end of the MG parms section (below growth parameters) will produce identical results and simplify the model.
+Warning 8 Adjustment: Growth output stderr requested but no growth parameters are estimated, changing growth stddev reporting specifications to 0
+Warning 9 : parameter init value is greater than parameter max 0.25 > 0.15 for parm: 13; search for <now check> in echoinput.sso for parm_type
+Warning 10 : parameter init value is less than parameter min 0 < 1 for parm: 14; search for <now check> in echoinput.sso for parm_type
+Note 3 Information:  N parameters that are on or within 1% of min-max bound: 1; check results, variance may be suspect
+ 10 warnings  and 3 notes 
