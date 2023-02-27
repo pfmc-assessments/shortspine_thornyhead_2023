@@ -318,9 +318,9 @@ pred <- ages %>%
               mutate(assessment = '2005/2013')) 
 
 sensitivities <- ages %>%
-              mutate(Female = optim.f[1]*1.1 + (optim.f[2]*1.1 - optim.f[1]*1.1) * 
+              mutate(Female = optim.f[1]*1.25 + (optim.f[2]*1.25 - optim.f[1]*1.25) * 
                        (1-exp(-optim.f[3]*(age-1))) / (1-exp(-optim.f[3]*99)),
-                     Male = optim.m[1]*1.1 + (optim.m[2]*1.1 - optim.m[1]*1.1) * 
+                     Male = optim.m[1]*1.25 + (optim.m[2]*1.25 - optim.m[1]*1.25) * 
                        (1-exp(-optim.m[3]*(age-1))) / (1-exp(-optim.m[3]*99))) %>% 
               pivot_longer(c(Male, Female), names_to = 'sex', values_to = 'upper') %>%
               mutate(assessment = '2023') %>% 
@@ -365,19 +365,18 @@ out <- as.data.frame(t(as.matrix(exp(vbgf.optim$par[c(1, 3, 5)])))) %>%
 
 out <- out %>% 
   bind_rows(out %>% 
-              mutate(Length_at_A1 = Length_at_A1 * 1.1,
-                     Length_at_A2 = Length_at_A2 * 1.1,
-                     Sensitivity_Run = 'Increase_Length_at_A1_and_A2_10percent')) %>% 
+              mutate(Length_at_A1 = Length_at_A1 * 1.25,
+                     Length_at_A2 = Length_at_A2 * 1.25,
+                     Sensitivity_Run = 'Increase_Lengths_at_A1_and_A2_25percent')) %>% 
   bind_rows(out %>% 
               mutate(Length_at_A1 = Length_at_A1 * 0.9,
                      Length_at_A2 = Length_at_A2 * 0.9,
-                     Sensitivity_Run = 'Decrease_Length_at_A1_and_A2_10percent')) %>% 
+                     Sensitivity_Run = 'Decrease_Lengths_at_A1_and_A2_10percent')) %>% 
   select(Sensitivity_Run, Sex, A1, A2, Length_at_A1, 
          Length_at_A2, k) 
 
 out %>% write_csv(paste0(out_path, '/growth_curve_sensitivities.csv'))
 butler %>% write_csv(paste0(dat_path, '/cleaned_butler_for_growth_curves_2023.csv'))
-
 
 # kline ----
 
@@ -461,17 +460,6 @@ ggsave(paste0(out_path, '/laa_butler_vs_kline.png'), units = 'in',
        width = 6.5, height = 4, dpi = 300)
 
 ggplot() +
-  geom_point(data = allages, aes(age, length_cm, col = newid)) +
-  labs(x = 'Age (y)', y = 'Length (cm)', col = NULL) +
-  theme(legend.position = c(0.75, 0.2)) +
-  geom_ribbon(data = sensitivities,
-              aes(x = age, ymin = lower, ymax = upper,
-                  fill = assessment),
-              alpha = 0.3, col = 'white') +
-  geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
-            size = 0.8) 
-
-ggplot() +
   geom_point(data = kline %>% 
                mutate(Data = 'Kline (unsexed)'), aes(x = age, y = length_cm, shape = Data), 
              size = 1, col = 'purple') +
@@ -491,3 +479,6 @@ ggplot() +
 ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
        width = 7, height = 8, dpi = 300)
 
+kline %>% 
+  dplyr::rename(specimen = id) %>%  
+  write_csv(file.path(dat_path, 'cleaned_kline_for_growth_sensitivity_2023.csv'))
