@@ -1,16 +1,25 @@
-library(ggplot2)
+# Length compositions for the landings data
+# Contact: Haley Oleynik
+# Last updated March 2023
+
+libs <- c('tidyverse', 'patchwork', 'ggthemes', 'ggridges')
+if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
+  install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
+lapply(libs, library, character.only = TRUE)
+
+# pak::pkg_install('pfmc-assessments/PacFIN.Utilities',upgrade = TRUE)
+# pak::pkg_install('pfmc-assessments/nwfscSurvey',upgrade = TRUE)
 library(PacFIN.Utilities)
 library(nwfscSurvey)
-library(reshape2)
-library(ggthemes)
-library(ggridges)
-library(cowplot)
-###############################################################################
-#	PacFIN Data Expansion for Shortspine thornyhead 2023 ----------------------------------------
+
+# we're not using any length comps from unidentified thornyheads because
+# longspine and shortspine grow differently.
+
+#	PacFIN Data Expansion for Shortspine thornyhead 2023 -----
 
 # Pull PacFIN biological (bds) data 
 bds_file = "data/raw/PacFIN.SSPN.bds.17.Jan.2023.RData" # not hosted on github -- confidential
-load(file.path(getwd(), bds_file))
+load(bds_file)
 out = bds.pacfin 
 
 # Clean data 
