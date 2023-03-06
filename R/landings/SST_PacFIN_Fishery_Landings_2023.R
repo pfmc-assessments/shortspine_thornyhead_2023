@@ -65,7 +65,7 @@ length.exp.catch <- short.catch %>%
   spread(Fleet, ROUND_WEIGHT_MTONS)
 
 # write catch file to use in fishery length expansions 
-# write.csv(length.exp.catch,"data/processed/SST_PacFIN_landings_2023.csv")
+# write.csv(length.exp.catch,"data/processed/SST_PacFIN_length-comp-landings_2023.csv")
 
 #######################################################################################
 # PROPORTION of shortspine to total Thornyheads ---------------------------------------------------
@@ -283,6 +283,8 @@ catch.ss <- short.catch %>%
          South_NONTWL = sum(South_NONTWL,CA_NONTWL,na.rm=T),
          South_TWL = sum(South_TWL,CA_TWL,na.rm=T)) %>%
   select(LANDING_YEAR,South_TWL,South_NONTWL,North_TWL,North_NONTWL)
+
+#write.csv(catch.ss,"data/processed/SST_PacFIN_total-landings_2023.csv")
 
 # plot final landings by fleet 
 ggplot(catch.ss, aes(x=LANDING_YEAR)) +
