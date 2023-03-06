@@ -1,10 +1,13 @@
+# Fishery landings data from PacFIN for the 2023 SST stock assessment
+# Contact: Haley Oleynik
+# Last updated March 2023
+
 ###############################################################################
 # Fishery landings  -------------------------------------------------------
-require(tidyverse)
-require(ggplot2)
-require(reshape2)
-require(patchwork)
-require(ggthemes)
+libs <- c('tidyverse', 'patchwork', 'ggthemes')
+if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
+  install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
+lapply(libs, library, character.only = TRUE)
 
 # shortspine thornyhead only - read data 
 load("data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData")
@@ -16,11 +19,11 @@ short.catch = catch.pacfin
 f1 <- short.catch %>% 
   mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
   group_by(LANDING_YEAR,COUNTY_STATE) %>%
-  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
-  rename(State = COUNTY_STATE) %>%
+  dplyr::summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+  dplyr::rename(State = COUNTY_STATE) %>%
   ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = State)) +
   geom_line(size=1.5) +
-  ylab("Total Weight (MT)") +
+  ylab("Total weight (mt)") +
   xlab("Year") + 
   ggtitle("Shortpine thornyhead Fishery Landings") +
   scale_color_colorblind() +
@@ -31,12 +34,12 @@ f1 <- short.catch %>%
 f2 <- short.catch %>%
   mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
   group_by(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE) %>%
-  rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
-  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
-ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
+  dplyr::rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
+  dplyr::summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+  ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
   geom_line(size=1.5) +
   facet_wrap(vars(State)) + 
-  ylab("Total Weight (MT)") +
+  ylab("Total Weight (t)") +
   xlab("Year") + 
   scale_color_colorblind() +
   theme_classic() + 
@@ -45,7 +48,7 @@ ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
 # show on one plot (require patchwork)
 f1 / f2
 
-#ggsave("outputs/fishery data/SST_PacFIN_fishery_landings.png", dpi=300, height=10, width=10, units='in')
+ggsave("outputs/fishery data/SST_PacFIN_fishery_landings.png", dpi=300, height=10, width=10, units='in')
 
 ##################################################################################
 # Create .csv to use for fishery length expansion -------------------------------------
@@ -284,7 +287,7 @@ catch.ss <- short.catch %>%
          South_TWL = sum(South_TWL,CA_TWL,na.rm=T)) %>%
   select(LANDING_YEAR,South_TWL,South_NONTWL,North_TWL,North_NONTWL)
 
-#write.csv(catch.ss,"data/processed/SST_PacFIN_total-landings_2023.csv")
+write.csv(catch.ss,"data/processed/SST_PacFIN_total-landings_2023.csv")
 
 # plot final landings by fleet 
 ggplot(catch.ss, aes(x=LANDING_YEAR)) +
@@ -305,4 +308,4 @@ ggplot(catch.ss, aes(x=LANDING_YEAR)) +
                           guide = "legend") + 
   theme(text=element_text(size=20))
 
-#ggsave("outputs/fishery data/SST_PacFIN_total-shortspine-landings.png", dpi=300, height=7, width=10, units='in')
+ggsave("outputs/fishery data/SST_PacFIN_total-shortspine-landings.png", dpi=300, height=7, width=10, units='in')
