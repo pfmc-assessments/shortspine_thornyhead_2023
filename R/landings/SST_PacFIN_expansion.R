@@ -5,12 +5,12 @@ library(reshape2)
 library(ggthemes)
 library(ggridges)
 library(cowplot)
+library(ggthemes)
 ###############################################################################
 #	PacFIN Data Expansion for Shortspine thornyhead 2023 ----------------------------------------
 
 # Pull PacFIN biological (bds) data 
-bds_file = "data/raw/PacFIN.SSPN.bds.17.Jan.2023.RData" # not hosted on github -- confidential
-load(file.path(getwd(), bds_file))
+load("data/raw/PacFIN.SSPN.bds.17.Jan.2023.RData")
 out = bds.pacfin 
 
 # Clean data 
@@ -22,19 +22,23 @@ Pdata <- cleanPacFIN(
 
 Pdata2 <- Pdata
 
-# Plot length comps 
+# Plot fishery length comps 
 Pdata2$year <- as.character(Pdata2$year) # make year a character 
 
 ggplot(Pdata2 %>% 
-               filter((between(lengthcm, 6, 80))), aes(x=lengthcm,y=year, fill = state,color=state)) + 
+               filter((between(lengthcm, 6, 80))), aes(x=lengthcm,y=year, fill = state, color = state)) + 
   geom_density_ridges(alpha = 0.5) + 
   facet_wrap(vars(SEX)) + 
   ylab("") + 
   xlab("Length (cm)") +
+  ggtitle("Shortspine thornyhead fishery length compositions") + 
+  scale_fill_colorblind() +
+  scale_color_colorblind() +
   theme_classic()
 
 #ggsave("outputs/fishery data/SST_PacFIN_fishery_lencomps.png", dpi=300, height=7, width=10, units='in')
 
+# create fleet structure for expansion
 # Check fleet structure
 table(Pdata$geargroup)
 
@@ -136,6 +140,9 @@ Pdata_exp <- getExpansion_1(
   plot = file.path("outputs/fishery data"),
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub) # weight-length params
 
+# check expansion factors (want them to be < 500)
+hist(Pdata_exp$Expansion_Factor_1_L)
+
 # check the filled weight values are consistent with observations
 Pdata_exp %>%
   mutate(is.weight=ifelse(is.na(weightkg), "N", "Y")) %>%
@@ -144,9 +151,6 @@ Pdata_exp %>%
   geom_point(aes(col = is.weight), size = 2) +
   scale_colour_viridis_d() +
   theme_bw()
-
-# look at Washington 2021 and 2022 - why is expansion factor capped at 1 for so many trips? 
-check.WA <- Pdata_exp %>% filter(year > 2020 & state == "WA")
 
 # Second stage expansion -----------NOTE: TEST--------------------------------
 # expand comps up to the state and fleet (gear group)
@@ -264,3 +268,41 @@ write.csv(
   samples, 
   file = file.path("outputs/fishery data", paste0("PacFIN_Length_Samples_by_State.csv")), 
   row.names = FALSE)
+
+##########################################################################################
+### Explore missing total weights in bio data ---------------------------------
+# look at fish ticket IDs for missing total weights 
+
+# look at Washington 2021 and 2022 - why is expansion factor capped at 1 for so many trips? 
+check.WA <- Pdata_exp %>% filter(state == "WA")
+
+# looks like we're missing total weights for 73 fish in 2021 and 136 fish in 2022
+View(check.WA %>% group_by(year) %>%
+       tally(is.na(RWT_LBS))) # same for RWT_LBS or TOTAL_WGT
+
+# filter out samples with na total weight 
+check.WA2 <- check.WA %>% filter(year > 2020 & is.na(RWT_LBS))
+# 209 fish of 19 trips missing from 2021 and 2022
+
+# look at fish ticket IDs for missing total weights 
+check.WA3 <- filter(check.WA2, year == 2021)
+unique(check.WA3$FTID)
+unique(check.WA3$PACFIN_PORT_NAME)
+
+# check 2021
+unique(check.WA3$FTID)
+# Fish tickets with total weight missing in bio data: "EA009055" "JN652835" "JN660466" "JN660454" "EA003940" "JN652823" "JN660474" "JN623994" "JN660465"
+# These fish tickets have total weight in catch data: JN652835, JN660466, JN660454, JN623994, JN660465
+View(short.catch %>% filter(FTID == "JN652835") %>% select(LANDED_WEIGHT_LBS, ROUND_WEIGHT_LBS))
+
+#RWT_LBS in bio, ROUND_WEIGHT_LBS in catch
+View(short.catch %>% select(FTID, ROUND_WEIGHT_LBS) %>%
+  filter(ROUND_WEIGHT_LBS > 1))
+
+#3186627 5241.686486
+Pdata %>% filter(FTID == "3186627") %>% select(RWT_LBS)
+# out$WEIGHT_OF_LANDING_LBS
+out %>% filter(FTID == "R426114") %>% select(WEIGHT_OF_LANDING_LBS)
+
+
+
