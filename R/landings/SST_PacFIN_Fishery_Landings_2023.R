@@ -2,7 +2,6 @@
 # Fishery landings  -------------------------------------------------------
 require(tidyverse)
 require(ggplot2)
-require(reshape2)
 require(patchwork)
 require(ggthemes)
 
@@ -10,35 +9,45 @@ require(ggthemes)
 load("data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData")
 short.catch = catch.pacfin 
 
+# take black out of colorblind theme
+scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
+  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
+}
+
+# Color
+scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
+  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
+}
+
 ###############################################################################
 # Plot landings (use ROUND_WEIGHT_MTONS) -------------------------------------
 # plot landings by STATE 
 f1 <- short.catch %>% 
   mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
   group_by(LANDING_YEAR,COUNTY_STATE) %>%
-  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
-  rename(State = COUNTY_STATE) %>%
-  ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = State)) +
+  dplyr::summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+  dplyr::rename(State = COUNTY_STATE) %>%
+ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = State)) +
   geom_line(size=1.5) +
   ylab("Total Weight (MT)") +
   xlab("Year") + 
   ggtitle("Shortpine thornyhead Fishery Landings") +
-  scale_color_colorblind() +
+  scale_color_colorblind7() +
   theme_classic() + 
   theme(text=element_text(size=17))
 
-# plot landings by STATE and GEAR 
+# plot landings by STATE and GEAR  - line 
 f2 <- short.catch %>%
   mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
   group_by(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE) %>%
-  rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
-  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+  dplyr::rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
+  dplyr::summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
 ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
   geom_line(size=1.5) +
   facet_wrap(vars(State)) + 
   ylab("Total Weight (MT)") +
   xlab("Year") + 
-  scale_color_colorblind() +
+  scale_color_colorblind7() +
   theme_classic() + 
   theme(text=element_text(size=17))
 
@@ -46,6 +55,40 @@ ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, color = Gear)) +
 f1 / f2
 
 #ggsave("outputs/fishery data/SST_PacFIN_fishery_landings.png", dpi=300, height=10, width=10, units='in')
+
+# stacked bar plots 
+f3 <- short.catch %>% 
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
+  group_by(LANDING_YEAR,COUNTY_STATE) %>%
+  dplyr::summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+  dplyr::rename(State = COUNTY_STATE) %>%
+ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, fill = State)) +
+  geom_bar(position="stack", stat="identity") +
+  ylab("Total Weight (MT)") +
+  xlab("Year") + 
+  ggtitle("Shortpine thornyhead Fishery Landings") +
+  scale_fill_colorblind7() +
+  theme_classic() + 
+  theme(text=element_text(size=17))
+
+f4 <- short.catch %>%
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>% # replace NA states with WA
+  group_by(LANDING_YEAR, COUNTY_STATE, PACFIN_GROUP_GEAR_CODE) %>%
+  rename(State = COUNTY_STATE, Gear = PACFIN_GROUP_GEAR_CODE) %>%
+  summarize(ROUND_WEIGHT_MTONS = sum(ROUND_WEIGHT_MTONS,na.rm=T)) %>%
+ggplot(aes(x=LANDING_YEAR,y=ROUND_WEIGHT_MTONS, fill = forcats::fct_rev(Gear))) +
+  geom_bar(position="stack", stat="identity") +
+  facet_wrap(vars(State)) + 
+  ylab("Total Weight (MT)") +
+  xlab("Year") + 
+  scale_fill_colorblind7() +
+  labs(fill = "Gear") + 
+  theme_classic() + 
+  theme(text=element_text(size=17))
+
+f3/f4
+
+#ggsave("outputs/fishery data/SST_PacFIN_fishery_landings-bar.png", dpi=300, height=10, width=10, units='in')
 
 ##################################################################################
 # Create .csv to use for fishery length expansion -------------------------------------
@@ -101,7 +144,7 @@ long %>%
   left_join(unid, by = "LANDING_YEAR") %>%
   rowwise() %>%
   mutate(IDtotal = sum(SSPN,LSPN),total = sum(SSPN,LSPN,UNID, na.rm=T), SSPNprop = SSPN / IDtotal, UNIDprop = UNID / total, SSPNtotal = SSPN + (UNID*SSPNprop)) %>%
-  ggplot(aes(x=LANDING_YEAR)) +
+ggplot(aes(x=LANDING_YEAR)) +
   geom_line(aes(y = SSPN,color = "darkred"),size=1.5) +
   geom_line(aes(y = LSPN,color = "blue"),size=1.5) + 
   geom_line(aes(y = UNID, color = "black"),size=1.5) +
@@ -111,6 +154,23 @@ long %>%
                        breaks = c("darkred", "blue", "black"),
                        labels = c("Shortspine", "Longspine", "Unidentified"),
                        guide = "legend") +
+  theme_classic() + 
+  theme(text=element_text(size=20))
+
+# stacked bar plot 
+long %>% 
+  left_join(short, by = "LANDING_YEAR") %>%
+  left_join(unid, by = "LANDING_YEAR") %>%
+  gather("Species", "Landings", -LANDING_YEAR) %>%
+  ggplot(aes(x=LANDING_YEAR, y=Landings, fill = Species)) +
+  geom_bar(position="stack", stat="identity") +
+  xlab("Year") +
+  ylab("Total Landings (MT)") +
+  scale_color_identity(name = "",
+                       breaks = c("darkred", "blue", "black"),
+                       labels = c("Shortspine", "Longspine", "Unidentified"),
+                       guide = "legend") +
+  scale_fill_colorblind7() + 
   theme_classic() + 
   theme(text=element_text(size=20))
 
@@ -166,15 +226,15 @@ long2 %>%
          ORtotal = sum(OR.SSPN,OR.LSPN,na.rm=T), SSPNpropOR = OR.SSPN / ORtotal,
          CAtotal = sum(CA.SSPN,CA.LSPN,na.rm=T), SSPNpropCA = CA.SSPN / CAtotal) %>%
 ggplot(aes(x=LANDING_YEAR)) +
-  geom_line(aes(y=SSPNpropWA, color = "#56b4e9"), size = 1.5) + 
-  geom_line(aes(y=SSPNpropOR, color = "#e69F00"), size = 1.5) + 
-  geom_line(aes(y=SSPNpropCA, color = "black"), size = 1.5) + 
+  geom_line(aes(y=SSPNpropWA, color = "#009e73"), size = 1.5) + 
+  geom_line(aes(y=SSPNpropOR, color = "#56b4e9"), size = 1.5) + 
+  geom_line(aes(y=SSPNpropCA, color = "#e69F00"), size = 1.5) + 
   ylim(0,1) +
   xlab("Year") + 
-  ylab("Ratio") +
+  ylab("Ratio (shortspine / total)") +
   theme_classic() +
   scale_color_identity(name = "State",
-                       breaks = c("#56b4e9", "#e69F00", "black"),
+                       breaks = c("#009e73", "#56b4e9", "#e69F00"),
                        labels = c("WA", "OR", "CA"),
                        guide = "legend") + 
   theme(text=element_text(size=20))
@@ -218,16 +278,16 @@ totalcatch <- long.totalcatch %>%
 
 # plot ratio of shortspine / total by state 
 ggplot(totalcatch, aes(x=LANDING_YEAR)) +
-  geom_line(aes(y=SSPNpropOR_TWL, color = "#e69F00",linetype = "solid"), size = 1.5) + 
-  geom_line(aes(y=SSPNpropOR_NONTWL, color = "#e69F00",linetype = "dashed")) + 
-  geom_line(aes(y=SSPNpropCA_TWL, color = "black", linetype = "solid"), size = 1.5) + 
-  geom_line(aes(y=SSPNpropCA_NONTWL, color = "black", linetype = "dashed")) +
+  geom_line(aes(y=SSPNpropOR_TWL, color = "#56b4e9",linetype = "solid"), size = 1.5) + 
+  geom_line(aes(y=SSPNpropOR_NONTWL, color = "#56b4e9",linetype = "dashed")) + 
+  geom_line(aes(y=SSPNpropCA_TWL, color = "#e69F00", linetype = "solid"), size = 1.5) + 
+  geom_line(aes(y=SSPNpropCA_NONTWL, color = "#e69F00", linetype = "dashed")) +
   ylim(0,1) +
   xlab("Year") + 
   ylab("Ratio (shortspine / all thornyheads)") +
   theme_classic() +
   scale_color_identity(name = "State",
-                       breaks = c("#e69F00", "black"),
+                       breaks = c("#56b4e9", "#e69F00"),
                        labels = c("OR", "CA"),
                        guide = "legend") +
   scale_linetype_identity(name = "Gear",
@@ -305,4 +365,16 @@ ggplot(catch.ss, aes(x=LANDING_YEAR)) +
                           guide = "legend") + 
   theme(text=element_text(size=20))
 
-#ggsave("outputs/fishery data/SST_PacFIN_total-shortspine-landings.png", dpi=300, height=7, width=10, units='in')
+# stacked bar plot
+catch.ss %>%
+  gather("Fleet", "Landings", -LANDING_YEAR) %>%
+ggplot(aes(x=LANDING_YEAR, y = Landings, fill = forcats::fct_rev(Fleet))) +
+  geom_bar(position="stack", stat="identity") +
+  xlab("Year") + 
+  ylab("Total Landings (MT)") +
+  scale_fill_manual(labels=c('South Trawl', 'South Non-trawl', 'North Trawl', 'North Non-trawl'), values = c("firebrick","red","darkblue","blue")) +
+  labs(fill = "Fleet") + 
+  theme_classic() + 
+  theme(text=element_text(size=20))
+
+#ggsave("outputs/fishery data/SST_PacFIN_total-shortspine-landings-bar.png", dpi=300, height=7, width=10, units='in')
