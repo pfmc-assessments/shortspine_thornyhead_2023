@@ -10,9 +10,6 @@ lapply(libs, library, character.only = TRUE)
 
 # pak::pkg_install('pfmc-assessments/PacFIN.Utilities',upgrade = TRUE)
 # pak::pkg_install('pfmc-assessments/nwfscSurvey',upgrade = TRUE)
-library(PacFIN.Utilities)
-library(nwfscSurvey)
-
 
 # Color
 scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
@@ -132,15 +129,20 @@ disc_catch_share %>%
   mutate(ob_ratio_boot = ifelse(!is.na(median_boot_ratio), median_boot_ratio, ob_ratio)) -> disc_rates_WCGOP
 
 disc_rates_WCGOP %>%
+  mutate(lower=ifelse(ob_ratio_boot-1.96*sd_boot_ratio<0, 0, ob_ratio_boot-1.96*sd_boot_ratio)) %>%
   ggplot(aes(x=year, y=ob_ratio_boot)) +
   geom_point(aes(color=forcats::fct_rev(fleet), shape = catch_shares), size=2.5) +
-  geom_errorbar(aes(ymin=ob_ratio_boot-2.16*sd_boot_ratio, ymax =ob_ratio_boot+2.16*sd_boot_ratio, color=forcats::fct_rev(fleet)), width=.2) +
+  geom_errorbar(aes(ymin=lower, ymax =ob_ratio_boot+1.96*sd_boot_ratio, color=forcats::fct_rev(fleet)), width=.2) +
   facet_wrap(~forcats::fct_rev(fleet), scales="free_y") +
+  scale_shape_manual(values=c(1,19)) +
   scale_color_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
   theme(legend.position = "top")
+
+ggsave("outputs/discard_data/SST_WCGOP_discard_rates.png", dpi=300, height=7, width=10, units='in')
+
 
 # In the stock assessment, fleets are only defined by their gear and their location. Thus, we should account for the fact that both
 #catch shares and non catch shares fleets have different discard rates. This is done by weighing the discard rate of each
@@ -171,7 +173,7 @@ disc_rates_WCGOP %>%
 disc_rates_WCGOP_GEMM %>%
   ggplot(aes(x=year, y=mean_discr)) +
   geom_point(aes(color=forcats::fct_rev(fleet)), size=2.5) +
-  geom_errorbar(aes(ymin=mean_discr-2.16*mean_sd, ymax=mean_discr+2.16*mean_sd, color=forcats::fct_rev(fleet)), width=.2) +
+  geom_errorbar(aes(ymin=mean_discr-1.96*mean_sd, ymax=mean_discr+1.96*mean_sd, color=forcats::fct_rev(fleet)), width=.2) +
   facet_wrap(~fleet, scales="free_y") +
   scale_color_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
@@ -210,6 +212,16 @@ disc_lencomp_WCGOP %>%
   theme(legend.position = "top") +
   facet_wrap(~forcats::fct_rev(fleet), ncol=4)
 
+disc_lencomp_WCGOP %>%
+  mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
+  ggplot(aes(x=meanLen, y=factor(Year), height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
+  geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
+                      panel_scaling = TRUE, size = 0.5) +
+  scale_fill_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
+  theme_light() +
+  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions") + 
+  theme(legend.position = "top") 
+
 ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10, width=7, units='in')
   
 # write.csv(, "outputs/discard_data/*******.csv")
@@ -223,13 +235,14 @@ disc_weight <- read_excel(paste0(processed_discards_path, "/SSPN_WCGOP_WAOR-CA_T
 
 plotylim <- c(0,6)
 
-disc_weight%>%
+disc_weight %>%
+  mutate(lower=ifelse(AVG_WEIGHT.Mean-1.96*AVG_WEIGHT.SD<0, 0, AVG_WEIGHT.Mean-1.96*AVG_WEIGHT.SD)) %>%
   mutate(area_lg = ifelse(State == "CA", "S", "N"),
          Gear = ifelse(Gear == "NonTRAWL", "Other", "Trawl")) %>%
   mutate(fleet = paste0(area_lg, Gear)) %>%
-  mutate(maxall=max(AVG_WEIGHT.Mean+2.16*AVG_WEIGHT.SD)) %>%
-  mutate(lowb = AVG_WEIGHT.Mean-2.16*AVG_WEIGHT.SD,
-         highb = AVG_WEIGHT.Mean+2.16*AVG_WEIGHT.SD) %>%
+  mutate(maxall=max(AVG_WEIGHT.Mean+1.96*AVG_WEIGHT.SD)) %>%
+  mutate(lowb = lower,
+         highb = AVG_WEIGHT.Mean+1.96*AVG_WEIGHT.SD) %>%
   ggplot(aes(x=Year, y=AVG_WEIGHT.Mean,  color = forcats::fct_rev(fleet))) + 
   geom_point(size=2.5) +
   geom_errorbar(aes(ymin=lowb,ymax=highb, width=.2) )+
