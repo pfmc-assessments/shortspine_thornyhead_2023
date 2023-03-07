@@ -1,4 +1,5 @@
 library(stringr)
+library(doParallel)
 
 get.ss.exe.path <- function(os=NULL, ss_version="3.30.21", fname.extra=""){
   
@@ -74,5 +75,32 @@ get_os <- function(){
       os <- "linux"
   }
   return(tolower(os))
+}
+
+run.SS.models <- function(model.info, max.cores=NULL){
+  if(!is.list(model.info)){
+    stop("model.info should be a named list of the parameters passed to r4ss::run()")
+  }
+  
+  n.models <- length(model.info)
+  
+  if(is.null(max.cores)){
+      max.cores <- n.models
+  }
+  
+  cores <- ifelse(is.null(max.cores), min(n.models, parallel::detectCores()-1), max.cores)
+  cl <- makeCluster(cores, outfile="")
+  registerDoParallel(cl)
+  
+  foreach(i=1:n.models) %dopar% {
+      model.pars <- model.info[[i]]
+      print(paste("Running", names(model.info)[i]))
+      do.call(r4ss::run, c(model.pars))
+      clean_bat(model.pars$dir)
+      print(paste("Finished", names(model.info)[i]))
+  }
+  
+  stopCluster(cl)
+  
 }
 
