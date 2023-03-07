@@ -1,9 +1,9 @@
-# Discard data
-# Contact: Pierre-Yves Hernvann
+# Shortspine Thornyhead Discards
+# Contact: PY Hernvann
 # Last updated March 2023
 
 # set up ----
-libs <- c('tidyverse', 'patchwork', 'ggthemes', 'ggridges', 'readxl')
+libs <- c('ggplot2', 'reshape', 'readxl', 'ggridges')
 if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
   install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
 lapply(libs, library, character.only = TRUE)
@@ -13,10 +13,6 @@ lapply(libs, library, character.only = TRUE)
 library(PacFIN.Utilities)
 library(nwfscSurvey)
 
-# take black out of colorblind theme
-scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
 
 # Color
 scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
@@ -112,6 +108,9 @@ thorny_GEMM %>%
 
 # All fishing operations of the catch shares component are recorded. Thus, the estimated discard rates is supposed
 #to be exact
+
+processed_discards_path <- 'data/fishery_processed/discards'
+
 disc_catch_share <- read.csv(paste0(processed_discards_path, "/shortspine_thornyhead_cs_wcgop_discard_all_years_Gear_Grouped_States_2023-02-09.csv"))
 # Not all fishing operations of the non-catch shares component are recorded. Thus, the discard rates are estimated
 #while accounting for the sampling size through a bootstrapping procedure
