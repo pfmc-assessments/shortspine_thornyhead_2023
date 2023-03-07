@@ -47,7 +47,7 @@ get.ss.exe.path <- function(os=NULL, ss_version="3.30.21", fname.extra=""){
   } else {
     ss.file <- paste0("ss_", os, fname.extra, file.extension)
   }
-  
+
   exe.path <- file.path(exe.dir, version.dir, ss.file)
   if(!file.exists(exe.path)){
     warning("Note that this executable does not exist.")
@@ -63,7 +63,7 @@ get_os <- function(){
     os <- sysinf['sysname']
     if (os == 'Darwin'){
       os <- "osx"
-    }else if(os == "Windows"){
+    }else if(os == "windows"){
       if(grepl("64", sysinf["release"])){
         os <- "win64"
       }else{
