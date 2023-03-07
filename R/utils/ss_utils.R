@@ -63,7 +63,7 @@ get_os <- function(){
     os <- sysinf['sysname']
     if (os == 'Darwin'){
       os <- "osx"
-    }else if(os == "windows"){
+    }else if(os == "Windows"){
       if(grepl("64", sysinf["release"])){
         os <- "win64"
       }else{
