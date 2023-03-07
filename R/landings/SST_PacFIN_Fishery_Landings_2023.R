@@ -194,7 +194,7 @@ long %>%
   theme_classic() + 
   theme(text=element_text(size=20))
 
-ggsave("outputs/fishery-data/SST_PacFIN_all-thornyheads.png", dpi=300, height=7, width=10, units='in')
+ggsave("outputs/fishery_data/SST_PacFIN_all-thornyheads.png", dpi=300, height=7, width=10, units='in')
   
 # plot ratios by year (Fig. 3, page 60 in 2013 assessment)
 props %>% 
