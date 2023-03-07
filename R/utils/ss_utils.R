@@ -42,7 +42,11 @@ get.ss.exe.path <- function(os=NULL, ss_version="3.30.21", fname.extra=""){
     fname.extra <- paste0("_", fname.extra)
   } 
   
-  ss.file <- paste0("ss_", os, fname.extra, file.extension)
+  if(minor.version >= 30){
+    ss.file <- paste0("ss_", fname.extra, "_", os,  file.extension)
+  } else {
+    ss.file <- paste0("ss_", os, fname.extra, file.extension)
+  }
   
   exe.path <- file.path(exe.dir, version.dir, ss.file)
   if(!file.exists(exe.path)){
@@ -59,7 +63,7 @@ get_os <- function(){
     os <- sysinf['sysname']
     if (os == 'Darwin'){
       os <- "osx"
-    }else if(os == "windows"){
+    }else if(os == "Windows"){
       if(grepl("64", sysinf["release"])){
         os <- "win64"
       }else{
