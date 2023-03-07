@@ -43,7 +43,7 @@ get.ss.exe.path <- function(os=NULL, ss_version="3.30.21", fname.extra=""){
   } 
   
   if(minor.version >= 30){
-    ss.file <- paste0("ss_", fname.extra, "_", os,  file.extension)
+    ss.file <- paste0("ss", fname.extra, "_", os,  file.extension)
   } else {
     ss.file <- paste0("ss_", os, fname.extra, file.extension)
   }
@@ -80,3 +80,86 @@ get_os <- function(){
   return(tolower(os))
 }
 
+
+
+
+#' Run SS
+#'
+#' @param SS_version (character string) - The SS version currently supported are
+#' either "3.30.21" or "3.24.U".
+#' @param Exe_extra (character string) - Define the "extra" name of the executable.
+#' The possible name extensions are: "fast", "safe", "opt" for the "3.24.U" SS version
+#' and "opt" for the "3.30.21" version.
+#' @param base_path (character string) - root directory where the input file are
+#' housed.
+#' @param pathRun (character string) - path where the run has to be done. If
+#' \code{NULL} (default), then the run will be done in the `run` folder housed
+#' in the `base_path`. This `run` folder is created if it doesn't already exist.
+#' @param copy_files (logical) - Do the iinput files have to be copied from the
+#' `base_path` to the `pathRun` ?
+#' @param extras (character string) - Additional ADMB command line arguments
+#' passed to the executable, such as "-nohess".
+#' @param cleanRun (logical) - Specify if the `pathRun` has to be cleaned after
+#' the run. See the `clean_bat()` function.
+#'
+#' @Details
+#' By default, the function will save the output of the console in the
+#' `console.output.txt` file and won't skip the run if the `pathRun` folder
+#' already contain a `Report.sso` file.
+
+run_SS <- function(SS_version = "3.30.21",
+                   Exe_extra = "",
+                   base_path = "",
+                   pathRun = NULL,
+                   copy_files = TRUE,
+                   extras = NULL,
+                   cleanRun = TRUE) {
+  .fsep <- .Platform$file.sep #easy for file.path() function
+  
+  # Directory where the executable is stored
+  pathExe <-
+    get.ss.exe.path(ss_version = SS_version, fname.extra = Exe_extra)
+  
+  # Check the existence of pathRun and copy SS input files if needed
+  if (!is.null(pathRun)) {
+    if (!dir.exists(pathRun)) {
+      stop("The 'pathRun' specified does not exist. Please check the directory you entered.")
+    }
+    # Copy SS input files
+    if(copy_files){
+      SS.files <- dir(base_path, pattern = "*.ss", ignore.case = TRUE, all.files = TRUE)
+      file.copy(
+        from = file.path(base_path, SS.files, fsep = .fsep),
+        to = file.path(pathRun, SS.files, fsep = .fsep),
+        overwrite = TRUE, copy.date = TRUE
+      )
+    }
+  } else {
+    pathRun <- file.path(base_path, "run", fsep = .fsep)
+    if (!dir.exists(pathRun)) {
+      dir.create(pathRun)
+    }
+    # Copy SS input files
+    SS.files <- dir(base_path, "*.ss", ignore.case = TRUE, all.files = TRUE)
+    file.copy(
+      from = file.path(base_path, SS.files, fsep = .fsep),
+      to = file.path(pathRun, SS.files, fsep = .fsep),
+      overwrite = TRUE, copy.date = TRUE
+    )
+  }
+  
+  # run SS
+  print(
+    r4ss::run(
+      dir = pathRun,
+      extras = extras,
+      exe = pathExe,
+      verbose = TRUE,
+      skipfinished = FALSE
+    )
+  )
+  
+  # run clean functions to delete files
+  if (cleanRun)
+    clean_bat(path = pathRun, verbose = FALSE)
+}
