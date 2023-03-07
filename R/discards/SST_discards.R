@@ -1,13 +1,24 @@
-library(ggplot2)
+# Shortspine Thornyhead Discards
+# Contact: PY Yves-Hernvann
+# Last updated March 2023
+
+# set up ----
+libs <- c('ggplot2', 'reshape', 'readxl', 'ggridges')
+if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
+  install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
+lapply(libs, library, character.only = TRUE)
+
+# pak::pkg_install('pfmc-assessments/PacFIN.Utilities',upgrade = TRUE)
+# pak::pkg_install('pfmc-assessments/nwfscSurvey',upgrade = TRUE)
 library(PacFIN.Utilities)
 library(nwfscSurvey)
-library(reshape2)
-library(readxl)
-library(ggridges)
+
 
 ####--------------------------------------------------------------------#
 ####-----------------	Discard rates observations -----------------------
 ####--------------------------------------------------------------------#
+
+processed_discards_path <- 'data/fishery_processed/discards'
 
 disc_catch_share <- read.csv(paste0(processed_discards_path, "/shortspine_thornyhead_cs_wcgop_discard_all_years_Gear_Grouped_States_2023-02-09.csv"))
 disc_no_catch_share <- read.csv(paste0(processed_discards_path, "/shortspine_thornyhead_ncs_wcgop_discard_all_years_Gear_Grouped_States_2023-02-09.csv"))
