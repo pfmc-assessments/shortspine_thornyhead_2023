@@ -1,13 +1,6 @@
 library(tidyverse)
 source(file=file.path(here::here(), "R", "survey", "survey_utils.R"))
-
-scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
-
-scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
+source(file=file.path("R", "utils", "colors.R"))
 
 # Read index values for each survey
 afsc.triennial1.idx <- read.index.data("triennial1")
