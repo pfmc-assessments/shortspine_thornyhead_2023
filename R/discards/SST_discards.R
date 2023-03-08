@@ -3,7 +3,7 @@
 # Last updated March 2023
 
 # set up ----
-libs <- c('ggplot2', 'reshape', 'readxl', 'ggridges')
+libs <- c('ggplot2', 'reshape', 'readxl', 'ggridges', 'dplyr', 'ggthemes')
 if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
   install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
 lapply(libs, library, character.only = TRUE)
@@ -15,6 +15,12 @@ lapply(libs, library, character.only = TRUE)
 scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
   scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
 }
+
+scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
+  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
+}
+
+processed_discards_path <- 'data/fishery_processed/discards'
 
 ####--------------------------------------------------------------------#
 ####-------------------------	GEMM data ---------------------------------
@@ -106,7 +112,6 @@ thorny_GEMM %>%
 # All fishing operations of the catch shares component are recorded. Thus, the estimated discard rates is supposed
 #to be exact
 
-processed_discards_path <- 'data/fishery_processed/discards'
 
 disc_catch_share <- read.csv(paste0(processed_discards_path, "/shortspine_thornyhead_cs_wcgop_discard_all_years_Gear_Grouped_States_2023-02-09.csv"))
 # Not all fishing operations of the non-catch shares component are recorded. Thus, the discard rates are estimated
@@ -130,12 +135,14 @@ disc_catch_share %>%
 
 disc_rates_WCGOP %>%
   mutate(lower=ifelse(ob_ratio_boot-1.96*sd_boot_ratio<0, 0, ob_ratio_boot-1.96*sd_boot_ratio)) %>%
+  mutate(fleet=recode_factor(fleet, !!!c(NTrawl="NTrawl", NOther="NOther", STrawl="STrawl", SOther="SOther"))) %>%
   ggplot(aes(x=year, y=ob_ratio_boot)) +
   geom_point(aes(color=forcats::fct_rev(fleet), shape = catch_shares), size=2.5) +
   geom_errorbar(aes(ymin=lower, ymax =ob_ratio_boot+1.96*sd_boot_ratio, color=forcats::fct_rev(fleet)), width=.2) +
-  facet_wrap(~forcats::fct_rev(fleet), scales="free_y") +
+  facet_wrap(~fleet)+
+  #facet_wrap(~forcats::fct_rev(fleet), scales="free_y") +
   scale_shape_manual(values=c(1,19)) +
-  scale_color_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
+  scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
@@ -171,11 +178,12 @@ disc_rates_WCGOP %>%
             mean_sd=ifelse(year>2010,0,sd)) -> disc_rates_WCGOP_GEMM
 
 disc_rates_WCGOP_GEMM %>%
+  mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
   ggplot(aes(x=year, y=mean_discr)) +
   geom_point(aes(color=forcats::fct_rev(fleet)), size=2.5) +
   geom_errorbar(aes(ymin=mean_discr-1.96*mean_sd, ymax=mean_discr+1.96*mean_sd, color=forcats::fct_rev(fleet)), width=.2) +
-  facet_wrap(~fleet, scales="free_y") +
-  scale_color_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
+  facet_wrap(~fleet) +
+  scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
@@ -243,15 +251,16 @@ disc_weight %>%
   mutate(maxall=max(AVG_WEIGHT.Mean+1.96*AVG_WEIGHT.SD)) %>%
   mutate(lowb = lower,
          highb = AVG_WEIGHT.Mean+1.96*AVG_WEIGHT.SD) %>%
+  mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
   ggplot(aes(x=Year, y=AVG_WEIGHT.Mean,  color = forcats::fct_rev(fleet))) + 
   geom_point(size=2.5) +
   geom_errorbar(aes(ymin=lowb,ymax=highb, width=.2) )+
   coord_cartesian(ylim=plotylim) +
-  scale_color_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
+  scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
   labs(x = "Year", y = NULL, color="Fleet", title = "Shortspine Thornyhead Observed Average Weight (kg, WCGOP)") + 
   theme_bw() +
   theme(legend.position = "top") +
-  facet_wrap(~forcats::fct_rev(fleet))
+  facet_wrap(~fleet)
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_avgweight.png", dpi=300, height=7, width=10, units='in')
 
