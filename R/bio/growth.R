@@ -19,6 +19,16 @@ dat_path <- 'data/experimental_age_data'
 out_path <- file.path('outputs/growth')
 dir.create(out_path)
 
+# take black out of colorblind theme
+scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
+  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
+}
+
+# Color
+scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
+  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
+}
+
 # data clean up ----
   
 butler <- read_csv(paste0(dat_path, '/Original NMFS S. alascanus data_1991_formatted.csv'))
@@ -336,13 +346,15 @@ sensitivities <- ages %>%
                      assessment = '2005/2013'))
 
 ggplot() +
-  geom_point(data = butler, aes(x = age, y = length_cm), size = 0.5) +
+  geom_point(data = butler, aes(x = age, y = length_cm), size = 1.5, shape = 16) +
   geom_ribbon(data = sensitivities,
               aes(x = age, ymin = lower, ymax = upper,
                   fill = assessment),
-              alpha = 0.3, col = 'white') +
+              alpha = 0.3, col = NA) +
   geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
             size = 0.8) +
+  scale_fill_colorblind7() +
+  scale_color_colorblind7() +
   facet_wrap(~sex, ncol = 1) +
   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
 
@@ -451,9 +463,10 @@ allages <- bind_rows(kline %>%
                        select(-r1,-r2)) %>% 
   mutate(newid = paste0('Source=', source, '; Sex=', sex))
 
-ggplot(allages, aes(age, length_cm, col = newid)) +
-  geom_point() +
-  labs(x = 'Age (y)', y = 'Length (cm)', col = NULL) +
+ggplot(allages, aes(age, length_cm, col = newid, shape = newid)) +
+  geom_point(size = 2) +
+  scale_color_colorblind7() +
+  labs(x = 'Age (y)', y = 'Length (cm)', col = NULL, shape = NULL) +
   theme(legend.position = c(0.75, 0.2))
 
 ggsave(paste0(out_path, '/laa_butler_vs_kline.png'), units = 'in', 
@@ -461,23 +474,27 @@ ggsave(paste0(out_path, '/laa_butler_vs_kline.png'), units = 'in',
 
 ggplot() +
   geom_point(data = kline %>% 
-               mutate(Data = 'Kline (unsexed)'), aes(x = age, y = length_cm, shape = Data), 
-             size = 1, col = 'purple') +
+               mutate(Data = 'Kline (unsexed)'), 
+             aes(x = age, y = length_cm, shape = Data), 
+             size = 1.5, col = 'purple') +
   geom_point(data = butler %>% 
                mutate(Data = 'Butler (sexed)'), 
-             aes(x = age, y = length_cm, shape = Data), size = 1, col = 'black') +
+             aes(x = age, y = length_cm, shape = Data), 
+             size = 1.5, col = 'black') +
   geom_ribbon(data = sensitivities,
               aes(x = age, ymin = lower, ymax = upper,
                   fill = assessment),
-              alpha = 0.3, col = 'white') +
+              alpha = 0.3, col = NA) +
   geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
             size = 0.8) +
+  scale_fill_colorblind7() +
+  scale_color_colorblind7() +
   facet_wrap(~sex, ncol = 1) +
-  scale_shape_manual(values = c(1,3)) +
+  scale_shape_manual(values = c(16, 4)) +
   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
 
 ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
-       width = 7, height = 8, dpi = 300)
+       width = 6, height = 8, dpi = 300)
 
 kline %>% 
   dplyr::rename(specimen = id) %>%  
