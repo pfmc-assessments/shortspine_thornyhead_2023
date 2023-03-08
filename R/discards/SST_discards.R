@@ -146,7 +146,7 @@ disc_rates_WCGOP %>%
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
-  theme(legend.position = "top")
+  theme(legend.position = "right")
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_rates.png", dpi=300, height=7, width=10, units='in')
 
@@ -179,15 +179,16 @@ disc_rates_WCGOP %>%
 
 disc_rates_WCGOP_GEMM %>%
   mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
+  mutate(lower=ifelse(mean_discr-1.96*mean_sd<0, 0, mean_discr-1.96*mean_sd)) %>%
   ggplot(aes(x=year, y=mean_discr)) +
   geom_point(aes(color=forcats::fct_rev(fleet)), size=2.5) +
-  geom_errorbar(aes(ymin=mean_discr-1.96*mean_sd, ymax=mean_discr+1.96*mean_sd, color=forcats::fct_rev(fleet)), width=.2) +
+  geom_errorbar(aes(ymin=lower, ymax=mean_discr+1.96*mean_sd, color=forcats::fct_rev(fleet)), width=.2) +
   facet_wrap(~fleet) +
   scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
-  theme(legend.position = "top")
+  theme(legend.position = "right")
 
 
 ggsave("outputs/discard_data/SST_WCGOP_GEMM_discard_rates.png", dpi=300, height=7, width=10, units='in')
@@ -228,7 +229,7 @@ disc_lencomp_WCGOP %>%
   scale_fill_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
   theme_light() +
   labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions") + 
-  theme(legend.position = "top") 
+  theme(legend.position = "right") 
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10, width=7, units='in')
   
@@ -257,9 +258,9 @@ disc_weight %>%
   geom_errorbar(aes(ymin=lowb,ymax=highb, width=.2) )+
   coord_cartesian(ylim=plotylim) +
   scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
-  labs(x = "Year", y = NULL, color="Fleet", title = "Shortspine Thornyhead Observed Average Weight (kg, WCGOP)") + 
+  labs(x = "Year", y = "Weight (kg)", color="Fleet", title = "Shortspine Thornyhead Observed Average Weight (kg, WCGOP)") + 
   theme_bw() +
-  theme(legend.position = "top") +
+  theme(legend.position = "right") +
   facet_wrap(~fleet)
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_avgweight.png", dpi=300, height=7, width=10, units='in')
