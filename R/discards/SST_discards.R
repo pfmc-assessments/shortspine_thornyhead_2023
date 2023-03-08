@@ -142,7 +142,7 @@ disc_rates_WCGOP %>%
   facet_wrap(~fleet)+
   #facet_wrap(~forcats::fct_rev(fleet), scales="free_y") +
   scale_shape_manual(values=c(1,19)) +
-  scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
+  scale_color_manual(values = c( "#F0E442","#E69F00", "#56B4E9","#009E73")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
@@ -184,7 +184,7 @@ disc_rates_WCGOP_GEMM %>%
   geom_point(aes(color=forcats::fct_rev(fleet)), size=2.5) +
   geom_errorbar(aes(ymin=lower, ymax=mean_discr+1.96*mean_sd, color=forcats::fct_rev(fleet)), width=.2) +
   facet_wrap(~fleet) +
-  scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
+  scale_color_manual(values = c( "#F0E442","#E69F00","#56B4E9","#009E73")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
@@ -226,10 +226,10 @@ disc_lencomp_WCGOP %>%
   ggplot(aes(x=meanLen, y=factor(Year), height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
   geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
                       panel_scaling = TRUE, size = 0.5) +
-  scale_fill_manual(values = c("#E69F00", "#F0E442", "#56B4E9", "#009E73")) +
+  scale_fill_manual(values = c("#E69F00", "#F0E442", "#009E73","#56B4E9")) +
   theme_light() +
   labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions") + 
-  theme(legend.position = "right") 
+  theme(legend.position = "right", axis.text = element_text(size=14)) 
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10, width=7, units='in')
   
@@ -257,7 +257,7 @@ disc_weight %>%
   geom_point(size=2.5) +
   geom_errorbar(aes(ymin=lowb,ymax=highb, width=.2) )+
   coord_cartesian(ylim=plotylim) +
-  scale_color_manual(values = c( "#F0E442","#E69F00", "#009E73","#56B4E9")) +
+  scale_color_manual(values = c( "#F0E442","#E69F00", "#56B4E9","#009E73")) +
   labs(x = "Year", y = "Weight (kg)", color="Fleet", title = "Shortspine Thornyhead Observed Average Weight (kg, WCGOP)") + 
   theme_bw() +
   theme(legend.position = "right") +
