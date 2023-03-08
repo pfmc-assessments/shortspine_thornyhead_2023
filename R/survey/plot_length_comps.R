@@ -104,10 +104,14 @@ length.comps <- length.comps %>%
   select(-c(fleet_name)) %>%
   write_csv(file.path(here::here(), "data", "processed", "survey_length_comps.csv"))
 
+years <- unique(sort(length.comps$year))
+year.breaks <- years[seq(1, length(years), 2)]
+
 ggplot(data = length.comps, 
        aes(x = length_bin, y = factor(year), height = prop, fill = survey)) +
   geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.50, panel_scaling = TRUE, size = 0.5) +
   scale_x_continuous(breaks=seq(0, 70, 10))+
+  scale_fill_colorblind7()+
   facet_wrap(~sex)+
   labs(x = "Length (cm)", y="Year", title="Shortspine Thornyhead Survey Length Compositions", fill="Survey")+
   theme_minimal()+
@@ -115,9 +119,17 @@ ggplot(data = length.comps,
     panel.grid.minor = element_blank(),
     axis.line = element_line(),
     panel.spacing.x = unit(0.5, "cm"),
-    legend.position = "bottom"
+    legend.position = "right",
+    axis.text = element_text(size=14),
+    axis.title = element_text(size=16),
+    legend.text = element_text(size=14),
+    legend.title = element_text(size=16),
+    plot.title = element_text(size=20),
+    strip.text = element_text(size=18)
   )+
   guides(
-    fill = guide_legend(nrow=2)
+    fill = guide_legend(ncol=1)
   )
+
+ggsave(file.path(here::here(), "outputs", "surveys", "2023_length_compositions.tiff"), dpi=300, width=18, height=10)
 
