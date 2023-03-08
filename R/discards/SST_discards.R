@@ -12,13 +12,7 @@ lapply(libs, library, character.only = TRUE)
 # pak::pkg_install('pfmc-assessments/nwfscSurvey',upgrade = TRUE)
 
 # Color
-scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
-
-scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
+source(file=file.path("R", "utils", "colors.R"))
 
 processed_discards_path <- 'data/fishery_processed/discards'
 
