@@ -13,15 +13,7 @@ lapply(libs, library, character.only = TRUE)
 library(PacFIN.Utilities)
 library(nwfscSurvey)
 
-# take black out of colorblind theme
-scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
-
-# Color
-scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
+source(file=file.path("R", "utils", "colors.R"))
 
 # we're not using any length comps from unidentified thornyheads because
 # longspine and shortspine grow differently.
@@ -48,10 +40,12 @@ Pdata$year <- as.character(Pdata$year) # make year a character
 plot_dat <- Pdata %>% 
   filter(between(lengthcm, 6, 80)) %>% 
   mutate(state = ifelse(state == 'CA', 'CA', 'OR/WA'),
+         geargroup = ifelse(geargroup == 'TWL', "TWL", "NONTWL"),
          fleet = case_when(state == 'CA' & geargroup == 'TWL' ~ 'STrawl',
                            state == 'CA' & geargroup == 'NONTWL' ~ 'SOther',
                            state == 'OR/WA' & geargroup == 'TWL' ~ 'NTrawl',
-                           state == 'OR/WA' & geargroup == 'NONTWL' ~ 'NOther'))
+                           state == 'OR/WA' & geargroup == 'NONTWL' ~ 'NOther'),
+         fleet = factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther")))
 getmode <- function(v) {
   uniqv <- unique(v)
   uniqv[which.max(tabulate(match(v, uniqv)))]

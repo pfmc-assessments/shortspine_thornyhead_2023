@@ -18,15 +18,7 @@ lapply(libs, library, character.only = TRUE)
 load("data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData")
 short.catch = catch.pacfin 
 
-# take black out of colorblind theme
-scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
-
-# Color
-scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
+source(file=file.path("R", "utils", "colors.R"))
 
 # Plot landings (use ROUND_WEIGHT_MTONS) 
 
