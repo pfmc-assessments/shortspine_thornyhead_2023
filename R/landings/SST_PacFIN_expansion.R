@@ -13,15 +13,7 @@ lapply(libs, library, character.only = TRUE)
 library(PacFIN.Utilities)
 library(nwfscSurvey)
 
-# take black out of colorblind theme
-scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
-
-# Color
-scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
+source(file=file.path("R", "utils", "colors.R"))
 
 # we're not using any length comps from unidentified thornyheads because
 # longspine and shortspine grow differently.
@@ -45,20 +37,43 @@ Pdata <- cleanPacFIN(
 # Plot fishery length comps 
 Pdata$year <- as.character(Pdata$year) # make year a character 
 
-ggplot(Pdata %>% 
-               filter((between(lengthcm, 6, 80))), 
-       aes(x=lengthcm,y=year, fill = state, color = state)) + 
-  geom_density_ridges(alpha = 0.5) + 
-  facet_wrap(vars(SEX)) + 
-  ylab("") + 
-  xlab("Length (cm)") +
-  labs(fill = 'State', col = 'State') +
-  ggtitle("Shortspine Thornyhead Fishery Length Compositions") + 
-  scale_fill_colorblind7() +
-  scale_color_colorblind7() +
-  theme_classic()
+plot_dat <- Pdata %>% 
+  filter(between(lengthcm, 6, 80)) %>% 
+  mutate(state = ifelse(state == 'CA', 'CA', 'OR/WA'),
+         geargroup = ifelse(geargroup == 'TWL', "TWL", "NONTWL"),
+         fleet = case_when(state == 'CA' & geargroup == 'TWL' ~ 'STrawl',
+                           state == 'CA' & geargroup == 'NONTWL' ~ 'SOther',
+                           state == 'OR/WA' & geargroup == 'TWL' ~ 'NTrawl',
+                           state == 'OR/WA' & geargroup == 'NONTWL' ~ 'NOther'),
+         fleet = factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther")))
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
 
-ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps.png", dpi=300, height=7, width=10, units='in')
+fleetmeans <- plot_dat %>% 
+  group_by(fleet, SEX) %>% 
+  summarize(meanlength = mean(lengthcm, na.rm = TRUE),
+            modelength = getmode(lengthcm))
+
+ggplot(plot_dat,# %>% filter(SEX == 'F'), 
+       aes(x=lengthcm,y=year, fill = fleet, color = fleet)) + 
+  geom_density_ridges(alpha = 0.5) + 
+  geom_vline(data = fleetmeans, 
+             aes(xintercept = modelength, col = fleet, lty = fleet),
+             size = 1) +
+  # facet_grid(state ~ SEX) +
+  facet_wrap(~SEX) +
+  labs(x = "Length (cm)", y = "", fill = 'Fleet', col = 'Fleet', lty = 'Fleet') +
+  ggtitle("Fishery Length Compositions") +
+  # scale_fill_colorblind7() +
+  # scale_color_colorblind7() +
+  scale_fill_manual(values = c("#56B4E9", "#009E73", "#E69F00", "#F0E442")) +
+  scale_colour_manual(values = c("#56B4E9", "#009E73", "#E69F00", "#F0E442")) +
+  theme_classic() 
+
+ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps2.png", dpi=300, height=7, width=10, units='in')
+ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps3.png", dpi=300, height=7, width=10, units='in')
 
 # create fleet structure for expansion
 # Check fleet structure
@@ -137,7 +152,7 @@ Pdata_exp <- getExpansion_1(
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub) # weight-length params
 
 # check expansion factors (want them to be < 500)
-hist(Pdata_exp$Expansion_Factor_1_L)
+# hist(Pdata_exp$Expansion_Factor_1_L)
 
 # check the filled weight values are consistent with observations
 # dev.off() # use if plot isn't rendering
@@ -179,17 +194,68 @@ Pdata_exp$Final_Sample_Size <- capValues(Pdata_exp$Expansion_Factor_1_L * Pdata_
 # Trawl_s=2
 # Non-trawl_N=3
 # Non-trawl_S=4
+# Pdata_exp <- Pdata_exp %>% 
+#   dplyr::mutate(fleet = case_when(fleet %in% c('OR_TWL', 'WA_TWL') ~ 1,
+#                                   fleet %in% c('CA_TWL') ~ 2,
+#                                   fleet %in% c('OR_NONTWL', 'WA_NONTWL') ~ 3,
+#                                   fleet %in% c('CA_NONTWL') ~ 4))
 Pdata_exp <- Pdata_exp %>% 
-  dplyr::mutate(fleet = case_when(fleet %in% c('OR_TWL', 'WA_TWL') ~ 1,
-                                  fleet %in% c('CA_TWL') ~ 2,
-                                  fleet %in% c('OR_NONTWL', 'WA_NONTWL') ~ 3,
-                                  fleet %in% c('CA_NONTWL') ~ 4))
+  dplyr::mutate(fleet = case_when(fleet %in% c('OR_TWL', 'WA_TWL') ~ 'NTrawl',
+                                  fleet %in% c('CA_TWL') ~ 'STrawl',
+                                  fleet %in% c('OR_NONTWL', 'WA_NONTWL') ~ 'NOther',
+                                  fleet %in% c('CA_NONTWL') ~ 'SOther'))
 
 # data frame with expansion factors - only records with lengths, take out na
 # dataframe with composition by length bin, state, year, gear
 length_comps <- getComps(
-  Pdata = Pdata_exp2[!is.na(Pdata_exp2$lengthcm), ], 
+  Pdata = Pdata_exp[!is.na(Pdata_exp$lengthcm), ], 
   Comps = "LEN")
+
+length_comps %>% 
+  select(fleet, year = fishyr, lengthcm, female)
+
+plot_comps <- length_comps %>% 
+  dplyr::filter(between(lengthcm, 6, 80)) %>% 
+  dplyr::select(fleet, year = fishyr, lengthcm, female, male, unsexed) %>% 
+  tidyr::pivot_longer(cols = c('female', 'male', 'unsexed'), names_to = 'sex', values_to = 'n')
+
+plot_comps <- plot_comps %>% 
+  dplyr::group_by(fleet, year, sex) %>% 
+  dplyr::mutate(totn = sum(n)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(p = ifelse(totn == 0, NA, n / totn))
+
+plot_comps %>% 
+  group_by(fleet, year, sex) %>% 
+  dplyr::summarise(tot = sum(p)) %>%
+  ungroup() %>% 
+  filter(round(tot,0) != 1) %>% 
+  print(n=Inf)
+
+fleetmeans2 <- plot_comps %>% 
+  group_by(fleet, sex) %>% 
+  summarize(meanlength = mean(p * lengthcm, na.rm = TRUE),
+            modelength = getmode(p * lengthcm))
+
+ggplot(plot_comps %>% 
+         mutate(gear = ifelse(fleet %in% c('NTrawl', 'STrawl'), 'Trawl', 'Non-trawl'),
+                state = ifelse(fleet %in% c('NTrawl', 'NOther'), 'OR/WA', 'CA')),
+       aes(x=lengthcm, y=factor(year), fill = fleet, color = fleet)) + 
+  geom_density_ridges(alpha = 0.5) + 
+  facet_grid( ~ sex) + 
+  labs(y = NULL, x = 'Length (cm)', fill = 'Fleet', col = 'Fleet') +
+  ggtitle("Shortspine Thornyhead Fishery Length Compositions") + 
+  geom_vline(data = fleetmeans2,
+             aes(xintercept = modelength, col = fleet, lty = fleet),
+             size = 1) +
+  scale_fill_manual(values = c("#56B4E9", "#009E73", "#E69F00", "#F0E442")) +
+  scale_colour_manual(values = c("#56B4E9", "#009E73", "#E69F00", "#F0E442")) +
+  theme_classic()
+
+ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps.png", dpi=300, height=7, width=10, units='in')
+
+
+
 
 # diagnostics 
 table(Pdata$SOURCE_AGID, Pdata$SEX)
@@ -230,6 +296,7 @@ out = read.csv(
   skip = 3, 
   header = TRUE)
 
+View(out)
 start = 1 
 end   = which(as.character(out[,1]) %in% c(" Females only ")) - 1 
 cut_out = out[start:end,]

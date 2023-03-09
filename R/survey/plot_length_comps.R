@@ -1,4 +1,5 @@
 library(tidyverse)
+source(file=file.path("R", "utils", "colors.R"))
 
 # Function that reshapes SS3 length comps (e.g.,
 # 'forSS/Survey_Sex3_Bins_6_72_LengthComps.csv' output from
@@ -78,18 +79,15 @@ length.comps <- bind_rows(
     reshape_SScomps(df = nwfsc.combo.lcs.raw,    fleet_name = 'NWFSCcombo', sex = 3),
     reshape_SScomps(df = nw.slope.unsex.lcs.raw, fleet_name = 'NWFSCslope', sex = 0),
     reshape_SScomps(df = nw.combo.unsex.lcs.raw, fleet_name = 'NWFSCcombo', sex = 0)
-)
-
-length.comps <- length.comps %>% 
-  mutate(
+) %>% mutate(
     survey = recode_factor(
       fleet_name,
       !!!c(
-        Triennial1 = "AFSC Triennial Shelf Survey 1",
-        Triennial2 = "AFSC Triennial Shelf Survey 2",
-        AFSCslope  = "AFSC Slope Survey",
-        NWFSCslope = "NWFSC Slope Survey",
-        NWFSCcombo = "West Coast Groundfish Bottom Trawl Survey"
+        Triennial1 = "Triennial 1",
+        Triennial2 = "Triennial 2",
+        AFSCslope  = "AFSC Slope",
+        NWFSCslope = "NWFSC Slope",
+        NWFSCcombo = "WCGBT"
       )
     ),
     sex = recode_factor(
@@ -104,20 +102,46 @@ length.comps <- length.comps %>%
   select(-c(fleet_name)) %>%
   write_csv(file.path(here::here(), "data", "processed", "survey_length_comps.csv"))
 
+years <- unique(sort(length.comps$year))
+year.breaks <- years[seq(1, length(years), 2)]
+
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+survey.means <- length.comps %>% 
+  group_by(survey, sex) %>% 
+  summarize(meanlength = mean(length_bin, na.rm = TRUE),
+            modelength = getmode(rep(length_bin, freq*1000)))
+
 ggplot(data = length.comps, 
        aes(x = length_bin, y = factor(year), height = prop, fill = survey)) +
   geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.50, panel_scaling = TRUE, size = 0.5) +
+  # geom_vline(data = survey.means, 
+  #            aes(xintercept = modelength, col = survey, lty = survey),
+  #            size = 1) +
   scale_x_continuous(breaks=seq(0, 70, 10))+
+  scale_fill_colorblind7()+
+  scale_color_colorblind7()+
   facet_wrap(~sex)+
   labs(x = "Length (cm)", y="Year", title="Shortspine Thornyhead Survey Length Compositions", fill="Survey")+
-  theme_minimal()+
+  theme_classic()+
   theme(
     panel.grid.minor = element_blank(),
     axis.line = element_line(),
     panel.spacing.x = unit(0.5, "cm"),
-    legend.position = "bottom"
+    legend.position = "right",
+    axis.text = element_text(size=12),
+    axis.title = element_text(size=14),
+    legend.text = element_text(size=12),
+    legend.title = element_text(size=14),
+    plot.title = element_text(size=18),
+    strip.text = element_text(size=12)
   )+
   guides(
-    fill = guide_legend(nrow=2)
+    fill = guide_legend(ncol=1)
   )
+
+ggsave(file.path(here::here(), "outputs", "surveys", "2023_length_compositions.png"), dpi=300, width=12, height=10)
 
