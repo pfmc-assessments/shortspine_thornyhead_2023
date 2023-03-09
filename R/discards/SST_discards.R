@@ -140,7 +140,7 @@ disc_rates_WCGOP %>%
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right", axis.text = element_text(size=14))
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_rates.png", dpi=300, height=7, width=10, units='in')
 
@@ -182,7 +182,7 @@ disc_rates_WCGOP_GEMM %>%
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right", axis.text = element_text(size=14))
 
 
 ggsave("outputs/discard_data/SST_WCGOP_GEMM_discard_rates.png", dpi=300, height=7, width=10, units='in')
@@ -222,7 +222,7 @@ disc_lencomp_WCGOP %>%
                       panel_scaling = TRUE, size = 0.5) +
   scale_fill_manual(values = c("#E69F00", "#F0E442", "#009E73","#56B4E9")) +
   theme_light() +
-  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions") + 
+  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions (WCGOP)") + 
   theme(legend.position = "right", axis.text = element_text(size=14)) 
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10, width=7, units='in')
@@ -236,7 +236,14 @@ ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10
 disc_weight <- read_excel(paste0(processed_discards_path, "/SSPN_WCGOP_WAOR-CA_Trawl-NonTrawl.xlsx"),
                           sheet = "Average Weight")
 
-plotylim <- c(0,6)
+# /!\ Late update - A. Rovellini just got the information from Andi Stephens that the weights from the WCGOP are actually in
+#pounds. It seems that the previous assessment was wrong and considered that this weight was in kg. This probably led to the 
+#underestimation of the average weight of discards observed after fitting the model in  2013.
+disc_weight %>%
+  mutate(AVG_WEIGHT.Mean=AVG_WEIGHT.Mean*0.453592,
+         AVG_WEIGHT.SD=AVG_WEIGHT.SD*0.453592) ->  disc_weight
+
+plotylim <- c(0,3)
 
 disc_weight %>%
   mutate(lower=ifelse(AVG_WEIGHT.Mean-1.96*AVG_WEIGHT.SD<0, 0, AVG_WEIGHT.Mean-1.96*AVG_WEIGHT.SD)) %>%
@@ -251,10 +258,11 @@ disc_weight %>%
   geom_point(size=2.5) +
   geom_errorbar(aes(ymin=lowb,ymax=highb, width=.2) )+
   coord_cartesian(ylim=plotylim) +
+  geom_hline(yintercept=0, color="grey") + # this just overlays the lower uncertainty bound of the error bar to highlight that they are truncated <0
   scale_color_manual(values = c( "#F0E442","#E69F00", "#56B4E9","#009E73")) +
   labs(x = "Year", y = "Weight (kg)", color="Fleet", title = "Shortspine Thornyhead Observed Average Weight (kg, WCGOP)") + 
   theme_bw() +
-  theme(legend.position = "right") +
+  theme(legend.position = "right", axis.text = element_text(size=14)) +
   facet_wrap(~fleet)
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_avgweight.png", dpi=300, height=7, width=10, units='in')
