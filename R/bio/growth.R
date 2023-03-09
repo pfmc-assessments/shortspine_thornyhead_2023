@@ -13,6 +13,7 @@
 # set up ----
 
 library(tidyverse)
+library(ggthemes)
 theme_set(theme_classic(base_size = 16))
 
 dat_path <- 'data/experimental_age_data' 
