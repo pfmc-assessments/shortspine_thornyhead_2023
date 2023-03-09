@@ -1,4 +1,5 @@
 library(stringr)
+library(doParallel)
 
 get.ss.exe.path <- function(os=NULL, ss_version="3.30.21", fname.extra=""){
   
@@ -79,9 +80,6 @@ get_os <- function(){
   }
   return(tolower(os))
 }
-
-
-
 
 #' Run SS
 #'

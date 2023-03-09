@@ -1,5 +1,5 @@
-SS-V3.24O-opt-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
-Tue Mar 07 13:23:53 2023
+SS-V3.24U-safe;_08/29/2014;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.2MacOS
+Tue Mar  7 21:35:30 2023
 
 SST_data.SS  datfilename
 SST_control.SS  ctlfilename
@@ -576,20 +576,56 @@ Now read cap for each fleet, then cap for each area (even if only 1 area), then 
  calculated number of allocation groups 0
  Allocation among groups (N entries must match number of allocation groups created) 
 0 N_Fcast_input_catches 
-2 # basis for input Fcast catch:  2=dead catch; 3=retained catch; 99=input Hrate(F) (bio/num units are from fleetunits; note new codes in SSV3.20)
+2 # basis for input Fcast catch:  2=dead catch; 3=retained catch; 99=input Hrate(F); -1=read fleet/time specific (bio/num units are from fleetunits; note new codes in SSV3.20)
 Processed 
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
- -1 -1 -1 -1
+ -1 9.82392e+252
+ -1 6.69304e+151
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
+ -1 0
  done reading forecast 
 
 
@@ -632,17 +668,17 @@ Processed
 8  -3 3 0 0 -1 0.8 -3 0 0 0 0 0 0 0 NatM_p_1_Mal_GP_1
 9  -3 3 0 0 -1 0.8 -3 0 0 0 0 0 0 0 NatM_p_2_Mal_GP_1
 10  -3 3 0 0 -1 0.8 -3 0 0 0 0 0 0 0 L_at_Amin_Mal_GP_1
-11  -3 3 -0.105361 -0.1 -1 0.8 -2 0 0 0 0 0 0 0 L_at_Amax_Mal_GP_1
+11  -3 3 -0.10536 -0.1 -1 0.8 -2 0 0 0 0 0 0 0 L_at_Amax_Mal_GP_1
 12  -3 3 0 0 -1 0.8 -3 0 0 0 0 0 0 0 VonBert_K_Mal_GP_1
 13  -3 3 0 0 -1 0.8 -3 0 0 0 0 0 0 0 CV_young_Mal_GP_1
 14  -3 3 0 0 -1 0.8 -3 0 0 0 0 0 0 0 CV_old_Mal_GP_1
-15  0 100 4.77065e-006 0 -1 0.8 -3 0 0 0 0 0 0 0 Wtlen_1_Fem
+15  0 100 4.77065e-06 0 -1 0.8 -3 0 0 0 0 0 0 0 Wtlen_1_Fem
 16  0 100 3.26298 0 -1 0.8 -3 0 0 0 0 0 0 0 Wtlen_2_Fem
 17  0 100 18.2 22 -1 0.8 -3 0 0 0 0 0 0 0 Mat50%_Fem
 18  -3 100 -2.3 -0.4 -1 0.8 -3 0 0 0 0 0 0 0 Mat_slope_Fem
 19  0 100 1 1 -1 0.8 -3 0 0 0 0 0 0 0 Eggs/kg_inter_Fem
 20  0 100 0 0 -1 0.8 -3 0 0 0 0 0 0 0 Eggs/kg_slope_wt_Fem
-21  0 100 4.77065e-006 0 -1 0.8 -3 0 0 0 0 0 0 0 Wtlen_1_Mal
+21  0 100 4.77065e-06 0 -1 0.8 -3 0 0 0 0 0 0 0 Wtlen_1_Mal
 22  0 100 3.26298 0 -1 0.8 -3 0 0 0 0 0 0 0 Wtlen_2_Mal
 23  0 0 0 0 -1 0 -4 0 0 0 0 0 0 0 RecrDist_GP_1
 24  0 0 0 0 -1 0 -4 0 0 0 0 0 0 0 RecrDist_Area_1
@@ -654,7 +690,7 @@ Process and create labels for the MGparm adjustments
  no mgparm blocks, so don't read customblocksetup_MG
  0 0 0 0 0 0 0 0 0 0 MGparm_seas_effects
  don't read MGparm_dev_PH
-3 #_SR_function: 1=null; 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=Survival_3Parm 
+3 #_SR_function: 1=null; 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=Survival_3Parm; 8=Shepard 
  SR parms 
  7 13 10.3 10 -1 10 4
  0.2 1 0.6 0.779 -2 0.152 -2
@@ -845,6 +881,7 @@ Active parameters: 235
 Turn_off_phase 25
  max_phase 6
 Active parameters plus derived quantities:  911
+here2
 end of parameter section
  do variance adjustment for surveys 
  survey stderr has been set-up 
@@ -891,7 +928,7 @@ Create reverse pointers to discard observations
 
 **************************************
  ready to do biological and selectivity calculations once 
- initial bio parameters:  0.0505 0 7 75 0.018 0.125 0 0 0 0 -0.105361 0 0 0 4.77065e-006 3.26298 18.2 -2.3 1 0 4.77065e-006 3.26298 0 0 0 0
+ initial bio parameters:  0.0505 0 7 75 0.018 0.125 0 0 0 0 -0.10536 0 0 0 4.77065e-06 3.26298 18.2 -2.3 1 0 4.77065e-06 3.26298 0 0 0 0
   growth factors that cannot be time-varying: 
 seasonal K:  1 1
 seasonal wtlen adjuster 
@@ -906,3 +943,5 @@ Adjusted size at maxage: 68.0651
  0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505 0.0505
  did wtlen and maturity
  made the age_age' key 
+bias_adjustment vector:  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.000611205 0.00183362 0.00305603 0.00427844 0.00550085 0.00672326 0.00794567 0.00916808 0.0103905 0.0116129 0.0128353 0.0140577 0.0152801 0.0165025 0.017725 0.0189474 0.0201698 0.0213922 0.0226146 0.023837 0.0250594 0.0262818 0.0275042 0.0287267 0.0299491 0.0311715 0.0323939 0.0336163 0.0348387 0.0360611 0.0372835 0.0385059 0.0397284 0.0409508 0.0421732 0.0433956 0.044618 0.0458404 0.0470628 0.0482852 0.0495076 0.0507301 0.0519525 0.0531749 0.0543973 0.0556197 0.0568421 0.0580645 0.0592869 0.0605093 0.0617317 0.0629542 0.0641766 0.065399 0.0666214 0.0678438 0.0690662 0.0702886 0.071511 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.072 0.0565714 0.00514286 0 0 0 0 0 0 0 0 0 0 0 0
+start initial conditions 

@@ -18,15 +18,7 @@ lapply(libs, library, character.only = TRUE)
 load("data/raw/PacFIN.SSPN.CompFT.17.Jan.2023.RData")
 short.catch = catch.pacfin 
 
-# take black out of colorblind theme
-scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_fill_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
-
-# Color
-scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
-  scale_color_discrete(..., type = colorblind_pal()(8)[.ColorList])
-}
+source(file=file.path("R", "utils", "colors.R"))
 
 # Plot landings (use ROUND_WEIGHT_MTONS) 
 
@@ -65,7 +57,7 @@ f2 <- short.catch %>%
 # show on one plot (require patchwork)
 f1 / f2
 
-ggsave("outputs/fishery data/SST_PacFIN_fishery_landings.png", dpi=300, height=10, width=10, units='in')
+ggsave("outputs/fishery_data/SST_PacFIN_fishery_landings.png", dpi=300, height=10, width=10, units='in')
 
 # stacked bar plots ----
 f3 <- short.catch %>% 
@@ -358,6 +350,22 @@ longprops %>%
 ggsave("outputs/fishery_data/SST_PacFIN_thornyhead-ratio-state-gear.png", dpi=300, height=7, width=12, units='in')
 
 # Apply ratio ----
+
+# unidentified catch
+un.catch %>%
+  mutate_at("COUNTY_STATE", ~replace_na(.,"WA")) %>%
+  mutate(Gear = case_when(PACFIN_GROUP_GEAR_CODE == 'TWS' ~ 'TWL',
+                          PACFIN_GROUP_GEAR_CODE == 'TWL' ~ 'TWL',
+                          TRUE ~ 'NONTWL'),
+         fleet = paste0(COUNTY_STATE, '_', Gear)) %>% 
+  group_by(year = LANDING_YEAR, fleet) %>%
+  dplyr::summarize(unid_catch = sum(ROUND_WEIGHT_MTONS, na.rm=T)) %>%
+  readr::write_csv('outputs/fishery_data/unid_catch.csv')
+
+longprops %>% 
+  mutate(fleet = paste0(state, '_', gear)) %>% 
+  dplyr::select(year = LANDING_YEAR, fleet, prop) %>% 
+  write_csv('outputs/fishery_data/raw_proportion_sst.csv')
 
 # because there are only unident thornyheads in OR and CA, only apply the ratio
 # to those states

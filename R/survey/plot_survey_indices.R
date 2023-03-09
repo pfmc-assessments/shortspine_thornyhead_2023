@@ -1,5 +1,6 @@
 library(tidyverse)
 source(file=file.path(here::here(), "R", "survey", "survey_utils.R"))
+source(file=file.path("R", "utils", "colors.R"))
 
 # Read index values for each survey
 afsc.triennial1.idx <- read.index.data("triennial1")
@@ -47,10 +48,12 @@ ggplot(survey.indices, aes(x=Year, y=Value, color=survey))+
     fill="Survey",
     color="Survey"
   )+
+  scale_color_colorblind7()+
   theme_minimal()+
   theme(
     panel.grid.minor = element_blank(),
-    axis.line = element_line()
+    axis.line = element_line(),
+    legend.position = "bottom"
   )
 
 # Create single plot of all survey indices as points and confidence ribbons
@@ -68,8 +71,18 @@ ggplot(survey.indices, aes(x=Year, y=Value, color=survey, fill=survey)) +
     fill="Survey",
     color="Survey"
   )+
+  scale_color_colorblind7()+
+  scale_fill_colorblind7()+
   theme_minimal()+
   theme(
     panel.grid.minor = element_blank(),
-    axis.line = element_line()
-  )
+    axis.line = element_line(),
+    legend.position = "bottom",
+    axis.text = element_text(size=14),
+    axis.title = element_text(size=16),
+    legend.text = element_text(size=14),
+    legend.title = element_text(size=16)
+  )+
+  guides(color=guide_legend(nrow=2))
+
+ggsave(file.path(here::here(), "outputs", "surveys", "2023_survey_indices.png"), dpi=72, width=12, height=7)
