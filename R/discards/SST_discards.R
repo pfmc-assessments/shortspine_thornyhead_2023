@@ -146,7 +146,7 @@ disc_rates_WCGOP %>%
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right", axis.text = element_text(size=14))
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_rates.png", dpi=300, height=7, width=10, units='in')
 
@@ -188,7 +188,7 @@ disc_rates_WCGOP_GEMM %>%
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right", axis.text = element_text(size=14))
 
 
 ggsave("outputs/discard_data/SST_WCGOP_GEMM_discard_rates.png", dpi=300, height=7, width=10, units='in')
@@ -260,7 +260,7 @@ disc_weight %>%
   scale_color_manual(values = c( "#F0E442","#E69F00", "#56B4E9","#009E73")) +
   labs(x = "Year", y = "Weight (kg)", color="Fleet", title = "Shortspine Thornyhead Observed Average Weight (kg, WCGOP)") + 
   theme_bw() +
-  theme(legend.position = "right") +
+  theme(legend.position = "right", axis.text = element_text(size=14)) +
   facet_wrap(~fleet)
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_avgweight.png", dpi=300, height=7, width=10, units='in')
