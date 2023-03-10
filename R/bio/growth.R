@@ -346,21 +346,39 @@ sensitivities <- ages %>%
               mutate(sex = 'Male',
                      assessment = '2005/2013'))
 
+# plots comparing assessment curves
 ggplot() +
   geom_point(data = butler, aes(x = age, y = length_cm), size = 1.5, shape = 16) +
-  geom_ribbon(data = sensitivities,
-              aes(x = age, ymin = lower, ymax = upper,
-                  fill = assessment),
-              alpha = 0.3, col = NA) +
   geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
-            size = 0.8) +
+            size = 1.5) +
   scale_fill_colorblind7() +
   scale_color_colorblind7() +
   facet_wrap(~sex, ncol = 1) +
   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
 
-ggsave(paste0(out_path, '/growth_curve_sensitivities.png'), units = 'in', 
+ggsave(paste0(out_path, '/growth_curve_comparison.png'), units = 'in', 
        width = 6, height = 8, dpi = 300)
+
+# ggplot() +
+#   geom_point(data = butler, 
+#              aes(x = age, y = length_cm, col = sex), 
+#              size = 1.5, shape = 16) +
+#   geom_ribbon(data = sensitivities %>% 
+#                 filter(assessment == '2023'),
+#               aes(x = age, ymin = lower, ymax = upper,
+#                   fill = sex),
+#               alpha = 0.3, col = NA) +
+#   geom_line(data = pred %>% 
+#               filter(assessment == '2023'), 
+#             aes(x = age, y = length_cm, col = sex),
+#             size = 0.8) +
+#   scale_fill_colorblind7() +
+#   scale_color_colorblind7() +
+#   # facet_wrap(~sex, ncol = 1) +
+#   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Sex', fill = 'Sex')
+# 
+# ggsave(paste0(out_path, '/growth_curve_sensitivities.png'), units = 'in', 
+#        width = 6, height = 8, dpi = 300)
 
 out <- as.data.frame(t(as.matrix(exp(vbgf.optim$par[c(1, 3, 5)])))) %>% 
   mutate(Sex = 'Male',
@@ -465,7 +483,7 @@ allages <- bind_rows(kline %>%
   mutate(newid = paste0('Source=', source, '; Sex=', sex))
 
 ggplot(allages, aes(age, length_cm, col = newid, shape = newid)) +
-  geom_point(size = 2) +
+  geom_point(size = 2, alpha = 0.5) +
   scale_color_colorblind7() +
   labs(x = 'Age (y)', y = 'Length (cm)', col = NULL, shape = NULL) +
   theme(legend.position = c(0.75, 0.2))
@@ -494,8 +512,36 @@ ggplot() +
   scale_shape_manual(values = c(16, 4)) +
   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
 
+# ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
+#        width = 6, height = 8, dpi = 300)
+
+ggplot() +
+  geom_point(data = kline %>% 
+               mutate(`Kline data` = 'Unsexed'),
+             aes(x = age, y = length_cm, shape = `Kline data`), 
+             col = 'purple', size = 2, alpha = 0.8) +
+  geom_point(data = butler, 
+             aes(x = age, y = length_cm, col = sex), 
+             size = 1.5, shape = 16, alpha = 0.8) +
+  geom_ribbon(data = sensitivities %>% 
+                filter(assessment == '2023'),
+              aes(x = age, ymin = lower, ymax = upper,
+                  fill = sex),
+              alpha = 0.3, col = NA) +
+  geom_line(data = pred %>% 
+              filter(assessment == '2023'), 
+            aes(x = age, y = length_cm, col = sex),
+            size = 0.8) +
+  scale_fill_colorblind7() +
+  scale_color_colorblind7() +
+  scale_shape_manual(values = c(5)) +
+  labs(x = 'Age (y)', y = 'Length (cm)', col = 'Butler data', fill = 'Butler data') +
+  theme(legend.position = c(0.1, 0.8))
+
 ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
-       width = 6, height = 8, dpi = 300)
+       width = 10, height = 7, dpi = 300)
+
+
 
 kline %>% 
   dplyr::rename(specimen = id) %>%  
