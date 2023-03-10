@@ -1,5 +1,5 @@
 # Fishery landings data from PacFIN for the 2023 SST stock assessment
-# Contact: Haley Oleynik, Joshua
+# Contact: Haley Oleynik, Adam Hayes, Jane Sullivan
 # Last updated March 2023
 
 # length comps are weighted by state-specific landings because WA and OR length
@@ -43,9 +43,9 @@ un.catch = catch.pacfin
 rm(catch.pacfin)
 
 # 2013 catches (use historical, pre-1981)
-historical_catch <- read_csv('data/processed/SST_catch_2013assessment.csv')
+catch2013 <- read_csv('data/processed/SST_catch_2013assessment.csv')
 
-historical_catch <- historical_catch %>% 
+historical_catch <- catch2013 %>% 
   tidyr::pivot_longer(cols = c('NTrawl', 'STrawl', 'NOther', 'SOther'),
                names_to = 'fleet_name', values_to = 'catch') %>% 
   dplyr::rename_all(tolower) %>% 
@@ -58,6 +58,12 @@ historical_catch <- historical_catch %>%
                 #                        fleet == 2 ~ 'Trawl_S',
                 #                        fleet == 3 ~ 'Non-trawl_N',
                 #                        fleet == 4 ~ 'Non-trawl_S'))
+
+# updated catch reconstruction for wa and or
+historical_north <- read_csv('data/processed/SST_states_historical_NORTH.csv') %>% 
+  rename_all(tolower) %>% 
+  rename(catch = round_weight_mtons, fleet_name = fleet) %>% 
+  mutate(assessment = '2023')
 
 # eda ----
 
@@ -299,6 +305,36 @@ finalcatch %>%
 
 ggsave("outputs/fishery_data/total-landings2.png", 
        dpi=300, height=4, width=7, units='in')
+
+# compare catch time series ----
+
+comparecatch <- catch2013 %>% 
+  tidyr::pivot_longer(cols = c('NTrawl', 'STrawl', 'NOther', 'SOther'),
+                      names_to = 'fleet_name', values_to = 'catch') %>% 
+  dplyr::select(year = Year, fleet_name, catch) %>% 
+  mutate(assessment = '2013') %>% 
+  bind_rows(finalcatch %>% 
+              dplyr::select(year, fleet_name, catch) %>% 
+              mutate(assessment = '2023')) %>% 
+  bind_rows(historical_north %>% 
+              filter(year >= 1901))
+
+comparecatch %>% 
+  filter(year <= 2012) %>%
+  ggplot(aes(x = year, y = catch,  fill = assessment, col = assessment)) +
+  geom_area(position = "identity", alpha = 0.4) +
+  scale_fill_colorblind7() +
+  scale_color_colorblind7() +
+  geom_vline(xintercept = 1980.5, lty = 2, col = 'darkgrey') +
+  facet_wrap(~fleet_name, scales = 'free') +
+  scale_y_continuous(labels = scales::comma, expand = c(0, NA)) +   
+  labs(x = NULL, y = "Catch (mt)", fill = "Assessment", col = "Assessment") 
+
+ggsave("outputs/fishery_data/compare-assessment-landings.png", 
+       dpi=300, height=7, width=10, units='in')
+
+
+# write ss ----
 
 catch.ss <- finalcatch %>% 
   dplyr::select(year, season, fleet, catch, catch_se)
