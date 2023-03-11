@@ -27,14 +27,8 @@ scale_color_colorblind7 = function(.ColorList = 2L:8L, ...){
 # amazing file that haley oleynik assembled
 dat <- read_csv('data/processed/SST_meta-data.csv')
 
-unique(dat$Year)
-unique(dat$category)
-unique(dat$group)
-
-dat %>% filter(group == 'weights') %>% distinct(category)
-dat %>% filter(category == 'L_Combo' & present == 1)
-
 dat <- dat %>% 
+  filter(Year < 2023) %>% 
   mutate(Group = case_when(group == 'catch' ~ 'Catch',
                            group == 'discards' ~ 'Discards',
                            group == 'survey' ~ 'Abundance indices',
@@ -65,7 +59,6 @@ dat <- dat %>%
   mutate(min = min(Year[present == 1])) %>% 
   filter(Year >= min) 
 
-unique(dat$Fleet)
 dat %>% 
   ggplot(aes(x = Year, y = Fleet, col = Fleet, fill = Fleet, shape = factor(present))) +
   geom_point(size = 3) + 
@@ -73,8 +66,8 @@ dat %>%
   scale_y_discrete(position = 'right', limits = rev) +
   scale_shape_manual(values = c(1, 19)) +
   labs(x = NULL, y = NULL) +
-  theme_bw(base_size = 16) +
+  theme_minimal(base_size = 20) +
   theme(legend.position = 'none')
 
 ggsave('outputs/assessment_data_timeseries.png', 
-       dpi=300, height=10, width=15, units="in")
+       bg='white', dpi=300, height=12, width=16, units="in")
