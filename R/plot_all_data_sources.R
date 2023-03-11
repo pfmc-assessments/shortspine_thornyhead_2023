@@ -71,3 +71,14 @@ dat %>%
 
 ggsave('outputs/assessment_data_timeseries.png', 
        bg='white', dpi=300, height=12, width=16, units="in")
+
+dat %>% 
+  filter(Group == 'Abundance indices') %>% 
+  ggplot(aes(x = Year, y = Fleet, col = Fleet, fill = Fleet, shape = factor(present))) +
+  geom_point(size = 5) + 
+  # facet_wrap(~Group, ncol = 1, scales = 'free_y') +
+  scale_y_discrete(position = 'right', limits = rev) +
+  scale_shape_manual(values = c(1, 19)) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = 'none')

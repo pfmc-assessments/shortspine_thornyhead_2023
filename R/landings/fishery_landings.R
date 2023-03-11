@@ -269,9 +269,18 @@ fleetsum <- new_state_gear %>%
   dplyr::ungroup() 
 
 finalcatch <- fleetsum %>% 
-  bind_rows(historical_catch) %>%
-  mutate(catch_se = 0.01) %>% 
-  dplyr::arrange(fleet, year)
+  dplyr::select(-fleet, -season) %>% 
+  dplyr::bind_rows(historical_catch %>% 
+              # only keep southern fleets for now from the 2013 assessment until
+              # we get updated data from CA
+                dplyr::filter(fleet_name %in% c('STrawl', 'SOther')) %>% 
+                dplyr::select(-fleet, -season)) %>%
+  # add in new NTrawl and NOther historical catches
+  dplyr::bind_rows(historical_north %>% 
+                     dplyr::filter(year >= 1901) %>% 
+                     dplyr::select(-assessment)) %>% 
+  dplyr::mutate(catch_se = 0.01) %>% 
+  dplyr::arrange(fleet_name, year)
 
 finalcatch %>% 
   # mutate(fleet_name = factor(fleet_name, 
@@ -292,11 +301,14 @@ ggsave("outputs/fishery_data/total-landings.png",
        dpi=300,height=4, width=7, units='in')
 
 finalcatch %>% 
-  ggplot(aes(x = year, y = catch, fill = forcats::fct_reorder(fleet_name, catch))) +
+  mutate(fleet_name = factor(fleet_name,
+                             levels = c('NTrawl', 'NOther','STrawl', 'SOther'),
+                             ordered = TRUE)) %>%
+  ggplot(aes(x = year, y = catch, fill = fleet_name)) +
   geom_bar(stat = 'identity', colour = 'black', size = 0.1) + 
-  geom_vline(xintercept = 1980.5, lty = 2, col = 'darkgrey') +
+  geom_vline(xintercept = 1980.5, lty = 2, col = 'darkgrey', size = 1) +
   # scale_fill_colorblind7() +
-  scale_fill_manual(values = c("#56B4E9", "#009E73", "#E69F00", "#F0E442")) +
+  scale_fill_manual(values = c("#009E73","#56B4E9", "#F0E442", "#E69F00")) +
   scale_y_continuous(labels = scales::comma, expand = c(0, NA)) +   
   labs(x = NULL, y = "Catch (mt)", fill = "Fleet") +
   theme_classic() +
@@ -321,10 +333,10 @@ comparecatch <- catch2013 %>%
 
 comparecatch %>% 
   filter(year <= 2012) %>%
-  ggplot(aes(x = year, y = catch,  fill = assessment, col = assessment)) +
-  geom_area(position = "identity", alpha = 0.4) +
-  scale_fill_colorblind7() +
-  scale_color_colorblind7() +
+  ggplot(aes(x = year, y = catch,  fill = assessment, col = assessment)) + 
+  geom_area(position = "identity", alpha = 0.25, size = 1) +
+  scale_fill_manual(values = c("#00BFC4", "grey30")) + 
+  scale_colour_manual(values = c("#00BFC4", "grey30")) +
   geom_vline(xintercept = 1980.5, lty = 2, col = 'darkgrey') +
   facet_wrap(~fleet_name, scales = 'free') +
   scale_y_continuous(labels = scales::comma, expand = c(0, NA)) +   
