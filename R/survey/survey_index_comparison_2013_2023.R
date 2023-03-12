@@ -12,7 +12,12 @@ abundance.idxs.2023 <- read_csv(
   mutate(
     Seas=1,
     Fishery=5,
-    assessment = "2023"
+    assessment = "2023",
+    Survey = case_when(Survey == "AFSC Triennial Shelf Survey 1" ~ "Triennial 1",
+                         Survey == "AFSC Triennial Shelf Survey 2" ~ "Triennial 2",
+                         Survey == "AFSC Slope Survey" ~ "AFSC Slope",
+                         Survey == "NWFSC Slope Survey" ~ "NWFSC Slope",
+                         Survey == "West Coast Groundfish Bottom Trawl Survey" ~ "WCGBT")
   ) %>%
   print()
 
@@ -22,17 +27,12 @@ abundance.idxs.2013 <- read_csv(
   mutate(
     lci = Value-1.96*Value*sd_log,
     uci = Value+1.96*Value*sd_log,
-    Survey = recode_factor(         # Change survey to a factor
-      Survey, 
-      !!!c(
-        Triennial1 = "AFSC Triennial Shelf Survey 1",
-        Triennial2 = "AFSC Triennial Shelf Survey 2",
-        AFSCslope  = "AFSC Slope Survey",
-        NWFSCslope = "NWFSC Slope Survey",
-        NWFSCcombo = "West Coast Groundfish Bottom Trawl Survey"
-      )
-    ),
-    assessment = "2013"
+    assessment = "2013",
+    Survey = case_when(Survey == "AFSC Triennial Shelf Survey 1" ~ "Triennial 1",
+                       Survey == "AFSC Triennial Shelf Survey 2" ~ "Triennial 2",
+                       Survey == "AFSC Slope Survey" ~ "AFSC Slope",
+                       Survey == "NWFSC Slope Survey" ~ "NWFSC Slope",
+                       Survey == "West Coast Groundfish Bottom Trawl Survey" ~ "WCGBT")
   ) %>%
   print()
 
@@ -47,7 +47,45 @@ abundance.idxs.2013 <- read_csv(
 #   ) %>%
 #   print(n=100)
 
-abundance.idxs <- bind_rows(abundance.idxs.2013, abundance.idxs.2023)
+abundance.idxs <- bind_rows(abundance.idxs.2013, abundance.idxs.2023) %>%
+  mutate(
+    Survey = factor(Survey, levels=c("Triennial 1", "Triennial 2", "AFSC Slope", "NWFSC Slope", "WCGBT"))
+    )
+
+ggplot(abundance.idxs, aes(x=Year, y=Value, color=Survey, fill=Survey, shape=assessment)) +
+  geom_point()+
+  geom_line()+
+  geom_ribbon(data=abundance.idxs.2023, aes(ymin=lci, ymax=uci), alpha=0.2)+
+  geom_pointrange(data=abundance.idxs.2013, aes(ymin=lci, ymax=uci), alpha=0.2)+
+  scale_x_continuous(breaks=seq(1980, 2022, 5))+
+  scale_y_continuous(breaks=seq(0, 110000, 20000), labels=scales::comma)+
+  scale_shape_manual(values=c(1, 15))+
+  coord_cartesian(expand=0, ylim=c(0, 110000))+
+  labs(
+    x="Year",
+    y="Biomass (mt)",
+    title="Shortspine Thornyhead Survey Abundance Indices",
+    fill="Survey",
+    color="Survey"
+  )+
+  scale_color_colorblind7()+
+  scale_fill_colorblind7()+
+  theme_minimal()+
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(),
+    legend.position = "bottom",
+    axis.text = element_text(size=14),
+    axis.title = element_text(size=16),
+    legend.text = element_text(size=14),
+    legend.title = element_blank()
+  )+
+  guides(color=guide_legend(nrow=2), shape="none")
+
+ggsave(file.path(here::here(), "outputs", "surveys", "2013_2023_survey_indices_comparison.png"), dpi=300, width=12, height=7)
+
+
+
 
 # Plot 2013 and 2023 surveys together as point ranges on original scale
 ggplot(abundance.idxs, aes(x=Year, y=Value, col=assessment, linetype=assessment))+
