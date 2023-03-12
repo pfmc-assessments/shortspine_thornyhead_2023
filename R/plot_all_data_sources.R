@@ -38,19 +38,19 @@ dat <- dat %>%
                         levels = c('Catch', 'Abundance indices', 'Length compositions',
                                    'Discards', 'Mean body weight'),
                         ordered = TRUE),
-         Fleet = case_when(category %in% c('Ntrawl', 'L_Ntrawl', 'D_Ntrawl', 'W_Ntrawl') ~ 'Trawl North',
-                           category %in% c('Strawl', 'L_Strawl', 'D_Strawl', 'W_Strawl') ~ 'Trawl South',
-                           category %in% c('Nother', 'L_Nother', 'D_Nother', 'W_Nother') ~ 'Non-trawl North',
-                           category %in% c('Sother', 'L_Sother', 'D_Sother', 'W_Sother') ~ 'Non-trawl South',
-                           category %in% c('AFSCTriennialSurvey1', 'L_TriennialShelf1') ~ 'AFSC Triennial Shelf Survey 1',
-                           category %in% c('AFSCTriennialSurvey2', 'L_TriennialShelf2') ~ 'AFSC Triennial Shelf Survey 2',
+         Fleet = case_when(category %in% c('Ntrawl', 'L_Ntrawl', 'D_Ntrawl', 'W_Ntrawl') ~ 'North Trawl',
+                           category %in% c('Strawl', 'L_Strawl', 'D_Strawl', 'W_Strawl') ~ 'South Trawl',
+                           category %in% c('Nother', 'L_Nother', 'D_Nother', 'W_Nother') ~ 'North Non-Trawl',
+                           category %in% c('Sother', 'L_Sother', 'D_Sother', 'W_Sother') ~ 'South Non-Trawl',
+                           category %in% c('AFSCTriennialSurvey1', 'L_TriennialShelf1') ~ 'Triennial 1 Survey',
+                           category %in% c('AFSCTriennialSurvey2', 'L_TriennialShelf2') ~ 'Triennial 2 Survey',
                            category %in% c('AFSCSlopeSurvey', 'L_AFSCSlope') ~ 'AFSC Slope Survey',
                            category %in% c('NWFSCSlopeSurvey', 'L_NWFSCSlope') ~ 'NWFSC Slope Survey',
                            category %in% c('ComboSurvey', 'L_Combo') ~ 'NWFSC Combo Survey'),
          Fleet = factor(Fleet,
-                        levels = c('Trawl North', 'Trawl South', 
-                                   'Non-trawl North', 'Non-trawl South',
-                                   'AFSC Triennial Shelf Survey 1', 'AFSC Triennial Shelf Survey 2',
+                        levels = c('North Trawl', 'South Trawl', 
+                                   'North Non-Trawl', 'South Non-Trawl',
+                                   'Triennial 1 Survey', 'Triennial 2 Survey',
                                    'AFSC Slope Survey', 'NWFSC Slope Survey', 'NWFSC Combo Survey'),
                         ordered = TRUE))
 
@@ -60,25 +60,28 @@ dat <- dat %>%
   filter(Year >= min) 
 
 dat %>% 
-  ggplot(aes(x = Year, y = Fleet, col = Fleet, fill = Fleet, shape = factor(present))) +
-  geom_point(size = 3) + 
+  ggplot(aes(x = Year, y = Fleet, color = Fleet, fill = Fleet, alpha = factor(present))) +
+  geom_point(size = 4, shape=15) + 
   facet_wrap(~Group, ncol = 1, scales = 'free_y') +
   scale_y_discrete(position = 'right', limits = rev) +
-  scale_shape_manual(values = c(1, 19)) +
+  scale_alpha_manual(values = c(0, 1)) +
   labs(x = NULL, y = NULL) +
   theme_minimal(base_size = 20) +
   theme(legend.position = 'none')
 
-ggsave('outputs/assessment_data_timeseries.png', 
+ggsave('outputs/assessment_data_timeseries.jpg', 
        bg='white', dpi=300, height=12, width=16, units="in")
 
 dat %>% 
   filter(Group == 'Abundance indices') %>% 
-  ggplot(aes(x = Year, y = Fleet, col = Fleet, fill = Fleet, shape = factor(present))) +
-  geom_point(size = 5) + 
+  ggplot(aes(x = Year, y = Fleet, col = Fleet, fill = Fleet, alpha = factor(present))) +
+  geom_point(size = 5, shape=15) + 
   # facet_wrap(~Group, ncol = 1, scales = 'free_y') +
   scale_y_discrete(position = 'right', limits = rev) +
-  scale_shape_manual(values = c(1, 19)) +
+  scale_alpha_manual(values = c(0, 1)) +
   labs(x = NULL, y = NULL) +
   theme_minimal(base_size = 20) +
   theme(legend.position = 'none')
+
+ggsave('outputs/assessment_data_timeseries_surveys.jpg', 
+       bg='white', dpi=300, height=3, width=11, units="in")
