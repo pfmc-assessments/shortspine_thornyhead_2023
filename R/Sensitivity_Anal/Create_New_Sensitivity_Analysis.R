@@ -18,7 +18,7 @@
 #'    (\code{topic}, \code{object}, \code{author}, ...)
 #' 3. Update the "Summary_Sensitivity_analysis.pdf" file housed in the root folder.
 #' 4. Update the "Models_Sensitivity_analysis.pdf" file housed in the root folder.
-#' 
+#' 5. Generate SA-specific templates for the scripts to build and analyze the models.
 #'    
 #' @param topic (character string)- Indicates the main topic of the sensitivity 
 #' analysis. This HAS to be either"transition",  "landings", "discards", "surveys",
@@ -80,6 +80,16 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 
 # 2. Set up a new sensitivity analysis ----
 # ---------------------------------------------------------- #
+
+# topic = "transition"
+# object = c("Param fixed", "Param estimated")
+# author = "Matthieu VERON"
+# folder_name = "Bridging_models"
+# script_model = "Bridging_models_Analyses"
+# script_results = "Bridging_models_Outputs"
+# base_model = c("23.sq.fixQ")
+# new_model = c("23.sq.fix","23.sq.est")
+
 
 NewSensAnal(topic = "transition",
             object = c("Param fixed", "Param estimated"),
