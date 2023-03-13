@@ -14,7 +14,7 @@ rm(list = ls(all.names = TRUE))
 
 updateKableExtra <- FALSE # Needed the first time
 if(updateKableExtra)
-  devtools::install_github(repo="haozhu233/kableExtra", ref="a6af5c0")
+  devtools::install_github(repo="haozhu233/kableExtra", ref="a6af5c0", force = TRUE)
 library(kableExtra)
 
 # Local declarations ----
@@ -78,8 +78,10 @@ if(!file.exists(file.path(dir_SensAnal, "Summary_Sensitivity_analysis.pdf", fsep
                            "path")
 
   # Create the Summary_Sensitivity_analysis.pdf file that summarizes all SA
+  # environment(update_SA_table) <- environment()
   suppressMessages(SumUp <- update_SA_table(SumUp = SumUp, dir_SensAnal = dir_SensAnal))
   cat("\n The Summary_Sensitivity_analysis.pdf file has been created.\n")
+  
   SumUp <- SumUp[1,]
   SumUp <- SumUp  %>% 
     dplyr::mutate(Author = "The team",

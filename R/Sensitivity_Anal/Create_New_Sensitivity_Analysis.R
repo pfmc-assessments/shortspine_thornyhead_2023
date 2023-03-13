@@ -81,16 +81,6 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 # 2. Set up a new sensitivity analysis ----
 # ---------------------------------------------------------- #
 
-# topic = "transition"
-# object = c("Param fixed", "Param estimated")
-# author = "Matthieu VERON"
-# folder_name = "Bridging_models"
-# script_model = "Bridging_models_Analyses"
-# script_results = "Bridging_models_Outputs"
-# base_model = c("23.sq.fixQ")
-# new_model = c("23.sq.fix","23.sq.est")
-
-
 NewSensAnal(topic = "transition",
             object = c("Param fixed", "Param estimated"),
             author = "Matthieu VERON",

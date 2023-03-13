@@ -685,12 +685,12 @@ NewSensAnal <- function(topic = NULL,
   out <- file.path(dirScript_SensAnal, script_model, fsep = fsep)
   write_SA_files(out = out, do_model = TRUE)
   cat("- The",paste0("'",script_model,"'")," file has been created in the",
-      paste0("'",dirScript_SensAnal,"'"),"folder.")
+      paste0("'",dirScript_SensAnal,"'"),"folder.\n")
   
   out <- file.path(dirScript_SensAnal, script_results, fsep = fsep)
   write_SA_files(out = out, do_results = TRUE)
   cat("- The",paste0("'",script_results,"'")," file has been created in the",
-      paste0("'",dirScript_SensAnal,"'"),"folder.")
+      paste0("'",dirScript_SensAnal,"'"),"folder.\n")
   # ========================================================
 
   # 8. Update SA_info ----
