@@ -89,11 +89,11 @@ plot_dat %>%
   mutate(SEX = case_when(SEX == 'F' ~ 'Female',
                          SEX == 'M' ~ 'Male',
                          SEX == 'U' ~ 'Unsexed')) %>%
-ggplot(aes(x = lengthcm, fill = fleet)) +
-  geom_histogram(position = "identity", alpha = 0.5, binwidth = 2) +
-  #geom_vline(data = fleetmeans, 
-  #           aes(xintercept = modelength, col = fleet, lty = fleet),
-  #           size = 1) +
+ggplot(aes(x = lengthcm, fill = fleet, col = fleet)) +
+  geom_density(position = "identity", alpha = 0.5, binwidth = 2) +
+  geom_vline(data = fleetmeans, 
+             aes(xintercept = modelength, col = fleet, lty = fleet),
+             size = 2) +
   scale_fill_colorblind7() +
   scale_color_colorblind7() +
   labs(x = "Length (cm)", y = "", fill = 'Fleet', col = 'Fleet', lty = 'Fleet') +
