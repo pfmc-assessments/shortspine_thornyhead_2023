@@ -265,7 +265,8 @@ disc_weight %>%
   scale_color_manual(values = c( "#F0E442","#E69F00", "#56B4E9","#009E73")) +
   labs(x = "Year", y = "Weight (kg)", color="Fleet", title = "Shortspine Thornyhead Observed Average Weight (kg, WCGOP)") + 
   theme_bw() +
-  theme(legend.position = "right", axis.text = element_text(size=14)) +
+  theme(legend.position = "right", legend.text=element_text(size=12),
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14)) +
   facet_wrap(~fleet)
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_avgweight.png", dpi=300, height=7, width=10, units='in')
