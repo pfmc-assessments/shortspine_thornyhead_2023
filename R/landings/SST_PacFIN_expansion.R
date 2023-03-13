@@ -85,11 +85,15 @@ ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps2.png", dpi=300, height=
 ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps3.png", dpi=300, height=7, width=10, units='in')
 
 # aggregate fishery length distributions 
-ggplot(plot_dat, aes(x = lengthcm, fill = fleet)) +
+plot_dat %>%
+  mutate(SEX = case_when(SEX == 'F' ~ 'Female',
+                         SEX == 'M' ~ 'Male',
+                         SEX == 'U' ~ 'Unsexed')) %>%
+ggplot(aes(x = lengthcm, fill = fleet)) +
   geom_histogram(position = "identity", alpha = 0.5, binwidth = 2) +
   scale_fill_colorblind7() +
   scale_color_colorblind7() +
-  xlab("Length (cm)") + ylab(" ") +
+  labs(x = "Length (cm)", y = "", fill = 'Fleet', col = 'Fleet', lty = 'Fleet') +
   facet_wrap(~ SEX, ncol = 1) + 
   theme_classic()
 
