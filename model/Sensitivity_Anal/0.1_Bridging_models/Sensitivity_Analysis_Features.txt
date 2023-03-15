@@ -4,34 +4,38 @@
 # 
 # *** 
 # Topic of the sensitivity analysis:  transition 
-# Specific item in that topic:  Param fixed Param estimated 
+# Specific item in that topic:  All Param fixed Floating Q All Param estimated 
 # Author:  Matthieu VERON 
-# Date: 2023-03-13 12:49:00 
+# Date: 2023-03-14 20:38:28 
 # Sensitivity Analysis ID: Item 0.1 
 # Names of the models created:
 # -  23.sq.fix 
+# -  23.sq.floatQ 
 # -  23.sq.est 
 # *** 
 # 
-# This analysis has been developped based on the following models: 
+# This analysis has been developed based on the following models: 
 # New model 	 Base model
 # 23.sq.fix 	 23.sq.fixQ 
+# 23.sq.floatQ 	 23.sq.fixQ 
 # 23.sq.est 	 23.sq.fixQ 
 # 
 # Results are stored in the following foler: 
 #	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/model/Sensitivity_Anal/0.1_Bridging_models 
 # Name of the script used to build the new model: 
-#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/Sensitivity_Anal/0.1_Bridging_models_Analyses.R .R
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/0.1_Bridging_models_Analyses.R .R
 # Name of the script used to analyze the results from this model: 
-#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/Sensitivity_Anal/0.1_Bridging_models_Outputs.R .R
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/0.1_Bridging_models_Outputs.R .R
 # 
 # General features: 
-# Revisiting the transition of the 2013 model considering i) a model where all the parameters are fixed to their estimated value from the 2013 assessment and ii) a second model where these parameters are freely estimated (those that were estimated in the 2013 assessment). 
+# Revisiting the transition of the 2013 model. For the transition, the model created was based on the 2013 model except that the catchability parameters were set to the “estimated” value from the 2013 assessment (which used a floating approach by setting Q as a scaling factor such that the estimate is median unbiased). Three models are developed here: i) a model where all the parameters are fixed to their estimated value from the 2013 assessment, ii) a second model which consider a floating approach for Q (i.e., an analytical solution is used and Q is not estimated as an active parameter) and iii) a third model where all parameters are freely estimated (Q included). 
 # 
 # Model features:
 # - Model 23.sq.fix:
 # Model with all parameters fixed to their values as estimated in the 2013 assessment. 
+# - Model 23.sq.floatQ:
+# Model with floating Q (i.e., not an active parameter) – other parameters estimated. 
 # - Model 23.sq.est:
-# Model where parameters that were estimated in the 2013 assessment are freely estimated, using the same initial values, bounds and prior. 
+# Model where all parameters are freely estimated (as in the 2013 assessment), including Q. 
 # ============================================================ #
 
