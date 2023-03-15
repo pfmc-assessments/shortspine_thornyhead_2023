@@ -12,10 +12,11 @@
   # Ideas for best ways to do this?
 
 # packages
-  library(FSA)
+  library(FSA) # used to get lencat() function, but could probably figure this 
+                # this out without the package
 
 
-# Read in data from local computer?
+# Read in data from local computer? Ideas?
 data <- read.csv("C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturitydata_forassessment03152023.csv") #put data set in here
 
 names(data) # lengths in cm; maturity, 0=immature, 1=mature
@@ -25,6 +26,8 @@ unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
 data<-data[data$Certainty==1,] #filter only data where maturity is certain
 
 # choose maturity type here (biological or functional or other)
+# Biological_maturity: 
+# Functional_maturity:
 mat.df<- data.frame(length = data$Length, 
                     maturity = data$Biological_maturity) 
 
@@ -32,26 +35,25 @@ mat.df<-mat.df[complete.cases(mat.df$maturity),]
 
 
 # visualize the data
-plot(maturity~length, data=mat.df)
-hist(mat.df$length)
+plot(maturity~length, data=mat.df, pch="l", ylim=c(0,1), las=1)
+#hist(mat.df$length)
 
 # visualize proportion of fish mature by length bin
 # set size of length bins with w =
-mat.df <- lencat(~length,data=mat.df,startcat=10,w=2) 
+mat.df <- lencat(~length,data=mat.df,startcat=10,w=2) #from FSA package
 
 tblLen <- with(mat.df,table(LCat,maturity))
 ptblLen <- prop.table(tblLen,margin=1)
 ptblLen[1:6,] # only 1st 6 rows to save space
 
 lens <- as.numeric(rownames(ptblLen))
-plot(ptblLen[,"1"]~lens,pch=16,xlab="Length (cm)",ylab="Proportion Mature", ylim=c(0,1), las=1)
+plot(ptblLen[,"1"]~lens,pch=16,xlab="Length (cm) - binned",ylab="Proportion Mature", ylim=c(0,1), las=1)
 
 
 
 # Very basic glm maturity analysis (from M. Head)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# NOTES: This section is not working....
-# possibly a - sign somewhere or coefs are mixed up?
+# NOTES: All of this needs to be checked!
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 maturityglm <- glm (maturity ~ 1 + length, data = mat.df,  #why 1 + length??
@@ -93,9 +95,10 @@ lens <- seq(6, 72, 2)
 #matatlength <- data.frame(length = lens) %>% 
 #  mutate(pmat = 1 / (1 + exp(a + b * length)))
 
-#does this work? Yes, why?
+# does this work? yes, why? added a negative sign
+# need to check this
 matatlength <- data.frame(length = lens) %>% 
-  mutate(pmat = exp(a + b * length) / (1 + exp(a + b * length)))
+  mutate(pmat = 1 / (1 + exp(-(a + b * length))))
 
 ggplot(matatlength, aes(x = length, y = pmat)) +
   geom_line() + 
@@ -109,3 +112,12 @@ ggplot(matatlength, aes(x = length, y = pmat)) +
 # is there a way to add the data to the plot? I've seen this as hash marks
 # on top and bottom. I've also seen plotted proportions at length by length bins,
 # although that can sometimes be confusing as to what data the curve is fit to.
+
+# Next steps...
+
+# Discuss with M. Head which maturity data to use
+  #functional vs biological?
+  #certain vs uncertain data?
+
+# Compare to Pearson and Gunderson 2003 maturity information used in the 
+# 2013 assessment
