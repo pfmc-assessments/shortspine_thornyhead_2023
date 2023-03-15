@@ -8,6 +8,103 @@ ac <- function(x){return(as.character(x))}
 af <- function(x){return(as.factor(x))}
 
 
+#' 0. Function to Create a dialogue box ----
+#' ----------------------------------------------------------- #
+#' 
+#' @param message (character string)- Message to print in the dialogue box
+#' @param type (character string)- Type of box
+#' 
+#' @return "yes", "no", "ok", "cancel"
+#
+# RStudio version (need at least version 1.1.67)
+# No yesnocancel box => ask in two stages (ugly, but what to do?)
+DialogBox <- function(message, type = c("ok", "okcancel", "yesno",
+                                        "yesnocancel")) {
+  if (rstudioapi::getVersion() < '1.1.67')
+    return(NULL)
+  type <- match.arg(type)
+  if (type == "ok") {
+    alarm()
+    rstudioapi::showDialog(title = "R Message", message = message,
+                           url = "")
+    return(invisible("ok"))
+  } else if (type == "yesnocancel") {
+    type <- "yesno"
+    confirm <- TRUE
+  } else confirm <- FALSE
+  # Now, we have only "okcancel" or "yesno"
+  if (type == "okcancel") {
+    res <- rstudioapi::showQuestion(title = "R Question", message = message,
+                                    ok = "OK", cancel = "Cancel")
+    if (res) res <- "ok" else res <- "cancel"
+  } else {
+    res <- rstudioapi::showQuestion(title = "R Question", message = message,
+                                    ok = "Yes", cancel = "No")
+    if (res) res <- "yes" else res <- "no"
+  }
+  # Do we ask to continue (if was yesnocancel)?
+  if (confirm) {
+    res2 <- rstudioapi::showQuestion(title = "R Question",
+                                     message = "Continue?", ok = "Yes", cancel = "No")
+    if (!res2) res <- "cancel"
+  }
+  res
+}
+# ----------------------------------------------------------
+
+#' 0.1 Function to ask the user if he wants to restart from scratch the SA ----
+#' ----------------------------------------------------------- #
+#' @details
+#' This offers the user the possibility to copy again from the base model directory
+#' one or several SS input files. This is useful if a new input file has already been
+#' implemented and the user wants to make new modifications starting on the same
+#' basis of input values.
+#'
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
+#' @return copy one or several SS input files based on the base model, the new model
+#' and the SS file asked.
+#
+Restart_SA_modeldvpt <- function() {
+  mess1 <-
+    "Do you want rebuild from scratch one (or several) SS input file(s) for this sensitivity analysis?
+This ensures that you start from the same basis as your base model if you already have
+written one or several new input files for your new model."
+  restart <- DialogBox(message = mess1, type = 'yesno')
+  
+  if (restart == 'yes') {
+    title <- "Name of the base model"
+    mess2 <- "Please indicate the name of your base model."
+    modelBase <-
+      rstudioapi::showPrompt(title, message = mess2, default = "(e.g., 23.sq.fixQ)")
+    if (!is.null(modelBase)) {
+      title <- "Name of the new model"
+      mess3 <-
+        "Please indicate the name of the model you're currently developing."
+      modelDvpt <-
+        rstudioapi::showPrompt(title, message = mess3, default = "(e.g., 23.sq.fix)")
+    }
+    if (!is.null(modelDvpt)) {
+      title <- "Stock Synthesis Input files"
+      
+      mess4 <-
+        paste(
+          "Please indicate the SS input file(s) you would like to copy from the your base model:",
+          modelBase,
+          ". Options are: 'starter','control', 'data','forecast', or 'all'"
+        )
+      SSfiles <-
+        rstudioapi::showPrompt(title, message = mess4, default = "(e.g., control)")
+    }
+    if (!is.null(SSfiles))
+      copy_BaseModel_SSinputs(base_model = modelBase,
+                              Dvpt_model = modelDvpt,
+                              SS_file = SSfiles)
+  }
+}
+# ----------------------------------------------------------
+
 
 #' 1. Function to update the SA table ----
 #' ----------------------------------------------------------- #
@@ -16,7 +113,12 @@ af <- function(x){return(as.factor(x))}
 #' @param dir_SensAnal (character string)- path to the Sensitivity Analysis 
 #' folder.
 #
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
 update_SA_table <- function(SumUp, dir_SensAnal) {
+  # local declarations
+  fsep <- .Platform$file.sep
   
   Topic <- data.frame(
     Topic = c(
@@ -105,7 +207,7 @@ update_SA_table <- function(SumUp, dir_SensAnal) {
   table <- table %>% 
     footnote(general = "\nHere is a general comments where to find scripts, folders, and models. \n",
              alphabet = c("The **Folder** is housed in the 'model/Sensitivity_Anal' repertory; \n",
-                          "The scripts are housed in the 'R/Sensitivity_Anal' repertory; \n",
+                          "The scripts are housed in the 'R/ss/Sensitivity_Anal' repertory; \n",
                           "The models are housed in the 'model/Sensitivity_Anal/**Folder**' repertory"),
              footnote_as_chunk = T)
   
@@ -124,7 +226,12 @@ update_SA_table <- function(SumUp, dir_SensAnal) {
 #' @param dir_SensAnal (character string)- path to the Sensitivity Analysis 
 #' folder.
 #
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
 update_Models_SA_table <- function(Models_SA, dir_SensAnal) {
+  # local declarations
+  fsep <- .Platform$file.sep
   
   Topic <- data.frame(
     Topic = c(
@@ -240,6 +347,9 @@ update_Models_SA_table <- function(Models_SA, dir_SensAnal) {
 #' @param new_model (character string)- name of the model you're gonna develop for
 #' this analysis.
 #' 
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
 #' @details
 #' The function creates:
 #' 1. one folder named as \code{folder_name} in the 
@@ -269,7 +379,7 @@ NewSensAnal <- function(topic = NULL,
   dir_model <- file.path(here::here(), "model", fsep = fsep)
   dir_script <- file.path(here::here(), "R", fsep = fsep)
   dir_SensAnal <- file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
-  dirScript_SensAnal  <- file.path(dir_script, "Sensitivity_Anal", fsep = fsep)
+  dirScript_SensAnal  <- file.path(dir_script, "ss", "Sensitivity_Anal", fsep = fsep)
   
   # load the SA_info dataframe
   load(file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))
@@ -334,6 +444,12 @@ NewSensAnal <- function(topic = NULL,
     cat('\n')
     cat('=> The "object" argument is dentic for several models. Please indicate a
  specific item for each model.\n')
+    stop()
+  } else if(length(new_model) < length(unique(object))){
+    cat('\n')
+    cat('=> The number of "object" argument is lower than the numbder of models.
+ Please provide an object for all models you are going to develop for this sensitivity
+ analysis..\n')
     stop()
   }
   if(is.null(author)){
@@ -463,7 +579,7 @@ NewSensAnal <- function(topic = NULL,
   WD <- file.path(dir_SensAnal, folder_name, fsep = fsep)
   if(dir.exists(WD)){ # double check
     cat("The specified folder name (",folder_name,") already exist for a sensitivity
- analysis. Please set another name.\n")
+ analysis. Please set another name.\n",sep="")
     stop()
   } else {
     dir.create(WD)
@@ -565,67 +681,14 @@ NewSensAnal <- function(topic = NULL,
   out <- file.path(WD, "Sensitivity_Analysis_Features.txt", fsep = fsep)
   
   environment(write_SA_files) <- environment()
-  
   write_SA_files(out = out)
-  cat("- The 'Sensitivity_Analysis_Features.txt' file has been created in the",
-      paste0("'",folder_name,"'"),"folder.")
-  
-  
-  # fs::file_create(path = out)
-  # base::sink(out)
-  # cat("# ============================================================ #\n")
-  # cat("#              Sensitivity analysis description \n")
-  # cat("# ============================================================ #\n")
-  # cat("# \n")
-  # cat("# *** \n")
-  # cat("# Topic of the sensitivity analysis: ", topic, "\n")
-  # cat("# Specific item in that topic: ", object, "\n")
-  # cat("# Author: ", author, "\n")
-  # cat("# Date:", timeSA, "\n")
-  # cat("# Sensitivity Analysis ID:", SA_ID, "\n")
-  # if (length(new_model) > 1) {
-  #   cat("# Names of the models created:\n")
-  #   for(m in 1:length(new_model))
-  #     cat("# - ", new_model[m], "\n")
-  # } else {
-  #   cat("# Name of the model created:", new_model, "\n")
-  # }
-  # cat("# *** \n")
-  # cat("# \n")
-  # if (length(new_model) > 1) {
-  #   cat("# This analysis has been developed based on the following models: \n")
-  #   cat("# New model \t Base model\n")
-  #   for(m in 1:length(new_model))
-  #     cat("#", new_model[m], "\t",base_model[m],"\n")
-  # } else {
-  #   cat("# This analysis has been developed based on the following model: ", base_model, "\n")
-  # }
-  # cat("# \n")
-  # cat("# Results are stored in the following foler: \n")
-  # cat("#\t", file.path(dir_SensAnal,folder_name,fsep = fsep), "\n")
-  # cat("# Name of the script used to build the new model: \n")
-  # cat("#\t",file.path(dirScript_SensAnal,script_model, fsep = fsep), ".R\n")
-  # cat("# Name of the script used to analyze the results from this model: \n")
-  # cat("#\t",file.path(dirScript_SensAnal,script_results, fsep = fsep), ".R\n")
-  # cat("# \n")
-  # if(length(new_model) > 1){
-  #   cat("# General features: \n")
-  #   cat("#",Features,"\n")
-  #   cat("# \n")
-  #   cat("# Model features:")
-  #   # cat("#", Mod_Feat, "\n")
-  #   cat(Mod_Feat)
-  # } else {
-  #   cat("# Features: \n")
-  #   cat(Features)
-  # }
-  # cat("\n")
-  # base::sink()
+  cat("=> The 'Sensitivity_Analysis_Features.txt' file has been created in the",
+      paste0("'",folder_name,"'"),"folder.\n")
   # ========================================================
 
   # 5. Update the "Summary_Sensitivity_analysis.pdf" ----
   # ======================================================== #
-  cat("- Now updating the 'Summary_Sensitivity_analysis.pdf' file.\n")
+  cat("=> Now updating the 'Summary_Sensitivity_analysis.pdf' file.\n")
   SumUp <- SumUp %>% 
     tibble::add_row('SA number' = SA_ID,
             Topic = topic,
@@ -643,7 +706,7 @@ NewSensAnal <- function(topic = NULL,
   
   # 6. Update the "Models_Sensitivity_analysis.pdf" ----
   # ======================================================== #
-  cat("- Now updating the 'Models_Sensitivity_analysis.pdf' file.\n")
+  cat("=> Now updating the 'Models_Sensitivity_analysis.pdf' file.\n")
   cat("Please provide a short description for each model you're gonna implement.
 \t => Refer to the 'Models_Sensitivity_analysis.pdf' for example.")
 
@@ -711,6 +774,9 @@ NewSensAnal <- function(topic = NULL,
 #' @param do_results (logical)- if \code{TRUE}, the function will build the 
 #' template script to analyze (plot) the models considered in the SA. \code{default = FALSE}
 #' 
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
 #' @details 
 #' By default the function is set to build the 'Sensitivity_Analysis_Features.txt'
 #' file.
@@ -730,6 +796,10 @@ write_SA_files <- function(out = NULL,
   #' template script to analyze (plot) the models considered in the SA. \code{default = FALSE}
   #' @param ModcompWARNING (logical)- Does the base model exist before the development 
   #' of the new model?
+  #' 
+  #' @author Matthieu Veron
+  #  Contact: mveron@uw.edu
+  #'
   #' @details 
   #' By default the function is set to build the 'Sensitivity_Analysis_Features.txt'
   #' file.
@@ -822,24 +892,19 @@ write_SA_files <- function(out = NULL,
     cat("# Useful function\n")
     cat("source(file=file.path(dir_script,'utils','clean_functions.R', fsep = fsep))\n")
     cat("source(file=file.path(dir_script,'utils','ss_utils.R', fsep=fsep))\n")
+    cat("source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=fsep))\n")
     cat("\n")
     cat("# Save directories and function\n")
-    cat("# save.dir <- c('dir_model', 
+    cat("# var.to.save <- c('dir_model', 
         # 'Exe_path',
         # 'dir_script',
         # 'dir_SensAnal')","\n")
-    cat("save.dir <- ls()\n")
+    cat("var.to.save <- ls()\n")
     cat("# -----------------------------------------------------------","\n")
     cat("\n")
   }
   
-  
-  
-  
-  
-  
-  
-  
+
   # timeSA <- as.character(Sys.time())
   
   fs::file_create(path = out)
@@ -882,7 +947,7 @@ write_SA_files <- function(out = NULL,
   cat("# *** \n")
   cat("# \n")
   if (length(new_model) > 1) {
-    cat("# This analysis has been developped based on the following models: \n")
+    cat("# This analysis has been developed based on the following models: \n")
     cat("# New model \t Base model\n")
     for(m in 1:length(new_model))
       cat("#", new_model[m], "\t",base_model[m],"\n")
@@ -920,97 +985,11 @@ write_SA_files <- function(out = NULL,
   }
   
   if(do_model){
-    # cat("# ------------------------------------------------------------ #\n")
-    # cat("# ------------------------------------------------------------ #\n")
-    # cat("\n")
-#     cat("# This script holds the code used to develop the models considered in this sensitivity analysis.\n")
-#     cat("# For each model, the base model is modified using the r4ss package. 
-# The new input files are then written in the root directory of each model and the 
-# model outputs are stored in the '/run/' folder housed in that directory.\n")
-#     cat("# The results of this sensitivity analysis are analyzed using the following script:\n")
-#     cat("#",file.path(dirScript_SensAnal,script_results, fsep = fsep),"\n")
-#     cat("\n")
-#     
-#     if(ModcompWARNING){
-#       cat("# *************************************\n")
-#       cat("# ---           WARNINGS            ---\n")
-#       cat("# *************************************\n")
-#       cat("# \n")
-#       warnMod_New <- Modcomp[which(Modcomp$warning==1), "new_model"]
-#       warnMod_Base <- Modcomp[which(Modcomp$warning==1), "base_model"]
-#       cat("# => The base model(s) you specified for the following new model(s):\n")
-#       cat("# \t", paste(warnMod_New, collapse = ", "), "\n")
-#       cat("# do(es) not exist yet. This means you'll have to start by developing its/their own base model before creating your new model !!!!\n")
-#       cat("# Specifically, you must first develop the following model(s):\n")
-#       cat("# \t", paste(warnMod_Base, collapse = ", "), "\n")
-#       cat("# \n")
-#       cat("# *************************************\n")
-#       cat("# *************************************\n")
-#       cat("\n")
-#     }
-    
-    # cat("# ------------------------------------------------------------ #\n")
-    # cat("# ------------------------------------------------------------ #\n")
-    # cat("\n")
-    # cat("\n")
-    # cat("rm(list = ls(all.names = TRUE))","\n")
-    # cat("\n")
-    # cat("# 1. Update r4ss ----\n")
-    # cat("\n")
-    # cat("update <- FALSE","\n")
-    # cat("\n")
-    # cat("if (update) {","\n")
-    # cat("# Indicate the library directory to remove the r4ss package from\n")
-    # cat("mylib <- '~/R/win-library/4.1'","\n")
-    # cat("remove.packages('r4ss', lib = mylib)","\n")
-    # cat("# Install r4ss from GitHub","\n")
-    # cat("remotes::install_github('r4ss/r4ss')","\n")
-    # cat("}","\n")
-    # cat("# -----------------------------------------------------------","\n")
-    # cat("\n")
-    # cat("# 2. Set up ----","\n")
-    # cat("\n")
-    # cat("rm(list = ls(all.names = TRUE))","\n")
-    # cat("# Local declaration","\n")
-    # cat("fsep <- .Platform$file.sep #easy for file.path() function","\n")
-    # cat("\n")
-    # cat("# packages","\n")
-    # cat("library(r4ss)","\n")
-    # cat("library(dplyr)","\n")
-    # cat("library(reshape2)","\n")
-    # cat("library(stringr)","\n")
-    # cat("\n")
-    # cat("# Directories","\n")
-    # cat("# Path to the model folder","\n")
-    # cat("dir_model <- file.path(here::here(), 'model', fsep = fsep)\n")
-    # cat("\n")
-    # cat("# Path to the Executable folder","\n")
-    # cat("Exe_path <- file.path(dir_model, 'ss_executables')","\n")
-    # cat("\n")
-    # cat("# Path to the R folder","\n")
-    # cat("dir_script <- file.path(here::here(), 'R', fsep = fsep)\n")
-    # cat("\n")
-    # cat("# Path to the Sensitivity analysis folder","\n")
-    # cat("dir_SensAnal <- file.path(dir_model, 'Sensitivity_Anal', fsep = fsep)\n")
-    # cat("\n")
-    # cat("# Useful function\n")
-    # cat("source(file=file.path(dir_script,'utils','clean_functions.R', fsep = fsep))\n")
-    # cat("source(file=file.path(dir_script,'utils','ss_utils.R', fsep=fsep))\n")
-    # cat("\n")
-    # cat("# Save directories and function\n")
-    # cat("# save.dir <- c('dir_model', 
-    #     # 'Exe_path',
-    #     # 'dir_script',
-    #     # 'dir_SensAnal')","\n")
-    # cat("save.dir <- ls()\n")
-    # cat("# -----------------------------------------------------------","\n")
-    # cat("\n")
-    
-
-
     
     for(m in 1:dim(Modcomp)[1]){
       Dirmod <- NULL
+      ModelName <- Modcomp[m,"new_model"]
+
       cat("# ", paste0(stp,"."), "Developing model", Modcomp[m,"new_model"]," ----\n")
       cat("# ----------------------------------------------------------- #\n")
       cat("\n")
@@ -1021,8 +1000,24 @@ write_SA_files <- function(out = NULL,
       cat(paste0("Dir_",gsub('\\.', '_', Modcomp[m,"new_model"])), "<- file.path(dir_SensAnal,",
           paste0("'",paste(tmp[2],tmp[3], sep="','"),"'"),",fsep = fsep)\n")
       Dirmod <- paste0("Dir_",gsub('\\.', '_', Modcomp[m,"new_model"]))
+      cat("\n")
       cat("# Add the model directory to the saved variables\n")
-      cat("save.dir <- c(save.dir,",paste0("'",Dirmod,"')"),"\n")    
+      cat("var.to.save <- c(var.to.save,",paste0("'",Dirmod,"')"),"\n")    
+      cat("\n")
+      cat("\n")
+      ext <- gsub(pattern = "\\.", replacement = "_", x = ModelName)
+      ext <- paste0(c("Start", "Dat", "Ctl", "Fore"), ext)
+      namFiles <- c("Starter file", "Data file", "Control file", "Forecast file")
+      cat("# For each SS input file, the following variable names will be used:\n")
+      for(m in 1:4)
+        cat("#", namFiles[m], ifelse(m==2,yes = ":\t\t\t\t\t",no = ":\t\t\t"), ext[m], "\n")
+      cat("\n")
+      cat("\n")
+      cat("# Do you want to copy the SS input files from the base model?\n")
+      cat("# This is useful if you already write a new SS input file for you new model\n")
+      cat("# and need to modify it. It ensure to start again from scratch and get the same\n") 
+      cat("# basis of comparison.\n")
+      cat("Restart_SA_modeldvpt()\n")
       cat("\n")
       cat("\n")
       
@@ -1032,8 +1027,10 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Read in the file\n")
       cat("StarterFile <-",paste0("file.path(",Dirmod,","),"'starter.ss', fsep = fsep)\n")
-      cat("Starter <- SS_readstarter(file = StarterFile,
-          verbose = TRUE)\n")
+      cat(ext[1],"<- SS_readstarter(
+      file = StarterFile,
+      verbose = TRUE
+      )\n")
       cat("\n")
       cat("# Make your modification if applicable\n")
       cat("# Code modifying the starter file\n")
@@ -1042,19 +1039,22 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("\n")
       cat("# Save the starter file for the model\n")
-      cat("SS_writestarter(
-        mylist = Starter,
-        dir = ",paste0(Dirmod,","),"
-        overwrite = TRUE,
-        verbose = TRUE
-      )\n")
+      cat("# SS_writestarter(
+      # mylist = ",ext[1],",
+      # dir = ",paste0(Dirmod,","),"
+      # overwrite = TRUE,
+      # verbose = TRUE
+      # )\n")
       cat("\n")
       cat("# Check file structure\n")
-      cat("StarterFile <-",paste0("file.path(",Dirmod,","),", 'starter.ss')\n")
-      cat("Starter <- SS_readstarter(file = StarterFile, verbose = TRUE)\n")
+      cat("# StarterFile <-",paste0("file.path(",Dirmod,","),"'starter.ss')\n")
+      cat("# ",ext[1],"<- SS_readstarter(
+      # file = StarterFile, 
+      # verbose = TRUE
+      # )\n")
       cat("\n")
       cat("# clean environment\n")
-      cat("var.to.save <- c(save.dir, 'Starter')\n")
+      cat("var.to.save <- c(var.to.save, '",ext[1],"')\n", sep = "")
       cat("rm(list = setdiff(ls(), var.to.save))\n")
       cat("var.to.save <- ls()\n")
       cat("# =======================")
@@ -1066,12 +1066,12 @@ write_SA_files <- function(out = NULL,
       cat("# ======================= #")
       cat("\n")
       cat("# Read in the file\n")
-      cat("DatFile <-",paste0("file.path(",Dirmod,","),"Starter$datfile, fsep = fsep)\n")
-      cat("
-      dat <-
-        SS_readdat_3.30(file = DatFile,
-                        verbose = TRUE,
-                        section = TRUE)\n")
+      cat("DatFile <-",paste0("file.path(",Dirmod,","),ext[1],"$datfile, fsep = fsep)\n",sep="")
+      cat(ext[2], "<- SS_readdat_3.30(
+      file = DatFile,
+      verbose = TRUE,
+      section = TRUE
+      )\n")
       cat("\n")
       cat("# Make your modification if applicable\n")
       cat("# Code modifying the data file \n")
@@ -1080,21 +1080,24 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("\n")
       cat("# Save the data file for the model\n")
-      cat("SS_writedat(
-        datlist = dat,
-        outfile =",paste0("file.path(",Dirmod,","),"'SST_data.ss', fsep = fsep),
-        version = '3.30',
-        overwrite = TRUE
-      )\n")
-      
-      cat("# Check file structure ----\n")
-      cat("DatFile <-",paste0("file.path(",Dirmod,","),"'SST_data.ss', fsep = fsep)\n")
-      cat("SSTdat_V330 <-
-        SS_readdat_3.30(file = DatFile,
-                        verbose = TRUE,
-                        section = TRUE)\n")
-      
-      # clean environment\n")
+      cat("# SS_writedat(
+      # datlist = ",ext[2],",
+      # outfile =",paste0("file.path(",Dirmod,","),"'SST_data.ss', fsep = fsep),
+      # version = '3.30',
+      # overwrite = TRUE
+      # )\n")
+      cat("\n")
+      cat("# Check file structure\n")
+      cat("# DatFile <-",paste0("file.path(",Dirmod,","),"'SST_data.ss', fsep = fsep)\n")
+      cat("# ",ext[2],"<-
+      # SS_readdat_3.30(
+      # file = DatFile,
+      # verbose = TRUE,
+      # section = TRUE
+      # )\n")
+      cat("\n")
+      cat("# clean environment\n")
+      cat("var.to.save <- c(var.to.save, '",ext[2],"')\n", sep = "")
       cat("rm(list = setdiff(ls(), var.to.save))\n")
       cat("var.to.save <- ls()\n")
       cat("# =======================")
@@ -1107,17 +1110,17 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# The SS_readctl_3.30() function needs the 'data_echo.ss_new' file to read the control file
 # This file is created while running SS. You may have had a warning when building
-# this script. Please check that the existance of the 'data_echo.ss_new' file
+# this script. Please check that the existence of the 'data_echo.ss_new' file
 # in the 'run' folder of your new model.\n")
       cat("\n")
       cat("# Read in the file\n")
-      cat("Ctlfile <-",paste0("file.path(",Dirmod,","),"Starter$ctlfile, fsep = fsep)\n")
+      cat("Ctlfile <-",paste0("file.path(",Dirmod,","),ext[1],"$ctlfile, fsep = fsep)\n", sep="")
       
-      cat("ctl <- SS_readctl_3.30(
-        file = Ctlfile,
-        use_datlist = TRUE,
-        datlist =",paste0("file.path(",Dirmod,","),"'run','data_echo.ss_new', fsep = fsep),
-        verbose = TRUE
+      cat(ext[3],"<- SS_readctl_3.30(
+      file = Ctlfile,
+      use_datlist = TRUE,
+      datlist =",paste0("file.path(",Dirmod,","),"'run','data_echo.ss_new', fsep = fsep),
+      verbose = TRUE
       )\n")
       cat("\n")
       cat("# Make your modification if applicable\n")
@@ -1127,16 +1130,18 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("\n")
       cat("# Save the control file for the model\n")
-      cat("SS_writectl(
-        ctllist = ctl,
-        outfile =",paste0("file.path(",Dirmod,","),"'SST_control.ss'),
-        version = '3.30',
-        overwrite = TRUE
-      )\n")
-      cat("# Check file structure ----\n")
+      cat("# SS_writectl(
+      # ctllist = ",ext[3],",
+      # outfile =",paste0("file.path(",Dirmod,","),"'SST_control.ss', fsep = fsep),
+      # version = '3.30',
+      # overwrite = TRUE
+      # )\n")
+      cat("# Check file structure\n")
       cat("# We actually need to run the model to check the file structure\n")
       
-      # clean environment\n")
+      cat("\n")
+      cat("# clean environment\n")
+      cat("var.to.save <- c(var.to.save, '",ext[3],"')\n", sep = "")
       cat("rm(list = setdiff(ls(), var.to.save))\n")
       cat("var.to.save <- ls()\n")
       cat("# =======================")
@@ -1150,13 +1155,12 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Read in the file\n")
       cat("ForeFile <-",paste0("file.path(",Dirmod,","),"'forecast.ss', fsep = fsep)\n")
-      cat("Forec <-
-        SS_readforecast(
-          file = ForeFile,
-          version = '3.30',
-          verbose = T,
-          readAll = T
-        )\n")
+      cat(ext[4],"<-SS_readforecast(
+      file = ForeFile,
+      version = '3.30',
+      verbose = T,
+      readAll = T
+      )\n")
       cat("\n")
       cat("# Make your modification if applicable\n")
       cat("# Code modifying the forecast file \n")
@@ -1165,67 +1169,68 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("\n")
       cat("# Save the forecast file for the model\n")
-      cat("SS_writeforecast(
-        mylist = Forec,
-        dir =",paste0(Dirmod,","),"
-        file = 'forecast.ss',
-        writeAll = TRUE,
-        verbose = TRUE,
-        overwrite = TRUE
-      )\n")
-      cat("# Check file structure ----\n")
-      
-      
+      cat("# SS_writeforecast(
+      # mylist = ",ext[4],",
+      # dir =",paste0(Dirmod,","),"
+      # file = 'forecast.ss',
+      # writeAll = TRUE,
+      # verbose = TRUE,
+      # overwrite = TRUE
+      # )\n")
+      cat("\n")
+      cat("# Check file structure\n")
       cat("ForeFile <-",paste0("file.path(",Dirmod,","),"'forecast.ss', fsep = fsep)\n")
-      cat("Forec <-
-        SS_readforecast(
-          file = ForeFile,
-          version = '3.30',
-          verbose = T,
-          readAll = T
-        )\n")
-      # clean environment\n")
+      cat("# ",ext[4],"<-SS_readforecast(
+      # file = ForeFile,
+      # version = '3.30',
+      # verbose = T,
+      # readAll = T
+      # )\n")
+      
+      cat("\n")
+      cat("# clean environment\n")
+      cat("var.to.save <- c(var.to.save, '",ext[4],"')\n", sep = "")
       cat("rm(list = setdiff(ls(), var.to.save))\n")
       cat("var.to.save <- ls()\n")
       cat("# =======================\n")
       cat("\n")
-      cat("# You are now ready to run this new model\n")
+      cat("# If you are done with your implementations, you can now run this new model\n")
       cat("\n")
       cat("# *********************************************************** #\n")
       cat("#",paste0(stp,".5")," Run the new model using the new input files ----\n")
       cat("# ======================= #")
       cat("\n")
-      cat("run_SS(
-        SS_version = '3.30.21',
-        # version of SS
-        base_path =",paste0("file.path(",Dirmod,","),"
-        # root directory where the input file are housed
-        pathRun = NULL,
-        # A 'run' folder is created if needed (where output files will be stored)
-        copy_files = TRUE,
-        # copy the input files from the",Modcomp[m,"new_model"],"folder
-        cleanRun = TRUE
-        # clean the folder after the run
+      cat("run_SS(SS_version = '3.30.21',
+      # version of SS
+      base_path =",paste0(Dirmod,","),"
+      # root directory where the input file are housed
+      pathRun = NULL,
+      # A 'run' folder is created if needed (where output files will be stored)
+      copy_files = TRUE,
+      # copy the input files from the", ModelName ,"folder
+      cleanRun = TRUE
+      # clean the folder after the run
       )\n")
       cat("\n")
-      cat("#",paste0(stp,".")," Let's plot the outputs from this model ----\n")
+      cat("#",paste0(stp,".6")," Let's plot the outputs from this model ----\n")
       cat("# Making the default plots ----\n")
       cat("# ======================= #\n")
       
       cat("# read the model output and print diagnostic messages\n")
-      cat("Dirplot <-",paste0("file.path(",Dirmod,",")," 'run', fsep = fsep)\n")
+      cat("Dirplot <-",paste0("file.path(",Dirmod,","),"'run', fsep = fsep)\n")
       cat("\n")
       cat("replist <- SS_output(
-        dir = Dirplot,
-        verbose = TRUE,
-        printstats = TRUE
+      dir = Dirplot,
+      verbose = TRUE,
+      printstats = TRUE
       )\n")
       cat("\n")
       
       cat("# plots the results (store in the 'plots' sub-directory)\n")
       cat("SS_plots(replist,
-               dir = Dirplot,
-               printfolder = 'plots')\n")
+      dir = Dirplot,
+      printfolder = 'plots'
+      )\n")
       cat("\n")
       cat("# *********************************************************** #\n")
       cat("\n")
@@ -1238,6 +1243,7 @@ write_SA_files <- function(out = NULL,
           "# You are ready to analyze differences between the models 
 # considered in this sensitivity analysis.\n"
         )
+        cat("# You can now use the",script_results,"script to realize the comparison between models.\n")
         cat("\n")
         cat("# -----------------------------------------------------------\n")
         cat("# -----------------------------------------------------------\n")
@@ -1245,10 +1251,22 @@ write_SA_files <- function(out = NULL,
         cat("# -----------------------------------------------------------\n")
         cat("# -----------------------------------------------------------\n")
         cat("\n")
-        cat("# You can now develop the next 'new model'.\n")
+        cat("# End development for model", ModelName,"\n")
+        if(m != dim(Modcomp)[1]){
+          cat("# You can now develop the next 'new model'.\n")
+          cat("# Let's remove the input files for this from the 'var.to.save' variable\n")
+          cat("var.to.save <- var.to.save[!var.to.save %in% c('",ext[1],"','",ext[2],"','",ext[3],"','",ext[4],"')]\n", sep = "")
+          cat("rm(list = setdiff(ls(), var.to.save))\n")
+          cat("var.to.save <- ls()\n")
+          stp <- stp +1
+        } else {
+          cat("# You can now use the",script_results,"script to realize the comparison between models.\n")
+        }
         cat("\n")
         cat("# -----------------------------------------------------------\n")
         cat("# -----------------------------------------------------------\n",sep = "")
+        cat("\n")
+        cat("\n")
       }
     } # end loop on m
     
@@ -1349,3 +1367,299 @@ write_SA_files <- function(out = NULL,
 }
 
 # ----------------------------------------------------------
+
+#' 5. Function to delete one or several SA ----
+#' ----------------------------------------------------------- #
+#' 
+#' @param SA_ID (character string)- Name(s) of the Sensitivity analysis(es) to 
+#' delete (e.g., "Item 0.1"). Please refer to the "Summery_sensitivity_analysis.pdf" file for the
+#' name. If \code{SA_ID = "all}, then all sensitivity analyses (except the one called "Item 0.0")
+#' will be deleted.
+#
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
+remove_SA <- function(SA_ID = NULL) {
+  # local declarations
+  fsep <- .Platform$file.sep
+  
+  dir_model <- file.path(here::here(), "model", fsep = fsep)
+  dir_script <- file.path(here::here(), "R", fsep = fsep)
+  dir_SensAnal <-
+    file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
+  dirScript_SensAnal  <-
+    file.path(dir_script,"ss", "Sensitivity_Anal", fsep = fsep)
+  
+  # load the SA_info dataframe
+  load(file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))
+  SumUp <- SA_info$SumUp
+  colSumUp <-
+    colnames(SumUp)
+  colnames(SumUp) <- gsub(" ", "_", colnames(SumUp))
+  Models_SA <- SA_info$Models_SA
+  colMod_SA <-
+    colnames(Models_SA)
+  colnames(Models_SA) <- gsub(" ", "_", colnames(Models_SA))
+  
+  # Internal function to loop over SA_ID
+  interRemov <- function(SA_Num, SumUp, Models_SA) {
+    # Delete directory and Rscripts
+    DelFold <- unique(SumUp %>%
+                        dplyr::filter(SA_number == SA_Num) %>%
+                        dplyr::select(Folder))
+    DelFold <- file.path(dir_SensAnal, DelFold, fsep = fsep)
+    unlink(DelFold, recursive = TRUE)
+    cat("\n \t=> Deleting the following folder:\n", DelFold, "\n")
+    
+    DelScripts <- unique(
+      SumUp %>%
+        dplyr::filter(SA_number == SA_Num) %>%
+        dplyr::select(Script_model , Script_results)
+    )
+    DelScripts <-
+      file.path(dirScript_SensAnal, DelScripts, fsep = fsep)
+    file.remove(DelScripts)
+    cat("\n \t=> Deleting the following Rscripts:\n", DelScripts[1],
+        "\n",DelScripts[2],"\n")
+    
+    # Remove the SA from both the SumUp and Models_SA dataframe
+    SumUp <- SumUp %>%
+      dplyr::filter(SA_number != SA_Num)
+    Models_SA <- Models_SA %>%
+      dplyr::filter(SA_number != SA_Num)
+    
+    out <- list(SumUp = SumUp, Models_SA = Models_SA)
+    return(out)
+  }
+  
+  # Loop on SA_ID
+  
+  if(SA_ID=="all"){
+    mess <-
+      paste0(
+        "!!!!! WARNING !!!!!\n\n",
+        "You're gonna delete all the sensitivity analyses' in the folder:\n\n",
+        dir_SensAnal,
+        "\n\n Do you want to continue?"
+      )
+    deleteSA <- DialogBox(message = mess, type = "yesno")
+    if (deleteSA == "yes") {
+      SA_ID <- unique(SA_info$SumUp$`SA number`)
+      SA_ID <- SA_ID[!SA_ID %in% "Item 0.0"]
+      
+      for(sa in 1:length(SA_ID)){
+        SA_info <- interRemov(SA_Num = SA_ID[sa], SumUp, Models_SA)
+        SumUp <- SA_info$SumUp
+        Models_SA <- SA_info$Models_SA
+      }
+    }
+    cat("\n\nAll sensitivity analysis have been deleted !\n")
+  } else {
+    if (length(SA_ID) >= 1)
+      for (sa in 1:length(SA_ID)) {
+        # Ask user for sure
+        deleteSA <- NULL
+        
+        SAtoRemove <- unique(SumUp %>%
+                               dplyr::filter(SA_number == SA_ID[sa]) %>%
+                               dplyr::select(Features))
+        mess <-
+          paste0(
+            "You're gonna delete the sensitivity analysis' ",
+            SA_ID[sa],
+            " 'which features were about:\n\n",
+            ac(paste0("\t", SAtoRemove)),
+            "\n\n Do you want to continue?"
+          )
+        deleteSA <- DialogBox(message = mess, type = "yesno")
+        if (deleteSA == "yes") {
+          SA_info <- interRemov(SA_Num = SA_ID[sa], SumUp, Models_SA)
+          SumUp <- SA_info$SumUp
+          Models_SA <- SA_info$Models_SA
+        }
+      }
+    
+    # Rename columns of SumUp and Models_SA
+    colnames(SumUp) <- colSumUp
+    colnames(Models_SA) <- colMod_SA
+    
+    # Update the Summary_Sensitivity_analysis.pdf file
+    suppressMessages(SumUp <-
+                       update_SA_table(SumUp = SumUp, dir_SensAnal = dir_SensAnal))
+    # Update the "Models_Sensitivity_analysis.pdf" file
+    suppressMessages(
+      Models_SA <-
+        update_Models_SA_table(Models_SA = Models_SA, dir_SensAnal = dir_SensAnal)
+    )
+    # Update SA_info ----
+    # ======================================================== #
+    SA_info <- list(SumUp = SumUp, Models_SA = Models_SA)
+    save(SA_info,
+         file = file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))
+  }
+}
+# ----------------------------------------------------------
+
+
+#' 6. Copy specific SS input files from the base model directory to the one of the development model----
+#' ----------------------------------------------------------- #
+#'
+#' Reads the starter.ss file to figure out the names of the control and
+#' data files, then copies those files along with starter.ss, forecast.ss.
+#'
+#' @param base_model (character string)- name of the base model from which
+#' copy the input files.
+#' @param Dvpt_model (character string)- name of the model you're currently
+#' developping.
+#' @param SS_file (character string)- name of the SS input file you want to
+#' get from the base model. Options for \code{SS_file} are: 'starter','control', 'data','forecast','all'.
+#' If \code{SS_file="all"}, then the function will copy
+#' and paste all the input files (starter.ss, forecast.ss, control.ss and data.ss)
+#' from the base model directory to your current model in development.
+#'
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
+copy_BaseModel_SSinputs <- function(base_model = NULL,
+                                    Dvpt_model = NULL,
+                                    SS_file = NULL) {
+  # local declarations
+  fsep <- .Platform$file.sep
+  # Directories
+  dir_model <- file.path(here::here(), "model", fsep = fsep)
+  dir_script <- file.path(here::here(), "R", fsep = fsep)
+  dir_SensAnal <-
+    file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
+  dirScript_SensAnal  <-
+    file.path(dir_script, "ss", "Sensitivity_Anal", fsep = fsep)
+  
+  # load the SA_info dataframe
+  load(file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))
+  SumUp <- SA_info$SumUp
+  colSumUp <-
+    colnames(SumUp)
+  colnames(SumUp) <- gsub(" ", "_", colnames(SumUp))
+  Models_SA <- SA_info$Models_SA
+  colMod_SA <-
+    colnames(Models_SA)
+  colnames(Models_SA) <- gsub(" ", "_", colnames(Models_SA))
+  
+  # check the inputs
+  if (dim(dplyr::filter(SumUp, Base_model == base_model &
+                        New_model == Dvpt_model))[1] == 0) {
+    stop(
+      "This sensitivty analysis has not been implemented. Please check the definition
+of both your 'base mode' and 'development model.\n"
+    )
+  }
+  
+  # check for presence of SS files
+  if (is.null(SS_file))
+    stop("Please provide a name for the input file(s) to copy from the base model:",
+         base_model)
+  # Check consistency of SS file
+  if (!SS_file %in% c("starter", "control", "data", "forecast", "all"))
+    stop(
+      "The specified SS input file(s) do(es) not exist.\n
+=> Please provide a name among the following options: 'starter','control', 'data','forecast','all'"
+    )
+  
+  # Set up the directories
+  # Copy SS input files from the base model
+  modelFrom <- Models_SA[Models_SA$Model_name == base_model, "path"]
+  modelFrom <- file.path(here::here(), modelFrom, fsep = fsep)
+  modelTo <- Models_SA[Models_SA$Model_name == Dvpt_model, "path"]
+  modelTo <- file.path(here::here(), modelTo, fsep = fsep)
+  
+  # read starter file
+  if (SS_file %in% c("control", "data", "all")) {
+    starter_file <- file.path(modelFrom,
+                              "starter.ss")
+    if (file.exists(starter_file)) {
+      starter <- r4ss::SS_readstarter(starter_file, verbose = FALSE)
+    } else {
+      warning(
+        "The starter file for the base model:",
+        base_model,
+        " is not found in the following directory:\n=>",
+        file.path(modelFrom)
+      )
+      return(FALSE)
+    }
+  }
+  cat("- Copying SS input files from :\n")
+  cat("\t=>", modelFrom, "\n to \n :", modelTo, "\n")
+  
+  overwrite <- TRUE
+  cop_Done <- NULL
+  
+  if (SS_file == "all") {
+    cop <- file.copy(
+      from = file.path(modelFrom, starter[["ctlfile"]]),
+      to = file.path(modelTo, starter[["ctlfile"]]),
+      overwrite = overwrite
+    )
+    cop_Done <- c(cop_Done, cop)
+    cop <- file.copy(
+      from = file.path(modelFrom, starter[["datfile"]]),
+      to = file.path(modelTo, starter[["datfile"]]),
+      overwrite = overwrite
+    )
+    cop_Done <- c(cop_Done, cop)
+    cop <- file.copy(
+      from = file.path(modelFrom, "forecast.ss"),
+      to = file.path(modelTo, "forecast.ss"),
+      overwrite = overwrite
+    )
+    cop_Done <- c(cop_Done, cop)
+    cop <- file.copy(
+      from = file.path(modelFrom, "starter.ss"),
+      to = file.path(modelTo, "starter.ss"),
+      overwrite = overwrite
+    )
+    cop_Done <- c(cop_Done, cop)
+  } else {
+    for (f in 1:length(SS_file)) {
+      copFile <- SS_file[f]
+      if (copFile == "control") {
+        cop <- file.copy(
+          from = file.path(modelFrom, starter[["ctlfile"]]),
+          to = file.path(modelTo, starter[["ctlfile"]]),
+          overwrite = overwrite
+        )
+        cop_Done <- c(cop_Done, cop)
+      } else if (copFile == "data") {
+        cop <- file.copy(
+          from = file.path(modelFrom, starter[["datfile"]]),
+          to = file.path(modelTo, starter[["datfile"]]),
+          overwrite = overwrite
+        )
+        cop_Done <- c(cop_Done, cop)
+      } else if (copFile == "forecast") {
+        cop <- file.copy(
+          from = file.path(modelFrom, "forecast.ss"),
+          to = file.path(modelTo, "forecast.ss"),
+          overwrite = overwrite
+        )
+        cop_Done <- c(cop_Done, cop)
+      } else if (copFile == "starter") {
+        cop <- file.copy(
+          from = file.path(modelFrom, "starter.ss"),
+          to = file.path(modelTo, "starter.ss"),
+          overwrite = overwrite
+        )
+        cop_Done <- c(cop_Done, cop)
+      }
+    }
+  }
+  # check for successful copying
+  if (unique(cop_Done) == TRUE) {
+    cat("\n => Files have been copied.")
+    # return(TRUE)
+  } else {
+    warning("At least 1 file failed to copy.")
+    # return(FALSE)
+  }
+}
+# ----------------------------------------------------------
+
