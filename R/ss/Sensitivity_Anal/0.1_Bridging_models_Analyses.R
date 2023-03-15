@@ -241,17 +241,20 @@ replist <- SS_output(dir = file.path(Dir_13_sq, "run", fsep = fsep),
 # Those are all pameters that have been estimated (outside from recruitment deviations)
 rownames(replist$estimated_non_dev_parameters)
 
-# Let's create a function that change the parameter label, and create a dataframe
-# with all we need to get the estimated values
-# ***************** 
-# WARNING
-# The label of the parameters in this version of SS do not match with the ones
-# used in the 3.30.21 version (when reading the results with the r4ss function)
-# ***************** 
 New_par <- replist$estimated_non_dev_parameters
 New_par <- dplyr::select(New_par, Value, Phase, Min, Max, Init)
 New_par <- New_par %>%
   tibble::rownames_to_column(var= "Label")
+
+# ***************** 
+# WARNING
+# The label of the parameters in this version of SS do not match with the ones
+# used in the 3.30.21 version (when reading the results with the r4ss function)
+# *****************
+# Let's create a function that change the parameter label, and create a dataframe
+# with all we need to get the estimated values
+
+
 
 
 # ============================================================================
