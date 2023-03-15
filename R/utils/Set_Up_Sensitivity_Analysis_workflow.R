@@ -27,7 +27,7 @@ dir_script <- file.path(here::here(), "R", fsep = fsep)
 
 # Set up the Sensitivity Analysis root folders ----
 dir_SensAnal <- file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
-dirScript_SensAnal  <- file.path(dir_script, "Sensitivity_Anal", fsep = fsep)
+dirScript_SensAnal  <- file.path(dir_script, "ss", "Sensitivity_Anal", fsep = fsep)
 
 if(!dir.exists(dir_SensAnal))
   dir.create(dir_SensAnal)
@@ -45,7 +45,9 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 # Models_Sensitivity_analysis.pdf - Models, names, individual directory
 # SA_info.RData - data to build the documents
 
-if(!file.exists(file.path(dir_SensAnal, "Summary_Sensitivity_analysis.pdf", fsep = fsep))){
+if(!file.exists(file.path(dir_SensAnal, "Summary_Sensitivity_analysis.pdf", fsep = fsep)) &&
+   !file.exists(file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep)) ||
+  !file.exists(file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))){
   
   # Create the Data that summarizes the SA already done ----
   Topic <- data.frame(
@@ -89,7 +91,7 @@ if(!file.exists(file.path(dir_SensAnal, "Summary_Sensitivity_analysis.pdf", fsep
                   Folder = file.path("model", "2013_SST_SSV3_30_21", fsep = fsep),
                   'Script model' = "v324_v330_transition.R", 
                   'Script results' = "2013_v324_v330_bridge_comparison.R",
-                  'Base model' = "3.sq"
+                  'Base model' = "13.sq"
                   )
   # Create the Models_Sensitivity_analysis.pdf file that summarizes all SA models
   
