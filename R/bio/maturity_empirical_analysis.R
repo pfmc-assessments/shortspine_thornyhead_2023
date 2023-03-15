@@ -77,12 +77,11 @@ L50 <- -A/B
 deltamethod <- ((sA^2)/(B^2))- ((2*A*sA*sB*r)/(B^3))+ (((A^2)*(sB^2))/(B^4))
 deltamethod
 
-
 1.96*(sqrt(deltamethod)/sqrt(n)) ###Gives you 95% CI##
 
 
 #~~~~~~~~~~~~~~~~~~
-# code from Jane for plotting maturity ogive
+# code from Jane for plotting maturity curve
 
 a   <- A
 b   <- B
