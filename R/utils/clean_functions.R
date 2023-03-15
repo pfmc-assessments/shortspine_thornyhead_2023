@@ -15,6 +15,9 @@
 #'
 #' @param filenames Name of file
 #'
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
 #' @return character string: the file name
 #'
 get_nam <- function(filenames) {
@@ -24,8 +27,6 @@ get_nam <- function(filenames) {
   return(tmp)
 }
 
-
-
 #' Clean files in a folder
 #'
 #' @param path (character string) file path representing the root folder to be cleaned
@@ -33,6 +34,9 @@ get_nam <- function(filenames) {
 #' folder to be removed
 #' @param verbose (logical) -  flag to print filenames being deleted
 #
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
 clean_files <- function(path = ".",
                         names = c("no_file"),
                         verbose = FALSE) {
@@ -55,6 +59,9 @@ clean_files <- function(path = ".",
 #' @param path (character string) - file path to the folder that has to be cleaned
 #' @param verbose (logical) -  flag to print filenames being deleted
 #
+#' @author Matthieu Veron
+#  Contact: mveron@uw.edu
+#'
 clean_bat <- function(path = ".", verbose = TRUE) {
   # Remove the basic files that we don't want
   names = c("*.bar","*.eva","*.log","*.std","gradient.*",
@@ -69,15 +76,15 @@ clean_bat <- function(path = ".", verbose = TRUE) {
     "echoinput",
     "ss_summary",
     "CompReport",
-    "ss",
-    "ss",
     "ss_win~4",
     "ss_win~4",
     "warning",
     "console.output",
-    "data_echo.ss_new"
+    "data_echo.ss_new",
+    "data.ss_new"
   )
   filesSave <- list.files(path)[get_nam(list.files(path)) %in% get_nam(filesSave)]
+  
   # Get the names of the data and control files
   starternam <- filesSave[grepl(pattern = "starter.", x = filesSave)]
   starter <-
@@ -86,11 +93,17 @@ clean_bat <- function(path = ".", verbose = TRUE) {
                        fsep = .Platform$file.sep),
       verbose = verbose
     )
-  filesSave <- c(filesSave, starter$datfile, starter$ctlfile)
-  names <- list.files(path)[!list.files(path) %in% filesSave]
+  
+  TrueNam <- c(starter$datfile, starter$ctlfile)
+  inputFiles <- list.files(path)[get_nam(list.files(path)) %in% get_nam(TrueNam)]
+  for(i in 1:2){
+    inputFiles[i] <- paste0(get_nam(inputFiles[i]), ".", unlist(strsplit(TrueNam[i], "\\."))[2])
+  }
+  
+  filesSave <- c(filesSave, inputFiles)
+  names <- list.files(path)[!get_nam(list.files(path)) %in% get_nam(filesSave)]
   # Remove files we don't want
   clean_files(path = path,
               names = names,
               verbose = verbose)
-  
 }
