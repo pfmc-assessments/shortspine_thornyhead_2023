@@ -183,6 +183,25 @@ sablefish.catch %>%
 ggsave("outputs/fishery_data/SST_Compare-STrawl-pre1964.png", dpi=300, height=7, width=10, units='in')
 
 
+# OR and WA updated some PacFIN era data also
+# Does that impact catch substantially?
+# WA only goes through 2014
+# weird - pacfin has slightly higher catch for early 1990s
+bind_rows(or.state.catch %>% mutate(source = "state"),
+                         wa.state.catch %>% mutate(source = "state"), 
+                         pacfin.state %>% mutate(source="pacfin")) %>% 
+  filter(Year %in% 1981:2014 & Fleet %in% c("NTrawl","NOther")) %>%
+  group_by(Year, Fleet, source) %>%
+  summarize(round_mtons = sum(round_mtons, na.rm=TRUE)) %>%
+  ggplot(aes(x = Year, y = round_mtons, group=source, color=source)) + 
+  geom_line(size=1.5) + 
+  facet_wrap(~Fleet, scales="free") + theme_classic() + 
+  scale_color_colorblind7() +
+  guides(color = guide_legend(title = "Source")) +
+  theme(text=element_text(size=20)) + 
+  ylab("Total Weight (mt)") +
+  xlab("Year")
+
 
 
 #### Scraps - do not run below this line ####
@@ -197,8 +216,6 @@ sablefish.catch$Sablefish_mtons[which(sablefish.catch$Fleet %in% "STrawl")]
 
 SST.sabl.prop.means <- data.frame(Fleet = colnames(SST.sabl.prop)[2:5], 
                                   sabl.prop = colMeans(SST.sabl.prop[,2:5]))
-
-
 
 
 catch.hist.sablefish <- sablefish.catch %>% 
