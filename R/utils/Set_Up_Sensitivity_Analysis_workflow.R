@@ -91,7 +91,8 @@ if(!file.exists(file.path(dir_SensAnal, "Summary_Sensitivity_analysis.pdf", fsep
                   Folder = file.path("model", "2013_SST_SSV3_30_21", fsep = fsep),
                   'Script model' = "v324_v330_transition.R", 
                   'Script results' = "2013_v324_v330_bridge_comparison.R",
-                  'Base model' = "13.sq"
+                  'Base model' = "13.sq",
+                  'New model' = "23.sq.fixQ"
                   )
   # Create the Models_Sensitivity_analysis.pdf file that summarizes all SA models
   
