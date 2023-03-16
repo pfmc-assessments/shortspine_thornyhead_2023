@@ -14,10 +14,11 @@
 # packages
   library(FSA) # used to get lencat() function, but could probably figure this 
                 # this out without the package
+  library(tidyverse)
 
 
 # Read in data from local computer? Ideas?
-data <- read.csv("C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturitydata_forassessment03152023.csv") #put data set in here
+data <- read.csv("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturitydata_forassessment03152023.csv") #put data set in here
 
 names(data) # lengths in cm; maturity, 0=immature, 1=mature
 unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
