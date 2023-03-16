@@ -1601,7 +1601,7 @@ copy_BaseModel_SSinputs <- function(base_model = NULL,
   dir_SensAnal <-
     file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
   dirScript_SensAnal  <-
-    file.path(dir_script, "Stock_Synthesis", "Sensitivity_Anal", fsep = fsep)
+    file.path(dir_script, "ss", "Sensitivity_Anal", fsep = fsep)
   
   # load the SA_info dataframe
   load(file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))
