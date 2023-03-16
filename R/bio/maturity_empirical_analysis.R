@@ -22,6 +22,10 @@ data <- read.csv("C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shor
 names(data) # lengths in cm; maturity, 0=immature, 1=mature
 unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
 
+# summaries
+table(data$Sampling_platform ,data$Year)
+table(data$Sampling_platform)
+
 # Filter data, as necessary
 data<-data[data$Certainty==1,] #filter only data where maturity is certain
 
