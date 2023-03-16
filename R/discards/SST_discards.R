@@ -164,16 +164,6 @@ disc_rates_WCGOP %>%
 ggsave("outputs/discard_data/SST_WCGOP_discard_rates.png", dpi=300, height=7, width=10, units='in')
 
 
-#Export file with select columns for Landings use to compare discards 
-
-disc_rates_WCGOP %>%
-  select(year, fleet, ob_ratio) ->disc_rate_test
-
-  write_csv(disc_rate_test, "disc_rate_test.csv")
-
-
-
-
 # In the stock assessment, fleets are only defined by their gear and their location. Thus, we should account for the fact that both
 #catch shares and non catch shares fleets have different discard rates. This is done by weighing the discard rate of each
 #fleet catch share component by their relative importance in the total catch.

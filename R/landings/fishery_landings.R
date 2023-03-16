@@ -346,39 +346,6 @@ ggsave("outputs/fishery_data/compare-assessment-landings.png",
        dpi=300, height=7, width=10, units='in')
 
 
-## Compare catch time series with discarded rates 
-
-discRate<-read.csv("disc_rate_test.csv")%>%
-  mutate(fleet_name = fleet)
-  
-
-plotDiscards<-na.omit(plotDiscards)
-
-plotDiscards %>%
-  gather(type, value, catch, discards) %>%
-  group_by(year, fleet_name, type) %>%
-  summarize(total = sum(value, na.rm = TRUE)) %>%
-  mutate(fleet_name=factor(fleet_name, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
-  ggplot(aes(x = year, y = total, fill = type)) +
-  geom_col() +
-  scale_fill_manual(values = c("catch" = "#1F77B4", "discards" = "#D62728")) +
-  facet_wrap(~ fleet_name) +
-  labs(x = "Year", y = "Total Catch and Discards") +
-  theme_classic()
-    
-
-plotDiscards %>%
-  gather(type, value, catch, discards) %>%
-  group_by(year, fleet_name, type) %>%
-  summarize(total = sum(value, na.rm = TRUE)) %>%
-  mutate(fleet_name=factor(fleet_name, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
-  ggplot(aes(x = year, y = total, fill = type)) +
-  geom_col() +
-  scale_fill_manual(values = c("catch" = "#1F77B4", "discards" = "#D62728")) +
-  #facet_wrap(~ fleet_name) +
-  labs(x = "Year", y = "Total Catch and Discards") +
-  theme_classic()
-
 # write ss ----
 
 catch.ss <- finalcatch %>% 
