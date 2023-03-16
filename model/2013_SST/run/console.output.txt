@@ -1,6 +1,6 @@
 ###
 console output
-2023-03-14 21:14:25
+2023-03-15 15:36:07
 ###
  
 Error trying to open data input file ss_win~4.dat
@@ -4863,8 +4863,8 @@ Estimating row 235 out of 235 for hessian
  SPR OK 
 6 1644 -log(L): 600.725  Spbio: 190214 141166
 
-Finish time: Tue Mar 14 21:14:19 2023
-Elapsed time: 0 hours, 6 minutes, 20 seconds.
+Finish time: Wed Mar 15 15:35:59 2023
+Elapsed time: 0 hours, 6 minutes, 26 seconds.
 Final gradient: 0.000588219
 
 Finished writing COVAR.SSO
