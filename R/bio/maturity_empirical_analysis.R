@@ -120,9 +120,53 @@ ggplot(matatlength, aes(x = length, y = pmat)) +
 
 # Next steps...
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Exploratory analyses----
+#~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # Discuss with M. Head which maturity data to use
   #functional vs biological?
   #certain vs uncertain data?
+
+# 1. Plot functional and biological maturity using only "certain" reads
+
+# select data
+mat.bio.df<- data.frame(length = data$Length, 
+                    maturity = data$Biological_maturity) 
+
+mat.func.df<- data.frame(length = data$Length, 
+                        maturity = data$Functional_maturity)
+# complete cases
+mat.bio.df<-mat.df[complete.cases(mat.df$maturity),]
+mat.func.df<-mat.df[complete.cases(mat.df$maturity),]
+
+# estimate parameters, logistic regression 
+mat.bio.glm <- glm (maturity ~ 1 + length, data = mat.bio.df,  #why 1 + length??
+                    family = binomial(link ="logit"))
+mat.func.glm <- glm (maturity ~ 1 + length, data = mat.func.df,  #why 1 + length??
+                    family = binomial(link ="logit"))
+
+# coefficients
+a.bio <- coef(mat.bio.glm)[1]
+b.bio <- coef(mat.bio.glm)[2]
+
+a.func <- coef(mat.func.glm)[1]
+b.func <- coef(mat.func.glm)[2]
+
+# visualize
+lens <- seq(6, 72, 2)
+
+matatlength.bio <- data.frame(length = lens) %>% 
+  mutate(pmat = 1 / (1 + exp(-(a.bio + b.bio * length))))
+
+ggplot(matatlength, aes(x = length, y = pmat)) +
+  geom_line() + 
+  geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
+  geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
+  labs(x = 'Length (cm)', y = 'P(mature)',
+       title = 'Shortspine thornyhead female maturity-at-length',
+       subtitle = 'Source: M. Head, NWFSC') +
+  theme_bw()
 
 # Compare to Pearson and Gunderson 2003 maturity information used in the 
 # 2013 assessment
