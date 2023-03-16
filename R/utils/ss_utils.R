@@ -30,10 +30,12 @@ get_os <- function() {
   return(tolower(os))
 }
 
+#  =========================================================================== #
+
 #' @title Set the path where the SS exe is stored
 #' 
 #' @param os the OS of your machine
-#' @param (character string) - The SS version currently supported are
+#' @param ss_version (character string) - The SS version currently supported are
 #' either "3.30.21" or "3.24.U".
 #' @param fname.extra (character string) - Define the "extra" name of the executable.
 #' The possible name extensions are: "fast", "safe", "opt" for the "3.24.U" SS version
@@ -100,6 +102,7 @@ get.ss.exe.path <-
     return(exe.path)
   }
 
+#  =========================================================================== #
 
 #' Run SS
 #'
@@ -195,7 +198,7 @@ run_SS <- function(SS_version = "3.30.21",
     clean_bat(path = pathRun, verbose = FALSE)
 }
 
-
+#  =========================================================================== #
 
 #' @title Run SS if data.ss_new/data_echo.ss_new is missing when reading .ctl file
 #'
@@ -234,6 +237,7 @@ RunSS_CtlFile <- function(SS_version = "3.30.21",
                           copy_files = TRUE,
                           extras = NULL,
                           cleanRun = TRUE) {
+  
   pathRuntmp <- file.path(base_path, 'run', fsep = .Platform$file.sep)
   fileneeded <- ifelse(test = SS_version == "3.24.U",
                        yes = "data.ss_new",
@@ -259,7 +263,7 @@ RunSS_CtlFile <- function(SS_version = "3.30.21",
     cat("The ",
         fileneeded,
         " file is already available in the run directory (",
-        pathRun,
-        ")")
+        pathRuntmp,
+        ")", sep="")
   }
 }
