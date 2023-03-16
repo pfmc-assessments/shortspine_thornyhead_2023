@@ -105,8 +105,16 @@ var.to.save <- ls()
 
 # Use the SSgetoutput() function that apply the SS_output()
 # to get the outputs from different models
+
+# Root directory for this sensitivity analysis
+SA_path <- file.path(dir_SensAnal, '0.1_Bridging_models',fsep = fsep)
+
+# Path to the 2013 Assessment model
+Dir_Base2013_SS3_24 <- file.path(here::here(), 'model','2013_SST' , 'run',fsep = fsep)
+
 # Path to the base model ( 23.sq.fixQ ) repertory
-Dir_Base <- file.path(dir_SensAnal, 'model','2013_SST_SSV3_30_21' , 'run',fsep = fsep)
+Dir_Base <- file.path(here::here(), 'model','2013_SST_SSV3_30_21' , 'run',fsep = fsep)
+
 # Path to the 23.sq.fix repertory
 Dir_23_sq_fix <- file.path(dir_SensAnal, '0.1_Bridging_models','23.sq.fix' , 'run',fsep = fsep)
 
@@ -116,13 +124,12 @@ Dir_23_sq_floatQ <- file.path(dir_SensAnal, '0.1_Bridging_models','23.sq.floatQ'
 # Path to the 23.sq.est repertory
 Dir_23_sq_est <- file.path(dir_SensAnal, '0.1_Bridging_models','23.sq.est' , 'run',fsep = fsep)
 
-
 # Extract the outputs for all models
-SensiMod <- SSgetoutput(dirvec = c( Dir_Base,Dir_Base23_sq_fix,Dir_Base23_sq_floatQ,Dir_Base23_sq_est ))
+SensiMod <- SSgetoutput(dirvec = c(Dir_Base2013_SS3_24,Dir_Base,Dir_23_sq_fix,Dir_23_sq_floatQ,Dir_23_sq_est))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('23.sq.fixQ','23.sq.fix','23.sq.floatQ','23.sq.est')
+names(SensiMod) <- c('13.sq','23.sq.fixQ','23.sq.fix','23.sq.floatQ','23.sq.est')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -130,8 +137,8 @@ Version_Summary <- SSsummarize(SensiMod)
 # make plots comparing the models
 SSplotComparisons(
       Version_Summary,
-      # print = TRUE,
-      pdf = TRUE,
-      plotdir = SST_path,
-      legendlabels = c('23.sq.fixQ','23.sq.fix','23.sq.floatQ','23.sq.est')
+      print = TRUE,
+      # pdf = TRUE,
+      plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
+      legendlabels = c('13.sq','23.sq.fixQ','23.sq.fix','23.sq.floatQ','23.sq.est')
     )

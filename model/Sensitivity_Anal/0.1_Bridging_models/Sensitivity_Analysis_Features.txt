@@ -28,7 +28,7 @@
 #	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/0.1_Bridging_models_Outputs.R .R
 # 
 # General features: 
-# Revisiting the transition of the 2013 model. For the transition, the model created was based on the 2013 model except that the catchability parameters were set to the “estimated” value from the 2013 assessment (which used a floating approach by setting Q as a scaling factor such that the estimate is median unbiased). Three models are developed here: i) a model where all the parameters are fixed to their estimated value from the 2013 assessment, ii) a second model which consider a floating approach for Q (i.e., an analytical solution is used and Q is not estimated as an active parameter) and iii) a third model where all parameters are freely estimated (Q included). 
+# Revisiting the transition of the 2013 model. For the transition, the model created was based on the 2013 model except that the catchability parameters were set to the “estimated” value from the 2013 assessment (which used a floating approach by setting Q as a scaling factor such that the estimate is median unbiased). Three models are developed here: i) a model where all the parameters are fixed to their estimated value from the 2013 assessment, ii) a second model which consider a floating approach for Q (i.e., an analytical solution is used, and Q is not estimated as an active parameter) and iii) a third model where all parameters are freely estimated (Q included). 
 # 
 # Model features:
 # - Model 23.sq.fix:
