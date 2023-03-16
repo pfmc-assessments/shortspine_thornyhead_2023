@@ -12,8 +12,7 @@
   # Ideas for best ways to do this?
 
 # packages
-  library(FSA) # used to get lencat() function, but could probably figure this 
-                # this out without the package
+  library(FSA) # used to get lencat() function, but could probably figure out without the package
   library(tidyverse)
 
 
@@ -29,6 +28,10 @@ table(data$Sampling_platform)
 
 # Filter data, as necessary
 data<-data[data$Certainty==1,] #filter only data where maturity is certain
+
+plot(Functional_maturity~Biological_maturity, data=data)
+#which samples are different
+differences<-data[data$Functional_maturity!= data$Biological_maturity,]
 
 # choose maturity type here (biological or functional or other)
 # Biological_maturity: 
@@ -128,7 +131,9 @@ ggplot(matatlength, aes(x = length, y = pmat)) +
   #functional vs biological?
   #certain vs uncertain data?
 
-# 1. Plot functional and biological maturity using only "certain" reads
+# 1. Question: Is there difference between functional vs biological?
+# Answer: no!
+# Plot functional and biological maturity using only "certain" reads
 
 # select data
 mat.bio.df<- data.frame(length = data$Length, 
@@ -147,11 +152,13 @@ mat.func.glm <- glm (maturity ~ 1 + length, data = mat.func.df,  #why 1 + length
                     family = binomial(link ="logit"))
 
 # coefficients
-a.bio <- coef(mat.bio.glm)[1]
-b.bio <- coef(mat.bio.glm)[2]
+a.bio   <- coef(mat.bio.glm)[1]
+b.bio   <- coef(mat.bio.glm)[2]
+l50.bio <- -a.bio/b.bio
 
-a.func <- coef(mat.func.glm)[1]
-b.func <- coef(mat.func.glm)[2]
+a.func   <- coef(mat.func.glm)[1]
+b.func   <- coef(mat.func.glm)[2]
+l50.func <- -a.func/b.func
 
 # visualize
 lens <- seq(6, 72, 2)
@@ -162,7 +169,19 @@ matatlength.bio <- data.frame(length = lens) %>%
 matatlength.func <- data.frame(length = lens) %>% 
   mutate(pmat = 1 / (1 + exp(-(a.func + b.func * length))))
 
+matatlength.bio$type<-"bio"
+matatlength.func$type<-"func"
 
+mat.func.bio.compare<-rbind(matatlength.bio,matatlength.func)
+
+ggplot(mat.func.bio.compare, aes(x = length, y = pmat, col=type)) +
+  geom_line() + 
+  geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
+  geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
+  labs(x = 'Length (cm)', y = 'P(mature)',
+       title = 'Shortspine thornyhead female maturity-at-length',
+       subtitle = 'Source: M. Head, NWFSC') +
+  theme_bw() 
 
 # Compare to Pearson and Gunderson 2003 maturity information used in the 
 # 2013 assessment
