@@ -159,14 +159,10 @@ lens <- seq(6, 72, 2)
 matatlength.bio <- data.frame(length = lens) %>% 
   mutate(pmat = 1 / (1 + exp(-(a.bio + b.bio * length))))
 
-ggplot(matatlength, aes(x = length, y = pmat)) +
-  geom_line() + 
-  geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
-  geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
-  labs(x = 'Length (cm)', y = 'P(mature)',
-       title = 'Shortspine thornyhead female maturity-at-length',
-       subtitle = 'Source: M. Head, NWFSC') +
-  theme_bw()
+matatlength.func <- data.frame(length = lens) %>% 
+  mutate(pmat = 1 / (1 + exp(-(a.func + b.func * length))))
+
+
 
 # Compare to Pearson and Gunderson 2003 maturity information used in the 
 # 2013 assessment
