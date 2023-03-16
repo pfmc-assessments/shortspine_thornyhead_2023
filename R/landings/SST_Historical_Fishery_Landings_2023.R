@@ -86,17 +86,6 @@ ca.state.catch <- read.csv(here("data","raw","Ralston_et_al_2010_thornyhead.csv"
 
 write.csv(ca.state.catch, file = here("data","processed","SST_CA_historical.csv"), row.names=FALSE)
 
-##### Add OR data to pacfin for 1981-1986 #####
-pacfin.state <- catch.pacfin %>%
-  left_join(
-  or.state.catch %>%
-    group_by(Year, Fleet) %>%
-    summarize(mtons_OR = sum(round_mtons, na.rm=TRUE))
-) %>%
-  mutate(round_mtons = ifelse(Year %in% 1981:1986 & Fleet %in% c("NTrawl","NOther"), 
-                              round_mtons + mtons_OR, round_mtons)) %>% 
-  dplyr::select(Year, Fleet, round_mtons)
-
 #####  Load foreign fleets #####
 # consistent with 2005 and 2013 assessments:
 ## assign US Border-Vancouver and Columbia areas to North trawl fleet
@@ -108,13 +97,31 @@ foreign.rodgers <- read.csv(here("data","raw","rodgers 2003 sst foreign fleet.cs
 
 ##### Combine all state landings #####
 # for now, assume all Thornyheads are Shortspine for California reconstruction
-catch.all <- bind_rows(or.state.catch,wa.state.catch,foreign.rodgers) %>%
+catch.state.2023 <- bind_rows(or.state.catch,wa.state.catch,foreign.rodgers) %>%
   bind_rows(ca.state.catch %>% 
               ungroup() %>%
               dplyr::filter(Species %in% c("THDS","SSPN")) %>% 
               dplyr::select(Year, Fleet, round_mtons)) %>%
   group_by(Year, Fleet) %>%
-  summarize(round_mtons = sum(round_mtons, na.rm=TRUE)) %>% filter(Year < 1981) %>%
+  summarize(round_mtons = sum(round_mtons, na.rm=TRUE)) %>% filter(Year < 1981)
+write.csv(catch.state.2023, file = here("data","processed","SST_2023_state_total_landings.csv"), row.names=FALSE)
+
+
+##### Add OR data to pacfin for 1981-1986 #####
+pacfin.state <- catch.pacfin %>%
+  left_join(
+  or.state.catch %>%
+    group_by(Year, Fleet) %>%
+    summarize(mtons_OR = sum(round_mtons, na.rm=TRUE))
+) %>%
+  mutate(round_mtons = ifelse(Year %in% 1981:1986 & Fleet %in% c("NTrawl","NOther"), 
+                              round_mtons + mtons_OR, round_mtons)) %>% 
+  dplyr::select(Year, Fleet, round_mtons)
+
+
+##### Combine all state landings #####
+# for now, assume all Thornyheads are Shortspine for California reconstruction
+catch.all <- catch.state.2023 %>%
   bind_rows(pacfin.state) 
 
 catch.all %>% 
