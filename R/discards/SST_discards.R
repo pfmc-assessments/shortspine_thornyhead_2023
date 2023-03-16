@@ -305,6 +305,18 @@ print(length(disc_lencomp_WCGOP$Lenbin))
 #quick aggregate histogram, also odd...
 hist(disc_lencomp_WCGOP$Lenbin)
   
+#This looks at the proportion of numbers for all year, but it looks bad, any advice? 
+disc_lencomp_WCGOP %>%
+  mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
+  ggplot(aes(x = meanLen, y = 0, height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
+  geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
+                      panel_scaling = TRUE, size = 0.5) +
+  scale_fill_manual(values = c("#E69F00", "#F0E442", "#009E73","#56B4E9")) +
+  theme_light() +
+  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions (WCGOP)") + 
+  theme(legend.position = "right", legend.text = element_text(size = 12),
+        legend.title = element_text(size = 14), axis.text = element_text(size = 14), axis.title.x = element_text(size = 14))
+
 # write.csv(, "outputs/discard_data/*******.csv")
 
 ### 3. Fleet-specific discard average weight
