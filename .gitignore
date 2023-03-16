@@ -25,9 +25,15 @@ outputs/plots/exploratory/*
 # SS Model Files
 model/*/plots/*  # Dont track SS plots
 admodel.*        # These are ADMB outputs
-ss*.b0*		 # ADMB binary file output
-ss*.p0*		 # ADMB binary file output
-ss*.r0*		 # ADMB binary file output
+ss*.b0*,ss.b0*		 # ADMB binary file output
+ss*.p0*,ss.p0*		 # ADMB binary file output
+ss*.r0*,ss.r0*		 # ADMB binary file output
+
+/*/run/ss.b0*		 # ADMB binary file output
+/*/run/ss.p0*		 # ADMB binary file output
+/*/run/ss.r0*		 # ADMB binary file output
+
+
 *.bar
 *.eva
 *.cor
@@ -50,3 +56,4 @@ runnumber.ss
 
 # Ignore the .html from the model directories 
 model/*/run/plots
+model/*/*/*/run/plots
