@@ -59,11 +59,18 @@ historical_catch <- catch2013 %>%
                 #                        fleet == 3 ~ 'Non-trawl_N',
                 #                        fleet == 4 ~ 'Non-trawl_S'))
 
-# updated catch reconstruction for wa and or
-historical_north <- read_csv('data/processed/SST_states_historical_NORTH.csv') %>% 
+# updated catch reconstruction states
+historical_2023 <- read_csv('data/processed/SST_2023_state_total_landings.csv') %>% 
   rename_all(tolower) %>% 
   rename(catch = round_mtons, fleet_name = fleet) %>% 
   mutate(assessment = '2023')
+
+# oregon state data (for 1981-1986)
+or_catch <- read_csv('data/processed/SST_OR_historical.csv') %>%
+  filter(Year %in% 1981:1986) %>%
+  mutate(state_gear = ifelse(Fleet %in% "NTrawl", "OR_Trawl", "OR_Non-trawl"), 
+         species = "shortspine thornyhead") %>%
+  dplyr::select(species, year = Year, state_gear, mtons = round_mtons)
 
 # eda ----
 
@@ -106,10 +113,21 @@ allcatch <- process_catch(short.catch) %>%
   bind_rows(process_catch(long.catch)) %>% 
   bind_rows(process_catch(un.catch))
 
+# replace 2017 CA PacFIN totals with CALCOM
+# replace OR PacFIN data for 1981-1986 with state data
 state_gear <- allcatch %>% 
   dplyr::group_by(species, year, state_gear) %>% 
   dplyr::summarise(mtons = sum(mtons)) %>% 
+  dplyr::mutate(mtons = ifelse(state_gear %in% "CA_Trawl" &  
+                                 year %in% 2017 & 
+                                 species %in% "shortspine thornyhead", 158.3, mtons), 
+                mtons = ifelse(state_gear %in% "CA_Non-trawl" &  
+                                 year %in% 2017 & 
+                                 species %in% "shortspine thornyhead", 184.77, mtons)) %>%
+  filter( !(state_gear %in% c("OR_Trawl","OR_Non-trawl") & year %in% 1981:1986) ) %>%
+  bind_rows(or_catch) %>%
   dplyr::ungroup()
+
 
 p1 <- allcatch %>% 
   dplyr::group_by(species, year, state, gear) %>% 
@@ -270,13 +288,12 @@ fleetsum <- new_state_gear %>%
 
 finalcatch <- fleetsum %>% 
   dplyr::select(-fleet, -season) %>% 
-  dplyr::bind_rows(historical_catch %>% 
-              # only keep southern fleets for now from the 2013 assessment until
-              # we get updated data from CA
-                dplyr::filter(fleet_name %in% c('STrawl', 'SOther')) %>% 
-                dplyr::select(-fleet, -season)) %>%
+  #dplyr::bind_rows(historical_catch %>% 
+  #            # remove - received data from CA
+  #              dplyr::filter(fleet_name %in% c('STrawl', 'SOther')) %>% 
+  #              dplyr::select(-fleet, -season)) %>%
   # add in new NTrawl and NOther historical catches
-  dplyr::bind_rows(historical_north %>% 
+  dplyr::bind_rows(historical_2023 %>% 
                      dplyr::filter(year >= 1901) %>% 
                      dplyr::select(-assessment)) %>% 
   dplyr::mutate(catch_se = 0.01) %>% 
@@ -328,7 +345,7 @@ comparecatch <- catch2013 %>%
   bind_rows(finalcatch %>% 
               dplyr::select(year, fleet_name, catch) %>% 
               mutate(assessment = '2023')) %>% 
-  bind_rows(historical_north %>% 
+  bind_rows(historical_2023 %>% 
               filter(year >= 1901))
 
 comparecatch %>% 

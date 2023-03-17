@@ -86,17 +86,6 @@ ca.state.catch <- read.csv(here("data","raw","Ralston_et_al_2010_thornyhead.csv"
 
 write.csv(ca.state.catch, file = here("data","processed","SST_CA_historical.csv"), row.names=FALSE)
 
-##### Add OR data to pacfin for 1981-1986 #####
-pacfin.state <- catch.pacfin %>%
-  left_join(
-  or.state.catch %>%
-    group_by(Year, Fleet) %>%
-    summarize(mtons_OR = sum(round_mtons, na.rm=TRUE))
-) %>%
-  mutate(round_mtons = ifelse(Year %in% 1981:1986 & Fleet %in% c("NTrawl","NOther"), 
-                              round_mtons + mtons_OR, round_mtons)) %>% 
-  dplyr::select(Year, Fleet, round_mtons)
-
 #####  Load foreign fleets #####
 # consistent with 2005 and 2013 assessments:
 ## assign US Border-Vancouver and Columbia areas to North trawl fleet
@@ -108,13 +97,31 @@ foreign.rodgers <- read.csv(here("data","raw","rodgers 2003 sst foreign fleet.cs
 
 ##### Combine all state landings #####
 # for now, assume all Thornyheads are Shortspine for California reconstruction
-catch.all <- bind_rows(or.state.catch,wa.state.catch,foreign.rodgers) %>%
+catch.state.2023 <- bind_rows(or.state.catch,wa.state.catch,foreign.rodgers) %>%
   bind_rows(ca.state.catch %>% 
               ungroup() %>%
               dplyr::filter(Species %in% c("THDS","SSPN")) %>% 
               dplyr::select(Year, Fleet, round_mtons)) %>%
   group_by(Year, Fleet) %>%
-  summarize(round_mtons = sum(round_mtons, na.rm=TRUE)) %>% filter(Year < 1981) %>%
+  summarize(round_mtons = sum(round_mtons, na.rm=TRUE)) %>% filter(Year < 1981)
+write.csv(catch.state.2023, file = here("data","processed","SST_2023_state_total_landings.csv"), row.names=FALSE)
+
+
+##### Add OR data to pacfin for 1981-1986 #####
+pacfin.state <- catch.pacfin %>%
+  left_join(
+  or.state.catch %>%
+    group_by(Year, Fleet) %>%
+    summarize(mtons_OR = sum(round_mtons, na.rm=TRUE))
+) %>%
+  mutate(round_mtons = ifelse(Year %in% 1981:1986 & Fleet %in% c("NTrawl","NOther"), 
+                              round_mtons + mtons_OR, round_mtons)) %>% 
+  dplyr::select(Year, Fleet, round_mtons)
+
+
+##### Combine all state landings #####
+# for now, assume all Thornyheads are Shortspine for California reconstruction
+catch.all <- catch.state.2023 %>%
   bind_rows(pacfin.state) 
 
 catch.all %>% 
@@ -140,6 +147,35 @@ ggplot(catch.comp %>% filter(Assessment %in% c(2013,2023)),
   facet_wrap(~Fleet, scales="free")
 ggsave("outputs/fishery_data/SST_Compare-Assessments-All.png", dpi=300, height=7, width=10, units='in')
 
+# 2005 vs 2023 when aggregating across gear types
+# post-1964
+ggplot(catch.comp %>% filter(Assessment %in% c(2005,2023) & Year %in% 1964:2004) %>% 
+         mutate(Fleet = ifelse(Fleet %in% c("NTrawl","NOther"), "North", "South")) %>%
+         group_by(Fleet, Year, Assessment) %>% summarize(round_mtons = sum(round_mtons)), 
+       aes(x = Year, y=round_mtons, group=as.factor(Assessment), color=as.factor(Assessment))) + 
+  geom_line(size=1.5) + 
+  theme_classic() + 
+  scale_color_colorblind7() +
+  guides(color = guide_legend(title = "Assessment")) +
+  theme(text=element_text(size=20)) + 
+  ylab("Total Weight (mt)") +
+  xlab("Year") + 
+  facet_wrap(~Fleet, scales="free")
+ggsave("outputs/fishery_data/SST_Compare-2005_2023_post1964.png", dpi=300, height=7, width=10, units='in')
+
+# pre-1964
+ggplot(catch.comp %>% filter(Assessment %in% c(2005,2023) & Year %in% 1900:1963) %>% 
+         mutate(Fleet = ifelse(Fleet %in% c("NTrawl","NOther"), "North", "South")) %>%
+         group_by(Fleet, Year, Assessment) %>% summarize(round_mtons = sum(round_mtons)), 
+       aes(x = Year, y=round_mtons, group=as.factor(Assessment), color=as.factor(Assessment))) + 
+  geom_line(size=1.5) + 
+  theme_classic() + 
+  scale_color_colorblind7() +
+  guides(color = guide_legend(title = "Assessment")) +
+  theme(text=element_text(size=20)) + 
+  ylab("Total Weight (mt)") +
+  xlab("Year") + 
+  facet_wrap(~Fleet, scales="free")
 
 # Differences between all three assessments in N Trawl
 ggplot(catch.comp %>% filter(Fleet %in% "NTrawl" & Year >= 1980), 
@@ -201,6 +237,7 @@ bind_rows(or.state.catch %>% mutate(source = "state"),
   theme(text=element_text(size=20)) + 
   ylab("Total Weight (mt)") +
   xlab("Year")
+ggsave("outputs/fishery_data/SST_Compare-State-and-PacFIN.png", dpi=300, height=7, width=10, units='in')
 
 
 
@@ -362,27 +399,14 @@ bind_rows(or.state.catch,wa.state.catch) %>%
 # 
 
 # add 
-bind_rows(ca.calcom, ca.ralston) %>%
-  spread(Species, round_mtons) %>%
-  left_join(s.prop.10yr) %>%
-  left_join(foreign.rodgers) %>%
-  replace_na(list(LSPN = 0, SSPN=0, THDS=0, Foreign = 0)) %>%
-  mutate(SSPN_split = Foreign + SSPN + THDS*0.5, 
-         SSPN_10yr = Foreign + SSPN + THDS*sst.10yr, 
-         SSPN_All = Foreign + SSPN + THDS) %>%
-  left_join(SST.2013 %>% rename(SSPN13 = ROUND_WEIGHT_MTONS)) %>%
-  left_join(SST.2005 %>% rename(SSPN05 = ROUND_WEIGHT_MTONS)) %>%
-  ggplot(aes(x=Year)) + 
-  geom_line(aes(y=SSPN_split, color="red"), size=1.5) + 
-  geom_line(aes(y=SSPN_10yr, color="green"), size=1.5) + 
-  geom_line(aes(y=SSPN_All, color="blue"), size=1.5) + 
-  geom_line(aes(y=SSPN13, color="black"), size=1.5) + 
-#  geom_line(aes(y=SSPN05)) + 
-  scale_color_identity(name = "",
-                       breaks = c("red", "green", "blue","black"),
-                       labels = c("SST_split", "SST_10yr", "SST_all", "2013_assmt"),
-                       guide = "legend") +
-  facet_wrap(~Fleet, scales="free")
+ca.state.catch %>%
+  spread(Species, round_mtons, fill = 0) %>%
+  group_by(Year, Fleet) %>%
+  summarize(pctTHDS = THDS / (LSPN + SSPN + THDS)) %>% 
+  arrange(Fleet, Year) %>%
+  data.frame()
+
+
 
 
 
