@@ -122,6 +122,25 @@ ggplot(matatlength, aes(x = length, y = pmat)) +
 # on top and bottom. I've also seen plotted proportions at length by length bins,
 # although that can sometimes be confusing as to what data the curve is fit to.
 
+
+ggplot(mat.df, aes(x=length, y=maturity)) + geom_point() + 
+  stat_smooth(method="glm", method.args=list(family="binomial"), se=FALSE) +
+  geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
+  geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
+  labs(x = 'Length (cm)', y = 'P(mature)',
+       title = 'Shortspine thornyhead female maturity-at-length',
+       subtitle = 'Source: M. Head, NWFSC') +
+  theme_bw()
+
+# base R plot
+mat.glm <- glm(maturity ~ length, data=mat.df, family=binomial(link="logit"))
+
+par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
+plot(mat.df$length, mat.df$maturity)
+curve(predict(mat.glm, data.frame(length=x), type="response"), add=TRUE) 
+  
+ 
+
 # Next steps...
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
