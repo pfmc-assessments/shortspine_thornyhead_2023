@@ -90,9 +90,9 @@ n   <- nrow(mat.df)
 L50 <- -A/B 
 
 deltamethod <- ((sA^2)/(B^2))- ((2*A*sA*sB*r)/(B^3))+ (((A^2)*(sB^2))/(B^4))
-deltamethod
+deltamethod #is this a method fo L50?
 
-1.96*(sqrt(deltamethod)/sqrt(n)) ###Gives you 95% CI##
+1.96*(sqrt(deltamethod)/sqrt(n)) ###Gives you 95% CI## #For L50??
 
 
 #~~~~~~~~~~~~~~~~~~
@@ -100,7 +100,7 @@ deltamethod
 
 a   <- A
 b   <- B
-l50 <- L50
+l50 <- L50 #use deltamethod estimate instead?
 
 lens <- seq(6, 72, 2)
 
@@ -127,6 +127,7 @@ ggplot(matatlength, aes(x = length, y = pmat)) +
 # although that can sometimes be confusing as to what data the curve is fit to.
 
 
+# With data plotted
 ggplot(mat.df, aes(x=length, y=maturity)) + geom_point() + 
   stat_smooth(method="glm", method.args=list(family="binomial"), se=FALSE) +
   geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
@@ -135,6 +136,8 @@ ggplot(mat.df, aes(x=length, y=maturity)) + geom_point() +
        title = 'Shortspine thornyhead female maturity-at-length',
        subtitle = 'Source: M. Head, NWFSC') +
   theme_bw()
+
+
 
 # base R plot
 mat.glm <- glm(maturity ~ length, data=mat.df, family=binomial(link="logit"))
