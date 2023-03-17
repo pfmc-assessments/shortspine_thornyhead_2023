@@ -248,18 +248,18 @@ matatlength.2023.func <- data.frame(length = lens) %>%
 
 
 # Same plot in base R
-# Use for data workshop presentation?
+# Use for data workshop presentation?----
 
-png("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturity_comparison.png", width=6, height=4)
+#png("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturity_comparison.png", width=6, height=4, units="in", res=300)
 
 par(mar = c(4.5, 4.5, 1, 1)) # Reduce some of the margins so that the plot fits better
 plot(maturity~length, data=mat.bio.df, 
      xlab="Length (cm)", ylab="Probability mature", 
      pch="l", xlim=c(6,75), col="lightblue", las=1, cex.lab=1.2)
-lines(pmat~length, data=matatlength.2023.bio, col="lightblue", lwd=2.5, lty=2) 
-lines(pmat~length, data=matatlength.2013,     col="black",     lwd=2.5)
 abline(h=0, lty=3, col="grey")
 abline(h=1, lty=3, col="grey")
+lines(pmat~length, data=matatlength.2023.bio, col="lightblue", lwd=2.5, lty=2) 
+lines(pmat~length, data=matatlength.2013,     col="black",     lwd=2.5)
 legend(40,0.4, bty="n", cex=1, legend=c("Pearson and Gunderson 2003","WCGBTS"), col=c("black","lightblue"), lty=c(1,2), lwd=2)
 
-dev.off()
+#dev.off()
