@@ -143,7 +143,7 @@ ggplot(mat.df, aes(x=length, y=maturity)) + geom_point() +
 mat.glm <- glm(maturity ~ length, data=mat.df, family=binomial(link="logit"))
 
 par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
-plot(mat.df$length, mat.df$maturity)
+plot(mat.df$length, mat.df$maturity, xlab="Length (cm)", ylab="Probability of maturity", pch="l", xlim=c(6,80))
 curve(predict(mat.glm, data.frame(length=x), type="response"), add=TRUE) 
   
  
@@ -160,7 +160,7 @@ curve(predict(mat.glm, data.frame(length=x), type="response"), add=TRUE)
   # temporal or depth covariates or filters on the data?
 
 # 1. Question: Is there difference between functional vs biological?
-# Answer: no!
+# Answer: no! Or am I doing something wrong here and plotting the same data twice?
 # Plot functional and biological maturity using only "certain" reads
 
 # select data
@@ -169,6 +169,7 @@ mat.bio.df<- data.frame(length = data$Length,
 
 mat.func.df<- data.frame(length = data$Length, 
                         maturity = data$Functional_maturity)
+
 # complete cases
 mat.bio.df<-mat.df[complete.cases(mat.df$maturity),]
 mat.func.df<-mat.df[complete.cases(mat.df$maturity),]
@@ -182,7 +183,7 @@ mat.func.glm <- glm (maturity ~ 1 +length, data = mat.func.df,  #why 1 + length?
 par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
 plot(maturity ~ length, data=mat.bio.df, col="blue", pch="l")
 points(maturity ~ length, data=mat.func.df, col="red", pch="l")
-curve(predict(mat.bio.glm, data.frame(length=x), type="response"), add=TRUE, col="blue") 
+curve(predict(mat.bio.glm, data.frame(length=x), type="response"), add=TRUE, col="blue", lwd=2) 
 curve(predict(mat.func.glm, data.frame(length=x), type="response"), add=TRUE, col="red") 
 
 # coefficients
@@ -194,7 +195,7 @@ a.func   <- coef(mat.func.glm)[1]
 b.func   <- coef(mat.func.glm)[2]
 l50.func <- -a.func/b.func
 
-# visualize
+# Same plot but with ggplot
 lens <- seq(6, 72, 2)
 
 matatlength.bio <- data.frame(length = lens) %>% 
@@ -217,5 +218,48 @@ ggplot(mat.func.bio.compare, aes(x = length, y = pmat, col=type)) +
        subtitle = 'Source: M. Head, NWFSC') +
   theme_bw() 
 
+
+
 # Compare to Pearson and Gunderson 2003 maturity information used in the 
 # 2013 assessment
+a.2013 <- 41.913	
+b.2013 <- -2.3046
+l50.2013 <- 18.19
+
+matatlength.2013 <- data.frame(length = lens) %>% 
+  mutate(pmat = 1 / (1 + exp(a.2013 + b.2013 * length)))
+
+matatlength.2023.bio <- data.frame(length = lens) %>% 
+  mutate(pmat = 1 / (1 + exp(-(a.bio + b.bio * length)))) #need the negative sign!
+
+matatlength.2023.func <- data.frame(length = lens) %>% 
+  mutate(pmat = 1 / (1 + exp(-(a.func + b.func * length)))) #need the negative sign!
+
+
+# With data plotted, but I don't really know ggplot!!
+#ggplot(mat.df, aes(x=length, y=maturity)) + geom_point(col="lightblue", pch="l", size=3) + 
+#  geom_line(data = matatlength.2023.bio, aes (length, pmat),  col="lightblue", lwd=1.1) +
+#  #geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
+#  #geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
+#  geom_line(data = matatlength.2013, aes (length, pmat), lwd=1) +
+#  labs(x = 'Length (cm)', y = 'P(mature)',
+#       title = 'Shortspine thornyhead female maturity-at-length') +
+#  theme_bw()
+
+
+# Same plot in base R
+# Use for data workshop presentation?
+
+png("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturity_comparison.png", width=6, height=4)
+
+par(mar = c(4.5, 4.5, 1, 1)) # Reduce some of the margins so that the plot fits better
+plot(maturity~length, data=mat.bio.df, 
+     xlab="Length (cm)", ylab="Probability mature", 
+     pch="l", xlim=c(6,75), col="lightblue", las=1, cex.lab=1.2)
+lines(pmat~length, data=matatlength.2023.bio, col="lightblue", lwd=2.5, lty=2) 
+lines(pmat~length, data=matatlength.2013,     col="black",     lwd=2.5)
+abline(h=0, lty=3, col="grey")
+abline(h=1, lty=3, col="grey")
+legend(40,0.4, bty="n", cex=1, legend=c("Pearson and Gunderson 2003","WCGBTS"), col=c("black","lightblue"), lty=c(1,2), lwd=2)
+
+dev.off()
