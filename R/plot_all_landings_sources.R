@@ -52,7 +52,10 @@ dat %>%
   facet_wrap(~state, ncol = 1, scales = 'free_y') +
   scale_y_discrete(position = 'right', limits = rev) +
   labs(x = NULL, y = NULL) +
-  theme_minimal(base_size = 20) +
+  theme_minimal(base_size = 30) +
   theme(legend.position = 'none')
+
+
+
 ggsave('outputs/landings_data_timeseries.jpg', 
-       bg='white', dpi=300, height=12, width=16, units="in")
+       bg='white', dpi=300, height=7, width=16, units="in")
