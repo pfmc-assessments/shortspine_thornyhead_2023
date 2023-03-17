@@ -32,6 +32,10 @@ data<-data[data$Certainty==1,] #filter only data where maturity is certain
 plot(Functional_maturity~Biological_maturity, data=data)
 #which samples are different
 differences<-data[data$Functional_maturity!= data$Biological_maturity,]
+plot(Biological_maturity ~ Length_cm, data= differences, pch="l", main = "SST where bio and func maturity are different", col="red", ylim= c(0,1), xlim=c(6,72))
+points(Functional_maturity ~ Length_cm, data= differences, pch="l", col="blue")
+legend(5,0.6, legend=c("determined by biological maturity", "determined by function maturity"), pch="l", col=c("red","blue"))
+
 
 # choose maturity type here (biological or functional or other)
 # Biological_maturity: 
@@ -148,8 +152,9 @@ curve(predict(mat.glm, data.frame(length=x), type="response"), add=TRUE)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Discuss with M. Head which maturity data to use
-  #functional vs biological?
-  #certain vs uncertain data?
+  # functional vs biological?
+  # certain vs uncertain data?
+  # temporal or depth covariates or filters on the data?
 
 # 1. Question: Is there difference between functional vs biological?
 # Answer: no!
@@ -166,10 +171,16 @@ mat.bio.df<-mat.df[complete.cases(mat.df$maturity),]
 mat.func.df<-mat.df[complete.cases(mat.df$maturity),]
 
 # estimate parameters, logistic regression 
-mat.bio.glm <- glm (maturity ~ 1 + length, data = mat.bio.df,  #why 1 + length??
+mat.bio.glm <- glm (maturity ~ 1 +length, data = mat.bio.df,  #why 1 + length??
                     family = binomial(link ="logit"))
-mat.func.glm <- glm (maturity ~ 1 + length, data = mat.func.df,  #why 1 + length??
+mat.func.glm <- glm (maturity ~ 1 +length, data = mat.func.df,  #why 1 + length??
                     family = binomial(link ="logit"))
+
+par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
+plot(maturity ~ length, data=mat.bio.df, col="blue", pch="l")
+points(maturity ~ length, data=mat.func.df, col="red", pch="l")
+curve(predict(mat.bio.glm, data.frame(length=x), type="response"), add=TRUE, col="blue") 
+curve(predict(mat.func.glm, data.frame(length=x), type="response"), add=TRUE, col="red") 
 
 # coefficients
 a.bio   <- coef(mat.bio.glm)[1]
