@@ -57,6 +57,7 @@ thorny_GEMM %>%
   theme_classic() + 
   theme(text=element_text(size=20))
 
+
 # Let's assign each sector to a catch share regime and a gear type to 
 thorny_GEMM %>%
   group_by(sector) %>%
@@ -87,6 +88,22 @@ thorny_GEMM %>%
   ggplot(aes(x=year, y=totdisc+totland, fill=catch_share)) +
   geom_bar(stat="identity") +
   facet_wrap(~species) + theme_bw()
+
+
+#Added by Madi 3/15/23
+#Summarize Discards in MT by year (Coastwide, gear grouping)
+
+thorny_GEMM %>%
+  filter(sector!="Research") %>%
+  group_by(year, gear) %>%
+  summarize(totland  = sum(total_landings_mt, na.rm=T),
+            totdisc= sum(total_discard_mt, na.rm=T)) %>%
+  ggplot(aes(x=year, y=totdisc, fill = gear )) +
+  geom_bar(stat="identity", position="stack", color = "black") +
+  scale_fill_manual(values = c( "#56B4E9","#F0E442"), name = "Gear Type") +
+  labs(x = "Year", y = "Discard (mt)", title = "Shortspine Thornyhead Discards (GEMM)")+
+  theme_classic() + 
+  theme(text=element_text(size=20))
 
 ####--------------------------------------------------------------------#
 ####-----------------	WCGOP observer program ----------------------------
@@ -126,6 +143,7 @@ disc_catch_share %>%
          gear=ifelse(gear == "FixedGears", "Other", gear)) %>%
   mutate(fleet=paste0(area_lg, gear)) %>%
   mutate(ob_ratio_boot = ifelse(!is.na(median_boot_ratio), median_boot_ratio, ob_ratio)) -> disc_rates_WCGOP
+
 
 disc_rates_WCGOP %>%
   mutate(lower=ifelse(ob_ratio_boot-1.96*sd_boot_ratio<0, 0, ob_ratio_boot-1.96*sd_boot_ratio)) %>%
@@ -182,12 +200,46 @@ disc_rates_WCGOP_GEMM %>%
   scale_color_manual(values = c( "#F0E442","#E69F00","#56B4E9","#009E73")) +
   labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
   coord_cartesian(ylim=c(0,1)) +
-  theme_bw() +
+  theme_classic()  +
   theme(legend.position = "right", legend.text=element_text(size=12),
         legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14))
 
 
 ggsave("outputs/discard_data/SST_WCGOP_GEMM_discard_rates.png", dpi=300, height=7, width=10, units='in')
+
+
+###Generate figure with discard in MT for time series to compare to landings 
+
+##!!! Don't use these, I they don't accurately reflect discards !!!##
+
+# Observed Discards in (MT) at the same scale as landings data
+disc_rates_WCGOP %>%
+  ggplot(aes(x=year, y=ob_discard_mt, fill = fleet)) +
+  geom_bar(stat="identity", position="stack", color = "black") +
+  scale_y_continuous(expand = c(0, 0))+
+  scale_fill_manual(values = c("#009E73" ,"#56B4E9","#F0E442","#E69F00"),
+  breaks = c("NTrawl", "NOther", "STrawl", "SOther"), name = "Fleet")+
+  labs(x = "Year", y = "Observed Discard (mt)", color="Fleet", title = "Shortspine Thornyhead Discards (WCGOP)") + 
+  coord_cartesian(ylim=c(0,4500)) +
+  theme_classic() +
+  theme(legend.position = "right", legend.text=element_text(size=12),
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14))
+
+# Observed Discards in (MT) with a different Y-axis scale 
+    #NOTE that the scale is less than the GEMM data set
+disc_rates_WCGOP %>%
+  ggplot(aes(x=year, y=totdisc2, fill = fleet)) +
+  geom_col(color = "black") +
+  scale_y_continuous(expand = c(0, 0))+
+  scale_fill_manual(values = c("#009E73" ,"#56B4E9","#F0E442","#E69F00"),
+                    breaks = c("NTrawl", "NOther", "STrawl", "SOther"), name = "Fleet")+
+  labs(x = "Year", y = "Observed Discard (mt)", color="Fleet", title = "Shortspine Thornyhead Discards (WCGOP)") + 
+  #coord_cartesian(ylim=c(0, 50)) +
+  theme_classic() +
+  theme(legend.position = "right", legend.text=element_text(size=12),
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14))
+
+
 
 # write.csv(, "outputs/discard_data/*******.csv")
 
@@ -217,6 +269,8 @@ disc_lencomp_WCGOP %>%
   theme(legend.position = "top") +
   facet_wrap(~forcats::fct_rev(fleet), ncol=4)
 
+## Need to add median vertical lines!
+
 disc_lencomp_WCGOP %>%
   mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
   ggplot(aes(x=meanLen, y=factor(Year), height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
@@ -229,7 +283,33 @@ disc_lencomp_WCGOP %>%
         legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14)) 
 
 ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10, width=7, units='in')
-  
+
+#########Histogram of length comps for discards 
+
+
+##Need to add median vertical lines!
+
+disc_lencomp_WCGOP %>%
+  mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
+  mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
+  group_by(meanLen, fleet) %>%
+  summarize(Nfish = sum(N_Fish))%>%
+  ggplot(aes(x = meanLen, y = Nfish, fill = forcats::fct_rev(fleet), color = forcats::fct_rev(fleet))) +
+  geom_col(position = "identity", alpha = 0.5) +
+  scale_fill_manual(values = c("#009E73" ,"#56B4E9","#F0E442","#E69F00"),
+                    breaks = c("NTrawl", "NOther", "STrawl", "SOther"), name = "Fleet")+
+  scale_color_manual(values = c("#009E73" ,"#56B4E9","#F0E442","#E69F00"),
+                     breaks = c("NTrawl", "NOther", "STrawl", "SOther"), name = "Fleet")+
+  xlab("Length (cm)") + ylab("Number of fish") +
+  facet_wrap(~fleet, nrow =1) + 
+  theme_classic()+
+  labs(x = "Length (cm)", y = "Number of fish", fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions")
+
+#Output disc_lencomp for a combo plot 
+
+write.csv(disc_lencomp_WCGOP, "outputs/discard_data/disc_lencomp.csv")
+
+
 # write.csv(, "outputs/discard_data/*******.csv")
 
 ### 3. Fleet-specific discard average weight
