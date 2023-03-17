@@ -219,7 +219,8 @@ ggplot(mat.func.bio.compare, aes(x = length, y = pmat, col=type)) +
 
 
 # 2. Question:How does WCGBTS maturity information compare to Pearson and Gunderson 2003,
-      # parameters from Pearson and Gunderson 2003 used in 2013 assessment
+# parameters from Pearson and Gunderson 2003 used in 2013 assessment
+# Answer: Really different! 
 
 # 2013 assessment
 a.2013 <- 41.913	
