@@ -22,6 +22,10 @@ data <- read.csv("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessmen
 names(data) # lengths in cm; maturity, 0=immature, 1=mature
 unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
 
+# format and extract date information
+data$Date_of_collection <- as.Date(data$Date_of_collection,format = "%Y %m %d")
+data$month              <- format(data$Date_of_collection,"%m")
+
 # summaries
 table(data$Sampling_platform ,data$Year)
 table(data$Sampling_platform)
