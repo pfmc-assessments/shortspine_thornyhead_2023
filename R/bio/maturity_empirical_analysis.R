@@ -260,6 +260,6 @@ abline(h=0, lty=3, col="grey")
 abline(h=1, lty=3, col="grey")
 lines(pmat~length, data=matatlength.2023.bio, col="lightblue", lwd=2.5, lty=2) 
 lines(pmat~length, data=matatlength.2013,     col="black",     lwd=2.5)
-legend(40,0.4, bty="n", cex=1, legend=c("Pearson and Gunderson 2003","WCGBTS"), col=c("black","lightblue"), lty=c(1,2), lwd=2)
+legend(40,0.4, bty="n", cex=0.8, legend=c("Pearson and Gunderson 2003","WCGBTS"), col=c("black","lightblue"), lty=c(1,2), lwd=2)
 
 #dev.off()
