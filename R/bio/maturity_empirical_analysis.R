@@ -75,11 +75,12 @@ maturityglm <- glm (maturity ~ 1 + length, data = mat.df,  #why 1 + length??
 summary(maturityglm) ###give you A, B, SA, SB, and n ###
 mat.coefs<- coef(maturityglm)
 mat.coefs
+mat.SE   <- summary(maturityglm)$coefficients[,2]
 
 A   <- mat.coefs[1] # is this correct?
 B   <- mat.coefs[2] # is this correct?
-sA  <-              # fill in
-sB  <-
+sA  <- mat.SE[1]    # assuming this is standard error??
+sB  <- mat.SE[2]
 r   <- cor(mat.df$length, mat.df$maturity) # gives you r
 n   <- nrow(mat.df)
 L50 <- -A/B 
