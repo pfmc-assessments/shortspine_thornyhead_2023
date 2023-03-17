@@ -269,6 +269,8 @@ disc_lencomp_WCGOP %>%
   theme(legend.position = "top") +
   facet_wrap(~forcats::fct_rev(fleet), ncol=4)
 
+## Need to add median vertical lines!
+
 disc_lencomp_WCGOP %>%
   mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
   ggplot(aes(x=meanLen, y=factor(Year), height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
@@ -284,41 +286,28 @@ ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10
 
 #########Histogram of length comps for discards 
 
-#This looks at the proportion of numbers for all year, but it looks bad, any advice? 
-disc_lencomp_WCGOP %>%
-  mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
-  ggplot(aes(x = meanLen, y = 0, height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
-  geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
-                      panel_scaling = TRUE, size = 0.5) +
-  scale_fill_manual(values = c("#E69F00", "#F0E442", "#009E73","#56B4E9")) +
-  theme_light() +
-  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions (WCGOP)") + 
-  theme(legend.position = "right", legend.text = element_text(size = 12),
-        legend.title = element_text(size = 14), axis.text = element_text(size = 14), axis.title.x = element_text(size = 14))
 
-##This is my attempt at histogram 
-#Note that the sample sizes for length bins are low and clustered by year, so the histograms aren't particularly informative. 
+##Need to add median vertical lines!
 
 disc_lencomp_WCGOP %>%
   mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
   mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
-  ggplot(aes(x = meanLen, fill = forcats::fct_rev(fleet))) +
-  geom_histogram(position = "identity", alpha = 0.5, binwidth = 2) +
+  group_by(meanLen, fleet) %>%
+  summarize(Nfish = sum(N_Fish))%>%
+  ggplot(aes(x = meanLen, y = Nfish, fill = forcats::fct_rev(fleet), color = forcats::fct_rev(fleet))) +
+  geom_col(position = "identity", alpha = 0.5) +
   scale_fill_manual(values = c("#009E73" ,"#56B4E9","#F0E442","#E69F00"),
                     breaks = c("NTrawl", "NOther", "STrawl", "SOther"), name = "Fleet")+
-  #scale_fill_colorblind7() +
-  #scale_color_colorblind7() +
-  xlab("Length (cm)") + ylab(" ") +
-  facet_wrap(~ fleet ) + 
+  scale_color_manual(values = c("#009E73" ,"#56B4E9","#F0E442","#E69F00"),
+                     breaks = c("NTrawl", "NOther", "STrawl", "SOther"), name = "Fleet")+
+  xlab("Length (cm)") + ylab("Number of fish") +
+  facet_wrap(~fleet, nrow =1) + 
   theme_classic()+
-  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions")  
+  labs(x = "Length (cm)", y = "Number of fish", fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions")
 
-#total of 2210 observation of length bit
-print(length(disc_lencomp_WCGOP$Lenbin))
+#Output disc_lencomp for a combo plot 
 
-#quick aggregate histogram, also odd...
-hist(disc_lencomp_WCGOP$Lenbin)
-
+write.csv(disc_lencomp_WCGOP, "outputs/discard_data/disc_lencomp.csv")
 
 
 # write.csv(, "outputs/discard_data/*******.csv")
