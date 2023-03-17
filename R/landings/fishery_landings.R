@@ -144,8 +144,11 @@ p1 <- allcatch %>%
   scale_color_colorblind7() +
   scale_fill_colorblind7() +
   facet_wrap(~state, ncol = 1) +
-  labs(x = 'Year', y = NULL, fill = 'Gear', title = 'Unidentified Thornyheads Catch (mt)')
+  theme_classic() +
+  labs(x = 'Year', y = "Catch (mt)", fill = 'Gear', title = 'Unidentified Thornyheads Catch (mt)') +
+  theme(text = element_text(size = 15)) 
 p1
+
 ggsave("outputs/fishery_data/unid-catch.png", 
        dpi=300, height=7, width=10, units='in')
 
@@ -179,11 +182,13 @@ p2 <- prop_sspn %>%
   scale_shape_manual(values = c(1, 17)) +
   scale_color_colorblind7() +
   facet_wrap(~state, ncol = 1) +
-  labs(x = 'Year', y = NULL, title = 'Proportion shortspine in identified thornyhead catch',
+  labs(x = 'Year', y = "Ratio", title = 'Proportion shortspine in identified thornyhead catch',
        shape = 'Source', col = 'Gear') +
   theme_classic() +
-  theme(text = element_text(size = 17)) 
+  theme(text = element_text(size = 15)) +
+  expand_limits(y=0)
 p2
+
 ggsave("outputs/fishery_data/proportion-sspn.png", 
        dpi=300, height=7, width=10, units='in')
 
@@ -269,6 +274,10 @@ p3a <- p3 + facet_wrap(~state, nrow = 1) +
 # scale_fill_manual(values = c("#009E73", "#F0E442")) +
   
 p1a / p2a / p3a
+p1a / p2a
+
+ggsave("outputs/fishery_data/unidcatch-props.png", 
+       dpi=300, height=6, width=10, units='in')
 
 # finalize ----
 
