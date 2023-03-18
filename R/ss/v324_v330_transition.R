@@ -645,9 +645,9 @@ RunSS_CtlFile(
   # we use SS V3.30
   isSSinPATH = FALSE,
   # the .exe is not declared in the PATH (for my machine)
-  nameExe = "SS3safe",
+  nameExe = "ss_win64_opt",
   # the .exe is in the oldSST_path directory
-  pathExe = file.path(Exe_path, "SS_V3_24_U/SSv3.24U_MacOS", fsep = .Platform$file.sep)
+  pathExe = file.path(Exe_path, "SS_V3_24_U", fsep = .Platform$file.sep)
 ) # Run the model which create the "data.ss_new" file
 
 # Now read the control file using the "data.ss_new" file as input of the
@@ -1200,7 +1200,7 @@ ctl$maxF <- oldCtl$maxF #0.9
 
 # Catchability parameters matrix for SS V3.30 is really different from the one used in V3.24.
 # => In the 2013 model:
-#   * Each fleet was directly proportional to abundance,
+# * Each fleet was directly proportional to abundance,
 # * There was no environmental impact on Q,
 # * Only the `Triennial1` survey had an extra parameter that will contain an additive constant to be added to
 # the input stddev of the survey variability,
