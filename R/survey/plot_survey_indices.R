@@ -32,7 +32,7 @@ survey.indices <- bind_rows(
     ),
   ) %>%
   write_csv(  # Save survey indices to processed data directory
-    file.path(here::here(), "data", "processed", "survey_indices_2023.csv")
+    file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv")
   )
 
 # Create single plot of all survey indices as point ranges
