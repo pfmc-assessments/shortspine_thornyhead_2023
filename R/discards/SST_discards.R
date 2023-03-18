@@ -305,6 +305,8 @@ disc_lencomp_WCGOP %>%
   theme_classic()+
   labs(x = "Length (cm)", y = "Number of fish", fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions")
 
+#write_csv(disc_lencomp_WCGOP, "outputs/fishery_data/discard_lengths.csv")
+
 #Output disc_lencomp for a combo plot 
 
 write.csv(disc_lencomp_WCGOP, "outputs/discard_data/disc_lencomp.csv")
