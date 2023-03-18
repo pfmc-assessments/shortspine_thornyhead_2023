@@ -57,7 +57,11 @@ fleetmeans <- plot_dat %>%
                          SEX == 'U' ~ 'Unsexed')) %>%
   group_by(fleet, SEX) %>% 
   summarize(meanlength = mean(lengthcm, na.rm = TRUE),
+            medianlength = median(lengthcm, na.rm = TRUE),
             modelength = getmode(lengthcm))
+
+
+
 
 # plot fishery length distributions 
 plot_dat %>%
@@ -67,10 +71,10 @@ plot_dat %>%
 ggplot(# %>% filter(SEX == 'F'), 
        aes(x=lengthcm,y=year, fill = fleet, color = fleet)) + 
   geom_density_ridges(alpha = 0.5) + 
-  #geom_vline(data = fleetmeans, 
-  #           aes(xintercept = modelength, col = fleet, lty = fleet),
-  #           size = 1) +
-  # facet_grid(state ~ SEX) +
+  geom_vline(data = fleetmeans, 
+             aes(xintercept = medianlength, col = fleet, lty = fleet),
+             size = 1) +
+   facet_grid(state ~ SEX) +
   facet_wrap(~SEX) +
   labs(x = "Length (cm)", y = "", fill = 'Fleet', col = 'Fleet', lty = 'Fleet') +
   ggtitle("Fishery Length Compositions") +
@@ -81,18 +85,21 @@ ggplot(# %>% filter(SEX == 'F'),
   theme_classic() + 
   theme(text=element_text(size=12))
 
-ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps2.png", dpi=300, height=7, width=10, units='in')
+#ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps2.png", dpi=300, height=7, width=10, units='in')
 ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps3.png", dpi=300, height=7, width=10, units='in')
 
-# aggregate fishery length distributions 
-plot_dat %>%
+# aggregate fishery length distributions plot 
+plot_dat <- plot_dat %>%
   mutate(SEX = case_when(SEX == 'F' ~ 'Female',
                          SEX == 'M' ~ 'Male',
-                         SEX == 'U' ~ 'Unsexed')) %>%
+                         SEX == 'U' ~ 'Unsexed'))
+plot_dat %>%
 ggplot(aes(x = lengthcm, fill = fleet, col = fleet)) +
-  geom_density(position = "identity", alpha = 0.5, binwidth = 2) +
-  geom_vline(data = fleetmeans, 
-             aes(xintercept = modelength, col = fleet, lty = fleet),
+  geom_histogram(position = "identity", alpha = 0.5, binwidth = 2) +
+  geom_vline(data = plot_dat %>% 
+               group_by(fleet, SEX) %>% 
+    summarize(medianlength = median(lengthcm, na.rm = TRUE)),
+             aes(xintercept = medianlength, col = fleet, lty = fleet),
              size = 2) +
   scale_fill_colorblind7() +
   scale_color_colorblind7() +
@@ -101,8 +108,10 @@ ggplot(aes(x = lengthcm, fill = fleet, col = fleet)) +
   theme_classic() + 
   theme(text=element_text(size=20))
 
-ggsave("outputs/fishery_data/SST_PacFIN_fishery_aggregate_lengthcomps.png", dpi=300, height=10, width=9, units='in')
-ggsave("outputs/fishery_data/SST_PacFIN_fishery_aggregate_lengthcomps2.png", dpi=300, height=10, width=9, units='in')
+#write_csv(plot_dat, "outputs/fishery_data/fishery_lengths.csv")
+
+#ggsave("outputs/fishery_data/SST_PacFIN_fishery_aggregate_lengthcomps.png", dpi=300, height=10, width=9, units='in')
+ggsave("outputs/fishery_data/SST_PacFIN_fishery_aggregate_lengthcomps2.png", dpi=300, height=10, width=10, units='in')
 
 # create fleet structure for expansion
 # Check fleet structure
