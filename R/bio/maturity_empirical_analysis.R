@@ -22,15 +22,23 @@ data <- read.csv("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessmen
 names(data) # lengths in cm; maturity, 0=immature, 1=mature
 unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
 
+
+# format and extract date information
+data$Date_of_collection <- as.Date(data$Date_of_collection,format = "%Y %m %d")
+data$month              <- format(data$Date_of_collection,"%m")
+
+
 # summaries
 table(data$Sampling_platform ,data$Year)
 table(data$Sampling_platform)
 
+
 # Filter data, as necessary
 data<-data[data$Certainty==1,] #filter only data where maturity is certain
 
-plot(Functional_maturity~Biological_maturity, data=data)
+
 #which samples are different
+plot(Functional_maturity~Biological_maturity, data=data)
 differences<-data[data$Functional_maturity!= data$Biological_maturity,]
 plot(Biological_maturity ~ Length_cm, data= differences, pch="l", main = "SST where bio and func maturity are different", col="red", ylim= c(0,1), xlim=c(6,72))
 points(Functional_maturity ~ Length_cm, data= differences, pch="l", col="blue")
@@ -38,21 +46,18 @@ legend(5,0.6, legend=c("determined by biological maturity", "determined by funct
 
 
 # choose maturity type here (biological or functional or other)
-# Biological_maturity: 
-# Functional_maturity:
 mat.df<- data.frame(length = data$Length, 
-                    maturity = data$Biological_maturity) 
+                    maturity = data$Biological_maturity) # Biological_maturity or Functional_maturity
 
 mat.df<-mat.df[complete.cases(mat.df$maturity),]
 
 
 # visualize the data
 plot(maturity~length, data=mat.df, pch="l", ylim=c(0,1), las=1)
-#hist(mat.df$length)
 
 # visualize proportion of fish mature by length bin
 # set size of length bins with w =
-mat.df <- lencat(~length,data=mat.df,startcat=10,w=2) #from FSA package
+mat.df <- lencat(~length,data=mat.df,startcat=10,w=2) #lencat()from FSA package
 
 tblLen <- with(mat.df,table(LCat,maturity))
 ptblLen <- prop.table(tblLen,margin=1)
@@ -104,11 +109,7 @@ l50 <- L50 #use deltamethod estimate instead?
 
 lens <- seq(6, 72, 2)
 
-# not working
-#matatlength <- data.frame(length = lens) %>% 
-#  mutate(pmat = 1 / (1 + exp(a + b * length)))
-
-# does this work? yes, why? added a negative sign
+# Note, added a negative sign
 # need to check this
 matatlength <- data.frame(length = lens) %>% 
   mutate(pmat = 1 / (1 + exp(-(a + b * length))))
@@ -122,10 +123,7 @@ ggplot(matatlength, aes(x = length, y = pmat)) +
        subtitle = 'Source: M. Head, NWFSC') +
   theme_bw() 
 
-# is there a way to add the data to the plot? I've seen this as hash marks
-# on top and bottom. I've also seen plotted proportions at length by length bins,
-# although that can sometimes be confusing as to what data the curve is fit to.
-
+# is there a way to add the data to the plot?
 
 # With data plotted
 ggplot(mat.df, aes(x=length, y=maturity)) + geom_point() + 
@@ -138,8 +136,7 @@ ggplot(mat.df, aes(x=length, y=maturity)) + geom_point() +
   theme_bw()
 
 
-
-# base R plot
+# base R plot 
 mat.glm <- glm(maturity ~ length, data=mat.df, family=binomial(link="logit"))
 
 par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
@@ -156,12 +153,12 @@ curve(predict(mat.glm, data.frame(length=x), type="response"), add=TRUE)
 
 # Discuss with M. Head which maturity data to use
   # functional vs biological?
-  # certain vs uncertain data?
+  # certain vs uncertain data? filtering on Certainty == 1
   # temporal or depth covariates or filters on the data?
 
 # 1. Question: Is there difference between functional vs biological?
 # Answer: no! Or am I doing something wrong here and plotting the same data twice?
-# Plot functional and biological maturity using only "certain" reads
+# Plotted functional vs biological maturity using only "Certainty" == 1 reads
 
 # select data
 mat.bio.df<- data.frame(length = data$Length, 
@@ -180,6 +177,7 @@ mat.bio.glm <- glm (maturity ~ 1 +length, data = mat.bio.df,  #why 1 + length??
 mat.func.glm <- glm (maturity ~ 1 +length, data = mat.func.df,  #why 1 + length??
                     family = binomial(link ="logit"))
 
+# Plot
 par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
 plot(maturity ~ length, data=mat.bio.df, col="blue", pch="l")
 points(maturity ~ length, data=mat.func.df, col="red", pch="l")
@@ -220,7 +218,10 @@ ggplot(mat.func.bio.compare, aes(x = length, y = pmat, col=type)) +
 
 
 
-# Compare to Pearson and Gunderson 2003 maturity information used in the 
+# 2. Question:How does WCGBTS maturity information compare to Pearson and Gunderson 2003,
+# parameters from Pearson and Gunderson 2003 used in 2013 assessment
+# Answer: Really different! 
+
 # 2013 assessment
 a.2013 <- 41.913	
 b.2013 <- -2.3046
@@ -236,18 +237,7 @@ matatlength.2023.func <- data.frame(length = lens) %>%
   mutate(pmat = 1 / (1 + exp(-(a.func + b.func * length)))) #need the negative sign!
 
 
-# With data plotted, but I don't really know ggplot!!
-#ggplot(mat.df, aes(x=length, y=maturity)) + geom_point(col="lightblue", pch="l", size=3) + 
-#  geom_line(data = matatlength.2023.bio, aes (length, pmat),  col="lightblue", lwd=1.1) +
-#  #geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
-#  #geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
-#  geom_line(data = matatlength.2013, aes (length, pmat), lwd=1) +
-#  labs(x = 'Length (cm)', y = 'P(mature)',
-#       title = 'Shortspine thornyhead female maturity-at-length') +
-#  theme_bw()
-
-
-# Same plot in base R
+# Plot (in base R because I am just learning ggplot!)
 # Use for data workshop presentation?----
 
 #png("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturity_comparison.png", width=6, height=4, units="in", res=300)
