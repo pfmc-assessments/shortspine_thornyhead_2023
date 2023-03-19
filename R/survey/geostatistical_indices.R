@@ -21,20 +21,44 @@ read.geostat.index <- function(file, survey.name, method){
     )
 }
 
-wcgbt.indices.dg <- read.geostat.index(file.path(here::here("data/processed/surveys"), "wcgbts_index_dg.Rdata"), "WCGBTS", "delta-gamma")
-wcgbt.indices.dln <- read.geostat.index(file.path(here::here("data/processed/surveys"), "wcgbts_index_dln.Rdata"), "WCGBTS", "delta-lognormal")
+file.path <- file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023.csv")
+if(!file.exists(file.path)){
+  wcgbt.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dg.Rdata"), "WCGBTS", "delta-gamma")
+  wcgbt.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dln.Rdata"), "WCGBTS", "delta-lognormal")
+  
+  triennial.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "triennial_index_dg.Rdata"), "Triennial", "delta-gamma")
+  triennial.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "triennial_index_dln.Rdata"), "Triennial", "delta-lognormal")
+  
+  nwfsc_slope.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "nwfsc_slope_index_dg.Rdata"), "NWFSC Slope", "delta-gamma")
+  nwfsc_slope.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "nwfsc_slope_index_dln.Rdata"), "NWFSC Slope", "delta-lognormal")
+  
+  
+  indices <- bind_rows(triennial.indices.dg, triennial.indices.dln, 
+                       wcgbt.indices.dg, wcgbt.indices.dln, 
+                       nwfsc_slope.indices.dg, nwfsc_slope.indices.dln) %>%
+             mutate(
+               survey=recode_factor(
+                 survey, 
+                 !!!c(
+                   "Triennial" = "Triennial",
+                   "AFSC Slope" = "AFSC Slope Survey",
+                   "NWFSC Slope" = "NWFSC Slope Survey",
+                   "WCGBTS" = "WCGBTS"
+                 )
+               )
+             )
+  write.csv(indices, file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023.csv"))
+  
+}
 
-triennial.indices.dg <- read.geostat.index(file.path(here::here("data/processed/surveys"), "triennial_index_dg.Rdata"), "Triennial", "delta-gamma")
-triennial.indices.dln <- read.geostat.index(file.path(here::here("data/processed/surveys"), "triennial_index_dln.Rdata"), "Triennial", "delta-lognormal")
+indices <- read_csv(file.path, col_names = TRUE, col_types="dfddddddff")
 
-indices <- bind_rows(triennial.indices.dg, triennial.indices.dln, wcgbt.indices.dg, wcgbt.indices.dln)
-
-ggplot(indices, aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area, shape=survey, linetype=method))+
+ggplot(indices %>% filter(area=="Total"), aes(x=year, y=est, ymin=lwr, ymax=upr, color=survey, fill=survey, shape=survey, linetype=method))+
   #geom_pointrange()+
   geom_line()+
   geom_ribbon(alpha=0.25)+
-  scale_color_colorblind()+
-  scale_fill_colorblind()+
+  scale_color_colorblind7()+
+  scale_fill_colorblind7()+
   scale_shape_manual(values=c(16, 1, 100))+
   scale_y_continuous(breaks=seq(0, 125000, 25000), labels=scales::comma)+
   labs(x="Year", y="Estimated Biomass (mt)", title="WCGBTS Model-based Index of Abundance", color="State")+
@@ -49,19 +73,28 @@ ggplot(indices, aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area, sh
 
 ggsave(file.path(here::here(), "outputs", "surveys", "wcgbts_geostat_indices_comparison.png"), dpi=300, width=10, height=7, units = "in")
 
+ggplot(indices, aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area))+
+  #geom_pointrange()+
+  geom_line()+
+  geom_ribbon(alpha=0.25)+
+  scale_color_colorblind()+
+  scale_fill_colorblind()+
+  scale_shape_manual(values=c(16, 1, 100))+
+  #scale_y_continuous(breaks=seq(0, 125000, 25000), labels=scales::comma)+
+  labs(x="Year", y="Estimated Biomass (mt)", title="WCGBTS Model-based Index of Abundance", color="State")+
+  guides(fill="none")+
+  facet_grid(rows=vars(survey), cols=vars(method), scales="free_y")+
+  theme_classic()+
+  theme(
+    panel.grid.major.y = element_line(),
+    legend.position = "bottom"
+  )+
+  guides(linetype="none", shape="none")
+
+
+
+
 dbi <- read_csv(file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv"))
-  # bind_rows(
-  #   indices %>% 
-  #     filter(area == "Total") %>% 
-  #     select(year, est, lwr, upr, se, method) %>%
-  #     mutate(
-  #       Fleet=NA,
-  #       Season=NA,
-  #       survey="WCGBT"
-  #     ) %>%
-  #     rename(Value=est, lci=lwr, uci=upr, seLogB=se, Year=year) %>%
-  #     relocate(Year, Season, Fleet, Value, seLogB, survey, lci, uci, method)  
-  # )
 
 format.indices <- indices %>% 
       filter(area == "Total") %>%
@@ -70,7 +103,8 @@ format.indices <- indices %>%
         Fleet=NA,
         Season=NA,
         survey=case_when(survey == "Triennial" ~ "AFSC Triennial Shelf Survey 1",
-                         survey == "WCGBTS" ~ "West Coast Groundfish Bottom Trawl Survey")
+                         survey == "WCGBTS" ~ "West Coast Groundfish Bottom Trawl Survey",
+                         survey == "NWFSC Slope" ~ "NWFSC Slope Survey")
       ) %>%
       rename(Value=est, lci=lwr, uci=upr, seLogB=se, Year=year) %>%
       relocate(Year, Season, Fleet, Value, seLogB, survey, lci, uci, method) %>% 
