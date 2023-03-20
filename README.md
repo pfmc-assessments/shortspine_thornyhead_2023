@@ -24,7 +24,7 @@
 
 [Pre-Assessment Workshop for Shortspine Thornyhead, Rex Sole, and Petrale Sole, online, March 20, 2023](https://www.pcouncil.org/events/pre-assessment-workshop-for-shortspine-thornyhead-rex-sole-and-petrale-sole-to-be-held-online-march-20-2023/)
 
-> More info and materials coming soon
+> [SLIDES](https://www.pcouncil.org/documents/2023/03/shortspine-thornyhead-workshop-presentation-march-20-2023.pdf/)
 
 ## Useful Packages / Resources
 
