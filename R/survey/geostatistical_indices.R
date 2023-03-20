@@ -1,5 +1,6 @@
 library(tidyverse)
 library(ggplot2)
+library(ggthemes)
 
 source(file=file.path(here::here(), "R", "utils", "colors.R"))
 

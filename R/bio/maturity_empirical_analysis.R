@@ -40,9 +40,10 @@ data<-data[data$Certainty==1,] #filter only data where maturity is certain
 #which samples are different
 plot(Functional_maturity~Biological_maturity, data=data)
 differences<-data[data$Functional_maturity!= data$Biological_maturity,]
+
 plot(Biological_maturity ~ Length_cm, data= differences, pch="l", main = "SST where bio and func maturity are different", col="red", ylim= c(0,1), xlim=c(6,72))
 points(Functional_maturity ~ Length_cm, data= differences, pch="l", col="blue")
-legend(5,0.6, legend=c("determined by biological maturity", "determined by function maturity"), pch="l", col=c("red","blue"))
+legend(5,0.6, legend=c("biological maturity assignment", "functional maturity assignment"), pch="l", col=c("red","blue"))
 
 
 # choose maturity type here (biological or functional or other)
@@ -168,8 +169,8 @@ mat.func.df<- data.frame(length = data$Length,
                         maturity = data$Functional_maturity)
 
 # complete cases
-mat.bio.df<-mat.df[complete.cases(mat.df$maturity),]
-mat.func.df<-mat.df[complete.cases(mat.df$maturity),]
+mat.bio.df<-mat.bio.df[complete.cases(mat.bio.df$maturity),]
+mat.func.df<-mat.func.df[complete.cases(mat.func.df$maturity),]
 
 # estimate parameters, logistic regression 
 mat.bio.glm <- glm (maturity ~ 1 +length, data = mat.bio.df,  #why 1 + length??
@@ -209,8 +210,14 @@ mat.func.bio.compare<-rbind(matatlength.bio,matatlength.func)
 
 ggplot(mat.func.bio.compare, aes(x = length, y = pmat, col=type)) +
   geom_line() + 
-  geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
-  geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
+  geom_segment(aes(x = l50.bio, y = 0.5, xend = l50.bio, yend = 0), lty = 2, col="pink") +
+  geom_segment(aes(x = l50.bio, y = 0.5, xend = min(lens), yend = 0.5), lty = 2, col="pink") +
+  
+  geom_line() + 
+  geom_segment(aes(x = l50.func, y = 0.5, xend = l50.func, yend = 0), lty = 2, col="lightblue") +
+  geom_segment(aes(x = l50.func, y = 0.5, xend = min(lens), yend = 0.5), lty = 2, col="lightblue") +
+  
+  
   labs(x = 'Length (cm)', y = 'P(mature)',
        title = 'Shortspine thornyhead female maturity-at-length',
        subtitle = 'Source: M. Head, NWFSC') +
@@ -245,11 +252,13 @@ matatlength.2023.func <- data.frame(length = lens) %>%
 par(mar = c(4.5, 4.5, 1, 1)) # Reduce some of the margins so that the plot fits better
 plot(maturity~length, data=mat.bio.df, 
      xlab="Length (cm)", ylab="Probability mature", 
-     pch="l", xlim=c(6,75), col="lightblue", las=1, cex.lab=1.2)
+     pch="l", xlim=c(6,75), col="pink", las=1, cex.lab=1.2)
+points(maturity~length, data=mat.func.df,pch="l",col="lightblue")
 abline(h=0, lty=3, col="grey")
 abline(h=1, lty=3, col="grey")
-lines(pmat~length, data=matatlength.2023.bio, col="lightblue", lwd=2.5, lty=2) 
+lines(pmat~length, data=matatlength.2023.bio, col="pink", lwd=2.5, lty=2) 
+lines(pmat~length, data=matatlength.2023.func, col="lightblue", lwd=2.5, lty=2) 
 lines(pmat~length, data=matatlength.2013,     col="black",     lwd=2.5)
-legend(40,0.4, bty="n", cex=0.8, legend=c("Pearson and Gunderson 2003","WCGBTS"), col=c("black","lightblue"), lty=c(1,2), lwd=2)
+legend(40,0.4, bty="n", cex=0.8, legend=c("Pearson and Gunderson 2003","WCGBTS (biological maturity)","WCGBTS (functional maturity)"), col=c("black","pink","lightblue"), lty=c(1,2,2), lwd=2)
 
 #dev.off()

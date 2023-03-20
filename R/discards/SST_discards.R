@@ -228,7 +228,7 @@ disc_rates_WCGOP %>%
 # Observed Discards in (MT) with a different Y-axis scale 
     #NOTE that the scale is less than the GEMM data set
 disc_rates_WCGOP %>%
-  ggplot(aes(x=year, y=totdisc2, fill = fleet)) +
+  ggplot(aes(x=year, y=ob_discard_mt, fill = fleet)) +
   geom_col(color = "black") +
   scale_y_continuous(expand = c(0, 0))+
   scale_fill_manual(values = c("#009E73" ,"#56B4E9","#F0E442","#E69F00"),
@@ -271,18 +271,50 @@ disc_lencomp_WCGOP %>%
 
 ## Need to add median vertical lines!
 
+
+medDisc <- disc_lencomp_WCGOP %>%
+  group_by(fleet, Lenbin) %>%
+  summarize(medianlength = median(N_Fish)) %>%
+  group_by(fleet) %>%
+  slice(which.max(medianlength))%>%
+  mutate(Lenbin = Lenbin + 1)#%>%
+  #mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther")))
+
+
 disc_lencomp_WCGOP %>%
+  #mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
   mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
   ggplot(aes(x=meanLen, y=factor(Year), height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
   geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
                       panel_scaling = TRUE, size = 0.5) +
-  scale_fill_manual(values = c("#E69F00", "#F0E442", "#009E73","#56B4E9")) +
+  geom_vline(data = medDisc, aes(xintercept = Lenbin, color = fleet), size = 1, linetype = "dashed" ) +
+  scale_color_manual(values = c("#56B4E9","#009E73","#F0E442","#E69F00"))+ #Lines 
+  scale_fill_manual(values = c("#E69F00", "#F0E442", "#009E73","#56B4E9")) + #Shapes 
   theme_light() +
   labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions (WCGOP)") + 
   theme(legend.position = "right", legend.text=element_text(size=12),
-        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14)) 
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14))+
+  guides(color = "none", fill = guide_legend())
+  
+ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps_med.png", dpi=300, height=10, width=7, units='in')
 
+
+#No Median Lines 
+
+disc_lencomp_WCGOP %>%
+  #mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
+  mutate(meanLen = Lenbin + 1) %>% # just for plotting purpose - we center each bar on the mean value of the size bin
+  ggplot(aes(x=meanLen, y=factor(Year), height = Prop.numbers, fill = forcats::fct_rev(fleet))) + 
+  geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
+                      panel_scaling = TRUE, size = 0.5) +
+  scale_fill_manual(values = c("#E69F00", "#F0E442", "#009E73","#56B4E9")) + #Shapes 
+  theme_light() +
+  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions (WCGOP)") + 
+  theme(legend.position = "right", legend.text=element_text(size=12),
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14))
+  
 ggsave("outputs/discard_data/SST_WCGOP_discard_lencomps.png", dpi=300, height=10, width=7, units='in')
+
 
 #########Histogram of length comps for discards 
 
