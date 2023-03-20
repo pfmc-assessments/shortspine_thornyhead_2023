@@ -1,7 +1,7 @@
 library(tidyverse)
 
 abundance.idxs.2023 <- read_csv(
-  file.path(here::here(), "data", "processed", "survey_indices_2023.csv")
+  file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv")
 ) %>% 
   rename(
     Seas=Season,
@@ -22,7 +22,7 @@ abundance.idxs.2023 <- read_csv(
   print()
 
 abundance.idxs.2013 <- read_csv(
-  file.path(here::here(), "data", "processed", "survey_indices_2013.csv")
+  file.path(here::here(), "data", "processed", "surveys", "survey_indices_2013.csv")
 ) %>% 
   mutate(
     lci = Value-1.96*Value*sd_log,
