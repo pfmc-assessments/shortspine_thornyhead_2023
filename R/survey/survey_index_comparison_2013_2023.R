@@ -28,11 +28,11 @@ abundance.idxs.2013 <- read_csv(
     lci = Value-1.96*Value*sd_log,
     uci = Value+1.96*Value*sd_log,
     assessment = "2013",
-    Survey = case_when(Survey == "AFSC Triennial Shelf Survey 1" ~ "Triennial 1",
-                       Survey == "AFSC Triennial Shelf Survey 2" ~ "Triennial 2",
-                       Survey == "AFSC Slope Survey" ~ "AFSC Slope",
-                       Survey == "NWFSC Slope Survey" ~ "NWFSC Slope",
-                       Survey == "West Coast Groundfish Bottom Trawl Survey" ~ "WCGBT")
+    Survey = case_when(Survey == "Triennial1" ~ "Triennial 1",
+                       Survey == "Triennial2" ~ "Triennial 2",
+                       Survey == "AFSCslope" ~ "AFSC Slope",
+                       Survey == "NWFSCslope" ~ "NWFSC Slope",
+                       Survey == "NWFSCcombo" ~ "WCGBT")
   ) %>%
   print()
 
