@@ -31,11 +31,15 @@ if(!file.exists(file.path)){
   
   nwfsc_slope.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "nwfsc_slope_index_dg.Rdata"), "NWFSC Slope", "delta-gamma")
   nwfsc_slope.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "nwfsc_slope_index_dln.Rdata"), "NWFSC Slope", "delta-lognormal")
+
+  afsc_slope.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "afsc_slope_index_dg.Rdata"), "AFSC Slope", "delta-gamma")
+  afsc_slope.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "afsc_slope_index_dln.Rdata"), "AFSC Slope", "delta-lognormal")
   
   
   indices <- bind_rows(triennial.indices.dg, triennial.indices.dln, 
                        wcgbt.indices.dg, wcgbt.indices.dln, 
-                       nwfsc_slope.indices.dg, nwfsc_slope.indices.dln) %>%
+                       nwfsc_slope.indices.dg, nwfsc_slope.indices.dln,
+                       afsc_slope.indices.dg, afsc_slope.indices.dln) %>%
              mutate(
                survey=recode_factor(
                  survey, 
@@ -59,7 +63,7 @@ ggplot(indices %>% filter(area=="Total"), aes(x=year, y=est, ymin=lwr, ymax=upr,
   geom_ribbon(alpha=0.25)+
   scale_color_colorblind7()+
   scale_fill_colorblind7()+
-  scale_shape_manual(values=c(16, 1, 100))+
+  scale_shape_manual(values=c(16, 1, 100, 20))+
   scale_y_continuous(breaks=seq(0, 125000, 25000), labels=scales::comma)+
   labs(x="Year", y="Estimated Biomass (mt)", title="WCGBTS Model-based Index of Abundance", color="State")+
   guides(fill="none")+
@@ -94,7 +98,12 @@ ggplot(indices, aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area))+
 
 
 
-dbi <- read_csv(file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv"))
+dbi <- read_csv(file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv")) %>%
+    mutate(assessment="2023") #%>%
+    # bind_rows(
+    #   read_csv(file.path(here::here(), "data" ,"processed", "surveys", "survey_indices_2013.csv")) %>%
+    #     mutate(assessment="2013")
+    # )
 
 format.indices <- indices %>% 
       filter(area == "Total") %>%
@@ -104,14 +113,15 @@ format.indices <- indices %>%
         Season=NA,
         survey=case_when(survey == "Triennial" ~ "AFSC Triennial Shelf Survey 1",
                          survey == "WCGBTS" ~ "West Coast Groundfish Bottom Trawl Survey",
-                         survey == "NWFSC Slope" ~ "NWFSC Slope Survey")
+                         survey == "NWFSC Slope Survey" ~ "NWFSC Slope Survey",
+                         survey == "AFSC Slope Survey" ~ "AFSC Slope Survey")
       ) %>%
       rename(Value=est, lci=lwr, uci=upr, seLogB=se, Year=year) %>%
       relocate(Year, Season, Fleet, Value, seLogB, survey, lci, uci, method) %>% 
       filter(method=="delta-gamma")
 
 ggplot(dbi, aes(x=Year, y=Value, ymin=lci, ymax=uci, color=survey, fill=survey, group=survey))+
-  geom_pointrange(linetype="longdash")+
+  geom_pointrange(linetype="longdash", aes(shape=assessment))+
   geom_line(data=format.indices , aes(group=survey, linetype=method))+
   geom_ribbon(data=format.indices, aes(linetype=method), alpha=0.25)+
   scale_color_colorblind7()+
