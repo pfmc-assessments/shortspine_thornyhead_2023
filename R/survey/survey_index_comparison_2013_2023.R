@@ -82,7 +82,7 @@ ggplot(abundance.idxs, aes(x=Year, y=Value, color=Survey, fill=Survey, shape=ass
   )+
   guides(color=guide_legend(nrow=2), shape="none")
 
-ggsave(file.path(here::here(), "outputs", "surveys", "2013_2023_survey_indices_comparison.png"), dpi=300, width=12, height=7)
+ggsave(file.path(here::here(), "outputs", "surveys", "2013_2023_survey_indices_comparison.png"), dpi=300, width=12, height=7, bg = "white")
 
 
 
