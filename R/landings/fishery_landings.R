@@ -192,6 +192,16 @@ p2
 ggsave("outputs/fishery_data/proportion-sspn.png", 
        dpi=300, height=7, width=10, units='in')
 
+state_gear %>% 
+  dplyr::filter(species == 'thornyheads (mixed)') %>%
+  write_csv('outputs/fishery_data/unid_catch.csv')
+
+prop_sspn %>% write_csv('outputs/fishery_data/prop_sspn.csv')
+
+state_gear %>% 
+  dplyr::filter(species != 'thornyheads (mixed)') %>%
+  write_csv('outputs/fishery_data/identified_catch.csv')
+
 unidcatch <- state_gear %>% 
   dplyr::filter(species == 'thornyheads (mixed)') %>% 
   dplyr::left_join(prop_sspn) %>% 
