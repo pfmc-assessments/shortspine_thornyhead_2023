@@ -124,4 +124,5 @@ ggplot(pred, aes(x = year, col = gear, fill = gear)) +
   labs(x = 'Year', y = 'Proportion', title = 'Porportion shortspine thornyhead in identified catch',
        fill = 'Gear', col = 'Gear')
 
+pred %>% write_csv('outputs/fishery_data/smooth_sspn_ratios.csv')
 ggsave("outputs/fishery_data/smooth_sspn_ratios.png", dpi=300, height=8, width=10, units='in')
