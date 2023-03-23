@@ -15,6 +15,7 @@ lapply(libs, library, character.only = TRUE)
 source(file=file.path("R", "utils", "colors.R"))
 
 processed_discards_path <- 'data/fishery_processed/discards'
+confidential_discards_path <- 'data/fishery_confidential/discards'
 
 ####--------------------------------------------------------------------#
 ####-------------------------	GEMM data ---------------------------------
@@ -400,13 +401,80 @@ ggsave("outputs/discard_data/SST_WCGOP_discard_avgweight.png", dpi=300, height=7
 ####------------------------	Pikitch data --------------------------------
 ####--------------------------------------------------------------------#
 
+### 1. Discard rates 
+
 # The Pikitch dataset will provide discard rates estimates and length composition for the 1980s
 
-# The data should be comparable to that considered in the previous assessment. W should also be able to access newly available sex-information.
-# Request has been made to John Wallace.
+# The discard data is available for both groundfish and shrimp gears, in separate files. For each fleet, the mean rates and standard deviation
+#are estimated at different levels of aggreagation of fishing areas
+#
+
+disc_rates_Pik_trawl <- get(load(paste0(processed_discards_path, "/Pikitch.et.al.SSPN.Discard.Rates 19 Mar 2023.RData")))
+
+dodge <- position_dodge(width=0.45) 
+
+disc_rates_Pik_trawl %>%
+  filter(Areas %in% c("3B 3S","3A","2C","2B", "2B 2C 3A 3B 3S")) %>%
+  mutate(lowbound=ifelse(DiscardRate.Sp.Wt.Wgting-1.96*SD.DiscardRate.Sp.Wt.Wgting>=0, DiscardRate.Sp.Wt.Wgting-1.96*SD.DiscardRate.Sp.Wt.Wgting, 0),
+         highbound=DiscardRate.Sp.Wt.Wgting+1.96*SD.DiscardRate.Sp.Wt.Wgting) -> disc_rates_Pik_trawl_forplot
+
+disc_rates_Pik_trawl_forplot %>%
+  filter(Areas %in% c("3B 3S","3A","2C", "2B")) %>%
+  ggplot(aes(x=factor(Year), y=DiscardRate.Sp.Wt.Wgting)) +
+  geom_point(size=2.2, aes(color=Areas), position=dodge, alpha=0.15) +
+  geom_errorbar(aes(ymin=lowbound,
+                  ymax=highbound, color=Areas), position=dodge, alpha=0.15, width=.3, size=0.8) +
+  scale_colour_manual(values=c("#009E73","#009E05","#56B4E9", "#90B4E1")) +
+  scale_fill_manual(values=c("#009E73","#009E05","#56B4E9", "#90B4E1")) +
+  geom_point(data=filter(disc_rates_Pik_trawl_forplot, Areas=="2B 2C 3A 3B 3S"), aes(x=factor(Year), y=DiscardRate.Sp.Wt.Wgting), color="#56B4E9", size=3)+#, position=dodge) +
+  geom_errorbar(data=filter(disc_rates_Pik_trawl_forplot, Areas=="2B 2C 3A 3B 3S"), aes(ymin=lowbound,
+                    ymax=highbound), position=dodge, color="#56B4E9",width=.1, size=1) +
+  labs(x="Year", y="Discard rate (disc./(disc.+retained); %)", title="Discard Rates of North Trawl (Groundfish) - Pikitch et al.") +
+  geom_hline(yintercept=0, color="grey70", size=1) +
+  theme_bw()
+
+ggsave("outputs/discard_data/SST_Pikitch_discard_rates.png", dpi=300, height=7, width=10, units='in')
 
 
+disc_rates_Pik_shrimp <- get(load(paste0(processed_discards_path, "/Pikitch.et.al.SSPN.Discard.Rates.SHR 22 Mar 2023.RData")))
 
+disc_rates_Pik_shrimp %>%
+  mutate(lowbound=ifelse(DiscardRate.Sp.Wt.Wgting-1.96*SD.DiscardRate.Sp.Wt.Wgting>=0, DiscardRate.Sp.Wt.Wgting-1.96*SD.DiscardRate.Sp.Wt.Wgting, 0),
+         highbound=DiscardRate.Sp.Wt.Wgting+1.96*SD.DiscardRate.Sp.Wt.Wgting) %>%
+  ggplot(aes(x=factor(Year), y=DiscardRate.Sp.Wt.Wgting)) +
+  geom_point(size=2.2, position=dodge, color="black") +
+  geom_errorbar(aes(ymin=lowbound,
+                    ymax=highbound), position=dodge, width=.3, size=0.5, color="black") +
+  labs(x="Year", y="Discard rate (disc./(disc.+retained); %)", title="Discard Rates of Northern Shrimp Trawls - Pikitch et al.") +
+  geom_hline(yintercept=0, color="grey50", size=1) +
+  theme_bw()
+
+
+### Should we integrate Shrimp discards in our estimates?
+
+### 2. Length composition
+
+# Length data is available from Pikitch data. 2 tables are provided. On is sex-resolved, on is unsexed.
+
+#len_comp_sex <- get(load(paste0(processed_discards_path, "/Pikitch.et.al.SSPN.Lengths.wt.PacFIN.assm 21 Mar 2023.RData")))
+
+len_comp <- get(load(paste0(processed_discards_path, "/Pikitch.et.al.SSPN.Lengths.wt.PacFIN.assm.No.Sex 21 Mar 2023.RData")))
+
+len_comp %>%
+  filter(Disposition=="Discarded") %>%
+  filter(Areas=="3A 3S_&_3B 2C 2B") %>%
+  pivot_longer("L.6":"L.72", names_to="sizebin", values_to="Prop.numbers") %>%
+  mutate(meanLen=as.numeric(gsub("L.","",sizebin))+1) %>%
+  ggplot(aes(x=meanLen, y=factor(Year), height = Prop.numbers, fill="NTrawl")) + 
+  geom_density_ridges(stat = "identity", col = "lightgrey", alpha = 0.45, 
+                      panel_scaling = TRUE, size = 0.5) +
+  scale_fill_manual(values = c( "#56B4E9")) +
+  theme_light() +
+  labs(x = "Length (cm)", y = NULL, fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions - Pikitch et al.") + 
+  theme(legend.position = "top") 
+
+# Note that the patterns are very similar across years but the data is actually different 
+ggsave("outputs/discard_data/SST_Pikitch_discard_lencomps.png", dpi=300, height=7, width=10, units='in')
 
 
   
