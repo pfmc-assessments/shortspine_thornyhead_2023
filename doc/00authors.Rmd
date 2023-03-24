@@ -1,0 +1,87 @@
+---
+author:
+  - name: Madison Shipley
+    code: 1
+    first: M
+    middle: ''
+    family: Shipley
+  - name: Joshua Zahner
+    code: 1
+    first: J
+    middle: ''
+    family: Zahner
+  - name: Sabrina Beyer
+    code: 1
+    first: S
+    middle: ''
+    family: Beyer
+  - name: Adam Hayes
+    code: 1
+    first: A
+    middle: ''
+    family: Hayes
+  - name: Pierre-Yves Hernvann
+    code: 2
+    first: P
+    middle: '-'
+    family: Hernvann
+  - name: Andrea Odell
+    code: 3
+    first: A
+    middle: ''
+    family: Odell
+  - name: Haley Oleynik
+    code: 4
+    first: H
+    middle: ''
+    family: Oleynik
+  - name: Jane Y. Sullivan
+    code: 5
+    first: J
+    middle: 'Y'
+    family: Sullivan
+  - name: Matthieu Veron
+    code: 6
+    first: M
+    middle: ''
+    family: Veron
+author_list: Shipley, M., J. Zahner, S. Beyer, A. Hayes, P.-. Hernvann, A. Odell,
+  H. Oleynik, J.Y. Sullivan, M. Veron
+affiliation:
+  - code: 1
+    address: School of Aquatic and Fishery Sciences, University of Washington, 1122
+      NE Boat Street, Seattle, Washington 98195
+  - code: 2
+    address: Northwest Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
+      Montlake Boulevard East, Seattle, Washington 98112
+  - code: 3
+    address: University of California Davis, One Shields Avenue, Davis, California
+      95616
+  - code: 4
+    address: Institute for the Oceans and Fisheries, University of British Columbia,
+      2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - code: 5
+    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109
+      Point Lena Loop Road, Juneau, Alaska 99801
+  - code: 6
+    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 7600
+      Sand Point Way N.E., Seattle, Washington 98115
+address:
+  - ^1^School of Aquatic and Fishery Sciences, University of Washington, 1122 NE Boat
+    Street, Seattle, Washington 98195
+  - ^2^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+    and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
+    Boulevard East, Seattle, Washington 98112
+  - ^3^University of California Davis, One Shields Avenue, Davis, California 95616
+  - ^4^Institute for the Oceans and Fisheries, University of British Columbia, 2202
+    Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - ^5^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+    and Atmospheric Administration, National Marine Fisheries Service, 17109 Point
+    Lena Loop Road, Juneau, Alaska 99801
+  - ^6^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+    and Atmospheric Administration, National Marine Fisheries Service, 7600 Sand Point
+    Way N.E., Seattle, Washington 98115
+---
