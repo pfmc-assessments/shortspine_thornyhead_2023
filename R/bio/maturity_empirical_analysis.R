@@ -8,6 +8,8 @@
 
 # Data Description:
   # updated maturity-at-length information provided by M. Head, NWFSC 
+  # biological maturity: presence of yolk in the oocyte (vitellogenesis)
+  # function maturity: evidence the fish will spawn or has already spawned
   # M. Head made a request to not share the data set outside of the assessment group
   # Ideas for best ways to do this?
 
@@ -15,9 +17,12 @@
   library(FSA) # used to get lencat() function, but could probably figure out without the package
   library(tidyverse)
 
-
-# Read in data from local computer? Ideas?
-data <- read.csv("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturitydata_forassessment03152023.csv") #put data set in here
+# directories
+  # Read in data from local computer? Ideas?
+  your.data.path<-"C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead"
+  
+# load data
+data <- read.csv(paste(your.data.path,"/SST_maturitydata_forassessment03152023.csv", sep="")) 
 
 names(data) # lengths in cm; maturity, 0=immature, 1=mature
 unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
@@ -26,7 +31,7 @@ unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
 # format and extract date information
 data$Date_of_collection <- as.Date(data$Date_of_collection,format = "%Y %m %d")
 data$month              <- format(data$Date_of_collection,"%m")
-
+data$month              <- as.numeric(data$month)
 
 # summaries
 table(data$Sampling_platform ,data$Year)
@@ -34,13 +39,25 @@ table(data$Sampling_platform)
 
 
 # Filter data, as necessary
+# M. Head confirmed filtering by "certainty = 1"
 data<-data[data$Certainty==1,] #filter only data where maturity is certain
 
 
-#which samples are different
-plot(Functional_maturity~Biological_maturity, data=data)
-differences<-data[data$Functional_maturity!= data$Biological_maturity,]
+# What does the data cover?
+# samples by female length
+hist(data$Length_cm) #range 15 cm to 74 cm (no females under 15 cm, not as many large females)
+# samples by latitude
+hist(data$Latitude) # covers the West Coast, more samples in the north (45N-Oregon?)
+# samples by depth
+hist(data$Depth) # range 151 m to 1247 m (somewhat bimodal, largest peak 400-500 m)
+# samples by month
+hist(data$month, breaks=seq(1,12,1))
+# active spawners by month
+hist(data[data$Spawning=="Y",]$month, breaks=seq(1,12,1)) # May and June
 
+
+# which samples are different between biological and functional maturity definitions
+differences<-data[data$Functional_maturity!= data$Biological_maturity,]
 plot(Biological_maturity ~ Length_cm, data= differences, pch="l", main = "SST where bio and func maturity are different", col="red", ylim= c(0,1), xlim=c(6,72))
 points(Functional_maturity ~ Length_cm, data= differences, pch="l", col="blue")
 legend(5,0.6, legend=c("biological maturity assignment", "functional maturity assignment"), pch="l", col=c("red","blue"))
@@ -74,7 +91,9 @@ plot(ptblLen[,"1"]~lens,pch=16,xlab="Length (cm) - binned",ylab="Proportion Matu
 # NOTES: All of this needs to be checked!
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-maturityglm <- glm (maturity ~ 1 + length, data = mat.df,  #why 1 + length??
+#maturityglm <- glm (maturity ~ 1 + length, data = mat.df,  #why 1 + length??
+#                    family = binomial(link ="logit"))
+maturityglm <- glm (maturity ~ length, data = mat.df,  
                     family = binomial(link ="logit"))
 
 
@@ -153,12 +172,16 @@ curve(predict(mat.glm, data.frame(length=x), type="response"), add=TRUE)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Discuss with M. Head which maturity data to use
-  # functional vs biological?
+  # functional vs biological? 
+    # M.Head-functional maturity (excludes fish with mass atresia, abortive maturation and skipped spawners)
   # certain vs uncertain data? filtering on Certainty == 1
+    # M.Head-Yes!
   # temporal or depth covariates or filters on the data?
+    # M.Head- Depth or latitude likely to explain the odd "bump" in the curve
+    # however, this is not a spatial assessment
 
 # 1. Question: Is there difference between functional vs biological?
-# Answer: no! Or am I doing something wrong here and plotting the same data twice?
+# Answer: yes
 # Plotted functional vs biological maturity using only "Certainty" == 1 reads
 
 # select data
@@ -173,9 +196,9 @@ mat.bio.df<-mat.bio.df[complete.cases(mat.bio.df$maturity),]
 mat.func.df<-mat.func.df[complete.cases(mat.func.df$maturity),]
 
 # estimate parameters, logistic regression 
-mat.bio.glm <- glm (maturity ~ 1 +length, data = mat.bio.df,  #why 1 + length??
+mat.bio.glm <- glm (maturity ~ length, data = mat.bio.df,  #not using 1 + length
                     family = binomial(link ="logit"))
-mat.func.glm <- glm (maturity ~ 1 +length, data = mat.func.df,  #why 1 + length??
+mat.func.glm <- glm (maturity ~ length, data = mat.func.df,  #not using 1 + length
                     family = binomial(link ="logit"))
 
 # Plot
@@ -222,12 +245,15 @@ ggplot(mat.func.bio.compare, aes(x = length, y = pmat, col=type)) +
        title = 'Shortspine thornyhead female maturity-at-length',
        subtitle = 'Source: M. Head, NWFSC') +
   theme_bw() 
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 # 2. Question:How does WCGBTS maturity information compare to Pearson and Gunderson 2003,
 # parameters from Pearson and Gunderson 2003 used in 2013 assessment
-# Answer: Really different! 
+# Answer: Really different! Possible reason: Pearson and Gunderson seem to have an
+    # earlier stage at which they classified a female as mature (their stage 3,
+    # which seems to be the stage right before vitellogenesis)
+    # M. Head defined biologically mature when oocytes initiated vitellogenesis
 
 # 2013 assessment
 a.2013 <- 41.913	
@@ -262,3 +288,86 @@ lines(pmat~length, data=matatlength.2013,     col="black",     lwd=2.5)
 legend(40,0.4, bty="n", cex=0.8, legend=c("Pearson and Gunderson 2003","WCGBTS (biological maturity)","WCGBTS (functional maturity)"), col=c("black","pink","lightblue"), lty=c(1,2,2), lwd=2)
 
 #dev.off()
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Question 3: Difference in maturity by depth? 
+# Split depth at 800 m
+# Used "functional" maturity
+# Answer: not much difference (note, not many small fish in deep)
+
+# select data, use function maturity
+func.shallow.df<- data.frame(length = data[data$Depth< 800,]$Length, 
+                          maturity = data[data$Depth< 800,]$Functional_maturity) 
+
+func.deep.df<- data.frame(length = data[data$Depth>= 800,]$Length, 
+                         maturity = data[data$Depth>= 800,]$Functional_maturity)
+
+# complete cases
+func.shallow.df<-func.shallow.df[complete.cases(func.shallow.df$maturity),]
+func.deep.df   <-func.deep.df[complete.cases(func.deep.df$maturity),]
+nrow(func.shallow.df)
+nrow(func.deep.df)
+par(mfrow=c(1,2))
+hist(func.shallow.df$length, seq(10,80,10), xlab="Shallow", main="", ylim=c(0,150))
+hist(func.deep.df$length, seq(10,80,10), xlab="Deep", main="", ylim=c(0,150))
+# CAUTION: not many small females in the deep to "anchor" the curve
+
+# estimate parameters, logistic regression 
+func.shallow.glm <- glm (maturity ~ length, data = func.shallow.df,  #not using 1 + length
+                    family = binomial(link ="logit"))
+func.deep.glm <- glm (maturity ~ length, data = func.deep.df,  #not using 1 + length
+                     family = binomial(link ="logit"))
+
+# Plot
+par(mar = c(4, 4, 1, 1),
+    mfrow=c(1,1)) # Reduce some of the margins so that the plot fits better
+plot(maturity ~ length, data=func.shallow.df, col="green", pch="l", xlim=c(0,75))
+points(maturity ~ length, data=func.deep.df, col="dark blue", pch="l")
+curve(predict(func.shallow.glm, data.frame(length=x), type="response"), add=TRUE, col="green", lwd=2) 
+curve(predict(func.deep.glm, data.frame(length=x), type="response"), add=TRUE, col="dark blue", lwd=2) 
+abline(h=0, col="lightgrey", lty=2)
+abline(h=1, col="lightgrey", lty=2)
+legend("topleft", bty="n",cex=0.8, legend = c("Shallow<800 m","Deep>800 m"), col=c("green","dark blue"), lty=1, lwd=2)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+# Question 4: Difference in maturity by latitude/state? 
+# Split at OR/CA border (OR and WA north, CA south, N42)
+# Used "functional" maturity
+# Answer: Hmmm...the curves are different, but not sure there was enough information
+  # to fit a separate curve for OR/WA (not many small immature females)
+
+# select data, use functional maturity
+func.north.df<- data.frame(length = data[data$Latitude>= 42.0,]$Length, 
+                             maturity = data[data$Latitude>= 42.0,]$Functional_maturity) 
+
+func.south.df<- data.frame(length = data[data$Latitude< 42.0,]$Length, 
+                          maturity = data[data$Latitude< 42.0,]$Functional_maturity)
+
+# complete cases
+func.north.df   <-func.north.df[complete.cases(func.north.df$maturity),]
+func.south.df   <-func.south.df[complete.cases(func.south.df$maturity),]
+nrow(func.north.df)
+nrow(func.south.df)
+par(mfrow=c(1,2))
+hist(func.north.df$length, seq(10,80,10), xlab="north (WA/OR)", main="", ylim=c(0,100))
+hist(func.south.df$length, seq(10,80,10), xlab="south (CA)", main="", ylim=c(0,100))
+#somewhat smaller fish in north
+
+# estimate parameters, logistic regression 
+func.north.glm <- glm (maturity ~ length, data = func.north.df,  #not using 1 + length
+                         family = binomial(link ="logit"))
+func.south.glm <- glm (maturity ~ length, data = func.south.df,  #not using 1 + length
+                      family = binomial(link ="logit"))
+
+# Plot
+par(mar = c(4, 4, 1, 1),
+    mfrow=c(1,1)) # Reduce some of the margins so that the plot fits better
+plot(maturity ~ length, data=func.north.df, col="purple", pch="l", xlim=c(0,75))
+points(maturity ~ length, data=func.south.df, col="orange", pch="l")
+curve(predict(func.north.glm, data.frame(length=x), type="response"), add=TRUE, col="purple", lwd=2) 
+curve(predict(func.south.glm, data.frame(length=x), type="response"), add=TRUE, col="orange", lwd=2) 
+abline(h=0, col="lightgrey", lty=2)
+abline(h=1, col="lightgrey", lty=2)
+legend("topleft", bty="n",  cex=0.8, legend = c("north (WA/OR)","south (CA)"), col=c("purple","orange"), lty=1, lwd=2)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
