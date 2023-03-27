@@ -13,6 +13,15 @@
   # M. Head made a request to not share the data set outside of the assessment group
   # Ideas for best ways to do this?
 
+# Discuss with M. Head which maturity data to use:
+  # functional vs biological? 
+  # M.Head-functional maturity (excludes fish with mass atresia: abortive maturation, skipped spawner)
+  # certain vs uncertain data? filtering on Certainty == 1
+  # M.Head-Yes!
+  # temporal or depth covariates or filters on the data?
+  # M.Head- Depth or latitude likely to explain the odd "bump" in the curve
+  # however, this is not a spatial assessment
+
 # packages
   library(FSA) # used to get lencat() function, but could probably figure out without the package
   library(tidyverse)
@@ -24,9 +33,8 @@
 # load data
 data <- read.csv(paste(your.data.path,"/SST_maturitydata_forassessment03152023.csv", sep="")) 
 
-names(data) # lengths in cm; maturity, 0=immature, 1=mature
+names(data)                    # lengths in cm; maturity, 0=immature, 1=mature
 unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
-
 
 # format and extract date information
 data$Date_of_collection <- as.Date(data$Date_of_collection,format = "%Y %m %d")
@@ -37,26 +45,24 @@ data$month              <- as.numeric(data$month)
 table(data$Sampling_platform ,data$Year)
 table(data$Sampling_platform)
 
-
 # Filter data, as necessary
-# M. Head confirmed filtering by "certainty = 1"
-data<-data[data$Certainty==1,] #filter only data where maturity is certain
+# M. Head confirmed to filter by "certainty = 1"
+data<-data[data$Certainty==1,]
 
-
-# What does the data cover?
+# Data coverage?
 # samples by female length
-hist(data$Length_cm) #range 15 cm to 74 cm (no females under 15 cm, not as many large females)
+hist(data$Length_cm)        #range 15 cm to 74 cm (no females under 15 cm, not as many large females)
 # samples by latitude
-hist(data$Latitude) # covers the West Coast, more samples in the north (45N-Oregon?)
+hist(data$Latitude)         #spans the West Coast, more samples in the north (45N-Oregon?)
 # samples by depth
-hist(data$Depth) # range 151 m to 1247 m (somewhat bimodal, largest peak 400-500 m)
+hist(data$Depth)            #range 151 m to 1247 m (somewhat bi-modal, largest peak 400-500 m)
 # samples by month
 hist(data$month, breaks=seq(1,12,1))
 # active spawners by month
 hist(data[data$Spawning=="Y",]$month, breaks=seq(1,12,1)) # May and June
 
 
-# which samples are different between biological and functional maturity definitions
+# which samples are different between the "biological" and "functional" maturity definitions
 differences<-data[data$Functional_maturity!= data$Biological_maturity,]
 plot(Biological_maturity ~ Length_cm, data= differences, pch="l", main = "SST where bio and func maturity are different", col="red", ylim= c(0,1), xlim=c(6,72))
 points(Functional_maturity ~ Length_cm, data= differences, pch="l", col="blue")
@@ -64,9 +70,9 @@ legend(5,0.6, legend=c("biological maturity assignment", "functional maturity as
 
 
 # choose maturity type here (biological or functional or other)
-# choose functional maturity
+# choose functional maturity per M. Head (excludes "biologically" mature fish that are not contributing to egg production: abortive maturation and skipped spawning)
 mat.df<- data.frame(length = data$Length, 
-                    maturity = data$Functional_maturity) # Biological_maturity or Functional_maturity
+                    maturity = data$Functional_maturity) 
 
 mat.df<-mat.df[complete.cases(mat.df$maturity),]
 
@@ -82,8 +88,8 @@ tblLen <- with(mat.df,table(LCat,maturity))
 ptblLen <- prop.table(tblLen,margin=1)
 ptblLen[1:6,] # only 1st 6 rows to save space
 
-lens <- as.numeric(rownames(ptblLen))
-plot(ptblLen[,"1"]~lens,pch=16,xlab="Length (cm) - binned",ylab="Proportion Mature", ylim=c(0,1), las=1)
+lens.prop <- as.numeric(rownames(ptblLen))
+plot(ptblLen[,"1"]~lens.prop,pch=16,xlab="Length (cm) - binned",ylab="Proportion Mature", ylim=c(0,1), las=1)
 
 
 
@@ -161,25 +167,18 @@ ggplot(mat.df, aes(x=length, y=maturity)) + geom_point() +
 mat.glm <- glm(maturity ~ length, data=mat.df, family=binomial(link="logit"))
 
 par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
-plot(mat.df$length, mat.df$maturity, xlab="Length (cm)", ylab="Probability of maturity", pch="l", xlim=c(6,80))
+plot(mat.df$length, mat.df$maturity, xlab="Length (cm)", ylab="Probability of maturity", pch="l", xlim=c(0,80))
 curve(predict(mat.glm, data.frame(length=x), type="response"), add=TRUE) 
-  
- 
+points(ptblLen[,"1"]~lens.prop, pch=19, col="gray") #proportion mature by length bin from above (2 cm bins)
+# The "hump" around 20-30cm could be a greater number of small fish in the north
+# where it seems that the fish in the north potentially mature at a smaller size (see below)
 
-# Next steps...
+
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Exploratory analyses----
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Discuss with M. Head which maturity data to use
-  # functional vs biological? 
-    # M.Head-functional maturity (excludes fish with mass atresia, abortive maturation and skipped spawners)
-  # certain vs uncertain data? filtering on Certainty == 1
-    # M.Head-Yes!
-  # temporal or depth covariates or filters on the data?
-    # M.Head- Depth or latitude likely to explain the odd "bump" in the curve
-    # however, this is not a spatial assessment
 
 # 1. Question: Is there difference between functional vs biological?
 # Answer: yes
@@ -204,10 +203,13 @@ mat.func.glm <- glm (maturity ~ length, data = mat.func.df,  #not using 1 + leng
 
 # Plot
 par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
-plot(maturity ~ length, data=mat.bio.df, col="blue", pch="l")
+plot(maturity ~ length, data=mat.bio.df, col="blue", pch="l", xlim=c(0,80))
 points(maturity ~ length, data=mat.func.df, col="red", pch="l")
 curve(predict(mat.bio.glm, data.frame(length=x), type="response"), add=TRUE, col="blue", lwd=2) 
-curve(predict(mat.func.glm, data.frame(length=x), type="response"), add=TRUE, col="red") 
+curve(predict(mat.func.glm, data.frame(length=x), type="response"), add=TRUE, col="red", lwd=2) 
+abline(h=0, col="lightgrey", lty=2)
+abline(h=1, col="lightgrey", lty=2)
+legend(0,0.9, bty="n",cex=0.8, legend = c("biological maturity","functional maturity"), col=c("blue","red"), lty=1, lwd=2)
 
 # coefficients
 a.bio   <- coef(mat.bio.glm)[1]
@@ -328,7 +330,7 @@ curve(predict(func.shallow.glm, data.frame(length=x), type="response"), add=TRUE
 curve(predict(func.deep.glm, data.frame(length=x), type="response"), add=TRUE, col="dark blue", lwd=2) 
 abline(h=0, col="lightgrey", lty=2)
 abline(h=1, col="lightgrey", lty=2)
-legend("topleft", bty="n",cex=0.8, legend = c("Shallow<800 m","Deep>800 m"), col=c("green","dark blue"), lty=1, lwd=2)
+legend(0,0.9, bty="n",cex=0.8, legend = c("Shallow<800 m","Deep>800 m"), col=c("green","dark blue"), lty=1, lwd=2)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -370,5 +372,5 @@ curve(predict(func.north.glm, data.frame(length=x), type="response"), add=TRUE, 
 curve(predict(func.south.glm, data.frame(length=x), type="response"), add=TRUE, col="orange", lwd=2) 
 abline(h=0, col="lightgrey", lty=2)
 abline(h=1, col="lightgrey", lty=2)
-legend("topleft", bty="n",  cex=0.8, legend = c("north (WA/OR)","south (CA)"), col=c("purple","orange"), lty=1, lwd=2)
+legend(0,0.9, bty="n",  cex=0.8, legend = c("north (WA/OR)","south (CA)"), col=c("purple","orange"), lty=1, lwd=2)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
