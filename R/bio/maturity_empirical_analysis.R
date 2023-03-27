@@ -64,8 +64,9 @@ legend(5,0.6, legend=c("biological maturity assignment", "functional maturity as
 
 
 # choose maturity type here (biological or functional or other)
+# choose functional maturity
 mat.df<- data.frame(length = data$Length, 
-                    maturity = data$Biological_maturity) # Biological_maturity or Functional_maturity
+                    maturity = data$Functional_maturity) # Biological_maturity or Functional_maturity
 
 mat.df<-mat.df[complete.cases(mat.df$maturity),]
 
