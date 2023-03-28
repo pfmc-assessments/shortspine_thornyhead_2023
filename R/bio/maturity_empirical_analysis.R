@@ -61,14 +61,14 @@ hist(data$Latitude)         #spans the West Coast, more samples in the north (45
 # samples by depth
 hist(data$Depth)            #range 151 m to 1247 m (somewhat bi-modal, largest peak 400-500 m)
 # samples by month
-hist(data$month, breaks=seq(1,12,1))
+hist(data$month, breaks=seq(1,12,1), main="samples by month")
 # active spawners by month
-hist(data[data$Spawning=="Y",]$month, breaks=seq(1,12,1)) # May and June
+hist(data[data$Spawning=="Y",]$month, breaks=seq(1,12,1), main="months where females were spawning") # May and June
 
 
 # which samples are different between the "biological" and "functional" maturity definitions
 differences<-data[data$Functional_maturity!= data$Biological_maturity,]
-plot(Biological_maturity ~ Length_cm, data= differences, pch="l", main = "SST where bio and func maturity are different", col="red", ylim= c(0,1), xlim=c(6,72))
+plot(Biological_maturity ~ Length_cm, data= differences, pch="l", main = "Samples where bio and func maturity are different", col="red", ylim= c(0,1), xlim=c(6,72))
 points(Functional_maturity ~ Length_cm, data= differences, pch="l", col="blue")
 legend(5,0.6, legend=c("biological maturity assignment", "functional maturity assignment"), pch="l", col=c("red","blue"))
 
@@ -207,13 +207,14 @@ mat.func.glm <- glm (maturity ~ length, data = mat.func.df,  #not using 1 + leng
 
 # Plot
 par(mar = c(4, 4, 1, 1)) # Reduce some of the margins so that the plot fits better
-plot(maturity ~ length, data=mat.bio.df, col="blue", pch="l", xlim=c(0,80))
-points(maturity ~ length, data=mat.func.df, col="red", pch="l")
-curve(predict(mat.bio.glm, data.frame(length=x), type="response"), add=TRUE, col="blue", lwd=2) 
-curve(predict(mat.func.glm, data.frame(length=x), type="response"), add=TRUE, col="red", lwd=2) 
+plot(maturity ~ length, data=mat.bio.df, col="pink", pch="l",  xlim=c(0,80))
+points(maturity ~ length, data=mat.func.df, col="lightblue", pch="l", cex=0.6)
+curve(predict(mat.bio.glm, data.frame(length=x), type="response"), add=TRUE, col="pink", lwd=2) 
+curve(predict(mat.func.glm, data.frame(length=x), type="response"), add=TRUE, col="lightblue", lwd=2) 
 abline(h=0, col="lightgrey", lty=2)
 abline(h=1, col="lightgrey", lty=2)
-legend(0,0.9, bty="n",cex=0.8, legend = c("biological maturity","functional maturity"), col=c("blue","red"), lty=1, lwd=2)
+legend(0,0.9, bty="n",cex=0.8, legend = c("biological maturity","functional maturity"),
+       col=c("pink","lightblue"), lty=1, lwd=2)
 
 # coefficients
 a.bio   <- coef(mat.bio.glm)[1]
@@ -286,13 +287,16 @@ par(mar = c(4.5, 4.5, 1, 1)) # Reduce some of the margins so that the plot fits 
 plot(maturity~length, data=mat.bio.df, 
      xlab="Length (cm)", ylab="Probability mature", 
      pch="l", xlim=c(6,75), col="pink", las=1, cex.lab=1.2)
-points(maturity~length, data=mat.func.df,pch="l",col="lightblue")
+points(maturity~length, data=mat.func.df,pch="l",col="lightblue", cex=0.6)
 abline(h=0, lty=3, col="grey")
 abline(h=1, lty=3, col="grey")
 lines(pmat~length, data=matatlength.2023.bio, col="pink", lwd=2.5, lty=2) 
 lines(pmat~length, data=matatlength.2023.func, col="lightblue", lwd=2.5, lty=2) 
 lines(pmat~length, data=matatlength.2013,     col="black",     lwd=2.5)
-legend(40,0.4, bty="n", cex=0.8, legend=c("Pearson and Gunderson 2003","WCGBTS (biological maturity)","WCGBTS (functional maturity)"), col=c("black","pink","lightblue"), lty=c(1,2,2), lwd=2)
+legend(40,0.4, bty="n", cex=0.8, 
+       legend=c("Pearson and Gunderson 2003","WCGBTS (biological maturity)",
+                "WCGBTS (functional maturity)"), 
+       col=c("black","pink","lightblue"), lty=c(1,2,2), lwd=2)
 
 #dev.off()
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
