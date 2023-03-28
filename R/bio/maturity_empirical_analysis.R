@@ -374,3 +374,66 @@ abline(h=0, col="lightgrey", lty=2)
 abline(h=1, col="lightgrey", lty=2)
 legend(0,0.9, bty="n",  cex=0.8, legend = c("north (WA/OR)","south (CA)"), col=c("purple","orange"), lty=1, lwd=2)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Updated maturity information for 2023 assessment ----
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Formatting for the assessment, but still need to decide before exporting:
+# use functional maturity?
+
+# packages
+library(dplyr); library(ggplot2)
+
+# directories
+your.data.path<-"C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead"
+
+# load data
+data <- read.csv(paste(your.data.path,"/SST_maturitydata_forassessment03152023.csv", sep="")) 
+
+# Filter out uncertain maturity reads
+data<-data[data$Certainty==1,]
+
+# This is for functional maturity
+mat.func.df<- data.frame(length = data$Length, 
+                         maturity = data$Functional_maturity)
+
+# complete cases
+mat.func.df<-mat.func.df[complete.cases(mat.func.df$maturity),]
+
+# estimate parameters, logistic regression 
+mat.func.glm <- glm (maturity ~ length, data = mat.func.df,  #not using 1 + length
+                     family = binomial(link ="logit"))
+
+# coefficients
+a.func   <- coef(mat.func.glm)[1]
+b.func   <- coef(mat.func.glm)[2]
+l50.func <- -a.func/b.func
+
+# length vector 
+lens <- seq(6, 72, 2)
+
+# rename coefficients for plotting
+a <- a.func
+b <- b.func
+l50 <- l50.func
+#what about delta method for L50?
+
+matatlength <- data.frame(length = lens) %>% 
+  mutate(pmat = 1 / (1 + exp(-(a + b * length))))  # need the negative sign
+
+
+ggplot(matatlength, aes(x = length, y = pmat)) +
+  geom_line() + 
+  geom_segment(aes(x = l50, y = 0.5, xend = l50, yend = 0), lty = 2) +
+  geom_segment(aes(x = l50, y = 0.5, xend = min(lens), yend = 0.5), lty = 2) +
+  labs(x = 'Length (cm)', y = 'P(mature)',
+       title = 'Shortspine thornyhead female maturity-at-length (L50 = 32.8 cm)',
+       subtitle = 'Source: WCGBTS') +
+  theme_bw() 
+
+#save when finalized
+#ggsave('outputs/maturity/WCGBTS_maturity_length.png', height = 4,
+#       width = 6, dpi = 300)
+
+#matatlength %>% write_csv('outputs/maturity/WCGBTS_maturity_length.csv')
+
