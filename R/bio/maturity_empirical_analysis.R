@@ -414,15 +414,33 @@ AIC(m1, m2, m3) %>%
   mutate(delta = min(AIC) - AIC) %>%
   arrange(-delta)
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Spline model for fitting maturity-at-length----
+# code from Melissa Head (NWFSC)
+
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# There appears to be spatial differences in maturity-at-length by north (OR/WA)
+# and south (CA)
+
+# Question: What is the most appropriate method to model maturity-at-length
+# for the coastwide population in a model that is not spatially-explicit?
+
+# logistic, GAM, spline?
+
+
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Updated maturity information for 2023 assessment ----
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Formatting for the assessment, 
-# but still need to decide what to do before exporting!
-# use functional maturity?
+# SECTION NOT COMPLETE!
+# Formatting for the assessment 
+# still need to decide what to do before exporting!
+# use functional maturity? probably!
 # logistic? GAM? spline? 
 # what is most representative of the coastwide population?
 # the assessment is not a spatial assessment
