@@ -276,7 +276,7 @@ matatlength.2023.func <- data.frame(length = lens) %>%
 # Plot (in base R because I am just learning ggplot!)
 # Use for data workshop presentation?----
 
-#png("C:/Users/sgbey/OneDrive/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead/SST_maturity_comparison.png", width=6, height=4, units="in", res=300)
+#png(paste(your.data.path,"/SST_maturity_comparison.png",sep=""), width=6, height=4, units="in", res=300)
 
 par(mar = c(4.5, 4.5, 1, 1)) # Reduce some of the margins so that the plot fits better
 plot(maturity~length, data=mat.bio.df, 
