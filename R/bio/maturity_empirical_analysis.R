@@ -25,13 +25,20 @@
 # packages
   library(FSA) # used to get lencat() function, but could probably figure out without the package
   library(tidyverse)
+  library(dplyr)
+  library(mgcv)
+  
 
 # directories
   # Read in data from local computer? Ideas?
-  your.data.path<-"C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead"
+  your.data.path<-"C:/Users/sgbey/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead"
   
 # load data
 data <- read.csv(paste(your.data.path,"/SST_maturitydata_forassessment03152023.csv", sep="")) 
+
+# Filter data, as necessary
+# M. Head confirmed to filter by "certainty = 1"
+data<-data[data$Certainty==1,]
 
 names(data)                    # lengths in cm; maturity, 0=immature, 1=mature
 unique(data$Sampling_platform) # samples from WCGBTS, ODFW, WDFW
@@ -45,9 +52,6 @@ data$month              <- as.numeric(data$month)
 table(data$Sampling_platform ,data$Year)
 table(data$Sampling_platform)
 
-# Filter data, as necessary
-# M. Head confirmed to filter by "certainty = 1"
-data<-data[data$Certainty==1,]
 
 # Data coverage?
 # samples by female length
@@ -375,17 +379,59 @@ abline(h=1, col="lightgrey", lty=2)
 legend(0,0.9, bty="n",  cex=0.8, legend = c("north (WA/OR)","south (CA)"), col=c("purple","orange"), lty=1, lwd=2)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# GAM model for exploring maturity by depth or region----
+# Code from Ben Williams (AFSC)
+
+# select data
+df<- data.frame(length = data$Length, 
+                functional = data$Functional_maturity,
+                depth = data$Depth,
+                long = data$Longitude,
+                lat = data$Latitude)
+
+# complete cases
+df<-df[complete.cases(df$functional),]
+
+# GAM
+m1 <- gam(functional ~ s(length), data = df, family = "binomial")
+m2 <- gam(functional ~ s(length) + s(depth), data = df, family = "binomial")
+m3 <- gam(functional ~ s(length) + te(long, lat), data = df, family = "binomial")
+
+summary(m1)
+summary(m2)
+summary(m3)
+
+# visualize the models
+
+
+# Are any differences actually representative of the population?
+# what is the best model to represent the population?
+
+
+# model selection
+AIC(m1, m2, m3) %>%
+  tibble::rownames_to_column("model") %>%
+  mutate(delta = min(AIC) - AIC) %>%
+  arrange(-delta)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Updated maturity information for 2023 assessment ----
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Formatting for the assessment, but still need to decide before exporting:
+# Formatting for the assessment, 
+# but still need to decide what to do before exporting!
 # use functional maturity?
+# logistic? GAM? spline? 
+# what is most representative of the coastwide population?
+# the assessment is not a spatial assessment
 
 # packages
 library(dplyr); library(ggplot2)
 
 # directories
-your.data.path<-"C:/Users/Sabrina/Documents/2023 Applied Stock Assessments/Shortspine Thornyhead"
+# your.data.path<-""
 
 # load data
 data <- read.csv(paste(your.data.path,"/SST_maturitydata_forassessment03152023.csv", sep="")) 
