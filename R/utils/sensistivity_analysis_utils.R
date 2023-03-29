@@ -188,22 +188,22 @@ update_SA_table <- function(SumUp, dir_SensAnal) {
                   valign = "middle",
                   row_group_label_fonts = row_group_label_fonts)
   
-  for (i in 1:length(Topic$Topic)) {
-    Nam <- Topic$Nam[i]
-    item <- Topic$Topic[i]
-    if(item %in% SumUp$Topic)
-      eval(parse(
-        text = paste0(
-          "table <- table %>% pack_rows('",
-          Nam,
-          "', row_top['",
-          item,
-          "',1], row_top['",
-          item,
-          "', 2])"
-        )
-      ))
-  }
+  # for (i in 1:length(Topic$Topic)) {
+  #   Nam <- Topic$Nam[i]
+  #   item <- Topic$Topic[i]
+  #   if(item %in% SumUp$Topic)
+  #     eval(parse(
+  #       text = paste0(
+  #         "table <- table %>% pack_rows('",
+  #         Nam,
+  #         "', row_top['",
+  #         item,
+  #         "',1], row_top['",
+  #         item,
+  #         "', 2])"
+  #       )
+  #     ))
+  # }
   table <- table %>% 
     footnote(general = "\nHere is a general comments where to find scripts, folders, and models. \n",
              alphabet = c("The **Folder** is housed in the 'model/Sensitivity_Anal' repertory; \n",
@@ -1601,7 +1601,7 @@ copy_BaseModel_SSinputs <- function(base_model = NULL,
   dir_SensAnal <-
     file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
   dirScript_SensAnal  <-
-    file.path(dir_script, "Stock_Synthesis", "Sensitivity_Anal", fsep = fsep)
+    file.path(dir_script, "ss", "Sensitivity_Anal", fsep = fsep)
   
   # load the SA_info dataframe
   load(file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))
