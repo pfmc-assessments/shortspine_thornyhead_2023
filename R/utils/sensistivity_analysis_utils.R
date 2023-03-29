@@ -1039,7 +1039,7 @@ write_SA_files <- function(out = NULL,
       namFiles <- c("Starter file", "Data file", "Control file", "Forecast file")
       cat("# For each SS input file, the following variable names will be used:\n")
       for(d in 1:4)
-        cat("#", namFiles[m], ifelse(d==2,yes = ":\t\t\t\t\t",no = ":\t\t\t"), ext[d], "\n")
+        cat("#", namFiles[d], ifelse(m==2,yes = ":\t\t\t\t\t",no = ":\t\t\t"), ext[d], "\n")
       cat("\n")
       cat("\n")
       cat("# Do you want to copy the SS input files from the base model?\n")
@@ -1354,7 +1354,7 @@ write_SA_files <- function(out = NULL,
         if(Modcomp[m, "base_model"] %in% c("13.sq", "23.sq.fixQ")){
           cat(
             paste0("Dir_Base", gsub('\\.', '_', Modcomp[m, "base_model"])),
-            "<- file.path(here:here(),",
+            "<- file.path(here::here(),",
             paste0("'", paste(tmp, collapse = "','"), "'"),
             ", 'run',fsep = fsep)\n"
           )
@@ -1378,7 +1378,7 @@ write_SA_files <- function(out = NULL,
       tmp <- stringr::str_split_fixed(string = tmp, pattern = fsep, n = 3)
       tmp <- tmp[!tmp%in%""]
       
-      if(Modcomp[1, "base_model"] %in% c("13.sq", "23.sq.fixQ")){
+      if(Modcomp[m, "base_model"] %in% c("13.sq", "23.sq.fixQ")){
         cat("Dir_Base <- file.path(here::here(),",
             paste0("'",paste(tmp, collapse="','"),"'"),", 'run',fsep = fsep)\n")
       } else {
@@ -1689,10 +1689,10 @@ of both your 'base mode' and 'development model.\n"
       to = file.path(modelTo, "starter.ss"),
       overwrite = overwrite
     )
-    if(file.exists(file.path(modelFrom, "run","data_echo.ss_new"))){
-      if(!dir.exists(file.path(modelTo, "run"))){
+    if(file.exists(file.path(modelFrom, "run","data_echo.ss_new",fsep = fsep))){
+      if(!dir.exists(file.path(modelTo, "run",fsep = fsep))){
         dir.create(file.path(modelTo, "run"))
-        cat("\n - Creating the following repertory:",file.path(modelTo, "run"))
+        cat("\n - Creating the following repertory:",file.path(modelTo, "run",fsep = fsep))
       }
       cop <- file.copy(
         from = file.path(modelFrom, "run","data_echo.ss_new"),
@@ -1701,9 +1701,9 @@ of both your 'base mode' and 'development model.\n"
       )
       cop_Done <- c(cop_Done, cop)
     } else if(file.exists(file.path(modelFrom, "run","data.ss_new"))){
-      if(!dir.exists(file.path(modelTo, "run"))){
-        dir.create(file.path(modelTo, "run"))
-        cat("\n - Creating the following repertory:",file.path(modelTo, "run"))
+      if(!dir.exists(file.path(modelTo, "run",fsep = fsep))){
+        dir.create(file.path(modelTo, "run",fsep = fsep))
+        cat("\n - Creating the following repertory:",file.path(modelTo, "run",fsep = fsep))
       }
       cop <- file.copy(
         from = file.path(modelFrom, "run","data.ss_new"),
@@ -1747,7 +1747,7 @@ of both your 'base mode' and 'development model.\n"
       } else if(copFile == "data_echo.ss_new"){
         if(!dir.exists(file.path(modelTo, "run"))){
           dir.create(file.path(modelTo, "run"))
-          cat("\n - Creating the following repertory:",file.path(modelTo, "run"))
+          cat("\n - Creating the following repertory:",file.path(modelTo, "run",fsep = fsep))
         }
         cop <- file.copy(
           from = file.path(modelFrom, "run", "data_echo.ss_new"),
@@ -1756,13 +1756,13 @@ of both your 'base mode' and 'development model.\n"
         )
         cop_Done <- c(cop_Done, cop)
       } else if(copFile == "data.ss_new"){
-        if(!dir.exists(file.path(modelTo, "run"))){
+        if(!dir.exists(file.path(modelTo, "run",fsep = fsep))){
           dir.create(file.path(modelTo, "run"))
-          cat("\n - Creating the following repertory:",file.path(modelTo, "run"))
+          cat("\n - Creating the following repertory:",file.path(modelTo, "run",fsep = fsep))
         }
         cop <- file.copy(
-          from = file.path(modelFrom, "run", "data.ss_new"),
-          to = file.path(modelTo, "run", "data.ss_new"),
+          from = file.path(modelFrom, "run", "data.ss_new",fsep = fsep),
+          to = file.path(modelTo, "run", "data.ss_new",fsep = fsep),
           overwrite = overwrite
         )
         cop_Done <- c(cop_Done, cop)
