@@ -120,6 +120,7 @@ get.ss.exe.path <-
 #' `base_path` to the `pathRun` ?
 #' @param extras (character string) - Additional ADMB command line arguments
 #' passed to the executable, such as "-nohess".
+#' @param show_in_console (logical) - Display SS output in R console whiel running.
 #' @param cleanRun (logical) - Specify if the `pathRun` has to be cleaned after
 #' the run. See the `clean_bat()` function.
 #' 
@@ -137,13 +138,14 @@ run_SS <- function(SS_version = "3.30.21",
                    pathRun = NULL,
                    copy_files = TRUE,
                    extras = NULL,
+                   show_in_console = TRUE,
                    cleanRun = TRUE) {
   .fsep <- .Platform$file.sep #easy for file.path() function
   
   # Directory where the executable is stored
   pathExe <-
     get.ss.exe.path(ss_version = SS_version, fname.extra = Exe_extra)
-  
+
   # Check the existence of pathRun and copy SS input files if needed
   if (!is.null(pathRun)) {
     if (!dir.exists(pathRun)) {
@@ -190,7 +192,8 @@ run_SS <- function(SS_version = "3.30.21",
       extras = extras,
       exe = pathExe,
       verbose = TRUE,
-      skipfinished = FALSE
+      skipfinished = FALSE,
+      show_in_console = show_in_console
     )
   )
   # run clean functions to delete files
@@ -254,7 +257,7 @@ RunSS_CtlFile <- function(SS_version = "3.30.21",
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = copy_files,
       # copy the input files from the 23.sq.fix folder
-      extras - extras,
+      extras = extras,
       # Additional ADMB command line arguments
       cleanRun = cleanRun
       # clean the folder after the run

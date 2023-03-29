@@ -125,11 +125,11 @@ Dir_23_sq_floatQ <- file.path(dir_SensAnal, '0.1_Bridging_models','23.sq.floatQ'
 Dir_23_sq_est <- file.path(dir_SensAnal, '0.1_Bridging_models','23.sq.est' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
-SensiMod <- SSgetoutput(dirvec = c(Dir_Base2013_SS3_24,Dir_Base,Dir_23_sq_fix,Dir_23_sq_floatQ,Dir_23_sq_est))
+SensiMod <- SSgetoutput(dirvec = c(Dir_Base2013_SS3_24,Dir_Base,Dir_23_sq_fix,Dir_23_sq_est), getcovar=FALSE)
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('13.sq','23.sq.fixQ','23.sq.fix','23.sq.floatQ','23.sq.est')
+names(SensiMod) <- c('13.sq','23.sq.fixQ','23.sq.fix','23.sq.est')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -140,5 +140,5 @@ SSplotComparisons(
       print = TRUE,
       # pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c('13.sq','23.sq.fixQ','23.sq.fix','23.sq.floatQ','23.sq.est')
+      legendlabels = c('13.sq','23.sq.fixQ','23.sq.fix','23.sq.est')
     )
