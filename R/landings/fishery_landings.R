@@ -382,10 +382,24 @@ ggsave("outputs/fishery_data/compare-assessment-landings.png",
        dpi=300, height=7, width=10, units='in')
 
 
-# write ss ----
-
+# write ss -------
+# 4 fleets - Ntrawl, Strawl, NOther, SOther
 catch.ss <- finalcatch %>% 
-  dplyr::select(year, season, fleet, catch, catch_se)
+  mutate(season = 1) %>%
+  dplyr::select(year, season, fleet_name, catch, catch_se)
+
+# write ss 
+write_csv(catch.ss, "data/processed/SST_2023_4-fleets-total-landings_SS.csv")
+
+# write alternative ss csv with 3 fleets ------
+# Ntrawl, Strawl, Other
+catch.ss3 <- catch.ss %>%
+  dplyr::mutate(fleet_name = case_when(fleet_name %in% c('NOther', 'SOther') ~ 'Other',
+                                       fleet_name == 'STrawl' ~ 'STrawl',
+                                       fleet_name == 'NTrawl' ~ 'Ntrawl'))
+
+# write ss 
+write_csv(catch.ss3, "data/processed/SST_2023_3-fleets-total-landings_SS.csv")
 
 # fleetsum %>% 
 #   tidyr::pivot_wider(id_cols = c(year, season, f names_from = fleet, values_from = catch, values_fill = 0)
