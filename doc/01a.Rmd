@@ -1,0 +1,9 @@
+\pagebreak
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\renewcommand{\thetable}{\roman{table}}
+\renewcommand{\thefigure}{\roman{figure}}
+
+
+\setlength\parskip{0.5em plus 0.1em minus 0.2em}
