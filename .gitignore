@@ -57,3 +57,5 @@ runnumber.ss
 # Ignore the .html from the model directories 
 model/*/run/plots
 model/*/*/*/run/plots
+
+doc/_main.pdf
