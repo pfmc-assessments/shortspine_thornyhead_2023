@@ -28,7 +28,7 @@ library(tidyverse)
 source(file=file.path(here::here(), "R", "survey", "survey_utils.R"))
 source(file=file.path(here::here(), "R", "survey", "PlotStrata.fn.R"))
 
-outputs.dir <- here::here("outputs/")
+outputs.dir <- here::here("outputs")
 
 length.bins <- seq(6, 72, 2)
 max.size.unsexed <- 16  # see R/unsexed_length_analysis.R
@@ -266,9 +266,26 @@ for(i in c("nwfsc.combo", "nwfsc.slope")) {
 bio.samples.master = as.data.frame(rbind(t1.survey_samples, t2.survey_samples, afsc.slope_samples, 
       nwfsc.slope_samples, nwfsc.combo_samples))
 
-
-unique(t1.survey.bio$Lengths[c("Year", "Vessel", "Pass", "Tow", "Trawl_id")]) %>% 
+for(i in c("t1.survey", "t2.survey", "afsc.slope")) {
+  x = unique(eval(parse(text = paste0(i, ".bio$Lengths")))[c("Year", "Vessel", "Pass", "Tow", "Trawl_id")]) %>%  
   group_by(Year) %>% 
-  summarise(hauls = n())
+  summarise(hauls = n()) %>% 
+  mutate(survey = str_replace(paste0(i), "[.]", " "))
+  assign(paste(i, "_hauls",sep = ""), x)  
+}
 
+for(i in c("nwfsc.combo", "nwfsc.slope")) {
+  x = unique(eval(parse(text = paste0(i, ".bio")))[c("Year", "Vessel", "Pass", "Tow", "Trawl_id")]) %>%  
+    group_by(Year) %>% 
+    summarise(hauls = n()) %>% 
+    mutate(survey = str_replace(paste0(i), "[.]", " "))
+  assign(paste(i, "_hauls",sep = ""), x)  
+}
+
+bio.hauls.master = as.data.frame(rbind(t1.survey_hauls, t2.survey_hauls, afsc.slope_hauls, 
+                                         nwfsc.slope_hauls, nwfsc.combo_hauls))
+
+haul.sample.info.master = merge(bio.samples.master , bio.hauls.master, by=c("Year","survey"))
+out.dir <- file.path(outputs.dir, "surveys")
+write.csv(haul.sample.info.master, file.path(out.dir, paste0("haul.sample.info.master.csv")))
 
