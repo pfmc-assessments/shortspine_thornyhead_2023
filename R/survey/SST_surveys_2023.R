@@ -319,6 +319,42 @@ survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "proce
   ) %>%
   print(n=100)
 
+# Format Survey Length Comps ------
+read.survey.length.comp.data <- function(survey.name, f, fname="Survey_Sex3_Bins_6_72_LengthComps.csv"){
+  return(
+    read_csv(file.path(here::here(), "outputs", "surveys", survey.name, "forSS", fname), show_col_types = FALSE) %>%
+      mutate(month=7, fleet=f) %>%
+      print()
+  )
+}
+
+triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1", f=5)
+triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2", f=6)
+afsc.slope.lcs.raw  <- read.survey.length.comp.data("afsc_slope", f=7)
+nwfsc.slope.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", f=8)
+nwfsc.combo.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", f=9)
+
+nw.slope.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
+nw.combo.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
+
+# Things to figure out:
+# 1. sample size difference
+# 2. Unsexed comps pre fleet=8, year=1998
+# 3. month=7 or month=1??
+# 4. Remove fleet 5 (1980, 1983), 
+# 5. Mixed partitions?
+# Yr	Seas	FltSvy	Gender	Part	Nsamp
+length.comps <- bind_rows(
+  triennial1.lcs.raw,
+  triennial2.lcs.raw,
+  afsc.slope.lcs.raw,
+  nwfsc.slope.lcs.raw,
+  nwfsc.combo.lcs.raw
+) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_length_comps_all_2023.csv")
+  ) %>%
+  print(n=1000)
 
 # Haul information ----------
 
