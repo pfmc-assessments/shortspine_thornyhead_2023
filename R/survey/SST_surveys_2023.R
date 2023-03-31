@@ -226,7 +226,7 @@ nwfsc.combo.length.freq <- SurveyLFs.fn(dir      = out.dir,
 
 NWFSC.Combo.master <- PullCatch.fn(SurveyName = "NWFSC.Combo")
 
-NWFSC.Combo.by.tow = NWFSC.Combo.master[NWFSC.Combo.master$Depth_m < 500,] %>% 
+NWFSC.Combo.by.tow = NWFSC.Combo.master[NWFSC.Combo.master$Depth_m <= 500,] %>% 
   group_by(Tow) %>% 
   summarise(n = n(), sst = length(which(Common_name == "shortspine thornyhead"))) %>% 
   mutate(sst_present = sst >= 1)
