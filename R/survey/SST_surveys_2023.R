@@ -224,8 +224,11 @@ nwfsc.combo.length.freq <- SurveyLFs.fn(dir      = out.dir,
                                         month = 7)
 
 
+# Haul information ----------
+
 NWFSC.Combo.master <- PullCatch.fn(SurveyName = "NWFSC.Combo")
 
+# Shortspine frequency of occurrence in tows
 NWFSC.Combo.by.tow = NWFSC.Combo.master %>% 
   filter(Depth_m >= 500) %>% 
   group_by(Year, Vessel, Pass, Tow) %>% 
@@ -234,5 +237,14 @@ NWFSC.Combo.by.tow = NWFSC.Combo.master %>%
 
 SST.freq.occurrence.tows = mean(NWFSC.Combo.by.tow$sst_present) 
 
+# longspine frequency of occurrence in tows
+NWFSC.Combo.by.tow.longspine = NWFSC.Combo.master %>% 
+  filter(Depth_m >= 500, Year <= 2013) %>% 
+  group_by(Year, Vessel, Pass, Tow) %>% 
+  summarise(n = n(), sst = length(which(Common_name == "longspine thornyhead" & Subsample_count >= 1))) %>% 
+  mutate(sst_present = sst >= 1)
 
+SST.freq.occurrence.tows.longspine = mean(NWFSC.Combo.by.tow.longspine$sst_present) 
+
+# sample size information for surveys by year
   
