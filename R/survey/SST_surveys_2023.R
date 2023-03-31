@@ -226,25 +226,49 @@ nwfsc.combo.length.freq <- SurveyLFs.fn(dir      = out.dir,
 
 # Haul information ----------
 
+# frequency of occurrence in tows
 NWFSC.Combo.master <- PullCatch.fn(SurveyName = "NWFSC.Combo")
+    # Shortspine 
+    NWFSC.Combo.by.tow = NWFSC.Combo.master %>% 
+      filter(Depth_m >= 500) %>% 
+      group_by(Year, Vessel, Pass, Tow) %>% 
+      summarise(n = n(), sst = length(which(Common_name == "shortspine thornyhead" & Subsample_count >= 1))) %>% 
+      mutate(sst_present = sst >= 1)
 
-# Shortspine frequency of occurrence in tows
-NWFSC.Combo.by.tow = NWFSC.Combo.master %>% 
-  filter(Depth_m >= 500) %>% 
-  group_by(Year, Vessel, Pass, Tow) %>% 
-  summarise(n = n(), sst = length(which(Common_name == "shortspine thornyhead" & Subsample_count >= 1))) %>% 
-  mutate(sst_present = sst >= 1)
+    SST.freq.occurrence.tows = mean(NWFSC.Combo.by.tow$sst_present) 
 
-SST.freq.occurrence.tows = mean(NWFSC.Combo.by.tow$sst_present) 
+    # longspine
+    NWFSC.Combo.by.tow.longspine = NWFSC.Combo.master %>% 
+      filter(Depth_m >= 500, Year <= 2013) %>% 
+      group_by(Year, Vessel, Pass, Tow) %>% 
+      summarise(n = n(), sst = length(which(Common_name == "longspine thornyhead" & Subsample_count >= 1))) %>% 
+      mutate(sst_present = sst >= 1)
 
-# longspine frequency of occurrence in tows
-NWFSC.Combo.by.tow.longspine = NWFSC.Combo.master %>% 
-  filter(Depth_m >= 500, Year <= 2013) %>% 
-  group_by(Year, Vessel, Pass, Tow) %>% 
-  summarise(n = n(), sst = length(which(Common_name == "longspine thornyhead" & Subsample_count >= 1))) %>% 
-  mutate(sst_present = sst >= 1)
-
-SST.freq.occurrence.tows.longspine = mean(NWFSC.Combo.by.tow.longspine$sst_present) 
+    SST.freq.occurrence.tows.longspine = mean(NWFSC.Combo.by.tow.longspine$sst_present) 
 
 # sample size information for surveys by year
-  
+
+for(i in c("t1.survey", "t2.survey", "afsc.slope")) {
+    x = eval(parse(text = paste0(i, ".bio$Lengths"))) %>% 
+    group_by(Year) %>% 
+    summarise(samples = n()) %>% 
+    mutate(survey = str_replace(paste0(i), "[.]", " "))
+    assign(paste(i, "_samples",sep = ""), x)  
+    }
+for(i in c("nwfsc.combo", "nwfsc.slope")) {
+  x = eval(parse(text = paste0(i, ".bio"))) %>% 
+    group_by(Year) %>% 
+    summarise(samples = n()) %>% 
+    mutate(survey = str_replace(paste0(i), "[.]", " "))
+  assign(paste(i, "_samples",sep = ""), x)  
+}
+
+bio.samples.master = as.data.frame(rbind(t1.survey_samples, t2.survey_samples, afsc.slope_samples, 
+      nwfsc.slope_samples, nwfsc.combo_samples))
+
+
+unique(t1.survey.bio$Lengths[c("Year", "Vessel", "Pass", "Tow", "Trawl_id")]) %>% 
+  group_by(Year) %>% 
+  summarise(hauls = n())
+
+
