@@ -23,7 +23,7 @@
 # install.packages("remotes")
 # remotes::install_github("pfmc-assessments/nwfscSurvey")
 library(nwfscSurvey)
-library(dplyr)
+library(tidyverse)
 
 source(file=file.path(here::here(), "R", "survey", "survey_utils.R"))
 source(file=file.path(here::here(), "R", "survey", "PlotStrata.fn.R"))
@@ -33,6 +33,7 @@ outputs.dir <- here::here("outputs/")
 length.bins <- seq(6, 72, 2)
 max.size.unsexed <- 16  # see R/unsexed_length_analysis.R
 
+# Triennial -----------
 # Get triennial data once since its shared by the triennial1 and triennial2 surveys
 triennial.survey.data <- get.survey.data(survey.name = "Triennial", write=FALSE)
 
@@ -108,6 +109,7 @@ t2.length.freq <- SurveyLFs.fn(dir      = out.dir,
                                fleet = fleet.num,
                                month = 7)
 
+# AFSC Slope Survey ------------------
 # AFSC Slope Survey (only years 1997 an onwards due to spatial sampling trends)
 out.dir <- file.path(outputs.dir, "surveys", "afsc_slope")
 fleet.num <- 7
@@ -146,7 +148,8 @@ afsc.slope.length.freq <- SurveyLFs.fn(dir      = out.dir,
                                        fleet = fleet.num,
                                        month = 7)
 
-# NWFSC Slope Survey
+
+# NWFSC Slope Survey -------------
 out.dir <- file.path(outputs.dir, "surveys", "nwfsc_slope")
 fleet.num <- 8
 
@@ -183,7 +186,7 @@ nwfsc.slope.length.freq <- SurveyLFs.fn(dir     = out.dir,
                                        fleet = fleet.num,
                                        month = 7)
 
-# NWFSC Combo Survey
+# NWFSC Combo Survey ---------------
 out.dir <- file.path(outputs.dir, "surveys", "nwfsc_combo")
 fleet.num <- 9
 
