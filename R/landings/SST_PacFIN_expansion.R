@@ -1,8 +1,9 @@
-# Length compositions for the landings data
+# Length compositions and	PacFIN Data Expansion for 
+# Shortspine thornyhead 2023
 # Contact: Haley Oleynik
 # Last updated March 2023
 
-# set up ----
+# Set up ----
 libs <- c('tidyverse', 'patchwork', 'ggthemes', 'ggridges')
 if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
   install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
@@ -18,9 +19,8 @@ source(file=file.path("R", "utils", "colors.R"))
 # we're not using any length comps from unidentified thornyheads because
 # longspine and shortspine grow differently.
 
-#	PacFIN Data Expansion for Shortspine thornyhead 2023 -----
-
-# Pull PacFIN biological (bds) data 
+# Pull Data -----
+# PacFIN biological (bds) data 
 bds_file_short = "PacFIN.SSPN.bds.17.Jan.2023"
 bds_file = paste0("data/raw/", bds_file_short, ".RData") # not hosted on github -- confidential
 load(bds_file)
@@ -34,9 +34,7 @@ Pdata <- cleanPacFIN(
   CLEAN = TRUE, 
   verbose = TRUE)
 
-# Plot fishery length comps 
-Pdata$year <- as.character(Pdata$year) # make year a character 
-
+# Plot fishery length comps ------
 plot_dat <- Pdata %>% 
   filter(between(lengthcm, 6, 80)) %>% 
   mutate(state = ifelse(state == 'CA', 'CA', 'OR/WA'),
@@ -59,15 +57,16 @@ fleetmeans <- plot_dat %>%
   group_by(fleet, SEX) %>% 
   summarize(meanlength = mean(lengthcm, na.rm = TRUE),
             medianlength = median(lengthcm, na.rm = TRUE))
-            #modelength = getmode(lengthcm))
+
+plot_dat <- plot_dat %>%
+  mutate(SEX = case_when(SEX == 'F' ~ 'Female',
+                         SEX == 'M' ~ 'Male',
+                         SEX == 'U' ~ 'Unsexed'))
 
 # plot fishery length distributions - with median lines
 plot_dat %>%
-  mutate(SEX = case_when(SEX == 'F' ~ 'Female',
-                         SEX == 'M' ~ 'Male',
-                         SEX == 'U' ~ 'Unsexed')) %>%
 ggplot(# %>% filter(SEX == 'F'), 
-       aes(x=lengthcm,y=year, fill = fleet, color = fleet)) + 
+       aes(x=lengthcm,y=as.factor(year), fill = fleet, color = fleet)) + 
   geom_density_ridges(alpha = 0.5) + 
   geom_vline(data = fleetmeans, 
              aes(xintercept = medianlength, col = fleet, lty = fleet),
@@ -76,8 +75,6 @@ ggplot(# %>% filter(SEX == 'F'),
   facet_wrap(~SEX) +
   labs(x = "Length (cm)", y = "", fill = 'Fleet', col = 'Fleet', lty = 'Fleet') +
   ggtitle("Fishery Length Compositions") +
-  # scale_fill_colorblind7() +
-  # scale_color_colorblind7() +
   scale_fill_manual(values = c("#009E73", "#56B4E9", "#F0E442", "#E69F00")) +
   scale_colour_manual(values = c("#009E73","#56B4E9", "#F0E442", "#E69F00")) +
   theme_classic() + 
@@ -87,11 +84,6 @@ ggplot(# %>% filter(SEX == 'F'),
 ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps3.png", dpi=300, height=7, width=10, units='in')
 
 # aggregate fishery length distributions plot - with median lines
-plot_dat <- plot_dat %>%
-  mutate(SEX = case_when(SEX == 'F' ~ 'Female',
-                         SEX == 'M' ~ 'Male',
-                         SEX == 'U' ~ 'Unsexed'))
-
 plot_dat %>%
 ggplot(aes(x = lengthcm, fill = fleet, col = fleet)) +
   geom_histogram(position = "identity", alpha = 0.5, binwidth = 2) +
@@ -109,12 +101,10 @@ ggplot(aes(x = lengthcm, fill = fleet, col = fleet)) +
 
 #write_csv(plot_dat, "outputs/fishery_data/fishery_lengths.csv")
 
-#ggsave("outputs/fishery_data/SST_PacFIN_fishery_aggregate_lengthcomps.png", dpi=300, height=10, width=9, units='in')
 ggsave("outputs/fishery_data/SST_PacFIN_fishery_aggregate_lengthcomps2.png", dpi=300, height=10, width=10, units='in')
 
-# create fleet structure for expansion
-# Check fleet structure
-table(Pdata$geargroup)
+# Create fleet structure for expansion ------
+table(Pdata$geargroup) # check
 
 # Create fleet structure in Pdata: the stratification for
 # expansion, and calculate expansions
@@ -137,6 +127,16 @@ quantile(Pdata$lengthcm, na.rm = TRUE)
 summary(Pdata$lengthcm)
 table(Pdata$geargroup[is.na(Pdata$length)])
 table(Pdata$fleet[is.na(Pdata$length)])
+
+# diagnostics 
+table(Pdata$SOURCE_AGID, Pdata$SEX)
+
+# look at where unsexed fish are 
+Pdata$count <- 1
+ggplot(Pdata, aes(x = lengthcm, y = count, fill = SEX))  + 
+  geom_histogram(aes(y = count), position="stack", stat="identity") +
+  scale_fill_viridis_d()
+
 # Length data is mostly missing for CA NonTrawl. Only a small percentage of the
 # dataset
 
@@ -180,7 +180,7 @@ Pdata <- Pdata %>%
   dplyr::mutate(weightkg=ifelse(lengthcm > 39 & weightkg < 0.05, 
                                 weightkg*0.453592*1000, weightkg)) 
 
-# First stage expansion -----
+# First stage expansion --------
 
 # expand comps to the trip level
 Pdata_exp <- getExpansion_1(
@@ -189,7 +189,7 @@ Pdata_exp <- getExpansion_1(
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub) # weight-length params
 
 # check expansion factors (want them to be < 500)
-# hist(Pdata_exp$Expansion_Factor_1_L)
+hist(Pdata_exp$Expansion_Factor_1_L)
 
 # check the filled weight values are consistent with observations
 # dev.off() # use if plot isn't rendering
@@ -201,13 +201,9 @@ Pdata_exp %>%
   scale_colour_viridis_d() +
   theme_bw()
 
-# plot first stage expansion 
+# Plot first stage expansion 
 Pdata_exp %>%
-  mutate(SEX = case_when(SEX == 'F' ~ 'Female',
-                         SEX == 'M' ~ 'Male',
-                         SEX == 'U' ~ 'Unsexed')) %>%
-  ggplot(# %>% filter(SEX == 'F'), 
-    aes(x=lengthcm,y=year, fill = fleet, color = fleet)) + 
+  ggplot(aes(x=lengthcm,y=as.factor(year), fill = fleet, color = fleet)) + 
   geom_density_ridges(alpha = 0.5) + 
   facet_grid(state ~ SEX) +
   facet_wrap(~SEX) +
@@ -241,13 +237,9 @@ Pdata_exp <- getExpansion_2(
 # cap values applies 0.95 quantile (anything outside gets capped)
 Pdata_exp$Final_Sample_Size <- capValues(Pdata_exp$Expansion_Factor_1_L * Pdata_exp$Expansion_Factor_2)
 
-# plot second stage expansion 
+# plot second stage expansion - check
 Pdata_exp %>%
-  mutate(SEX = case_when(SEX == 'F' ~ 'Female',
-                         SEX == 'M' ~ 'Male',
-                         SEX == 'U' ~ 'Unsexed')) %>%
-  ggplot(# %>% filter(SEX == 'F'), 
-    aes(x=lengthcm,y=year, fill = fleet, color = fleet)) + 
+  ggplot(aes(x=lengthcm,y=as.factor(year), fill = fleet, color = fleet)) + 
   geom_density_ridges(alpha = 0.5) + 
   facet_grid(state ~ SEX) +
   facet_wrap(~SEX) +
@@ -276,14 +268,30 @@ Pdata_exp <- Pdata_exp %>%
                                   fleet %in% c('OR_NONTWL', 'WA_NONTWL') ~ 'NOther',
                                   fleet %in% c('CA_NONTWL') ~ 'SOther'))
 
-# Dataframe with composition by length bin, state, year, gear (takes out NA)
+# plot again with model fleet structure
+Pdata_exp %>%
+  ggplot(aes(x=lengthcm,y=as.factor(year), fill = fleet, color = fleet)) + 
+  geom_density_ridges(alpha = 0.5) + 
+  facet_grid(state ~ SEX) +
+  facet_wrap(~SEX) +
+  labs(x = "Length (cm)", y = "", fill = 'Fleet', col = 'Fleet', lty = 'Fleet') +
+  ggtitle("Fishery Length Compositions") +
+  scale_fill_colorblind7() +
+  scale_color_colorblind7() +
+  theme_classic() + 
+  theme(text=element_text(size=12))
+
+# Data frame with composition by length bin, state, year, gear (takes out NA)
 # I think issue is happening here *****************************************
+# Maybe we can just do the rest of this by hand - to get it into SS format, 
+# I really don't understand what's happening in these functions.....
+
 length_comps <- getComps(
   Pdata = Pdata_exp[!is.na(Pdata_exp$lengthcm), ], 
   Comps = "LEN")
 
 plot_comps <- length_comps %>% 
-  #dplyr::filter(between(lengthcm, 6, 80)) %>% 
+  dplyr::filter(between(lengthcm, 6, 80)) %>%  # why do we do this? ************
   dplyr::select(fleet, year = fishyr, lengthcm, female, male, unsexed) %>% 
   tidyr::pivot_longer(cols = c('female', 'male', 'unsexed'), names_to = 'sex', values_to = 'n')
 
@@ -293,17 +301,13 @@ plot_comps <- plot_comps %>%
   dplyr::ungroup() %>% 
   dplyr::mutate(p = ifelse(totn == 0, NA, n / totn))
 
+# what is this? **************
 plot_comps %>% 
   group_by(fleet, year, sex) %>% 
   dplyr::summarise(tot = sum(p)) %>%
   ungroup() %>% 
   filter(round(tot,0) != 1) %>% 
   print(n=Inf)
-
-fleetmeans2 <- plot_comps %>% 
-  group_by(fleet, sex) %>% 
-  summarize(meanlength = mean(p * lengthcm, na.rm = TRUE),
-            modelength = getmode(p * lengthcm))
 
 ggplot(plot_comps %>% 
          mutate(gear = ifelse(fleet %in% c('NTrawl', 'STrawl'), 'Trawl', 'Non-trawl'),
@@ -313,39 +317,22 @@ ggplot(plot_comps %>%
   facet_grid( ~ sex) + 
   labs(y = NULL, x = 'Length (cm)', fill = 'Fleet', col = 'Fleet') +
   ggtitle("Shortspine Thornyhead Fishery Length Compositions") + 
-  #geom_vline(#data = fleetmeans2,
-  #           aes(xintercept = median(lengthcm), col = fleet, lty = fleet),
-  #           size = 1) +
   scale_fill_manual(values = c("#56B4E9", "#009E73", "#E69F00", "#F0E442")) +
   scale_colour_manual(values = c("#56B4E9", "#009E73", "#E69F00", "#F0E442")) +
   theme_classic()
 
 ggsave("outputs/fishery_data/SST_PacFIN_fishery_lencomps.png", dpi=300, height=7, width=10, units='in')
 
-
-
-
-# diagnostics 
-table(Pdata$SOURCE_AGID, Pdata$SEX)
-
-# look at where unsexed fish are 
-Pdata$count <- 1
-ggplot(Pdata, aes(x = lengthcm, y = count, fill = SEX))  + 
-  geom_histogram(aes(y = count), position="stack", stat="identity") +
-  scale_fill_viridis_d()
-
-# Create the length composition data
-# code to do sex ratio: 
-# Commenting out for now because I don't want to assign unsexed due to the
-# dimorphic growth
-# There area a fair number of U in CA and in the early years of WA
+# Create the length composition data -----------
+# Code for sex ratio: 
+# Commenting out for now because dimorphic growth
 # length_compSR <- doSexRatio(
 #	CompData = length_comps, 
 # 	ratioU = 0.5, 
 # 	maxsizeU = 25, 
 # 	savedir = file.path(dir, "commercial_comps"))
 
-# length bins 
+# SST length bins 
 len_bins = c(seq(6, 72, 2))
 
 writeComps(
@@ -359,16 +346,15 @@ writeComps(
 
 
 # format the csv files for SS3
-out = read.csv(
-  file.path("outputs/fishery_data", paste0("length_comps/", bds_file_short, ".csv")), 
-  skip = 3, 
-  header = TRUE)
+out = read_csv(
+  file.path("outputs/fishery_data", paste0("length_comps/", bds_file_short, ".csv")), skip = 3)
 
+# What is happening here? This was Chantel's code ***********************
 View(out)
 start = 1 
 end   = which(as.character(out[,1]) %in% c(" Females only ")) - 1 
-cut_out = out[start:end,]
-# 
+cut_out = out[start:end,] # why???
+
 # # format the length comps
 # cut_out$fleet[cut_out$fleet =="CA_ALL"] = 1
 # cut_out$fleet[cut_out$fleet =="WA_OR_ALL"] = 2
@@ -378,13 +364,13 @@ ind = which(colnames(cut_out) %in% paste0("F", min(len_bins))):
 format = cbind(cut_out$year, cut_out$month, cut_out$fleet, cut_out$sex, cut_out$partition, cut_out$InputN, cut_out[,ind])
 colnames(format) = c("year", "month", "fleet", "sex", "part", "InputN", colnames(cut_out[ind]))
 # format = format[format$year != 2021, ]
+
 write.csv(
   format, 
   file = file.path("outputs/fishery data", paste0("Lcomps_for_SS3_", out_name, ".csv")), 
   row.names = FALSE)
 
-
-# Let's create the sample table - goes into assessment report 
+# Sample table for assessment report ------------
 temp = Pdata[!is.na(Pdata$lengthcm) & Pdata$year < 2021,]
 Nfish = table(temp$year, temp$state)
 colnames(Nfish) = sort(unique(temp$state)) 
