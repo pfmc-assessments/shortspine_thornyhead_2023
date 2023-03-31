@@ -4,7 +4,7 @@ Data from five fisheries independent surveys conducted by NOAA fisheries since 1
 
 ### Files
 
-`SST_surveys_2023.R` - Pulls survey data from the official `nwfscSurvey` package and calculates the design-based indices of abundance and length compositions for each of the five surveys. All data is saved in SS format in the `outputs/surveys/` directory.
+`SST_surveys_2023.R` - Pulls survey data from the official `nwfscSurvey` package and calculates the design-based indices of abundance and length compositions for each of the five surveys. Additional haul and sample information, no output created. All data is saved in SS format in the `outputs/surveys/` directory.
 
 `SST_surveys_2013.R` - Reads and plots design-based indices of abunadance from the 2013 survey.
 
