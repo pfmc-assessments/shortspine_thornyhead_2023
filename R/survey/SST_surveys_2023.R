@@ -222,7 +222,139 @@ nwfsc.combo.length.freq <- SurveyLFs.fn(dir      = out.dir,
                                         sexRatioUnsexed = 0.5,
                                         fleet = fleet.num,
                                         month = 7)
+# Format for SS ---------
+afsc.triennial1.idx <- read.index.data("triennial1")
+afsc.triennial2.idx <- read.index.data("triennial2")
+afsc.slope.idx  <- read.index.data("afsc_slope")
+nwfsc.slope.idx <- read.index.data("nwfsc_slope")
+nwfsc.combo.idx <- read.index.data("nwfsc_combo")
 
+survey.indices <- bind_rows(
+  afsc.triennial1.idx,
+  afsc.triennial2.idx,
+  afsc.slope.idx,
+  nwfsc.slope.idx,
+  nwfsc.combo.idx
+) %>%
+  mutate(
+    Value = Value/1e3,               # convert to kg
+    lci = Value-1.96*Value*seLogB,  # Lower 95% CI
+    uci = Value+1.96*Value*seLogB,  # Upper 95% CI
+    survey = recode_factor(         # Change survey to a factor
+      survey, 
+      !!!c(
+        triennial1 = "AFSC Triennial Shelf Survey 1",
+        triennial2 = "AFSC Triennial Shelf Survey 2",
+        afsc_slope = "AFSC Slope Survey",
+        nwfsc_slope = "NWFSC Slope Survey",
+        nwfsc_combo = "West Coast Groundfish Bottom Trawl Survey"
+      )
+    ),
+  ) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv")
+  )
+
+survey.indices.ss.all <- survey.indices %>%
+  mutate(
+    Fleet=case_when(survey == "AFSC Triennial Shelf Survey 1" ~ 5,
+                    survey == "AFSC Triennial Shelf Survey 2" ~ 6,
+                    survey == "AFSC Slope Survey" ~ 7,
+                    survey == "NWFSC Slope Survey" ~ 8,
+                    survey == "West Coast Groundfish Bottom Trawl Survey" ~ 9),
+    Season=1
+  ) %>%
+  select(Year, Season, Fleet, Value, seLogB) %>%
+  rename(year=Year, seas=Season, fleet=Fleet, index=Value, se_log=seLogB) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_db_indices_all_2023.csv")
+  ) %>%
+  print(n=10)  
+
+survey.indices.ss.noslope <- survey.indices %>%
+  filter(!(survey %in% c("AFSC Slope Survey", "NWFSC Slope Survey"))) %>%
+  mutate(
+    Fleet=case_when(survey == "AFSC Triennial Shelf Survey 1" ~ 5,
+                    survey == "AFSC Triennial Shelf Survey 2" ~ 6,
+                    survey == "West Coast Groundfish Bottom Trawl Survey" ~ 7),
+    Season=1
+  ) %>%
+  select(Year, Season, Fleet, Value, seLogB) %>%
+  rename(year=Year, seas=Season, fleet=Fleet, index=Value, se_log=seLogB) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_db_indices_noslope_2023.csv")
+  ) %>%
+  print(n=100)  
+ 
+survey.indices.ss.geo.all <- read_csv(file.path(here::here(), "data", "processed", "surveys", "sdm_tmb_indices_2023.csv")) %>%
+  filter(area == "Total", method=="delta-gamma") %>%
+  mutate(
+    Fleet=case_when(survey == "Triennial" ~ 5,
+                    survey == "AFSC Slope Survey" ~ 6,
+                    survey == "NWFSC Slope Survey" ~7,
+                    survey == "WCGBTS" ~ 8),
+    Season=1
+  ) %>%
+  select(year, Season, Fleet, est, se) %>%
+  rename(year=year, seas=Season, fleet=Fleet, index=est, se_log=se) %>%
+  arrange(fleet) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_mb_indices_all_2023.csv")
+  ) %>%
+  print(n=10)
+
+survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "processed", "surveys", "sdm_tmb_indices_2023.csv")) %>%
+  filter(area == "Total", method=="delta-gamma") %>%
+  filter(!(survey %in% c("AFSC Slope Survey", "NWFSC Slope Survey"))) %>%
+  mutate(
+    Fleet=case_when(survey == "Triennial" ~ 5,
+                    survey == "WCGBTS" ~ 6),
+    Season=1
+  ) %>%
+  select(year, Season, Fleet, est, se) %>%
+  rename(year=year, seas=Season, fleet=Fleet, index=est, se_log=se) %>%
+  arrange(fleet) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_mb_indices_noslope_2023.csv")
+  ) %>%
+  print(n=100)
+
+# Format Survey Length Comps ------
+read.survey.length.comp.data <- function(survey.name, f, fname="Survey_Sex3_Bins_6_72_LengthComps.csv"){
+  return(
+    read_csv(file.path(here::here(), "outputs", "surveys", survey.name, "forSS", fname), show_col_types = FALSE) %>%
+      mutate(month=7, fleet=f) %>%
+      print()
+  )
+}
+
+triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1", f=5)
+triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2", f=6)
+afsc.slope.lcs.raw  <- read.survey.length.comp.data("afsc_slope", f=7)
+nwfsc.slope.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", f=8)
+nwfsc.combo.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", f=9)
+
+nw.slope.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
+nw.combo.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
+
+# Things to figure out:
+# 1. sample size difference
+# 2. Unsexed comps pre fleet=8, year=1998
+# 3. month=7 or month=1??
+# 4. Remove fleet 5 (1980, 1983), 
+# 5. Mixed partitions?
+# Yr	Seas	FltSvy	Gender	Part	Nsamp
+length.comps <- bind_rows(
+  triennial1.lcs.raw,
+  triennial2.lcs.raw,
+  afsc.slope.lcs.raw,
+  nwfsc.slope.lcs.raw,
+  nwfsc.combo.lcs.raw
+) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_length_comps_all_2023.csv")
+  ) %>%
+  print(n=1000)
 
 # Haul information ----------
 
