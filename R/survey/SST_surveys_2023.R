@@ -43,7 +43,7 @@ fleet.num <- 5
 
 t1.survey.catch <- triennial.survey.data$catch %>% filter(Depth_m <= 366)
 t1.survey.bio   <- triennial.survey.data$bio
-t1.survey.bio$Lengths <- t1.survey.bio$Lengths %>% filter(Depth_m <= 366)
+t1.survey.bio$Lengths <- t1.survey.bio$Lengths %>% filter(Depth_m <= 366, Year > 1986)
 
 t1.survey.strata = CreateStrataDF.fn(
   depths.shallow = 100,
@@ -54,7 +54,7 @@ t1.survey.strata = CreateStrataDF.fn(
 
 PlotStrata.fn(t1.survey.strata, strata.groups = c("A"), title="Triennial 1 Survey Strata")
 
-t1.index = Biomass.fn(dir = out.dir, dat = t1.survey.catch, strat.df = t1.survey.strata, fleet = fleet.num)
+t1.index = Biomass.fn(dir = out.dir, dat = t1.survey.catch, strat.df = t1.survey.strata, fleet = fleet.num, month=7)
 
 t1.eff.n <- GetN.fn(dir     = out.dir, 
                     dat     = t1.survey.bio$Lengths, 
@@ -90,7 +90,7 @@ t2.survey.strata = strata = CreateStrataDF.fn(
 
 PlotStrata.fn(t2.survey.strata, strata.groups = c("A"), title="Triennial 2 Survey Strata")
 
-t2.index = Biomass.fn(dir = out.dir, dat = t2.survey.catch, strat.df = t2.survey.strata, fleet = fleet.num)
+t2.index = Biomass.fn(dir = out.dir, dat = t2.survey.catch, strat.df = t2.survey.strata, fleet = fleet.num, month=7)
 
 t2.eff.n <- GetN.fn(dir     = out.dir, 
                     dat     = t2.survey.bio$Lengths, 
@@ -129,7 +129,7 @@ afsc.slope.strata = CreateStrataDF.fn(
 
 PlotStrata.fn(afsc.slope.strata, strata.groups = c("Shallow", "Deep"), title="AFSC Slope Survey Strata")
 
-afsc.slope.index = Biomass.fn(dir = out.dir, dat = afsc.slope.catch, strat.df = afsc.slope.strata, fleet = fleet.num)
+afsc.slope.index = Biomass.fn(dir = out.dir, dat = afsc.slope.catch, strat.df = afsc.slope.strata, fleet = fleet.num, month=7)
 
 afsc.slope.eff.n <- GetN.fn(dir     = out.dir, 
                             dat     = afsc.slope.bio$Lengths, 
@@ -167,7 +167,7 @@ nwfsc.slope.strata = CreateStrataDF.fn(
 
 PlotStrata.fn(nwfsc.slope.strata, strata.groups = c("South", "Central", "North"), title="NWFSC Slope Survey Strata")
 
-nwfsc.slope.index = Biomass.fn(dir = out.dir, dat = nwfsc.slope.catch, strat.df = nwfsc.slope.strata, fleet = fleet.num)
+nwfsc.slope.index = Biomass.fn(dir = out.dir, dat = nwfsc.slope.catch, strat.df = nwfsc.slope.strata, fleet = fleet.num, month=7)
 
 nwfsc.slope.eff.n <- GetN.fn(dir     = out.dir, 
                              dat     = nwfsc.slope.bio, 
@@ -180,7 +180,7 @@ nwfsc.slope.length.freq <- SurveyLFs.fn(dir     = out.dir,
                                        strat.df = nwfsc.slope.strata,
                                        lgthBins = length.bins,
                                        nSamps   = nwfsc.slope.eff.n,
-                                       sex      = 3,
+                                       sex      = 0,
                                        maxSizeUnsexed  = max.size.unsexed, 
                                        sexRatioUnsexed = 0.5,
                                        fleet = fleet.num,
@@ -204,24 +204,41 @@ nwfsc.combo.strata = strata = CreateStrataDF.fn(
 
 PlotStrata.fn(nwfsc.combo.strata, strata.groups = c("South", "Central", "North"), title="NWFSC Combo Survey Strata")
 
-nwfsc.combo.index = Biomass.fn(dir = out.dir, dat = nwfsc.combo.catch, strat.df = nwfsc.combo.strata, fleet = fleet.num)
+nwfsc.combo.index = Biomass.fn(dir = out.dir, dat = nwfsc.combo.catch, strat.df = nwfsc.combo.strata, fleet = fleet.num, month=7)
 
 nwfsc.combo.eff.n <- GetN.fn(dir     = out.dir, 
                              dat     = nwfsc.combo.bio, 
                              type    = "length", 
                              species = "thorny")
 
-nwfsc.combo.length.freq <- SurveyLFs.fn(dir      = out.dir, 
-                                        datL     = nwfsc.combo.bio, 
-                                        datTows  = nwfsc.combo.catch,
-                                        strat.df = nwfsc.combo.strata,
-                                        lgthBins = length.bins,
-                                        nSamps   = nwfsc.combo.eff.n,
-                                        sex      = 3,
-                                        maxSizeUnsexed  = max.size.unsexed, 
-                                        sexRatioUnsexed = 0.5,
-                                        fleet = fleet.num,
-                                        month = 7)
+nwfsc.combo.length.sexed.freq <- SurveyLFs.fn(
+      dir      = out.dir, 
+      datL     = nwfsc.combo.bio %>% filter(Year > 2004), 
+      datTows  = nwfsc.combo.catch %>% filter(Year > 2004),
+      strat.df = nwfsc.combo.strata,
+      lgthBins = length.bins,
+      nSamps   = nwfsc.combo.eff.n[3:length(nwfsc.combo.eff.n)],
+      sex      = 3,
+      maxSizeUnsexed  = max.size.unsexed, 
+      sexRatioUnsexed = 0.5,
+      fleet = fleet.num,
+      month = 7
+)
+
+nwfsc.combo.length.unsexed.freq <- SurveyLFs.fn(
+  dir      = out.dir, 
+  datL     = nwfsc.combo.bio %>% filter(Year <= 2004), 
+  datTows  = nwfsc.combo.catch %>% filter(Year <= 2004),
+  strat.df = nwfsc.combo.strata,
+  lgthBins = length.bins,
+  nSamps   = nwfsc.combo.eff.n[1:2],
+  sex      = 0,
+  maxSizeUnsexed  = max.size.unsexed, 
+  sexRatioUnsexed = 0.5,
+  fleet = fleet.num,
+  month = 7
+)
+
 # Format for SS ---------
 afsc.triennial1.idx <- read.index.data("triennial1")
 afsc.triennial2.idx <- read.index.data("triennial2")
@@ -262,22 +279,20 @@ survey.indices.ss.all <- survey.indices %>%
                     survey == "AFSC Slope Survey" ~ 7,
                     survey == "NWFSC Slope Survey" ~ 8,
                     survey == "West Coast Groundfish Bottom Trawl Survey" ~ 9),
-    Season=1
   ) %>%
   select(Year, Season, Fleet, Value, seLogB) %>%
   rename(year=Year, seas=Season, fleet=Fleet, index=Value, se_log=seLogB) %>%
   write_csv(  # Save survey indices to processed data directory
     file.path(here::here(), "data", "for_ss", "survey_db_indices_all_2023.csv")
   ) %>%
-  print(n=10)  
+  print(n=100)  
 
 survey.indices.ss.noslope <- survey.indices %>%
   filter(!(survey %in% c("AFSC Slope Survey", "NWFSC Slope Survey"))) %>%
   mutate(
     Fleet=case_when(survey == "AFSC Triennial Shelf Survey 1" ~ 5,
                     survey == "AFSC Triennial Shelf Survey 2" ~ 6,
-                    survey == "West Coast Groundfish Bottom Trawl Survey" ~ 7),
-    Season=1
+                    survey == "West Coast Groundfish Bottom Trawl Survey" ~ 7)
   ) %>%
   select(Year, Season, Fleet, Value, seLogB) %>%
   rename(year=Year, seas=Season, fleet=Fleet, index=Value, se_log=seLogB) %>%
@@ -293,7 +308,7 @@ survey.indices.ss.geo.all <- read_csv(file.path(here::here(), "data", "processed
                     survey == "AFSC Slope Survey" ~ 6,
                     survey == "NWFSC Slope Survey" ~7,
                     survey == "WCGBTS" ~ 8),
-    Season=1
+    Season=7
   ) %>%
   select(year, Season, Fleet, est, se) %>%
   rename(year=year, seas=Season, fleet=Fleet, index=est, se_log=se) %>%
@@ -301,7 +316,7 @@ survey.indices.ss.geo.all <- read_csv(file.path(here::here(), "data", "processed
   write_csv(  # Save survey indices to processed data directory
     file.path(here::here(), "data", "for_ss", "survey_mb_indices_all_2023.csv")
   ) %>%
-  print(n=10)
+  print(n=100)
 
 survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "processed", "surveys", "sdm_tmb_indices_2023.csv")) %>%
   filter(area == "Total", method=="delta-gamma") %>%
@@ -309,7 +324,7 @@ survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "proce
   mutate(
     Fleet=case_when(survey == "Triennial" ~ 5,
                     survey == "WCGBTS" ~ 6),
-    Season=1
+    Season=7
   ) %>%
   select(year, Season, Fleet, est, se) %>%
   rename(year=year, seas=Season, fleet=Fleet, index=est, se_log=se) %>%
@@ -320,39 +335,50 @@ survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "proce
   print(n=100)
 
 # Format Survey Length Comps ------
-read.survey.length.comp.data <- function(survey.name, f, fname="Survey_Sex3_Bins_6_72_LengthComps.csv"){
+read.survey.length.comp.data <- function(survey.name, fname="Survey_Sex3_Bins_6_72_LengthComps.csv"){
   return(
     read_csv(file.path(here::here(), "outputs", "surveys", survey.name, "forSS", fname), show_col_types = FALSE) %>%
-      mutate(month=7, fleet=f) %>%
       print()
   )
 }
 
-triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1", f=5)
-triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2", f=6)
-afsc.slope.lcs.raw  <- read.survey.length.comp.data("afsc_slope", f=7)
-nwfsc.slope.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", f=8)
-nwfsc.combo.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", f=9)
+triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1")
+triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2")
+afsc.slope.lcs.raw  <- read.survey.length.comp.data("afsc_slope")
+nwfsc.combo.lcs.raw <- read.survey.length.comp.data("nwfsc_combo")
 
-nw.slope.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
-nw.combo.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", "Survey_Sex_Unsexed_Bins_6_72_LengthComps.csv")
+nw.slope.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", "Survey_Sex0_Bins_6_72_LengthComps.csv") %>%
+  rename_with(~str_replace(., "U", "F"), .cols=starts_with("U"))
+nw.combo.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", "Survey_Sex0_Bins_6_72_LengthComps.csv") %>%
+  rename_with(~str_replace(., "U", "F"), .cols=starts_with("U"))
 
 # Things to figure out:
-# 1. sample size difference
-# 2. Unsexed comps pre fleet=8, year=1998
-# 3. month=7 or month=1??
-# 4. Remove fleet 5 (1980, 1983), 
-# 5. Mixed partitions?
 # Yr	Seas	FltSvy	Gender	Part	Nsamp
-length.comps <- bind_rows(
+length.comps.ss.all <- bind_rows(
   triennial1.lcs.raw,
   triennial2.lcs.raw,
   afsc.slope.lcs.raw,
-  nwfsc.slope.lcs.raw,
+  nw.slope.unsex.lcs.raw,
+  nw.combo.unsex.lcs.raw,
   nwfsc.combo.lcs.raw
 ) %>%
+  select(-ends_with(".1")) %>%
+  rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
   write_csv(  # Save survey indices to processed data directory
     file.path(here::here(), "data", "for_ss", "survey_length_comps_all_2023.csv")
+  ) %>%
+  print(n=1000)
+
+length.comps.ss.no.slope <- bind_rows(
+  triennial1.lcs.raw,
+  triennial2.lcs.raw,
+  nw.combo.unsex.lcs.raw %>% mutate(fleet=7),
+  nwfsc.combo.lcs.raw %>% mutate(fleet=7)
+) %>%
+  select(-ends_with(".1")) %>%
+  rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_length_comps_noslope_2023.csv")
   ) %>%
   print(n=1000)
 
