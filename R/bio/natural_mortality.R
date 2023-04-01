@@ -37,4 +37,5 @@ log.sd <- 0.44/sqrt(2)  # SD of prior in natural log-space = 0.31; Hamel and Cop
 round(log.sd, digits=2)
 
 
+# Need to set up how to export and format for SS here----
 
