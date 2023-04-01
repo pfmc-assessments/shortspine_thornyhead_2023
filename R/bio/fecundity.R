@@ -53,5 +53,25 @@ ggsave('outputs/fecundity/cooper_fecundity_length.png', height = 4,
 # So only need to divide the a parameter by 1000 for SS
 # b parameter stays the same
 
-# Add code to save the parameters to the correct location here!
+a.param.SST<- a/1000
+b.param.SST<- b
+
+
+# NEEDS WORK!
+# Save 2023 growth parameters for the assessment----
+# save the parameters for SS
+# saving code copied from Rex Sole and file paths need to be checked/changed for SST
+
+
+# check this/change as needed for SST
+# load(file.path(dirData, "processed",'SS_Biological_parameters.RData', fsep = fsep))
+
+# should be ok, double check values before saving
+Fecundity <- data.frame(Param = c("Eggs_alpha_Fem_GP_1","Eggs_beta_Fem_GP_1"),
+                        Value = c(a.param.SST,b.param.SST))
+BioParam$Fecundity <- Fecundity
+
+# check this/change as needed for SST
+# save(BioParam,
+#     file = file.path(dirData, "processed",'SS_Biological_parameters.RData', fsep = fsep))
 
