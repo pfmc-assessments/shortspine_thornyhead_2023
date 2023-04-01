@@ -152,6 +152,16 @@ get_comps_l <- function(data){
     dplyr::group_by(year, month, fleet, sex, partition) %>%
     dplyr::mutate(totn = sum(n)) %>%
     dplyr::mutate(p = ifelse(totn == 0, 0, n / totn),
+                  # The initial input sample sizes (Ninput) for length frequency
+                  # distributions by year were calculated as a function of the
+                  # number of trips and number of fish via the Stewart Method
+                  # (Stewart, pers.com) The method is based on analysis of the
+                  # input and model derived effective sample sizes from west
+                  # coast groundfish stock assessments. A piece-wise linear
+                  # regression was used to estimate the increase in effective
+                  # sample size per sample based on fish-per-sample and the
+                  # maximum effective sample size for large numbers of
+                  # individual fish.
                   Nsamp = ifelse(nsamps / ntows < 44,
                                  ntows + 0.138 * nsamps,
                                  ifelse(nsamps / ntows >= 44,
