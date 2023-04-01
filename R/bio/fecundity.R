@@ -11,7 +11,7 @@
 # Notes: 
 # Cooper et al. (2005) found no difference in the fecundity-at-length
 # relationship between SST off Alaska and the West Coast of the United States. 
-# The fecundity parameters were reported for pooled Alaska and West Coast SST.
+# The fecundity parameters pooled Alaska and West Coast SST.
 
 library(dplyr); library(ggplot2)
 
@@ -41,10 +41,17 @@ ggsave('outputs/fecundity/cooper_fecundity_length.png', height = 4,
        width = 6, dpi = 300)
 
 
-# assessment vector (not sure this is needed)
-# lens <- seq(6, 72, 2)
+# Saving parameters for SS----
 
-# fecatlength <- data.frame(length = lens) %>% 
-#   mutate(fec = a * length ^ b)
+# Notes on scaling: The "unofficial groundfish stock assessment handbook" 
+# has guidance on how to set up the fecundity parameters for SS
+# (Sabrina thinks the scale can be off because SS estimates recruits in 1000s)
 
-# fecatlength %>% write_csv('outputs/fecundity/cooper_fecundity_length.csv')
+# For SST: model fecundity as a power function of length in SS
+# F = a L^b
+# The SST fecundity-length relationship is already in cm (not mm)
+# So only need to divide the a parameter by 1000 for SS
+# b parameter stays the same
+
+# Add code to save the parameters to the correct location here!
+
