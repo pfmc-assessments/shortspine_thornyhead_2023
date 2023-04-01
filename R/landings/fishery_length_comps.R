@@ -195,11 +195,27 @@ get_comps_SS <- function(data) {
   
 }
 
-ss_fleet_str1 = get_comps_SS(fleet_str1)
-ss_fleet_str2 = get_comps_SS(fleet_str2)
+ss_fleet_str1 = get_comps_SS(fleet_str1) %>%
+  dplyr::mutate(
+      fleet=case_when(fleet == "NTrawl" ~ 1,
+                      fleet == "STrawl" ~ 2,
+                      fleet == "NOther" ~ 3,
+                      fleet == "SOther" ~ 4,
+      )
+  ) %>%
+  dplyr::arrange(fleet, year)
+  
+ss_fleet_str2 = get_comps_SS(fleet_str2) %>% 
+  dplyr::mutate(
+      fleet=case_when(fleet == "NTrawl" ~ 1,
+                      fleet == "STrawl" ~ 2,
+                      fleet == "NonTrawl" ~ 3
+      )
+  ) %>%
+  dplyr::arrange(fleet, year)
 
-write_csv(ss_fleet_str1, 'data/for_ss/landings_length_comps_old_fleet_struct_2023.csv')
-write_csv(ss_fleet_str2, 'data/for_ss/landings_length_comps_new_fleet_struct_2023.csv')
+write_csv(ss_fleet_str1, 'data/for_ss/landings_length_comps_4fleet_2023.csv')
+write_csv(ss_fleet_str2, 'data/for_ss/landings_length_comps_3fleet_2023.csv')
 
 # get tow and sample summaries ----
 
