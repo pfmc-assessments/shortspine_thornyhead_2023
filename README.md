@@ -6,6 +6,8 @@
 
 `data/processed/` - Processed data from available data sources. This folder IS tracked, so no confidential data, only cleaned datasets ready for analysis. Every file in this directory should have an equivalent "raw" data file in data/raw.
 
+`data/for_ss/` - SS data files. These files should be able to be read directly into SS without further modification.
+
 `R/` - This directory should hold R scripts and analyses. These can take the form of either runnable .R scripts or .Rmd Rmarkdown documents/notebooks. Note that data outputs/plots should not be stored in this directory. This directory is further broken down into subdirectories based on data type ('bio/', 'comps/', 'discards/', 'landings/', and 'survey/'). Data type specific analyses and script should live in their relevant subdirectories rather than the root R/ directory.
 
 `R/utils/` - Any utility functions that may be of use across R analyses can go here. For example, plotting code, or helpful data cleaning functions.
