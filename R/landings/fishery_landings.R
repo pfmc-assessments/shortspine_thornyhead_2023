@@ -386,20 +386,32 @@ ggsave("outputs/fishery_data/compare-assessment-landings.png",
 # 4 fleets - Ntrawl, Strawl, NOther, SOther
 catch.ss <- finalcatch %>% 
   mutate(season = 1) %>%
-  dplyr::select(year, season, fleet_name, catch, catch_se)
+  dplyr::mutate(
+    fleet=case_when(fleet_name == "NTrawl" ~ 1,
+                    fleet_name == "STrawl" ~ 2,
+                    fleet_name == "NOther" ~ 3,
+                    fleet_name == "SOther" ~ 4,
+    )
+  ) %>%
+  dplyr::arrange(fleet, year) %>%
+  dplyr::select(year, season, fleet, catch, catch_se)
 
 # write ss 
-write_csv(catch.ss, "data/processed/SST_2023_4-fleets-total-landings_SS.csv")
+write_csv(catch.ss, "data/for_ss/landings_4fleet_2023.csv")
 
 # write alternative ss csv with 3 fleets ------
 # Ntrawl, Strawl, Other
 catch.ss3 <- catch.ss %>%
-  dplyr::mutate(fleet_name = case_when(fleet_name %in% c('NOther', 'SOther') ~ 'Other',
-                                       fleet_name == 'STrawl' ~ 'STrawl',
-                                       fleet_name == 'NTrawl' ~ 'Ntrawl'))
+  dplyr::mutate(fleet = ifelse(fleet %in% c(3, 4), 3, fleet)) %>%
+  group_by(fleet, year, season) %>%
+  summarise(
+    catch=sum(catch),
+    catch_se=mean(catch_se)
+  ) %>%
+  select(year, season, fleet, catch, catch_se)
 
 # write ss 
-write_csv(catch.ss3, "data/processed/SST_2023_3-fleets-total-landings_SS.csv")
+write_csv(catch.ss3, "data/for_ss/landings_3fleet_2023.csv")
 
 # fleetsum %>% 
 #   tidyr::pivot_wider(id_cols = c(year, season, f names_from = fleet, values_from = catch, values_fill = 0)
