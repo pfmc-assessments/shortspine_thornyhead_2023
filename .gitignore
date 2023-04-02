@@ -7,6 +7,9 @@
 data/raw/*
 !data/raw/README.md
 
+# M Head doesn't want us to share the maturity data
+SST_maturitydata_forassessment03152023.csv
+
 # remove exploratory plots, can be generated is interested
 outputs/plots/exploratory/*
 
