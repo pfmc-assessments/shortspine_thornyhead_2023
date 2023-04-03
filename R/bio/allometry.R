@@ -133,10 +133,10 @@ write_csv(results %>%
 
 # Write results for SS ----
 
-forSS <- data.frame(parameter = c('Wtlen_1_Fem', 'Wtlen_2_Fem'),
-           value = resultsM) %>% 
-  bind_rows(data.frame(parameter = c('Wtlen_1_Mal', 'Wtlen_2_Mal'),
-           value = resultsF))
+forSS <- data.frame(Param = c('Wtlen_1_Fem', 'Wtlen_2_Fem'),
+           Value = resultsM) %>% 
+  bind_rows(data.frame(Param = c('Wtlen_1_Mal', 'Wtlen_2_Mal'),
+                       Value = resultsF))
 
 write_csv(forSS, 'data/for_ss/wtlen_bysex_2023.csv')
 
