@@ -265,10 +265,9 @@ ggplot() +
   geom_point(data = pmat, aes(Length_cm, p_mature, col = factor(depth_class))) +
   geom_line(data = dat_pred_depth_class, aes(Length_cm, pred, col = factor(depth_class)), size=1.2) +
   geom_line(data = pred, aes(Length_cm, pred, lty = version), size = 1) +
-  facet_wrap(~grad) +
   scale_color_brewer()+
   scale_y_continuous(labels = scales::comma)+
-  labs(x="Year", y="P(mature)", color="Depth", lty = 'Version')+
+  labs(x="Length (cm)", y="P(mature)", color="Depth", lty = 'Version')+
   theme_minimal()+
   theme(
     panel.grid.minor = element_blank(),
@@ -281,12 +280,12 @@ ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_latdept
 
 ggplot() +
   geom_point(data = pmat, aes(Length_cm, p_mature, col = factor(lat_class))) +
-  geom_line(data = dat_pred_lat_class, aes(Length_cm, pred, col = rev(factor(lat_class))), size=1.2) +
+  geom_line(data = dat_pred_lat_class, aes(Length_cm, pred, col = factor(lat_class)), size=1.2) +
   geom_line(data = pred, aes(Length_cm, pred, lty = version), size = 1) +
-  facet_wrap(~grad) +
+  # facet_wrap(~grad) +
   scale_colour_brewer(palette = "Greens")+
   scale_y_continuous(labels = scales::comma)+
-  labs(x="Year", y="P(mature)", color="Latitude", lty = 'Version')+
+  labs(x="Length (cm)", y="P(mature)", color="Latitude", lty = 'Version')+
   theme_minimal()+
   theme(
     panel.grid.minor = element_blank(),
@@ -294,7 +293,8 @@ ggplot() +
     legend.position = "right",
     axis.text = element_text(size=12),
     axis.title = element_text(size=12)
-  )
+  ) 
+
 ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_latdepth_bylat.png"), dpi=300, width=10, height=7, units = "in")
 
 # Finalize ----
