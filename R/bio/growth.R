@@ -409,6 +409,63 @@ out <- out %>%
 out %>% write_csv(paste0(out_path, '/growth_curve_sensitivities.csv'))
 butler %>% write_csv(paste0(dat_path, '/cleaned_butler_for_growth_curves_2023.csv'))
 
+# for SS ----
+
+forss <- as.data.frame(t(as.matrix(exp(vbgf.optim$par)))) %>% 
+  mutate(Version = 'Butler_Base_2023',
+         CV_young_Fem_Growth = cv,
+         CV_old_Fem_Growth = cv,
+         CV_young_Mal_Growth = cv,
+         CV_old_Mal_Growth = cv) %>% 
+  select(Version, 
+         L_at_Amin_Fem_Growth = la1.f,
+         L_at_Amax_Fem_Growth = la2.f,
+         VonBert_K_Fem_Growth = k.f,
+         CV_young_Fem_Growth,
+         CV_old_Fem_Growth,
+         L_at_Amin_Mal_Growth = la1.m,
+         L_at_Amax_Mal_Growth = la2.m,
+         VonBert_K_Mal_Growth = k.m,
+         CV_young_Mal_Growth,
+         CV_old_Mal_Growth)
+
+forss <- forss %>%
+  bind_rows(forss %>% 
+              mutate(Version = 'Increase_L_at_Amin_and_Amax_25perc') %>% 
+              mutate_at(c('L_at_Amin_Fem_Growth', 'L_at_Amax_Fem_Growth', 'L_at_Amin_Mal_Growth', 'L_at_Amax_Mal_Growth'),
+                        ~ . * 1.25)) %>% 
+  bind_rows(forss %>% 
+              mutate(Version = 'Decrease_L_at_Amin_and_Amax_10perc') %>% 
+              mutate_at(c('L_at_Amin_Fem_Growth', 'L_at_Amax_Fem_Growth', 'L_at_Amin_Mal_Growth', 'L_at_Amax_Mal_Growth'),
+                        ~ . * 0.9)) %>% 
+    # Note these were done as "offsets" from the Female values
+    bind_rows(data.frame(Version = '2013_assessment',
+                         L_at_Amin_Fem_Growth = 7,
+                         L_at_Amax_Fem_Growth = 75,
+                         VonBert_K_Fem_Growth = 0.018,
+                         CV_young_Fem_Growth = 0.125, 
+                         CV_old_Fem_Growth = 0.125,
+                         L_at_Amin_Mal_Growth = 7,
+                         L_at_Amax_Mal_Growth = 67.5,
+                         VonBert_K_Mal_Growth = 0.018,
+                         CV_young_Mal_Growth = 0.125,
+                         CV_old_Mal_Growth = 0.125)) %>% 
+  pivot_longer(cols = -Version, names_to = 'Param', values_to = 'Value') %>% 
+  write_csv('data/for_ss/growth_2023.csv')
+
+
+out <- out %>% 
+  bind_rows(out %>% 
+              mutate(Length_at_A1 = Length_at_A1 * 1.25,
+                     Length_at_A2 = Length_at_A2 * 1.25,
+                     Sensitivity_Run = 'Increase_Lengths_at_A1_and_A2_25percent')) %>% 
+  bind_rows(out %>% 
+              mutate(Length_at_A1 = Length_at_A1 * 0.9,
+                     Length_at_A2 = Length_at_A2 * 0.9,
+                     Sensitivity_Run = 'Decrease_Lengths_at_A1_and_A2_10percent')) %>% 
+  select(Sensitivity_Run, Sex, A1, A2, Length_at_A1, 
+         Length_at_A2, k) 
+
 # kline ----
 
 kline <- read_csv(file.path(dat_path, "S. alascanus_Kline 1996_formatted.csv")) %>% 
@@ -540,8 +597,6 @@ ggplot() +
 
 ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
        width = 10, height = 7, dpi = 300)
-
-
 
 kline %>% 
   dplyr::rename(specimen = id) %>%  
