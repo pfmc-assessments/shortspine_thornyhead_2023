@@ -141,7 +141,11 @@ forss <- data.frame(Version = 'WCBTS_Base_2023',
                        Value = resultsF)) %>% 
   bind_rows(data.frame(Version = '2013_assessment',
                        Param = c('Wtlen_1_Fem', 'Wtlen_2_Fem', 'Wtlen_1_Mal', 'Wtlen_2_Mal'),
+<<<<<<< HEAD
                        Value = c(4.77065e-06, 3.26298, 4.77065e-06, 3.26298)))
+=======
+                       Value = c(4.77065e-06, 3.26298, 4.77065e-06, 3.26298))
+>>>>>>> b40707ebb2ab42b414812569d27643fdf629b67e
 
 write_csv(forss, 'data/for_ss/wtlen_bysex_2023.csv')
 
