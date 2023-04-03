@@ -38,7 +38,7 @@ ggplot(data = dat, aes(x = log(Length_cm), y = log(Weight), col = Sex)) +
   geom_smooth(method = 'lm', se = F)
 
 # combo survey has the best coverage by year and state
-table(dat$survey, dat$Year, dat$state)
+table(dat$Year, dat$survey, dat$state)
 
 # data from both surveys giving very similar result
 ggplot(data = dat, aes(x = log(Length_cm), y = log(Weight), col = survey, lty = survey)) +
@@ -130,6 +130,15 @@ preddf <- data.frame(Length_cm = 1:80) %>%
 write_csv(results %>% 
             mutate(sex = c('Female', 'Male', 'Sexes_combined')), 
           'outputs/length-weight/lw_parameters_NWFSCcombo.csv')
+
+# Write results for SS ----
+
+forSS <- data.frame(parameter = c('Wtlen_1_Fem', 'Wtlen_2_Fem'),
+           value = resultsM) %>% 
+  bind_rows(data.frame(parameter = c('Wtlen_1_Mal', 'Wtlen_2_Mal'),
+           value = resultsF))
+
+write_csv(forSS, 'data/for_ss/wtlen_bysex_2023.csv')
 
 # Plot results ----
 ggplot(data = dat %>% 
