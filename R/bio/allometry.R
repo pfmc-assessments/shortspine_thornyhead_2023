@@ -133,12 +133,17 @@ write_csv(results %>%
 
 # Write results for SS ----
 
-forSS <- data.frame(Param = c('Wtlen_1_Fem', 'Wtlen_2_Fem'),
-           Value = resultsM) %>% 
-  bind_rows(data.frame(Param = c('Wtlen_1_Mal', 'Wtlen_2_Mal'),
-                       Value = resultsF))
+forss <- data.frame(Version = 'WCBTS_Base_2023',
+                    Param = c('Wtlen_1_Fem', 'Wtlen_2_Fem'),
+                    Value = resultsM) %>% 
+  bind_rows(data.frame(Version = 'WCBTS_Base_2023',
+                       Param = c('Wtlen_1_Mal', 'Wtlen_2_Mal'),
+                       Value = resultsF)) %>% 
+  bind_rows(data.frame(Version = '2013_assessment',
+                       Param = c('Wtlen_1_Fem', 'Wtlen_2_Fem', 'Wtlen_1_Mal', 'Wtlen_2_Mal'),
+                       Value = c(4.77065e-06, 3.26298, 4.77065e-06, 3.26298))
 
-write_csv(forSS, 'data/for_ss/wtlen_bysex_2023.csv')
+write_csv(forss, 'data/for_ss/wtlen_bysex_2023.csv')
 
 # Plot results ----
 ggplot(data = dat %>% 
