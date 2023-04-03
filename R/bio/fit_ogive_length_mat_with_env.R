@@ -4,6 +4,7 @@
 library(dplyr)   #for working with data frames
 library(tidyr)   #for working with data frames
 library(ggplot2) #for generating plots
+library(ggthemes)
 library(mgcv)
 library(nwfscSurvey)
 library(tidyverse)
@@ -308,4 +309,76 @@ L50_numerator_mean = quad_model_matrix_mean %*% quad_coef_mean
 L50_denominator_mean = quad_coef_mean[["Length_cm"]]
 
 L50_quad_mean = - L50_numerator_mean / L50_denominator_mean
-         
+
+len = 40 # doesn't matter what length you use here
+kmat_mean <- round(((L50_numerator[,1] + quad_coef[2]*len) / (len - L50_quad[,1])), 2)[1]
+
+# Pearson and Gunderson values
+a <- 41.913	
+b <- -2.3046
+# l50 <- 18.19
+
+pmat <- tab_mat %>% 
+  filter(!is.na(Functional_maturity)) %>% 
+  group_by(depth_class, lat_class, Length_cm) %>% 
+  summarise(p_mature = length(which(Functional_maturity == 1)) / n())
+
+pred <- data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
+  mutate(pred =  1 / (1 + exp(-kmat_mean * (Length_cm - unique(L50_quad_mean)))),
+         version = 'Head 2023 (weighted by abundance)') %>% 
+  bind_rows( data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
+               mutate(pred =  1 / (1 + exp(a + b * Length_cm)),
+                      version = 'Pearson and Gunderson (2003)'))
+
+dat_pred %>%
+  dplyr::select(-Length_cm) %>%
+  crossing(Length_cm = seq(6, 72, 0.2)) %>%
+  mutate(pred =  1 / (1 + exp(-kmat_mean * (Length_cm - L50_quad))),
+         version = 'Head 2023 (weighted by abundance)') %>%
+  filter(lat_class==unique(dat_pred$lat_class)[which.min(abs(unique(dat_pred$lat_class)-mean(tab_mat$Latitude, na.rm=T)))]) %>%
+  mutate(grad="Depth") -> dat_pred_depth_class
+  
+dat_pred %>%
+  dplyr::select(-Length_cm) %>%
+  crossing(Length_cm = seq(6, 72, 0.2)) %>%
+  mutate(pred =  1 / (1 + exp(-kmat_mean * (Length_cm - L50_quad))),
+         version = 'Head 2023 (weighted by abundance)') %>%
+  filter(depth_class==unique(dat_pred$depth_class)[which.min(abs(unique(dat_pred$depth_class)-mean(tab_mat$Depth, na.rm=T)))]) %>%
+  mutate(grad="Latitude") -> dat_pred_lat_class
+
+
+ggplot() +
+  geom_line(data = pred, aes(Length_cm, pred, lty = version), size = 1.5) +
+  geom_point(data = pmat, aes(Length_cm, p_mature, col = factor(depth_class))) +
+  geom_line(data = dat_pred_depth_class, aes(Length_cm, pred, col = factor(depth_class)), size=1.2) +
+  facet_wrap(~grad) +
+  scale_color_colorblind7()+
+  scale_fill_colorblind7()+
+  scale_y_continuous(labels = scales::comma)+
+  labs(x="Year", y="P(mature)", color="Strata", lty = 'Version')+
+  theme_minimal()+
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(),
+    legend.position = "right",
+    axis.text = element_text(size=12),
+    axis.title = element_text(size=12)
+  )
+
+ggplot() +
+  geom_line(data = pred, aes(Length_cm, pred, lty = version), size = 1.5) +
+  geom_point(data = pmat, aes(Length_cm, p_mature, col = factor(lat_class))) +
+  geom_line(data = dat_pred_lat_class, aes(Length_cm, pred, col = factor(lat_class)), size=1.2) +
+  facet_wrap(~grad) +
+  scale_color_colorblind7()+
+  scale_fill_colorblind7()+
+  scale_y_continuous(labels = scales::comma)+
+  labs(x="Year", y="P(mature)", color="Strata", lty = 'Version')+
+  theme_minimal()+
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(),
+    legend.position = "right",
+    axis.text = element_text(size=12),
+    axis.title = element_text(size=12)
+  )
