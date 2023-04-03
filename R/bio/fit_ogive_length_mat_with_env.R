@@ -30,7 +30,7 @@ names(tab_mat)
 # changes in sampling intensity of the survey and are recommended to be used.
 # South of 40.5º N, there are very few shortspine thornyheads shallower than 183
 # m so no shallow stratum was used in these latitudes.
-
+table(tab_mat$Certainty)
 tab_mat <- tab_mat %>% 
   filter(!is.na(Latitude) & !is.na(Depth)) %>% 
   mutate(Strata = case_when(Latitude < 34.5 & Depth < 550 ~ '1_South_shallow',
@@ -39,9 +39,11 @@ tab_mat <- tab_mat %>%
                             between(Latitude, 34.5, 40.5) & Depth >= 550 ~ '4_Central_deep',
                             Latitude > 40.5 & Depth < 183 ~ '5_North_shallow',
                             Latitude > 40.5 & between(Depth, 183, 550) ~ '6_North_mid',
-                            Latitude > 40.5 & Depth > 550 ~ '7_North_deep')) 
+                            Latitude > 40.5 & Depth > 550 ~ '7_North_deep')) %>% 
+  filter(Certainty == 1)
 nrow(tab_mat)
 table(tab_mat$Strata)
+
 
 ###---------------------------------------###
 ###---------- Stratum method ----------------
