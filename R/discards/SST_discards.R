@@ -78,6 +78,7 @@ thorny_GEMM %>%
             totdisc= sum(total_discard_mt, na.rm=T)) %>%
   ggplot(aes(x=year, y=totdisc, fill=catch_share)) +
   geom_bar(stat="identity") +
+  labs(y="Discards") +
   facet_wrap(~species)+ theme_bw()
 
 thorny_GEMM %>%
@@ -88,6 +89,7 @@ thorny_GEMM %>%
             totdisc= sum(total_discard_mt, na.rm=T)) %>%
   ggplot(aes(x=year, y=totdisc+totland, fill=catch_share)) +
   geom_bar(stat="identity") +
+  labs(y="Catch") +
   facet_wrap(~species) + theme_bw()
 
 
@@ -508,15 +510,18 @@ EDCP_rates<-tibble(Yr=c(1995, 1996, 1997, 1998, 1999),
   Std_in=c(0.4, 0.2, 0.21, 0.22, 0.3)) #I used the same data from the original data file here
 
 #Pikitch
-Pikitch_rates<-disc_rates_Pik_trawl_forplot%>%
-  group_by(Year) %>%
-  summarize(Discard = mean(DiscardRate.Sp.Wt.Wgting),
-            Std_in = sd(DiscardRate.Sp.Wt.Wgting))%>% # THIS IS VERY DIFFERENT FROM SS DATA FILE
-  dplyr::mutate(Seas = 1)%>%
-  dplyr::mutate(fleet = 1)%>%
+Pikitch_rates <- disc_rates_Pik_trawl_forplot %>%
+  filter(Areas=="2B 2C 3A 3B 3S") %>%
+  #group_by(Year) %>%
+  #summarize(Discard = mean(DiscardRate.Sp.Wt.Wgting),
+  #          Std_in = sd(DiscardRate.Sp.Wt.Wgting)) %>% # THIS IS VERY DIFFERENT FROM SS DATA FILE
+  dplyr::mutate(Discard = DiscardRate.Sp.Wt.Wgting,
+                Std_in = SD.DiscardRate.Sp.Wt.Wgting) %>% 
+  dplyr::mutate(Seas = 1) %>%
+  dplyr::mutate(fleet = 1) %>%
   select(Year, Seas, fleet, Discard, Std_in) %>%
-  rename(Yr=Year, Seas=Seas, Flt=fleet, Discard=Discard, Std_in=Std_in)%>%
-  dplyr::mutate(Std_in = Std_in/Discard) #convert to CV, STILL LOW compared to Original SS dat file
+  rename(Yr=Year, Seas=Seas, Flt=fleet, Discard=Discard, Std_in=Std_in) %>%
+  dplyr::mutate(Std_in = Std_in/Discard) #convert to CV, STILL LOW compared to Original SS dat file ### PY's reply: should be ok now!!
   
 
 discardRates_ss_allFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates) %>%
