@@ -352,4 +352,4 @@ SS_Param2023$Survey_LengthComp$data$noslope <- srv_len_noslope
 # ===========================================================================
 
 save(SS_Param2023,
-     file = file.path(dir_SS, "SST_SS_2023_Data_Parameters.RData", fsep = fsep))
+     file = file.path(dir_dat, "SST_SS_2023_Data_Parameters.RData", fsep = fsep))
