@@ -477,13 +477,280 @@ len_comp %>%
 ggsave("outputs/discard_data/SST_Pikitch_discard_lencomps.png", dpi=300, height=7, width=10, units='in')
 
 
+### Formatting for SS -------
+
+#Discard Rates 
+#_Yr	Seas	Flt	Discard	Std_in
+
+#Four Fleets -----
+  #NTrawl = 1, STrawl = 2, NOther = 3, SOther = 4
+
+#WCGOP 
+WCGOP_rates<-disc_rates_WCGOP_GEMM %>%
+  dplyr::mutate(Seas = 1)%>%
+  dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
+                    fleet == "STrawl" ~ 2,
+                    fleet == "NOther" ~ 3,
+                    fleet == "SOther" ~ 4))%>%
+  select(year, Seas, fleet, mean_discr, mean_sd) %>%
+  rename(Yr=year, Seas=Seas, Flt=fleet, Discard=mean_discr, Std_in=mean_sd)%>%
+  dplyr::mutate(Std_in = Std_in/Discard)%>%#convert to CV
+  arrange(Flt)
+
+#the mean_SD was much smaller than the previous SS data file, and in the manual the uncertainty is 
+#specified as the CV. However, I'm not sure how to deal with uncertinty in the terminal years. 
+  
+#EDCP 
+EDCP_rates<-tibble(Yr=c(1995, 1996, 1997, 1998, 1999),
+  Seas=c(1,1,1,1,1),
+  Flt=c(1,1,1,1,1),
+  Discard=c(0.132,0.155, 0.201, 0.136, 0.252),
+  Std_in=c(0.4, 0.2, 0.21, 0.22, 0.3)) #I used the same data from the original data file here
+
+#Pikitch
+Pikitch_rates<-disc_rates_Pik_trawl_forplot%>%
+  group_by(Year) %>%
+  summarize(Discard = mean(DiscardRate.Sp.Wt.Wgting),
+            Std_in = sd(DiscardRate.Sp.Wt.Wgting))%>% # THIS IS VERY DIFFERENT FROM SS DATA FILE
+  dplyr::mutate(Seas = 1)%>%
+  dplyr::mutate(fleet = 1)%>%
+  select(Year, Seas, fleet, Discard, Std_in) %>%
+  rename(Yr=Year, Seas=Seas, Flt=fleet, Discard=Discard, Std_in=Std_in)%>%
+  dplyr::mutate(Std_in = Std_in/Discard) #convert to CV, STILL LOW compared to Original SS dat file
+  
+
+discardRates_ss_allFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates) %>%
+  write_csv(  # Save to ss directory
+  file.path(here::here(), "data", "for_ss", "discardRates_4Fleets.csv"))
+
+
+#Three Fleets -----
+  #NTrawl = 1, STrawl = 2, Other = 3
+#WCGOP 
+#Rates 
+
+WCGOP_rates_3<-WCGOP_rates %>%
+  dplyr::mutate(Flt = ifelse(Flt %in% c(3, 4), 3, Flt)) %>%
+  group_by(Flt, Yr, Seas) %>%
+  summarise(
+    Discard=sum(Discard),
+    Std_in=mean(Std_in))%>% #Is this correct with cvs? 
+  select(Yr, Seas, Flt, Discard, Std_in)
+
+discardRates_ss_ThreeFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates_3) %>%
+    write_csv(  # Save to ss directory
+    file.path(here::here(), "data", "for_ss", "discardRates_3Fleets.csv"))
+
+#Length Comps (PLEASE CHECK MY WORK HERE)
+
+#Four Fleets 
+
+#WCGOP
+disc_lencomp_WCGOP
+
+#write_csv(disc_lencomp_WCGOP, file.path(here::here(), "data", "fishery_processed", "discards", "LengthComp_test.csv"))
+#I was struggling with getting length comps formatted correctly and did it in excel for timing reasons
+
+lencomp_WCGOP_1<-disc_lencomp_WCGOP%>%
+  dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
+                                fleet == "STrawl" ~ 2,
+                                fleet == "NOther" ~ 3,
+                                fleet == "SOther" ~ 4))%>%
+    pivot_wider(
+    names_from = "Lenbin",
+    values_from = "Prop.numbers",
+    values_fill = 0,
+    names_prefix = "f"
+  ) %>%
+  select(Year, fleet, starts_with("f")) %>%
+  group_by(fleet, Year) %>%
+  summarise(across(starts_with("f"), sum))
+
+
+Nsamp<-disc_lencomp_WCGOP%>%
+  dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
+                                fleet == "STrawl" ~ 2,
+                                fleet == "NOther" ~ 3,
+                                fleet == "SOther" ~ 4))%>%
+  group_by(Year, fleet)%>%
+  summarize(Nsamp = sum(N_Fish)) #PLEASE DOUBLE CHECK THIS I'M UNSURE IF THIS IS CORRECT 
   
   
+Lencomp_WCGOP_allFleets_1 <- left_join(lencomp_WCGOP_1, Nsamp, by = c("Year", "fleet"))
+
+Lencomp_WCGOP_allFleets <- Lencomp_WCGOP_allFleets_1%>%
+  dplyr::mutate(Seas = 1) %>%
+  dplyr::mutate(Gender = 0) %>%
+  dplyr::mutate(Part = 1) %>%
+  select(Year, Seas, fleet, Gender, Part, Nsamp, starts_with("f"))%>%
+  rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Nsamp)%>%
+  dplyr::mutate(m6 = 0, m8 = 0, m10 = 0, m12 = 0, m14 = 0, m16 = 0,
+         m18 = 0, m20 = 0, m22 = 0, m24 = 0, m26 = 0, m28 = 0,
+         m30 = 0, m32 = 0, m34 = 0, m36 = 0, m38 = 0, m40 = 0,
+         m42 = 0, m44 = 0, m46 = 0, m48 = 0, m50 = 0, m52 = 0,
+         m54 = 0, m56 = 0, m58 = 0, m60 = 0, m62 = 0, m64 = 0,
+         m66 = 0, m68 = 0, m70 = 0, m72 = 0) #I know this is clunky but we got there 
+
+
+#Pikitch 
+
+Lencomp_Pikitch_1<-len_comp %>%
+  select(Year, Num.Study.Lengths, starts_with("L"))%>%
+  dplyr::mutate(Seas = 1) %>%
+  dplyr::mutate(Gender = 0) %>%
+  dplyr::mutate(Part = 1) %>%
+  dplyr::mutate(fleet = 1) %>%
+  rename_at(vars(paste0("L.", seq(from = 6, to = 72, by = 2))), 
+            ~paste0("f", seq(from = 6, to = 72, by = 2)))%>%
+  select(Year, Seas, fleet, Gender, Part, Num.Study.Lengths, starts_with("f"))%>%
+  rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Num.Study.Lengths)%>%
+  dplyr::mutate(m6 = 0, m8 = 0, m10 = 0, m12 = 0, m14 = 0, m16 = 0,
+                m18 = 0, m20 = 0, m22 = 0, m24 = 0, m26 = 0, m28 = 0,
+                m30 = 0, m32 = 0, m34 = 0, m36 = 0, m38 = 0, m40 = 0,
+                m42 = 0, m44 = 0, m46 = 0, m48 = 0, m50 = 0, m52 = 0,
+                m54 = 0, m56 = 0, m58 = 0, m60 = 0, m62 = 0, m64 = 0,
+                m66 = 0, m68 = 0, m70 = 0, m72 = 0) %>%
+  group_by(Yr) %>%
+  summarize(across(starts_with("f"), mean, na.rm = TRUE))
+
+
+#THESE SAMPLE SIZES ARE MUCH LARGER THAN THE ORIGINAL DATA AND I'M NOT SURE IF THEY'RE CORRECT
+Nsamp_Pik<-len_comp%>% 
+  group_by(Year)%>% 
+  rename(Yr=Year)%>%
+  summarize(Nsamp = sum(Num.Study.Lengths))#DOUBLE CHECK THIS 
+
+Lencomp_Pikitch_2<-left_join(Lencomp_Pikitch_1,Nsamp_Pik, by = "Yr" )
+
+Lencomp_Pikitch<-Lencomp_Pikitch_2 %>%
   
+  dplyr::mutate(Seas = 1) %>%
+  dplyr::mutate(Gender = 0) %>%
+  dplyr::mutate(Part = 1) %>%
+  dplyr::mutate(m6 = 0, m8 = 0, m10 = 0, m12 = 0, m14 = 0, m16 = 0,
+                m18 = 0, m20 = 0, m22 = 0, m24 = 0, m26 = 0, m28 = 0,
+                m30 = 0, m32 = 0, m34 = 0, m36 = 0, m38 = 0, m40 = 0,
+                m42 = 0, m44 = 0, m46 = 0, m48 = 0, m50 = 0, m52 = 0,
+                m54 = 0, m56 = 0, m58 = 0, m60 = 0, m62 = 0, m64 = 0,
+                m66 = 0, m68 = 0, m70 = 0, m72 = 0) %>%
+  select(Yr, Seas, Flt, Gender, Part, Nsamp, starts_with("f"),starts_with("m") )
+
+#Final for all fleets 
+
+DiscLencomp_allFleets<-bind_rows(Lencomp_Pikitch,Lencomp_WCGOP_allFleets)%>%
+  write_csv(  # Save to ss directory
+    file.path(here::here(), "data", "for_ss", "discardLenComp_ss_4Fleets.csv"))
 
 
+#ThreeFleets
+    
+Lencomp_WCGOP_ThreeFleets_1<-disc_lencomp_WCGOP%>%
+  dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
+                                fleet == "STrawl" ~ 2,
+                                fleet == "NOther" ~ 3,
+                                fleet == "SOther" ~ 3))%>%
+  pivot_wider(
+    names_from = "Lenbin",
+    values_from = "Prop.numbers",
+    values_fill = 0,
+    names_prefix = "f"
+  ) %>%
+  select(Year, fleet, starts_with("f")) %>%
+  group_by(fleet, Year) %>%
+  summarise(across(starts_with("f"), sum))
 
 
+Nsamp_ThreeFleets<-disc_lencomp_WCGOP%>%
+  dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
+                                fleet == "STrawl" ~ 2,
+                                fleet == "NOther" ~ 3,
+                                fleet == "SOther" ~ 3))%>%
+  group_by(Year, fleet)%>%
+  summarize(Nsamp = sum(N_Fish)) #Same here, please check 
 
 
+Lencomp_WCGOP_ThreeFleets_2 <- left_join(Lencomp_WCGOP_ThreeFleets_1, Nsamp, by = c("Year", "fleet"))
 
+Lencomp_WCGOP_ThreeFleets <- Lencomp_WCGOP_ThreeFleets_2%>%
+  dplyr::mutate(Seas = 1) %>%
+  dplyr::mutate(Gender = 0) %>%
+  dplyr::mutate(Part = 1) %>%
+  select(Year, Seas, fleet, Gender, Part, Nsamp, starts_with("f"))%>%
+  rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Nsamp)%>%
+  dplyr::mutate(m6 = 0, m8 = 0, m10 = 0, m12 = 0, m14 = 0, m16 = 0,
+                m18 = 0, m20 = 0, m22 = 0, m24 = 0, m26 = 0, m28 = 0,
+                m30 = 0, m32 = 0, m34 = 0, m36 = 0, m38 = 0, m40 = 0,
+                m42 = 0, m44 = 0, m46 = 0, m48 = 0, m50 = 0, m52 = 0,
+                m54 = 0, m56 = 0, m58 = 0, m60 = 0, m62 = 0, m64 = 0,
+                m66 = 0, m68 = 0, m70 = 0, m72 = 0) #I know this is clunky but we got there 
+
+DiscLencomp_ThreeFleets<-bind_rows(Lencomp_Pikitch,Lencomp_WCGOP_ThreeFleets)%>%
+  write_csv(  # Save to ss directory
+    file.path(here::here(), "data", "for_ss", "discardLenComp_ss_3Fleets.csv"))
+
+## Same deal, please check the Nsamp values, I'm not sure I've got them correct. 
+
+#Weights -----
+
+#Ensure units are correct by re-reading in data and converting (Redundant but I've been testing a lot)
+
+disc_weight <- read_excel(paste0(processed_discards_path, "/SSPN_WCGOP_WAOR-CA_Trawl-NonTrawl.xlsx"),
+                          sheet = "Average Weight")
+#Convert to correct Units 
+disc_weight %>%
+  dplyr::mutate(AVG_WEIGHT.Mean=AVG_WEIGHT.Mean*0.453592,
+         AVG_WEIGHT.SD=AVG_WEIGHT.SD*0.453592) ->  disc_weight
+
+
+#_Year	Seas	Fleet	Partition	Type	Value	Std_in 
+#Value is mean body weight and cv
+
+#Four Fleets 
+
+MeanWeights_allfleets <- disc_weight %>%
+  dplyr::mutate(area_lg = ifelse(State == "CA", "S", "N"),
+         Gear = ifelse(Gear == "NonTRAWL", "Other", "Trawl")) %>%
+  dplyr::mutate(fleet = paste0(area_lg, Gear)) %>%
+  dplyr::mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
+  dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
+                                fleet == "STrawl" ~ 2,
+                                fleet == "NOther" ~ 3,
+                                fleet == "SOther" ~ 4))%>%
+  group_by(Year,fleet) %>%
+  summarise(mean_weight = mean(AVG_WEIGHT.Mean),
+            CV = mean(AVG_WEIGHT.SD / AVG_WEIGHT.Mean)) %>%
+  dplyr::mutate(Seas = 1) %>%
+  dplyr::mutate(Partition = 1) %>%
+  dplyr::mutate(Type = 2) %>%
+  select(Year, Seas, fleet, Partition, Type, mean_weight, CV) %>%
+  rename(Year=Year, Seas=Seas, Fleet=fleet, Partition=Partition, 
+         Type=Type, Value=mean_weight, Std_in=CV)%>%
+  arrange(Fleet)%>%
+  ungroup()%>%
+  write_csv(  # Save to ss directory
+    file.path(here::here(), "data", "for_ss", "discardWeights_ss_4Fleets.csv"))
+
+#Three Fleets 
+
+MeanWeights_ThreeFleets <- disc_weight %>%
+  dplyr::mutate(area_lg = ifelse(State == "CA", "S", "N"),
+                Gear = ifelse(Gear == "NonTRAWL", "Other", "Trawl")) %>%
+  dplyr::mutate(fleet = paste0(area_lg, Gear)) %>%
+  dplyr::mutate(fleet = ifelse(fleet == "NOther" | fleet == "SOther", "Other", fleet)) %>%
+  dplyr::mutate(fleet = factor(fleet, levels=c("NTrawl", "STrawl", "Other"))) %>%
+  dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
+                                fleet == "STrawl" ~ 2,
+                                fleet == "Other" ~ 3)) %>%
+  group_by(Year,fleet) %>%
+  summarise(mean_weight = mean(AVG_WEIGHT.Mean),
+            CV = mean(AVG_WEIGHT.SD / AVG_WEIGHT.Mean)) %>%
+  dplyr::mutate(Seas = 1) %>%
+  dplyr::mutate(Partition = 1) %>%
+  dplyr::mutate(Type = 2) %>%
+  select(Year, Seas, fleet, Partition, Type, mean_weight, CV) %>%
+  rename(Year=Year, Seas=Seas, Fleet=fleet, Partition=Partition, 
+         Type=Type, Value=mean_weight, Std_in=CV)%>%
+  arrange(Fleet)%>%
+  ungroup()%>%
+  write_csv(  # Save to ss directory
+    file.path(here::here(), "data", "for_ss", "discardWeights_ss_3Fleets.csv"))
