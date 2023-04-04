@@ -498,7 +498,7 @@ WCGOP_rates<-disc_rates_WCGOP_GEMM %>%
   arrange(Flt)
 
 #the mean_SD was much smaller than the previous SS data file, and in the manual the uncertainty is 
-#specified as the CV. However, I'm not sure how to deal with uncertinty in the terminal years. 
+#specified as the CV. However, I'm not sure how to deal with uncertainty in the terminal years. 
   
 #EDCP 
 EDCP_rates<-tibble(Yr=c(1995, 1996, 1997, 1998, 1999),
