@@ -918,10 +918,16 @@ write_SA_files <- function(out = NULL,
     cat("# Path to the Sensitivity analysis folder","\n")
     cat("dir_SensAnal <- file.path(dir_model, 'Sensitivity_Anal', fsep = fsep)\n")
     cat("\n")
+    cat("# Path to data folder","\n")
+    cat("dir_data <- file.path(here::here(), 'data', 'for_ss', fsep = fsep)\n")
+    cat("\n")
     cat("# Useful function\n")
     cat("source(file=file.path(dir_script,'utils','clean_functions.R', fsep = fsep))\n")
     cat("source(file=file.path(dir_script,'utils','ss_utils.R', fsep=fsep))\n")
     cat("source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=fsep))\n")
+    cat("\n")
+    cat("# Load the Rdata\n")
+    cat("load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData'', fsep=fsep))")
     cat("\n")
     cat("# Save directories and function\n")
     cat("# var.to.save <- c('dir_model', 
@@ -932,7 +938,6 @@ write_SA_files <- function(out = NULL,
     cat("# -----------------------------------------------------------","\n")
     cat("\n")
   }
-  
 
   # timeSA <- as.character(Sys.time())
   
