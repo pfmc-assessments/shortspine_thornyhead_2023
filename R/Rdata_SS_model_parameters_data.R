@@ -1,6 +1,6 @@
-# Stock: Rex Sole
+# Stock: Shortspine thornyhead
 # Set up the Rdata to save the parameters and the data that will feed SS input files
-# author: Matthieu VERON
+# authors: Matthieu VERON, Jane Sullivan
 # contact: mveron@uw.edu
 
 rm(list = ls(all.names = TRUE))
@@ -8,7 +8,14 @@ rm(list = ls(all.names = TRUE))
 # 1. Set up ----
 # ---------------------------------------------------------- #
 # load packages ----
+
 library(r4ss)
+source(file=file.path(here::here(), "R", "utils", "ss_utils.R"))
+
+# Data ----
+
+
+
 
 # Local declarations ----
 fsep <- .Platform$file.sep
@@ -17,7 +24,6 @@ fsep <- .Platform$file.sep
 dir_model <- file.path(here::here(), "model", fsep = fsep)
 dir_script <- file.path(here::here(), "R", fsep = fsep)
 dir_SS <- file.path(dir_script, "ss", fsep = fsep)
-
 
 
 # Stuff needed ----
@@ -65,7 +71,7 @@ getName <- function(string = NULL , pattern = NULL){
 
 # Load control file ----
 # Path to the base model (23.sq.0) repertory
-Dir_Base23_sq_fixQ <- file.path(dir_model,'2013_SST_SSV3_30_21' , fsep = fsep)
+Dir_Base23_sq_fixQ <- file.path(dir_model,'2013_SST_SSV3_30_21', fsep = fsep)
 
 # First read the starter to get the name of the control file
 StarterFile <- file.path(Dir_Base23_sq_fixQ, 'starter.ss', fsep = fsep)
@@ -75,7 +81,22 @@ Start23_sq_0 <- SS_readstarter(
 )
 
 # Read in the file
-Ctlfile <-file.path(Dir_Base23_sq_fixQ,Start23_sq_0$ctlfile, fsep = fsep)
+
+# Path to the Executable folder 
+# dir_model <- file.path(here::here(), 'model', fsep = fsep)
+# Exe_path <- file.path(dir_model, 'ss_executables') 
+# 
+# run_SS(SS_version = "3.30.21",
+#        Exe_extra = "",
+#        base_path = "",
+#        pathRun = file.path(Dir_Base23_sq_fixQ, 'run'),
+#        copy_files = TRUE,
+#        extras = NULL,
+#        show_in_console = TRUE,
+#        cleanRun = TRUE)
+
+Ctlfile <- file.path(Dir_Base23_sq_fixQ,Start23_sq_0$ctlfile, fsep = fsep)
+
 Ctl23_sq_fixQ <- SS_readctl_3.30(
   file = Ctlfile,
   use_datlist = TRUE,
@@ -83,7 +104,7 @@ Ctl23_sq_fixQ <- SS_readctl_3.30(
   verbose = TRUE
 )
 
-# Length bin for the soze comp if any
+# Length bin for the size comp if any
 Lbin_vect <- seq(6, 72, 2)
 # ===========================================================================
 

@@ -38,4 +38,9 @@ round(log.sd, digits=2)
 
 
 # Need to set up how to export and format for SS here----
+data.frame(Version = 'Base_2023',
+           initM = M,
+           prior_logM_mu = log.M,
+           prior_logM_sd = log.sd) %>% 
+  write_csv('data/for_ss/natmat_2023.csv')
 
