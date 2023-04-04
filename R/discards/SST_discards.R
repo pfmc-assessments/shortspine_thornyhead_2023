@@ -506,6 +506,7 @@ WCGOP_rates <- disc_rates_WCGOP_GEMM %>%
   select(year, Seas, fleet, mean_discr, mean_sd) %>%
   rename(Yr = year, Seas = Seas, Flt = fleet, Discard = mean_discr, Std_in = mean_sd) %>%
   dplyr::mutate(Std_in = Std_in / Discard) %>% #convert to CV
+  dplyr::mutate(Std_in = ifelse(Std_in == 0, 0.001, Std_in)) %>%
   arrange(Flt)
 
 #the mean_SD was much smaller than the previous SS data file, and in the manual the uncertainty is 
