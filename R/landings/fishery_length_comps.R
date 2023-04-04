@@ -138,19 +138,22 @@ Pdata_new <- Pdata_exp %>%
 # function to get length comps in long format
 get_comps_l <- function(data){
   
+  # data = Pdata_new
   tidyr::expand_grid(year = unique(data$year),
                      fleet = unique(data$fleet),
                      month = unique(data$month),
                      sex = unique(data$sex),
                      partition = unique(data$partition),
                      lenbin = c(seq(6, 72, 2))) %>%
-    dplyr::left_join(data) %>% 
+    dplyr::left_join(data) %>%
     dplyr::group_by(year, month, fleet, sex, partition, lenbin) %>%
-    dplyr::summarise(n = sum(expansion_n, na.rm = TRUE),
-                     nsamps = sum(!is.na(towid)),
-                     ntows = length(unique(towid)))  %>%
+    dplyr::mutate(n = sum(expansion_n, na.rm = TRUE)) %>% 
     dplyr::group_by(year, month, fleet, sex, partition) %>%
-    dplyr::mutate(totn = sum(n)) %>%
+    dplyr::mutate(totn = sum(n),
+                  nsamps = sum(!is.na(towid)),
+                  ntows = length(unique(na.omit(towid)))) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::distinct(year, month, fleet, sex, partition, lenbin, n, totn, nsamps, ntows) %>% 
     dplyr::mutate(p = ifelse(totn == 0, 0, n / totn),
                   # The initial input sample sizes (Ninput) for length frequency
                   # distributions by year were calculated as a function of the
@@ -162,14 +165,12 @@ get_comps_l <- function(data){
                   # sample size per sample based on fish-per-sample and the
                   # maximum effective sample size for large numbers of
                   # individual fish.
-                  Nsamp = ifelse(nsamps / ntows < 44,
-                                 ntows + 0.138 * nsamps,
-                                 ifelse(nsamps / ntows >= 44,
-                                        7.06 * ntows,
-                                        # deal with NA -> 0 case
-                                        0))) %>% 
-    dplyr::arrange(fleet, year, lenbin) %>% 
-    dplyr::ungroup()
+                  Nsamp = ifelse(ntows == 0, 0,
+                                 ifelse(nsamps / ntows < 44,
+                                 ntows + 0.138 * nsamps, 
+                                 7.06 * ntows))) %>% 
+    dplyr::arrange(fleet, year, lenbin) 
+  
 }
 
 fleet_str1 <- get_comps_l(data = Pdata_new)
@@ -179,15 +180,16 @@ fleet_str2 <- get_comps_l(data = Pdata_new %>% dplyr::select(-fleet) %>% dplyr::
 # get_comps_l()
 get_comps_SS <- function(data) {
   
+  # data = fleet_str1
   data %>% 
     dplyr::mutate(lenbin = paste0('F', lenbin)) %>% 
-    tidyr::pivot_wider(id_cols = c(year, month, fleet, sex, partition, Nsamp),
+    tidyr::pivot_wider(id_cols = c(year, month, fleet, sex, partition, Nsamp),#
                 names_from = lenbin, values_from = p, values_fill = 0) %>% 
     dplyr::left_join(data %>% 
                        dplyr::mutate(lenbin = paste0('M', lenbin)) %>% 
                        tidyr::pivot_wider(id_cols = c(year, month, fleet, sex, partition, Nsamp),
                                           names_from = lenbin, values_from = p, values_fill = 0),
-                     by = join_by(year, month, fleet, sex, partition, Nsamp)) %>% 
+                     by = join_by(year, month, fleet, sex, partition, Nsamp)) %>%
     dplyr::mutate_at(vars(-c('year', 'month', 'fleet', 'sex', 'partition', 'Nsamp')), 
                      round, 4) %>% 
     dplyr::mutate_at(vars(-c('year', 'month', 'fleet', 'sex', 'partition', 'Nsamp')), 
