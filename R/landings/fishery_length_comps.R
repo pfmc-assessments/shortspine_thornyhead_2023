@@ -139,37 +139,40 @@ Pdata_new <- Pdata_exp %>%
 get_comps_l <- function(data){
   
   # data = Pdata_new
-  tidyr::expand_grid(year = unique(data$year),
+  full <- tidyr::expand_grid(year = unique(data$year),
                      fleet = unique(data$fleet),
                      month = unique(data$month),
                      sex = unique(data$sex),
                      partition = unique(data$partition),
-                     lenbin = c(seq(6, 72, 2))) %>%
+                     lenbin = c(seq(6, 72, 2))) 
+  full %>%
     dplyr::left_join(data) %>%
     dplyr::group_by(year, month, fleet, sex, partition, lenbin) %>%
-    dplyr::mutate(n = sum(expansion_n, na.rm = TRUE)) %>% 
-    dplyr::group_by(year, month, fleet, sex, partition) %>%
-    dplyr::mutate(totn = sum(n),
-                  nsamps = sum(!is.na(towid)),
-                  ntows = length(unique(na.omit(towid)))) %>% 
+    dplyr::summarise(n = sum(expansion_n, na.rm = TRUE)) %>% 
     dplyr::ungroup() %>% 
-    dplyr::distinct(year, month, fleet, sex, partition, lenbin, n, totn, nsamps, ntows) %>% 
-    dplyr::mutate(p = ifelse(totn == 0, 0, n / totn),
-                  # The initial input sample sizes (Ninput) for length frequency
-                  # distributions by year were calculated as a function of the
-                  # number of trips and number of fish via the Stewart Method
-                  # (Stewart, pers.com) The method is based on analysis of the
-                  # input and model derived effective sample sizes from west
-                  # coast groundfish stock assessments. A piece-wise linear
-                  # regression was used to estimate the increase in effective
-                  # sample size per sample based on fish-per-sample and the
-                  # maximum effective sample size for large numbers of
-                  # individual fish.
-                  Nsamp = ifelse(ntows == 0, 0,
-                                 ifelse(nsamps / ntows < 44,
-                                 ntows + 0.138 * nsamps, 
-                                 7.06 * ntows))) %>% 
-    dplyr::arrange(fleet, year, lenbin) 
+    left_join(full %>%
+                dplyr::left_join(data) %>% 
+                dplyr::group_by(year, month, fleet, sex, partition) %>%
+                dplyr::summarise(nsamps = sum(!is.na(towid)),
+                                 ntows = length(unique(na.omit(towid))),
+                                 totn = sum(expansion_n, na.rm = TRUE),
+                                 # The initial input sample sizes (Ninput) for length frequency
+                                 # distributions by year were calculated as a function of the
+                                 # number of trips and number of fish via the Stewart Method
+                                 # (Stewart, pers.com) The method is based on analysis of the
+                                 # input and model derived effective sample sizes from west
+                                 # coast groundfish stock assessments. A piece-wise linear
+                                 # regression was used to estimate the increase in effective
+                                 # sample size per sample based on fish-per-sample and the
+                                 # maximum effective sample size for large numbers of
+                                 # individual fish.
+                                 Nsamp = ifelse(ntows == 0, 0,
+                                                ifelse(nsamps / ntows < 44,
+                                                       ntows + 0.138 * nsamps, 
+                                                       7.06 * ntows))) %>% 
+                dplyr::ungroup()) %>% 
+    dplyr::mutate(p = ifelse(totn == 0, 0, n / totn)) %>% 
+    arrange(year, fleet) 
   
 }
 
@@ -189,11 +192,11 @@ get_comps_SS <- function(data) {
                        dplyr::mutate(lenbin = paste0('M', lenbin)) %>% 
                        tidyr::pivot_wider(id_cols = c(year, month, fleet, sex, partition, Nsamp),
                                           names_from = lenbin, values_from = p, values_fill = 0),
-                     by = join_by(year, month, fleet, sex, partition, Nsamp)) %>%
-    dplyr::mutate_at(vars(-c('year', 'month', 'fleet', 'sex', 'partition', 'Nsamp')), 
-                     round, 4) %>% 
-    dplyr::mutate_at(vars(-c('year', 'month', 'fleet', 'sex', 'partition', 'Nsamp')), 
-                     format, nsmall = 4) 
+                     by = join_by(year, month, fleet, sex, partition, Nsamp)) #%>%
+    # dplyr::mutate_at(vars(-c('year', 'month', 'fleet', 'sex', 'partition', 'Nsamp')),
+                     # round, 4) %>%
+    # dplyr::mutate_at(vars(-c('year', 'month', 'fleet', 'sex', 'partition', 'Nsamp')),
+    #                  format, nsmall = 4)
   
 }
 
@@ -216,6 +219,8 @@ ss_fleet_str2 = get_comps_SS(fleet_str2) %>%
   ) %>%
   dplyr::arrange(fleet, year)
 
+rowSums(ss_fleet_str1[,7:40] )
+rowSums(ss_fleet_str2[,7:40] )
 write_csv(ss_fleet_str1, 'data/for_ss/landings_length_comps_4fleet_2023.csv')
 write_csv(ss_fleet_str2, 'data/for_ss/landings_length_comps_3fleet_2023.csv')
 
