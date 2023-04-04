@@ -28,9 +28,20 @@ outputs/plots/exploratory/*
 # SS Model Files
 model/*/plots/*  # Dont track SS plots
 admodel.*        # These are ADMB outputs
-ss*.b0*,ss.b0*		 # ADMB binary file output
-ss*.p0*,ss.p0*		 # ADMB binary file output
-ss*.r0*,ss.r0*		 # ADMB binary file output
+ss*.b0*          # ADMB binary file output
+ss.b01		      
+ss.b02		      
+ss.b03		      
+ss.b04		      
+ss.b05		      
+ss*.p0*
+ss.p0*		 
+ss*.r0*
+ss.r0*		 
+*.cov
+*.dep
+*.hes
+data_boot_001.ss
 
 /*/run/ss.b0*		 # ADMB binary file output
 /*/run/ss.p0*		 # ADMB binary file output
