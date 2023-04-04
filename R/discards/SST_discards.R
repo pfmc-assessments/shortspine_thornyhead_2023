@@ -3,7 +3,7 @@
 # Last updated March 2023
 
 # set up ----
-libs <- c('ggplot2', 'reshape', 'readxl', 'ggridges', 'dplyr', 'ggthemes')
+libs <- c('ggplot2', 'reshape', 'readxl', 'ggridges', 'dplyr', 'ggthemes', 'tidyr')
 if(length(libs[which(libs %in% rownames(installed.packages()) == FALSE )]) > 0) {
   install.packages(libs[which(libs %in% rownames(installed.packages()) == FALSE)])}
 lapply(libs, library, character.only = TRUE)
@@ -135,6 +135,7 @@ disc_no_catch_share <- read.csv(paste0(processed_discards_path, "/shortspine_tho
 # Merge the 2 datasets a and retain the information we need.
 
 disc_catch_share %>%
+  dplyr::select(-strata) %>%
   mutate(median_boot_discard_mt = NA,
          sd_boot_discard_mt = NA,
          median_boot_ratio = NA,
@@ -187,11 +188,19 @@ thorny_GEMM %>%
 
 disc_rates_WCGOP %>% 
   left_join(rep_gear[,c("gear","catch_share","year","prop")], by=c("year", "gear", "catch_shares"="catch_share"))  %>% 
-  mutate(weighed_discr=prop*ob_ratio_boot) %>%
-  group_by(fleet,year) %>%
-  mutate(sd=sum(sd_boot_ratio,na.rm=T)) %>% # Question there: which uncertainty should we consider??
+  group_by(year, fleet) %>%
+  mutate(rescale_if_required=sum(prop, na.rm=T)) %>%
+  ungroup() %>%
+  mutate(prop = prop / rescale_if_required) %>%
+  mutate(weighed_discr = prop * ob_ratio_boot) %>%
+  mutate(sd_boot_ratio = ifelse(year>=2011 & catch_shares==T & is.na(sd_boot_ratio), 0, sd_boot_ratio)) %>%
+  mutate(var_boot_ratio = sd_boot_ratio^2) %>%
+  mutate(weighed_var_boot_ratio = var_boot_ratio * prop^2) %>% 
+  group_by(fleet, year) %>%
+  mutate(varsum = sum(weighed_var_boot_ratio,na.rm=T)) %>% # Question there: which uncertainty should we consider??
+  mutate(mean_sd = sqrt(varsum)) %>% 
   summarize(mean_discr=sum(weighed_discr),
-            mean_sd=ifelse(year>2010,0,sd)) -> disc_rates_WCGOP_GEMM
+            mean_sd = unique(mean_sd)) -> disc_rates_WCGOP_GEMM
 
 disc_rates_WCGOP_GEMM %>%
   mutate(fleet=factor(fleet, levels=c("NTrawl", "NOther", "STrawl", "SOther"))) %>%
@@ -340,7 +349,7 @@ disc_lencomp_WCGOP %>%
   theme_classic()+
   labs(x = "Length (cm)", y = "Number of fish", fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions")
 
-#write_csv(disc_lencomp_WCGOP, "outputs/fishery_data/discard_lengths.csv")
+#write.csv(disc_lencomp_WCGOP, "outputs/fishery_data/discard_lengths.csv")
 
 #Output disc_lencomp for a combo plot 
 
@@ -488,30 +497,32 @@ ggsave("outputs/discard_data/SST_Pikitch_discard_lencomps.png", dpi=300, height=
   #NTrawl = 1, STrawl = 2, NOther = 3, SOther = 4
 
 #WCGOP 
-WCGOP_rates<-disc_rates_WCGOP_GEMM %>%
-  dplyr::mutate(Seas = 1)%>%
+WCGOP_rates <- disc_rates_WCGOP_GEMM %>%
+  dplyr::mutate(Seas = 1) %>%
   dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
                     fleet == "STrawl" ~ 2,
                     fleet == "NOther" ~ 3,
-                    fleet == "SOther" ~ 4))%>%
+                    fleet == "SOther" ~ 4)) %>%
   select(year, Seas, fleet, mean_discr, mean_sd) %>%
-  rename(Yr=year, Seas=Seas, Flt=fleet, Discard=mean_discr, Std_in=mean_sd)%>%
-  dplyr::mutate(Std_in = Std_in/Discard)%>%#convert to CV
+  rename(Yr = year, Seas = Seas, Flt = fleet, Discard = mean_discr, Std_in = mean_sd) %>%
+  dplyr::mutate(Std_in = Std_in / Discard) %>% #convert to CV
+  dplyr::mutate(Std_in = ifelse(Std_in == 0, 0.001, Std_in)) %>%
   arrange(Flt)
 
 #the mean_SD was much smaller than the previous SS data file, and in the manual the uncertainty is 
 #specified as the CV. However, I'm not sure how to deal with uncertainty in the terminal years. 
+### PY's answer it seems that the previous assessment was wrong and calculated discar/landings ratio intead of disc/(tot catch). So our ratio makes sense.
   
 #EDCP 
-EDCP_rates<-tibble(Yr=c(1995, 1996, 1997, 1998, 1999),
-  Seas=c(1,1,1,1,1),
-  Flt=c(1,1,1,1,1),
-  Discard=c(0.132,0.155, 0.201, 0.136, 0.252),
-  Std_in=c(0.4, 0.2, 0.21, 0.22, 0.3)) #I used the same data from the original data file here
+EDCP_rates <- tibble(Yr = c(1995, 1996, 1997, 1998, 1999),
+  Seas = c(1, 1, 1, 1, 1),
+  Flt = c(1, 1, 1, 1, 1),
+  Discard = c(0.132, 0.155, 0.201, 0.136, 0.252),
+  Std_in = c(0.4, 0.2, 0.21, 0.22, 0.3)) #I used the same data from the original data file here  ### PY's reply: Great!!
 
 #Pikitch
 Pikitch_rates <- disc_rates_Pik_trawl_forplot %>%
-  filter(Areas=="2B 2C 3A 3B 3S") %>%
+  filter(Areas == "2B 2C 3A 3B 3S") %>%
   #group_by(Year) %>%
   #summarize(Discard = mean(DiscardRate.Sp.Wt.Wgting),
   #          Std_in = sd(DiscardRate.Sp.Wt.Wgting)) %>% # THIS IS VERY DIFFERENT FROM SS DATA FILE
@@ -520,12 +531,12 @@ Pikitch_rates <- disc_rates_Pik_trawl_forplot %>%
   dplyr::mutate(Seas = 1) %>%
   dplyr::mutate(fleet = 1) %>%
   select(Year, Seas, fleet, Discard, Std_in) %>%
-  rename(Yr=Year, Seas=Seas, Flt=fleet, Discard=Discard, Std_in=Std_in) %>%
+  rename(Yr = Year, Seas = Seas, Flt = fleet, Discard = Discard, Std_in = Std_in) %>%
   dplyr::mutate(Std_in = Std_in/Discard) #convert to CV, STILL LOW compared to Original SS dat file ### PY's reply: should be ok now!!
   
 
 discardRates_ss_allFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates) %>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
   file.path(here::here(), "data", "for_ss", "discardRates_4Fleets.csv"))
 
 
@@ -534,16 +545,16 @@ discardRates_ss_allFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates) %
 #WCGOP 
 #Rates 
 
-WCGOP_rates_3<-WCGOP_rates %>%
+WCGOP_rates_3 <- WCGOP_rates %>%
   dplyr::mutate(Flt = ifelse(Flt %in% c(3, 4), 3, Flt)) %>%
   group_by(Flt, Yr, Seas) %>%
   summarise(
     Discard=sum(Discard),
-    Std_in=mean(Std_in))%>% #Is this correct with cvs? 
+    Std_in=mean(Std_in)) %>% #Is this correct with cvs? 
   select(Yr, Seas, Flt, Discard, Std_in)
 
 discardRates_ss_ThreeFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates_3) %>%
-    write_csv(  # Save to ss directory
+    write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardRates_3Fleets.csv"))
 
 #Length Comps (PLEASE CHECK MY WORK HERE)
@@ -553,14 +564,14 @@ discardRates_ss_ThreeFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates_
 #WCGOP
 disc_lencomp_WCGOP
 
-#write_csv(disc_lencomp_WCGOP, file.path(here::here(), "data", "fishery_processed", "discards", "LengthComp_test.csv"))
+#write.csv(disc_lencomp_WCGOP, file.path(here::here(), "data", "fishery_processed", "discards", "LengthComp_test.csv"))
 #I was struggling with getting length comps formatted correctly and did it in excel for timing reasons
 
-lencomp_WCGOP_1<-disc_lencomp_WCGOP%>%
+lencomp_WCGOP_1 <- disc_lencomp_WCGOP %>%
   dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
                                 fleet == "STrawl" ~ 2,
                                 fleet == "NOther" ~ 3,
-                                fleet == "SOther" ~ 4))%>%
+                                fleet == "SOther" ~ 4)) %>%
     pivot_wider(
     names_from = "Lenbin",
     values_from = "Prop.numbers",
@@ -572,7 +583,7 @@ lencomp_WCGOP_1<-disc_lencomp_WCGOP%>%
   summarise(across(starts_with("f"), sum))
 
 
-Nsamp<-disc_lencomp_WCGOP%>%
+Nsamp <- disc_lencomp_WCGOP%>%
   dplyr::mutate(fleet=case_when(fleet == "NTrawl" ~ 1,
                                 fleet == "STrawl" ~ 2,
                                 fleet == "NOther" ~ 3,
@@ -643,7 +654,7 @@ Lencomp_Pikitch<-Lencomp_Pikitch_2 %>%
 #Final for all fleets 
 
 DiscLencomp_allFleets<-bind_rows(Lencomp_Pikitch,Lencomp_WCGOP_allFleets)%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardLenComp_ss_4Fleets.csv"))
 
 
@@ -690,7 +701,7 @@ Lencomp_WCGOP_ThreeFleets <- Lencomp_WCGOP_ThreeFleets_2%>%
                 m66 = 0, m68 = 0, m70 = 0, m72 = 0) #I know this is clunky but we got there 
 
 DiscLencomp_ThreeFleets<-bind_rows(Lencomp_Pikitch,Lencomp_WCGOP_ThreeFleets)%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardLenComp_ss_3Fleets.csv"))
 
 ## Same deal, please check the Nsamp values, I'm not sure I've got them correct. 
@@ -732,7 +743,7 @@ MeanWeights_allfleets <- disc_weight %>%
          Type=Type, Value=mean_weight, Std_in=CV)%>%
   arrange(Fleet)%>%
   ungroup()%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardWeights_ss_4Fleets.csv"))
 
 #Three Fleets 
@@ -757,5 +768,6 @@ MeanWeights_ThreeFleets <- disc_weight %>%
          Type=Type, Value=mean_weight, Std_in=CV)%>%
   arrange(Fleet)%>%
   ungroup()%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardWeights_ss_3Fleets.csv"))
+
