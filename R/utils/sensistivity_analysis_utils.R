@@ -926,8 +926,8 @@ write_SA_files <- function(out = NULL,
     cat("source(file=file.path(dir_script,'utils','ss_utils.R', fsep=fsep))\n")
     cat("source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=fsep))\n")
     cat("\n")
-    cat("# Load the Rdata\n")
-    cat("load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData'', fsep=fsep))")
+    cat("# Load the .Rdata object with the parameters and data for 2023\n")
+    cat("load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))")
     cat("\n")
     cat("# Save directories and function\n")
     cat("# var.to.save <- c('dir_model', 

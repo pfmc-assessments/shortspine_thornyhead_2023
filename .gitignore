@@ -53,6 +53,7 @@ data_boot_001.ss
 *.cor
 *.std
 *.ss_new
+!data_echo.ss_new
 posterior_vector*.sso
 posterior*.sso
 rebuild.sso
