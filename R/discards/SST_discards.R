@@ -349,7 +349,7 @@ disc_lencomp_WCGOP %>%
   theme_classic()+
   labs(x = "Length (cm)", y = "Number of fish", fill = "Fleet", title = "Shortspine Thornyhead Discard Length Compositions")
 
-#write_csv(disc_lencomp_WCGOP, "outputs/fishery_data/discard_lengths.csv")
+#write.csv(disc_lencomp_WCGOP, "outputs/fishery_data/discard_lengths.csv")
 
 #Output disc_lencomp for a combo plot 
 
@@ -536,7 +536,7 @@ Pikitch_rates <- disc_rates_Pik_trawl_forplot %>%
   
 
 discardRates_ss_allFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates) %>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
   file.path(here::here(), "data", "for_ss", "discardRates_4Fleets.csv"))
 
 
@@ -554,7 +554,7 @@ WCGOP_rates_3 <- WCGOP_rates %>%
   select(Yr, Seas, Flt, Discard, Std_in)
 
 discardRates_ss_ThreeFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates_3) %>%
-    write_csv(  # Save to ss directory
+    write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardRates_3Fleets.csv"))
 
 #Length Comps (PLEASE CHECK MY WORK HERE)
@@ -564,7 +564,7 @@ discardRates_ss_ThreeFleets <- bind_rows(Pikitch_rates, EDCP_rates, WCGOP_rates_
 #WCGOP
 disc_lencomp_WCGOP
 
-#write_csv(disc_lencomp_WCGOP, file.path(here::here(), "data", "fishery_processed", "discards", "LengthComp_test.csv"))
+#write.csv(disc_lencomp_WCGOP, file.path(here::here(), "data", "fishery_processed", "discards", "LengthComp_test.csv"))
 #I was struggling with getting length comps formatted correctly and did it in excel for timing reasons
 
 lencomp_WCGOP_1 <- disc_lencomp_WCGOP %>%
@@ -654,7 +654,7 @@ Lencomp_Pikitch<-Lencomp_Pikitch_2 %>%
 #Final for all fleets 
 
 DiscLencomp_allFleets<-bind_rows(Lencomp_Pikitch,Lencomp_WCGOP_allFleets)%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardLenComp_ss_4Fleets.csv"))
 
 
@@ -701,7 +701,7 @@ Lencomp_WCGOP_ThreeFleets <- Lencomp_WCGOP_ThreeFleets_2%>%
                 m66 = 0, m68 = 0, m70 = 0, m72 = 0) #I know this is clunky but we got there 
 
 DiscLencomp_ThreeFleets<-bind_rows(Lencomp_Pikitch,Lencomp_WCGOP_ThreeFleets)%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardLenComp_ss_3Fleets.csv"))
 
 ## Same deal, please check the Nsamp values, I'm not sure I've got them correct. 
@@ -743,7 +743,7 @@ MeanWeights_allfleets <- disc_weight %>%
          Type=Type, Value=mean_weight, Std_in=CV)%>%
   arrange(Fleet)%>%
   ungroup()%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardWeights_ss_4Fleets.csv"))
 
 #Three Fleets 
@@ -768,5 +768,6 @@ MeanWeights_ThreeFleets <- disc_weight %>%
          Type=Type, Value=mean_weight, Std_in=CV)%>%
   arrange(Fleet)%>%
   ungroup()%>%
-  write_csv(  # Save to ss directory
+  write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardWeights_ss_3Fleets.csv"))
+
