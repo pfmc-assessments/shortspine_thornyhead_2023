@@ -43,7 +43,7 @@ Exe_path <- file.path(dirBase, "Executables")
 BaseMod_path <-
   file.path(dirBase, "model/2013_SST_SSV3_30_21/base_model_example")
 # Path to the old SST model (i.e. the 2013 model using SS V3.24)
-oldSST_path <- file.path(dirBase, "model/2013_SST/base_model_files")
+oldSST_path <- file.path(dirBase, "model/2013_SST/")
 # Path to the new SST model (i.e. the 2013 model using SS V3.30.21)
 SST_path <- file.path(dirBase, "model/2013_SST_SSV3_30_21")
 
