@@ -47,7 +47,8 @@ srv_mb_all <-  read_csv(file.path(dir_dat, "survey_mb_indices_all_2023.csv"))
 srv_mb_noslope <-  read_csv(file.path(dir_dat, "survey_mb_indices_noslope_2023.csv"))
 srv_len_all <- read_csv(file.path(dir_dat, "survey_length_comps_all_2023.csv"))
 srv_len_noslope <- read_csv(file.path(dir_dat, "survey_length_comps_noslope_2023.csv"))
-srv_single_triennial <- read_csv(file.path(dir_dat, "survey_length_comps_single_triennial_2023.csv"))
+srv_combined_triennial <- read_csv(file.path(dir_dat, "survey_length_comps_single_triennial_2023.csv"))
+srv_noslope_combined_triennial <- read_csv(file.path(dir_dat, "survey_length_comps_no_slope_combined_triennial_2023.csv"))
 
 # landings catch and length comp data: alternatives include the old 4 fleet
 # structure (NTrawl, NOther, STrawl, SOther) and the new 3 fleet structure
@@ -479,6 +480,12 @@ fix.fleet.indexing <- function(data, start.index){
     mutate(fleet=fleet-(min(fleet)-start.index))
 }
 
+
+fix.fleet.indexing.lc <- function(data, start.index){
+  data %>%
+    mutate(FltSvy=FltSvy-(min(FltSvy)-start.index))
+}
+
 # Catch data ----
 SS_Param2023$Catch$Content <- "These are the catch data"
 Catch_colnames <- c("year", "seas", "fleet", "catch", "catch_se")
@@ -558,22 +565,9 @@ names(srv_len_noslope) <- Lcomp_colnames
 SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_SplitTriennial <- srv_len_all
 SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_CombineTriennial <- srv_single_triennial
 SS_Param2023$Survey_LengthComp$data$FourFleets_NoSlope_CombineTriennial <- srv_noslope_combined_triennial
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial <- fix.fleet.indexing(srv_noslope_combined_triennial, start.index=4)
+SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial <- fix.fleet.indexing.lc(srv_noslope_combined_triennial, start.index=4)
 SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial <- fix.fleet.indexing(srv_len_noslope, start.index=4)
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial <- fix.fleet.indexing(srv_noslope_combined_trienniall, start.index=4)
-
-#  survey length comps ----
-SS_Param2023$Survey_LengthComp$Content <- "These are the survey length composition data"
-Lcomp_colnames <- c("year","season","fleet","sex","partition","Nsamp", paste0("f", Lbin_vect),paste0("m", Lbin_vect))
-names(srv_len_all) <- Lcomp_colnames
-names(srv_len_noslope) <- Lcomp_colnames
-# doDat(Data_colnames = Lcomp_colnames, RowNam = NULL)
-SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_SplitTriennial <- srv_len_all
-SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_CombineTriennial <- srv_single_triennial
-SS_Param2023$Survey_LengthComp$data$FourFleets_NoSlope_CombineTriennial <- srv_noslope_combined_triennial
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial <- fix.fleet.indexing(srv_noslope_combined_triennial, start.index=4)
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial <- fix.fleet.indexing(srv_len_noslope, start.index=4)
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial <- fix.fleet.indexing(srv_noslope_combined_triennial, start.index=4)
+SS_Param2023$Survey_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial <- fix.fleet.indexing.lc(srv_noslope_combined_triennial, start.index=4)
 
 # fleet/survey structures ----
 
