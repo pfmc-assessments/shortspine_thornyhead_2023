@@ -1002,9 +1002,7 @@ write_SA_files <- function(out = NULL,
   cat("# \n")
   if(length(new_model) > 1){
     cat("# General features: \n")
-    # cat("#",Features,"\n")
-    cat(Features,"\n")
-    
+    cat("#",Features,"\n")
     cat("# \n")
     cat("# Model features:")
     # cat("#", Mod_Feat, "\n")
