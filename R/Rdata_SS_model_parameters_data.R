@@ -37,15 +37,17 @@ mature <-  read_csv(file.path(dir_dat, "maturity_alternatives_2023.csv")) %>%
   dplyr::rename(Version = Method)
 natmat <-  read_csv(file.path(dir_dat, "natmat_2023.csv"))
 
-# survey index and length comp data: alternatives include design vs glmbTMB model
-# based indices and configurations which include and exclude the afsc slope
-# survey
+# survey index and length comp data: alternatives include design vs glmbTMB
+# model based indices, configurations which include and exclude the afsc slope,
+# and also a version with the triennial survey combined into two indices (it was
+# previous split by shallow/deep due to sampling issues in the early years
 srv_db_all <-  read_csv(file.path(dir_dat, "survey_db_indices_all_2023.csv"))
 srv_db_noslope <-  read_csv(file.path(dir_dat, "survey_db_indices_noslope_2023.csv"))
 srv_mb_all <-  read_csv(file.path(dir_dat, "survey_mb_indices_all_2023.csv"))
 srv_mb_noslope <-  read_csv(file.path(dir_dat, "survey_mb_indices_noslope_2023.csv"))
 srv_len_all <- read_csv(file.path(dir_dat, "survey_length_comps_all_2023.csv"))
 srv_len_noslope <- read_csv(file.path(dir_dat, "survey_length_comps_noslope_2023.csv"))
+srv_single_triennial <- read_csv(file.path(dir_dat, "survey_length_comps_single_triennial.csv"))
 
 # landings catch and length comp data: alternatives include the old 4 fleet
 # structure (NTrawl, NOther, STrawl, SOther) and the new 3 fleet structure
@@ -278,19 +280,19 @@ SS_Param2023$init_F$param <- doDat(Data_colnames = ParVal_colnames, RowNam = Ini
 
 # Catch data ----
 SS_Param2023$Catch$Content <- "These are the catch data"
-Catch_colnames <- c("year", "season", "fleet", "catch", "catch_se")
+Catch_colnames <- c("year", "seas", "fleet", "catch", "catch_se")
 # doDat(Data_colnames = Catch_colnames, RowNam = NULL)
-names(landings3) == Catch_colnames
-names(landings4) == Catch_colnames
+names(landings3) <- Catch_colnames
+names(landings4) <- Catch_colnames
 
-SS_Param2023$Catch$data$fleet4 <- landings4
-SS_Param2023$Catch$data$fleet3 <- landings3
+SS_Param2023$Catch$data$four_flts <- landings4
+SS_Param2023$Catch$data$three_flts <- landings3
 
 # Survey data ----
 SS_Param2023$Indices$Content <- "These are the survey data"
 Srv_colnames <- c("year", "season", "index", "obs", "se_log")
 # doDat(Data_colnames = Srv_colnames, RowNam = NULL)
-names(srv_db_all) == Srv_colnames
+names(srv_db_all) <- Srv_colnames
 SS_Param2023$Indices$data$mb_all <- srv_mb_all
 SS_Param2023$Indices$data$mb_noslope <- srv_mb_noslope
 SS_Param2023$Indices$data$db_all <- srv_db_all
@@ -302,8 +304,8 @@ Dscd_colnames <- c("year", "season", "fleet", "discard", "std_in")
 # doDat(Data_colnames = Dscd_colnames, RowNam = NULL)
 names(discard_rates4) <- Dscd_colnames
 names(discard_rates3) <- Dscd_colnames
-SS_Param2023$discard_fleets$data$fleet4 <- discard_rates4
-SS_Param2023$discard_fleets$data$fleet3 <- discard_rates3
+SS_Param2023$discard_fleets$data$four_flts <- discard_rates4
+SS_Param2023$discard_fleets$data$three_flts <- discard_rates3
 
 discard_
 
@@ -313,8 +315,8 @@ MeanBody_colnames <- c("year", "season", "fleet", "partition", "type", "obs", "s
 names(discard_weights4) <- MeanBody_colnames
 names(discard_weights3) <- MeanBody_colnames
 # doDat(Data_colnames = MeanBody_colnames, RowNam = NULL)
-SS_Param2023$Meanbodywt$data$fleet4 <- discard_weights4
-SS_Param2023$Meanbodywt$data$fleet3 <- discard_weights3
+SS_Param2023$Meanbodywt$data$four_flts <- discard_weights4
+SS_Param2023$Meanbodywt$data$three_flts <- discard_weights3
 
 #  fishery lencomps data ----
 SS_Param2023$Fishery_LengthComp$Content <- "These are the fishery length composition data"
@@ -327,8 +329,8 @@ names(discard_lencomps3) <- Lcomp_colnames
 fshcomps4 <- rbind(landings_lencomps4, discard_lencomps4)
 fshcomps3 <- rbind(landings_lencomps3, discard_lencomps3)
 
-SS_Param2023$Fishery_LengthComp$data$fleet4 <- fshcomps4
-SS_Param2023$Fishery_LengthComp$data$fleet3 <- fshcomps3
+SS_Param2023$Fishery_LengthComp$data$four_flts <- fshcomps4
+SS_Param2023$Fishery_LengthComp$data$three_flts <- fshcomps3
   
 #  survey length comps ----
 SS_Param2023$Survey_LengthComp$Content <- "These are the survey length composition data"
@@ -347,6 +349,8 @@ names(srv_len_noslope) <- Lcomp_colnames
 # doDat(Data_colnames = Lcomp_colnames, RowNam = NULL)
 SS_Param2023$Survey_LengthComp$data$all <- srv_len_all
 SS_Param2023$Survey_LengthComp$data$noslope <- srv_len_noslope
+
+# fleet/survey structures ----
 
 
 # ===========================================================================
