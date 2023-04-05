@@ -433,6 +433,22 @@ length.comps.ss.one.triennial <- bind_rows(
   ) %>%
   print(n=20)
 
+length.comps.ss.no.slope.combined.triennial <- bind_rows(
+  triennial.lcs.raw,
+  nw.combo.unsex.lcs.raw,
+  nwfsc.combo.lcs.raw
+) %>%
+  select(-ends_with(".1")) %>%
+  dplyr::rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
+  dplyr::mutate(across(F6:M72, ~ .x/100)) %>% # ut into true proportions rather than per-100 rates
+  dplyr::mutate(
+    FltSvy = ifelse(FltSvy > 5, FltSvy-1, FltSvy)
+  ) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_length_comps_no_slope_combined_triennial_2023.csv")
+  ) %>%
+  print(n=20)
+
 # Haul information ----------
 
 # frequency of occurrence in tows
