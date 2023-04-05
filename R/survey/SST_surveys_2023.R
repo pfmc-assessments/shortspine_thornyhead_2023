@@ -35,7 +35,39 @@ max.size.unsexed <- 16  # see R/unsexed_length_analysis.R
 
 # Triennial -----------
 # Get triennial data once since its shared by the triennial1 and triennial2 surveys
+out.dir <- file.path(outputs.dir, "surveys", "triennial")
+fleet.num <- 5
+
 triennial.survey.data <- get.survey.data(survey.name = "Triennial", write=FALSE)
+
+t.survey.catch <- triennial.survey.data$catch
+t.survey.bio   <- triennial.survey.data$bio
+t.survey.bio$Lengths <- t.survey.bio$Lengths %>% filter(Year > 1986)
+
+t.survey.strata = CreateStrataDF.fn(
+  depths.shallow = 100,
+  depths.deep    = 500,
+  lats.south     = 34.5,
+  lats.north     = 49
+)
+
+t.eff.n <-  GetN.fn(dir     = out.dir, 
+                    dat     = t.survey.bio$Lengths, 
+                    type    = "length", 
+                    species = "thorny")
+
+
+t.length.freq <-  SurveyLFs.fn(dir      = out.dir, 
+                               datL     = t.survey.bio$Lengths, 
+                               datTows  = t.survey.catch,
+                               strat.df = t.survey.strata,
+                               lgthBins = length.bins,
+                               nSamps   = t.eff.n,
+                               sex      = 3,
+                               maxSizeUnsexed  = max.size.unsexed, 
+                               sexRatioUnsexed = 0.5,
+                               fleet = fleet.num,
+                               month = 7)
 
 # Triennial 1 Survey (triennial survey all years but low depth)
 out.dir <- file.path(outputs.dir, "surveys", "triennial1")
@@ -342,6 +374,7 @@ read.survey.length.comp.data <- function(survey.name, fname="Survey_Sex3_Bins_6_
   )
 }
 
+triennial.lcs.raw   <- read.survey.length.comp.data("triennial") # need this specially for the model-based indices
 triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1")
 triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2")
 afsc.slope.lcs.raw  <- read.survey.length.comp.data("afsc_slope")
@@ -352,8 +385,6 @@ nw.slope.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_slope", "Survey_Se
 nw.combo.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", "Survey_Sex0_Bins_6_72_LengthComps.csv") %>%
   rename_with(~str_replace(., "U", "F"), .cols=starts_with("U"))
 
-# Things to figure out:
-# Yr	Seas	FltSvy	Gender	Part	Nsamp
 length.comps.ss.all <- bind_rows(
   triennial1.lcs.raw,
   triennial2.lcs.raw,
@@ -363,11 +394,12 @@ length.comps.ss.all <- bind_rows(
   nwfsc.combo.lcs.raw
 ) %>%
   select(-ends_with(".1")) %>%
-  rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
+  dplyr::rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
+  dplyr::mutate(across(F6:M72, ~ .x/100)) %>% # ut into true proportions rather than per-100 rates
   write_csv(  # Save survey indices to processed data directory
     file.path(here::here(), "data", "for_ss", "survey_length_comps_all_2023.csv")
   ) %>%
-  print(n=1000)
+  print(n=100)
 
 length.comps.ss.no.slope <- bind_rows(
   triennial1.lcs.raw,
@@ -376,11 +408,30 @@ length.comps.ss.no.slope <- bind_rows(
   nwfsc.combo.lcs.raw %>% mutate(fleet=7)
 ) %>%
   select(-ends_with(".1")) %>%
-  rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
+  dplyr::rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
+  dplyr::mutate(across(F6:M72, ~ .x/100)) %>% # ut into true proportions rather than per-100 rates
   write_csv(  # Save survey indices to processed data directory
     file.path(here::here(), "data", "for_ss", "survey_length_comps_noslope_2023.csv")
   ) %>%
   print(n=1000)
+
+length.comps.ss.one.triennial <- bind_rows(
+  triennial.lcs.raw,
+  afsc.slope.lcs.raw,
+  nw.slope.unsex.lcs.raw,
+  nw.combo.unsex.lcs.raw,
+  nwfsc.combo.lcs.raw
+) %>%
+  select(-ends_with(".1")) %>%
+  dplyr::rename(Yr=year, Seas=month, FltSvy=fleet, Gender=sex, Part=partition, Nsamp=InputN) %>%
+  dplyr::mutate(across(F6:M72, ~ .x/100)) %>% # ut into true proportions rather than per-100 rates
+  dplyr::mutate(
+    FltSvy = ifelse(FltSvy > 5, FltSvy-1, FltSvy)
+  ) %>%
+  write_csv(  # Save survey indices to processed data directory
+    file.path(here::here(), "data", "for_ss", "survey_length_comps_single_triennial_2023.csv")
+  ) %>%
+  print(n=20)
 
 # Haul information ----------
 
