@@ -8,8 +8,18 @@
 # *** 
 # Topic of the sensitivity analysis:  transition 
 # Specific item in that topic:  Update landings Updates discard rates Update survey geostat indices Update survey length comps Update fisheries length comps Update discard mean weights Update growth Update maturity Update fecundity Update natural mortality 
+# 	- Update landings 
+# 	- Updates discard rates 
+# 	- Update survey geostat indices 
+# 	- Update survey length comps 
+# 	- Update fisheries length comps 
+# 	- Update discard mean weights 
+# 	- Update growth 
+# 	- Update maturity 
+# 	- Update fecundity 
+# 	- Update natural mortality 
 # Author:  Team Thornyheads 
-# Date: 2023-04-04 14:45:01 
+# Date: 2023-04-05 10:48:24 
 # Names of the models created:
 # -  23.land.update 
 # -  23.disc.update 
@@ -37,10 +47,10 @@
 # 23.mortality.update 	 23.fecundity.update 
 # 
 # Results are stored in the following foler: 
-#	 C:/Users/Jane.Sullivan/Work/Courses/FSH/shortspine_thornyhead_2023/model/Sensitivity_Anal/0.2_Update_Data 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/model/Sensitivity_Anal/0.2_Update_Data 
 # 
 # General features: 
-# # Updating the data sets from the 2013 assessment to the 2023 assessment without changing the structural assumptions. The data sets that are updated as part of this analysis include fishery landings (using the status quo four fleet structure), discards, new geostatistical indices from glmTMB, composition data, and biological parameters. The growth parameters are new and are based on Butler data. Maturity parameters are new and based on Melissa Head's data. Fecundity parameters are new and based on Cooper et al 2005. Natural mortality is new and based on Hamel and Cope 2022 longevity estimator. These updates are collectively considered "best avail science." 
+Updating the data sets from the 2013 assessment to the 2023 assessment without changing the structural assumptions. The data sets that are updated as part of this analysis include fishery landings (using the status quo four fleet structure), discards, new geostatistical indices from glmTMB, composition data, and biological parameters. The growth parameters are new and are based on Butler data. Maturity parameters are new and based on Melissa Head's data. Fecundity parameters are new and based on Cooper et al 2005. Natural mortality is new and based on Hamel and Cope 2022 longevity estimator. These updates are collectively considered "best avail science." 
 # 
 # Model features:
 # - Model 23.land.update:
@@ -86,7 +96,7 @@ if (update) {
 mylib <- '~/R/win-library/4.1' 
 remove.packages('r4ss', lib = mylib) 
 # Install r4ss from GitHub 
-remotes::install_github('r4ss/r4ss') 
+pak::pkg_install('r4ss/r4ss') 
 } 
 # ----------------------------------------------------------- 
 
@@ -123,8 +133,8 @@ source(file=file.path(dir_script,'utils','clean_functions.R', fsep = fsep))
 source(file=file.path(dir_script,'utils','ss_utils.R', fsep=fsep))
 source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=fsep))
 
-# Load the Rdata
-load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData'', fsep=fsep))
+# Load the .Rdata object with the parameters and data for 2023
+load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # Save directories and function
 # var.to.save <- c('dir_model', 
         # 'Exe_path',
@@ -145,72 +155,72 @@ Dir_Base23_sq_floatQ <- file.path(dir_SensAnal, '0.1_Bridging_models','23.sq.flo
 
 
 # Path to the base model (23.land.update) repertory
-Dir_Base23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.land.update' , 'run',fsep = fsep)
+Dir_Base23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','1_23.land.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.disc.update) repertory
-Dir_Base23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.disc.update' , 'run',fsep = fsep)
+Dir_Base23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','2_23.disc.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.surv_geo.update) repertory
-Dir_Base23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.surv_geo.update' , 'run',fsep = fsep)
+Dir_Base23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','3_23.surv_geo.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.lcs_survey.update) repertory
-Dir_Base23_lcs_survey_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.lcs_survey.update' , 'run',fsep = fsep)
+Dir_Base23_lcs_survey_update <- file.path(dir_SensAnal, '0.2_Update_Data','4_23.lcs_survey.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.lcs_fisheries.update) repertory
-Dir_Base23_lcs_fisheries_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.lcs_fisheries.update' , 'run',fsep = fsep)
+Dir_Base23_lcs_fisheries_update <- file.path(dir_SensAnal, '0.2_Update_Data','5_23.lcs_fisheries.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.disc_weight.update) repertory
-Dir_Base23_disc_weight_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.disc_weight.update' , 'run',fsep = fsep)
+Dir_Base23_disc_weight_update <- file.path(dir_SensAnal, '0.2_Update_Data','6_23.disc_weight.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.growth.update) repertory
-Dir_Base23_growth_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.growth.update' , 'run',fsep = fsep)
+Dir_Base23_growth_update <- file.path(dir_SensAnal, '0.2_Update_Data','7_23.growth.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.maturity.update) repertory
-Dir_Base23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.maturity.update' , 'run',fsep = fsep)
+Dir_Base23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','8_23.maturity.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.fecundity.update) repertory
-Dir_Base23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.fecundity.update' , 'run',fsep = fsep)
+Dir_Base23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecundity.update' , 'run',fsep = fsep)
 
 
 # Root directory for this sensitivity analysis
 SA_path <- .
 # Path to the 23.land.update repertory
-Dir_23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.land.update' , 'run',fsep = fsep)
+Dir_23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','1_23.land.update' , 'run',fsep = fsep)
 
 # Path to the 23.disc.update repertory
-Dir_23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.disc.update' , 'run',fsep = fsep)
+Dir_23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','2_23.disc.update' , 'run',fsep = fsep)
 
 # Path to the 23.surv_geo.update repertory
-Dir_23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.surv_geo.update' , 'run',fsep = fsep)
+Dir_23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','3_23.surv_geo.update' , 'run',fsep = fsep)
 
 # Path to the 23.lcs_survey.update repertory
-Dir_23_lcs_survey_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.lcs_survey.update' , 'run',fsep = fsep)
+Dir_23_lcs_survey_update <- file.path(dir_SensAnal, '0.2_Update_Data','4_23.lcs_survey.update' , 'run',fsep = fsep)
 
 # Path to the 23.lcs_fisheries.update repertory
-Dir_23_lcs_fisheries_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.lcs_fisheries.update' , 'run',fsep = fsep)
+Dir_23_lcs_fisheries_update <- file.path(dir_SensAnal, '0.2_Update_Data','5_23.lcs_fisheries.update' , 'run',fsep = fsep)
 
 # Path to the 23.disc_weight.update repertory
-Dir_23_disc_weight_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.disc_weight.update' , 'run',fsep = fsep)
+Dir_23_disc_weight_update <- file.path(dir_SensAnal, '0.2_Update_Data','6_23.disc_weight.update' , 'run',fsep = fsep)
 
 # Path to the 23.growth.update repertory
-Dir_23_growth_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.growth.update' , 'run',fsep = fsep)
+Dir_23_growth_update <- file.path(dir_SensAnal, '0.2_Update_Data','7_23.growth.update' , 'run',fsep = fsep)
 
 # Path to the 23.maturity.update repertory
-Dir_23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.maturity.update' , 'run',fsep = fsep)
+Dir_23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','8_23.maturity.update' , 'run',fsep = fsep)
 
 # Path to the 23.fecundity.update repertory
-Dir_23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.fecundity.update' , 'run',fsep = fsep)
+Dir_23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecundity.update' , 'run',fsep = fsep)
 
 # Path to the 23.mortality.update repertory
-Dir_23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.mortality.update' , 'run',fsep = fsep)
+Dir_23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','10_23.mortality.update' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_sq_floatQ,Dir_Base23_land_update,Dir_Base23_disc_update,Dir_Base23_surv_geo_update,Dir_Base23_lcs_survey_update,Dir_Base23_lcs_fisheries_update,Dir_Base23_disc_weight_update,Dir_Base23_growth_update,Dir_Base23_maturity_update,Dir_Base23_fecundity_update,Dir_23_land_update,Dir_23_disc_update,Dir_23_surv_geo_update,Dir_23_lcs_survey_update,Dir_23_lcs_fisheries_update,Dir_23_disc_weight_update,Dir_23_growth_update,Dir_23_maturity_update,Dir_23_fecundity_update,Dir_23_mortality_update))
