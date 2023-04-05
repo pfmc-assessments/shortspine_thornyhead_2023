@@ -8,8 +8,18 @@
 # *** 
 # Topic of the sensitivity analysis:  transition 
 # Specific item in that topic:  Update landings Updates discard rates Update survey geostat indices Update survey length comps Update fisheries length comps Update discard mean weights Update growth Update maturity Update fecundity Update natural mortality 
+# 	- Update landings 
+# 	- Updates discard rates 
+# 	- Update survey geostat indices 
+# 	- Update survey length comps 
+# 	- Update fisheries length comps 
+# 	- Update discard mean weights 
+# 	- Update growth 
+# 	- Update maturity 
+# 	- Update fecundity 
+# 	- Update natural mortality 
 # Author:  Team Thornyheads 
-# Date: 2023-04-04 14:45:01 
+# Date: 2023-04-05 10:48:24 
 # Names of the models created:
 # -  23.land.update 
 # -  23.disc.update 
@@ -37,10 +47,10 @@
 # 23.mortality.update 	 23.fecundity.update 
 # 
 # Results are stored in the following foler: 
-#	 C:/Users/Jane.Sullivan/Work/Courses/FSH/shortspine_thornyhead_2023/model/Sensitivity_Anal/0.2_Update_Data 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/model/Sensitivity_Anal/0.2_Update_Data 
 # 
 # General features: 
-# # Updating the data sets from the 2013 assessment to the 2023 assessment without changing the structural assumptions. The data sets that are updated as part of this analysis include fishery landings (using the status quo four fleet structure), discards, new geostatistical indices from glmTMB, composition data, and biological parameters. The growth parameters are new and are based on Butler data. Maturity parameters are new and based on Melissa Head's data. Fecundity parameters are new and based on Cooper et al 2005. Natural mortality is new and based on Hamel and Cope 2022 longevity estimator. These updates are collectively considered "best avail science." 
+Updating the data sets from the 2013 assessment to the 2023 assessment without changing the structural assumptions. The data sets that are updated as part of this analysis include fishery landings (using the status quo four fleet structure), discards, new geostatistical indices from glmTMB, composition data, and biological parameters. The growth parameters are new and are based on Butler data. Maturity parameters are new and based on Melissa Head's data. Fecundity parameters are new and based on Cooper et al 2005. Natural mortality is new and based on Hamel and Cope 2022 longevity estimator. These updates are collectively considered "best avail science." 
 # 
 # Model features:
 # - Model 23.land.update:
@@ -73,7 +83,7 @@
 # The new input files are then written in the root directory of each model and the 
 # model outputs are stored in the '/run/' folder housed in that directory.
 # The results of this sensitivity analysis are analyzed using the following script:
-# C:/Users/Jane.Sullivan/Work/Courses/FSH/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/0.2_Update_Data_Outputs.R 
+# C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/0.2_Update_Data_Outputs.R 
 
 # *************************************
 # ---           WARNINGS            ---
@@ -140,8 +150,8 @@ source(file=file.path(dir_script,'utils','clean_functions.R', fsep = fsep))
 source(file=file.path(dir_script,'utils','ss_utils.R', fsep=fsep))
 source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=fsep))
 
-# Load the Rdata
-load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep=fsep))
+# Load the .Rdata object with the parameters and data for 2023
+load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # Save directories and function
 # var.to.save <- c('dir_model', 
         # 'Exe_path',
@@ -154,7 +164,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.land.update repertory
-Dir_23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.land.update' ,fsep = fsep)
+Dir_23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','1_23.land.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_land_update') 
@@ -167,14 +177,13 @@ var.to.save <- c(var.to.save, 'Dir_23_land_update')
 # Forecast file :			 Fore23_land_update 
 
 
-# Do you want to copy the SS input files from the base model? Not today, thanks,
-# because we're not changing anything from the base model.
+# Do you want to copy the SS input files from the base model?
 # This is useful if you are developing a model based on a base model that
 # that did not exist when you set up the sensitivity analysis or if you already 
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-# Restart_SA_modeldvpt() 
+Restart_SA_modeldvpt()
 
 
 # 3.1  Work on the Starter file ----
@@ -189,7 +198,9 @@ Start23_land_update <- SS_readstarter(
 # Make your modification if applicable
 # Code modifying the starter file
 
+
 # ~~~ We do not want to make changes to the input file!
+
 
 # Save the starter file for the model
 # SS_writestarter(
@@ -230,22 +241,23 @@ Dat23_land_update$endyr <- 2022
 # fleet4 = four fleets (2013 fleet structure)
 Dat23_land_update$catch <- as.data.frame(SS_Param2023$Catch$data$fleet4)
 
+
 # Save the data file for the model
-SS_writedat(
-datlist =  Dat23_land_update ,
-outfile = file.path(Dir_23_land_update, 'SST_data.ss', fsep = fsep),
-version = '3.30',
-overwrite = TRUE
-)
+ SS_writedat(
+       datlist =  Dat23_land_update ,
+       outfile = file.path(Dir_23_land_update, 'SST_data.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 
 # Check file structure
-DatFile <- file.path(Dir_23_land_update, 'SST_data.ss', fsep = fsep)
-Dat23_land_update <-
-  SS_readdat_3.30(
-    file = DatFile,
-    verbose = TRUE,
-    section = TRUE
-  )
+# DatFile <- file.path(Dir_23_land_update, 'SST_data.ss', fsep = fsep)
+  Dat23_land_update <-
+       SS_readdat_3.30(
+       file = DatFile,
+       verbose = TRUE,
+       section = TRUE
+       )
 
 # clean environment
 var.to.save <- c(var.to.save, 'Dat23_land_update')
@@ -306,6 +318,7 @@ Fore23_land_update <-SS_readforecast(
 
 # Make your modification if applicable
 # Code modifying the forecast file 
+
 # None
 
 # Save the forecast file for the model
@@ -346,7 +359,7 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.land.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
       extras = "-nohess"
       )
@@ -389,7 +402,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.disc.update repertory
-Dir_23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.disc.update' ,fsep = fsep)
+Dir_23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','2_23.disc.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_disc_update') 
@@ -408,7 +421,7 @@ var.to.save <- c(var.to.save, 'Dir_23_disc_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt() # copied all from 23.land.update to 23.disc.update
+Restart_SA_modeldvpt()
 
 
 # 4.1  Work on the Starter file ----
@@ -540,8 +553,9 @@ Fore23_disc_update <-SS_readforecast(
 
 # Make your modification if applicable
 # Code modifying the forecast file 
-# 
-# None needed
+# ..... 
+# ..... 
+
 
 # Save the forecast file for the model
 # SS_writeforecast(
@@ -581,7 +595,7 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.disc.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
       extras = "-nohess"
       )
@@ -624,7 +638,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.surv_geo.update repertory
-Dir_23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.surv_geo.update' ,fsep = fsep)
+Dir_23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','3_23.surv_geo.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_surv_geo_update') 
@@ -643,7 +657,8 @@ var.to.save <- c(var.to.save, 'Dir_23_surv_geo_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt() # copied 'all' from 23.disc.update to 23.surv_geo.update
+Restart_SA_modeldvpt()
+
 
 # 5.1  Work on the Starter file ----
 # ======================= #
@@ -657,6 +672,8 @@ Start23_surv_geo_update <- SS_readstarter(
 # Make your modification if applicable
 # Code modifying the starter file
 # None needed.
+
+
 
 # Save the starter file for the model
 # SS_writestarter(
@@ -740,6 +757,7 @@ Ctl23_surv_geo_update <- SS_readctl_3.30(
 # Code modifying the control file 
 # None needed
 
+
 # Save the control file for the model
 # SS_writectl(
       # ctllist =  Ctl23_surv_geo_update ,
@@ -770,7 +788,9 @@ Fore23_surv_geo_update <-SS_readforecast(
 
 # Make your modification if applicable
 # Code modifying the forecast file 
-# None needed
+# ..... 
+# ..... 
+
 
 # Save the forecast file for the model
 # SS_writeforecast(
@@ -810,7 +830,7 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.surv_geo.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
       extras = "-nohess"
 )
@@ -853,7 +873,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.lcs_survey.update repertory
-Dir_23_lcs_survey_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.lcs_survey.update' ,fsep = fsep)
+Dir_23_lcs_survey_update <- file.path(dir_SensAnal, '0.2_Update_Data','4_23.lcs_survey.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_lcs_survey_update') 
@@ -1046,10 +1066,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.lcs_survey.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
-      extras = "-nohess"
-)
+      )
 
 # 6.6  Let's plot the outputs from this model ----
 # ======================= #
@@ -1089,7 +1108,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.lcs_fisheries.update repertory
-Dir_23_lcs_fisheries_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.lcs_fisheries.update' ,fsep = fsep)
+Dir_23_lcs_fisheries_update <- file.path(dir_SensAnal, '0.2_Update_Data','5_23.lcs_fisheries.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_lcs_fisheries_update') 
@@ -1282,10 +1301,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.lcs_fisheries.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
-      extras = "-nohess"
-)
+      )
 
 # 7.6  Let's plot the outputs from this model ----
 # ======================= #
@@ -1325,7 +1343,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.disc_weight.update repertory
-Dir_23_disc_weight_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.disc_weight.update' ,fsep = fsep)
+Dir_23_disc_weight_update <- file.path(dir_SensAnal, '0.2_Update_Data','6_23.disc_weight.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_disc_weight_update') 
@@ -1518,10 +1536,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.disc_weight.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
-      extras = "-nohess"
-)
+      )
 
 # 8.6  Let's plot the outputs from this model ----
 # ======================= #
@@ -1561,7 +1578,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.growth.update repertory
-Dir_23_growth_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.growth.update' ,fsep = fsep)
+Dir_23_growth_update <- file.path(dir_SensAnal, '0.2_Update_Data','7_23.growth.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_growth_update') 
@@ -1754,10 +1771,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.growth.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
-      extras = "-nohess"
-)
+      )
 
 # 9.6  Let's plot the outputs from this model ----
 # ======================= #
@@ -1797,7 +1813,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.maturity.update repertory
-Dir_23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.maturity.update' ,fsep = fsep)
+Dir_23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','8_23.maturity.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_maturity_update') 
@@ -1990,10 +2006,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.maturity.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
-      extras = "-nohess"
-)
+      )
 
 # 10.6  Let's plot the outputs from this model ----
 # ======================= #
@@ -2033,7 +2048,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.fecundity.update repertory
-Dir_23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.fecundity.update' ,fsep = fsep)
+Dir_23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecundity.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_fecundity_update') 
@@ -2226,10 +2241,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.fecundity.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
-      extras = "-nohess"
-)
+      )
 
 # 11.6  Let's plot the outputs from this model ----
 # ======================= #
@@ -2269,7 +2283,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.mortality.update repertory
-Dir_23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','23.mortality.update' ,fsep = fsep)
+Dir_23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','10_23.mortality.update' ,fsep = fsep)
 
 # Add the model directory to the saved variables
 var.to.save <- c(var.to.save, 'Dir_23_mortality_update') 
@@ -2462,10 +2476,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.mortality.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
-      extras = "-nohess"
-)
+      )
 
 # 12.6  Let's plot the outputs from this model ----
 # ======================= #

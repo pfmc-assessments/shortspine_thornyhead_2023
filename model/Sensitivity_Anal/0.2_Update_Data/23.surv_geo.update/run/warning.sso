@@ -1,9 +1,0 @@
-Warning 1 : fishing fleet: 1 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
-Warning 2 : fishing fleet: 2 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
-Warning 3 : fishing fleet: 3 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
-Warning 4 : fishing fleet: 4 surveytime read as: 1 normally is -1 for fishing fleet; can override for indiv. obs. using 1000+month
-Note 1 Information: Max data length bin: 72  < max pop len bins: 90; so will accumulate larger pop len bins
-Note 2 Suggestion: This model has just one settlement event. Changing to recr_dist_method 4 and removing the recruitment distribution parameters at the end of the MG parms section (below growth parameters) will produce identical results and simplify the model.
-Note 3 Information: settle_month is less than spawn_month, so logical age at settlement calculated to be: 0  for settle_time 1.  Does not match read value of 1 are you sure? 
-Note 4 Information: Max harvest rate typically is >1.0 for F_method 2, 3 or 4 0.9
-Warning 5 Fatal Error! 9 Q setup error; no survey obs but Q setup was read 

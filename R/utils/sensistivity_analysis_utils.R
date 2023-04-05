@@ -596,13 +596,13 @@ NewSensAnal <- function(topic = NULL,
   
   for (m in 1:length(new_model)) {
     cat("\n")
-    tmpWD <- file.path(WD, new_model[m], fsep = fsep)
+    tmpWD <- file.path(WD, paste0(m, "_", new_model[m]), fsep = fsep)
     # Create directory
     dir.create(tmpWD)
     # Save the directory
     pathMod <-
       c(pathMod,
-        file.path("model", "Sensitivity_Anal", folder_name, new_model[m]))
+        file.path("model", "Sensitivity_Anal", folder_name, paste0(m, "_", new_model[m])))
     
     if (m == 1)
       cat("- Copying SS input files from :\n")
@@ -624,7 +624,7 @@ NewSensAnal <- function(topic = NULL,
         overwrite = TRUE,
         copy.date = TRUE
       )
-      cat("\t=>", modelFrom, "\n for the model :", new_model[m], "\n")
+      cat("\t=>", modelFrom, "\n for the model :", paste0(m, "_", new_model[m]), "\n")
       
       if (file.exists(file.path(modelFrom, data_echo, fsep = fsep))) {
         if (!dir.exists(dirname(file.path(tmpWD, data_echo, fsep = fsep))))
@@ -889,7 +889,7 @@ write_SA_files <- function(out = NULL,
     cat("mylib <- '~/R/win-library/4.1'","\n")
     cat("remove.packages('r4ss', lib = mylib)","\n")
     cat("# Install r4ss from GitHub","\n")
-    cat("remotes::install_github('r4ss/r4ss')","\n")
+    cat("pak::pkg_install('r4ss/r4ss')","\n")
     cat("}","\n")
     cat("# -----------------------------------------------------------","\n")
     cat("\n")
@@ -967,6 +967,8 @@ write_SA_files <- function(out = NULL,
   cat("# *** \n")
   cat("# Topic of the sensitivity analysis: ", topic, "\n")
   cat("# Specific item in that topic: ", object, "\n")
+  for(i in 1:length(object))
+    cat("# \t-", object[i], "\n")
   cat("# Author: ", author, "\n")
   cat("# Date:", timeSA, "\n")
   if (!do_model && !do_results)
@@ -1000,7 +1002,9 @@ write_SA_files <- function(out = NULL,
   cat("# \n")
   if(length(new_model) > 1){
     cat("# General features: \n")
-    cat("#",Features,"\n")
+    # cat("#",Features,"\n")
+    cat(Features,"\n")
+    
     cat("# \n")
     cat("# Model features:")
     # cat("#", Mod_Feat, "\n")
