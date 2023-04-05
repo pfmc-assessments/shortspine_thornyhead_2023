@@ -51,28 +51,28 @@
 # 
 # General features: 
 # Updating the data sets from the 2013 assessment to the 2023 assessment without changing the structural assumptions. The data sets that are updated as part of this analysis include fishery landings (using the status quo four fleet structure), discards, new geostatistical indices from glmTMB, composition data, and biological parameters. The growth parameters are new and are based on Butler data. Maturity parameters are new and based on Melissa Head's data. Fecundity parameters are new and based on Cooper et al 2005. Natural mortality is new and based on Hamel and Cope 2022 longevity estimator. These updates are collectively considered "best avail science." 
-# # 
-# # Model features:
-# # - Model 23.land.update:
-# # from pacfin and new state harvest reconstructs 
-# # - Model 23.disc.update:
-# # from GEMM and Pikitch 
-# # - Model 23.surv_geo.update:
-# # from glmTMB, contact Kelli Johnson 
-# # - Model 23.lcs_survey.update:
-# # update length comps 
-# # - Model 23.lcs_fisheries.update:
-# # update length comps 
-# # - Model 23.disc_weight.update:
-# # update mean weights from WCGOP 
-# # - Model 23.growth.update:
-# # Butler 
-# # - Model 23.maturity.update:
-# # Head 
-# # - Model 23.fecundity.update:
-# # Cooper 
-# # - Model 23.mortality.update:
-# # Hamel and Cope (amax = 100) 
+# 
+# Model features:
+# - Model 23.land.update:
+# from pacfin and new state harvest reconstructs 
+# - Model 23.disc.update:
+# from GEMM and Pikitch 
+# - Model 23.surv_geo.update:
+# from glmTMB, contact Kelli Johnson 
+# - Model 23.lcs_survey.update:
+# update length comps 
+# - Model 23.lcs_fisheries.update:
+# update length comps 
+# - Model 23.disc_weight.update:
+# update mean weights from WCGOP 
+# - Model 23.growth.update:
+# Butler 
+# - Model 23.maturity.update:
+# Head 
+# - Model 23.fecundity.update:
+# Cooper 
+# - Model 23.mortality.update:
+# Hamel and Cope (amax = 100) 
 # ============================================================ #
 
 # ------------------------------------------------------------ #
