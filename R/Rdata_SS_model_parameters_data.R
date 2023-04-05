@@ -1,6 +1,6 @@
 # Stock: Shortspine thornyhead
 # Set up the Rdata to save the parameters and the data that will feed SS input files
-# authors: Matthieu VERON, Jane Sullivan
+# authors: Matthieu VERON, Jane Sullivan, Josh Zahner
 # contact: mveron@uw.edu
 
 rm(list = ls(all.names = TRUE))
@@ -493,24 +493,24 @@ Catch_colnames <- c("year", "seas", "fleet", "catch", "catch_se")
 names(landings3) <- Catch_colnames
 names(landings4) <- Catch_colnames
 
-SS_Param2023$Catch$data$FourFleets_UseSlope_SplitTriennial <- landings4
-SS_Param2023$Catch$data$FourFleets_UseSlope_CombineTriennial <- landings4
-SS_Param2023$Catch$data$FourFleets_NoSlope_CombineTriennial <- landings4
-SS_Param2023$Catch$data$ThreeFleets_NoSlope_CombineTriennial <- landings3
-SS_Param2023$Catch$data$ThreeFleets_NoSlope_SplitTriennial <- landings3
-SS_Param2023$Catch$data$ThreeFleets_UseSlope_CombineTriennial <- landings3
+SS_Param2023$Catch$data$FourFleets_UseSlope_SplitTriennial <- as.data.frame(landings4)
+SS_Param2023$Catch$data$FourFleets_UseSlope_CombineTriennial <- as.data.frame(landings4)
+SS_Param2023$Catch$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(landings4)
+SS_Param2023$Catch$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(landings3)
+SS_Param2023$Catch$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(landings3)
+SS_Param2023$Catch$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(landings3)
 
 # Survey data ----
 SS_Param2023$Indices$Content <- "These are the survey data"
 Srv_colnames <- c("year", "season", "index", "obs", "se_log")
 # doDat(Data_colnames = Srv_colnames, RowNam = NULL)
 names(srv_db_all) <- Srv_colnames
-SS_Param2023$Indices$data$FourFleets_UseSlope_SplitTriennial <- srv_db_all
-SS_Param2023$Indices$data$FourFleets_UseSlope_CombineTriennial <- srv_mb_all
-SS_Param2023$Indices$data$FourFleets_NoSlope_CombineTriennial <- srv_mb_noslope
-SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial <- fix.fleet.indexing(srv_mb_noslope, start.index=4)
-SS_Param2023$Indices$data$ThreeFleets_NoSlope_SplitTriennial <- fix.fleet.indexing(srv_db_noslope, start.index=4)
-SS_Param2023$Indices$data$ThreeFleets_UseSlope_CombineTriennial <- fix.fleet.indexing(srv_mb_all, start.index=4)
+SS_Param2023$Indices$data$FourFleets_UseSlope_SplitTriennial <- as.data.frame(srv_db_all)
+SS_Param2023$Indices$data$FourFleets_UseSlope_CombineTriennial <- as.data.frame(srv_mb_all)
+SS_Param2023$Indices$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(srv_mb_noslope)
+SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing(srv_mb_noslope, start.index=4))
+SS_Param2023$Indices$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(fix.fleet.indexing(srv_db_noslope, start.index=4))
+SS_Param2023$Indices$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing(srv_mb_all, start.index=4))
 
 # Discard data ----
 SS_Param2023$discard_rates$Content <- "These are the discards data"
@@ -518,12 +518,12 @@ Dscd_colnames <- c("year", "season", "fleet", "discard", "std_in")
 # doDat(Data_colnames = Dscd_colnames, RowNam = NULL)
 names(discard_rates4) <- Dscd_colnames
 names(discard_rates3) <- Dscd_colnames
-SS_Param2023$discard_rates$data$FourFleets_UseSlope_SplitTriennial <- discard_rates4
-SS_Param2023$discard_rates$data$FourFleets_UseSlope_CombineTriennial <- discard_rates4
-SS_Param2023$discard_rates$data$FourFleets_NoSlope_CombineTriennial <- discard_rates4
-SS_Param2023$discard_rates$data$ThreeFleets_NoSlope_CombineTriennial <- discard_rates3
-SS_Param2023$discard_rates$data$ThreeFleets_NoSlope_SplitTriennial <- discard_rates3
-SS_Param2023$discard_rates$data$ThreeFleets_UseSlope_CombineTriennial <- discard_rates3
+SS_Param2023$discard_rates$data$FourFleets_UseSlope_SplitTriennial <- as.data.frame(discard_rates4)
+SS_Param2023$discard_rates$data$FourFleets_UseSlope_CombineTriennial <- as.data.frame(discard_rates4)
+SS_Param2023$discard_rates$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(discard_rates4)
+SS_Param2023$discard_rates$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(discard_rates3)
+SS_Param2023$discard_rates$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(discard_rates3)
+SS_Param2023$discard_rates$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(discard_rates3)
 
 # Meanbodywt data ----
 SS_Param2023$Meanbodywt$Content <- "These are the Meanbodywt (weight/length) data"
@@ -531,12 +531,12 @@ MeanBody_colnames <- c("year", "season", "fleet", "partition", "type", "obs", "s
 names(discard_weights4) <- MeanBody_colnames
 names(discard_weights3) <- MeanBody_colnames
 # doDat(Data_colnames = MeanBody_colnames, RowNam = NULL)
-SS_Param2023$Meanbodywt$data$FourFleets_UseSlope_SplitTriennial <- discard_weights4
-SS_Param2023$Meanbodywt$data$FourFleets_UseSlope_CombineTriennial <- discard_weights4
-SS_Param2023$Meanbodywt$data$FourFleets_NoSlope_CombineTriennial <- discard_weights4
-SS_Param2023$Meanbodywt$data$ThreeFleets_NoSlope_CombineTriennial <- discard_weights3
-SS_Param2023$Meanbodywt$data$ThreeFleets_NoSlope_SplitTriennial <- discard_weights3
-SS_Param2023$Meanbodywt$data$ThreeFleets_UseSlope_CombineTriennial <- discard_weights3
+SS_Param2023$Meanbodywt$data$FourFleets_UseSlope_SplitTriennial <- as.data.frame(discard_weights4)
+SS_Param2023$Meanbodywt$data$FourFleets_UseSlope_CombineTriennial <- as.data.frame(discard_weights4)
+SS_Param2023$Meanbodywt$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(discard_weights4)
+SS_Param2023$Meanbodywt$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(discard_weights3)
+SS_Param2023$Meanbodywt$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(discard_weights3)
+SS_Param2023$Meanbodywt$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(discard_weights3)
 
 #  fishery lencomps data ----
 SS_Param2023$Fishery_LengthComp$Content <- "These are the fishery length composition data"
@@ -546,8 +546,8 @@ names(landings_lencomps4) <- Lcomp_colnames
 names(landings_lencomps3) <- Lcomp_colnames
 names(discard_lencomps4) <- Lcomp_colnames
 names(discard_lencomps3) <- Lcomp_colnames
-fshcomps4 <- rbind(landings_lencomps4, discard_lencomps4)
-fshcomps3 <- rbind(landings_lencomps3, discard_lencomps3)
+fshcomps4 <- as.data.frame(rbind(landings_lencomps4, discard_lencomps4))
+fshcomps3 <- as.data.frame(rbind(landings_lencomps3, discard_lencomps3))
 
 SS_Param2023$Fishery_LengthComp$data$FourFleets_UseSlope_SplitTriennial <- fshcomps4
 SS_Param2023$Fishery_LengthComp$data$FourFleets_UseSlope_CombineTriennial <- fshcomps4
@@ -561,15 +561,81 @@ SS_Param2023$Survey_LengthComp$Content <- "These are the survey length compositi
 Lcomp_colnames <- c("year","season","fleet","sex","partition","Nsamp", paste0("f", Lbin_vect),paste0("m", Lbin_vect))
 names(srv_len_all) <- Lcomp_colnames
 names(srv_len_noslope) <- Lcomp_colnames
-# doDat(Data_colnames = Lcomp_colnames, RowNam = NULL)
-SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_SplitTriennial <- srv_len_all
-SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_CombineTriennial <- srv_single_triennial
-SS_Param2023$Survey_LengthComp$data$FourFleets_NoSlope_CombineTriennial <- srv_noslope_combined_triennial
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial <- fix.fleet.indexing.lc(srv_noslope_combined_triennial, start.index=4)
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial <- fix.fleet.indexing(srv_len_noslope, start.index=4)
-SS_Param2023$Survey_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial <- fix.fleet.indexing.lc(srv_noslope_combined_triennial, start.index=4)
 
-# fleet/survey structures ----
+# doDat(Data_colnames = Lcomp_colnames, RowNam = NULL)
+SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_SplitTriennial <- as.data.frame(srv_len_all %>% replace(is.na(.), 0)) 
+SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_CombineTriennial <- as.data.frame(srv_single_triennial %>% replace(is.na(.), 0))
+SS_Param2023$Survey_LengthComp$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(srv_noslope_combined_triennial %>% replace(is.na(.), 0))
+SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing.lc(srv_noslope_combined_triennial, start.index=4) %>% replace(is.na(.), 0))
+SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(fix.fleet.indexing(srv_len_noslope, start.index=4) %>% replace(is.na(.), 0))
+SS_Param2023$Survey_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing.lc(srv_noslope_combined_triennial, start.index=4) %>% replace(is.na(.), 0))
+
+# all length comps ----
+
+SS_Param2023$All_LengthComp$data$FourFleets_UseSlope_SplitTriennial <- as.data.frame(rbind(SS_Param2023$Fishery_LengthComp$data$FourFleets_UseSlope_SplitTriennial, 
+                                                                                           SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_SplitTriennial))
+SS_Param2023$All_LengthComp$data$FourFleets_UseSlope_CombineTriennial <- as.data.frame(rbind(SS_Param2023$Fishery_LengthComp$data$FourFleets_UseSlope_CombineTriennial, 
+                                                                                           SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_CombineTriennial))
+SS_Param2023$All_LengthComp$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(rbind(SS_Param2023$Fishery_LengthComp$data$FourFleets_NoSlope_CombineTriennial, 
+                                                                                           SS_Param2023$Survey_LengthComp$data$FourFleets_NoSlope_CombineTriennial))
+SS_Param2023$All_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(rbind(SS_Param2023$Fishery_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial, 
+                                                                                           SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial))
+SS_Param2023$All_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(rbind(SS_Param2023$Fishery_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial, 
+                                                                                           SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial))
+SS_Param2023$All_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(rbind(SS_Param2023$Fishery_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial, 
+                                                                                           SS_Param2023$Survey_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial))
+
+
+# catchability ----
+# ctl$Q_options
+# ctl$Q_parms
+# 
+# make_Q_options <- function(fleetnames) {
+# 
+#   # fleetnames <- SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial
+#   fleetnames <- SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial
+#   # fleetnames <- SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial
+# 
+#     tmp <- data.frame(fleet = (length(fleetnames) - length(grep('trawl|Trawl', fleetnames))):length(fleetnames),
+#                       link = 1, 
+#                       link_info = 0,
+#                       extra_se = 0,
+#                       biasadj = 0,
+#                       float = 1)
+#   rownames(tmp) <- fleetnames[!grepl('trawl|Trawl', fleetnames)]
+#   tmp[rownames(tmp) %in% c('Triennial1'),]$extra_se <- 1
+#   return(tmp)
+# }
+# SS_Param2023$Q_options$Content <- "Options for survey catchability parameters like floating or estimating extra SE"
+# SS_Param2023$Q_options$data$FourFleets_UseSlope_SplitTriennial <- make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial)
+# SS_Param2023$Q_options$data$FourFleets_UseSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial)
+# SS_Param2023$Q_options$data$FourFleets_NoSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial)
+# SS_Param2023$Q_options$data$ThreeFleets_NoSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial)
+# SS_Param2023$Q_options$data$ThreeFleets_NoSlope_SplitTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial)
+# SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial)
+# 
+#   
+#   
+# # selectivity ----
+# SS_Param$SR_parms
+# 
+# starter <- SS_readstarter(
+#   file = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/starter.ss',
+#   verbose = TRUE
+# )
+# 
+# dat <- SS_readdat_3.30(
+#   file = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/SST_data.ss',
+#   verbose = TRUE,
+#   section = TRUE
+# )
+# 
+# ctl <- SS_readctl_3.30(
+#   file = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/SST_control.ss',
+#   use_datlist = TRUE,
+#   datlist = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/run/data_echo.ss_new',
+#   verbose = TRUE
+# )
 
 
 # ===========================================================================
