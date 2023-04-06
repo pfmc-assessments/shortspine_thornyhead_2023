@@ -7,10 +7,10 @@
 # 
 # *** 
 # Topic of the sensitivity analysis:  transition 
-# Specific item in that topic:  Update landings Updates discard rates Update survey geostat indices Update survey length comps Update fisheries length comps Update discard mean weights Update growth Update maturity Update fecundity Update natural mortality 
+# Specific item in that topic:  Update landings Updates discard rates Update survey indices Update survey length comps Update fisheries length comps Update discard mean weights Update growth Update maturity Update fecundity Update natural mortality 
 # 	- Update landings 
 # 	- Updates discard rates 
-# 	- Update survey geostat indices 
+# 	- Update survey indices 
 # 	- Update survey length comps 
 # 	- Update fisheries length comps 
 # 	- Update discard mean weights 
@@ -19,11 +19,11 @@
 # 	- Update fecundity 
 # 	- Update natural mortality 
 # Author:  Team Thornyheads 
-# Date: 2023-04-05 10:48:24 
+# Date: 2023-04-05 14:36:14 
 # Names of the models created:
 # -  23.land.update 
 # -  23.disc.update 
-# -  23.surv_geo.update 
+# -  23.surv_db.update 
 # -  23.lcs_survey.update 
 # -  23.lcs_fisheries.update 
 # -  23.disc_weight.update 
@@ -37,8 +37,8 @@
 # New model 	 Base model
 # 23.land.update 	 23.sq.floatQ 
 # 23.disc.update 	 23.land.update 
-# 23.surv_geo.update 	 23.disc.update 
-# 23.lcs_survey.update 	 23.surv_geo.update 
+# 23.surv_db.update 	 23.disc.update 
+# 23.lcs_survey.update 	 23.surv_db.update 
 # 23.lcs_fisheries.update 	 23.lcs_survey.update 
 # 23.disc_weight.update 	 23.lcs_fisheries.update 
 # 23.growth.update 	 23.disc_weight.update 
@@ -47,24 +47,24 @@
 # 23.mortality.update 	 23.fecundity.update 
 # 
 # Results are stored in the following foler: 
-#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/model/Sensitivity_Anal/0.2_Update_Data 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/0.2_Update_Data 
 # 
 # General features: 
-Updating the data sets from the 2013 assessment to the 2023 assessment without changing the structural assumptions. The data sets that are updated as part of this analysis include fishery landings (using the status quo four fleet structure), discards, new geostatistical indices from glmTMB, composition data, and biological parameters. The growth parameters are new and are based on Butler data. Maturity parameters are new and based on Melissa Head's data. Fecundity parameters are new and based on Cooper et al 2005. Natural mortality is new and based on Hamel and Cope 2022 longevity estimator. These updates are collectively considered "best avail science." 
+# Updating the data sets from the 2013 assessment to the 2023 assessment without changing the structural assumptions. The data sets that are updated as part of this analysis include fishery landings (using the status quo four fleet structure), discards, new design-based indices, composition data, and biological parameters (length-weight, growth, maturity, fecundity, and natural mortality). 
 # 
 # Model features:
 # - Model 23.land.update:
-# from pacfin and new state harvest reconstructs 
+# from PacFIN and state reconstructions 
 # - Model 23.disc.update:
-# from GEMM and Pikitch 
-# - Model 23.surv_geo.update:
-# from glmTMB, contact Kelli Johnson 
+# from GEMM, Pikitch, WCGOP 
+# - Model 23.surv_db.update:
+# from nwfscSurvey package calculations 
 # - Model 23.lcs_survey.update:
-# update length comps 
+# from newfscSurvey length comp calculations 
 # - Model 23.lcs_fisheries.update:
-# update length comps 
+# from PacFIN and WCGOP fisheries length comp datasets 
 # - Model 23.disc_weight.update:
-# update mean weights from WCGOP 
+# from WCGOP 
 # - Model 23.growth.update:
 # Butler 
 # - Model 23.maturity.update:
@@ -72,7 +72,7 @@ Updating the data sets from the 2013 assessment to the 2023 assessment without c
 # - Model 23.fecundity.update:
 # Cooper 
 # - Model 23.mortality.update:
-# Hamel and Cope (amax = 100) 
+# Hamel and Cope 
 # ============================================================ #
 
 # ------------------------------------------------------------ #
@@ -162,8 +162,8 @@ Dir_Base23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','1_23.land.u
 Dir_Base23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','2_23.disc.update' , 'run',fsep = fsep)
 
 
-# Path to the base model (23.surv_geo.update) repertory
-Dir_Base23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','3_23.surv_geo.update' , 'run',fsep = fsep)
+# Path to the base model (23.surv_db.update) repertory
+Dir_Base23_surv_db_update <- file.path(dir_SensAnal, '0.2_Update_Data','3_23.surv_db.update' , 'run',fsep = fsep)
 
 
 # Path to the base model (23.lcs_survey.update) repertory
@@ -191,15 +191,15 @@ Dir_Base23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.f
 
 
 # Root directory for this sensitivity analysis
-SA_path <- .
+SA_path <- file.path(dir_SensAnal, '0.2_Update_Data', fsep=fsep)
 # Path to the 23.land.update repertory
 Dir_23_land_update <- file.path(dir_SensAnal, '0.2_Update_Data','1_23.land.update' , 'run',fsep = fsep)
 
 # Path to the 23.disc.update repertory
 Dir_23_disc_update <- file.path(dir_SensAnal, '0.2_Update_Data','2_23.disc.update' , 'run',fsep = fsep)
 
-# Path to the 23.surv_geo.update repertory
-Dir_23_surv_geo_update <- file.path(dir_SensAnal, '0.2_Update_Data','3_23.surv_geo.update' , 'run',fsep = fsep)
+# Path to the 23.surv_db.update repertory
+Dir_23_surv_db_update <- file.path(dir_SensAnal, '0.2_Update_Data','3_23.surv_db.update' , 'run',fsep = fsep)
 
 # Path to the 23.lcs_survey.update repertory
 Dir_23_lcs_survey_update <- file.path(dir_SensAnal, '0.2_Update_Data','4_23.lcs_survey.update' , 'run',fsep = fsep)
@@ -223,11 +223,11 @@ Dir_23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecun
 Dir_23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','10_23.mortality.update' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
-SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_sq_floatQ,Dir_Base23_land_update,Dir_Base23_disc_update,Dir_Base23_surv_geo_update,Dir_Base23_lcs_survey_update,Dir_Base23_lcs_fisheries_update,Dir_Base23_disc_weight_update,Dir_Base23_growth_update,Dir_Base23_maturity_update,Dir_Base23_fecundity_update,Dir_23_land_update,Dir_23_disc_update,Dir_23_surv_geo_update,Dir_23_lcs_survey_update,Dir_23_lcs_fisheries_update,Dir_23_disc_weight_update,Dir_23_growth_update,Dir_23_maturity_update,Dir_23_fecundity_update,Dir_23_mortality_update))
+SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_sq_floatQ,Dir_Base23_land_update,Dir_Base23_surv_db_update,Dir_Base23_lcs_survey_update,Dir_Base23_lcs_fisheries_update))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('23.sq.floatQ','23.land.update','23.disc.update','23.surv_geo.update','23.lcs_survey.update','23.lcs_fisheries.update','23.disc_weight.update','23.growth.update','23.maturity.update','23.fecundity.update','23.land.update','23.disc.update','23.surv_geo.update','23.lcs_survey.update','23.lcs_fisheries.update','23.disc_weight.update','23.growth.update','23.maturity.update','23.fecundity.update','23.mortality.update')
+names(SensiMod) <- c('23.sq.floatQ','23.land.update','23.surv_db.update','23.lcs_survey.update','23.lcs_fisheries.update')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -238,5 +238,15 @@ SSplotComparisons(
       # print = TRUE,
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c('23.sq.floatQ','23.land.update','23.disc.update','23.surv_geo.update','23.lcs_survey.update','23.lcs_fisheries.update','23.disc_weight.update','23.growth.update','23.maturity.update','23.fecundity.update','23.land.update','23.disc.update','23.surv_geo.update','23.lcs_survey.update','23.lcs_fisheries.update','23.disc_weight.update','23.growth.update','23.maturity.update','23.fecundity.update','23.mortality.update')
+      legendlabels = c('23.sq.floatQ','23.land.update','23.surv_db.update','23.lcs_survey.update','23.lcs_fisheries.update')
     )
+
+SStableComparisons(Version_Summary)
+
+
+pars <- SensiMod[[5]]["parameters"]$parameters
+names(pars)
+
+as_tibble(pars) %>%
+  select(Label, Value, Phase, Init, Prior) %>%
+  print(n=1000)
