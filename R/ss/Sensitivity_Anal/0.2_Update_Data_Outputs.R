@@ -242,8 +242,7 @@ SSplotComparisons(
       legendlabels = c('23.sq.floatQ','23.land.update','23.surv_db.update','23.lcs_survey.update','23.lcs_fisheries.update')
     )
 
-SStableComparisons(Version_Summary) %>% 
-  write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
+SStableComparisons(Version_Summary) 
 
 # bind_rows(apply(as.matrix(1:5), 1, function(x) SensiMod[[x]]["parameters"]$parameters), .id="model")
 
@@ -260,4 +259,7 @@ tmp %>%
   pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
   write_csv(paste(SA_path, 'Update_Data_comparison_table_lnQ_SRlnR0.csv', sep = fsep))
 
-
+out <- SStableComparisons(Version_Summary)
+names(out) <- c('Label', unique(tmp$Model)) 
+out %>% 
+  write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
