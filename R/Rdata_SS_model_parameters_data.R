@@ -584,59 +584,127 @@ SS_Param2023$All_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.f
                                                                                            SS_Param2023$Survey_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial))
 SS_Param2023$All_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(rbind(SS_Param2023$Fishery_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial, 
                                                                                            SS_Param2023$Survey_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial))
+# Q params ----
 
+make_Q_parms <- function(fleetnames) {
+ 
+  tmp <- Ctl23_sq_fixQ$Q_parms %>% 
+    tibble::rownames_to_column()
+  
+  # get rid of slope surveys if not used
+  if(all(!grepl('slope', fleetnames))) {
+    tmp <- tmp %>% filter(!grepl('slope', rowname))
+  }
+  
+  # deal with combined Triennial survey and the special case from previous
+  # assessment where Triennial1 had an extra SD estimated
+  if(all(!grepl('Triennial1', fleetnames))) {
+    tmp <- tmp %>% filter(!grepl('Triennial1', rowname))
+    tmp <- tmp %>% 
+      mutate(new_rowname = paste0('LnQ_base_', fleetnames[!grepl('trawl|Trawl', fleetnames)], 
+                                  '(', (length(grep('trawl|Trawl', fleetnames)) + 1):length(fleetnames), ')')) %>% 
+      select(-rowname) %>% 
+      tibble::column_to_rownames(var = 'new_rowname')
+    
+  } else {
+   
+    new_fleetnames <- c(fleetnames[!grepl('trawl|Trawl', fleetnames)][1], fleetnames[!grepl('trawl|Trawl', fleetnames)])
+    new_index <- c(((length(grep('trawl|Trawl', fleetnames)) + 1):length(fleetnames))[1], (length(grep('trawl|Trawl', fleetnames)) + 1):length(fleetnames))
+    parnames <- c('LnQ_base_', 'Q_extraSD_', rep('LnQ_base_', length(unique(new_fleetnames))-1))
+     
+    tmp <- tmp %>% 
+      mutate(new_rowname = paste0(parnames, new_fleetnames, '(', new_index, ')')) %>% 
+      select(-rowname) %>% 
+      tibble::column_to_rownames(var = 'new_rowname')
+    
+  }
+  return(tmp)
+}
 
-# catchability ----
-# ctl$Q_options
-# ctl$Q_parms
+SS_Param2023$Q_parms$Content <- "Survey catchability parameters including estimating extra SE"
+SS_Param2023$Q_parms$data$FourFleets_UseSlope_SplitTriennial <- make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial)
+SS_Param2023$Q_parms$data$FourFleets_UseSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial)
+SS_Param2023$Q_parms$data$FourFleets_NoSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial)
+SS_Param2023$Q_parms$data$ThreeFleets_NoSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial)
+SS_Param2023$Q_parms$data$ThreeFleets_NoSlope_SplitTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial)
+SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial)
+
+# Q options ----
+
+make_Q_options <- function(fleetnames) {
+
+    tmp <- data.frame(fleet = (length(grep('trawl|Trawl', fleetnames)) + 1):length(fleetnames),
+                      link = 1,
+                      link_info = 0,
+                      extra_se = 0,
+                      biasadj = 0,
+                      float = 1)
+  rownames(tmp) <- fleetnames[!grepl('trawl|Trawl', fleetnames)]
+  if(any(rownames(tmp) %in% c('Triennial1'))){
+    tmp[rownames(tmp) %in% c('Triennial1'),]$extra_se <- 1
+  }
+  return(tmp)
+}
+SS_Param2023$Q_options$Content <- "Options for survey catchability parameters like floating or estimating extra SE"
+SS_Param2023$Q_options$data$FourFleets_UseSlope_SplitTriennial <- make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial)
+SS_Param2023$Q_options$data$FourFleets_UseSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial)
+SS_Param2023$Q_options$data$FourFleets_NoSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial)
+SS_Param2023$Q_options$data$ThreeFleets_NoSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial)
+SS_Param2023$Q_options$data$ThreeFleets_NoSlope_SplitTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial)
+SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial)
+
+# # Selectivity ----
 # 
-# make_Q_options <- function(fleetnames) {
+# names(Ctl23_sq_fixQ)
+# Ctl23_sq_fixQ$size_selex_types
+# Ctl23_sq_fixQ$size_selex_parms
+# Ctl23_sq_fixQ$age_selex_types
+# Ctl23_sq_fixQ$size_selex_parms_tv
 # 
-#   # fleetnames <- SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial
-#   fleetnames <- SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial
-#   # fleetnames <- SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial
-# 
-#     tmp <- data.frame(fleet = (length(fleetnames) - length(grep('trawl|Trawl', fleetnames))):length(fleetnames),
-#                       link = 1, 
-#                       link_info = 0,
-#                       extra_se = 0,
-#                       biasadj = 0,
-#                       float = 1)
-#   rownames(tmp) <- fleetnames[!grepl('trawl|Trawl', fleetnames)]
-#   tmp[rownames(tmp) %in% c('Triennial1'),]$extra_se <- 1
+# make_size_selex_types <- function(fleetnames) {
+#   
+#   fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial
+#   
+#   tmp <- Ctl23_sq_fixQ$size_selex_types %>% 
+#     tibble::rownames_to_column()
+#   
+#   # get rid of slope surveys if not used
+#   if(all(!grepl('slope', fleetnames))) {
+#     tmp <- tmp %>% filter(!grepl('slope', rowname))
+#   }
+#   
+#   # deal with combined Triennial survey and the special case from previous
+#   # assessment where Triennial1 had an extra SD estimated
+#   if(all(!grepl('Triennial1', fleetnames))) {
+#     tmp <- tmp %>% filter(!grepl('Triennial1', rowname))
+#     tmp <- tmp %>% 
+#       mutate(new_rowname = paste0('LnQ_base_', fleetnames[!grepl('trawl|Trawl', fleetnames)], 
+#                                   '(', (length(grep('trawl|Trawl', fleetnames)) + 1):length(fleetnames), ')')) %>% 
+#       select(-rowname) %>% 
+#       tibble::column_to_rownames(var = 'new_rowname')
+#     
+#   } else {
+#     
+#     new_fleetnames <- c(fleetnames[!grepl('trawl|Trawl', fleetnames)][1], fleetnames[!grepl('trawl|Trawl', fleetnames)])
+#     new_index <- c(((length(grep('trawl|Trawl', fleetnames)) + 1):length(fleetnames))[1], (length(grep('trawl|Trawl', fleetnames)) + 1):length(fleetnames))
+#     parnames <- c('LnQ_base_', 'Q_extraSD_', rep('LnQ_base_', length(unique(new_fleetnames))-1))
+#     
+#     tmp <- tmp %>% 
+#       mutate(new_rowname = paste0(parnames, new_fleetnames, '(', new_index, ')')) %>% 
+#       select(-rowname) %>% 
+#       tibble::column_to_rownames(var = 'new_rowname')
+#     
+#   }
 #   return(tmp)
 # }
-# SS_Param2023$Q_options$Content <- "Options for survey catchability parameters like floating or estimating extra SE"
-# SS_Param2023$Q_options$data$FourFleets_UseSlope_SplitTriennial <- make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial)
-# SS_Param2023$Q_options$data$FourFleets_UseSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial)
-# SS_Param2023$Q_options$data$FourFleets_NoSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial)
-# SS_Param2023$Q_options$data$ThreeFleets_NoSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial)
-# SS_Param2023$Q_options$data$ThreeFleets_NoSlope_SplitTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial)
-# SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial <-  make_Q_options(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial)
 # 
-#   
-#   
-# # selectivity ----
-# SS_Param$SR_parms
-# 
-# starter <- SS_readstarter(
-#   file = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/starter.ss',
-#   verbose = TRUE
-# )
-# 
-# dat <- SS_readdat_3.30(
-#   file = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/SST_data.ss',
-#   verbose = TRUE,
-#   section = TRUE
-# )
-# 
-# ctl <- SS_readctl_3.30(
-#   file = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/SST_control.ss',
-#   use_datlist = TRUE,
-#   datlist = 'model/Sensitivity_Anal/0.1_Bridging_models/23.sq.floatQ/run/data_echo.ss_new',
-#   verbose = TRUE
-# )
-
+# SS_Param2023$Q_parms$Content <- "Survey catchability parameters including estimating extra SE"
+# SS_Param2023$Q_parms$data$FourFleets_UseSlope_SplitTriennial <- make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial)
+# SS_Param2023$Q_parms$data$FourFleets_UseSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial)
+# SS_Param2023$Q_parms$data$FourFleets_NoSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial)
+# SS_Param2023$Q_parms$data$ThreeFleets_NoSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial)
+# SS_Param2023$Q_parms$data$ThreeFleets_NoSlope_SplitTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial)
+# SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial <-  make_Q_parms(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial)
 
 # ===========================================================================
 
