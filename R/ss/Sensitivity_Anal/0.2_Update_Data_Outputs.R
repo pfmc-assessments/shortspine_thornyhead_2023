@@ -111,6 +111,7 @@ library(r4ss)
 library(dplyr) 
 library(reshape2) 
 library(stringr) 
+library(tidyverse)
 
 # Directories 
 # Path to the model folder 
@@ -241,12 +242,22 @@ SSplotComparisons(
       legendlabels = c('23.sq.floatQ','23.land.update','23.surv_db.update','23.lcs_survey.update','23.lcs_fisheries.update')
     )
 
-SStableComparisons(Version_Summary)
+SStableComparisons(Version_Summary) %>% 
+  write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
+
+# bind_rows(apply(as.matrix(1:5), 1, function(x) SensiMod[[x]]["parameters"]$parameters), .id="model")
+
+tmp <- purrr::transpose(SensiMod)$parameters %>% 
+  purrr::map_df(~as_tibble(.x), .id = 'Model') %>% 
+  dplyr::select(Model, Label, Value, Phase, Min, Max, Init, 
+                Gradient, Pr_type, Prior, Pr_SD, Pr_Like, 
+                LCI95 = `Value-1.96*SD`, UCI95 = `Value+1.96*SD`)
+tmp %>% 
+  write_csv(paste(SA_path, 'Update_Data_comparison_table_all_params.csv', sep = fsep))
+
+tmp %>% 
+  filter(grepl('LnQ|R0', Label)) %>%
+  pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
+  write_csv(paste(SA_path, 'Update_Data_comparison_table_lnQ_SRlnR0.csv', sep = fsep))
 
 
-pars <- SensiMod[[5]]["parameters"]$parameters
-names(pars)
-
-as_tibble(pars) %>%
-  select(Label, Value, Phase, Init, Prior) %>%
-  print(n=1000)
