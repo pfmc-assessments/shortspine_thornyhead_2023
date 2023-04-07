@@ -66,24 +66,28 @@ DialogBox <- function(message, type = c("ok", "okcancel", "yesno",
 #' @return copy one or several SS input files based on the base model, the new model
 #' and the SS file asked.
 #
-Restart_SA_modeldvpt <- function() {
+Restart_SA_modeldvpt <- function(base.model=NULL, curr.model=NULL, files=NULL) {
   mess1 <-
     "Do you want rebuild from scratch one (or several) SS input file(s) for this sensitivity analysis?
 This ensures that you start from the same basis as your base model if you already have
 written one or several new input files for your new model."
-  restart <- DialogBox(message = mess1, type = 'yesno')
+  restart <- ifelse(is.null(base.model), 
+                    DialogBox(message = mess1, type = 'yesno'),
+                    "yes")
   
   if (restart == 'yes') {
     title <- "Name of the base model"
     mess2 <- "Please indicate the name of your base model."
-    modelBase <-
-      rstudioapi::showPrompt(title, message = mess2, default = "(e.g., 23.sq.fixQ)")
+    modelBase <- ifelse(is.null(base.model),
+      rstudioapi::showPrompt(title, message = mess2, default = "(e.g., 23.sq.fixQ)"),
+      base.model)
     if (!is.null(modelBase)) {
       title <- "Name of the new model"
       mess3 <-
         "Please indicate the name of the model you're currently developing."
-      modelDvpt <-
-        rstudioapi::showPrompt(title, message = mess3, default = "(e.g., 23.sq.fix)")
+      modelDvpt <- ifelse(is.null(curr.model),
+        rstudioapi::showPrompt(title, message = mess3, default = "(e.g., 23.sq.fix)"),
+        curr.model)
     }
     if (!is.null(modelDvpt)) {
       title <- "Stock Synthesis Input files"
@@ -94,8 +98,9 @@ written one or several new input files for your new model."
           modelBase,
           ". Options are: 'starter','control', 'data','forecast', 'data.ss_new', 'data_echo.ss_new', or 'all'"
         )
-      SSfiles <-
-        rstudioapi::showPrompt(title, message = mess4, default = "(e.g., control)")
+      SSfiles <- ifelse(is.null(files),
+        rstudioapi::showPrompt(title, message = mess4, default = "(e.g., control)"),
+        files)
     }
     if (!is.null(SSfiles))
       copy_BaseModel_SSinputs(base_model = modelBase,
