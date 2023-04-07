@@ -25,5 +25,5 @@ Warning 12 : new min, max, init, prior:  -10 10 2.19722 2.19722
 Warning 13 : parameter init value is less than parameter min 0 < 0.01 for parm: 2; search for <now check> in echoinput.sso for parm_type
 Warning 14 : Time-vary parms not bound checked
 Warning 15 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
-Note 5 Information:  N parameters that are on or within 1% of min-max bound: 8; check results, variance may be suspect
+Note 5 Information:  N parameters that are on or within 1% of min-max bound: 7; check results, variance may be suspect
  15 warnings  and 5 notes 

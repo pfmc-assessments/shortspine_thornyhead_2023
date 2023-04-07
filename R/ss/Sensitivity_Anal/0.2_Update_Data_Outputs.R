@@ -224,11 +224,11 @@ Dir_23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecun
 Dir_23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','10_23.mortality.update' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
-SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_sq_floatQ,Dir_Base23_land_update,Dir_Base23_surv_db_update,Dir_Base23_lcs_survey_update,Dir_Base23_lcs_fisheries_update))
+SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_surv_db_update,Dir_Base23_sq_floatQ,Dir_Base23_land_update,Dir_23_disc_update,Dir_Base23_lcs_survey_update,Dir_Base23_lcs_fisheries_update,Dir_Base23_disc_weight_update,Dir_Base23_growth_update,Dir_Base23_maturity_update))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('23.sq.floatQ','23.land.update','23.surv_db.update','23.lcs_survey.update','23.lcs_fisheries.update')
+names(SensiMod) <- c('23.surv_db.update', '23.sq.floatQ','23.land.update', '23.dic.update', '23.lcs_survey.update','23.lcs_fisheries.update', '23.disc_weight.update', '23.growth.update', '23.maturity.update')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -239,7 +239,7 @@ SSplotComparisons(
       # print = TRUE,
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c('23.sq.floatQ','23.land.update','23.surv_db.update','23.lcs_survey.update','23.lcs_fisheries.update')
+      legendlabels = names(SensiMod)
     )
 
 SStableComparisons(Version_Summary) 

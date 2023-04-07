@@ -183,7 +183,7 @@ var.to.save <- c(var.to.save, 'Dir_23_land_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.sq.floatQ", curr.model="23.land.update", files="all")
 
 
 # 3.1  Work on the Starter file ----
@@ -422,7 +422,7 @@ var.to.save <- c(var.to.save, 'Dir_23_disc_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.land.update", curr.model="23.disc.update", files="all")
 
 
 # 4.1  Work on the Starter file ----
@@ -662,7 +662,7 @@ var.to.save <- c(var.to.save, 'Dir_23_surv_db_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.disc.update", curr.model="23.surv_db.update", files="all")
 
 
 # 5.1  Work on the Starter file ----
@@ -899,7 +899,7 @@ var.to.save <- c(var.to.save, 'Dir_23_lcs_survey_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.surv_db.update", curr.model="23.lcs_survey.update", files="all")
 
 
 # 6.1  Work on the Starter file ----
@@ -948,7 +948,7 @@ Dat23_lcs_survey_update <- SS_readdat_3.30(
       section = TRUE
       )
 Dat23_lcs_survey_update$lencomp <- bind_rows(
-    as.tibble(Dat23_lcs_survey_update$lencomp) %>% filter(FltSvy < 5),
+    as_tibble(Dat23_lcs_survey_update$lencomp) %>% filter(FltSvy < 5),
     SS_Param2023$Survey_LengthComp$data$FourFleets_UseSlope_SplitTriennial %>% dplyr::rename(Yr=year, Seas=season, FltSvy=fleet, Gender=sex, Part=partition)
 ) %>% replace(is.na(.), 0) %>% filter(Yr > 0) %>% print(n=200) %>% as.data.frame
 # Make your modification if applicable
@@ -1138,7 +1138,7 @@ var.to.save <- c(var.to.save, 'Dir_23_lcs_fisheries_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.lcs_survey.update", curr.model="23.lcs_fisheries.update", files="all")
 
 
 # 7.1  Work on the Starter file ----
@@ -1187,8 +1187,8 @@ Dat23_lcs_fisheries_update <- SS_readdat_3.30(
       section = TRUE
       )
 Dat23_lcs_fisheries_update$lencomp <- bind_rows(
-  SS_Param2023$Fishery_LengthComp$data$FourFleets_UseSlope_SplitTriennial %>% dplyr::rename(Yr=year, Seas=season, FltSvy=fleet, Gender=sex, Part=partition),
-  as.tibble(Dat23_lcs_fisheries_update$lencomp) %>% filter(FltSvy > 4)
+  as_tibble(SS_Param2023$Fishery_LengthComp$data$FourFleets_UseSlope_SplitTriennial) %>% dplyr::rename(Yr=year, Seas=season, FltSvy=fleet, Gender=sex, Part=partition),
+  as_tibble(Dat23_lcs_fisheries_update$lencomp) %>% filter(FltSvy > 4)
 ) %>% replace(is.na(.), 0) %>% print(n=300) %>% as.data.frame
 
 # Make your modification if applicable
@@ -1208,11 +1208,11 @@ overwrite = TRUE
 # Check file structure
 # DatFile <- file.path(Dir_23_lcs_fisheries_update, 'SST_data.ss', fsep = fsep)
 #  Dat23_lcs_fisheries_update <-
-      # SS_readdat_3.30(
-      # file = DatFile,
-      # verbose = TRUE,
-      # section = TRUE
-      # )
+# SS_readdat_3.30(
+# file = DatFile,
+# verbose = TRUE,
+# section = TRUE
+# )
 
 # clean environment
 var.to.save <- c(var.to.save, 'Dat23_lcs_fisheries_update')
@@ -1378,7 +1378,7 @@ var.to.save <- c(var.to.save, 'Dir_23_disc_weight_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.lcs_fisheries.update", curr.model="23.disc_weight.update", files="all")
 
 
 # 8.1  Work on the Starter file ----
@@ -1614,7 +1614,7 @@ var.to.save <- c(var.to.save, 'Dir_23_growth_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.disc_weight.update", curr.model="23.growth.update", files="all")
 
 
 # 9.1  Work on the Starter file ----
@@ -1857,7 +1857,7 @@ var.to.save <- c(var.to.save, 'Dir_23_maturity_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.growth.update", curr.model="23.maturity.update", files="all")
 
 
 # 10.1  Work on the Starter file ----
@@ -1954,7 +1954,7 @@ Ctl23_maturity_update <- SS_readctl_3.30(
       )
 
 Ctl23_maturity_update$MG_parms[SS_Param2023$MG_params$Mat$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Mat$base_2023$Value
-#Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT <- -1*Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT
+Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT <- -1*Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT
 # Make your modification if applicable
 # Code modifying the control file 
 # ..... 
@@ -2057,6 +2057,7 @@ SS_plots(replist,
 
 # =======================
 
+abc
 
 # -----------------------------------------------------------
 # -----------------------------------------------------------
@@ -2095,7 +2096,7 @@ var.to.save <- c(var.to.save, 'Dir_23_fecundity_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.maturity.update", curr.model="23.fecundity.update", files="all")
 
 
 # 11.1  Work on the Starter file ----
@@ -2331,7 +2332,7 @@ var.to.save <- c(var.to.save, 'Dir_23_mortality_update')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.fecundity.update", curr.model="23.mortality.update", files="all")
 
 
 # 12.1  Work on the Starter file ----
