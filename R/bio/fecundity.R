@@ -51,15 +51,25 @@ ggsave('outputs/fecundity/cooper_fecundity_length.png', height = 4,
 # For SST: model fecundity as a power function of length in SS
 # F = a L^b
 # The SST fecundity-length relationship is already in cm (not mm)
-# So only need to divide the a parameter by 1000 for SS
+# So only need to divide the a parameter by 1000 for SS to get eggs in thousands
 # b parameter stays the same
 
 a.param.SST<- a/1000
 b.param.SST<- b
 
+# Alternative scaling for SS3: https://github.com/EJDick-NOAA/Rockfish-Fecundity
+# note, SST length is ALREADY in cm and does not need the (a*10^b) conversion from mm to cm
+# NOTE from the link if using the alternative scaling: SS3 tracks numbers of fish in 1000s, 
+# so the reported spawning output will be in units of billions 
+# of eggs if the fecundity-length relationship is in millions of eggs per fish
+
+a.param.SST.million.eggs<- a/1000000
+b.param.SST.million.eggs<- b
+
 
 # Save 2023 growth parameters for the assessment----
 # save the parameters for SS
+# NOTE which scale is used (i.e. eggs in thousands or eggs in millions)
 
 Fecundity <- data.frame(Param = c("Eggs_alpha_Fem_GP_1","Eggs_beta_Fem_GP_1"),
                         Value = c(a.param.SST,b.param.SST))
