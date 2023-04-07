@@ -1714,15 +1714,22 @@ Ctl23_growth_update <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
+tmp <- Ctl23_growth_update$MG_parms
 
+# 2013 assessment used offset approach (3) for growth and natural mortality.
+# Values are not treated as offsets in 2023.
+Ctl23_growth_update$parameter_offset_approach <- 1
+Ctl23_growth_update$MG_parms[SS_Param2023$MG_params$Growth$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Growth$base_2023$Value
+Ctl23_growth_update$MG_parms[SS_Param2023$MG_params$WL$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$WL$base_2023$Value
+Ctl23_growth_update$MG_parms[SS_Param2023$MG_params$M$base_2023$Parameter,]$INIT <- rep(SS_Param2023$MG_params$M$assess_2013$Value[1], 4)
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_growth_update ,
-      # outfile = file.path(Dir_23_growth_update, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_growth_update ,
+  outfile = file.path(Dir_23_growth_update, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1946,6 +1953,8 @@ Ctl23_maturity_update <- SS_readctl_3.30(
       verbose = TRUE
       )
 
+Ctl23_maturity_update$MG_parms[SS_Param2023$MG_params$Mat$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Mat$base_2023$Value
+#Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT <- -1*Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT
 # Make your modification if applicable
 # Code modifying the control file 
 # ..... 
@@ -1953,12 +1962,12 @@ Ctl23_maturity_update <- SS_readctl_3.30(
 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_maturity_update ,
-      # outfile = file.path(Dir_23_maturity_update, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_maturity_update ,
+  outfile = file.path(Dir_23_maturity_update, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
