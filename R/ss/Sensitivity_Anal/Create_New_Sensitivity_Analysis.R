@@ -109,8 +109,3 @@ NewSensAnal(topic = "transition",
                           "23.lcs_survey.update", "23.lcs_fisheries.update", "23.disc_weight.update",
                           "23.growth.update", "23.maturity.update", "23.fecundity.update", 
                           "23.mortality.update"))
-
-#remove_SA(SA_ID="Item 0.2")
-
-
-
