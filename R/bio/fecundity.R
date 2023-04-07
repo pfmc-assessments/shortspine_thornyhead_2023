@@ -18,6 +18,7 @@ library(dplyr); library(ggplot2)
 # fecundity-at-length----
 # equation: fecundity = a*length^b
 # length type: fork length in cm
+# Fecundity = 0.0544*length^3.978
 
 lens <- seq(6, 72, 0.1)
 
