@@ -2198,7 +2198,9 @@ Ctl23_fecundity_update$MG_parms[SS_Param2023$MG_params$Fec$base_2023$Parameter,]
 names(Ctl23_fecundity_update)
 Ctl23_fecundity_update$fecundity_option<-2
 
-#scaling of the a parameter (was divided by 1000 and divided again)
+#scaling of the a parameter (was divided by 1000 and divided by 1000 again)
+#see:https://github.com/EJDick-NOAA/Rockfish-Fecundity
+
 Ctl23_fecundity_update$MG_parms["Eggs_alpha_Fem_GP_1", ]$INIT<-Ctl23_fecundity_update$MG_parms["Eggs_alpha_Fem_GP_1", ]$INIT/1000
 
 
