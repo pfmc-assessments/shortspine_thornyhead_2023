@@ -2194,17 +2194,21 @@ Ctl23_fecundity_update <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+Ctl23_fecundity_update$MG_parms[SS_Param2023$MG_params$Fec$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Fec$base_2023$Value
+names(Ctl23_fecundity_update)
+Ctl23_fecundity_update$fecundity_option<-2
+
+#scaling of the a parameter (was divided by 1000 and divided again)
+Ctl23_fecundity_update$MG_parms["Eggs_alpha_Fem_GP_1", ]$INIT<-Ctl23_fecundity_update$MG_parms["Eggs_alpha_Fem_GP_1", ]$INIT/1000
 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_fecundity_update ,
-      # outfile = file.path(Dir_23_fecundity_update, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+ SS_writectl(
+       ctllist =  Ctl23_fecundity_update ,
+       outfile = file.path(Dir_23_fecundity_update, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
