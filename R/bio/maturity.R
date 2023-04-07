@@ -68,7 +68,7 @@ tab_mat %>%
   scale_x_reverse() +
   theme_bw()
 
-# It appears that we cover a wide range of depth and latitudinal values, with 
+# It appears that we cover a wide range of depth and latitudinal values
 
 ###------------------------------------------###
 ###------ Parsimonious approach: GLM -----------
@@ -213,7 +213,7 @@ L50_denominator_mean = quad_coef_mean[["Length_cm"]]
 L50_quad_mean = - L50_numerator_mean / L50_denominator_mean
 
 len = 40 # doesn't matter what length you use here
-kmat_mean <- ((L50_numerator[,1] + quad_coef[2]*len) / (len - L50_quad[,1]))[1]
+kmat_mean <- -((L50_numerator[,1] + quad_coef[2]*len) / (len - L50_quad[,1]))[1]
 
 # Pearson and Gunderson values
 # Reference: Pearson, K.E., and D.R. Gunderson, 2003. Reproductive biology and
@@ -227,7 +227,7 @@ pg_kmat <- (a + b*len)/(len-pg_l50)
 
 # Intermediate L50 and slope for sensitivity
 alt_l50 <- mean(c(L50_quad_mean, pg_l50))
-alt_kmat <- 0.35 
+alt_kmat <- -0.35 
 
 pmat <- tab_mat %>% 
   filter(!is.na(Functional_maturity)) %>% 
@@ -235,19 +235,19 @@ pmat <- tab_mat %>%
   summarise(p_mature = length(which(Functional_maturity == 1)) / n())
 
 pred <- data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
-  mutate(pred =  1 / (1 + exp(-kmat_mean * (Length_cm - unique(L50_quad_mean)))),
+  mutate(pred =  1 / (1 + exp(kmat_mean * (Length_cm - c(L50_quad_mean)))),
          version = 'Head (2023) base model') %>% 
   bind_rows(data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
                mutate(pred =  1 / (1 + exp(a + b * Length_cm)),
                       version = 'Pearson and Gunderson (2003) sensitivity')) %>% 
   bind_rows(data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
-              mutate(pred =  1 / (1 + exp(-alt_kmat * (Length_cm - alt_l50))),
+              mutate(pred =  1 / (1 + exp(alt_kmat * (Length_cm - alt_l50))),
                      version = 'Intermediate sensitivity'))
 
 dat_pred %>%
   dplyr::select(-Length_cm) %>%
   crossing(Length_cm = seq(6, 72, 0.2)) %>%
-  mutate(pred =  1 / (1 + exp(-kmat_mean * (Length_cm - L50_quad))),
+  mutate(pred =  1 / (1 + exp(kmat_mean * (Length_cm - L50_quad))),
          version = 'Head (2023) base model') %>%
   filter(lat_class==unique(dat_pred$lat_class)[which.min(abs(unique(dat_pred$lat_class)-mean(tab_mat$Latitude, na.rm=T)))]) %>%
   mutate(grad="Depth") -> dat_pred_depth_class
@@ -255,11 +255,10 @@ dat_pred %>%
 dat_pred %>%
   dplyr::select(-Length_cm) %>%
   crossing(Length_cm = seq(6, 72, 0.2)) %>%
-  mutate(pred =  1 / (1 + exp(-kmat_mean * (Length_cm - L50_quad))),
+  mutate(pred =  1 / (1 + exp(kmat_mean * (Length_cm - L50_quad))),
          version = 'Head (2023) base model') %>%
   filter(depth_class==unique(dat_pred$depth_class)[which.min(abs(unique(dat_pred$depth_class)-mean(tab_mat$Depth, na.rm=T)))]) %>%
   mutate(grad="Latitude") -> dat_pred_lat_class
-
 
 ggplot() +
   geom_point(data = pmat, aes(Length_cm, p_mature, col = factor(depth_class))) +

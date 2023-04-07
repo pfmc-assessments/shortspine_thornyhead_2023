@@ -360,7 +360,7 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.land.update folder
-      cleanRun = TRUE,
+      cleanRun = TRUE
       # clean the folder after the run
       extra="-nohess"
       )

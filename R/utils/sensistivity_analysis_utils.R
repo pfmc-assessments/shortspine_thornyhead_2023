@@ -1253,8 +1253,10 @@ write_SA_files <- function(out = NULL,
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the", ModelName ,"folder
-      cleanRun = TRUE
+      cleanRun = TRUE,
       # clean the folder after the run
+      extra = NULL
+      # this is if we want to use '-nohess' 
       )\n")
       cat("\n")
       cat("#",paste0(stp,".6")," Let's plot the outputs from this model ----\n")
@@ -1443,6 +1445,31 @@ write_SA_files <- function(out = NULL,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
       legendlabels = c(",paste0("'",paste(SaveMod, collapse="','"),"'"),")
     )\n",sep = "")
+    cat("\n")
+    cat("# Create comparison table for this analisys\n")
+    cat("# ####################################### #\n")
+    cat("\n")
+    cat("SStableComparisons(Version_Summary)\n") 
+    cat("\n")
+    cat("tmp <- purrr::transpose(SensiMod)$parameters %>% 
+  purrr::map_df(~as_tibble(.x), .id = 'Model') %>% 
+  dplyr::select(Model, Label, Value, Phase, Min, Max, Init, 
+                Gradient, Pr_type, Prior, Pr_SD, Pr_Like, 
+                LCI95 = `Value-1.96*SD`, UCI95 = `Value+1.96*SD`)\n")
+    cat("\n")
+    cat("tmp %>% 
+  write_csv(paste(SA_path, 'Update_Data_comparison_table_all_params.csv', sep = fsep))\n")
+    cat("\n")
+    cat("tmp %>% 
+  filter(grepl('LnQ|R0', Label)) %>%
+  pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
+  write_csv(paste(SA_path, 'Update_Data_comparison_table_lnQ_SRlnR0.csv', sep = fsep))\n")
+    cat("\n")
+    cat("out <- SStableComparisons(Version_Summary)\n")
+    cat("names(out) <- c('Label', unique(tmp$Model))\n")
+    cat("\n")
+    cat("out %>% 
+  write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))\n")
   } # if(do_results)
   base::sink()
 }
