@@ -4046,10 +4046,10 @@ Finished lencomp obj_fun  36572.2 16895.2 668.181 762.825 3161.04 2510.37 9229.7
  initequ_catch -log(L)  0 0 0 0 0 0 0 0 0
 Finished recruitdev obj_fun -6.10893 8.81332 0.5
  OK with obj_func 115601
-Iterations: 957
-Calculated Fspr 0.0204658 0.5
-Calculated Btgt: 0.0204658 0.4
-Calculated Fmsy 0.0248605 1010.07
+Iterations: 956
+Calculated Fspr 0.0184464 0.5
+Calculated Btgt: 0.0184464 0.4
+Calculated Fmsy 0.0222372 941.479
 Finished calculating benchmarks
 Finished forecast
 Writing wtatage.ss_new
