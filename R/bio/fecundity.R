@@ -1,7 +1,6 @@
 # Shortspine thornyhead fecundity-at-length
 # Feb 2023
 # Contact: sgbeyer@uw.edu
-# Code adapted from maturity.R, contact: Jane Sullivan (jane.sullivan@noaa.gov)
 
 # Reference: Cooper, D.W., Pearson, K.E., and D.R. Gunderson, 2005. Fecundity of
 # shortspine thornyhead (Sebastolobus alascanus) and longspine thornyhead
@@ -63,6 +62,7 @@ b.param.SST<- b
 # so the reported spawning output will be in units of billions 
 # of eggs if the fecundity-length relationship is in millions of eggs per fish
 
+# This is the right one we thinK!
 a.param.SST.million.eggs<- a/1000000
 b.param.SST.million.eggs<- b
 
@@ -72,6 +72,6 @@ b.param.SST.million.eggs<- b
 # NOTE which scale is used (i.e. eggs in thousands or eggs in millions)
 
 Fecundity <- data.frame(Param = c("Eggs_alpha_Fem_GP_1","Eggs_beta_Fem_GP_1"),
-                        Value = c(a.param.SST,b.param.SST))
+                        Value = c(a.param.SST.million.eggs,b.param.SST.million.eggs))
 
 write_csv(Fecundity, 'data/for_ss/fecundity_2023.csv')
