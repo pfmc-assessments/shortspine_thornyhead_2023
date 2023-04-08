@@ -190,6 +190,9 @@ Dir_Base23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','8_23.ma
 # Path to the base model (23.fecundity.update) repertory
 Dir_Base23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecundity.update' , 'run',fsep = fsep)
 
+# Path to the base model (23.fecundity.update) repertory
+Dir_Base23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','10_23.mortality.update' , 'run',fsep = fsep)
+
 
 # Root directory for this sensitivity analysis
 SA_path <- file.path(dir_SensAnal, '0.2_Update_Data', fsep=fsep)
@@ -224,11 +227,11 @@ Dir_23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecun
 Dir_23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','10_23.mortality.update' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
-SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_surv_db_update,Dir_Base23_sq_floatQ,Dir_Base23_land_update,Dir_23_disc_update,Dir_Base23_lcs_survey_update,Dir_Base23_lcs_fisheries_update,Dir_Base23_disc_weight_update,Dir_Base23_growth_update,Dir_Base23_maturity_update))
+SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_sq_floatQ,Dir_Base23_land_update,Dir_23_disc_update,Dir_Base23_surv_db_update,Dir_Base23_lcs_survey_update,Dir_Base23_lcs_fisheries_update,Dir_Base23_disc_weight_update,Dir_Base23_growth_update,Dir_Base23_maturity_update,Dir_Base23_fecundity_update,Dir_Base23_mortality_update))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('23.surv_db.update', '23.sq.floatQ','23.land.update', '23.dic.update', '23.lcs_survey.update','23.lcs_fisheries.update', '23.disc_weight.update', '23.growth.update', '23.maturity.update')
+names(SensiMod) <- c('23.sq.floatQ','23.land.update', '23.dic.update', '23.surv_db.update', '23.lcs_survey.update','23.lcs_fisheries.update', '23.disc_weight.update', '23.growth.update', '23.maturity.update', '23.fecundity.update', '23.mortality.update')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)

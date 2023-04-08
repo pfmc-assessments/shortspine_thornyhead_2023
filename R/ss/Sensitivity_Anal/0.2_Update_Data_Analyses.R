@@ -1953,12 +1953,12 @@ Ctl23_maturity_update <- SS_readctl_3.30(
       verbose = TRUE
       )
 
-Ctl23_maturity_update$MG_parms[SS_Param2023$MG_params$Mat$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Mat$base_2023$Value
-Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT <- -1*Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT
 # Make your modification if applicable
 # Code modifying the control file 
 # ..... 
 # ..... 
+Ctl23_maturity_update$MG_parms[SS_Param2023$MG_params$Mat$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Mat$base_2023$Value
+#Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT <- -1*Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT
 
 
 # Save the control file for the model
@@ -2438,15 +2438,15 @@ Ctl23_mortality_update <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_mortality_update$MG_parms[SS_Param2023$MG_params$M$base_2023$Parameter,]$INIT <- rep(SS_Param2023$MG_params$M$base_2023$Value[1], 4)
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_mortality_update ,
-      # outfile = file.path(Dir_23_mortality_update, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+ctllist =  Ctl23_mortality_update ,
+outfile = file.path(Dir_23_mortality_update, 'SST_control.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -2512,9 +2512,8 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.mortality.update folder
-      cleanRun = TRUE,
+      cleanRun = FALSE,
       # clean the folder after the run
-      extras = "-nohess"
       )
 
 # 12.6  Let's plot the outputs from this model ----
