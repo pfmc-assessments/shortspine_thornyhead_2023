@@ -152,11 +152,18 @@ source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=f
 
 # Load the .Rdata object with the parameters and data for 2023
 load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
+
+# Dont initially run models with hessian turned on for speed
+# but can turn on later and let run over night.
+# Values should be either: "" (run with hessian), or "-nohess"
+# (run withou hessian).
+use.hessian <- ""
+
 # Save directories and function
 # var.to.save <- c('dir_model', 
-        # 'Exe_path',
-        # 'dir_script',
-        # 'dir_SensAnal') 
+# 'Exe_path',
+# 'dir_script',
+# 'dir_SensAnal') 
 var.to.save <- ls()
 # ----------------------------------------------------------- 
 
@@ -360,9 +367,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.land.update folder
-      cleanRun = TRUE
+      cleanRun = TRUE,
       # clean the folder after the run
-      extra="-nohess"
+      extra=use.hessian
       )
 
 # 3.6  Let's plot the outputs from this model ----
@@ -602,7 +609,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.disc.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 4.6  Let's plot the outputs from this model ----
@@ -839,7 +846,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.surv_db.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 5.6  Let's plot the outputs from this model ----
@@ -1078,7 +1085,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.lcs_survey.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 6.6  Let's plot the outputs from this model ----
@@ -1318,7 +1325,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.lcs_fisheries.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 7.6  Let's plot the outputs from this model ----
@@ -1554,7 +1561,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.disc_weight.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 8.6  Let's plot the outputs from this model ----
@@ -1797,7 +1804,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.growth.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 9.6  Let's plot the outputs from this model ----
@@ -2035,7 +2042,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.maturity.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 10.6  Let's plot the outputs from this model ----
@@ -2278,7 +2285,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.fecundity.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 11.6  Let's plot the outputs from this model ----
