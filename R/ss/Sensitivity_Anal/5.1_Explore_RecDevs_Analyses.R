@@ -254,14 +254,20 @@ Ctl23_model_recdevs_termYear <- SS_readctl_3.30(
 # ..... 
 # ..... 
 
+# Update the terminal year for recdev estimates 
+#t-5 years, based comp data. Fish in the surveys start at ~15cm which is about 5 years old 
+#according to growth curves 4/10/23
+
+Ctl23_model_recdevs_termYear$MainRdevYrLast<-2018 
+
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_recdevs_termYear ,
-      # outfile = file.path(Dir_23_model_recdevs_termYear, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_model_recdevs_termYear ,
+  outfile = file.path(Dir_23_model_recdevs_termYear, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -329,7 +335,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_termYear folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
@@ -488,17 +494,19 @@ Ctl23_model_recdevs_initYear <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
 
+# Update the initial year for recdev estimates 
+# Changing ititYear at 1950, ~30 years prior to length comp data 4/10/23
+
+Ctl23_model_recdevs_initYear$MainRdevYrFirst<-1950 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_recdevs_initYear ,
-      # outfile = file.path(Dir_23_model_recdevs_initYear, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_model_recdevs_initYear ,
+  outfile = file.path(Dir_23_model_recdevs_initYear, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+  )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -566,7 +574,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_initYear folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
@@ -803,7 +811,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_steep folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
@@ -1040,7 +1048,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_bias folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 

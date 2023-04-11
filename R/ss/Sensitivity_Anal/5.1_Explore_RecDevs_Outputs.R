@@ -137,7 +137,7 @@ Dir_Base23_model_recdevs_steep <- file.path(dir_SensAnal, '5.1_Explore_RecDevs',
 
 
 # Root directory for this sensitivity analysis
-SA_path <- .
+SA_path <- file.path(dir_SensAnal, '5.1_Explore_RecDevs', fsep = fsep)
 # Path to the 23.model.recdevs_termYear repertory
 Dir_23_model_recdevs_termYear <- file.path(dir_SensAnal, '5.1_Explore_RecDevs','1_23.model.recdevs_termYear' , 'run',fsep = fsep)
 
@@ -151,25 +151,37 @@ Dir_23_model_recdevs_steep <- file.path(dir_SensAnal, '5.1_Explore_RecDevs','3_2
 Dir_23_model_recdevs_bias <- file.path(dir_SensAnal, '5.1_Explore_RecDevs','4_23.model.recdevs_bias' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
-SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_mortality_update,Dir_Base23_model_recdevs_termYear,Dir_Base23_model_recdevs_initYear,Dir_Base23_model_recdevs_steep,Dir_23_model_recdevs_termYear,Dir_23_model_recdevs_initYear,Dir_23_model_recdevs_steep,Dir_23_model_recdevs_bias))
+#============================
+##--- duplicates model names, will not run without editing
+#============================
+#SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_mortality_update,Dir_Base23_model_recdevs_termYear,Dir_Base23_model_recdevs_initYear,Dir_Base23_model_recdevs_steep,Dir_23_model_recdevs_termYear,Dir_23_model_recdevs_initYear,Dir_23_model_recdevs_steep,Dir_23_model_recdevs_bias))
+SensiMod <- SSgetoutput(dirvec = c(Dir_Base23_mortality_update,Dir_Base23_model_recdevs_termYear,Dir_Base23_model_recdevs_initYear))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('23.mortality.update','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_bias')
-
+#names(SensiMod) <- c('23.mortality.update','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_bias')
+names(SensiMod) <- c('23.mortality.update','23.model.recdevs_termYear','23.model.recdevs_initYear')
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
 
 # make plots comparing the models
-SSplotComparisons(
-      Version_Summary,
-      # print = TRUE,
-      pdf = TRUE,
-      plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c('23.mortality.update','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_bias')
-    )
+# SSplotComparisons(
+#       Version_Summary,
+#       # print = TRUE,
+#       pdf = TRUE,
+#       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
+#       legendlabels = c('23.mortality.update','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_termYear','23.model.recdevs_initYear','23.model.recdevs_steep','23.model.recdevs_bias')
+#     )
 
-# Create comparison table for this analisys
+SSplotComparisons(
+  Version_Summary,
+  # print = TRUE,
+  pdf = TRUE,
+  plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
+  legendlabels = names(SensiMod)
+)
+
+# Create comparison table for this analisys 
 # ####################################### #
 
 SStableComparisons(Version_Summary)
