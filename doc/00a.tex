@@ -1,0 +1,163 @@
+\input{input_accessability.tex}
+\documentclass[11pt,
+  english,
+  letterpaper,
+]{article}
+\usepackage{sa4ss}
+\usepackage{amsmath,amssymb,array}
+\usepackage{booktabs}
+
+% From tagged-template.latex
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\hypersetup{
+  pdflang={en},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{}
+\else
+  \usepackage[shorthands=off,main=english]{babel}
+\fi
+
+%Define cslreferences environment, required by pandoc 2.8
+%https://github.com/rstudio/rmarkdown/issues/1649
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+\date{}
+\newcommand{\trTitle}{}
+\newcommand{\trYear}{2023}
+\newcommand{\trMonth}{April}
+\newcommand{\trAuthsLong}{}
+\newcommand{\trAuthsBack}{}
+\newcommand{\trCitation}{
+\begin{hangparas}{1em}{1}
+\trAuthsBack{}. \trYear{}. \trTitle{}. \glsentrylong{pfmc}, Portland, Oregon. \pageref{LastPage}{}\,p.
+\end{hangparas}}
+
+\begin{document}
+
+%%%%% Frontmatter %%%%%
+
+% Footnote symbols in front matter
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\small
+\thispagestyle{empty}
+\pagenumbering{roman}
+\noindent
+\begin{center}
+\title{}
+% \textnormal{\MakeTextUppercase{\trTitle{}}}
+\vspace{1.5cm}
+{\Large\textbf\newline{}}
+\vfill
+by\\
+\vfill
+\vfill
+\trMonth{} \trYear{}
+\end{center}
+\clearpage
+
+% Fourth page: Colophon
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+\copyright{} \glsentrylong{pfmc}, \trYear{}\\
+\end{center}
+\par
+\bigskip
+\noindent
+Correct citation for this publication:
+\bigskip
+\par
+\trCitation{}
+\clearpage
+
+% Add TOC to pdf bookmarks (clickable pdf)
+\pdfbookmark[1]{\contentsname}{toc}
+
+% Table of contents page, lists of figures and tables
+\tableofcontents\clearpage
+\label{TRlastRoman}
+\clearpage
+
+% Table of contents
+\newpage
+\thispagestyle{empty} % to remove page number
+
+% Settings for the main document
+\pagenumbering{arabic}  % Regular page numbers
+\pagestyle{plain}  % No page number on first page of main document, use 'empty'
+\renewcommand*{\thefootnote}{\arabic{footnote}}  % Back to numeric footnotes
+\setcounter{footnote}{0}  % And start at 1
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+%\pagestyle{fancy}\fancyhead[c]{Draft: Do not cite or circulate}
+
+\newcommand{\lt}{\ensuremath <}
+\newcommand{\gt}{\ensuremath >}
+
+
+\end{document}
