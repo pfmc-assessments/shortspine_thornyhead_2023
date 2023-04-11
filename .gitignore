@@ -16,7 +16,6 @@ outputs/plots/exploratory/*
 # remove intermediate .RMarkdown LaTeX compilation files
 *.tex
 !doc/*.tex
-!doc/*.png
 *.log
 
 # Mac hidden files
@@ -66,6 +65,7 @@ runnumber.ss
 *.jpg, *.jpeg, *.jpe, *.jif, *.jfif  
   # Portable Network Graphics
 *.png
+!doc/*.png
   # Tagged Image File Format
 *.tiff, *.tif
   # BMP
