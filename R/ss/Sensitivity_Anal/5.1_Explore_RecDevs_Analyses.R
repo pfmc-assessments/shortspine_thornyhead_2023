@@ -153,7 +153,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_recdevs_termYear')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.mortality.update", curr.model="23.model.recdevs_termYear", files="all")
 
 
 # 3.1  Work on the Starter file ----
@@ -396,7 +396,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_recdevs_initYear')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.recdevs_termYear", curr.model="23.model.recdevs_initYear", files="all")
 
 
 # 4.1  Work on the Starter file ----
@@ -635,7 +635,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_recdevs_steep')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.recdevs_initYear", curr.model="23.model.recdevs_steep", files="all")
 
 
 # 5.1  Work on the Starter file ----
@@ -736,14 +736,15 @@ Ctl23_model_recdevs_steep <- SS_readctl_3.30(
 # ..... 
 # ..... 
 
+Ctl23_model_recdevs_steep$SR_parms['SR_BH_steep', 'INIT'] <- 0.72
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_recdevs_steep ,
-      # outfile = file.path(Dir_23_model_recdevs_steep, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_model_recdevs_steep ,
+  outfile = file.path(Dir_23_model_recdevs_steep, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -872,7 +873,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_recdevs_bias')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.recdevs_steep", curr.model="23.model.recdevs_bias", files="all")
 
 
 # 6.1  Work on the Starter file ----
@@ -973,14 +974,19 @@ Ctl23_model_recdevs_bias <- SS_readctl_3.30(
 # ..... 
 # ..... 
 
+Ctl23_model_recdevs_bias$last_early_yr_nobias_adj <- 1850.1
+Ctl23_model_recdevs_bias$first_yr_fullbias_adj <- 1937.6
+Ctl23_model_recdevs_bias$last_yr_fullbias_adj <- 2009.9
+Ctl23_model_recdevs_bias$first_recent_yr_nobias_adj <-2034.0
+Ctl23_model_recdevs_bias$max_bias_adj <- 0
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_recdevs_bias ,
-      # outfile = file.path(Dir_23_model_recdevs_bias, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_model_recdevs_bias ,
+  outfile = file.path(Dir_23_model_recdevs_bias, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 

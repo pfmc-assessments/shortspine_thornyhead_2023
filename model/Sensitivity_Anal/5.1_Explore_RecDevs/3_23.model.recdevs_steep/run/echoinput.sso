@@ -4046,11 +4046,14 @@ Finished lencomp obj_fun  35919.4 16543.6 734.728 809.892 3099.49 2455.52 9099.9
  initequ_catch -log(L)  0 0 0 0 0 0 0 0 0
 Finished recruitdev obj_fun -3.08708 4.45371 0.5
  OK with obj_func 112928
-Iterations: 649
+Wrote first version of output files (before hessian, benchmark, and forecast)
+Start benchmark and forecast, if requested
 Calculated Fspr 0.0175509 0.5
 Calculated Btgt: 0.0199619 0.4
 Calculated Fmsy 0.0285966 4199.59
-Finished calculating benchmarks
+Finished benchmark, forecast, and sdreporting
+Iterations: 1231
+ finished COVAR.SSO
 Finished forecast
 Writing wtatage.ss_new
 Finished StdDev quantities

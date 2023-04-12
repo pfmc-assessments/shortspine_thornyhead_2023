@@ -5,7 +5,7 @@
 #_User_info_available_at:https://vlab.noaa.gov/group/stock-synthesis
 #_Source_code_at:_https://github.com/nmfs-stock-synthesis/stock-synthesis
 
-#_Start_time: Mon Apr 10 14:21:42 2023
+#_Start_time: Tue Apr 11 16:36:56 2023
 #_echo_input_data
 #C Data file for Shortspine Thornyhead - 2023 Assessment
 #C These data are the one from the 2013 model and updated for
@@ -1073,13 +1073,13 @@
 #_minsamplesize: minimum sample size; set to 1 to match 3.24, minimum value is 0.001
 #
 #_mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
-# 0 0 0 -1389100960 0 0 0 #_fleet:1_Trawl_N
-# 0 0 0 528 0 0 0 #_fleet:2_Trawl_S
-# 0 0 0 -1389100960 0 0 0 #_fleet:3_Non-trawl_N
-# 0 0 0 528 0 0 0 #_fleet:4_Non-trawl_S
-# 0 0 0 -1387745280 0 0 0 #_fleet:5_Triennial1
-# 0 0 0 528 0 0 0 #_fleet:6_Triennial2
-# 0 0 0 15220736 0 0 0 #_fleet:7_AFSCslope
+# 0 0 0 0 0 0 0 #_fleet:1_Trawl_N
+# 0 0 0 0 0 0 0 #_fleet:2_Trawl_S
+# 0 0 0 0 0 0 0 #_fleet:3_Non-trawl_N
+# 0 0 0 0 0 0 0 #_fleet:4_Non-trawl_S
+# 0 0 0 0 0 0 0 #_fleet:5_Triennial1
+# 0 0 0 0 0 0 0 #_fleet:6_Triennial2
+# 0 0 0 0 0 0 0 #_fleet:7_AFSCslope
 # 0 0 0 0 0 0 0 #_fleet:8_NWFSCslope
 # 0 0 0 0 0 0 0 #_fleet:9_NWFSCcombo
 # 0 #_Lbin_method_for_Age_Data: 1=poplenbins; 2=datalenbins; 3=lengths
