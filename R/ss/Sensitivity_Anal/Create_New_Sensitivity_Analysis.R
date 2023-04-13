@@ -114,14 +114,26 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #                           "23.mortality.update"))
 
 # Begin model exploration 
+#NewSensAnal(topic = "model",
+#            # names are based on new model 
+#            object = c("Update Terminal RecDev Year", "Update Initial RecDev Year", "S-R Steepness", "Bias Adjustment Years" ),
+#            author = "Team Thornyheads",
+#            folder_name = "Explore_RecDevs",
+#            script_model = "Explore_RecDevs_Analyses",
+#            script_results = "Explore_RecDevs_Outputs",
+#            base_model = c("23.mortality.update", "23.model.recdevs_termYear", "23.model.recdevs_initYear", 
+#                           "23.model.recdevs_steep"),
+#            new_model = c("23.model.recdevs_termYear", "23.model.recdevs_initYear", "23.model.recdevs_steep",
+#                          "23.model.recdevs_bias"))
+
 NewSensAnal(topic = "model",
             # names are based on new model 
-            object = c("Update Terminal RecDev Year", "Update Initial RecDev Year", "S-R Steepness", "Bias Adjustment Years" ),
+            object = c("ThreeFleets_NoSlope_SplitTriennial", "ThreeFleets_UseSlope_CombineTriennial", "FourFleets_UseSlope_CombineTriennial", "FourFleets_NoSlope_CombineTriennial", "ThreeFleets_NoSlope_CombineTriennial" ),
             author = "Team Thornyheads",
-            folder_name = "Explore_RecDevs",
-            script_model = "Explore_RecDevs_Analyses",
-            script_results = "Explore_RecDevs_Outputs",
-            base_model = c("23.mortality.update", "23.model.recdevs_termYear", "23.model.recdevs_initYear", 
-                           "23.model.recdevs_steep"),
-            new_model = c("23.model.recdevs_termYear", "23.model.recdevs_initYear", "23.model.recdevs_steep",
-                          "23.model.recdevs_bias"))
+            folder_name = "Explore_FleetStructure",
+            script_model = "Explore_FleetStructure_Analyses",
+            script_results = "Explore_FleetStructure_Outputs",
+            base_model = c("23.model.recdevs_bias", "23.model.recdevs_bias", "23.model.recdevs_bias", 
+                           "23.model.recdevs_bias", "23.model.recdevs_bias"),
+            new_model = c("23.model.fleetstruct_1", "23.model.fleetstruct_2", "23.model.fleetstruct_3",
+                          "23.model.fleetstruct_4", "23.model.fleetstruct_5"))
