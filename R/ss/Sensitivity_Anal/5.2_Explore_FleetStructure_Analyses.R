@@ -209,7 +209,7 @@ Dat23_model_fleetstruct_1$Nfleet <- newdat$Nfleets$data$ThreeFleets_NoSlope_Spli
 #Fleet Info
 Dat23_model_fleetstruct_1$fleetinfo <- newdat$fleet_info$data$ThreeFleets_NoSlope_SplitTriennial
   
-
+#find data file 
   
 
 
