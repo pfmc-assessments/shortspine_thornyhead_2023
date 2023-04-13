@@ -199,6 +199,21 @@ Dat23_model_fleetstruct_1 <- SS_readdat_3.30(
 # ..... 
 # ..... 
 
+newdat<-get(load(paste0(dir_data,"/","SST_SS_2023_Data_Parameters.RData")))
+
+names(Dat23_model_fleetstruct_1)
+
+#Fleet Number
+Dat23_model_fleetstruct_1$Nfleet <- newdat$Nfleets$data$ThreeFleets_NoSlope_SplitTriennial
+
+#Fleet Info
+Dat23_model_fleetstruct_1$fleetinfo <- newdat$fleet_info$data$ThreeFleets_NoSlope_SplitTriennial
+  
+
+  
+
+
+
 
 # Save the data file for the model
 # SS_writedat(
