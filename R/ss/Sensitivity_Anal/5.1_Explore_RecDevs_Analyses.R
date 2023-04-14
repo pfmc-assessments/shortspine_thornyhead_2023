@@ -335,7 +335,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_termYear folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 
@@ -574,7 +574,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_initYear folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 
@@ -812,7 +812,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_steep folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 
@@ -1054,7 +1054,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.recdevs_bias folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 

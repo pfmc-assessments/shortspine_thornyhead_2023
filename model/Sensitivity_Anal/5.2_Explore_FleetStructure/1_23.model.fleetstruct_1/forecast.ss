@@ -1,7 +1,7 @@
 #C forecast file written by R function SS_writeforecast
 #C rerun model to get more complete formatting in forecast.ss_new
 #C should work with SS version: 3.3
-#C file write time: 2023-02-17 09:12:21
+#C file write time: 2023-04-14 09:34:07
 #
 1 #_benchmarks
 2 #_MSY
@@ -34,11 +34,10 @@
 # Note that fleet allocation is used directly as average F if Do_Forecast=4 
 2 #_basis_for_fcast_catch_tuning
 # enter list of fleet number and max for fleets with max annual catch; terminate with fleet=-9999
- #_fleet Max_catch
+ #_Fleet Max Catch
        1    3157.0
        2    4506.4
-       3    1053.8
-       4    1237.0
+       3    2290.8
 -9999 -1
 # enter list of area ID and max annual catch; terminate with area=-9999
  #_Area Max Catch
