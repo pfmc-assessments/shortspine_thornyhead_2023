@@ -132,20 +132,14 @@
 #
 #_Q_setup for fleets with cpue or survey data
 #_fleet	link	link_info	extra_se	biasadj	float  #  fleetname
-    5	1	0	1	0	1	#_Triennial1
-    6	1	0	0	0	1	#_Triennial2
-    7	1	0	0	0	1	#_AFSCslope 
-    8	1	0	0	0	1	#_NWFSCslope
-    9	1	0	0	0	1	#_NWFSCcombo
+    5	1	0	1	0	1	#_1         
+    7	1	0	0	0	1	#_2         
 -9999	0	0	0	0	0	#_terminator
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-  -5	  5	-2	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(5) 
-0.01	0.5	 0	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial1(5)
-  -5	  5	-2	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial2(6) 
-  -5	  5	 0	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_AFSCslope(7)  
-  -5	  5	-1	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope(8) 
-  -5	  5	-5	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(9) 
+  -5	  5	 -2.17642	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(5) 
+0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial1(5)
+  -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(7) 
 #_no timevary Q parameters
 #
 #_size_selex_patterns
@@ -156,9 +150,7 @@
 24	1	0	0	#_4 Non-trawl_S
 24	0	0	0	#_5 Triennial1 
 24	0	0	0	#_6 Triennial2 
-24	0	0	0	#_7 AFSCslope  
-24	0	0	0	#_8 NWFSCslope 
-24	0	0	0	#_9 NWFSCcombo 
+24	0	0	0	#_7 NWFSCcombo 
 #
 #_age_selex_patterns
 #_Pattern	Discard	Male	Special
@@ -168,9 +160,7 @@
 10	0	0	0	#_4 Non-trawl_S
 10	0	0	0	#_5 Triennial1 
 10	0	0	0	#_6 Triennial2 
-10	0	0	0	#_7 AFSCslope  
-10	0	0	0	#_8 NWFSCslope 
-10	0	0	0	#_9 NWFSCcombo 
+10	0	0	0	#_7 NWFSCcombo 
 #
 #_SizeSelex
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
@@ -226,24 +216,12 @@
    -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial2(6)    
  -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial2(6)    
  -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial2(6)    
-   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_AFSCslope(7)     
-   -7	 7	  -7	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_AFSCslope(7)     
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_AFSCslope(7)     
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_AFSCslope(7)     
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_AFSCslope(7)     
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_AFSCslope(7)     
-   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCslope(8)    
-   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCslope(8)    
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCslope(8)    
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCslope(8)    
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCslope(8)    
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCslope(8)    
-   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCcombo(9)    
-   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCcombo(9)    
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCcombo(9)    
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCcombo(9)    
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCcombo(9)    
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCcombo(9)    
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCcombo(7)    
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCcombo(7)    
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCcombo(7)    
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCcombo(7)    
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCcombo(7)    
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCcombo(7)    
 #_AgeSelex
 #_No age_selex_parm
 # timevary selex parameters 
@@ -271,30 +249,24 @@
     4	1	0.5595	#_Variance_adjustment_list1 
     4	2	0.9773	#_Variance_adjustment_list2 
     4	3	0.5422	#_Variance_adjustment_list3 
-    4	4	0.4024	#_Variance_adjustment_list4 
+    4	4	0.4042	#_Variance_adjustment_list4 
     4	5	0.6812	#_Variance_adjustment_list5 
     4	6	0.6494	#_Variance_adjustment_list6 
     4	7	     1	#_Variance_adjustment_list7 
-    4	8	0.5126	#_Variance_adjustment_list8 
-    4	9	     1	#_Variance_adjustment_list9 
-    5	1	     1	#_Variance_adjustment_list10
-    5	2	     1	#_Variance_adjustment_list11
-    5	3	     1	#_Variance_adjustment_list12
-    5	4	     1	#_Variance_adjustment_list13
-    5	5	     1	#_Variance_adjustment_list14
-    5	6	     1	#_Variance_adjustment_list15
-    5	7	     1	#_Variance_adjustment_list16
-    5	8	     1	#_Variance_adjustment_list17
-    5	9	     1	#_Variance_adjustment_list18
-    6	1	     1	#_Variance_adjustment_list19
-    6	2	     1	#_Variance_adjustment_list20
-    6	3	     1	#_Variance_adjustment_list21
-    6	4	     1	#_Variance_adjustment_list22
-    6	5	     1	#_Variance_adjustment_list23
-    6	6	     1	#_Variance_adjustment_list24
-    6	7	     1	#_Variance_adjustment_list25
-    6	8	     1	#_Variance_adjustment_list26
-    6	9	     1	#_Variance_adjustment_list27
+    5	1	     1	#_Variance_adjustment_list8 
+    5	2	     1	#_Variance_adjustment_list9 
+    5	3	     1	#_Variance_adjustment_list10
+    5	4	     1	#_Variance_adjustment_list11
+    5	5	     1	#_Variance_adjustment_list12
+    5	6	     1	#_Variance_adjustment_list13
+    5	7	     1	#_Variance_adjustment_list14
+    6	1	     1	#_Variance_adjustment_list15
+    6	2	     1	#_Variance_adjustment_list16
+    6	3	     1	#_Variance_adjustment_list17
+    6	4	     1	#_Variance_adjustment_list18
+    6	5	     1	#_Variance_adjustment_list19
+    6	6	     1	#_Variance_adjustment_list20
+    6	7	     1	#_Variance_adjustment_list21
 -9999	0	     0	#_terminator                
 #
 5 #_maxlambdaphase

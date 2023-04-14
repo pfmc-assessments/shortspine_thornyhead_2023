@@ -5,7 +5,7 @@
 #_User_info_available_at:https://vlab.noaa.gov/group/stock-synthesis
 #_Source_code_at:_https://github.com/nmfs-stock-synthesis/stock-synthesis
 
-#_Start_time: Wed Apr 12 00:26:23 2023
+#_Start_time: Fri Apr 14 14:07:42 2023
 #_echo_input_data
 #C Data file for Shortspine Thornyhead - 2023 Assessment
 #C These data are the one from the 2013 model and updated for
@@ -33,11 +33,11 @@
  1 1 1 1 0 Trawl_S  # 2
  1 1 1 1 0 Non-trawl_N  # 3
  1 1 1 1 0 Non-trawl_S  # 4
- 3 1 1 0 0 Triennial1  # 5
- 3 1 1 0 0 Triennial2  # 6
- 3 1 1 0 0 AFSCslope  # 7
- 3 1 1 0 0 NWFSCslope  # 8
- 3 1 1 0 0 NWFSCcombo  # 9
+ 3 1 1 1 0 Triennial1  # 5
+ 3 1 1 1 0 Triennial2  # 6
+ 3 1 1 1 0 AFSCslope  # 7
+ 3 1 1 1 0 NWFSCslope  # 8
+ 3 1 1 1 0 NWFSCcombo  # 9
 #Bycatch_fleet_input_goes_next
 #a:  fleet index
 #b:  1=include dead bycatch in total dead catch for F0.1 and MSY optimizations and forecast ABC; 2=omit from total catch for these purposes (but still include the mortality)
@@ -559,47 +559,43 @@
 8 1 0 0 # NWFSCslope
 9 1 0 0 # NWFSCcombo
 #_yr month fleet obs stderr
-1980 1 5 2396.52 0.170381 #_ Triennial1
-1983 1 5 3103.06 0.132204 #_ Triennial1
-1986 1 5 1449.27 0.181867 #_ Triennial1
-1989 1 5 1916.29 0.142738 #_ Triennial1
-1992 1 5 2000.26 0.179714 #_ Triennial1
-1995 1 5 3048.47 0.175768 #_ Triennial1
-1998 1 5 2705.23 0.208775 #_ Triennial1
-2001 1 5 3069.73 0.152852 #_ Triennial1
-2004 1 5 3556.23 0.197405 #_ Triennial1
-1995 1 6 5201.13 0.185259 #_ Triennial2
-1998 1 6 3784 0.168828 #_ Triennial2
-2001 1 6 4610.89 0.135582 #_ Triennial2
-2004 1 6 5103.47 0.19866 #_ Triennial2
-1997 1 7 43486.9 0.0888154 #_ AFSCslope
-1999 1 7 43474.6 0.0837296 #_ AFSCslope
-2000 1 7 55589.7 0.0972136 #_ AFSCslope
-2001 1 7 54692.6 0.10046 #_ AFSCslope
-1998 1 8 67811.4 0.0638867 #_ NWFSCslope
-1999 1 8 75298.9 0.089988 #_ NWFSCslope
-2000 1 8 73831.8 0.111915 #_ NWFSCslope
-2001 1 8 71720.8 0.0669383 #_ NWFSCslope
-2002 1 8 92668.9 0.0726815 #_ NWFSCslope
-2003 1 9 50654.6 0.105227 #_ NWFSCcombo
-2004 1 9 52952.4 0.0928923 #_ NWFSCcombo
-2005 1 9 48194.5 0.0584264 #_ NWFSCcombo
-2006 1 9 47416.6 0.0696757 #_ NWFSCcombo
-2007 1 9 48874.5 0.0809472 #_ NWFSCcombo
-2008 1 9 43530 0.062062 #_ NWFSCcombo
-2009 1 9 57265.3 0.186796 #_ NWFSCcombo
-2010 1 9 46055.5 0.083355 #_ NWFSCcombo
-2011 1 9 47984.1 0.068007 #_ NWFSCcombo
-2012 1 9 53234.2 0.0848219 #_ NWFSCcombo
-2013 1 9 47904.1 0.0824451 #_ NWFSCcombo
-2014 1 9 48602.5 0.0854937 #_ NWFSCcombo
-2015 1 9 47261.8 0.0667888 #_ NWFSCcombo
-2016 1 9 53192.4 0.0717352 #_ NWFSCcombo
-2017 1 9 58442.5 0.0682799 #_ NWFSCcombo
-2018 1 9 55501.9 0.0539784 #_ NWFSCcombo
-2019 1 9 52950.6 0.100051 #_ NWFSCcombo
-2021 1 9 54858.9 0.0612186 #_ NWFSCcombo
-2022 1 9 67996.7 0.0669478 #_ NWFSCcombo
+1980 7 5 6296.68 0.154443 #_ Triennial1
+1983 7 5 6406.37 0.122227 #_ Triennial1
+1986 7 5 5441.14 0.146073 #_ Triennial1
+1989 7 5 5997.58 0.139764 #_ Triennial1
+1992 7 5 4867.11 0.153479 #_ Triennial1
+1995 7 5 7535.34 0.0964543 #_ Triennial1
+1998 7 5 6247.01 0.0967012 #_ Triennial1
+2001 7 5 8234.98 0.0958247 #_ Triennial1
+2004 7 5 8654.53 0.112452 #_ Triennial1
+1997 7 7 24913.4 0.0877926 #_ AFSCslope
+1999 7 7 25262.1 0.0856095 #_ AFSCslope
+2000 7 7 28521.8 0.0847774 #_ AFSCslope
+2001 7 7 25535.1 0.08466 #_ AFSCslope
+1998 7 8 52030.1 0.0857707 #_ NWFSCslope
+1999 7 8 51729 0.0799503 #_ NWFSCslope
+2000 7 8 66676 0.0795119 #_ NWFSCslope
+2001 7 8 49735.3 0.0802725 #_ NWFSCslope
+2002 7 8 58717.4 0.0675226 #_ NWFSCslope
+2003 7 9 48340.9 0.0747166 #_ NWFSCcombo
+2004 7 9 48009.7 0.0800661 #_ NWFSCcombo
+2005 7 9 54339 0.0698845 #_ NWFSCcombo
+2006 7 9 49203.6 0.0670029 #_ NWFSCcombo
+2007 7 9 52366.4 0.0647014 #_ NWFSCcombo
+2008 7 9 47120.8 0.0663204 #_ NWFSCcombo
+2009 7 9 47353.1 0.0663419 #_ NWFSCcombo
+2010 7 9 44829.5 0.0658168 #_ NWFSCcombo
+2011 7 9 50098.1 0.066072 #_ NWFSCcombo
+2012 7 9 51413.5 0.0662795 #_ NWFSCcombo
+2013 7 9 51808.1 0.0751918 #_ NWFSCcombo
+2014 7 9 51333.3 0.067633 #_ NWFSCcombo
+2015 7 9 52880.6 0.0655534 #_ NWFSCcombo
+2016 7 9 57348.8 0.064766 #_ NWFSCcombo
+2017 7 9 59170.6 0.0639349 #_ NWFSCcombo
+2018 7 9 59656.6 0.0636136 #_ NWFSCcombo
+2019 7 9 60574.8 0.0870471 #_ NWFSCcombo
+2021 7 9 70483.9 0.0672864 #_ NWFSCcombo
+2022 7 9 76809.7 0.0691009 #_ NWFSCcombo
 -9999 1 1 1 1 # terminator for survey observations 
 #
 4 #_N_fleets_with_discard

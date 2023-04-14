@@ -132,20 +132,18 @@
 #
 #_Q_setup for fleets with cpue or survey data
 #_fleet	link	link_info	extra_se	biasadj	float  #  fleetname
-    5	1	0	1	0	1	#_Triennial1
-    6	1	0	0	0	1	#_Triennial2
-    7	1	0	0	0	1	#_AFSCslope 
-    8	1	0	0	0	1	#_NWFSCslope
-    9	1	0	0	0	1	#_NWFSCcombo
+    5	1	0	1	0	1	#_1         
+    7	1	0	0	0	1	#_2         
+    8	1	0	0	0	1	#_3         
+    9	1	0	0	0	1	#_4         
 -9999	0	0	0	0	0	#_terminator
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-  -5	  5	-2	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(5) 
-0.01	0.5	 0	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial1(5)
-  -5	  5	-2	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial2(6) 
-  -5	  5	 0	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_AFSCslope(7)  
-  -5	  5	-1	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope(8) 
-  -5	  5	-5	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(9) 
+  -5	  5	 -2.17642	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(5) 
+0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial1(5)
+  -5	  5	 0.185658	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_AFSCslope(7)  
+  -5	  5	  -1.2867	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope(8) 
+  -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(9) 
 #_no timevary Q parameters
 #
 #_size_selex_patterns
@@ -271,7 +269,7 @@
     4	1	0.5595	#_Variance_adjustment_list1 
     4	2	0.9773	#_Variance_adjustment_list2 
     4	3	0.5422	#_Variance_adjustment_list3 
-    4	4	0.4024	#_Variance_adjustment_list4 
+    4	4	0.4042	#_Variance_adjustment_list4 
     4	5	0.6812	#_Variance_adjustment_list5 
     4	6	0.6494	#_Variance_adjustment_list6 
     4	7	     1	#_Variance_adjustment_list7 
