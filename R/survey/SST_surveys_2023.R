@@ -337,9 +337,9 @@ survey.indices.ss.geo.all <- read_csv(file.path(here::here(), "data", "processed
   filter(area == "Total", method=="delta-gamma") %>%
   mutate(
     Fleet=case_when(survey == "Triennial" ~ 5,
-                    survey == "AFSC Slope Survey" ~ 6,
-                    survey == "NWFSC Slope Survey" ~7,
-                    survey == "WCGBTS" ~ 8),
+                    survey == "AFSC Slope Survey" ~ 7,
+                    survey == "NWFSC Slope Survey" ~8,
+                    survey == "WCGBTS" ~ 9),
     Season=7
   ) %>%
   select(year, Season, Fleet, est, se) %>%
@@ -355,7 +355,7 @@ survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "proce
   filter(!(survey %in% c("AFSC Slope Survey", "NWFSC Slope Survey"))) %>%
   mutate(
     Fleet=case_when(survey == "Triennial" ~ 5,
-                    survey == "WCGBTS" ~ 6),
+                    survey == "WCGBTS" ~ 7),
     Season=7
   ) %>%
   select(year, Season, Fleet, est, se) %>%
