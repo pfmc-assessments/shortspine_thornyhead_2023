@@ -145,7 +145,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_fleetstruct_1')
 # wrote a new SS input file for your new model and need to modify it (It ensure 
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.recdevs_bias", curr.model = "23.model.fleetstruct_1", files = 'all')
 
 
 # 3.1  Work on the Starter file ----
@@ -199,105 +199,105 @@ Dat23_model_fleetstruct_1 <- SS_readdat_3.30(
 # ..... 
 # ..... 
 
-all_data_parm <-get(load(paste0(dir_data,"/","SST_SS_2023_Data_Parameters.RData")))
+#all_data_parm <-get(load(paste0(dir_data,"/","SST_SS_2023_Data_Parameters.RData")))
 
 Dat23_model_fleetstruct_1_save <- Dat23_model_fleetstruct_1
 
 names(Dat23_model_fleetstruct_1)
 
 #Fleet Number (Nfleets!=Nfleet; Nfleets=Nfleet+NSurvey)
-Dat23_model_fleetstruct_1$Nfleets <- all_data_parm$Nfleets$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_NoSlope_SplitTriennial
 
 #Fleets Info
-Dat23_model_fleetstruct_1$fleetinfo <- all_data_parm$fleet_info$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$fleetinfo <- SS_Param2023$fleet_info$data$ThreeFleets_NoSlope_SplitTriennial
   
-#Fleet names
-Dat23_model_fleetstruct_1$fleetnames <- all_data_parm$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial
-
-#Survey timing
-Dat23_model_fleetstruct_1$surveytiming <- all_data_parm$surveytiming$data$ThreeFleets_NoSlope_SplitTriennial
-
-#catch units
-Dat23_model_fleetstruct_1$units_of_catch <- all_data_parm$units_of_catch$data$ThreeFleets_NoSlope_SplitTriennial
+# #Fleet names
+# Dat23_model_fleetstruct_1$fleetnames <- all_data_parm$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial
+# 
+# #Survey timing
+# Dat23_model_fleetstruct_1$surveytiming <- all_data_parm$surveytiming$data$ThreeFleets_NoSlope_SplitTriennial
+# 
+# #catch units
+# Dat23_model_fleetstruct_1$units_of_catch <- all_data_parm$units_of_catch$data$ThreeFleets_NoSlope_SplitTriennial
 
 #Areas 
-Dat23_model_fleetstruct_1$areas <- all_data_parm$areas$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$areas <- SS_Param2023$areas$data$ThreeFleets_NoSlope_SplitTriennial
 
 #catch /!\ Mismatch in the name of this variable - Upper vs Lower case
-Dat23_model_fleetstruct_1$catch <- all_data_parm$Catch$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$catch <- SS_Param2023$Catch$data$ThreeFleets_NoSlope_SplitTriennial
 
 #CPUE info
-Dat23_model_fleetstruct_1$CPUEinfo <- all_data_parm$CPUEinfo$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$CPUEinfo <- SS_Param2023$CPUEinfo$data$ThreeFleets_NoSlope_SplitTriennial
 
 #CPUE
-Dat23_model_fleetstruct_1$CPUE <- all_data_parm$CPUE$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$CPUE <- SS_Param2023$Indices$data$ThreeFleets_NoSlope_SplitTriennial
 
 #NB DISCARD FLEETS
-Dat23_model_fleetstruct_1$N_discard_fleets <- all_data_parm$N_discard_fleets$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$N_discard_fleets <- SS_Param2023$N_discard_fleets$data$ThreeFleets_NoSlope_SplitTriennial
 
 # DISCARD info
-Dat23_model_fleetstruct_1$discard_fleet_info <- all_data_parm$discard_fleet_info$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$discard_fleet_info <- SS_Param2023$discard_fleet_info$data$ThreeFleets_NoSlope_SplitTriennial
 
 # Discard rates /!\ Mismatch in the name of this variable - discard_data vs discard_rates
-Dat23_model_fleetstruct_1$discard_data <- all_data_parm$discard_rates$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$discard_data <- SS_Param2023$discard_rates$data$ThreeFleets_NoSlope_SplitTriennial
 
 
 # Discard mean indiv weight /!\ Mismatch in the name of this variable - Upper vs Lower case
-Dat23_model_fleetstruct_1$meanbodywt <- all_data_parm$Meanbodywt$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$meanbodywt <- SS_Param2023$Meanbodywt$data$ThreeFleets_NoSlope_SplitTriennial
 
 
 # Info on length composition
-Dat23_model_fleetstruct_1$len_info <- all_data_parm$len_info$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$len_info <- SS_Param2023$len_info$data$ThreeFleets_NoSlope_SplitTriennial
 
 # Length composition - includes fisheries, surveys, landings, discards
-Dat23_model_fleetstruct_1$lencomp <- all_data_parm$All_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$lencomp <- SS_Param2023$All_LengthComp$data$ThreeFleets_NoSlope_SplitTriennial
 
 # Number of Fishing fleets
-Dat23_model_fleetstruct_1$Nfleet <- all_data_parm$Nfleet$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$Nfleet <- SS_Param2023$Nfleet$data$ThreeFleets_NoSlope_SplitTriennial
 
 # Number of Surveys
-Dat23_model_fleetstruct_1$Nsurveys <- all_data_parm$Nsurveys$data$ThreeFleets_NoSlope_SplitTriennial
+Dat23_model_fleetstruct_1$Nsurveys <- SS_Param2023$Nsurveys$data$ThreeFleets_NoSlope_SplitTriennial
 
 # Fishing fleet info 1 # Not present in "SST_SS_2023_Data_Parameters.RData" unless I am wrong --> generated by SS_readdat_3.30? 
-new_fleetinfo1 <- Dat23_model_fleetstruct_1$fleetinfo1
-new_fleetinfo1 <- new_fleetinfo1[, -grep("slope", colnames(new_fleetinfo1))]
-new_fleetinfo1 <- new_fleetinfo1[, -grep("Non.trawl_S", colnames(new_fleetinfo1))]
-colnames(new_fleetinfo1)[grep("Non.trawl_N", colnames(new_fleetinfo1))] <- gsub("_N", "", colnames(new_fleetinfo1)[grep("Non.trawl_N", colnames(new_fleetinfo1))])
-Dat23_model_fleetstruct_1$fleetinfo1 <- new_fleetinfo1
+# new_fleetinfo1 <- Dat23_model_fleetstruct_1$fleetinfo1
+# new_fleetinfo1 <- new_fleetinfo1[, -grep("slope", colnames(new_fleetinfo1))]
+# new_fleetinfo1 <- new_fleetinfo1[, -grep("Non.trawl_S", colnames(new_fleetinfo1))]
+# colnames(new_fleetinfo1)[grep("Non.trawl_N", colnames(new_fleetinfo1))] <- gsub("_N", "", colnames(new_fleetinfo1)[grep("Non.trawl_N", colnames(new_fleetinfo1))])
+# Dat23_model_fleetstruct_1$fleetinfo1 <- new_fleetinfo1
 
 # Fishing fleet info 2 # Not present in "SST_SS_2023_Data_Parameters.RData" unless I am wrong --> generated by SS_readdat_3.30? 
-new_fleetinfo2 <- Dat23_model_fleetstruct_1$fleetinfo2
-new_fleetinfo2 <- new_fleetinfo2[, -grep("slope", colnames(new_fleetinfo2))]
-new_fleetinfo2 <- new_fleetinfo2[, -grep("Non.trawl_S", colnames(new_fleetinfo2))]
-colnames(new_fleetinfo2)[grep("Non.trawl_N", colnames(new_fleetinfo2))] <- gsub("_N", "", colnames(new_fleetinfo2)[grep("Non.trawl_N", colnames(new_fleetinfo2))])
-Dat23_model_fleetstruct_1$fleetinfo2 <- new_fleetinfo2
-
-#comp_tail_compression
-Dat23_model_fleetstruct_1$comp_tail_compression <- Dat23_model_fleetstruct_1$comp_tail_compression[-grep("slope|Non.trawl_S", colnames(Dat23_model_fleetstruct_1_save$fleetinfo1))]
-
-#add_to_comp
-Dat23_model_fleetstruct_1$add_to_comp <- Dat23_model_fleetstruct_1$add_to_comp[-grep("slope|Non.trawl_S", colnames(Dat23_model_fleetstruct_1_save$fleetinfo1))]
+# new_fleetinfo2 <- Dat23_model_fleetstruct_1$fleetinfo2
+# new_fleetinfo2 <- new_fleetinfo2[, -grep("slope", colnames(new_fleetinfo2))]
+# new_fleetinfo2 <- new_fleetinfo2[, -grep("Non.trawl_S", colnames(new_fleetinfo2))]
+# colnames(new_fleetinfo2)[grep("Non.trawl_N", colnames(new_fleetinfo2))] <- gsub("_N", "", colnames(new_fleetinfo2)[grep("Non.trawl_N", colnames(new_fleetinfo2))])
+# Dat23_model_fleetstruct_1$fleetinfo2 <- new_fleetinfo2
+# 
+# #comp_tail_compression
+# Dat23_model_fleetstruct_1$comp_tail_compression <- Dat23_model_fleetstruct_1$comp_tail_compression[-grep("slope|Non.trawl_S", colnames(Dat23_model_fleetstruct_1_save$fleetinfo1))]
+# 
+# #add_to_comp
+# Dat23_model_fleetstruct_1$add_to_comp <- Dat23_model_fleetstruct_1$add_to_comp[-grep("slope|Non.trawl_S", colnames(Dat23_model_fleetstruct_1_save$fleetinfo1))]
 
 #max_combined_lbin
 Dat23_model_fleetstruct_1$max_combined_lbin <- Dat23_model_fleetstruct_1$max_combined_lbin[-grep("slope|Non.trawl_S", colnames(Dat23_model_fleetstruct_1_save$fleetinfo1))]
 
 
 # Save the data file for the model
-# SS_writedat(
-      # datlist =  Dat23_model_fleetstruct_1 ,
-      # outfile = file.path(Dir_23_model_fleetstruct_1, 'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writedat(
+  datlist =  Dat23_model_fleetstruct_1 ,
+  outfile = file.path(Dir_23_model_fleetstruct_1, 'SST_data.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 
 # Check file structure
 # DatFile <- file.path(Dir_23_model_fleetstruct_1, 'SST_data.ss', fsep = fsep)
 #  Dat23_model_fleetstruct_1 <-
-      # SS_readdat_3.30(
-      # file = DatFile,
-      # verbose = TRUE,
-      # section = TRUE
-      # )
+# SS_readdat_3.30(
+# file = DatFile,
+# verbose = TRUE,
+# section = TRUE
+# )
 
 # clean environment
 var.to.save <- c(var.to.save, 'Dat23_model_fleetstruct_1')
@@ -323,20 +323,34 @@ Ctl23_model_fleetstruct_1 <- SS_readctl_3.30(
       verbose = TRUE
       )
 
+Ctl23_model_fleetstruct_1_copy <- Ctl23_model_fleetstruct_1
+
 # Make your modification if applicable
 # Code modifying the control file 
 # ..... 
 # ..... 
 
-# PY doesn't see anything to modify here
+#Ctl23_model_fleetstruct_1$Block_Design
+
+Ctl23_model_fleetstruct_1$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_NoSlope_SplitTriennial
+Ctl23_model_fleetstruct_1$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial
+Ctl23_model_fleetstruct_1$Q_options <- SS_Param2023$Q_options$data$ThreeFleets_NoSlope_SplitTriennial
+Ctl23_model_fleetstruct_1$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_NoSlope_SplitTriennial
+
+Ctl23_model_fleetstruct_1$size_selex_types <- SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial
+Ctl23_model_fleetstruct_1$age_selex_types <- SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial
+Ctl23_model_fleetstruct_1$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_SplitTriennial
+Ctl23_model_fleetstruct_1$size_selex_parms_tv <- SS_Param2023$size_selex_parms_tv$data$ThreeFleets_NoSlope_SplitTriennial
+
+Ctl23_model_fleetstruct_1$Variance_adjustment_list <- SS_Param2023$Variance_adjustment_list$data$ThreeFleets_NoSlope_SplitTriennial
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_fleetstruct_1 ,
-      # outfile = file.path(Dir_23_model_fleetstruct_1, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+ctllist =  Ctl23_model_fleetstruct_1 ,
+outfile = file.path(Dir_23_model_fleetstruct_1, 'SST_control.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -369,14 +383,14 @@ new_max_totalcatch <- new_max_totalcatch[-which(new_max_totalcatch$Fleet==4),]
 Fore23_model_fleetstruct_1$max_totalcatch_by_fleet <- new_max_totalcatch
 
 # Save the forecast file for the model
-# SS_writeforecast(
-      # mylist =  Fore23_model_fleetstruct_1 ,
-      # dir = Dir_23_model_fleetstruct_1, 
-      # file = 'forecast.ss',
-      # writeAll = TRUE,
-      # verbose = TRUE,
-      # overwrite = TRUE
-      # )
+SS_writeforecast(
+mylist =  Fore23_model_fleetstruct_1 ,
+dir = Dir_23_model_fleetstruct_1,
+file = 'forecast.ss',
+writeAll = TRUE,
+verbose = TRUE,
+overwrite = TRUE
+)
 
 # Check file structure
 # ForeFile <- file.path(Dir_23_model_fleetstruct_1, 'forecast.ss', fsep = fsep)
@@ -408,7 +422,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_1 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
