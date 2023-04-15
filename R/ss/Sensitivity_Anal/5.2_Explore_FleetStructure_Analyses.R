@@ -384,12 +384,12 @@ Fore23_model_fleetstruct_1$max_totalcatch_by_fleet <- new_max_totalcatch
 
 # Save the forecast file for the model
 SS_writeforecast(
-mylist =  Fore23_model_fleetstruct_1 ,
-dir = Dir_23_model_fleetstruct_1,
-file = 'forecast.ss',
-writeAll = TRUE,
-verbose = TRUE,
-overwrite = TRUE
+  mylist =  Fore23_model_fleetstruct_1 ,
+  dir = Dir_23_model_fleetstruct_1,
+  file = 'forecast.ss',
+  writeAll = TRUE,
+  verbose = TRUE,
+  overwrite = TRUE
 )
 
 # Check file structure
@@ -422,7 +422,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_1 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 
@@ -725,7 +725,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_2 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 
@@ -1020,7 +1020,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_3 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = '-nohess'
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 
@@ -1313,7 +1313,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_4 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = NULL
       # this is if we want to use '-nohess' 
       )
 
