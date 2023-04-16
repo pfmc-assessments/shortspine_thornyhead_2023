@@ -255,8 +255,8 @@ Ctl23_model_recdevs_termYear <- SS_readctl_3.30(
 # ..... 
 
 # Update the terminal year for recdev estimates 
-#t-5 years, based comp data. Fish in the surveys start at ~15cm which is about 5 years old 
-#according to growth curves 4/10/23
+# t-5 years, based comp data. Fish in the surveys start at ~15cm which is about 5 years old 
+# according to growth curves 4/10/23
 
 Ctl23_model_recdevs_termYear$MainRdevYrLast<-2018 
 
@@ -496,9 +496,11 @@ Ctl23_model_recdevs_initYear <- SS_readctl_3.30(
 # Code modifying the control file 
 
 # Update the initial year for recdev estimates 
-# Changing ititYear at 1950, ~30 years prior to length comp data 4/10/23
+# Changing ititYear to 1980, teh start of the data rich period 4/15/23
 
-Ctl23_model_recdevs_initYear$MainRdevYrFirst<-1950 
+Ctl23_model_recdevs_initYear$MainRdevYrFirst <- 1980 # Update start of main period
+Ctl23_model_recdevs_initYear$recdev_early_start <- 1900 # Start early period devs in 1900
+Ctl23_model_recdevs_initYear$recdev_early_phase <- 6 # Estimare early period devs in phase 6
 
 # Save the control file for the model
 SS_writectl(
@@ -974,11 +976,11 @@ Ctl23_model_recdevs_bias <- SS_readctl_3.30(
 # ..... 
 # ..... 
 
-Ctl23_model_recdevs_bias$last_early_yr_nobias_adj <- 1850.1
-Ctl23_model_recdevs_bias$first_yr_fullbias_adj <- 1937.6
-Ctl23_model_recdevs_bias$last_yr_fullbias_adj <- 2009.9
-Ctl23_model_recdevs_bias$first_recent_yr_nobias_adj <-2034.0
-Ctl23_model_recdevs_bias$max_bias_adj <- 0
+Ctl23_model_recdevs_bias$last_early_yr_nobias_adj <- 1950
+Ctl23_model_recdevs_bias$first_yr_fullbias_adj <- 1982
+Ctl23_model_recdevs_bias$last_yr_fullbias_adj <- 2018
+Ctl23_model_recdevs_bias$first_recent_yr_nobias_adj <- 2022
+Ctl23_model_recdevs_bias$max_bias_adj <- 0.75
 
 # Save the control file for the model
 SS_writectl(
