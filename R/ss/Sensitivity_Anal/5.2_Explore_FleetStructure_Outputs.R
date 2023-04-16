@@ -128,7 +128,7 @@ var.to.save <- ls()
 Dir_Base <- file.path(dir_SensAnal, '5.1_Explore_RecDevs','4_23.model.recdevs_bias' , 'run',fsep = fsep)
 
 # Root directory for this sensitivity analysis
-SA_path <- .
+SA_path <- file.path(dir_SensAnal, '5.2_Explore_FleetStructure')
 # Path to the 23.model.fleetstruct_1 repertory
 Dir_23_model_fleetstruct_1 <- file.path(dir_SensAnal, '5.2_Explore_FleetStructure','1_23.model.fleetstruct_1' , 'run',fsep = fsep)
 
@@ -160,7 +160,7 @@ SSplotComparisons(
       # print = TRUE,
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c('23.model.recdevs_bias','23.model.fleetstruct_1','23.model.fleetstruct_2','23.model.fleetstruct_3','23.model.fleetstruct_4','23.model.fleetstruct_5')
+      legendlabels = c("4Fleets+5Surveys+DBIs", "3Fleets+2Surveys+DBIs", "3Fleets+4Surveys+MBIs", "4Fleets+4Surveys+MBIs", "4Fleets+2Surveys+MBIs", "3Fleets+2Surveys+MBIs")
     )
 
 # Create comparison table for this analisys
@@ -179,7 +179,7 @@ tmp %>%
 
 tmp %>% 
   filter(grepl('LnQ|R0', Label)) %>%
-  pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
+  dplyr::pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
   write_csv(paste(SA_path, 'Update_Data_comparison_table_lnQ_SRlnR0.csv', sep = fsep))
 
 out <- SStableComparisons(Version_Summary)
