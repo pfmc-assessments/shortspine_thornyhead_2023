@@ -261,6 +261,12 @@
    17	999	5	   0	999	#_F-ballpark_NA_Phz5
 -9999	  0	0	   0	  0	#_terminator        
 #
-0 # 0/1 read specs for more stddev reporting
+2 # 0/1 read specs for more stddev reporting
+0 1 -1 0  # Selectivity stddev reporting
+0 0       # Growth stddev reporting
+0 -1 0    # NAA stddev reporting
+0 0       # Mortality stddev reporting
+2         # Dynamic B0 stddev reporting
+1         # Summary Biomass stddev reporting
 #
 999

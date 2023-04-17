@@ -1162,17 +1162,24 @@ Recalc_flag_for_age_selex_recalc_by_year
  17 999 2 0.1 999
  17 999 3 0.01 999
  17 999 5 0 999
-0 # extra stdev reporting: 0 = skip, 1 = read specs for reporting stdev for selectivity, size, and numbers, 2 = add option for M, dyn. Bzero & Smrybio 
+2 # extra stdev reporting: 0 = skip, 1 = read specs for reporting stdev for selectivity, size, and numbers, 2 = add option for M, dyn. Bzero & Smrybio 
+inpt_as_read:  0 1 -1 0 0 0 0 -1 0 0 0 2 1
+ 0 1 -1 0 # Selectivity: (1) 0 to skip or fleet, (2) 1=len/2=age/3=combined, (3) year, (4) N selex bins; NOTE: combined reports in age bins
+ 0 0 # Growth: (1) 0 to skip or growth pattern, (2) growth ages; NOTE: does each sex
+ 0 -1 0 # Numbers-at-age: (1) 0 to skip or area(-1 for all), (2) year, (3) N ages;  NOTE: sums across morphs
+ 0 0 # Mortality: (1) 0 to skip or growth pattern, (2) N ages for mortality; NOTE: does each sex
+2 # Dyn_Bzero: 0 to skip, 1 to do, 2 w/ recr
+1 # SmryBio: 0 to skip, 1 to do
 End of control file successful! 999
 N parameters: 226
-Parameters plus derived quant: 955
+Parameters plus derived quant: 38207
 Adjust the phases 
  requested turn_off phase: 25
 Fcast_dev_phase (read and adjusted): 5 5
 ParCount 226   Active parameters: 178
 Turn_off_phase 25
  max_phase 6
-955
+38207
 parm 226 covar 178
 deriv_start 226 178
 parm 362 covar 314
@@ -1182,10 +1189,13 @@ parm 766 covar 718
 parm 899 covar 851
 parm 916 covar 868  after benchmark 
 parm 952 covar 904  after forecast 
+ do Dyn Bzero std labels 
+ do Dyn Bzero Recruits std labels 
  do ln(SPB) std labels for 3 years
+ do SmryBio std labels 
  do Svy_sdreport labels 0
-parm 955 covar 907  after all derived quantities 
-Active parameters plus derived quantities:  907
+parm 1363 covar 1315  after all derived quantities 
+Active parameters plus derived quantities:  1315
 Begin setting up parameters
  now dimension the selectivity arrays 56
  10 -7 -5 -5 -999 -999 5 0.1 -10 -3 10 -7 -5 -5 -999 -999 5 0.1 -10 -3 10 -7 -5 -5 -999 -999 5 0.1 -10 -3 10 -7 -5 -5 -999 -999 10 -7 -5 -5 -999 -999 10 -7 -5 -5 -999 -999 -10 -10 -0.5 -0.5 -10 -10 -0.5 -0.5
