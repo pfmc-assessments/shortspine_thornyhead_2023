@@ -126,14 +126,25 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #            new_model = c("23.model.recdevs_termYear", "23.model.recdevs_initYear", "23.model.recdevs_steep",
 #                          "23.model.recdevs_bias"))
 
+# Fleet Structure models
+# NewSensAnal(topic = "model",
+#             # names are based on new model 
+#             object = c("ThreeFleets_NoSlope_SplitTriennial", "ThreeFleets_UseSlope_CombineTriennial", "FourFleets_UseSlope_CombineTriennial", "FourFleets_NoSlope_CombineTriennial", "ThreeFleets_NoSlope_CombineTriennial" ),
+#             author = "Team Thornyheads",
+#             folder_name = "Explore_FleetStructure",
+#             script_model = "Explore_FleetStructure_Analyses",
+#             script_results = "Explore_FleetStructure_Outputs",
+#             base_model = c("23.model.recdevs_bias", "23.model.recdevs_bias", "23.model.recdevs_bias", 
+#                            "23.model.recdevs_bias", "23.model.recdevs_bias"),
+#             new_model = c("23.model.fleetstruct_1", "23.model.fleetstruct_2", "23.model.fleetstruct_3",
+#                           "23.model.fleetstruct_4", "23.model.fleetstruct_5"))
+
 NewSensAnal(topic = "model",
             # names are based on new model 
-            object = c("ThreeFleets_NoSlope_SplitTriennial", "ThreeFleets_UseSlope_CombineTriennial", "FourFleets_UseSlope_CombineTriennial", "FourFleets_NoSlope_CombineTriennial", "ThreeFleets_NoSlope_CombineTriennial" ),
+            object = c("Francis Reweighting"),
             author = "Team Thornyheads",
-            folder_name = "Explore_FleetStructure",
-            script_model = "Explore_FleetStructure_Analyses",
-            script_results = "Explore_FleetStructure_Outputs",
-            base_model = c("23.model.recdevs_bias", "23.model.recdevs_bias", "23.model.recdevs_bias", 
-                           "23.model.recdevs_bias", "23.model.recdevs_bias"),
-            new_model = c("23.model.fleetstruct_1", "23.model.fleetstruct_2", "23.model.fleetstruct_3",
-                          "23.model.fleetstruct_4", "23.model.fleetstruct_5"))
+            folder_name = "Francis_Reweighting",
+            script_model = "Francis_Reweighting_Analyses",
+            script_results = "Francis_Reweighting_Outputs",
+            base_model = c("23.model.fleetstruct_5"),
+            new_model = c("23.model.francis"))
