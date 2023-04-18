@@ -1,0 +1,39 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic:  Survey Timing Settlement Events 
+# 	- Survey Timing 
+# 	- Settlement Events 
+# Author:  Team Thornyheads 
+# Date: 2023-04-18 14:48:28 
+# Sensitivity Analysis ID: Item 5.4 
+# Names of the models created:
+# -  23.model.survey_timing 
+# -  23.model.settlement_events 
+# *** 
+# 
+# This analysis has been developed based on the following models: 
+# New model 	 Base model
+# 23.model.survey_timing 	 23.model.francis 
+# 23.model.settlement_events 	 23.model.survey_timing 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.4_SS_Model_Warnings 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.4_SS_Model_Warnings_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.4_SS_Model_Warnings_Outputs.R .R
+# 
+# General features: 
+# These models will fix outstanding warnings from SS. 
+# 
+# Model features:
+# - Model 23.model.survey_timing:
+# Fix survey timing to be -1 as expected by SS. 
+# - Model 23.model.settlement_events:
+# Simplify settlement event structure. 
+# ============================================================ #
+

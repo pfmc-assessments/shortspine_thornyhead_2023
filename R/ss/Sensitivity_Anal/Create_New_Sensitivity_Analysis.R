@@ -139,12 +139,24 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #             new_model = c("23.model.fleetstruct_1", "23.model.fleetstruct_2", "23.model.fleetstruct_3",
 #                           "23.model.fleetstruct_4", "23.model.fleetstruct_5"))
 
+# Francis Reweighting
+# NewSensAnal(topic = "model",
+#             # names are based on new model 
+#             object = c("Francis Reweighting"),
+#             author = "Team Thornyheads",
+#             folder_name = "Francis_Reweighting",
+#             script_model = "Francis_Reweighting_Analyses",
+#             script_results = "Francis_Reweighting_Outputs",
+#             base_model = c("23.model.fleetstruct_5"),
+#             new_model = c("23.model.francis"))
+
+
 NewSensAnal(topic = "model",
-            # names are based on new model 
-            object = c("Francis Reweighting"),
+            # names are based on new model
+            object = c("Survey Timing", "Settlement Events"),
             author = "Team Thornyheads",
-            folder_name = "Francis_Reweighting",
-            script_model = "Francis_Reweighting_Analyses",
-            script_results = "Francis_Reweighting_Outputs",
-            base_model = c("23.model.fleetstruct_5"),
-            new_model = c("23.model.francis"))
+            folder_name = "SS_Model_Warnings",
+            script_model = "SS_Model_Warnings_Analyses",
+            script_results = "SS_Model_Warnings_Outputs",
+            base_model = c("23.model.francis", "23.model.survey_timing"),
+            new_model = c("23.model.survey_timing", "23.model.settlement_events"))
