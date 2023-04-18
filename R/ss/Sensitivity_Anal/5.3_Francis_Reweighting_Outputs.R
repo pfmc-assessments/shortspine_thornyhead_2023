@@ -101,7 +101,7 @@ var.to.save <- ls()
 Dir_Base <- file.path(dir_SensAnal, '5.2_Explore_FleetStructure','5_23.model.fleetstruct_5' , 'run',fsep = fsep)
 
 # Root directory for this sensitivity analysis
-SA_path <- .
+SA_path <- file.path(dir_SensAnal, '5.3_Francis_Reweighting')
 # Path to the 23.model.francis repertory
 Dir_23_model_francis <- file.path(dir_SensAnal, '5.3_Francis_Reweighting','1_23.model.francis' , 'run',fsep = fsep)
 
@@ -140,7 +140,7 @@ tmp %>%
 
 tmp %>% 
   filter(grepl('LnQ|R0', Label)) %>%
-  pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
+  tidyr::pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
   write_csv(paste(SA_path, 'Update_Data_comparison_table_lnQ_SRlnR0.csv', sep = fsep))
 
 out <- SStableComparisons(Version_Summary)
