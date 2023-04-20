@@ -32,14 +32,14 @@ remove_data <- lencomps %>%
 remove_data
 # Yr FltSvy type   
 # <dbl>  <dbl> <chr>  
-# 1  1981      1 landed 
-# 2  1994      1 landed 
-# 3  1995      1 landed 
-# 4  1985      3 landed 
-# 5  1986      3 landed 
-# 6  1988      3 landed 
-# 7  1993      3 landed 
-# 8  1995      3 landed 
-# 9  1996      3 landed 
-# 10  1997     3 landed 
-# 11  2005     3 discard
+#  1981      1 landed   5.14
+#  1994      1 landed   6.52
+#  1995      1 landed   5.31
+#  1985      3 landed   3.41
+#  1986      3 landed  10.2 
+#  1988      3 landed   8.10
+#  1993      3 landed   3.41
+#  1995      3 landed  11.0 
+#  1996      3 landed   4.59
+#  1997      3 landed   6.97
+#  2005      3 discard  7   
