@@ -151,12 +151,22 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #             new_model = c("23.model.francis"))
 
 
+# NewSensAnal(topic = "model",
+#             # names are based on new model
+#             object = c("Survey Timing", "Settlement Events"),
+#             author = "Team Thornyheads",
+#             folder_name = "SS_Model_Warnings",
+#             script_model = "SS_Model_Warnings_Analyses",
+#             script_results = "SS_Model_Warnings_Outputs",
+#             base_model = c("23.model.francis", "23.model.survey_timing"),
+#             new_model = c("23.model.survey_timing", "23.model.settlement_events"))
+
 NewSensAnal(topic = "model",
             # names are based on new model
-            object = c("Survey Timing", "Settlement Events"),
+            object = c("Remove small sample size LCs", "Sex-Specific Survey Selectivity", "Improve Trawl_N LC Fit", "Improve Other LC Fits"),
             author = "Team Thornyheads",
-            folder_name = "SS_Model_Warnings",
-            script_model = "SS_Model_Warnings_Analyses",
-            script_results = "SS_Model_Warnings_Outputs",
-            base_model = c("23.model.francis", "23.model.survey_timing"),
-            new_model = c("23.model.survey_timing", "23.model.settlement_events"))
+            folder_name = "Improve_LC_Fits",
+            script_model = "Improve_LC_Fits_Analyses",
+            script_results = "Improve_LC_Fits_Outputs",
+            base_model = c("23.model.settlement_events", "23.model.sample_sizes", "23.model.sexed_survey_selectivity", "23.model.improve_trawln"),
+            new_model = c("23.model.sample_sizes", "23.model.sexed_survey_selectivity", "23.model.improve_trawln", "23.model.improve_other"))
