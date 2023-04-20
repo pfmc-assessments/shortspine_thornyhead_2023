@@ -81,6 +81,7 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 # 2. Set up a new sensitivity analysis ----
 # ---------------------------------------------------------- #
 
+
 # NewSensAnal(topic = "transition",
 #             object = c("All Param fixed","Floating Q", "All Param estimated"),
 #             author = "Matthieu VERON",
@@ -91,21 +92,71 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #             new_model = c("23.sq.fix","23.sq.floatQ","23.sq.est"))
 
 # we're keeping simple data updates as topic == 'transition'
-NewSensAnal(topic = "transition",
-            # names are based on new model 
-            object = c("Update landings","Updates discard rates", "Update survey indices",
-                       "Update survey length comps", "Update fisheries length comps", 
-                       "Update discard mean weights", "Update growth", "Update maturity",
-                       "Update fecundity", "Update natural mortality"),
+
+# Bridging models 
+# NewSensAnal(topic = "transition",
+#             # names are based on new model 
+#             object = c("Update landings","Updates discard rates", "Update survey indices",
+#                        "Update survey length comps", "Update fisheries length comps", 
+#                        "Update discard mean weights", "Update growth", "Update maturity",
+#                        "Update fecundity", "Update natural mortality"),
+#             author = "Team Thornyheads",
+#             folder_name = "Update_Data",
+#             script_model = "Update_Data_Analyses",
+#             script_results = "Update_Data_Outputs",
+#             base_model = c("23.sq.floatQ", "23.land.update", "23.disc.update", 
+#                            "23.surv_db.update", "23.lcs_survey.update", "23.lcs_fisheries.update", 
+#                            "23.disc_weight.update", "23.growth.update", "23.maturity.update", 
+#                            "23.fecundity.update"),
+#             new_model = c("23.land.update", "23.disc.update", "23.surv_db.update",
+#                           "23.lcs_survey.update", "23.lcs_fisheries.update", "23.disc_weight.update",
+#                           "23.growth.update", "23.maturity.update", "23.fecundity.update", 
+#                           "23.mortality.update"))
+
+# Begin model exploration 
+#NewSensAnal(topic = "model",
+#            # names are based on new model 
+#            object = c("Update Terminal RecDev Year", "Update Initial RecDev Year", "S-R Steepness", "Bias Adjustment Years" ),
+#            author = "Team Thornyheads",
+#            folder_name = "Explore_RecDevs",
+#            script_model = "Explore_RecDevs_Analyses",
+#            script_results = "Explore_RecDevs_Outputs",
+#            base_model = c("23.mortality.update", "23.model.recdevs_termYear", "23.model.recdevs_initYear", 
+#                           "23.model.recdevs_steep"),
+#            new_model = c("23.model.recdevs_termYear", "23.model.recdevs_initYear", "23.model.recdevs_steep",
+#                          "23.model.recdevs_bias"))
+
+# Fleet Structure models
+# NewSensAnal(topic = "model",
+#             # names are based on new model 
+#             object = c("ThreeFleets_NoSlope_SplitTriennial", "ThreeFleets_UseSlope_CombineTriennial", "FourFleets_UseSlope_CombineTriennial", "FourFleets_NoSlope_CombineTriennial", "ThreeFleets_NoSlope_CombineTriennial" ),
+#             author = "Team Thornyheads",
+#             folder_name = "Explore_FleetStructure",
+#             script_model = "Explore_FleetStructure_Analyses",
+#             script_results = "Explore_FleetStructure_Outputs",
+#             base_model = c("23.model.recdevs_bias", "23.model.recdevs_bias", "23.model.recdevs_bias", 
+#                            "23.model.recdevs_bias", "23.model.recdevs_bias"),
+#             new_model = c("23.model.fleetstruct_1", "23.model.fleetstruct_2", "23.model.fleetstruct_3",
+#                           "23.model.fleetstruct_4", "23.model.fleetstruct_5"))
+
+# Francis Reweighting
+# NewSensAnal(topic = "model",
+#             # names are based on new model 
+#             object = c("Francis Reweighting"),
+#             author = "Team Thornyheads",
+#             folder_name = "Francis_Reweighting",
+#             script_model = "Francis_Reweighting_Analyses",
+#             script_results = "Francis_Reweighting_Outputs",
+#             base_model = c("23.model.fleetstruct_5"),
+#             new_model = c("23.model.francis"))
+
+
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("Survey Timing", "Settlement Events"),
             author = "Team Thornyheads",
-            folder_name = "Update_Data",
-            script_model = "Update_Data_Analyses",
-            script_results = "Update_Data_Outputs",
-            base_model = c("23.sq.floatQ", "23.land.update", "23.disc.update", 
-                           "23.surv_db.update", "23.lcs_survey.update", "23.lcs_fisheries.update", 
-                           "23.disc_weight.update", "23.growth.update", "23.maturity.update", 
-                           "23.fecundity.update"),
-            new_model = c("23.land.update", "23.disc.update", "23.surv_db.update",
-                          "23.lcs_survey.update", "23.lcs_fisheries.update", "23.disc_weight.update",
-                          "23.growth.update", "23.maturity.update", "23.fecundity.update", 
-                          "23.mortality.update"))
+            folder_name = "SS_Model_Warnings",
+            script_model = "SS_Model_Warnings_Analyses",
+            script_results = "SS_Model_Warnings_Outputs",
+            base_model = c("23.model.francis", "23.model.survey_timing"),
+            new_model = c("23.model.survey_timing", "23.model.settlement_events"))

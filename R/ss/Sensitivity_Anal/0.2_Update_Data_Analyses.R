@@ -152,11 +152,18 @@ source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=f
 
 # Load the .Rdata object with the parameters and data for 2023
 load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
+
+# Dont initially run models with hessian turned on for speed
+# but can turn on later and let run over night.
+# Values should be either: "" (run with hessian), or "-nohess"
+# (run withou hessian).
+use.hessian <- ""
+
 # Save directories and function
 # var.to.save <- c('dir_model', 
-        # 'Exe_path',
-        # 'dir_script',
-        # 'dir_SensAnal') 
+# 'Exe_path',
+# 'dir_script',
+# 'dir_SensAnal') 
 var.to.save <- ls()
 # ----------------------------------------------------------- 
 
@@ -360,9 +367,9 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.land.update folder
-      cleanRun = TRUE
+      cleanRun = TRUE,
       # clean the folder after the run
-      extra="-nohess"
+      extra=use.hessian
       )
 
 # 3.6  Let's plot the outputs from this model ----
@@ -602,7 +609,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.disc.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 4.6  Let's plot the outputs from this model ----
@@ -839,7 +846,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.surv_db.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 5.6  Let's plot the outputs from this model ----
@@ -1078,7 +1085,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.lcs_survey.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 6.6  Let's plot the outputs from this model ----
@@ -1318,7 +1325,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.lcs_fisheries.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 7.6  Let's plot the outputs from this model ----
@@ -1554,7 +1561,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.disc_weight.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 8.6  Let's plot the outputs from this model ----
@@ -1797,7 +1804,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.growth.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 9.6  Let's plot the outputs from this model ----
@@ -1953,12 +1960,12 @@ Ctl23_maturity_update <- SS_readctl_3.30(
       verbose = TRUE
       )
 
-Ctl23_maturity_update$MG_parms[SS_Param2023$MG_params$Mat$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Mat$base_2023$Value
-Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT <- -1*Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT
 # Make your modification if applicable
 # Code modifying the control file 
 # ..... 
 # ..... 
+Ctl23_maturity_update$MG_parms[SS_Param2023$MG_params$Mat$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Mat$base_2023$Value
+#Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT <- -1*Ctl23_maturity_update$MG_parms["Mat_slope_Fem_GP_1",]$INIT
 
 
 # Save the control file for the model
@@ -2035,7 +2042,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.maturity.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 10.6  Let's plot the outputs from this model ----
@@ -2194,17 +2201,23 @@ Ctl23_fecundity_update <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+Ctl23_fecundity_update$MG_parms[SS_Param2023$MG_params$Fec$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$Fec$base_2023$Value
+names(Ctl23_fecundity_update)
+Ctl23_fecundity_update$fecundity_option<-2
+
+#scaling of the a parameter (was divided by 1000 and divided by 1000 again)
+#see:https://github.com/EJDick-NOAA/Rockfish-Fecundity
+
+Ctl23_fecundity_update$MG_parms["Eggs_alpha_Fem_GP_1", ]$INIT<-Ctl23_fecundity_update$MG_parms["Eggs_alpha_Fem_GP_1", ]$INIT/1000
 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_fecundity_update ,
-      # outfile = file.path(Dir_23_fecundity_update, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+ SS_writectl(
+       ctllist =  Ctl23_fecundity_update ,
+       outfile = file.path(Dir_23_fecundity_update, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -2272,7 +2285,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.fecundity.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = "-nohess"
+      extras = use.hessian
       )
 
 # 11.6  Let's plot the outputs from this model ----
@@ -2432,15 +2445,15 @@ Ctl23_mortality_update <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_mortality_update$MG_parms[SS_Param2023$MG_params$M$base_2023$Parameter,]$INIT <- rep(SS_Param2023$MG_params$M$base_2023$Value[1], 4)
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_mortality_update ,
-      # outfile = file.path(Dir_23_mortality_update, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+ctllist =  Ctl23_mortality_update ,
+outfile = file.path(Dir_23_mortality_update, 'SST_control.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -2506,9 +2519,8 @@ run_SS(SS_version = '3.30.21',
       # A 'run' folder is created if needed (where output files will be stored)
       copy_files = TRUE,
       # copy the input files from the 23.mortality.update folder
-      cleanRun = TRUE,
+      cleanRun = FALSE,
       # clean the folder after the run
-      extras = "-nohess"
       )
 
 # 12.6  Let's plot the outputs from this model ----

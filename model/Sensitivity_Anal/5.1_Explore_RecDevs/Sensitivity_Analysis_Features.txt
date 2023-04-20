@@ -1,0 +1,49 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic:  Update Terminal RecDev Year Update Initial RecDev Year S-R Steepness Bias Adjustment Years 
+# 	- Update Terminal RecDev Year 
+# 	- Update Initial RecDev Year 
+# 	- S-R Steepness 
+# 	- Bias Adjustment Years 
+# Author:  Team Thornyheads 
+# Date: 2023-04-10 13:43:47 
+# Sensitivity Analysis ID: Item 5.1 
+# Names of the models created:
+# -  23.model.recdevs_termYear 
+# -  23.model.recdevs_initYear 
+# -  23.model.recdevs_steep 
+# -  23.model.recdevs_bias 
+# *** 
+# 
+# This analysis has been developed based on the following models: 
+# New model 	 Base model
+# 23.model.recdevs_termYear 	 23.mortality.update 
+# 23.model.recdevs_initYear 	 23.model.recdevs_termYear 
+# 23.model.recdevs_steep 	 23.model.recdevs_initYear 
+# 23.model.recdevs_bias 	 23.model.recdevs_steep 
+# 
+# Results are stored in the following foler: 
+#	 C:/GitHub/Official_shortspine_thornyhead_2023/model/Sensitivity_Anal/5.1_Explore_RecDevs 
+# Name of the script used to build the new model: 
+#	 C:/GitHub/Official_shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.1_Explore_RecDevs_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/GitHub/Official_shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.1_Explore_RecDevs_Outputs.R .R
+# 
+# General features: 
+# Exploration of recruitment deviation options including the initial and terminal years, steepness assumptions, and bias adjustment. 
+# 
+# Model features:
+# - Model 23.model.recdevs_termYear:
+# Changing the terminal year. 
+# - Model 23.model.recdevs_initYear:
+# Changing the initial year. 
+# - Model 23.model.recdevs_steep:
+# Changing the steepness parameter to h=0.72 from TOR. 
+# - Model 23.model.recdevs_bias:
+# Updating bias correction parameters. 
+# ============================================================ #
+

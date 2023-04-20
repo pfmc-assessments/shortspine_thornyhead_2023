@@ -1,0 +1,54 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic:  ThreeFleets_NoSlope_SplitTriennial ThreeFleets_UseSlope_CombineTriennial FourFleets_UseSlope_CombineTriennial FourFleets_NoSlope_CombineTriennial ThreeFleets_NoSlope_CombineTriennial 
+# 	- ThreeFleets_NoSlope_SplitTriennial 
+# 	- ThreeFleets_UseSlope_CombineTriennial 
+# 	- FourFleets_UseSlope_CombineTriennial 
+# 	- FourFleets_NoSlope_CombineTriennial 
+# 	- ThreeFleets_NoSlope_CombineTriennial 
+# Author:  Team Thornyheads 
+# Date: 2023-04-13 13:36:07 
+# Sensitivity Analysis ID: Item 5.2 
+# Names of the models created:
+# -  23.model.fleetstruct_1 
+# -  23.model.fleetstruct_2 
+# -  23.model.fleetstruct_3 
+# -  23.model.fleetstruct_4 
+# -  23.model.fleetstruct_5 
+# *** 
+# 
+# This analysis has been developed based on the following models: 
+# New model 	 Base model
+# 23.model.fleetstruct_1 	 23.model.recdevs_bias 
+# 23.model.fleetstruct_2 	 23.model.recdevs_bias 
+# 23.model.fleetstruct_3 	 23.model.recdevs_bias 
+# 23.model.fleetstruct_4 	 23.model.recdevs_bias 
+# 23.model.fleetstruct_5 	 23.model.recdevs_bias 
+# 
+# Results are stored in the following foler: 
+#	 /Users/andrea/Library/CloudStorage/Box-Box/StockSynthesis Course/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.2_Explore_FleetStructure 
+# Name of the script used to build the new model: 
+#	 /Users/andrea/Library/CloudStorage/Box-Box/StockSynthesis Course/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.2_Explore_FleetStructure_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/andrea/Library/CloudStorage/Box-Box/StockSynthesis Course/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.2_Explore_FleetStructure_Outputs.R .R
+# 
+# General features: 
+# We are testing different possible combinations of fisheries fleet and surveys to potentially reduce model complexity 
+# 
+# Model features:
+# - Model 23.model.fleetstruct_1:
+# 23.model.recdevs_bias + Three fleets, no slope surveys, and model-based indices 
+# - Model 23.model.fleetstruct_2:
+# 23.model.recdevs_bias + Three fleets, use slope surveys, and model-based indices 
+# - Model 23.model.fleetstruct_3:
+# 23.model.recdevs_bias + Four fleets, use slope survey, and model-based indices 
+# - Model 23.model.fleetstruct_4:
+# 23.model.recdevs_bias + Four fleets, no slope surveys, and model-based indices 
+# - Model 23.model.fleetstruct_5:
+# 23.model.recdevs_bias + Three fleets, no slope survey, and model-based indices 
+# ============================================================ #
+

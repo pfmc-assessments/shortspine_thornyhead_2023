@@ -56,6 +56,41 @@ if(!file.exists(file.path)){
   
 }
 
+# File path for depth covariate included
+file.path <- file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023_depth.csv")
+if(!file.exists(file.path)){
+  wcgbt.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dg_depth.Rdata"), "WCGBTS", "delta-gamma")
+  wcgbt.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dln_depth.Rdata"), "WCGBTS", "delta-lognormal")
+  
+  triennial.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "triennial_index_dg_depth.Rdata"), "Triennial", "delta-gamma")
+  triennial.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "triennial_index_dln_depth.Rdata"), "Triennial", "delta-lognormal")
+  
+  nwfsc_slope.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "nwfsc_slope_index_dg.Rdata"), "NWFSC Slope", "delta-gamma")
+  nwfsc_slope.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "nwfsc_slope_index_dln.Rdata"), "NWFSC Slope", "delta-lognormal")
+  
+  afsc_slope.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "afsc_slope_index_dg.Rdata"), "AFSC Slope", "delta-gamma")
+  afsc_slope.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "afsc_slope_index_dln.Rdata"), "AFSC Slope", "delta-lognormal")
+  
+  
+  indices <- bind_rows(triennial.indices.dg, triennial.indices.dln, 
+                       wcgbt.indices.dg, wcgbt.indices.dln, 
+                       nwfsc_slope.indices.dg, nwfsc_slope.indices.dln,
+                       afsc_slope.indices.dg, afsc_slope.indices.dln) %>%
+    mutate(
+      survey=recode_factor(
+        survey, 
+        !!!c(
+          "Triennial" = "Triennial",
+          "AFSC Slope" = "AFSC Slope Survey",
+          "NWFSC Slope" = "NWFSC Slope Survey",
+          "WCGBTS" = "WCGBTS"
+        )
+      )
+    )
+  write.csv(indices, file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023_depth.csv"))
+  
+}
+
 indices <- read_csv(file.path, col_names = TRUE, col_types="dfddddddff")
 
 ggplot(indices %>% filter(area=="Total"), aes(x=year, y=est, ymin=lwr, ymax=upr, color=survey, fill=survey, shape=survey, linetype=method))+

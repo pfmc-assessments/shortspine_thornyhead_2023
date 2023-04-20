@@ -81,7 +81,8 @@ clean_bat <- function(path = ".", verbose = TRUE) {
     "warning",
     "console.output",
     "data_echo.ss_new",
-    "data.ss_new"
+    "data.ss_new",
+    "covar.sso"
   )
   filesSave <- list.files(path)[get_nam(list.files(path)) %in% get_nam(filesSave)]
   

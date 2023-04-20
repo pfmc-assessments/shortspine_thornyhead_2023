@@ -1,0 +1,27 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic:  Francis Reweighting 
+# 	- Francis Reweighting 
+# Author:  Team Thornyheads 
+# Date: 2023-04-17 10:43:44 
+# Sensitivity Analysis ID: Item 5.3 
+# Name of the model created: 23.model.francis 
+# *** 
+# 
+# This analysis has been developped based on the following model:  23.model.fleetstruct_5 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.3_Francis_Reweighting 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.3_Francis_Reweighting_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.3_Francis_Reweighting_Outputs.R .R
+# 
+# Features: 
+Applying Francis Data Weighting method to the 2023 condensed fleet structure model. As the the number of fleets have changed, and a new abundance index method is used, the old 2013 weights are no longer valid and need to be recalculated. 
+# ============================================================ #
+

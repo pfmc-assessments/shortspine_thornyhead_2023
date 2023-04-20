@@ -1,0 +1,25 @@
+Note 1 Information: Max data length bin: 72  < max pop len bins: 90; so will accumulate larger pop len bins
+Note 2 Suggestion: This model has just one settlement event. Changing to recr_dist_method 4 and removing the recruitment distribution parameters at the end of the MG parms section (below growth parameters) will produce identical results and simplify the model.
+Note 3 Information: settle_month is less than spawn_month, so logical age at settlement calculated to be: 0  for settle_time 1.  Does not match read value of 1 are you sure? 
+Note 4 Information: Max harvest rate typically is >1.0 for F_method 2, 3 or 4 0.9
+Warning 1 : Converting asymptotic retention parameter to 1/(1+e(-x)) format for fleet: 1 parm: 9
+++      because parm min was >=0.0
+++      old min, max, init, prior:  0.0001 1 0.9 0.9; search for <now check> in echoinput.sso for parm_type
+Warning 2 : new min, max, init, prior:  -10 10 2.19722 2.19722
+Warning 3 : Converting asymptotic retention parameter to 1/(1+e(-x)) format for fleet: 2 parm: 19
+++      because parm min was >=0.0
+++      old min, max, init, prior:  0.0001 1 0.9 0.9; search for <now check> in echoinput.sso for parm_type
+Warning 4 : new min, max, init, prior:  -10 10 2.19722 2.19722
+Warning 5 : Converting asymptotic retention parameter to 1/(1+e(-x)) format for fleet: 3 parm: 29
+++      because parm min was >=0.0
+++      old min, max, init, prior:  0.0001 1 0.9 0.9; search for <now check> in echoinput.sso for parm_type
+Warning 6 : new min, max, init, prior:  -10 10 2.19722 2.19722
+Warning 7 : parameter init value is greater than parameter max 11.3832 > 10 for parm: 3; search for <now check> in echoinput.sso for parm_type
+Warning 8 : parameter init value is less than parameter min 0.00989856 < 0.01 for parm: 5; search for <now check> in echoinput.sso for parm_type
+Warning 9 : parameter init value is greater than parameter max 9.1733 > 3 for parm: 16; search for <now check> in echoinput.sso for parm_type
+Warning 10 : parameter init value is greater than parameter max 66.0728 > 3 for parm: 17; search for <now check> in echoinput.sso for parm_type
+Warning 11 : Final gradient: 0.000532853 is larger than final_conv: 0.0001
+Warning 12 : Time-vary parms not bound checked
+Warning 13 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
+Note 5 Information:  N parameters that are on or within 1% of min-max bound: 3; check results, variance may be suspect
+ 13 warnings  and 5 notes 

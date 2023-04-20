@@ -66,10 +66,20 @@ Dir_Base23_growth_update <- file.path(dir_SensAnal, '0.2_Update_Data','7_23.grow
 Dir_Base23_maturity_update <- file.path(dir_SensAnal, '0.2_Update_Data','8_23.maturity.update' , 'run',fsep = fsep)
 # Path to the base model (23.fecundity.update) repertory
 Dir_Base23_fecundity_update <- file.path(dir_SensAnal, '0.2_Update_Data','9_23.fecundity.update' , 'run',fsep = fsep)
+# Path to the base model (23.mortality.update) repertory
+Dir_Base23_mortality_update <- file.path(dir_SensAnal, '0.2_Update_Data','10_23.mortality.update' , 'run',fsep = fsep)
+# Path to the RecDev Exploratory model (23.model.recdevs_termYear) repertory
+Dir_Explore23_RecDev_termYear <- file.path(dir_SensAnal, '5.1_Explore_RecDevs','1_23.model.recdevs_termYear' , 'run',fsep = fsep)
+# Path to the RecDev Exploratory model (23.model.recdevs_initYear) repertory
+Dir_Explore23_RecDevs_initYear <- file.path(dir_SensAnal, '5.1_Explore_RecDevs','2_23.model.recdevs_initYear' , 'run',fsep = fsep)
 
-dirlist <- c(Dir_Base23_sq_floatQ, Dir_Base23_land_update, Dir_Base23_disc_update,
-             Dir_Base23_surv_db_update, Dir_Base23_lcs_survey_update, Dir_Base23_lcs_fisheries_update,
-             Dir_Base23_disc_weight_update)
+# dirlist <- c(Dir_Base23_sq_floatQ, Dir_Base23_land_update, Dir_Base23_disc_update,
+#              Dir_Base23_surv_db_update, Dir_Base23_lcs_survey_update, Dir_Base23_lcs_fisheries_update,
+#              Dir_Base23_disc_weight_update)
+
+#dirlist <- c(Dir_Explore23_RecDev_termYear, Dir_Explore23_RecDevs_initYear)
+
+dirlist <- c(Dir_Base23_mortality_update)
 
 for(i in 1:length(dirlist)){
   
