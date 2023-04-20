@@ -126,7 +126,6 @@ thorny_GEMM %>%
 # All fishing operations of the catch shares component are recorded. Thus, the estimated discard rates is supposed
 #to be exact
 
-
 disc_catch_share <- read.csv(paste0(processed_discards_path, "/shortspine_thornyhead_cs_wcgop_discard_all_years_Gear_Grouped_States_2023-02-09.csv"))
 # Not all fishing operations of the non-catch shares component are recorded. Thus, the discard rates are estimated
 #while accounting for the sampling size through a bootstrapping procedure
@@ -589,7 +588,8 @@ Nsamp <- disc_lencomp_WCGOP%>%
                                 fleet == "NOther" ~ 3,
                                 fleet == "SOther" ~ 4))%>%
   group_by(Year, fleet)%>%
-  summarize(Nsamp = sum(N_Fish)) #PLEASE DOUBLE CHECK THIS I'M UNSURE IF THIS IS CORRECT 
+  summarize(Nsamp = sum(N_Fish)) %>%
+  mutate(Nsamp=Nsamp^0.6) #PLEASE DOUBLE CHECK THIS I'M UNSURE IF THIS IS CORRECT 
   
   
 Lencomp_WCGOP_allFleets_1 <- left_join(lencomp_WCGOP_1, Nsamp, by = c("Year", "fleet"))
@@ -599,7 +599,7 @@ Lencomp_WCGOP_allFleets <- Lencomp_WCGOP_allFleets_1%>%
   dplyr::mutate(Gender = 0) %>%
   dplyr::mutate(Part = 1) %>%
   select(Year, Seas, fleet, Gender, Part, Nsamp, starts_with("f"))%>%
-  rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Nsamp)%>%
+  dplyr::rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Nsamp)%>%
   dplyr::mutate(m6 = 0, m8 = 0, m10 = 0, m12 = 0, m14 = 0, m16 = 0,
          m18 = 0, m20 = 0, m22 = 0, m24 = 0, m26 = 0, m28 = 0,
          m30 = 0, m32 = 0, m34 = 0, m36 = 0, m38 = 0, m40 = 0,
@@ -619,7 +619,7 @@ Lencomp_Pikitch_1<-len_comp %>%
   rename_at(vars(paste0("L.", seq(from = 6, to = 72, by = 2))), 
             ~paste0("f", seq(from = 6, to = 72, by = 2)))%>%
   select(Year, Seas, fleet, Gender, Part, Num.Study.Lengths, starts_with("f"))%>%
-  rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Num.Study.Lengths)%>%
+  dplyr::rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Num.Study.Lengths)%>%
   dplyr::mutate(m6 = 0, m8 = 0, m10 = 0, m12 = 0, m14 = 0, m16 = 0,
                 m18 = 0, m20 = 0, m22 = 0, m24 = 0, m26 = 0, m28 = 0,
                 m30 = 0, m32 = 0, m34 = 0, m36 = 0, m38 = 0, m40 = 0,
@@ -633,8 +633,9 @@ Lencomp_Pikitch_1<-len_comp %>%
 #THESE SAMPLE SIZES ARE MUCH LARGER THAN THE ORIGINAL DATA AND I'M NOT SURE IF THEY'RE CORRECT
 Nsamp_Pik<-len_comp%>% 
   group_by(Year)%>% 
-  rename(Yr=Year)%>%
-  summarize(Nsamp = sum(Num.Study.Lengths))#DOUBLE CHECK THIS 
+  dplyr::rename(Yr=Year)%>%
+  summarize(Nsamp = sum(Num.Study.Lengths)) %>%
+  mutate(Nsamp = Nsamp^0.6)#DOUBLE CHECK THIS 
 
 Lencomp_Pikitch_2<-left_join(Lencomp_Pikitch_1,Nsamp_Pik, by = "Yr" )
 
@@ -682,7 +683,8 @@ Nsamp_ThreeFleets<-disc_lencomp_WCGOP%>%
                                 fleet == "NOther" ~ 3,
                                 fleet == "SOther" ~ 3))%>%
   group_by(Year, fleet)%>%
-  summarize(Nsamp = sum(N_Fish)) #Same here, please check 
+  summarize(Nsamp = sum(N_Fish)) %>%
+  mutate(Nsamp = Nsamp^0.6) #Same here, please check 
 
 
 Lencomp_WCGOP_ThreeFleets_2 <- left_join(Lencomp_WCGOP_ThreeFleets_1, Nsamp, by = c("Year", "fleet"))
@@ -692,7 +694,7 @@ Lencomp_WCGOP_ThreeFleets <- Lencomp_WCGOP_ThreeFleets_2%>%
   dplyr::mutate(Gender = 0) %>%
   dplyr::mutate(Part = 1) %>%
   select(Year, Seas, fleet, Gender, Part, Nsamp, starts_with("f"))%>%
-  rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Nsamp)%>%
+  dplyr::rename(Yr=Year, Seas=Seas, Flt=fleet, Gender=Gender, Part=Part, Nsamp=Nsamp)%>%
   dplyr::mutate(m6 = 0, m8 = 0, m10 = 0, m12 = 0, m14 = 0, m16 = 0,
                 m18 = 0, m20 = 0, m22 = 0, m24 = 0, m26 = 0, m28 = 0,
                 m30 = 0, m32 = 0, m34 = 0, m36 = 0, m38 = 0, m40 = 0,
