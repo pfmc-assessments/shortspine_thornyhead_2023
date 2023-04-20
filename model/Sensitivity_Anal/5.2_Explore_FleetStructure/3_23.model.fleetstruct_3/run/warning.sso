@@ -26,7 +26,8 @@ Warning 13 : parameter init value is greater than parameter max 11.3832 > 10 for
 Warning 14 : parameter init value is less than parameter min 0.00989856 < 0.01 for parm: 5; search for <now check> in echoinput.sso for parm_type
 Warning 15 : parameter init value is greater than parameter max 9.1733 > 3 for parm: 16; search for <now check> in echoinput.sso for parm_type
 Warning 16 : parameter init value is greater than parameter max 66.0728 > 3 for parm: 17; search for <now check> in echoinput.sso for parm_type
-Warning 17 : Time-vary parms not bound checked
-Warning 18 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
-Note 5 Information:  N parameters that are on or within 1% of min-max bound: 7; check results, variance may be suspect
- 18 warnings  and 5 notes 
+Warning 17 : Final gradient: 0.000317124 is larger than final_conv: 0.0001
+Warning 18 : Time-vary parms not bound checked
+Warning 19 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
+Note 5 Information:  N parameters that are on or within 1% of min-max bound: 6; check results, variance may be suspect
+ 19 warnings  and 5 notes 
