@@ -1,0 +1,49 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic:  Remove small sample size LCs Sex-Specific Survey Selectivity Improve Trawl_N LC Fit Improve Other LC Fits 
+# 	- Remove small sample size LCs 
+# 	- Sex-Specific Survey Selectivity 
+# 	- Improve Trawl_N LC Fit 
+# 	- Improve Other LC Fits 
+# Author:  Team Thornyheads 
+# Date: 2023-04-20 13:16:01 
+# Sensitivity Analysis ID: Item 5.5 
+# Names of the models created:
+# -  23.model.sample_sizes 
+# -  23.model.sexed_survey_selectivity 
+# -  23.model.improve_trawln 
+# -  23.model.improve_other 
+# *** 
+# 
+# This analysis has been developed based on the following models: 
+# New model 	 Base model
+# 23.model.sample_sizes 	 23.model.settlement_events 
+# 23.model.sexed_survey_selectivity 	 23.model.sample_sizes 
+# 23.model.improve_trawln 	 23.model.sexed_survey_selectivity 
+# 23.model.improve_other 	 23.model.improve_trawln 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.5_Improve_LC_Fits 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.5_Improve_LC_Fits_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.5_Improve_LC_Fits_Outputs.R .R
+# 
+# General features: 
+# Improve fits to length composition data by modifying estimated selectivity parameters and remove poor data. This includes removing LCs where sample sizes are <11.5, using sex-specific selectivities for survey length comps, and modifying selectivity pars for the fisheries fleets. 
+# 
+# Model features:
+# - Model 23.model.sample_sizes:
+# 23.model.settlement_events + remove small sample size LCs 
+# - Model 23.model.sexed_survey_selectivity:
+# 23.model.sample_sizes + use sex-specific survey selectivities 
+# - Model 23.model.improve_trawln:
+# 23.model.sexed_survey_selectivity + improve Trawl_N fits 
+# - Model 23.model.improve_other:
+# 23.model.improve_trawln + improve fits to other fleet LCs 
+# ============================================================ #
+
