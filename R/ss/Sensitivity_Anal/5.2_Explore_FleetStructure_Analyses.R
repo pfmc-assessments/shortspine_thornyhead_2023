@@ -422,7 +422,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_1 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
@@ -637,8 +637,8 @@ Ctl23_model_fleetstruct_2 <- SS_readctl_3.30(
 # ..... 
 Ctl23_model_fleetstruct_2$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_UseSlope_CombineTriennial	
 Ctl23_model_fleetstruct_2$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial	
-Ctl23_model_fleetstruct_2$Q_options <- as_tibble(SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial) %>% filter(fleet != 5) %>% as.data.frame 	
-Ctl23_model_fleetstruct_2$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial2", rowname))) %>% tibble::column_to_rownames()
+Ctl23_model_fleetstruct_2$Q_options <- as_tibble(SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial) %>% filter(fleet != 4) %>% as.data.frame 	
+Ctl23_model_fleetstruct_2$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial_Early", rowname))) %>% tibble::column_to_rownames()
 
 Ctl23_model_fleetstruct_2$size_selex_types <- SS_Param2023$size_selex_types$data$ThreeFleets_UseSlope_CombineTriennial	
 Ctl23_model_fleetstruct_2$age_selex_types <- SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial	
@@ -725,7 +725,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_2 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
@@ -935,8 +935,8 @@ Ctl23_model_fleetstruct_3 <- SS_readctl_3.30(
 # ..... 
 Ctl23_model_fleetstruct_3$Nfleets <- SS_Param2023$Nfleets$data$FourFleets_UseSlope_CombineTriennial	
 Ctl23_model_fleetstruct_3$fleetnames <- SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial	
-Ctl23_model_fleetstruct_3$Q_options <- as_tibble(SS_Param2023$Q_options$data$FourFleets_UseSlope_CombineTriennial	) %>% filter(fleet != 6) %>% as.data.frame 	
-Ctl23_model_fleetstruct_3$Q_parms <- SS_Param2023$Q_parms$data$FourFleets_UseSlope_CombineTriennial	 %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial2", rowname))) %>% tibble::column_to_rownames()
+Ctl23_model_fleetstruct_3$Q_options <- as_tibble(SS_Param2023$Q_options$data$FourFleets_UseSlope_CombineTriennial	) %>% filter(fleet != 5) %>% as.data.frame 	
+Ctl23_model_fleetstruct_3$Q_parms <- SS_Param2023$Q_parms$data$FourFleets_UseSlope_CombineTriennial	 %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial_Early", rowname))) %>% tibble::column_to_rownames()
 
 Ctl23_model_fleetstruct_3$size_selex_types <- SS_Param2023$size_selex_types$data$FourFleets_UseSlope_CombineTriennial	
 Ctl23_model_fleetstruct_3$age_selex_types <- SS_Param2023$age_selex_types$data$FourFleets_UseSlope_CombineTriennial	
@@ -1020,7 +1020,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_3 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
@@ -1229,8 +1229,8 @@ Ctl23_model_fleetstruct_4 <- SS_readctl_3.30(
 # ..... 
 Ctl23_model_fleetstruct_4$Nfleets <- SS_Param2023$Nfleets$data$FourFleets_NoSlope_CombineTriennial	
 Ctl23_model_fleetstruct_4$fleetnames <- SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial		
-Ctl23_model_fleetstruct_4$Q_options <- as_tibble(SS_Param2023$Q_options$data$FourFleets_NoSlope_CombineTriennial) %>% filter(fleet != 6) %>% as.data.frame 	
-Ctl23_model_fleetstruct_4$Q_parms <- SS_Param2023$Q_parms$data$FourFleets_NoSlope_CombineTriennial %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial2", rowname))) %>% tibble::column_to_rownames()
+Ctl23_model_fleetstruct_4$Q_options <- as_tibble(SS_Param2023$Q_options$data$FourFleets_NoSlope_CombineTriennial) %>% filter(fleet != 5) %>% as.data.frame 	
+Ctl23_model_fleetstruct_4$Q_parms <- SS_Param2023$Q_parms$data$FourFleets_NoSlope_CombineTriennial %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial_Early", rowname))) %>% tibble::column_to_rownames()
 
 Ctl23_model_fleetstruct_4$size_selex_types <- SS_Param2023$size_selex_types$data$FourFleets_NoSlope_CombineTriennial
 Ctl23_model_fleetstruct_4$age_selex_types <- SS_Param2023$age_selex_types$data$FourFleets_NoSlope_CombineTriennial
@@ -1313,7 +1313,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_4 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
@@ -1523,8 +1523,8 @@ Ctl23_model_fleetstruct_5 <- SS_readctl_3.30(
 # ..... 
 Ctl23_model_fleetstruct_5$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_NoSlope_CombineTriennial	
 Ctl23_model_fleetstruct_5$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial			
-Ctl23_model_fleetstruct_5$Q_options <- as_tibble(SS_Param2023$Q_options$data$ThreeFleets_NoSlope_CombineTriennial	) %>% filter(fleet != 5) %>% as.data.frame 	
-Ctl23_model_fleetstruct_5$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_NoSlope_CombineTriennial %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial2", rowname))) %>% tibble::column_to_rownames()
+Ctl23_model_fleetstruct_5$Q_options <- as_tibble(SS_Param2023$Q_options$data$ThreeFleets_NoSlope_CombineTriennial	) %>% filter(fleet != 4) %>% as.data.frame 	
+Ctl23_model_fleetstruct_5$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_NoSlope_CombineTriennial %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial_Early", rowname))) %>% tibble::column_to_rownames()
 
 Ctl23_model_fleetstruct_5$size_selex_types <- SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_CombineTriennial	
 Ctl23_model_fleetstruct_5$age_selex_types <- SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_CombineTriennial	
@@ -1610,7 +1610,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_5 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 

@@ -35,70 +35,73 @@ max.size.unsexed <- 16  # see R/unsexed_length_analysis.R
 
 # Triennial -----------
 # Get triennial data once since its shared by the triennial1 and triennial2 surveys
-out.dir <- file.path(outputs.dir, "surveys", "triennial")
-fleet.num <- 5
+#out.dir <- file.path(outputs.dir, "surveys", "triennial")
+#fleet.num <- 5
 
 triennial.survey.data <- get.survey.data(survey.name = "Triennial", write=FALSE)
 
-t.survey.catch <- triennial.survey.data$catch
-t.survey.bio   <- triennial.survey.data$bio
-t.survey.bio$Lengths <- t.survey.bio$Lengths %>% filter(Year > 1986)
+# t.survey.catch <- triennial.survey.data$catch
+# t.survey.bio   <- triennial.survey.data$bio
+# t.survey.bio$Lengths <- t.survey.bio$Lengths %>% filter(Year > 1986)
 
-t.survey.strata = CreateStrataDF.fn(
-  depths.shallow = 100,
-  depths.deep    = 500,
-  lats.south     = 34.5,
-  lats.north     = 49
-)
-
-t.eff.n <-  GetN.fn(dir     = out.dir, 
-                    dat     = t.survey.bio$Lengths, 
-                    type    = "length", 
-                    species = "thorny")
-
-
-t.length.freq <-  SurveyLFs.fn(dir      = out.dir, 
-                               datL     = t.survey.bio$Lengths, 
-                               datTows  = t.survey.catch,
-                               strat.df = t.survey.strata,
-                               lgthBins = length.bins,
-                               nSamps   = t.eff.n,
-                               sex      = 3,
-                               maxSizeUnsexed  = max.size.unsexed, 
-                               sexRatioUnsexed = 0.5,
-                               fleet = fleet.num,
-                               month = 7)
+# PlotMap.fn(dir=NULL, dat=t.survey.catch)
+# 
+# t.survey.strata = CreateStrataDF.fn(
+#   depths.shallow = 100,
+#   depths.deep    = 500,
+#   lats.south     = 34.5,
+#   lats.north     = 49
+# )
+# 
+# t.eff.n <-  GetN.fn(dir     = out.dir, 
+#                     dat     = t.survey.bio$Lengths, 
+#                     type    = "length", 
+#                     species = "thorny")
+# 
+# 
+# t.length.freq <-  SurveyLFs.fn(dir      = out.dir, 
+#                                datL     = t.survey.bio$Lengths, 
+#                                datTows  = t.survey.catch,
+#                                strat.df = t.survey.strata,
+#                                lgthBins = length.bins,
+#                                nSamps   = t.eff.n,
+#                                sex      = 3,
+#                                maxSizeUnsexed  = max.size.unsexed, 
+#                                sexRatioUnsexed = 0.5,
+#                                fleet = fleet.num,
+#                                month = 7)
 
 # Triennial 1 Survey (triennial survey all years but low depth)
-out.dir <- file.path(outputs.dir, "surveys", "triennial1")
+out.dir <- file.path(outputs.dir, "surveys", "triennial_early")
 fleet.num <- 5
 
-t1.survey.catch <- triennial.survey.data$catch %>% filter(Depth_m <= 366)
-t1.survey.bio   <- triennial.survey.data$bio
-t1.survey.bio$Lengths <- t1.survey.bio$Lengths %>% filter(Depth_m <= 366, Year > 1986)
+tri_early.survey.catch <- triennial.survey.data$catch %>% filter(Year < 1995)
+tri_early.survey.bio   <- triennial.survey.data$bio
+tri_early.survey.bio$Lengths <- tri_early.survey.bio$Lengths %>% filter(Year < 1995, Year > 1986)
 
-t1.survey.strata = CreateStrataDF.fn(
-  depths.shallow = 100,
-  depths.deep    = 400,
-  lats.south     = 34.5,
-  lats.north     = 49
+tri_early.survey.strata = CreateStrataDF.fn(
+  names          = c("south_shallow", "south_deep", "north_shallow", "north_deep"),
+  depths.shallow = c(55, 200, 55, 200),
+  depths.deep    = c(200, 350, 200, 350),
+  lats.south     = c(36, 36, 42, 42),
+  lats.north     = c(42, 42, 49, 49)
 )
 
-PlotStrata.fn(t1.survey.strata, strata.groups = c("A"), title="Triennial 1 Survey Strata")
+PlotStrata.fn(tri_early.survey.strata, strata.groups = c("A"), title="Early Triennial Survey Strata")
 
-t1.index = Biomass.fn(dir = out.dir, dat = t1.survey.catch, strat.df = t1.survey.strata, fleet = fleet.num, month=7)
+tri_early.index = Biomass.fn(dir = out.dir, dat = tri_early.survey.catch, strat.df = tri_early.survey.strata, fleet = fleet.num, month=7)
 
-t1.eff.n <- GetN.fn(dir     = out.dir, 
-                    dat     = t1.survey.bio$Lengths, 
+tri_early.eff.n <- GetN.fn(dir     = out.dir, 
+                    dat     = tri_early.survey.bio$Lengths, 
                     type    = "length", 
                     species = "thorny")
 
-t1.length.freq <- SurveyLFs.fn(dir      = out.dir, 
-                               datL     = t1.survey.bio$Lengths, 
-                               datTows  = t1.survey.catch,
-                               strat.df = t1.survey.strata,
+tri_early.length.freq <- SurveyLFs.fn(dir      = out.dir, 
+                               datL     = tri_early.survey.bio$Lengths, 
+                               datTows  = tri_early.survey.catch,
+                               strat.df = tri_early.survey.strata,
                                lgthBins = length.bins,
-                               nSamps   = t1.eff.n,
+                               nSamps   = tri_early.eff.n,
                                sex      = 3,
                                maxSizeUnsexed  = max.size.unsexed, 
                                sexRatioUnsexed = 0.5,
@@ -106,35 +109,36 @@ t1.length.freq <- SurveyLFs.fn(dir      = out.dir,
                                month = 7)
 
 # Triennial 2 Survey (triennial survey al years but high depth)
-out.dir <- file.path(outputs.dir, "surveys", "triennial2")
+out.dir <- file.path(outputs.dir, "surveys", "triennial_late")
 fleet.num <- 6
 
-t2.survey.catch <- triennial.survey.data$catch %>% filter(Depth_m > 366)
-t2.survey.bio   <- triennial.survey.data$bio
-t2.survey.bio$Lengths <- t2.survey.bio$Lengths %>% filter(Depth_m > 366)
+tri_late.survey.catch <- triennial.survey.data$catch %>% filter(Year >= 1995)
+tri_late.survey.bio   <- triennial.survey.data$bio
+tri_late.survey.bio$Lengths <- tri_late.survey.bio$Lengths %>% filter(Year >= 1995)
 
-t2.survey.strata = strata = CreateStrataDF.fn(
-  depths.shallow = 400,
-  depths.deep    = 500,
-  lats.south     = 32,
-  lats.north     = 49
+tri_late.survey.strata = strata = CreateStrataDF.fn(
+  names          = c("south_shallow", "south_deep", "north_shallow", "north_deep"),
+  depths.shallow = c(55, 200, 55, 200),
+  depths.deep    = c(200, 549, 200, 549),
+  lats.south     = c(34.5, 34.5, 40, 40),
+  lats.north     = c(40, 40, 49, 49)
 )
 
-PlotStrata.fn(t2.survey.strata, strata.groups = c("A"), title="Triennial 2 Survey Strata")
+PlotStrata.fn(tri_late.survey.strata, strata.groups = c("A"), title="Late Triennial Survey Strata")
 
-t2.index = Biomass.fn(dir = out.dir, dat = t2.survey.catch, strat.df = t2.survey.strata, fleet = fleet.num, month=7)
+tri_late.index = Biomass.fn(dir = out.dir, dat = tri_late.survey.catch, strat.df = tri_late.survey.strata, fleet = fleet.num, month=7)
 
-t2.eff.n <- GetN.fn(dir     = out.dir, 
-                    dat     = t2.survey.bio$Lengths, 
+tri_late.eff.n <- GetN.fn(dir     = out.dir, 
+                    dat     = tri_late.survey.bio$Lengths, 
                     type    = "length", 
                     species = "thorny")
 
-t2.length.freq <- SurveyLFs.fn(dir      = out.dir, 
-                               datL     = t2.survey.bio$Lengths, 
-                               datTows  = t2.survey.catch,
-                               strat.df = t2.survey.strata,
+tri_late.length.freq <- SurveyLFs.fn(dir      = out.dir, 
+                               datL     = tri_late.survey.bio$Lengths, 
+                               datTows  = tri_late.survey.catch,
+                               strat.df = tri_late.survey.strata,
                                lgthBins = length.bins,
-                               nSamps   = t2.eff.n,
+                               nSamps   = tri_late.eff.n,
                                sex      = 3,
                                maxSizeUnsexed  = max.size.unsexed, 
                                sexRatioUnsexed = 0.5,
@@ -272,15 +276,19 @@ nwfsc.combo.length.unsexed.freq <- SurveyLFs.fn(
 )
 
 # Format for SS ---------
-afsc.triennial1.idx <- read.index.data("triennial1")
-afsc.triennial2.idx <- read.index.data("triennial2")
+#afsc.triennial1.idx <- read.index.data("triennial1")
+#afsc.triennial2.idx <- read.index.data("triennial2")
+afsc.triennial_early.idx <- read.index.data("triennial_early")
+afsc.triennial_late.idx <- read.index.data("triennial_late")
 afsc.slope.idx  <- read.index.data("afsc_slope")
 nwfsc.slope.idx <- read.index.data("nwfsc_slope")
 nwfsc.combo.idx <- read.index.data("nwfsc_combo")
 
 survey.indices <- bind_rows(
-  afsc.triennial1.idx,
-  afsc.triennial2.idx,
+  #afsc.triennial1.idx,
+  #afsc.triennial2.idx,
+  afsc.triennial_early.idx,
+  afsc.triennial_late.idx,
   afsc.slope.idx,
   nwfsc.slope.idx,
   nwfsc.combo.idx
@@ -292,8 +300,8 @@ survey.indices <- bind_rows(
     survey = recode_factor(         # Change survey to a factor
       survey, 
       !!!c(
-        triennial1 = "AFSC Triennial Shelf Survey 1",
-        triennial2 = "AFSC Triennial Shelf Survey 2",
+        triennial_early = "AFSC Triennial Shelf Survey (Early)",
+        triennial_late = "AFSC Triennial Shelf Survey (Late)",
         afsc_slope = "AFSC Slope Survey",
         nwfsc_slope = "NWFSC Slope Survey",
         nwfsc_combo = "West Coast Groundfish Bottom Trawl Survey"
@@ -306,8 +314,8 @@ survey.indices <- bind_rows(
 
 survey.indices.ss.all <- survey.indices %>%
   mutate(
-    Fleet=case_when(survey == "AFSC Triennial Shelf Survey 1" ~ 5,
-                    survey == "AFSC Triennial Shelf Survey 2" ~ 6,
+    Fleet=case_when(survey == "AFSC Triennial Shelf Survey (Early)" ~ 5,
+                    survey == "AFSC Triennial Shelf Survey (Late)" ~ 6,
                     survey == "AFSC Slope Survey" ~ 7,
                     survey == "NWFSC Slope Survey" ~ 8,
                     survey == "West Coast Groundfish Bottom Trawl Survey" ~ 9),
@@ -322,8 +330,8 @@ survey.indices.ss.all <- survey.indices %>%
 survey.indices.ss.noslope <- survey.indices %>%
   filter(!(survey %in% c("AFSC Slope Survey", "NWFSC Slope Survey"))) %>%
   mutate(
-    Fleet=case_when(survey == "AFSC Triennial Shelf Survey 1" ~ 5,
-                    survey == "AFSC Triennial Shelf Survey 2" ~ 6,
+    Fleet=case_when(survey == "AFSC Triennial Shelf Survey (Early)" ~ 5,
+                    survey == "AFSC Triennial Shelf Survey (Late)" ~ 6,
                     survey == "West Coast Groundfish Bottom Trawl Survey" ~ 7)
   ) %>%
   select(Year, Season, Fleet, Value, seLogB) %>%
@@ -333,10 +341,10 @@ survey.indices.ss.noslope <- survey.indices %>%
   ) %>%
   print(n=100)  
  
-survey.indices.ss.geo.all <- read_csv(file.path(here::here(), "data", "processed", "surveys", "sdm_tmb_indices_2023.csv")) %>%
+survey.indices.ss.geo.all <- read_csv(file.path(here::here(), "data", "processed", "surveys", "sdm_tmb_indices_2023_depth.csv")) %>%
   filter(area == "Total", method=="delta-gamma") %>%
   mutate(
-    Fleet=case_when(survey == "Triennial" ~ 5,
+    Fleet=case_when(survey == "Triennial" ~ 6,
                     survey == "AFSC Slope Survey" ~ 7,
                     survey == "NWFSC Slope Survey" ~8,
                     survey == "WCGBTS" ~ 9),
@@ -354,7 +362,7 @@ survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "proce
   filter(area == "Total", method=="delta-gamma") %>%
   filter(!(survey %in% c("AFSC Slope Survey", "NWFSC Slope Survey"))) %>%
   mutate(
-    Fleet=case_when(survey == "Triennial" ~ 5,
+    Fleet=case_when(survey == "Triennial" ~ 6,
                     survey == "WCGBTS" ~ 7),
     Season=7
   ) %>%
@@ -374,9 +382,11 @@ read.survey.length.comp.data <- function(survey.name, fname="Survey_Sex3_Bins_6_
   )
 }
 
-triennial.lcs.raw   <- read.survey.length.comp.data("triennial") # need this specially for the model-based indices
-triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1")
-triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2")
+#triennial.lcs.raw   <- read.survey.length.comp.data("triennial") # need this specially for the model-based indices
+#triennial1.lcs.raw  <- read.survey.length.comp.data("triennial1")
+#triennial2.lcs.raw  <- read.survey.length.comp.data("triennial2")
+triennial_early.lcs.raw <- read.survey.length.comp.data("triennial_early")
+triennial_late.lcs.raw <- read.survey.length.comp.data("triennial_late")
 afsc.slope.lcs.raw  <- read.survey.length.comp.data("afsc_slope")
 nwfsc.combo.lcs.raw <- read.survey.length.comp.data("nwfsc_combo")
 
@@ -386,8 +396,10 @@ nw.combo.unsex.lcs.raw <- read.survey.length.comp.data("nwfsc_combo", "Survey_Se
   rename_with(~str_replace(., "U", "F"), .cols=starts_with("U"))
 
 length.comps.ss.all <- bind_rows(
-  triennial1.lcs.raw,
-  triennial2.lcs.raw,
+  # triennial1.lcs.raw,
+  # triennial2.lcs.raw,
+  triennial_early.lcs.raw,
+  triennial_late.lcs.raw,
   afsc.slope.lcs.raw,
   nw.slope.unsex.lcs.raw,
   nw.combo.unsex.lcs.raw,
@@ -402,8 +414,10 @@ length.comps.ss.all <- bind_rows(
   print(n=100)
 
 length.comps.ss.no.slope <- bind_rows(
-  triennial1.lcs.raw,
-  triennial2.lcs.raw,
+  #triennial1.lcs.raw,
+  #triennial2.lcs.raw,
+  triennial_early.lcs.raw,
+  triennial_late.lcs.raw,
   nw.combo.unsex.lcs.raw %>% mutate(fleet=7),
   nwfsc.combo.lcs.raw %>% mutate(fleet=7)
 ) %>%
