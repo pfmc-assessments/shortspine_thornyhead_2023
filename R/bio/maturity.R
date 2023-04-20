@@ -309,6 +309,26 @@ ggplot() +
 
 ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_latdepth_bylat.png"), dpi=300, width=10, height=7, units = "in")
 
+# without observed data and with 3 versions only
+
+ggplot() +
+  geom_line(data = pred, aes(Length_cm, pred, lty = version), size = 1.5, color="grey30") +
+  # facet_wrap(~grad) +
+  scale_colour_brewer(palette = "Greens")+
+  scale_y_continuous(labels = scales::comma)+
+  labs(x="Length (cm)", y="P(mature)", color="Latitude", lty = 'Version')+
+  theme_minimal()+
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(),
+    legend.position = "right",
+    axis.text = element_text(size=12),
+    axis.title = element_text(size=12)
+  ) 
+
+ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_comparison.png"), dpi=300, width=10, height=7, units = "in")
+
+
 # Finalize ----
 
 data.frame(Method = c('Head_2023', 'Intermediate_sensitivity', 'Pearson_and_Gunderson_2003'),
