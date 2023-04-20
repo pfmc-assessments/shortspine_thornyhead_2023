@@ -112,15 +112,28 @@ obsfit <- cbind(filter(tab_mat, !is.na(Depth) & !is.na(Functional_maturity)), fi
 ###------ Summarize the model outputs ----------
 ###------------------------------------------###
 
-tab_mat %>%
+tab_mat_fitplot <- tab_mat
+
+tab_mat_fitplot$lat_class <- factor(tab_mat_fitplot$lat_class, levels=rev(sort(unique(tab_mat_fitplot$lat_class))))
+tab_mat_fitplot$depth_class <- factor(tab_mat_fitplot$depth_class, levels=rev(sort(unique(tab_mat$depth_class))))
+
+depth.labs <- c(">= 1000;[","[750;1000[","[500;750[","[250;500[","< 250")
+names(depth.labs) <- levels(tab_mat_fitplot$depth_class)
+lat.labs <- c("[32;36[","[36;40[","[40;44[","[44;48[","[48;52]")
+names(lat.labs) <- levels(tab_mat_fitplot$lat_class)
+
+tab_mat_fitplot %>%
   filter(!is.na(depth_class)) %>%
   ggplot(aes(x = Length_cm, y = Functional_maturity))+ 
-  facet_grid(factor(lat_class, levels=rev(sort(unique(tab_mat$lat_class)))) ~ factor(depth_class, levels=rev(sort(unique(tab_mat$depth_class))))) +  geom_point(size=1) +
+  facet_grid(lat_class ~ depth_class,
+             labeller = labeller(lat_class = lat.labs, depth_class = depth.labs)) +  geom_point(size=1) +
   #geom_line(aes(y=prob), size=1)+
   geom_hline(yintercept = 0.5,linetype=2) +
-  geom_vline(data = dat_pred, aes(xintercept = L50_quad), linetype=1, color="red", size=1.2) +
-  geom_point(data =obsfit, aes(y= fitted(l_mat_quad)),color="blue", alpha=0.5)+
-  labs(x="Length (cm)", y="Depth(m)") +
+  geom_vline(data = dat_pred, aes(xintercept = L50_quad), linetype=1, color=rgb(229/255,157/255,0/255), size=1.2) +
+  geom_point(data =obsfit, aes(y= fitted(l_mat_quad)),color=rgb(12/255,115/255,178/255), alpha=0.5)+
+  labs(x="Length (cm)", y="Maturing probability") +
+  scale_y_continuous(sec.axis=sec_axis(~./1,name = "LATITUDE CLASS", breaks = NULL, labels = NULL)) +
+  scale_x_continuous(sec.axis=sec_axis(~./1,name = "DEPTH CLASS", breaks = NULL, labels = NULL)) +
   theme_bw()+
   theme(panel.grid = element_blank())
 
