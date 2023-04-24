@@ -155,6 +155,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_sample_sizes')
 # basis of comparison.
 Restart_SA_modeldvpt()
 
+#23.model.sample_sizes 	 23.model.settlement_events 
 
 # 3.1  Work on the Starter file ----
 # ======================= #
@@ -392,6 +393,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_sexed_survey_selectivity')
 # basis of comparison.
 Restart_SA_modeldvpt()
 
+#23.model.sexed_survey_selectivity 	 23.model.sample_sizes 
 
 # 4.1  Work on the Starter file ----
 # ======================= #
@@ -485,6 +487,8 @@ Ctl23_model_sexed_survey_selectivity <- SS_readctl_3.30(
       datlist = file.path(Dir_23_model_sexed_survey_selectivity, 'run','data_echo.ss_new', fsep = fsep),
       verbose = TRUE
       )
+
+#SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_SplitTriennial_TwoSexes
 
 # Make your modification if applicable
 # Code modifying the control file 
