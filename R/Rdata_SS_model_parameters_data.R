@@ -708,92 +708,92 @@ SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial <-  make_se
 SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial <-  make_selex_types(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial, type="age")
 
 
-#Added by MHS 4/24/23 For parameter estimation by sex 
-
-make_selex_types_two_sexes <- function(fleetnames, type="size") {
-  
-  #fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial
-  cname <- ifelse(type == "size", "size_selex_types", "age_selex_types")
-  
-  tmp <- Ctl23_sq_fixQ[[cname]] %>%
-    tibble::rownames_to_column()
-  
-  # get rid of slope surveys if not used
-  if(all(!grepl('slope', fleetnames))) {
-    tmp <- tmp %>% filter(!grepl('slope', rowname))
-  }
-  
-  # Condense non-trawl fleets if necesarry
-  n.nontrawl.fleets <- sum(grepl("Non-trawl", fleetnames))
-  if(n.nontrawl.fleets == 1){
-    tmp <- tmp %>% filter(rowname != "Non-trawl_S") %>%
-      mutate(rowname = case_when(rowname == "Non-trawl_N" ~ "Non-trawl",
-                                 .default = rowname))
-  }
-  
-  # Rename Triennial to match 
-  
-  tri.idx <- which(fleetnames %in% c("Triennial", "Triennial_Early", "Triennial_Late"))
-  num.tri <- length(tri.idx)
-  tri.idx <- tri.idx[1]
-  new.fleetnames <- c(fleetnames[1:(tri.idx-1)], "Triennial_Early", "Triennial_Late", fleetnames[(tri.idx+num.tri):length(fleetnames)])
-  full.fleetnames <- new.fleetnames
-  
-  # Identify surveys only
-  full.fleetnames
-  
-  n.fisheries <- sum(grepl("trawl|Trawl", new.fleetnames))
-  n.surveys <- length(new.fleetnames)-n.fisheries
-  
-  # Identify surveys only
-  surv.fleetnames<-c("Triennial", "Triennial_Early", "Triennial_Late", "NWFSCcombo", "NWFSCslope", "AFSCslope")
-  sex<- c("male", "female")
-  
-  par.names <- rep(NA, (n.fisheries + 2*n.surveys)) #number changed from 6 to 12 to allow for two sex par estimation
-  i=1
-  for(f in 1:length(new.fleetnames)){
-      if(any(str_detect(new.fleetnames[f], surv.fleetnames))){
-        for(s in 1:2){
-          
-          par.name <- paste0(new.fleetnames[f], "_", sex[s])
-          par.names[i] <- par.name
-          i = i+1
-        }
-      }else{
-        par.name <- paste0(full.fleetnames[f])
-        par.names[i] <- par.name
-        i = i+1
-      }
-    }
-   
-  #Copy appropriate rows and add the new names 
-  tmp2<-tail(tmp, n=((length(rownames)-(3+n.nontrawl.fleets))))
-  
-  tmp<-dplyr::bind_rows(tmp, tmp2) 
-  
-  tmp <- tmp %>% 
-    mutate(rowname = par.names) %>% 
-    tibble::column_to_rownames()
-  
- 
-  return(tmp)
-}
-
-SS_Param2023$size_selex_types$Content <- "Size Selectivity type information with two sexes"
-SS_Param2023$size_selex_types$data$FourFleets_UseSlope_SplitTriennial_two_sexes <- make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial, type="size")
-SS_Param2023$size_selex_types$data$FourFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial, type="size")
-SS_Param2023$size_selex_types$data$FourFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial, type="size")
-SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial, type="size")
-SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial, type="size")
-SS_Param2023$size_selex_types$data$ThreeFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial, type="size")
-
-SS_Param2023$age_selex_types$Content <- "Age Selectivity type information with two sexes"
-SS_Param2023$age_selex_types$data$FourFleets_UseSlope_SplitTriennial_two_sexes <- make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial, type="age")
-SS_Param2023$age_selex_types$data$FourFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial, type="age")
-SS_Param2023$age_selex_types$data$FourFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial, type="age")
-SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial, type="age")
-SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial, type="age")
-SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial, type="age")
+# #Added by MHS 4/24/23 For parameter estimation by sex 
+# 
+# make_selex_types_two_sexes <- function(fleetnames, type="size") {
+#   
+#   #fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial
+#   cname <- ifelse(type == "size", "size_selex_types", "age_selex_types")
+#   
+#   tmp <- Ctl23_sq_fixQ[[cname]] %>%
+#     tibble::rownames_to_column()
+#   
+#   # get rid of slope surveys if not used
+#   if(all(!grepl('slope', fleetnames))) {
+#     tmp <- tmp %>% filter(!grepl('slope', rowname))
+#   }
+#   
+#   # Condense non-trawl fleets if necesarry
+#   n.nontrawl.fleets <- sum(grepl("Non-trawl", fleetnames))
+#   if(n.nontrawl.fleets == 1){
+#     tmp <- tmp %>% filter(rowname != "Non-trawl_S") %>%
+#       mutate(rowname = case_when(rowname == "Non-trawl_N" ~ "Non-trawl",
+#                                  .default = rowname))
+#   }
+#   
+#   # Rename Triennial to match 
+#   
+#   tri.idx <- which(fleetnames %in% c("Triennial", "Triennial_Early", "Triennial_Late"))
+#   num.tri <- length(tri.idx)
+#   tri.idx <- tri.idx[1]
+#   new.fleetnames <- c(fleetnames[1:(tri.idx-1)], "Triennial_Early", "Triennial_Late", fleetnames[(tri.idx+num.tri):length(fleetnames)])
+#   full.fleetnames <- new.fleetnames
+#   
+#   # Identify surveys only
+#   full.fleetnames
+#   
+#   n.fisheries <- sum(grepl("trawl|Trawl", new.fleetnames))
+#   n.surveys <- length(new.fleetnames)-n.fisheries
+#   
+#   # Identify surveys only
+#   surv.fleetnames<-c("Triennial", "Triennial_Early", "Triennial_Late", "NWFSCcombo", "NWFSCslope", "AFSCslope")
+#   sex<- c("male", "female")
+#   
+#   par.names <- rep(NA, (n.fisheries + 2*n.surveys)) #number changed from 6 to 12 to allow for two sex par estimation
+#   i=1
+#   for(f in 1:length(new.fleetnames)){
+#       if(any(str_detect(new.fleetnames[f], surv.fleetnames))){
+#         for(s in 1:2){
+#           
+#           par.name <- paste0(new.fleetnames[f], "_", sex[s])
+#           par.names[i] <- par.name
+#           i = i+1
+#         }
+#       }else{
+#         par.name <- paste0(full.fleetnames[f])
+#         par.names[i] <- par.name
+#         i = i+1
+#       }
+#     }
+#    
+#   #Copy appropriate rows and add the new names 
+#   tmp2<-tail(tmp, n=((length(rownames)-(3+n.nontrawl.fleets))))
+#   
+#   tmp<-dplyr::bind_rows(tmp, tmp2) 
+#   
+#   tmp <- tmp %>% 
+#     mutate(rowname = par.names) %>% 
+#     tibble::column_to_rownames()
+#   
+#  
+#   return(tmp)
+# }
+# 
+# SS_Param2023$size_selex_types$Content <- "Size Selectivity type information with two sexes"
+# SS_Param2023$size_selex_types$data$FourFleets_UseSlope_SplitTriennial_two_sexes <- make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial, type="size")
+# SS_Param2023$size_selex_types$data$FourFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial, type="size")
+# SS_Param2023$size_selex_types$data$FourFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial, type="size")
+# SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial, type="size")
+# SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial, type="size")
+# SS_Param2023$size_selex_types$data$ThreeFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial, type="size")
+# 
+# SS_Param2023$age_selex_types$Content <- "Age Selectivity type information with two sexes"
+# SS_Param2023$age_selex_types$data$FourFleets_UseSlope_SplitTriennial_two_sexes <- make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial, type="age")
+# SS_Param2023$age_selex_types$data$FourFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial, type="age")
+# SS_Param2023$age_selex_types$data$FourFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial, type="age")
+# SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial, type="age")
+# SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial, type="age")
+# SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial_two_sexes <-  make_selex_types_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial, type="age")
 
 
 make_size_selex_parms <- function(fleetnames){

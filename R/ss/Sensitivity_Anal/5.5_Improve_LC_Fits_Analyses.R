@@ -488,11 +488,13 @@ Ctl23_model_sexed_survey_selectivity <- SS_readctl_3.30(
       verbose = TRUE
       )
 
-#These too, correct? 
-Ctl23_model_sexed_survey_selectivity$Q_parms
+#Not appropriate to change this 
+#Ctl23_model_sexed_survey_selectivity$size_selex_types<-SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
 
-Ctl23_model_sexed_survey_selectivity$size_selex_types<-SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
-Ctl23_model_sexed_survey_selectivity$age_selex_types<-SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
+#Not doing any age selectivity 
+#Ctl23_model_sexed_survey_selectivity$age_selex_types<-SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
+
+#This needs to be fixed in the Rdata_SS_model_parameters_data.R script
 Ctl23_model_sexed_survey_selectivity$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_SplitTriennial_TwoSexes
 
 
@@ -504,12 +506,12 @@ Ctl23_model_sexed_survey_selectivity$size_selex_parms <- SS_Param2023$size_selex
 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_sexed_survey_selectivity ,
-      # outfile = file.path(Dir_23_model_sexed_survey_selectivity, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_model_sexed_survey_selectivity ,
+  outfile = file.path(Dir_23_model_sexed_survey_selectivity, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
