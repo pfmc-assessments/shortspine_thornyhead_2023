@@ -141,72 +141,96 @@
 #
 #_size_selex_patterns
 #_Pattern	Discard	Male	Special
-24	1	0	0	#_1 Trawl_N   
-24	1	0	0	#_2 Trawl_S   
-24	1	0	0	#_3 Non-trawl 
-24	0	0	0	#_4 Triennial1
-24	0	0	0	#_5 Triennial2
-24	0	0	0	#_6 NWFSCcombo
+24	1	0	0	#_1 Trawl_N               
+24	1	0	0	#_2 Trawl_S               
+24	1	0	0	#_3 Non-trawl             
+24	0	0	0	#_4 Triennial_Early_male  
+24	0	0	0	#_5 Triennial_Early_female
+24	0	0	0	#_6 Triennial_Late_male   
+24	0	0	0	#_7 Triennial_Late_female 
+24	0	0	0	#_8 NWFSCcombo_male       
+24	0	0	0	#_9 NWFSCcombo_female     
 #
 #_age_selex_patterns
 #_Pattern	Discard	Male	Special
-10	0	0	0	#_1 Trawl_N   
-10	0	0	0	#_2 Trawl_S   
-10	0	0	0	#_3 Non-trawl 
-10	0	0	0	#_4 Triennial1
-10	0	0	0	#_5 Triennial2
-10	0	0	0	#_6 NWFSCcombo
+10	0	0	0	#_1 Trawl_N               
+10	0	0	0	#_2 Trawl_S               
+10	0	0	0	#_3 Non-trawl             
+10	0	0	0	#_4 Triennial_Early_male  
+10	0	0	0	#_5 Triennial_Early_female
+10	0	0	0	#_6 Triennial_Late_male   
+10	0	0	0	#_7 Triennial_Late_female 
+10	0	0	0	#_8 NWFSCcombo_male       
+10	0	0	0	#_9 NWFSCcombo_female     
 #
 #_SizeSelex
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-   10	60	  30	  30	 5	0	  1	0	0	0	0	0	0	0	#_SizeSel_P_1_Trawl_N(1)     
-   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Trawl_N(1)     
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Trawl_N(1)     
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Trawl_N(1)     
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Trawl_N(1)     
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Trawl_N(1)     
-    5	70	  23	  27	99	0	  3	0	0	0	0	0	1	3	#_SizeSel_PRet_1_Trawl_N(1)  
-  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Trawl_N(1)  
-1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	1	3	#_SizeSel_PRet_3_Trawl_N(1)  
-   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Trawl_N(1)  
-   10	60	  30	  30	 5	0	  1	0	0	0	0	0	0	0	#_SizeSel_P_1_Trawl_S(2)     
-   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Trawl_S(2)     
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Trawl_S(2)     
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Trawl_S(2)     
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Trawl_S(2)     
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Trawl_S(2)     
-    5	70	  23	  27	99	0	  3	0	0	0	0	0	2	3	#_SizeSel_PRet_1_Trawl_S(2)  
-  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Trawl_S(2)  
-1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	2	3	#_SizeSel_PRet_3_Trawl_S(2)  
-   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Trawl_S(2)  
-   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Non-trawl(3)   
-   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Non-trawl(3)   
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Non-trawl(3)   
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Non-trawl(3)   
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Non-trawl(3)   
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Non-trawl(3)   
-    5	70	  23	  27	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_1_Non-trawl(3)
-  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Non-trawl(3)
-1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_3_Non-trawl(3)
-   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Non-trawl(3)
-   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial1(4)  
-   -7	 7	  -7	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial1(4)  
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial1(4)  
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial1(4)  
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial1(4)  
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial1(4)  
-   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial2(5)  
-   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial2(5)  
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial2(5)  
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial2(5)  
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial2(5)  
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial2(5)  
-   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCcombo(6)  
-   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCcombo(6)  
-   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCcombo(6)  
-   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCcombo(6)  
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCcombo(6)  
- -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCcombo(6)  
+   10	60	  30	  30	 5	0	  1	0	0	0	0	0	0	0	#_SizeSel_P_1_Trawl_N(1)               
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Trawl_N(1)               
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Trawl_N(1)               
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Trawl_N(1)               
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Trawl_N(1)               
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Trawl_N(1)               
+    5	70	  23	  27	99	0	  3	0	0	0	0	0	1	3	#_SizeSel_PRet_1_Trawl_N(1)            
+  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Trawl_N(1)            
+1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	1	3	#_SizeSel_PRet_3_Trawl_N(1)            
+   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Trawl_N(1)            
+   10	60	  30	  30	 5	0	  1	0	0	0	0	0	0	0	#_SizeSel_P_1_Trawl_S(2)               
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Trawl_S(2)               
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Trawl_S(2)               
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Trawl_S(2)               
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Trawl_S(2)               
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Trawl_S(2)               
+    5	70	  23	  27	99	0	  3	0	0	0	0	0	2	3	#_SizeSel_PRet_1_Trawl_S(2)            
+  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Trawl_S(2)            
+1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	2	3	#_SizeSel_PRet_3_Trawl_S(2)            
+   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Trawl_S(2)            
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Non-trawl(3)             
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Non-trawl(3)             
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Non-trawl(3)             
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Non-trawl(3)             
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Non-trawl(3)             
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Non-trawl(3)             
+    5	70	  23	  27	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_1_Non-trawl(3)          
+  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Non-trawl(3)          
+1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_3_Non-trawl(3)          
+   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Non-trawl(3)          
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial_Early(4)_male  
+   -7	 7	  -7	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial_Early(4)_female
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial_Early(4)_male  
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial_Early(4)_female
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial_Early(4)_male  
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial_Early(4)_female
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial_Early(4)_male  
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial_Early(4)_female
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial_Early(4)_male  
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial_Early(4)_female
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial_Early(4)_male  
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial_Early(4)_female
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial_Late(5)_male   
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial_Late(5)_female 
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial_Late(5)_male   
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial_Late(5)_female 
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial_Late(5)_male   
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial_Late(5)_female 
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial_Late(5)_male   
+   -7	 7	  -7	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial_Late(5)_female 
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial_Late(5)_male   
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial_Late(5)_female 
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial_Late(5)_male   
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial_Late(5)_female 
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCcombo(6)_male       
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCcombo(6)_female     
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCcombo(6)_male       
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCcombo(6)_female     
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCcombo(6)_male       
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCcombo(6)_female     
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCcombo(6)_male       
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCcombo(6)_female     
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCcombo(6)_male       
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCcombo(6)_female     
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCcombo(6)_male       
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCcombo(6)_female     
 #_AgeSelex
 #_No age_selex_parm
 # timevary selex parameters 

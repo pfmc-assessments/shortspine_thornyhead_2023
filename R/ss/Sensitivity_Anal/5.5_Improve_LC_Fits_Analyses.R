@@ -488,7 +488,14 @@ Ctl23_model_sexed_survey_selectivity <- SS_readctl_3.30(
       verbose = TRUE
       )
 
-#SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_SplitTriennial_TwoSexes
+#These too, correct? 
+Ctl23_model_sexed_survey_selectivity$Q_parms
+
+Ctl23_model_sexed_survey_selectivity$size_selex_types<-SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
+Ctl23_model_sexed_survey_selectivity$age_selex_types<-SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
+Ctl23_model_sexed_survey_selectivity$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_SplitTriennial_TwoSexes
+
+
 
 # Make your modification if applicable
 # Code modifying the control file 
@@ -570,7 +577,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.sexed_survey_selectivity folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = '-nohess' 
       # this is if we want to use '-nohess' 
       )
 
