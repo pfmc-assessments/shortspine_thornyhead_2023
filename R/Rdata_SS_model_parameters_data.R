@@ -897,9 +897,6 @@ make_size_selex_parms_two_sexes <- function(fleetnames){
     tmp <- tmp %>% filter(!(grepl("Non-trawl_S", tmp$rowname)))
   }
   
-  # Sex vector
-  sex<-c("male", "female")
-
   tri.idx <- which(fleetnames %in% c("Triennial", "Triennial_Early", "Triennial_Late"))
   num.tri <- length(tri.idx)
   tri.idx <- tri.idx[1]
@@ -910,57 +907,114 @@ make_size_selex_parms_two_sexes <- function(fleetnames){
   n.fisheries <- sum(grepl("trawl|Trawl", new.fleetnames))
   n.surveys <- length(new.fleetnames)-n.fisheries
   
-  # Identify surveys only
-  surv.fleetnames<-c("Triennial", "Triennial_Early", "Triennial_Late", "NWFSCcombo", "NWFSCslope", "AFSCslope")
-  
-  par.names <- rep(NA, (10*n.fisheries + 12*n.surveys)) #number changed from 6 to 12 to allow for two sex par estimation
+  par.names <- rep(NA, (10*n.fisheries + 6*n.surveys))
   i=1
   for(f in 1:length(new.fleetnames)){
     for(j in 1:6){
-      if(any(str_detect(new.fleetnames[f], surv.fleetnames))){
-        for(s in 1:2){
-       
-          par.name <- paste0("SizeSel_P_", j, "_", full.fleetnames[f], "_", sex[s])
-          par.names[i] <- par.name
-          i = i+1
-        }
-      }else{
-        par.name <- paste0("SizeSel_P_", j, "_", full.fleetnames[f])
-        par.names[i] <- par.name
-        i = i+1
-      }
+      par.name <- paste0("SizeSel_P_", j, "_", full.fleetnames[f])
+      par.names[i] <- par.name
+      i = i+1
     }
     if(f <= n.fisheries){
       for(j in 1:4){
         par.name <- paste0("SizeSel_PRet_", j, "_", full.fleetnames[f])
         par.names[i] <- par.name
         i = i+1
-      
+      }
     }
-   }
   }
+  
+  #Add par.names to tmp 
+  
+  tmp <- tmp %>% 
+    mutate(rowname = par.names)
   
   #modify tmp to replicate rows for males and female survey parameters
   
-  tmp2<-tail(tmp, n=(length(par.names)-nrow(tmp))) # EDIT FURTHER TO ASSURE INIT VALUES ARE APPROPRIATE (index survey rows ONLY)
+  #THIS CODE IS SO JANK<-THIS SHOULD BE RE-WRITTEN TO WORK WITH ALL FLEETS BUT FOR NOW ONLY 
+  #WORKS WITH ThreeFleets_NoSlope_SplitTriennial
   
-  tmp<-dplyr::bind_rows(tmp, tmp2) 
   
-  tmp <- tmp %>% 
-    mutate(rowname = par.names) %>% 
-    tibble::column_to_rownames()
+  #All these parameter estimates came from the patrale assessment control file
+  
+  #Edit Tri1 pars
+  
+ Tri_1<-c(-15, 15,-2.85457,0,5,0,3, 0,0,0,0,0.5,0,0 )  #  SzSel_Male_Peak_Tri(5)
+ Tri_2<-c(-15,15,-0.150036,0,5,0,3,0,0, 0,0,0.5, 0, 0)  #  SzSel_Male_Ascend_Tri(5)
+ Tri_3<-c(-15,15,0, 0,5,0,-3,0,0,0, 0, 0.5, 0, 0) #  SzSel_Male_Descend_Tri(5)
+ Tri_4<-c( -15,15,0,0,5,0,-3,0, 0,0,0, 0.5,0, 0) #  SzSel_Male_Final_Tri(5)
+ Tri_5<-c(-15,15, 1, 0 , 5 ,0, -4,0, 0 ,0 ,0 ,0.5, 0 , 0) #  SzSel_Male_Scale_Tri(5)
+ 
+ Tri1_mat <- rbind(Tri_1,Tri_2,Tri_3,Tri_4,Tri_5)
+ 
+ colnames(Tri1_mat)<-c("LO", "HI", "INIT", "PRIOR", "PR_SD", "PR_type", "PHASE", "env_var&link", "dev_link", "dev_minyr","dev_maxyr", "dev_PH", "Block", "Block_Fxn")
+ rownames(Tri1_mat)<-c("SizeSel_P_1_males_Triennial_Early(6)", "SizeSel_P_2_males_Triennial_Early(6)", "SizeSel_P_3_males_Triennial_Early(6)","SizeSel_P_4_males_Triennial_Early(6)","SizeSel_P_5_males_Triennial_Early(6)")
+
+ Tri1_mat<-Tri1_mat %>%
+   as.data.frame() %>%
+   tibble::rownames_to_column() 
+ 
+ #Duplicate for Tri2
+ 
+ Tri2_mat<-Tri1_mat
+ Tri2_mat[1:5,1]<-c("SizeSel_P_1_males_Triennial_Late(6)", "SizeSel_P_2_males_Triennial_Late(6)", "SizeSel_P_3_males_Triennial_Late(6)","SizeSel_P_4_males_Triennial_Late(6)","SizeSel_P_5_males_Triennial_Late(6)")
+ 
+ 
+ #NWFSC Combo Survey
+ NWFSC_1 <- c(-15, 15, -4.26284, 0, 5, 0, 3, 0, 0, 0, 0, 0.5, 0, 0)  #  SzSel_Male_Peak_NWFSC(7)
+ NWFSC_2 <- c(-15, 15, -0.347213, 0, 5, 0, 3, 0, 0, 0, 0, 0.5, 0, 0)#  SzSel_Male_Ascend_NWFSC(7)
+ NWFSC_3 <- c(-15, 15, 0, 0, 5, 0, -3, 0, 0, 0, 0, 0.5, 0, 0) #  SzSel_Male_Descend_NWFSC(7)
+ NWFSC_4 <- c(-15, 15, 0, 0, 5, 0, -3, 0, 0, 0, 0, 0.5, 0, 0)#  SzSel_Male_Final_NWFSC(7)
+ NWFSC_5 <- c(-15, 15, 1, 0, 5, 0, -4, 0, 0, 0, 0, 0.5, 0, 0)#  SzSel_Male_Scale_NWFSC(7)
+ 
+ NWFSC_mat <- rbind(NWFSC_1,NWFSC_2,NWFSC_3,NWFSC_4,NWFSC_5)
+ 
+ colnames(NWFSC_mat)<-c("LO", "HI", "INIT", "PRIOR", "PR_SD", "PR_type", "PHASE", "env_var&link", "dev_link", "dev_minyr","dev_maxyr", "dev_PH", "Block", "Block_Fxn")
+ rownames(NWFSC_mat)<-c("SizeSel_P_1_males_NWFSCcombo(9)" ,"SizeSel_P_2_males_NWFSCcombo(9)" ,"SizeSel_P_3_males_NWFSCcombo(9)" ,"SizeSel_P_4_males_NWFSCcombo(9)" ,"SizeSel_P_5_males_NWFSCcombo(9)" )
+ 
+ NWFSC_mat<-NWFSC_mat %>%
+   as.data.frame() %>%
+   tibble::rownames_to_column()
+ 
+  #Pull the first part of tmp
+  tmp1<-tmp[1:36,] 
+  
+  tmp2<-rbind(tmp1, Tri1_mat)#add in Tri1_mat for males 
+  
+  Tri2_males_temp<-tmp[37:42,] #pull init Tri2 pars 
+  
+  tmp3<-rbind(tmp2, Tri2_males_temp) #bind these to our new matrix
+  
+  tmp4<-rbind(tmp3, Tri2_mat)#add in Tri2_mat for males 
+  
+  NWFSC_males_temp<-tmp[43:48,] #pull init NWFSC combo pars 
+  
+  tmp5<-rbind(tmp4, NWFSC_males_temp)
+  
+  
+  tmp_final<-rbind(tmp5, NWFSC_mat)                               
+  
+  row.names(tmp_final) <- NULL
+    
+  
+  # tmp2<-tail(tmp, n=(length(par.names)-nrow(tmp))) # EDIT FURTHER TO ASSURE INIT VALUES ARE APPROPRIATE (index survey rows ONLY)
+  # 
+   #tmp<-dplyr::bind_rows(tmp, tmp2) 
+  
+  tmp <- tmp_final %>% 
+     tibble::column_to_rownames()
   
   return(tmp)
   
 }
 
 SS_Param2023$size_selex_parms$Content <- "Size Selectivity parameter values-- two sexes."
-SS_Param2023$size_selex_parms$data$FourFleets_UseSlope_SplitTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial)
-SS_Param2023$size_selex_parms$data$FourFleets_UseSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial)
-SS_Param2023$size_selex_parms$data$FourFleets_NoSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial)
-SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial)
+#SS_Param2023$size_selex_parms$data$FourFleets_UseSlope_SplitTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_SplitTriennial)
+#SS_Param2023$size_selex_parms$data$FourFleets_UseSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_UseSlope_CombineTriennial)
+#SS_Param2023$size_selex_parms$data$FourFleets_NoSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$FourFleets_NoSlope_CombineTriennial)
+#SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_CombineTriennial)
 SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_SplitTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_NoSlope_SplitTriennial)
-SS_Param2023$size_selex_parms$data$ThreeFleets_UseSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial)
+#SS_Param2023$size_selex_parms$data$ThreeFleets_UseSlope_CombineTriennial_TwoSexes <- make_size_selex_parms_two_sexes(fleetnames = SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial)
 
 
 
