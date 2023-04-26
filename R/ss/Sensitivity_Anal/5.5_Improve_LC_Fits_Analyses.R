@@ -489,7 +489,10 @@ Ctl23_model_sexed_survey_selectivity <- SS_readctl_3.30(
       )
 
 #Not appropriate to change this 
-#Ctl23_model_sexed_survey_selectivity$size_selex_types<-SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
+Ctl23_model_sexed_survey_selectivity$size_selex_types<-bind_rows(
+  Ctl23_model_sexed_survey_selectivity$size_selex_types %>% slice(1:3),
+  Ctl23_model_sexed_survey_selectivity$size_selex_types %>% slice(4:6) %>% mutate(Male=3)
+)
 
 #Not doing any age selectivity 
 #Ctl23_model_sexed_survey_selectivity$age_selex_types<-SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
@@ -693,15 +696,15 @@ Dat23_model_improve_trawln <- SS_readdat_3.30(
 # Code modifying the data file 
 # ..... 
 # ..... 
-
+Dat23_model_improve_trawln$lencomp <- SS_Param2023$All_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial
 
 # Save the data file for the model
-# SS_writedat(
-      # datlist =  Dat23_model_improve_trawln ,
-      # outfile = file.path(Dir_23_model_improve_trawln, 'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writedat(
+datlist =  Dat23_model_improve_trawln ,
+outfile = file.path(Dir_23_model_improve_trawln, 'SST_data.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 
 # Check file structure
 # DatFile <- file.path(Dir_23_model_improve_trawln, 'SST_data.ss', fsep = fsep)
@@ -816,7 +819,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.improve_trawln folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL
+      extra = "-nohess"
       # this is if we want to use '-nohess' 
       )
 
