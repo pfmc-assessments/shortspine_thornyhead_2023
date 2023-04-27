@@ -20,65 +20,100 @@ Descriptions of each data source included in the model (Figure \@ref(fig:data-pl
 Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous `r spp` stock assessment.
 In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \@ref(assessment-model)).
 
-An overview of the data sources available for each combination of fleet and year is provided in *_Figure XXX._* 
+An overview of the data sources available for each combination of fleet and year is provided in (Figure |@ref(fig:data-plot.png))
+
+![Summary of data sources used in the base model.\ label{fig:data-plot}](data-plot.png){width= 100% height=100% alt= “Summary of data sources used in the base model”}
 
 
 ## Biology
 
+`r spp`
+
+`r Spp`
+
+\gls{afsc}
+
 ### Natural mortality and longevity 
+@butler_1995 estimated the lifespan of `r spp` to exceed 100 years, and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality developed based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Hamel, pers. comm.). For the base case, natural mortality was fixed at the mean of this prior distribution. This assessment uses an updated prior on M by @hamel_cope_2022, where the median of M is:
+\begin{equation} \frac{5.40}{Age_{max}} \end{equation}
+
+This assessment assumed the same maximum age of 100 as in the previous assessments, with an updated prior of 0.054 (median value) and log-space standard deviation = 0.31 [@hamel_cope_2022]. The 2023 assessment will explore estimating M and fixing M at the prior mean.
 
 ### Length-weight relationship 
+Fisheries-independent length and weight specimen data are available from the AFSC slope bottom trawl survey (1997, 1999-2001; N=7,623) and the WCBTS (2003-2021, excluding 2020; N=20,142). The *WCBTS* data were used to estimate the length-weight relationship because it has the highest sample size and covers the greatest spatiotemporal resolution. The allometric function models weight (W) as an exponential function of length (L), where:
+
+\begin{equation} W = \alpha L^{\beta} \end{equation}
+
+This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of 𝜎2 / 2. Length-weight was estimated for both sexes in R using the lm() function [@r_core_2016]. 
+
+The resulting allometric parameters for 2023 (females: $\alpha$ = 6.49e-6, $\beta$ = 3.18; males: $\alpha$ =6.71e-6, $\beta$=3.17) were similar to the 2013 assessment values, which estimated a single length-weight relationship for males and females combined using WCBTS data through 2012 (sexes combined: $\alpha$ = 4.77e-6, $\beta$=3.26). The $\beta$ value was higher in the 2013 assessment, indicating a slightly higher weight-at-length for longer fish. We found no temporal trend in the available data and were unable to account for these small differences in results. The available data suggest that length-weight is highly conserved in `r spp`; therefore, no sensitivity analysis was conducted for this set of parameters in the 2023 assessment.
 
 ### Length-at-age
+No validated ageing methodology currently exists for `r spp`; therefore, this species is not aged by the *NWFSC* or *SWFSC* and length-at-age data are limited for this stock assessment. Two research age datasets exist for `r spp` in the West Coast region: (1) @kline_1996 includes 319 unsexed fish collected from Monterey Bay in central California in 1991, and (2) @butler_1995 includes 1,023 sexed fish collected in the waters off northern California and Oregon in 1978-1988 and 1990. The Kline specimens were aged by one age reader and lengths were reported as total lengths, whereas the Butler specimens were aged independently by two separate age readers and lengths are reported in fork length. The Butler data age data presented in this assessment are the mean ages between the two age readers. 
+
+The length-at-age curve developed in the 2005 stock assessment and used again in 2013 was based on a Schnute parameterization of the Von-Bertalanffy growth function fit to the Kline data. Resulting parameter estimates for this growth function were as follows: growth rate k was 0.018 for both males and females, length at age-2 was 7 cm for both males and females, and length at age-100 was 67.5 cm for males and 75 cm for females based on the assumption that the asymptotic length for males should be 90% of the asymptotic length for females [@hamel_2005]. The data and associated analysis from 2005 were lost; however, the original Kline and Butler datasets were obtained for use in this assessment (Donna Kline, pers. comm., March 2023). Using these newly obtained data, we were unable to reproduce the parameters used in the 2005 assessment. 
+
+Because the Butler data were sex-specific, had a higher sample size, were aged by two readers instead of one, and were collected from a larger geographic area and over more years compared to the Kline data, we determined that Butler was the preferred dataset to estimate the length-at-age relationship for the 2023 stock assessment. We fit sex-specific Schnute growth functions to the Butler data:
+
+\begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
+
+where:
+$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$;$a_{2}=100$ and k is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2016]. Errors were assumed to be lognormally distributed, and predicted length-at-age was bias-corrected using a multiplier of 𝜎2 / 2.
+
+`r spp` are slow growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to the curves assumed in the 2005 and 2013 assessments *_(Figure LAA-1; Table X-LAA-1)_*. The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading the higher length-at-age in the intermediate age range.
+
+Two alternative sensitivity analyses were developed for the 2023 assessment. During the exploratory data analysis phase, we found that specimens collected in the Kline study exhibited higher size-at-age when compared to the Butler specimens *_(Figure LAA-2)_*. It is unknown if these differences should be attributed to spatial differences in growth between central California and northern California/Oregon, bias among age readers, or discrepancies between the total and fork length measurements (Donna Kline, pers. comm., March 2023). In order to account for this alternative growth pattern, we increased the lengths at ages 2 and 100 by 25% in the upper sensitivity analysis *_(Figure LAA-2)_*. The lower sensitivity analysis was defined by decreasing the lengths at ages 2 and 100 by 10% from the base model. 
 
 ### Maturity 
 
 ### Fecundity 
+The previous assessments assumed spawning biomass was equivalent to spawning output. The 2023 assessment will explore using fecundity-at-length parameters reported in @cooper_etal_2005, where fecundity was modeled as a power function of length. @cooper_etal_2005 estimated the fecundity of 54 females collected from the West Coast and Alaska. The study found no difference in the length-fecundity relationship by region and pooled the samples. The fecundity-at-length parameters in that study were:
+	
+					\begin{equation} F = 0.0544L_{3.978}\end{equation}
+
+where F is fecundity in the number of eggs per female and  L is length in cm. Fecundity information from @cooper_etal_2005 suggests that fecundity increases at a faster rate with length than body weight with length. This means larger females are likely to have greater relative fecundity compared to small females (i.e., large females produce more eggs per kg of body weight). This assessment will explore modeling a fecundity-at-length relationship using the fecundity parameters from @cooper_etal_2005 and scaling the fecundity intercept by one million in SS3 to report fecundity in billions of eggs.
+
+Uncertainty remains in the spawning strategy of `r spp`. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence for batch spawning in this species (i.e., a determinate, total spawning strategy). However, updated histology information suggests a possibility of batch spawning in this species (Melissa Head, NWFSC, pers. comm.). Batch spawning could influence the fecundity-at-length relationship if not properly accounted for and should be a focus of future research. The histology analysis also found evidence of parasites in the ovaries and atresia (degrading eggs), which could influence fecundity (Melissa Head, NWFSC, pers. comm.). 
+
 
 ## Catch History 
 
-PacFIN data from 1981-present was used to estimate landings in the North (Oregon and Washington) and South (California) by gear type (Trawl and Non-Trawl) *_(Figure XX)._* All landings reported for the Shortspine thornyhead and nominal Shortspine thornyhead categories were considered Shortspine thornyheads, whereas landings categorized as unidentified thornyheads were split between Longspine thornyhead and Shortspine thornyhead by the ratio of identified longspine and shortspine landings for each year-state-gear combination. The values of this ratio for each state and gear-type from 1981-2023 are shown in *_Figure XX._* 
+\Gls{pacfin} TEST data from 1981-present was used to estimate landings in the North (Oregon and Washington) and South (California) by gear type (Trawl and Non-Trawl) *_(Figure XX)._* All landings reported for the `r Spp` and nominal `r spp` categories were considered `r spp`, whereas landings categorized as unidentified thornyheads were split between Longspine thornyhead and `r spp` by the ratio of identified longspine and shortspine landings for each year-state-gear combination. The values of this ratio for each state and gear-type from 1981-2023 are shown in *_Figure XX._* 
 
-Catches prior to 1981 are based on historical reconstructions provided by the respective states and a reconstruction of foreign fleet catch. Oregon landings for 1892-1986 are provided by ODFW and outlined in *Karnowski, et al. (2014).* Shortspine thornyhead landings are not present in the PacFIN data for Oregon for the years 1981-1986 and the state reconstruction is used for this period instead. Washington landings for 1954-1980 are provided by WDFW. Landings prior to the beginning of this data are assumed to be zero. California landings are provided by CDFW and SWFSC, and consist of California commercial data for 1969-1980, and a catch reconstruction documented by *Ralston, et al. (2010)* for 1934-1968. As in the two previous assessments, catch data from *Rodgers (2003)* is used to account for catches by foreign fleets during the years 1966-1976. Foreign catch in the Monterey and Eureka INPFC areas is attributed to the Southern Trawl fleet, while foreign catch in Columbia and Vancouver areas is attributed to the Northern Trawl fleet, as was the case in the 2013 assessment.
+Catches prior to 1981 are based on historical reconstructions provided by the respective states and a reconstruction of foreign fleet catch. Oregon landings for 1892-1986 are provided by ODFW and outlined in @karnowski_historical_2014 `r spp` landings are not present in the PacFIN data for Oregon for the years 1981-1986 and the state reconstruction is used for this period instead. Washington landings for 1954-1980 are provided by WDFW. Landings prior to the beginning of this data are assumed to be zero. California landings are provided by CDFW and SWFSC, and consist of California commercial data for 1969-1980, and a catch reconstruction documented by @ralston_documentation_2010 for 1934-1968. As in the two previous assessments, catch data from @rogers_species_2003 is used to account for catches by foreign fleets during the years 1966-1976. Foreign catch in the Monterey and Eureka INPFC areas is attributed to the Southern Trawl fleet, while foreign catch in Columbia and Vancouver areas is attributed to the Northern Trawl fleet, as was the case in the 2013 assessment.
 
-For historical catches prior to 1981, all Shortspine thornyhead, nominal shortspine, and unidentified thornyhead landings in the state catch reconstructions are considered Shortspine thornyhead. Neither California reconstructions prior to 1978, nor the *Karnowski et al. (2014)* reconstruction for Oregon, distinguish between Shortspine and Longspine thornyhead species. It is possible that assigning all thornyhead landings to shortspine overestimates shortspine landings, however, the overwhelming majority of thornyhead landings were shortspine until the late 1980s when vessels began to move into deeper waters and a distinct fishery targeting Longspine thornyhead developed *(Hamel 2005; Karnowski, et al. 2014)*. 
+For historical catches prior to 1981, all `r spp`, nominal shortspine, and unidentified thornyhead landings in the state catch reconstructions are considered `r spp`. Neither California reconstructions prior to 1978, nor the @karnowski_historical_2014 reconstruction for Oregon, distinguish between Shortspine and Longspine thornyhead species. It is possible that assigning all thornyhead landings to shortspine overestimates shortspine landings, however, the overwhelming majority of thornyhead landings were shortspine until the late 1980s when vessels began to move into deeper waters and a distinct fishery targeting Longspine thornyhead developed TEST [@hamel_2005; @karnowski_historical_2014]. 
 
-This treatment of unassigned thornyhead landings differs from the 2005 and 2013 assessments. The 2005 assessment did not have access to the historical reconstructions used here, and instead imputed Shortspine landings as 30% of annual Sablefish landings for the years 1901-1961. The 2013 assessment used the same imputed values as the 2005 assessment, but also conducted a sensitivity analysis in which all unassigned thornyheads in historical catch were considered Shortspine thornyhead. Stock abundance estimates were found to be largely insensitive to which reconstructions were used *(Taylor and Stephens 2013)*. The imputed historical values used for the 2005 and 2013 assessments will continue to be included as a sensitivity analysis here. Landings after 1961 remain very similar to the landings used in the 2013 assessment *_(Figure XX)_*. 
+This treatment of unassigned thornyhead landings differs from the 2005 and 2013 assessments. The 2005 assessment did not have access to the historical reconstructions used here, and instead imputed Shortspine landings as 30% of annual Sablefish landings for the years 1901-1961. The 2013 assessment used the same imputed values as the 2005 assessment, but also conducted a sensitivity analysis in which all unassigned thornyheads in historical catch were considered `r spp`. Stock abundance estimates were found to be largely insensitive to which reconstructions were used [@taylor_stephens_2013]. The imputed historical values used for the 2005 and 2013 assessments will continue to be included as a sensitivity analysis here. Landings after 1961 remain very similar to the landings used in the 2013 assessment *_(Figure XX)_*. 
 
 
 ## Discards and retention
 
-Discards were informed by four data sources covering three different periods. Data sets included, 1) *Pikitch et al.* Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 *(J. R. Wallace, pers. comm.)*, 2) the *Enhanced Data Collection Project (EDCP)* covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the *West Coast Groundfish Observer Program (WCGOP)*, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the *Groundfish Expanded Mortality Multiyear (GEMM)* dataset, covering the same period and completing the *WCGOP* with catch-share participation information and estimates of discard survival rates.
+Discards were informed by four data sources covering three different periods. Data sets included, 1) @pikitch_evaluation_1988 Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (J. R. Wallace, pers. comm.), 2) the Enhanced Data Collection Project (EDCP) covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the *West Coast Groundfish Observer Program (WCGOP)*, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the *Groundfish Expanded Mortality Multiyear (GEMM)* dataset, covering the same period and completing the *WCGOP* with catch-share participation information and estimates of discard survival rates.
 
 While the estimates from the first two data sets were directly integrated into the model, fleet discard rates after 2011 were available separately for catch-share and non-catch-share programs. Final fleet-specific discard rates were thus computed as the average *WCGOP* discard rate weighted by the relative proportion of total landings belonging to the catch-share and non-catch-share, respectively. *_(Figure XX)_*. Regardless of the type of data, all estimates derived from these data sets had associated uncertainty accounting for the variability observed within the sample of hauls and fishing trips of each fleet. WCGOP-derived discard rates are an exception as, after the catch share program was initiated in 2011, 100% of hauls from catch share fleets were observed., while non-catch share vessels were only partially covered *_(cite)_*.
 
-The discard data sources were the same as those used in the 2013 assessment. The main improvements are the increased representativity of all 4 fleets (11 more years) and more accurate estimates of discard rates from EDCP that were not ready at the time of the previous assessment. Last, some errors in the previous assessment were corrected regarding the weight units considered for the average individual weight (WCGOP provides weight as pounds and not as kg).
+The discard data sources were the same as those used in the 2013 assessment. The main improvements are the increased representativity of all 4 fleets (11 more years) and more accurate estimates of discard rates from EDCP that were not ready at the time of the previous assessment. Last, some errors in the previous assessment were corrected regarding the weight units considered for the average individual weight (*WCGOP* provides weight as pounds and not as kg).
 
 ## Fishery Length Compositions 
 
-Commercial fishery length-composition data were obtained from PacFIN for 1978-2023. Due to variations in sampling effort and because the number of fish sampled by port samplers is not proportional to the amount of landed catch in each trip, the observed length data were expanded using the following algorithm using the PacFINUtilities package in R:
+Commercial fishery length-composition data were obtained from \gls{pacfin} for 1978-2023. Due to variations in sampling effort and because the number of fish sampled by port samplers is not proportional to the amount of landed catch in each trip, the observed length data were expanded using the following algorithm using the PacFINUtilities package in R:
 
-*Length data were acquired at the trip level by sex, year and state.
-*The raw numbers in each trip were scaled by a per-trip expansion factor calculated by dividing
-the total weight of trip landings by the total weight of the species sampled.
-*A per-year, per-state expansion factor was computed by dividing the total weight of state
-landings by the total weight of the species sampled for length in the state.
-*The per-trip expanded numbers were multiplied by the per-state expansion factor and summed to provide the coastwide length-frequency distributions by year.
+Length data were acquired at the trip level by sex, year and state.
+The raw numbers in each trip were scaled by a per-trip expansion factor calculated by dividing the total weight of trip landings by the total weight of the species sampled. A per-year, per-state expansion factor was computed by dividing the total weight of state landings by the total weight of the species sampled for length in the state. The per-trip expanded numbers were multiplied by the per-state expansion factor and summed to provide the coastwide length-frequency distributions by year.
 
-Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in *_Table X (landings)_* and *_Table X (discards)_*. Length samples from the Trawl North fleet in the years 1980, 1994, and 1995 showed a very different pattern than the surrounding years. The effective sample sizes for these years were substantially lower than other years (Neff < 15), so the observed differences are likely due to non-representative sampling. Therefore all years with effective sample sizes of less than 15 were not included in the base model. The 2013 assessment found that taking these undersampled years out made very little difference in model results. 
+Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in *_Table X (landings)_* and *_Table X (discards)_*. Length samples from the Trawl North fleet in the years 1980, 1994, and 1995 showed a very different pattern than the surrounding years. The effective sample sizes for these years were substantially lower than other years (Neff < 15), so the observed differences are likely due to non-representative sampling. Therefore all years with effective sample sizes of less than 15 were not included in the base model. The 2013 assessment found that taking these under-sampled years out made very little difference in model results. 
 
-Input sample sizes (Ninput) for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method *(Stewart, pers.com)*: 
-
-ADD EQUATIONS HERE 
-
+Input sample sizes (Ninput) for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers.com): 
+\begin{align*}{N_{input} = N_{trips} + 0.138N_{fish}}\qquad\text{ when }\frac{N_{fish}}{N_{trips}}<44 \\
+{N_{input} = 7.06N_{trips}}\qquad\qquad\qquad\text{ when }\frac{N_{fish}}{N_{trips}}\ge 44 \end{align*}
 The method is based on analysis of the input and model-derived effective sample sizes from west coast groundfish stock assessments. A piece-wise linear regression was used to estimate the increase in effective sample size per sample based on fish-per-sample and the maximum effective sample size for large numbers of individual fish.
 
 All length data from commercial fisheries included in the model with sexes combined. This avoids the possibility of bias due to difficulty in sex determination of thornyheads.
 
 ## Age Compositions 
 
-No age composition data was used for this assessment because thornyheads have proven very difficult to age *(P. MacDonald, pers. comm.)*.  Even in directed studies such as those done by *Kline (1996) and Butler et al. (1995)*, there are large inter-reader differences, and a second reading by the same ager can produce a markedly different result. *Kline (1996)* reported only about 60% of the multiple reads were within 5 years of each other, and inter-reader differences were as large as 24 years for a sample of 50 otoliths. No production ageing of thornyheads is undertaken at this time for the west coast, although shortspine thornyhead otoliths are routinely collected in the NWFSC trawl survey.
-
+No age composition data was used for this assessment because thornyheads have proven very difficult to age (P. MacDonald, pers. comm.).  Even in directed studies such as those done by @kline_1996 and @butler_1995, there are large inter-reader differences, and a second reading by the same ager can produce a markedly different result. @kline_1996 reported only about 60% of the multiple reads were within 5 years of each other, and inter-reader differences were as large as 24 years for a sample of 50 otoliths. No production ageing of thornyheads is undertaken at this time for the west coast, although `r spp` otoliths are routinely collected in the NWFSC trawl survey.
 
 ## NMFS Surveys 
 
@@ -96,21 +131,21 @@ No age composition data was used for this assessment because thornyheads have pr
 
 ### Frequency of Occurrence 
 
-The frequency of occurrence of shortspine and longspine thornyheads in trawl surveys remains extremely high. 91% of the tows in the NWFSC Combo Survey below 500 m have at least one shortspine thornyhead in the catch (and 96% for longspine thornyhead), similar to the 2013 assessment. 
+The frequency of occurrence of shortspine and longspine thornyheads in trawl surveys remains extremely high. 91% of the tows in the NWFSC Combo Survey below 500 m have at least one `r spp` in the catch (and 96% for longspine thornyhead), similar to the 2013 assessment. 
 
 
 ### Length Composition Data 
 
 ### Sample and Hault Information
 
-The number of survey hauls and shortspine thornyheads sampled available for this assessment is described in *_Table XXX._*
+The number of survey hauls and `r spp`s sampled available for this assessment is described in *_Table XXX._*
 
 
 ## Changes in data from the 2013 assessment 
 
 Most of the data used in the previous assessment has been newly extracted and processed, including length compositions from each fishing fleet and survey, indices of abundance derived from new geostatistical models of survey data, discard rates from both the 1980s Pikitch study and the current *West Coast Groundfish Observer Program (WCGOP)*, and the time series of catch from 1900-2023.
 
-New data for this assessment include the geostatistical model-based indices of abundance for the four fisheries independent surveys, the histological maturity samples from the *WCGBT* survey, and the historical state catch reconstructions. Previous assessments have treated the AFSC Triennial Shelf Survey as two separate indices of abundance separated by the 366m depth contour, but the transition to using geostatistical model-based indices have rendered this separation unnecessary by implicitly accounting for changes in depth sampling within the model. State-level historical reconstructions also replace previous analyses that imputed historical Shortspine thornyhead catch as a fixed proportion of Sablefish catch.
+New data for this assessment include the geostatistical model-based indices of abundance for the four fisheries independent surveys, the histological maturity samples from the \gls {s-wcgbt} TEST *WCGBT* survey, and the historical state catch reconstructions. Previous assessments have treated the AFSC Triennial Shelf Survey as two separate indices of abundance separated by the 366m depth contour, but the transition to using geostatistical model-based indices have rendered this separation unnecessary by implicitly accounting for changes in depth sampling within the model. State-level historical reconstructions also replace previous analyses that imputed historical `r spp` catch as a fixed proportion of Sablefish catch.
 
 
 ## Environmental and Ecological Data 

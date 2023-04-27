@@ -488,13 +488,15 @@ Ctl23_model_sexed_survey_selectivity <- SS_readctl_3.30(
       verbose = TRUE
       )
 
-#Not appropriate to change this 
-#Ctl23_model_sexed_survey_selectivity$size_selex_types<-SS_Param2023$size_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
-
+#Change to 3's for surveys 
+Ctl23_model_sexed_survey_selectivity$size_selex_types[4,3]<-3
+Ctl23_model_sexed_survey_selectivity$size_selex_types[5,3]<-3
+Ctl23_model_sexed_survey_selectivity$size_selex_types[6,3]<-3
 #Not doing any age selectivity 
 #Ctl23_model_sexed_survey_selectivity$age_selex_types<-SS_Param2023$age_selex_types$data$ThreeFleets_NoSlope_SplitTriennial_two_sexes
 
 #This needs to be fixed in the Rdata_SS_model_parameters_data.R script
+#assume males are offset from females
 Ctl23_model_sexed_survey_selectivity$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_NoSlope_SplitTriennial_TwoSexes
 
 
