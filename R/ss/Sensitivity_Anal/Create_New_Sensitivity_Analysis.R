@@ -171,15 +171,25 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #            base_model = c("23.model.settlement_events", "23.model.sample_sizes", "23.model.sexed_survey_selectivity", "23.model.improve_trawln"),
 #            new_model = c("23.model.sample_sizes", "23.model.sexed_survey_selectivity", "23.model.improve_trawln", "23.model.improve_other"))
 
+# NewSensAnal(topic = "model",
+#             # names are based on new model
+#             object = c("Modify recdev init year"),
+#             author = "Team Thornyheads",
+#             folder_name = "Update_Recdevs_Inityear",
+#             script_model = "Update_Recdevs_Inityear_Analyses",
+#             script_results = "Update_Recdevs_Inityear_Outputs",
+#             base_model = c("23.model.sexed_survey_selectivity"),
+#             new_model = c("23.model.recdevs_inityear_1996"))
+
 NewSensAnal(topic = "model",
             # names are based on new model
-            object = c("Modify recdev init year"),
+            object = c("Fix warnings"),
             author = "Team Thornyheads",
-            folder_name = "Update_Recdevs_Inityear",
-            script_model = "Update_Recdevs_Inityear_Analyses",
-            script_results = "Update_Recdevs_Inityear_Outputs",
-            base_model = c("23.model.sexed_survey_selectivity"),
-            new_model = c("23.model.recdevs_inityear_1996"))
+            folder_name = "Fix_Warnings",
+            script_model = "Fix_Warnings_Analyses",
+            script_results = "Fix_Warnings_Outputs",
+            base_model = c("23.model.recdevs_inityear_1996"),
+            new_model = c("23.fix_warnings"))
 
 
 
