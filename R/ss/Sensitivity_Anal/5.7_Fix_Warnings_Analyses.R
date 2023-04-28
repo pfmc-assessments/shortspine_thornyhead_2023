@@ -129,7 +129,7 @@ var.to.save <- c(var.to.save, 'Dir_23_fix_warnings')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.recdevs_inityear_1996", curr.model = "23.fix_warnings", files="all")
 
 
 # 3.1  Work on the Starter file ----
@@ -236,6 +236,50 @@ Ctl23_fix_warnings$MG_parms["L_at_Amin_Mal_GP_1",]$HI <- 25
 Ctl23_fix_warnings$MG_parms["VonBert_K_Fem_GP_1",]$LO <- 0.001
 Ctl23_fix_warnings$MG_parms["L_at_Amax_Mal_GP_1",]$HI <- 75
 
+# Fix retention scaling warninsg
+# Per Vlada, the parameterization changed in 2017, which is why they showed up
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)", ]$LO <- -10
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)", ]$HI <- 10
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)", ]$INIT <- 2.19722
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)", ]$PRIOR <- 2.19722
+
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)", ]$LO <- -10
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)", ]$HI <- 11
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)", ]$INIT <- 10
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)", ]$PRIOR <- 2.19722
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)", ]$PHASE <- -3
+
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Non-trawl(3)", ]$LO <- -10
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Non-trawl(3)", ]$HI <- 10
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Non-trawl(3)", ]$INIT <- 2.19722
+Ctl23_fix_warnings$size_selex_parms["SizeSel_PRet_3_Non-trawl(3)", ]$PRIOR <- 2.19722
+
+# Get these parameters off the bounds
+# Per Vlada and Kiva, simply fixing the plateau at -15 is legitimate
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Trawl_N(1)",]$LO <- -16
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Trawl_N(1)",]$HI <- 16
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Trawl_N(1)",]$INIT <- -15
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Trawl_N(1)",]$PHASE <- -3
+
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial1(4)",]$LO <- -16
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial1(4)",]$HI <- 16
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial1(4)",]$INIT <- -7
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial1(4)",]$PHASE <- -3
+
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial2(5)",]$LO <- -16
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial2(5)",]$HI <- 16
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial2(5)",]$INIT <- -7
+Ctl23_fix_warnings$size_selex_parms["SizeSel_P_2_Triennial2(5)",]$PHASE <- -3
+
+# F_Method=4 is the new preferred value
+# strcutural changes needed to make work.
+Ctl23_fix_warnings$F_Method <- 4
+Ctl23_fix_warnings$maxF <- 3.5
+Ctl23_fix_warnings$F_4_Fleet_Parms <- data.frame(Fleet = c(1, 2, 3),
+                                                 start_F = 0.05,
+                                                 first_parm_phase = 99)
+Ctl23_fix_warnings$F_iter <- 5
+
 # Save the control file for the model
  SS_writectl(
        ctllist =  Ctl23_fix_warnings ,
@@ -310,7 +354,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.fix_warningsfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[1], yes = '-nohess', no = NULL)
+      extra = NULL#ifelse(noHess[1], yes = '-nohess', no = NULL)
       # this is if we want to use '-nohess'
       )
 
