@@ -1625,7 +1625,7 @@ write_SA_files <- function(out = NULL,
       # clean the folder after the run
       extra = ifelse(noHess[",
         m,
-        "], yes = '-nohess', no = NULL)
+        "], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )\n",
         sep = ""
