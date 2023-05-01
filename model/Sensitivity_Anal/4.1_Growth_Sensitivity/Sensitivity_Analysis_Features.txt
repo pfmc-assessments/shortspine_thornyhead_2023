@@ -1,0 +1,39 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  biological_Info 
+# Specific item in that topic: 
+# 	- Growth Sensitivity High 
+# 	- Growth Sensitivity Low 
+# Author:  Sabrina Beyer and Jane Sullivan 
+# Date: 2023-04-30 18:42:11 
+# Sensitivity Analysis ID: Item 4.1 
+# Names of the models created:
+# 	-  23.growth.high 
+# 	-  23.growth.low 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.growth.high 				 23.model.francis_2 
+# 23.growth.low 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/model/Sensitivity_Anal/4.1_Growth_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.1_Growth_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.1_Growth_Sensitivity_Outputs.R .R
+# 
+# General features: 
+# Sensitivity of the base model (23.model.francis_2) to different growth curves 
+# 
+# Model features:
+# - Model 23.growth.high:
+# Sensitivity of the model to a growth curve 25% higher 
+# - Model 23.growth.low:
+# Sensitvitity of the base model to a growth curve 10% lower 
+# ============================================================ #
+

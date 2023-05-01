@@ -181,16 +181,25 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #             base_model = c("23.model.sexed_survey_selectivity"),
 #             new_model = c("23.model.recdevs_inityear_1996"))
 
-NewSensAnal(topic = "model",
-            # names are based on new model
-            object = c("Fix warnings"),
-            author = "Team Thornyheads",
-            folder_name = "Fix_Warnings",
-            script_model = "Fix_Warnings_Analyses",
-            script_results = "Fix_Warnings_Outputs",
-            base_model = c("23.model.recdevs_inityear_1996"),
-            new_model = c("23.fix_warnings"))
+#NewSensAnal(topic = "model",
+#            # names are based on new model
+#            object = c("Fix warnings"),
+#            author = "Team Thornyheads",
+#            folder_name = "Fix_Warnings",
+#            script_model = "Fix_Warnings_Analyses",
+#            script_results = "Fix_Warnings_Outputs",
+#            base_model = c("23.model.recdevs_inityear_1996"),
+#            new_model = c("23.fix_warnings"))
 
+NewSensAnal(topic = "biological_Info",
+            # names are based on new model
+            object = c("Growth Sensitivity High","Growth Sensitivity Low"),
+            author = "Sabrina Beyer and Jane Sullivan",
+            folder_name = "Growth_Sensitivity",
+            script_model = "Growth_Sensitivity_Analyses",
+            script_results = "Growth_Sensitivity_Outputs",
+            base_model = c("23.model.francis_2", "23.model.francis_2"),
+            new_model = c("23.growth.high", "23.growth.low"))
 
 
 
