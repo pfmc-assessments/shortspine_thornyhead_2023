@@ -25,15 +25,6 @@ bookdown::render_book("20data.Rmd", clean = TRUE, output_dir = getwd())
 bookdown::render_book("00a.Rmd", clean = TRUE, output_dir = getwd())
 
 
-1) Species names both capitalized 
-2) nothing working with glossary 
-3) When I render 00a.Rmd get:
-  
-  [WARNING] Citeproc: citation ref not found
-! Paragraph ended before \align* was complete.
-<to be read again> 
-  \par 
-l.446 
 
-Error: LaTeX failed to compile _main.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See _main.log for more info.
+
   
