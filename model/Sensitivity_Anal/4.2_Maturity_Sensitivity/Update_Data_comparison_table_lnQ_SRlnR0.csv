@@ -1,0 +1,4 @@
+Label,Phase,23.model.francis_2,23.maturity.pgcurve,23.maturity.mix_curve
+SR_LN(R0),4,10.2147,10.2118,10.2134
+LnQ_base_Triennial1(4),-1,-0.934709,-0.931732,-0.933283
+LnQ_base_NWFSCcombo(6),-1,-0.195334,-0.191446,-0.193204
