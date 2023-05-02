@@ -112,7 +112,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # won't be estimated.
 # Reminder - The following models are considered:# 	-  23.land.hist_impute 
 # 	-  23.land.2013 
-noHess <- c(FALSE,FALSE)
+noHess <- c(TRUE,TRUE)
 
 
 var.to.save <- ls()
@@ -141,7 +141,8 @@ var.to.save <- c(var.to.save, 'Dir_23_land_hist_impute')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.land.hist_impute", files="all")
+
 
 
 # 3.1  Work on the Starter file ----
@@ -192,26 +193,42 @@ Dat23_land_hist_impute <- SS_readdat_3.30(
 
 # Make your modification if applicable
 # Code modifying the data file 
-# ..... 
-# ..... 
+# Trawl_N = 1
+# Trawl_S = 2
+# Non-trawl = 3
+dat_land_hist_impute <- read.csv(here::here("data","processed","SST_catch_2013assessment.csv")) %>% 
+  filter(Year < 1962) %>%
+  tidyr::gather(key="fleet",value="catch",NTrawl:SOther) %>%
+  mutate(seas=1,
+         fleet = ifelse(fleet %in% "NTrawl",1,fleet), 
+         fleet = ifelse(fleet %in% "STrawl",2,fleet), 
+         fleet = ifelse(fleet %in% c("NOther","SOther"),3,fleet), 
+         fleet=as.numeric(fleet)) %>%
+  group_by(year=Year, seas, fleet) %>%
+  summarize(catch = sum(catch),catch_se = 0.01)
+
+Dat23_land_hist_impute$catch <- dplyr::bind_rows(dat_land_hist_impute, 
+                                                 Dat23_land_hist_impute$catch %>% filter(year >= 1962)) %>%
+  arrange(fleet,year) %>%
+  data.frame()
 
 
 # Save the data file for the model
-# SS_writedat(
-      # datlist =  Dat23_land_hist_impute ,
-      # outfile = file.path(Dir_23_land_hist_impute, 'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writedat(
+datlist =  Dat23_land_hist_impute ,
+outfile = file.path(Dir_23_land_hist_impute, 'SST_data.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 
 # Check file structure
-# DatFile <- file.path(Dir_23_land_hist_impute, 'SST_data.ss', fsep = fsep)
-#  Dat23_land_hist_impute <-
-      # SS_readdat_3.30(
-      # file = DatFile,
-      # verbose = TRUE,
-      # section = TRUE
-      # )
+DatFile <- file.path(Dir_23_land_hist_impute, 'SST_data.ss', fsep = fsep)
+ Dat23_land_hist_impute <-
+SS_readdat_3.30(
+file = DatFile,
+verbose = TRUE,
+section = TRUE
+)
 
 # clean environment
 var.to.save <- c(var.to.save, 'Dat23_land_hist_impute')
@@ -378,7 +395,7 @@ var.to.save <- c(var.to.save, 'Dir_23_land_2013')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.land.2013", files="all")
 
 
 # 4.1  Work on the Starter file ----
@@ -429,26 +446,42 @@ Dat23_land_2013 <- SS_readdat_3.30(
 
 # Make your modification if applicable
 # Code modifying the data file 
-# ..... 
-# ..... 
+# Trawl_N = 1
+# Trawl_S = 2
+# Non-trawl = 3
+dat_land_2013 <- read.csv(here::here("data","processed","SST_catch_2013assessment.csv")) %>% 
+  tidyr::gather(key="fleet",value="catch",NTrawl:SOther) %>%
+  mutate(seas=1,
+         fleet = ifelse(fleet %in% "NTrawl",1,fleet), 
+         fleet = ifelse(fleet %in% "STrawl",2,fleet), 
+         fleet = ifelse(fleet %in% c("NOther","SOther"),3,fleet), 
+         fleet=as.numeric(fleet)) %>%
+  group_by(year=Year, seas, fleet) %>%
+  summarize(catch = sum(catch),catch_se = 0.01)
+
+Dat23_land_2013$catch <- dplyr::bind_rows(dat_land_2013, 
+                                          Dat23_land_2013$catch %>% filter(year > 2012)) %>%
+  arrange(fleet,year) %>%
+  data.frame()
+
 
 
 # Save the data file for the model
-# SS_writedat(
-      # datlist =  Dat23_land_2013 ,
-      # outfile = file.path(Dir_23_land_2013, 'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writedat(
+datlist =  Dat23_land_2013 ,
+outfile = file.path(Dir_23_land_2013, 'SST_data.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 
 # Check file structure
-# DatFile <- file.path(Dir_23_land_2013, 'SST_data.ss', fsep = fsep)
-#  Dat23_land_2013 <-
-      # SS_readdat_3.30(
-      # file = DatFile,
-      # verbose = TRUE,
-      # section = TRUE
-      # )
+DatFile <- file.path(Dir_23_land_2013, 'SST_data.ss', fsep = fsep)
+ Dat23_land_2013 <-
+SS_readdat_3.30(
+file = DatFile,
+verbose = TRUE,
+section = TRUE
+)
 
 # clean environment
 var.to.save <- c(var.to.save, 'Dat23_land_2013')

@@ -114,10 +114,6 @@ var.to.save <- ls()
 # Path to the base model (23.model.francis_2) repertory
 Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
 
-
-# Path to the base model (23.model.francis_2) repertory
-Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
-
 # Root directory for this sensitivity analysis
 SA_path <- file.path('model','Sensitivity_Anal','1.1_Landings_Sensitivity',fsep = fsep)
 # Path to the 23.land.hist_impute repertory
@@ -129,14 +125,12 @@ Dir_23_land_2013 <- file.path(dir_SensAnal, '1.1_Landings_Sensitivity','2_23.lan
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(
 	Dir_23_model_francis_2,
-	Dir_23_model_francis_2,
 	Dir_23_land_hist_impute,
 	Dir_23_land_2013))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
-	'23.model.francis_2',
 	'23.model.francis_2',
 	'23.land.hist_impute',
 	'23.land.2013')
@@ -151,7 +145,6 @@ SSplotComparisons(
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
       legendlabels = c(
-	'23.model.francis_2',
 	'23.model.francis_2',
 	'23.land.hist_impute',
 	'23.land.2013')

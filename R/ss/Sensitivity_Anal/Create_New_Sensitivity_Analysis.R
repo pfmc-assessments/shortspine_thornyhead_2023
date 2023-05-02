@@ -202,17 +202,26 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #            base_model = c("23.model.francis_2", "23.model.francis_2"),
 #            new_model = c("23.growth.high", "23.growth.low"))
 
-#maturity sensitivity
-NewSensAnal(topic = "biological_Info",
+# #maturity sensitivity
+# NewSensAnal(topic = "biological_Info",
+#             # names are based on new model
+#             object = c("PG maturity","Intermediate maturity curve"),
+#             author = "Sabrina Beyer and Jane Sullivan",
+#             folder_name = "Maturity_Sensitivity",
+#             script_model = "Maturity_Sensitivity_Analyses",
+#             script_results = "Maturity_Sensitivity_Outputs",
+#             base_model = c("23.model.francis_2", "23.model.francis_2"),
+#             new_model = c("23.maturity.pgcurve", "23.maturity.mix_curve"))
+
+
+#landings sensitivity
+NewSensAnal(topic = "landings",
             # names are based on new model
-            object = c("PG maturity","Intermediate maturity curve"),
-            author = "Sabrina Beyer and Jane Sullivan",
-            folder_name = "Maturity_Sensitivity",
-            script_model = "Maturity_Sensitivity_Analyses",
-            script_results = "Maturity_Sensitivity_Outputs",
-            base_model = c("23.model.francis_2", "23.model.francis_2"),
-            new_model = c("23.maturity.pgcurve", "23.maturity.mix_curve"))
-
-
-
+            object = c("Imputed historical landings","2013 assessment landings"),
+            author = "Adam Hayes",
+            folder_name = "Landings_Sensitivity",
+            script_model = "Landings_Sensitivity_Analyses",
+            script_results = "Landings_Sensitivity_Outputs",
+            base_model = c("23.model.francis_2","23.model.francis_2"),
+            new_model = c("23.land.hist_impute","23.land.2013"))
 
