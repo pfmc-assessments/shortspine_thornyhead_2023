@@ -329,7 +329,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.maturity.pgcurvefolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = '-nohess' #ifelse(noHess[1], yes = '-nohess', no = '')
+      extra = '' #ifelse(noHess[1], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
@@ -576,7 +576,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.maturity.mix_curvefolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = '-nohess' # ifelse(noHess[2], yes = '-nohess', no = '')
+      extra = '' # ifelse(noHess[2], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
