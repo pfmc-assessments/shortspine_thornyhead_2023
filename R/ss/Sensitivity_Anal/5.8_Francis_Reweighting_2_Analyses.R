@@ -143,7 +143,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_francis_2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.fix_warnings", curr.model="23.model.francis_2", files="all")
 
 
 # 3.1  Work on the Starter file ----
@@ -162,7 +162,7 @@ Start23_model_francis_2 <- SS_readstarter(
 
 # we want to reuse the values from ss.par to make sure we hit a global minima
 # make sure there is a 'ss.par' file in the root model directory
-Start23_model_francis_2$init_values_src <- 1  
+Start23_model_francis_2$init_values_src <- 0  
 
 # Save the starter file for the model
 SS_writestarter(
@@ -251,6 +251,13 @@ Ctl23_model_francis$Variance_adjustment_list <- bind_rows(
   Ctl23_model_francis$Variance_adjustment_list %>% filter(Data_type != 4)
 )
 
+# Updated init parameters values to ensure best fit
+Ctl23_model_francis_2$SR_parms["SR_LN(R0)",]$INIT <- 10.332
+Ctl23_model_francis_2$Q_parms["LnQ_base_Triennial1(4)",]$INIT <- -1.17642
+Ctl23_model_francis_2$size_selex_parms["SizeSel_P_4_Trawl_N(1)",]$INIT <- 7
+Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_1_Trawl_N(1)",]$INIT <- 29
+Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)",]$INIT <- 4
+
 # Save the control file for the model
 SS_writectl(
   ctllist =  Ctl23_model_francis_2 ,
@@ -332,19 +339,19 @@ run_SS(SS_version = '3.30.21',
 # 3.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_model_francis_2, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_model_francis_2, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
