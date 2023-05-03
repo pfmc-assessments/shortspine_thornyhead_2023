@@ -15,13 +15,13 @@
 # *** 
 # 
 # This analysis has been developped based on the following model: 
- 23.fix_warnings 
+# 23.fix_warnings 
 # 
 # Results are stored in the following foler: 
 #	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.8_Francis_Reweighting_2 
 # 
 # Features: 
-A second round of francis weighting for the final base model. 
+#A second round of francis weighting for the final base model. 
 # ============================================================ #
 
 # ------------------------------------------------------------ #
@@ -100,7 +100,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # If noHess = TRUE for a given model, then the Hessian matrix
 # won't be estimated.
 # Reminder - The following models are considered:# 	-  23.model.francis_2 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -108,6 +108,20 @@ var.to.save <- ls()
 
 #  3. Developing model 23.model.francis_2  ----
 # ----------------------------------------------------------- #
+
+Dir_23_base_model <- file.path(dir_SensAnal, '5.7_Fix_Warnings', '1_23.fix_warnings', 'run', fsep=fsep)
+replist <- SS_output(
+  dir = Dir_23_base_model,
+  verbose = TRUE,
+  printstats = TRUE
+)
+
+new.francis.weight <- r4ss::tune_comps(
+  replist = replist,
+  option="Francis",
+  dir = Dir_23_base_model,
+  exe = get.ss.exe.path()
+)
 
 # Path to the 23.model.francis_2 repertory
 Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2','1_23.model.francis_2' ,fsep = fsep)
@@ -146,14 +160,17 @@ Start23_model_francis_2 <- SS_readstarter(
 # ..... 
 # ..... 
 
+# we want to reuse the values from ss.par to make sure we hit a global minima
+# make sure there is a 'ss.par' file in the root model directory
+Start23_model_francis_2$init_values_src <- 1  
 
 # Save the starter file for the model
-# SS_writestarter(
-      # mylist =  Start23_model_francis_2 ,
-      # dir =  Dir_23_model_francis_2, 
-      # overwrite = TRUE,
-      # verbose = TRUE
-      # )
+SS_writestarter(
+  mylist =  Start23_model_francis_2 ,
+  dir =  Dir_23_model_francis_2,
+  overwrite = TRUE,
+  verbose = TRUE
+)
 
 # Check file structure
 # StarterFile <- file.path(Dir_23_model_francis_2, 'starter.ss')
@@ -229,15 +246,18 @@ Ctl23_model_francis_2 <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_model_francis$Variance_adjustment_list <- bind_rows(
+  Ctl23_model_francis$Variance_adjustment_list %>% filter(Data_type == 4) %>% mutate(Value=new.francis.weight$New_Var_adj) ,
+  Ctl23_model_francis$Variance_adjustment_list %>% filter(Data_type != 4)
+)
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_francis_2 ,
-      # outfile = file.path(Dir_23_model_francis_2, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_model_francis_2 ,
+  outfile = file.path(Dir_23_model_francis_2, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
