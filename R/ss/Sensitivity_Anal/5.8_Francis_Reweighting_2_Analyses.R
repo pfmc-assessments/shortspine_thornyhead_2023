@@ -332,7 +332,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.model.francis_2folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[1], yes = '-nohess', no = NULL)
+      extra = NULL #ifelse(noHess[1], yes = '-nohess', no = NULL)
       # this is if we want to use '-nohess'
       )
 
