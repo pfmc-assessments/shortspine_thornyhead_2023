@@ -246,10 +246,12 @@ Ctl23_model_francis_2 <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-Ctl23_model_francis$Variance_adjustment_list <- bind_rows(
-  Ctl23_model_francis$Variance_adjustment_list %>% filter(Data_type == 4) %>% mutate(Value=new.francis.weight$New_Var_adj) ,
-  Ctl23_model_francis$Variance_adjustment_list %>% filter(Data_type != 4)
+Ctl23_model_francis_2$Variance_adjustment_list <- bind_rows(
+  Ctl23_model_francis_2$Variance_adjustment_list %>% filter(Data_type == 4) %>% mutate(Value=new.francis.weight$New_Var_adj) ,
+  Ctl23_model_francis_2$Variance_adjustment_list %>% filter(Data_type != 4)
 )
+
+Ctl23_model_francis_2$MG_parms[SS_Param2023$MG_params$M$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$M$base_2023$Value[1]
 
 # Updated init parameters values to ensure best fit
 Ctl23_model_francis_2$SR_parms["SR_LN(R0)",]$INIT <- 10.332
