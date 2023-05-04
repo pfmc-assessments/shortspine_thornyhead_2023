@@ -339,19 +339,19 @@ run_SS(SS_version = '3.30.21',
 # 3.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-# Dirplot <- file.path(Dir_23_model_francis_2, 'run', fsep = fsep)
-# 
-# replist <- SS_output(
-#       dir = Dirplot,
-#       verbose = TRUE,
-#       printstats = TRUE
-#       )
-# 
-# # plots the results (store in the 'plots' sub-directory)
-# SS_plots(replist,
-#       dir = Dirplot,
-#       printfolder = 'plots'
-#       )
+Dirplot <- file.path(Dir_23_model_francis_2, 'run', fsep = fsep)
+
+replist <- SS_output(
+      dir = Dirplot,
+      verbose = TRUE,
+      printstats = TRUE
+      )
+
+# plots the results (store in the 'plots' sub-directory)
+SS_plots(replist,
+      dir = Dirplot,
+      printfolder = 'plots'
+      )
 
 # =======================
 
