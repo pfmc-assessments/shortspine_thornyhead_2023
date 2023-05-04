@@ -15,13 +15,13 @@
 # *** 
 # 
 # This analysis has been developped based on the following model: 
- 23.fix_warnings 
+# 23.fix_warnings 
 # 
 # Results are stored in the following foler: 
 #	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.8_Francis_Reweighting_2 
 # 
 # Features: 
-A second round of francis weighting for the final base model. 
+#A second round of francis weighting for the final base model. 
 # ============================================================ #
 
 # ------------------------------------------------------------ #
@@ -100,7 +100,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # If noHess = TRUE for a given model, then the Hessian matrix
 # won't be estimated.
 # Reminder - The following models are considered:# 	-  23.model.francis_2 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -108,6 +108,20 @@ var.to.save <- ls()
 
 #  3. Developing model 23.model.francis_2  ----
 # ----------------------------------------------------------- #
+
+Dir_23_base_model <- file.path(dir_SensAnal, '5.7_Fix_Warnings', '1_23.fix_warnings', 'run', fsep=fsep)
+replist <- SS_output(
+  dir = Dir_23_base_model,
+  verbose = TRUE,
+  printstats = TRUE
+)
+
+new.francis.weight <- r4ss::tune_comps(
+  replist = replist,
+  option="Francis",
+  dir = Dir_23_base_model,
+  exe = get.ss.exe.path()
+)
 
 # Path to the 23.model.francis_2 repertory
 Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2','1_23.model.francis_2' ,fsep = fsep)
@@ -129,7 +143,7 @@ var.to.save <- c(var.to.save, 'Dir_23_model_francis_2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.fix_warnings", curr.model="23.model.francis_2", files="all")
 
 
 # 3.1  Work on the Starter file ----
@@ -146,14 +160,17 @@ Start23_model_francis_2 <- SS_readstarter(
 # ..... 
 # ..... 
 
+# we want to reuse the values from ss.par to make sure we hit a global minima
+# make sure there is a 'ss.par' file in the root model directory
+Start23_model_francis_2$init_values_src <- 0  
 
 # Save the starter file for the model
-# SS_writestarter(
-      # mylist =  Start23_model_francis_2 ,
-      # dir =  Dir_23_model_francis_2, 
-      # overwrite = TRUE,
-      # verbose = TRUE
-      # )
+SS_writestarter(
+  mylist =  Start23_model_francis_2 ,
+  dir =  Dir_23_model_francis_2,
+  overwrite = TRUE,
+  verbose = TRUE
+)
 
 # Check file structure
 # StarterFile <- file.path(Dir_23_model_francis_2, 'starter.ss')
@@ -229,15 +246,25 @@ Ctl23_model_francis_2 <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
+Ctl23_model_francis$Variance_adjustment_list <- bind_rows(
+  Ctl23_model_francis$Variance_adjustment_list %>% filter(Data_type == 4) %>% mutate(Value=new.francis.weight$New_Var_adj) ,
+  Ctl23_model_francis$Variance_adjustment_list %>% filter(Data_type != 4)
+)
 
+# Updated init parameters values to ensure best fit
+Ctl23_model_francis_2$SR_parms["SR_LN(R0)",]$INIT <- 10.332
+Ctl23_model_francis_2$Q_parms["LnQ_base_Triennial1(4)",]$INIT <- -1.17642
+Ctl23_model_francis_2$size_selex_parms["SizeSel_P_4_Trawl_N(1)",]$INIT <- 7
+Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_1_Trawl_N(1)",]$INIT <- 29
+Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)",]$INIT <- 4
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_model_francis_2 ,
-      # outfile = file.path(Dir_23_model_francis_2, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+  ctllist =  Ctl23_model_francis_2 ,
+  outfile = file.path(Dir_23_model_francis_2, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -305,26 +332,26 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.model.francis_2folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[1], yes = '-nohess', no = NULL)
+      extra = NULL #ifelse(noHess[1], yes = '-nohess', no = NULL)
       # this is if we want to use '-nohess'
       )
 
 # 3.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_model_francis_2, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_model_francis_2, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
