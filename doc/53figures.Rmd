@@ -1,11 +1,51 @@
 \clearpage
 # Figures
 
-```{r, survey-figures, results = "asis"}
+```{r}
 library(here)
-fig_dir <- here::here("doc", "FinalFigs", "Data")
-sa4ss::add_figure(filein = file.path(fig_dir, "assessment_data_timeseries.png"), 
-                  caption = "Summary of data sources used in the base model.", 
-                  label = "assessment_data_timeseries")
+fig_dir1 <- here::here("doc", "FinalFigs", "Intro")
+fig_dir2 <- here::here("doc", "FinalFigs", "Data")
+fig_dir3 <- here::here("doc", "FinalFigs", "Base")
 ```
 
+```{r, Intro-figures, results = "asis"}
+
+sa4ss::add_figure(filein = file.path(fig_dir1, " "), 
+                  caption = " ", 
+                  label = " ")
+```
+
+```{r, Data-figures, results = "asis"}
+
+#These figures come out of both the data folder and the model folder
+
+#Data Sources Figure
+sa4ss::add_figure(filein = file.path(fig_dir2, "assessment_data_timeseries.png"), 
+                  caption = "Summary of data sources used in the base model.", 
+                  label = "assessment_data_timeseries")
+
+#Catch history
+sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"), 
+                  caption = "Estimated landing history for shortspine thornyhead.", 
+                  label = "catch_hist")
+
+#Discard history
+sa4ss::add_figure(filein = file.path(fig_dir3, "catch7 discards stacked plot (depends on multiple fleets).png"), 
+                  caption = "Predicted discards based estimated retention and selectivity for each fleet.", 
+                  label = "disc_hist")
+```
+
+```{r, BaseModel-figures, results = "asis"}
+
+sa4ss::add_figure(filein = file.path(fig_dir3, " "), 
+                  caption = " ", 
+                  label = " ")
+```
+
+```{r, Sensativity-figures, results = "asis"}
+library(here)
+fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")
+sa4ss::add_figure(filein = file.path(fig_dir4, " "), 
+                  caption = " ", 
+                  label = " ")
+```
