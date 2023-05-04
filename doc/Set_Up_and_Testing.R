@@ -25,6 +25,3 @@ bookdown::render_book("20data.Rmd", clean = TRUE, output_dir = getwd())
 bookdown::render_book("00a.Rmd", clean = TRUE, output_dir = getwd())
 
 
-
-
-  
