@@ -3,7 +3,7 @@
 
 ```{r, survey-figures, results = "asis"}
 library(here)
-fig_dir <- here::here("doc", "FinalFigs")
+fig_dir <- here::here("doc", "FinalFigs", "Data")
 sa4ss::add_figure(filein = file.path(fig_dir, "assessment_data_timeseries.png"), 
                   caption = "Summary of data sources used in the base model.", 
                   label = "assessment_data_timeseries")
