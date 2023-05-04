@@ -119,6 +119,16 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
         # 'Exe_path',
         # 'dir_script',
         # 'dir_SensAnal') 
+
+
+# Compute the hessian matrix 
+# For each model, indicate if you want to compute the Hessian matrix.
+# If noHess = TRUE for a given model, then the Hessian matrix
+# won't be estimated.
+# Reminder - The following models are considered:#  -  23.male.selex.new 
+noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE)
+
+
 var.to.save <- ls()
 # ----------------------------------------------------------- 
 
@@ -422,8 +432,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_1 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
-      # this is if we want to use '-nohess' 
+      extra = ifelse(noHess[1], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 3.6  Let's plot the outputs from this model ----
@@ -725,8 +735,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_2 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
-      # this is if we want to use '-nohess' 
+      extra = ifelse(noHess[2], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 4.6  Let's plot the outputs from this model ----
@@ -1020,8 +1030,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_3 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
-      # this is if we want to use '-nohess' 
+      extra = ifelse(noHess[3], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 5.6  Let's plot the outputs from this model ----
@@ -1313,7 +1323,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_4 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = ifelse(noHess[4], yes = '-nohess', no = '')
       # this is if we want to use '-nohess' 
       )
 
@@ -1610,7 +1620,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.model.fleetstruct_5 folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = "-nohess"
+      extra = ifelse(noHess[5], yes = '-nohess', no = '')
       # this is if we want to use '-nohess' 
       )
 
