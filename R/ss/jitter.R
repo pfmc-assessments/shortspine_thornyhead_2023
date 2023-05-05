@@ -8,7 +8,7 @@ model_settings <- get_settings(settings = list(base_name = '1_23.model.francis_2
                                                usepar=FALSE,
                                                globalpar=FALSE,
                                                skipfinished=FALSE
-                                               
+                                               Njitter=100
                                           )
                                 )
 
