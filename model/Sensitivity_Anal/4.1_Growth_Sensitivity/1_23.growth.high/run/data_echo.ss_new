@@ -5,7 +5,7 @@
 #_User_info_available_at:https://vlab.noaa.gov/group/stock-synthesis
 #_Source_code_at:_https://github.com/nmfs-stock-synthesis/stock-synthesis
 
-#_Start_time: Mon May  1 15:33:33 2023
+#_Start_time: Thu May  4 22:19:08 2023
 #_echo_input_data
 #C Data file for Shortspine Thornyhead - 2023 Assessment
 #C These data are the one from the 2013 model and updated for
@@ -841,9 +841,9 @@
 #_minsamplesize: minimum sample size; set to 1 to match 3.24, minimum value is 0.001
 #
 #_mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
-# 0 0 0 0 0 0 0 #_fleet:1_Trawl_N
-# 0 0 0 0 0 0 0 #_fleet:2_Trawl_S
-# 0 0 0 0 0 0 0 #_fleet:3_Non-trawl
+# 0 0 0 1515675648 0 0 0 #_fleet:1_Trawl_N
+# 0 0 0 516 0 0 0 #_fleet:2_Trawl_S
+# 0 0 0 3772416 0 0 0 #_fleet:3_Non-trawl
 # 0 0 0 0 0 0 0 #_fleet:4_Triennial1
 # 0 0 0 0 0 0 0 #_fleet:5_Triennial2
 # 0 0 0 0 0 0 0 #_fleet:6_NWFSCcombo
