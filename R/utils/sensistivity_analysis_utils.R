@@ -1229,7 +1229,9 @@ write_SA_files <- function(out = NULL,
     for (m in 1:length(new_model))
       cat("# \t-", new_model[m], "\n")
   } else {
-    cat("# Name of the model created:", new_model, "\n")
+    # cat("# Name of the model created:", new_model, "\n")
+    cat("# Name of the model created:\n")
+    cat("# \t-", new_model, "\n")
   }
   cat("# *** \n")
   cat("# \n")
@@ -1239,11 +1241,13 @@ write_SA_files <- function(out = NULL,
     for (m in 1:length(new_model))
       cat("#", new_model[m], "\t\t\t\t", base_model[m], "\n")
   } else {
-    cat(
-      "# This analysis has been developped based on the following model: \n",
-      base_model,
-      "\n"
-    )
+    # cat(
+    #   "# This analysis has been developped based on the following model: \n",
+    #   base_model,
+    #   "\n"
+    # )
+    cat("# This analysis has been developped based on the following model: \n")
+    cat("#", base_model, "\n")
   }
   cat("# \n")
   cat("# Results are stored in the following foler: \n")
@@ -2472,6 +2476,139 @@ Please check the name(s) of you base model(s).\n", sep="")
   }
   # ========================================================
   
+#   # 6. Upodate the descriptive .txt file for this analysis ----
+#   # ======================================================== #
+#   # Ask the user for a description of the sensitivity analysis
+#   if (length(new_model) > 0) {
+#     Mod_Feat <- NULL
+#   }
+#   cat("\nYou are going to add ",length(new_model)," models to this sensitivity analysis.\n", sep="")
+#   
+#   # Get the global description of the sensitivity analysis
+#   mess1 <-
+#     paste("Do you want to update the general feature of the sensitivity analysis?
+# The current feature is:\n", tmpInfo$Features[1], sep = "")
+#   restart <- DialogBox(message = mess1, type = 'yesno')
+#   Features <- NULL
+#   if(restart == "yes"){
+#     while (is.null(Features)) {
+#       Impl <-
+#         readline(prompt = "Please describe the general features of this sensistivity analysis:")
+#       Features <- Impl
+#       Sys.sleep(0.1)
+#     }
+#   }
+#   # Get a description of each model
+#   if (length(new_model) > 0) {
+#     Nimpl <- length(new_model)
+#     while (is.null(Mod_Feat)) {
+#       for (i in 1:Nimpl) {
+#         eval(parse(
+#           text = paste0(
+#             "Mod_",
+#             i,
+#             " <- readline(prompt = 'Please describe the ",
+#             new_model[i],
+#             " model: ')"
+#           )
+#         ))
+#         
+#         eval(parse(
+#           text = paste0(
+#             "Mod_",
+#             i,
+#             " <- paste0('\n# - Model ",
+#             new_model[i],
+#             ":\n# ', Mod_",
+#             i,
+#             "\n)"
+#           )
+#         ))
+#       }
+#       if (i == Nimpl)
+#         eval(parse(text =
+#                      paste0(
+#                        'Mod_Feat <-paste(',
+#                        paste(' Mod_', 1:Nimpl, sep = '', collapse = ','),
+#                        ')'
+#                      )))
+#       Sys.sleep(0.1)
+#     }
+#   }
+#   
+#   timeSA <- ac(Sys.time())
+#   out <-
+#     file.path(WD, "Sensitivity_Analysis_Features.txt", fsep = fsep)
+#   # Delete the old file
+#   # base::unlink(out)
+#   
+#   # Set up material for the write_SA_files() function
+#   file <- readLines(con = out)
+#   
+#   # 1. Add Object
+#   Which1 <- grep(pattern = "# Author:", x = file)
+#   fileOut <- file[1:(Which1-1)]
+#   object1 <- paste("# \t-", object)
+#   fileOut <- c(fileOut, object1)
+#   
+#   # 2. Update the date
+#   timeSA <- ac(Sys.time())
+#   fileOut <- c(fileOut, file[Which1])
+#   fileOut <- c(fileOut, paste("# Date:", timeSA))
+#   
+#   # 3. Add the names of the new models
+#   Which2 <- grep(pattern = "# This analysis has been developed based on the following ", x = file)
+#   fileOut <- c(fileOut, file[(Which1+2):(Which2-3)])
+#   NamMod <- paste("# \t-", new_model)
+#   fileOut <- c(fileOut, NamMod)
+#   
+#   # 4. Add the correspondance between base and new models
+#   # Which3 <- grep(pattern = "# Results are stored in the following foler: ", x = file)
+#   # fileOut <- c(fileOut, file[(Which2-2):(Which3-2)])
+#   # for(m in 1:dim(Modcomp)[1]){
+#   #   Modcorr <- paste(Modcomp[m,1:2], sep = "", collapse = " \t\t\t\t ")
+#   #   fileOut <- c(fileOut, paste("# ",Modcorr, sep=""))
+#   # }
+#   Which3 <- grep(pattern = "# Results are stored in the following foler: ", x = file)
+#   tmpSumUp <- SumUp[SumUp$`SA number` %in% SA_ID,]
+#   if(dim(tmpSumUp)[1] == 1){
+#     fileOut <- c(fileOut, file[(Which2-2):(Which3-2-1)])
+#     fileOut <- c(fileOut,"# New model \t\t\t\t\t Base model")
+#     fileOut <- c(fileOut,paste0("# ", tmpSumUp$`New model`, "\t\t\t\t", tmpSumUp$`Base model`))
+#   } else {
+#     fileOut <- c(fileOut, file[(Which2-2):(Which3-2)])
+#   }
+#   for(m in 1:dim(Modcomp)[1]){
+#     Modcorr <- paste(Modcomp[m,c(2,1)], sep = "", collapse = " \t\t\t\t ")
+#     fileOut <- c(fileOut, paste("# ",Modcorr, sep=""))
+#   }
+#   
+#   # Update the general feature of the SA
+#   if(restart == "yes"){
+#     Which4 <- grep(pattern = "# General features: ", x = file)
+#     fileOut <- c(fileOut, file[(Which3-1):Which4])
+#     fileOut <- c(fileOut, Features)
+#     Which5 <- grep(pattern = "# Model features:", x = file)
+#     fileOut <- c(fileOut, file[(Which5-1):(length(file)-2)])
+#   } else {
+#     fileOut <- c(fileOut, file[(Which3-1):(length(file)-2)])
+#   }
+#   
+#   # Add the model features
+#   Mod_Feat <- stringr::str_replace_all(string = Mod_Feat, pattern = "\n", replacement = "")
+#   Mod_Feat <- unlist(stringr::str_split(string = Mod_Feat, pattern = "#"))
+#   Mod_Feat <- Mod_Feat[-1]
+#   fileOut <- c(fileOut,paste("#",Mod_Feat,sep=""))
+#   fileOut <- c(fileOut,file[(length(file)-1):length(file)])
+#   base::writeLines(text = fileOut, con = out)
+#   
+#   cat(
+#     "=> The 'Sensitivity_Analysis_Features.txt' file has been updated.\n"
+#   )
+#   # ========================================================
+  
+  
+  
   # 6. Upodate the descriptive .txt file for this analysis ----
   # ======================================================== #
   # Ask the user for a description of the sensitivity analysis
@@ -2553,31 +2690,84 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
   fileOut <- c(fileOut, paste("# Date:", timeSA))
   
   # 3. Add the names of the new models
-  Which2 <- grep(pattern = "# This analysis has been developed based on the following ", x = file)
+  Which2 <- grep(pattern = "# This analysis has been developped based on the following", x = file)
   fileOut <- c(fileOut, file[(Which1+2):(Which2-3)])
   NamMod <- paste("# \t-", new_model)
   fileOut <- c(fileOut, NamMod)
   
   # 4. Add the correspondance between base and new models
   Which3 <- grep(pattern = "# Results are stored in the following foler: ", x = file)
-  fileOut <- c(fileOut, file[(Which2-2):(Which3-2)])
+  tmpSumUp <- SumUp[SumUp$`SA number` %in% SA_ID,]
+  if(dim(tmpSumUp)[1] == 1){
+    fileOut <- c(fileOut, file[(Which2-2):(Which3-2-1)])
+    fileOut <- c(fileOut,"# New model \t\t\t\t\t Base model")
+    fileOut <- c(fileOut,paste0("# ", tmpSumUp$`New model`, "\t\t\t\t", tmpSumUp$`Base model`))
+    # fileOut <- c(fileOut,"")
+  } else {
+    fileOut <- c(fileOut, file[(Which2-2):(Which3-2)])
+  }
   for(m in 1:dim(Modcomp)[1]){
-    Modcorr <- paste(Modcomp[m,1:2], sep = "", collapse = " \t\t\t\t ")
+    Modcorr <- paste(Modcomp[m,c(2,1)], sep = "", collapse = " \t\t\t\t ")
     fileOut <- c(fileOut, paste("# ",Modcorr, sep=""))
   }
+  fileOut <- c(fileOut,"")
   
-  # Update the general feature of the SA
+  # Update the general feature of the SA and model features
+  if(dim(tmpSumUp)[1] == 1){
+    Which4 <- grep(pattern = "# Features: ", x = file)
+    file[Which4] <- "# General features: "
+  }
+  
   if(restart == "yes"){
+    # if(dim(tmpSumUp)[1] == 1){
+    #   
+    #   Which4 <- grep(pattern = "# Features: ", x = file)
+    #   fileOut <- c(fileOut, file[(Which3-1):(Which4-1)])
+    #   fileOut <- c(fileOut, "# General features: ")
+    #   fileOut <- c(fileOut, Features)
+    # } else {
     Which4 <- grep(pattern = "# General features: ", x = file)
     fileOut <- c(fileOut, file[(Which3-1):Which4])
     fileOut <- c(fileOut, Features)
-    Which5 <- grep(pattern = "# Model features:", x = file)
-    fileOut <- c(fileOut, file[(Which5-1):(length(file)-2)])
+    # }
   } else {
     fileOut <- c(fileOut, file[(Which3-1):(length(file)-2)])
   }
   
   # Add the model features
+  if(dim(tmpSumUp)[1] == 1){
+    # Model features for the pre-existing model
+    fileOut <- c(fileOut, "", "# Model features:")
+    OldMod_Feat <- NULL
+    while (is.null(OldMod_Feat)) {
+      eval(parse(
+        text = paste0(
+          "Mod_old <- readline(prompt = 'Please describe the ",
+          tmpSumUp$`New model`,
+          " model: ')"
+        )
+      ))
+      
+      eval(parse(
+        text = paste0(
+          "Mod_old <- paste0('\n# - Model ",
+          tmpSumUp$`New model`,
+          ":\n# ', Mod_old\n)"
+        )
+      ))
+      eval(parse(text =
+                   paste0(
+                     'OldMod_Feat <-Mod_old'
+                   )))
+      Sys.sleep(0.1)
+    }
+    OldMod_Feat <- unlist(stringr::str_split(OldMod_Feat, pattern = "\n"))[2:3]
+    fileOut <- c(fileOut, OldMod_Feat)
+  } else {
+    Which5 <- grep(pattern = "# Model features:", x = file)
+    fileOut <- c(fileOut, file[(Which5-1):(length(file)-2)])
+  }
+  
   Mod_Feat <- stringr::str_replace_all(string = Mod_Feat, pattern = "\n", replacement = "")
   Mod_Feat <- unlist(stringr::str_split(string = Mod_Feat, pattern = "#"))
   Mod_Feat <- Mod_Feat[-1]
@@ -2589,6 +2779,8 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
     "=> The 'Sensitivity_Analysis_Features.txt' file has been updated.\n"
   )
   # ========================================================
+  
+  
   
   # 7. Update the "Summary_Sensitivity_analysis.pdf" ----
   # ======================================================== #
