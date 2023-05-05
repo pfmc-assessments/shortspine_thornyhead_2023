@@ -3,7 +3,7 @@ author:
   - name: Joshua Zahner
     code: 1
     first: J
-    middle: ''
+    middle: 'A'
     family: Zahner
   - name: Madison Heller-Shipley
     code: 1
@@ -18,7 +18,7 @@ author:
   - name: Adam Hayes
     code: 1
     first: A
-    middle: ''
+    middle: 'L'
     family: Hayes
   - name: Pierre-Yves Hernvann
     code: 2
@@ -28,7 +28,7 @@ author:
   - name: Andrea Odell
     code: 3
     first: A
-    middle: ''
+    middle: 'N'
     family: Odell
   - name: Haley Oleynik
     code: 4
@@ -45,7 +45,7 @@ author:
     first: M
     middle: ''
     family: Veron
-author_list: Zahner. J, M.A. Heller-Shipley,  S. Beyer, A. Hayes, P-Y. Hernvann, A. Odell,
+author_list: Zahner. J.A, M.A. Heller-Shipley,  S. Beyer, A.L. Hayes, P-Y. Hernvann, A.N. Odell,
   H. Oleynik, J.Y. Sullivan, M. Veron
 affiliation:
   - code: 1
