@@ -108,12 +108,12 @@ dat <- dat %>%
                                            'Sother', 'L_Sother', 'D_Sother', 'W_Sother') ~ 'Non-Trawl',
                            category %in% c('AFSCTriennialSurvey1', 'L_TriennialShelf1') ~ 'Triennial Early Survey',
                            category %in% c('AFSCTriennialSurvey2', 'L_TriennialShelf2') ~ 'Triennial Late Survey',
-                           category %in% c('ComboSurvey', 'L_Combo') ~ 'NWFSC Combo Survey'),
+                           category %in% c('ComboSurvey', 'L_Combo') ~ 'WCGBTS'),
          Fleet = factor(Fleet,
                         levels = c('North Trawl', 'South Trawl', 
                                    'Non-Trawl',
-                                   'Triennial 1 Survey', 'Triennial 2 Survey',
-                                   'NWFSC Combo Survey'),
+                                   'Triennial Early Survey', 'Triennial Late Survey',
+                                   'WCGBTS'),
                         ordered = TRUE))
 
 dat <- dat %>% 
@@ -136,10 +136,10 @@ dat_filtered %>%
 
 
 #save to document figures
-ggsave('doc/FinalFigs/assessment_data_timeseries.png', 
+ggsave('doc/FinalFigs/Data/assessment_data_timeseries.png', 
        bg='white', dpi=300, height=12, width=16, units="in")
 
-dat %>% 
+dat_filtered %>% 
   filter(Group == 'Abundance indices') %>% 
   ggplot(aes(x = Year, y = Fleet, col = Fleet, fill = Fleet, alpha = factor(present))) +
   geom_point(size = 5, shape=15) + 
@@ -150,6 +150,6 @@ dat %>%
   theme_minimal(base_size = 20) +
   theme(legend.position = 'none')
 
-ggsave('outputs/assessment_data_timeseries_surveys_baseMod.jpg', 
+ggsave('doc/FinalFigs/Data/survey_data_timeseries.png', 
        bg='white', dpi=300, height=3, width=11, units="in")
 
