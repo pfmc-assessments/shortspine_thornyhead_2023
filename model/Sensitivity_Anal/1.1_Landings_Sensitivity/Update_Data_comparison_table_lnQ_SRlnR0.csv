@@ -1,0 +1,4 @@
+Label,Phase,23.model.francis_2,23.land.hist_impute,23.land.2013
+SR_LN(R0),4,9.32091,9.33149,9.34621
+LnQ_base_Triennial1(4),-1,-0.354591,-0.358066,-0.366928
+LnQ_base_NWFSCcombo(6),-1,0.345615,0.341125,0.328983

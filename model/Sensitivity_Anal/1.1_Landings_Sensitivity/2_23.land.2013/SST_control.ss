@@ -54,8 +54,8 @@
 #
 #_growth_parms
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env_var&link	dev_link	dev_minyr	dev_maxyr	dev_PH	Block	Block_Fxn
- 0.01	0.15	      0.054	-3.129	0.5361	3	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Fem_GP_1  
-   -3	   3	      0.054	     0	   0.2	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Fem_GP_1  
+ 0.01	0.15	       0.04	-3.129	0.5361	3	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Fem_GP_1  
+   -3	   3	       0.04	     0	   0.2	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Fem_GP_1  
     3	  25	    11.3832	     9	     2	0	 -2	0	0	0	0	0	0	0	#_L_at_Amin_Fem_GP_1 
    55	  95	    73.6079	    70	     5	0	 -2	0	0	0	0	0	0	0	#_L_at_Amax_Fem_GP_1 
 0.001	0.03	 0.00989856	 0.017	   0.8	0	 -3	0	0	0	0	0	0	0	#_VonBert_K_Fem_GP_1 
@@ -67,8 +67,8 @@
    -3	 100	  -0.177291	  -0.4	   0.8	0	 -3	0	0	0	0	0	0	0	#_Mat_slope_Fem_GP_1 
     0	 100	   5.44e-08	     1	   0.8	0	 -3	0	0	0	0	0	0	0	#_Eggs_alpha_Fem_GP_1
     0	 100	      3.978	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_Eggs_beta_Fem_GP_1 
-   -3	   3	      0.054	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Mal_GP_1  
-   -3	   3	      0.054	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Mal_GP_1  
+   -3	   3	       0.04	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Mal_GP_1  
+   -3	   3	       0.04	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Mal_GP_1  
    -3	  25	     9.1733	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_L_at_Amin_Mal_GP_1 
    -3	  75	    66.0728	  -0.1	   0.8	0	 -2	0	0	0	0	0	0	0	#_L_at_Amax_Mal_GP_1 
    -3	   3	  0.0167854	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_VonBert_K_Mal_GP_1 
@@ -89,11 +89,11 @@
 0 # 0/1 to use steepness in initial equ recruitment calculation
 0 # future feature: 0/1 to make realized sigmaR a function of SR curvature
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn # parm_name
-  7	13	10.3	   10	   10	0	 4	0	0	0	0	0	0	0	#_SR_LN(R0)  
-0.2	 1	0.72	0.779	0.152	0	-2	0	0	0	0	0	0	0	#_SR_BH_steep
-  0	 2	 0.5	  0.5	  0.8	0	-4	0	0	0	0	0	0	0	#_SR_sigmaR  
- -5	 5	   0	    0	    1	0	-4	0	0	0	0	0	0	0	#_SR_regime  
- -1	 1	   0	    0	  100	0	-1	0	0	0	0	0	0	0	#_SR_autocorr
+  7	13	10.332	   10	   10	0	 4	0	0	0	0	0	0	0	#_SR_LN(R0)  
+0.2	 1	  0.72	0.779	0.152	0	-2	0	0	0	0	0	0	0	#_SR_BH_steep
+  0	 2	   0.5	  0.5	  0.8	0	-4	0	0	0	0	0	0	0	#_SR_sigmaR  
+ -5	 5	     0	    0	    1	0	-4	0	0	0	0	0	0	0	#_SR_regime  
+ -1	 1	     0	    0	  100	0	-1	0	0	0	0	0	0	0	#_SR_autocorr
 #_no timevary SR parameters
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1996 # first year of main recr_devs; early devs can preceed this era
@@ -140,7 +140,7 @@
 -9999	0	0	0	0	0	#_terminator
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-  -5	  5	 -2.17642	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(4) 
+  -5	  5	 -1.17642	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(4) 
 0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial1(4)
   -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(6) 
 #_no timevary Q parameters
@@ -168,12 +168,12 @@
   10	60	       30	     30	 5	0	  1	0	0	0	0	  0	0	0	#_SizeSel_P_1_Trawl_N(1)         
  -16	16	      -15	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_N(1)         
   -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_N(1)         
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_N(1)         
+  -5	10	        7	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_N(1)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Trawl_N(1)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_N(1)         
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
+   5	70	       29	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
  0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_N(1)      
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
+ -10	10	        4	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_N(1)      
   10	60	       30	     30	 5	0	  1	0	0	0	0	  0	0	0	#_SizeSel_P_1_Trawl_S(2)         
   -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_S(2)         
