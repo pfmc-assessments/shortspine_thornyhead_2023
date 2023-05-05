@@ -485,6 +485,70 @@ custom.profile <- function(dir,
     profilesummary = profilesummary
   )
 
+# Run profile for growth ---------
+  #if (FALSE) {
+  # note: don't run this in your main directory
+  # make a copy in case something goes wrong
+  mydir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_growth")
+  
+  file.copy("model/ss_executables/SS_V3_30_21/ss_osx", mydir)
+  
+  # the following commands related to starter.ss could be done by hand
+  # read starter file
+  starter <- SS_readstarter("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_growth/starter.ss")
+  # change control file name in the starter file
+  starter[["ctlfile"]] <- "control_modified.ss"
+  # make sure the prior likelihood is calculated
+  # for non-estimated quantities
+  starter[["prior_like"]] <- 1
+  # write modified starter file
+  SS_writestarter(starter, dir = mydir, overwrite = TRUE)
+  
+  # Low growth - 10.24, 66.25, 8.25, 59.47
+  # High growth - 14.23, 92.01, 11.47, 82.59
+  # 10-15, 60-100, 8-12, 55-90
+  # 0.5, 4, 0.4, 3.5
+  
+  # vector of values to profile over
+  g.vec <- cbind(seq(10, 15, length.out=11), seq(60, 100, length.out=11), seq(8, 12, length.out=11), seq(55, 90, length.out=11))
+  Nprofile <- length(g.vec)
+  
+  # make a vector for string 
+  string <- c("L_at_Amin_Fem_GP_1","L_at_Amax_Fem_GP_1","L_at_Amin_Mal_GP_1","L_at_Amax_Mal_GP_1")
+  
+  
+  colnames(g.vec) <- string
+  
+  # run profile command
+  profilemodels <- custom.profile(
+    exe = "ss_osx",
+    dir = mydir,
+    oldctlfile = "SST_control.ss",
+    newctlfile = "control_modified.ss",
+    string = string, # subset of parameter label
+    profilevec = g.vec,
+    extras = "-nohess"
+  )
+  
+  # below copied from r4ss vignette 
+  
+  # read the output files (with names like Report1.sso, Report2.sso, etc.)
+  profilemodels <- SSgetoutput(dirvec = mydir, keyvec = 1:nrow(g.vec))
+  # summarize output
+  profilesummary <- SSsummarize(profilemodels)
+  
+  # OPTIONAL COMMANDS TO ADD MODEL WITH PROFILE PARAMETER ESTIMATED
+  rep <- r4ss::SS_output(file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run"),
+                         covar = FALSE,
+                         printstats = FALSE, verbose = FALSE
+  )
   
 
-
+# "L_at_Amin_Fem_GP_1","L_at_Amax_Fem_GP_1","L_at_Amin_Mal_GP_1","L_at_Amax_Mal_GP_1"
+  nwfscDiag::profile_plot(
+    mydir = mydir,
+    para = "L_at_Amax_Mal_GP_1",
+    rep = rep,
+    profilesummary = profilesummary
+  )
+  
