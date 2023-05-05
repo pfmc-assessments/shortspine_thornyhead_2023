@@ -19,16 +19,16 @@ papersize: letter
 
 ---
 author:
-  - name: Madison Shipley
-    code: 1
-    first: M
-    middle: ''
-    family: Shipley
   - name: Joshua Zahner
     code: 1
     first: J
     middle: ''
     family: Zahner
+  - name: Madison Heller-Shipley
+    code: 1
+    first: M
+    middle: 'A'
+    family: Heller-Shipley
   - name: Sabrina Beyer
     code: 1
     first: S
@@ -41,8 +41,8 @@ author:
     family: Hayes
   - name: Pierre-Yves Hernvann
     code: 2
-    first: P
-    middle: '-'
+    first: P-Y
+    middle: ''
     family: Hernvann
   - name: Andrea Odell
     code: 3
@@ -64,7 +64,7 @@ author:
     first: M
     middle: ''
     family: Veron
-author_list: Shipley, M., J. Zahner, S. Beyer, A. Hayes, P.-. Hernvann, A. Odell,
+author_list: Zahner. J, M.A. Heller-Shipley,  S. Beyer, A. Hayes, P-Y. Hernvann, A. Odell,
   H. Oleynik, J.Y. Sullivan, M. Veron
 affiliation:
   - code: 1
@@ -323,7 +323,7 @@ Even if a data source is not directly used in the stock assessment they can prov
 Data from a wide range of programs were available for possible inclusion in the current assessment model.
 Descriptions of each data source included in the model (Figure \ref{fig:assessment_data_timeseries}) and sources that were explored but not included in the base model are provided below.
 Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous shortspine thornyhead stock assessment.
-In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \ref{sensitivity_analyses}).
+In some cases, the inclusion of excluded data sources were explored through sensitivity analyses.
 
 <!--chapter:end:20data.Rmd-->
 
@@ -444,7 +444,7 @@ Fisheries-independent length and weight specimen data are available from the \gl
 
 \begin{equation} W = \alpha L^{\beta} \end{equation}
 
-This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of 𝜎2 / 2. Length-weight was estimated for both sexes in R using the lm() function [@r_core_2016]. 
+This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of 𝜎2 / 2. Length-weight was estimated for both sexes in R using the lm() function [@r_core_2021]. 
 
 The resulting allometric parameters for 2023 (females: $\alpha$ = 6.49e-6, $\beta$ = 3.18; males: $\alpha$ =6.71e-6, $\beta$=3.17) were similar to the 2013 assessment values, which estimated a single length-weight relationship for males and females combined using \gls{s-wcgbt} data through 2012 (sexes combined: $\alpha$ = 4.77e-6, $\beta$=3.26). The $\beta$ value was higher in the 2013 assessment, indicating a slightly higher weight-at-length for longer fish. We found no temporal trend in the available data and were unable to account for these small differences in results. The available data suggest that length-weight is highly conserved in shortspine thornyhead; therefore, no sensitivity analysis was conducted for this set of parameters in the 2023 assessment.
 
@@ -458,7 +458,7 @@ Because the Butler data were sex-specific, had a higher sample size, were aged b
 \begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
 
 where:
-$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$;$a_{2}=100$ and k is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2016]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\frac{\sigma_2}{2}$.
+$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$;$a_{2}=100$ and k is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\frac{\sigma_2}{2}$.
 
 Shortspine Thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growth_LAA1}; *_Table X-LAA-1)_*. The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
 

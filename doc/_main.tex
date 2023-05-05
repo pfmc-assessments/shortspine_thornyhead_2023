@@ -116,7 +116,7 @@
 \newcommand{\trYear}{2023}
 \newcommand{\trMonth}{May}
 \newcommand{\trAuthsLong}{truetruetruetruetruetruetruetruetrue}
-\newcommand{\trAuthsBack}{Shipley, M., J. Zahner, S. Beyer, A. Hayes, P.-. Hernvann, A. Odell, H. Oleynik, J.Y. Sullivan, M. Veron}
+\newcommand{\trAuthsBack}{Zahner. J, M.A.~Heller-Shipley, S. Beyer, A. Hayes, P-Y. Hernvann, A. Odell, H. Oleynik, J.Y. Sullivan, M. Veron}
 \newcommand{\trCitation}{
 \begin{hangparas}{1em}{1}
 \trAuthsBack{}. \trYear{}. \trTitle{}. \glsentrylong{pfmc}, Portland, Oregon. \pageref{LastPage}{}\,p.
@@ -144,8 +144,8 @@
 \includegraphicsifexists[width=4in]{figure_title.png}
 \vfill
 by\\
-Madison Shipley\textsuperscript{1}\\
 Joshua Zahner\textsuperscript{1}\\
+Madison Heller-Shipley\textsuperscript{1}\\
 Sabrina Beyer\textsuperscript{1}\\
 Adam Hayes\textsuperscript{1}\\
 Pierre-Yves Hernvann\textsuperscript{2}\\
@@ -385,7 +385,7 @@ The \gls{afsc} conducts assessments of thornyheads as a mixed stock complex, inc
 
 Data comprise the foundational components of stock assessment models. The decision to include or exclude particular data sources in an assessment model depends on many factors. These factors often include, but are not limited to, the way in which data were collected (e.g., measurement method and consistency); the spatial and temporal coverage of the data; the quantity of data available per desired sampling unit; the representativeness of the data to inform the modeled processes of importance; timing of when the data were provided; limitations imposed by the Terms of Reference; and the presence of an avenue for the inclusion of the data in the assessment model. Attributes associated with a data source can change through time, as can the applicability of the data source when different modeling approaches are explored (e.g., stock structure or time-varying processes). Therefore, the specific data sources included or excluded from this assessment should not necessarily constrain the selection of data sources applicable to future stock assessments for shortspine thornyhead. Even if a data source is not directly used in the stock assessment they can provide valuable insights into biology, fishery behavior, or localized dynamics.
 
-Data from a wide range of programs were available for possible inclusion in the current assessment model. Descriptions of each data source included in the model (Figure \ref{fig:assessment_data_timeseries}) and sources that were explored but not included in the base model are provided below. Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous shortspine thornyhead stock assessment. In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \ref{sensitivity_analyses}).
+Data from a wide range of programs were available for possible inclusion in the current assessment model. Descriptions of each data source included in the model (Figure \ref{fig:assessment_data_timeseries}) and sources that were explored but not included in the base model are provided below. Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous shortspine thornyhead stock assessment. In some cases, the inclusion of excluded data sources were explored through sensitivity analyses.
 
 \hypertarget{fishery-dependent-data}{%
 \subsection{Fishery-Dependent Data}\label{fishery-dependent-data}}
@@ -528,7 +528,7 @@ Fisheries-independent length and weight specimen data are available from the \gl
 
 \begin{equation} W = \alpha L^{\beta} \end{equation}
 
-This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of 𝜎2 / 2. Length-weight was estimated for both sexes in R using the lm() function (R Core Team 2016).
+This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of 𝜎2 / 2. Length-weight was estimated for both sexes in R using the lm() function (R Core Team 2021).
 
 The resulting allometric parameters for 2023 (females: \(\alpha\) = 6.49e-6, \(\beta\) = 3.18; males: \(\alpha\) =6.71e-6, \(\beta\)=3.17) were similar to the 2013 assessment values, which estimated a single length-weight relationship for males and females combined using \gls{s-wcgbt} data through 2012 (sexes combined: \(\alpha\) = 4.77e-6, \(\beta\)=3.26). The \(\beta\) value was higher in the 2013 assessment, indicating a slightly higher weight-at-length for longer fish. We found no temporal trend in the available data and were unable to account for these small differences in results. The available data suggest that length-weight is highly conserved in shortspine thornyhead; therefore, no sensitivity analysis was conducted for this set of parameters in the 2023 assessment.
 
@@ -543,7 +543,7 @@ Because the Butler data were sex-specific, had a higher sample size, were aged b
 
 \begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
 
-where: \(L_{a_{1}}\) and \(L_{a_{2}}\) are the lengths at reference ages \(a_{1}\) and \(a_{2}\) where \(a_{1}=1\);\(a_{2}=100\) and k is the growth rate. Growth curve estimation was conducted in R using the optim() function (R Core Team 2016). Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of \(\frac{\sigma_2}{2}\).
+where: \(L_{a_{1}}\) and \(L_{a_{2}}\) are the lengths at reference ages \(a_{1}\) and \(a_{2}\) where \(a_{1}=1\);\(a_{2}=100\) and k is the growth rate. Growth curve estimation was conducted in R using the optim() function (R Core Team 2021). Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of \(\frac{\sigma_2}{2}\).
 
 Shortspine Thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growth_LAA1}; \emph{\emph{Table X-LAA-1)}}. The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
 
@@ -719,8 +719,8 @@ Pearson, K.E., and Gunderson, D.R. 2003. Reproductive biology and ecology of sho
 \leavevmode\vadjust pre{\hypertarget{ref-pikitch_evaluation_1988}{}}%
 Pikitch, E.K., Erickson, D.L., and Wallace, J.R. 1988. An evaluation of the effectiveness of trip limits as a management tool. Northwest; Alaska Fisheries Center, National Marine Fisheries Service NWAFC Processed Report. Available from \url{https://www.afsc.noaa.gov/Publications/ProcRpt/PR1988-27.pdf} {[}accessed 28 February 2017{]}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-r_core_2016}{}}%
-R Core Team. 2016. R: A language and environment for statistical computing. R foundation for statistical computing, vienna, austria. http://www.R-project.org/. Available from \url{https://cir.nii.ac.jp/crid/1574231874043578752}.
+\leavevmode\vadjust pre{\hypertarget{ref-r_core_2021}{}}%
+R Core Team. 2021. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. Available from \url{https://www.R-project.org/}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-ralston_documentation_2010}{}}%
 Ralston, S., Pearson, D.E., Field, J.C., and Key, M. 2010. Documentation of the {California} catch reconstruction project. US Department of Commerce, National Oceanic; Atmospheric Adminstration, National Marine.
