@@ -15,13 +15,13 @@
 # *** 
 # 
 # This analysis has been developped based on the following model: 
- 23.fix_warnings 
+# 23.fix_warnings 
 # 
 # Results are stored in the following foler: 
 #	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.8_Francis_Reweighting_2 
 # 
 # Features: 
-A second round of francis weighting for the final base model. 
+# A second round of francis weighting for the final base model. 
 # ============================================================ #
 
 # ------------------------------------------------------------ #
@@ -157,3 +157,9 @@ names(out) <- c('Label', unique(tmp$Model))
 
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
+
+# Create tables for Executive Summary document
+##############################################
+
+replist <- SS_output(Dir_23_model_francis_2)
+SSexecutivesummary(replist)
