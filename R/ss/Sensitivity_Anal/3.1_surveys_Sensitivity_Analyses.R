@@ -99,7 +99,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # If noHess = TRUE for a given model, then the Hessian matrix
 # won't be estimated.
 # Reminder - The following models are considered:# 	-  23.surveys.gamvln 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -128,7 +128,7 @@ var.to.save <- c(var.to.save, 'Dir_23_surveys_gamvln')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.surveys.gamvln", files="all")
 
 
 # 3.1  Work on the Starter file ----
@@ -179,26 +179,25 @@ Dat23_surveys_gamvln <- SS_readdat_3.30(
 
 # Make your modification if applicable
 # Code modifying the data file 
-# ..... 
-# ..... 
+Dat23_surveys_gamvln$CPUE <- SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial_lognormal
 
 
 # Save the data file for the model
-# SS_writedat(
-      # datlist =  Dat23_surveys_gamvln ,
-      # outfile = file.path(Dir_23_surveys_gamvln, 'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+#SS_writedat(
+#      datlist =  Dat23_surveys_gamvln ,
+#      outfile = file.path(Dir_23_surveys_gamvln, 'SST_data.ss', fsep = fsep),
+#      version = '3.30',
+#      overwrite = TRUE
+#      )
 
 # Check file structure
-# DatFile <- file.path(Dir_23_surveys_gamvln, 'SST_data.ss', fsep = fsep)
-#  Dat23_surveys_gamvln <-
-      # SS_readdat_3.30(
-      # file = DatFile,
-      # verbose = TRUE,
-      # section = TRUE
-      # )
+#DatFile <- file.path(Dir_23_surveys_gamvln, 'SST_data.ss', fsep = fsep)
+# Dat23_surveys_gamvln <-
+#       SS_readdat_3.30(
+#       file = DatFile,
+#       verbose = TRUE,
+#       section = TRUE
+#       )
 
 # clean environment
 var.to.save <- c(var.to.save, 'Dat23_surveys_gamvln')
@@ -304,7 +303,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.surveys.gamvlnfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[1], yes = '-nohess', no = '')
+      extra = NULL#ifelse(noHess[1], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
