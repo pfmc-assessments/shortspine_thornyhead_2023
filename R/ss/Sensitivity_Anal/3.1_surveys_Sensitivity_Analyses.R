@@ -179,16 +179,16 @@ Dat23_surveys_gamvln <- SS_readdat_3.30(
 
 # Make your modification if applicable
 # Code modifying the data file 
-Dat23_surveys_gamvln$CPUE <- SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial_lognormal
+Dat23_surveys_gamvln$CPUE <- SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial_lognormal %>% mutate(fleet=c(rep(4, 9), rep(6, 19)))
 
 
 # Save the data file for the model
-#SS_writedat(
-#      datlist =  Dat23_surveys_gamvln ,
-#      outfile = file.path(Dir_23_surveys_gamvln, 'SST_data.ss', fsep = fsep),
-#      version = '3.30',
-#      overwrite = TRUE
-#      )
+SS_writedat(
+     datlist =  Dat23_surveys_gamvln ,
+     outfile = file.path(Dir_23_surveys_gamvln, 'SST_data.ss', fsep = fsep),
+     version = '3.30',
+     overwrite = TRUE
+     )
 
 # Check file structure
 #DatFile <- file.path(Dir_23_surveys_gamvln, 'SST_data.ss', fsep = fsep)
@@ -303,7 +303,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.surveys.gamvlnfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL#ifelse(noHess[1], yes = '-nohess', no = '')
+      extra = "-nohess"#ifelse(noHess[1], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
