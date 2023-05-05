@@ -478,3 +478,12 @@ combo_lenfreq2 <- SurveyLFs.fn(fleet = 9, # SS3 fleet/survey index
 
 plot_comps(dir = combo_path, 
            data = combo_lenfreq2)
+
+
+PlotMap.fn(
+  dir = 'outputs/surveys/wcgbts_cpue_map.png',
+  combo_catch,
+  main = "wcgbts",
+  dopng = lifecycle::deprecated(),
+  plot = 1
+)
