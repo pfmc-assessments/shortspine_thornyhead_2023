@@ -215,13 +215,24 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 
 
 #landings sensitivity
-NewSensAnal(topic = "landings",
-            # names are based on new model
-            object = c("Imputed historical landings","2013 assessment landings"),
-            author = "Adam Hayes",
-            folder_name = "Landings_Sensitivity",
-            script_model = "Landings_Sensitivity_Analyses",
-            script_results = "Landings_Sensitivity_Outputs",
-            base_model = c("23.model.francis_2","23.model.francis_2"),
-            new_model = c("23.land.hist_impute","23.land.2013"))
+#NewSensAnal(topic = "landings",
+#            # names are based on new model
+#            object = c("Imputed historical landings","2013 assessment landings"),
+#            author = "Adam Hayes",
+#            folder_name = "Landings_Sensitivity",
+#            script_model = "Landings_Sensitivity_Analyses",
+#            script_results = "Landings_Sensitivity_Outputs",
+#            base_model = c("23.model.francis_2","23.model.francis_2"),
+#            new_model = c("23.land.hist_impute","23.land.2013"))
+
+#gamma vs ln error geostat indices sensitivity
+#NewSensAnal(topic = "surveys",
+#            # names are based on new model
+#            object = c("gamma vs ln error"),
+#            author = "Andrea Odell",
+#            folder_name = "surveys_Sensitivity",
+#            script_model = "surveys_Sensitivity_Analyses",
+#            script_results = "surveys_Sensitivity_Outputs",
+#            base_model = c("23.model.francis_2"),
+#            new_model = c("23.surveys.gamvln"))
 

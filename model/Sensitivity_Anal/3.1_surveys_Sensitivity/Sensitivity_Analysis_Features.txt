@@ -1,0 +1,28 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  surveys 
+# Specific item in that topic: 
+# 	- gamma vs ln error 
+# Author:  Andrea Odell 
+# Date: 2023-05-04 19:59:00 
+# Sensitivity Analysis ID: Item 3.1 
+# Name of the model created: 23.surveys.gamvln 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+ 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal/3.1_surveys_Sensitivity 
+# Name of the script used to build the new model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/3.1_surveys_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/3.1_surveys_Sensitivity_Outputs.R .R
+# 
+# Features: 
+Testing sensitivity of gamma vs long normal error structure in geostatistical abundance indices 
+# ============================================================ #
+
