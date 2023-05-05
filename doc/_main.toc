@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {1.1}Basic Information}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Stock Structure}{1}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Life History}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Ecosystem Considerations}{2}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.4}Ecosystem Considerations}{3}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Historical and Current Fishery Information}{3}{subsection.1.5}%
 \contentsline {subsection}{\numberline {1.6}Summary of Management History and Performance}{4}{subsection.1.6}%
 \contentsline {subsection}{\numberline {1.7}Foreign Fisheries}{5}{subsection.1.7}%
@@ -42,7 +42,7 @@
 \contentsline {paragraph}{\numberline {2.3.2.1}Maturity}{13}{paragraph.2.3.2.1}%
 \contentsline {paragraph}{\numberline {2.3.2.2}Fecundity}{14}{paragraph.2.3.2.2}%
 \contentsline {subsubsection}{\numberline {2.3.3}Length-Weight Relationship}{15}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Growth (Length-at-Age)}{15}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.4}Growth (Length-at-Age)}{16}{subsubsection.2.3.4}%
 \contentsline {subsubsection}{\numberline {2.3.5}Ageing Precision and Bias}{17}{subsubsection.2.3.5}%
 \contentsline {subsection}{\numberline {2.4}Environmental and Ecosystem Data}{17}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Changes in data from the 2013 assessment}{17}{subsection.2.5}%
@@ -76,4 +76,4 @@
 \contentsline {section}{\numberline {5}Acknowledgments}{20}{section.5}%
 \contentsline {section}{\numberline {6}References}{21}{section.6}%
 \contentsline {section}{\numberline {7}Tables}{24}{section.7}%
-\contentsline {section}{\numberline {8}Figures}{25}{section.8}%
+\contentsline {section}{\numberline {8}Figures}{33}{section.8}%

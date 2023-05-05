@@ -244,6 +244,8 @@ information gaps that seriously impede the stock assessment.
 ## Basic Information
 This assessment reports the status of shortspine thornyhead (_Sebastolobus alascanus_) off the US West coast using data through xxxx.
 
+\ref{fig:assessment_data_timeseries}
+
 Shortspine Thornyhead (*Sebastolobus alascanus*) are found in the waters off the West Coast of the United States from northern Baja California to the Bering Sea at depths of 20 meters to over 1,500 meters. The majority of the spawning biomass occurs in the oxygen minimum zone between 600 and 1,400 meters. The distribution of the smallest shortspine thornyhead suggests that they tend to settle at around 100–400 meters and are believed to have ontogenetic migration down the slope, although large individuals are found across the depth range. Higher densities (kg/ha) of shortspine thornyhead occur in shallower areas (under 500 meters) off Oregon and Washington, whereas in California, they occur in deeper areas (**above x meters;** Figure \ref{fig:stock-map}).
 
 Despite variation in density across the coast, shortspine thornyheads are present in almost all trawlable areas below 500 meters. They are caught in 91% of trawl survey hauls deeper than 500 m and **XX%** of commercial bottom trawl hauls deeper than 500m. Camera-tows show that thornyheads are spaced randomly across the sea floor, indicating a lack of schooling and territoriality [@du_preez_shortspine_2011; @wakefield_1990].
@@ -324,6 +326,8 @@ Data from a wide range of programs were available for possible inclusion in the 
 Descriptions of each data source included in the model (Figure \ref{fig:assessment_data_timeseries}) and sources that were explored but not included in the base model are provided below.
 Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous shortspine thornyhead stock assessment.
 In some cases, the inclusion of excluded data sources were explored through sensitivity analyses.
+
+TEST 
 
 <!--chapter:end:20data.Rmd-->
 
@@ -589,6 +593,505 @@ Here are all the mad props!
 \clearpage
 # Tables
 
+
+These will likely need reordering 
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:catches)Summary of catches by fleet from 2013-2022}\\
+\toprule
+Year & Trawl\_N & Trawl\_S & Non.trawl & Total.Landings & Total.Dead\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:catches)Summary of catches by fleet from 2013-2022 \textit{(continued)}}\\
+\toprule
+Year & Trawl\_N & Trawl\_S & Non.trawl & Total.Landings & Total.Dead\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.33\\
+2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.35\\
+2015 & 503.14 & 244.29 & 131.30 & 878.73 & 944.89\\
+2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.17\\
+2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.14\\
+2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.10\\
+2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.75\\
+2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.94\\
+2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.82\\
+2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.93\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{(\#tab:ssb)SSB.}\\
+\toprule
+Year & Spawning.Output & Interval & Fraction.Unfished & Interval.1\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:ssb)SSB. \textit{(continued)}}\\
+\toprule
+Year & Spawning.Output & Interval & Fraction.Unfished & Interval.1\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 8,127 & 5,496–10,759 & 0.4 & 0.3–0.5\\
+2014 & 8,007 & 5,390–10,624 & 0.4 & 0.3–0.5\\
+2015 & 7,907 & 5,303–10,511 & 0.4 & 0.3–0.5\\
+2016 & 7,809 & 5,217–10,401 & 0.4 & 0.3–0.5\\
+2017 & 7,713 & 5,132–10,294 & 0.4 & 0.3–0.5\\
+2018 & 7,616 & 5,045–10,188 & 0.4 & 0.3–0.5\\
+2019 & 7,541 & 4,978–10,104 & 0.4 & 0.3–0.5\\
+2020 & 7,483 & 4,928–10,039 & 0.4 & 0.3–0.5\\
+2021 & 7,453 & 4,903–10,003 & 0.4 & 0.3–0.5\\
+2022 & 7,433 & 4,887–9,979 & 0.4 & 0.3–0.5\\
+2023 & 7,418 & 4,874–9,961 & 0.4 & 0.3–0.5\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{(\#tab:rec)Recruitment}\\
+\toprule
+Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:rec)Recruitment \textit{(continued)}}\\
+\toprule
+Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 5,867 & 2,437–14,122 & -0.422 & -1.321–0.478\\
+2014 & 4,763 & 2,044–11,099 & -0.627 & -1.487–0.234\\
+2015 & 4,928 & 2,099–11,571 & -0.590 & -1.459–0.279\\
+2016 & 5,386 & 2,263–12,821 & -0.499 & -1.384–0.387\\
+2017 & 5,128 & 2,164–12,153 & -0.545 & -1.425–0.335\\
+2018 & 4,491 & 1,920–10,506 & -0.675 & -1.539–0.189\\
+2019 & 7,350 & 3,126–17,281 & -0.204 & -1.074–0.667\\
+2020 & 8,652 & 3,513–21,308 & -0.062 & -0.988–0.864\\
+2021 & 9,662 & 3,779–24,702 & 0.026 & -0.946–0.997\\
+2022 & 9,689 & 3,762–24,951 & 0.005 & -0.975–0.986\\
+2023 & 9,632 & 3,742–24,793 & 0.000 & -0.980–0.980\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{(\#tab:refPoints)Reference Points}\\
+\toprule
+X & Estimate & Interval\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:refPoints)Reference Points \textit{(continued)}}\\
+\toprule
+X & Estimate & Interval\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Unfished Spawning Output & 19,597 & 15,956–23,238\\
+Unfished Age 1+ Biomass (mt) & 189,270 & 154,106–224,434\\
+Unfished Recruitment (R0) & 11,169 & 9,094–13,244\\
+Spawning Output (2023) & 7,418 & 4,874–9,961\\
+Fraction Unfished (2023) & 0.38 & 0.30–0.45\\
+Reference Points Based SB40\% &  & \\
+Proxy Spawning Output SB40\% & 7,839 & 6,382–9,295\\
+SPR Resulting in SB40\% & 0.458 & 0.458–0.458\\
+Exploitation Rate Resulting in SB40\% & 0.012 & 0.012–0.012\\
+Yield with SPR Based On SB40\% (mt) & 1,039 & 863–1,215\\
+Reference Points Based on SPR Proxy for MSY &  & \\
+Proxy Spawning Output (SPR50) & 8,743 & 7,119–10,368\\
+SPR50 & 0.500 & -\\
+Exploitation Rate Corresponding to SPR50 & 0.010 & 0.010–0.011\\
+Yield with SPR50 at SB SPR (mt) & 993 & 825–1,160\\
+Reference Points Based on Estimated MSY Values &  & \\
+Spawning Output at MSY (SB MSY) & 5,423 & 4,423–6,423\\
+SPR MSY & 0.347 & 0.345–0.350\\
+Exploitation Rate Corresponding to SPR MSY & 0.017 & 0.017–0.017\\
+MSY (mt) & 1,100 & 914–1,286\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:management)Management}\\
+\toprule
+Year & OFL & ABC & ACL & Landings & Total.Mortality\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:management)Management \textit{(continued)}}\\
+\toprule
+Year & OFL & ABC & ACL & Landings & Total.Mortality\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & fill in & fill in & fill in & 1,009.21 & 1,085.33\\
+2014 & fill in & fill in & fill in & 834.98 & 900.35\\
+2015 & fill in & fill in & fill in & 878.73 & 944.89\\
+2016 & fill in & fill in & fill in & 931.86 & 1,012.17\\
+2017 & fill in & fill in & fill in & 988.97 & 1,085.14\\
+2018 & fill in & fill in & fill in & 814.60 & 895.10\\
+2019 & fill in & fill in & fill in & 674.37 & 736.75\\
+2020 & fill in & fill in & fill in & 421.64 & 458.94\\
+2021 & fill in & fill in & fill in & 378.13 & 411.82\\
+2022 & fill in & fill in & fill in & 424.98 & 456.93\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:projetions)Projections}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:projetions)Projections \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:summary)Summary table}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:summary)Summary table \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:allcatches)Catches in all years}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:allcatches)Catches in all years \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:likelihoods)Likelihood table}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:likelihoods)Likelihood table \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{(\#tab:lables)Table of lables}\\
+\toprule
+caption & altcaption & label & filename\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:lables)Table of lables \textit{(continued)}}\\
+\toprule
+caption & altcaption & label & filename\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. & NA & removalsES & a\_Catches\_ES.csv\\
+Estimated recent trend in spawning output and the fraction unfished and the 95 percent intervals. & NA & ssbES & b\_SSB\_ES.csv\\
+Estimated recent trend in recruitment and recruitment deviations and the 95 percent intervals. & NA & recrES & c\_Recr\_ES.csv\\
+Estimated recent trend in the (1-SPR)/(1-SPR 50\textbackslash{}\%) where SPR is the spawning potential ratio the exploitation rate, and the  95 percent intervals. & NA & exploitES & d\_SPR\_ES.csv\\
+Summary of reference points and management quantities, including estimates of the  95 percent intervals. & NA & referenceES & e\_ReferencePoints\_ES.csv\\
+Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs),
+                the annual catch limits (ACLs), the total landings, and total mortality (mt). & NA & manageES & f\_Manage\_ES.csv\\
+Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. & NA & projectionES & g\_Projections\_ES.csv\\
+Summary of recent estimates and managment quantities & NA & summaryES & i\_Summary\_ES.csv\\
+Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. & NA & allcatches & Catches\_All\_Years.csv\\
+Time series of population estimates from the base model. & NA & timeseries & TimeSeries.csv\\
+Likelihood components by source. & NA & likes & likelihoods.csv\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}}
+\caption{(\#tab:timeseries)Times series}\\
+\toprule
+Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.Unfished & Age.0.Recruits & Total.Mortality..mt. & X.1.SPR...1.SPR\_50.. & Exploitation.Rate\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:timeseries)Times series \textit{(continued)}}\\
+\toprule
+Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.Unfished & Age.0.Recruits & Total.Mortality..mt. & X.1.SPR...1.SPR\_50.. & Exploitation.Rate\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+1901 & 189,269 & 19,597 & 189,269 & 100.0 & 11,003 & 0.1122950 & 0.000 & 0.0000006\\
+1902 & 189,269 & 19,597 & 189,269 & 100.0 & 10,982 & 0.1382090 & 0.000 & 0.0000007\\
+1903 & 189,267 & 19,597 & 189,267 & 100.0 & 10,959 & 0.1628900 & 0.000 & 0.0000009\\
+1904 & 189,264 & 19,597 & 189,264 & 100.0 & 10,927 & 0.1888040 & 0.000 & 0.0000010\\
+1905 & 189,260 & 19,597 & 189,260 & 100.0 & 10,888 & 0.2134840 & 0.000 & 0.0000011\\
+1906 & 189,256 & 19,597 & 189,256 & 100.0 & 10,849 & 0.2393980 & 0.000 & 0.0000013\\
+1907 & 189,249 & 19,597 & 189,249 & 100.0 & 10,818 & 0.2653130 & 0.000 & 0.0000014\\
+1908 & 189,241 & 19,597 & 189,241 & 100.0 & 10,786 & 0.2899930 & 0.000 & 0.0000015\\
+1909 & 189,231 & 19,597 & 189,231 & 100.0 & 10,742 & 0.3159070 & 0.000 & 0.0000017\\
+1910 & 189,219 & 19,597 & 189,219 & 100.0 & 10,704 & 0.3405870 & 0.000 & 0.0000018\\
+1911 & 189,204 & 19,596 & 189,204 & 100.0 & 10,658 & 0.3665000 & 0.000 & 0.0000019\\
+1912 & 189,187 & 19,596 & 189,187 & 100.0 & 10,624 & 0.3911800 & 0.000 & 0.0000021\\
+1913 & 189,167 & 19,596 & 189,167 & 100.0 & 10,615 & 0.4170920 & 0.000 & 0.0000022\\
+1914 & 189,144 & 19,596 & 189,144 & 100.0 & 10,612 & 0.4417700 & 0.000 & 0.0000023\\
+1915 & 189,117 & 19,596 & 189,117 & 100.0 & 10,573 & 0.4676810 & 0.000 & 0.0000025\\
+1916 & 189,087 & 19,596 & 189,087 & 100.0 & 10,529 & 0.4923570 & 0.000 & 0.0000026\\
+1917 & 189,054 & 19,595 & 189,054 & 100.0 & 10,506 & 0.5182640 & 0.000 & 0.0000027\\
+1918 & 189,016 & 19,595 & 189,016 & 100.0 & 10,492 & 0.5429360 & 0.000 & 0.0000029\\
+1919 & 188,974 & 19,594 & 188,974 & 100.0 & 10,477 & 0.5688400 & 0.000 & 0.0000030\\
+1920 & 188,928 & 19,593 & 188,928 & 100.0 & 10,454 & 0.5935070 & 0.000 & 0.0000031\\
+1921 & 188,878 & 19,592 & 188,878 & 100.0 & 10,440 & 0.6194060 & 0.000 & 0.0000033\\
+1922 & 188,823 & 19,591 & 188,823 & 100.0 & 10,419 & 0.6453020 & 0.000 & 0.0000034\\
+1923 & 188,763 & 19,590 & 188,763 & 100.0 & 10,411 & 0.6699610 & 0.000 & 0.0000035\\
+1924 & 188,699 & 19,588 & 188,699 & 100.0 & 10,413 & 0.6958510 & 0.000 & 0.0000037\\
+1925 & 188,629 & 19,587 & 188,629 & 99.9 & 10,412 & 0.7205040 & 0.001 & 0.0000038\\
+1926 & 188,555 & 19,585 & 188,555 & 99.9 & 10,418 & 0.7463890 & 0.001 & 0.0000040\\
+1927 & 188,477 & 19,582 & 188,477 & 99.9 & 10,429 & 0.7735040 & 0.001 & 0.0000041\\
+1928 & 188,393 & 19,580 & 188,393 & 99.9 & 10,448 & 1.2903600 & 0.001 & 0.0000068\\
+1929 & 188,305 & 19,577 & 188,305 & 99.9 & 10,474 & 2.0428000 & 0.001 & 0.0000108\\
+1930 & 188,211 & 19,574 & 188,211 & 99.9 & 10,509 & 1.7121400 & 0.001 & 0.0000091\\
+1931 & 188,114 & 19,570 & 188,114 & 99.9 & 10,554 & 1.3975400 & 0.001 & 0.0000074\\
+1932 & 188,013 & 19,566 & 188,013 & 99.8 & 10,608 & 0.5166419 & 0.000 & 0.0000027\\
+1933 & 187,909 & 19,561 & 187,909 & 99.8 & 10,673 & 0.7646253 & 0.001 & 0.0000041\\
+1934 & 187,802 & 19,556 & 187,802 & 99.8 & 10,749 & 5.5738870 & 0.004 & 0.0000297\\
+1935 & 187,688 & 19,550 & 187,688 & 99.8 & 10,835 & 7.3338649 & 0.006 & 0.0000391\\
+1936 & 187,569 & 19,544 & 187,569 & 99.7 & 10,931 & 4.5716704 & 0.003 & 0.0000244\\
+1937 & 187,452 & 19,537 & 187,452 & 99.7 & 11,035 & 7.3666203 & 0.006 & 0.0000393\\
+1938 & 187,331 & 19,530 & 187,331 & 99.7 & 11,145 & 7.4312900 & 0.006 & 0.0000397\\
+1939 & 187,210 & 19,522 & 187,210 & 99.6 & 11,255 & 6.5069903 & 0.005 & 0.0000348\\
+1940 & 187,091 & 19,513 & 187,091 & 99.6 & 11,362 & 3.1637620 & 0.002 & 0.0000169\\
+1941 & 186,977 & 19,505 & 186,977 & 99.5 & 11,456 & 5.6164170 & 0.004 & 0.0000300\\
+1942 & 186,862 & 19,496 & 186,862 & 99.5 & 11,532 & 6.5045270 & 0.005 & 0.0000348\\
+1943 & 186,750 & 19,486 & 186,750 & 99.4 & 11,577 & 17.5220900 & 0.013 & 0.0000938\\
+1944 & 186,629 & 19,475 & 186,629 & 99.4 & 11,584 & 8.5984910 & 0.007 & 0.0000461\\
+1945 & 186,522 & 19,465 & 186,522 & 99.3 & 11,542 & 7.9877000 & 0.007 & 0.0000428\\
+1946 & 186,420 & 19,454 & 186,420 & 99.3 & 11,448 & 6.5296970 & 0.006 & 0.0000350\\
+1947 & 186,324 & 19,442 & 186,324 & 99.2 & 11,297 & 6.3834310 & 0.006 & 0.0000343\\
+1948 & 186,232 & 19,431 & 186,232 & 99.2 & 11,092 & 16.6526470 & 0.015 & 0.0000894\\
+1949 & 186,132 & 19,419 & 186,132 & 99.1 & 10,840 & 15.9824768 & 0.014 & 0.0000859\\
+1950 & 186,036 & 19,406 & 186,036 & 99.0 & 10,550 & 8.9854703 & 0.008 & 0.0000483\\
+1951 & 185,950 & 19,394 & 185,950 & 99.0 & 10,206 & 13.5833230 & 0.012 & 0.0000730\\
+1952 & 185,860 & 19,381 & 185,860 & 98.9 & 9,851 & 16.2945130 & 0.015 & 0.0000877\\
+1953 & 185,766 & 19,368 & 185,766 & 98.8 & 9,497 & 6.3777980 & 0.005 & 0.0000343\\
+1954 & 185,680 & 19,356 & 185,680 & 98.8 & 9,153 & 130.1630280 & 0.114 & 0.0007010\\
+1955 & 185,459 & 19,333 & 185,459 & 98.7 & 8,829 & 78.1098160 & 0.069 & 0.0004212\\
+1956 & 185,287 & 19,315 & 185,287 & 98.6 & 8,531 & 161.2407510 & 0.140 & 0.0008702\\
+1957 & 185,019 & 19,289 & 185,019 & 98.4 & 8,265 & 74.4015780 & 0.066 & 0.0004021\\
+1958 & 184,835 & 19,272 & 184,835 & 98.3 & 8,036 & 42.1065330 & 0.037 & 0.0002278\\
+1959 & 184,675 & 19,256 & 184,675 & 98.3 & 7,849 & 66.8688320 & 0.056 & 0.0003621\\
+1960 & 184,476 & 19,239 & 184,476 & 98.2 & 7,708 & 190.3624630 & 0.149 & 0.0010319\\
+1961 & 184,133 & 19,211 & 184,133 & 98.0 & 7,617 & 91.9920480 & 0.075 & 0.0004996\\
+1962 & 183,881 & 19,192 & 183,881 & 97.9 & 7,580 & 143.7440130 & 0.114 & 0.0007817\\
+1963 & 183,558 & 19,169 & 183,558 & 97.8 & 7,600 & 239.3941490 & 0.182 & 0.0013042\\
+1964 & 183,116 & 19,136 & 183,116 & 97.6 & 7,677 & 208.8467030 & 0.163 & 0.0011405\\
+1965 & 182,691 & 19,106 & 182,691 & 97.5 & 7,801 & 353.7137820 & 0.266 & 0.0019361\\
+1966 & 182,094 & 19,063 & 182,094 & 97.3 & 7,957 & 1275.8495380 & 0.837 & 0.0070065\\
+1967 & 180,495 & 18,939 & 180,495 & 96.6 & 8,115 & 1325.6063800 & 0.845 & 0.0073443\\
+1968 & 178,822 & 18,806 & 178,822 & 96.0 & 8,252 & 2126.4637330 & 1.141 & 0.0118915\\
+1969 & 176,275 & 18,597 & 176,275 & 94.9 & 8,355 & 691.2991200 & 0.517 & 0.0039217\\
+1970 & 175,239 & 18,516 & 175,239 & 94.5 & 8,449 & 822.3422540 & 0.593 & 0.0046927\\
+1971 & 174,048 & 18,422 & 174,048 & 94.0 & 8,563 & 1021.9492694 & 0.722 & 0.0058717\\
+1972 & 172,629 & 18,309 & 172,629 & 93.4 & 8,722 & 1864.1213810 & 1.093 & 0.0107984\\
+1973 & 170,298 & 18,116 & 170,298 & 92.4 & 8,907 & 3186.7461060 & 1.470 & 0.0187128\\
+1974 & 166,540 & 17,799 & 166,540 & 90.8 & 9,041 & 1427.8569900 & 0.937 & 0.0085737\\
+1975 & 164,647 & 17,636 & 164,647 & 90.0 & 9,043 & 2376.8869030 & 1.295 & 0.0144363\\
+1976 & 161,733 & 17,384 & 161,733 & 88.7 & 8,867 & 1991.2206700 & 1.172 & 0.0123118\\
+1977 & 159,225 & 17,162 & 159,225 & 87.6 & 8,595 & 1650.2270000 & 1.059 & 0.0103641\\
+1978 & 157,078 & 16,969 & 157,078 & 86.6 & 8,358 & 1244.2157900 & 0.894 & 0.0079210\\
+1979 & 155,364 & 16,810 & 155,364 & 85.8 & 8,251 & 1844.3150300 & 1.152 & 0.0118709\\
+1980 & 153,007 & 16,593 & 153,007 & 84.7 & 8,269 & 1444.4759300 & 1.010 & 0.0094406\\
+1981 & 151,081 & 16,411 & 151,081 & 83.7 & 8,341 & 1806.1787700 & 1.166 & 0.0119550\\
+1982 & 148,771 & 16,192 & 148,771 & 82.6 & 8,386 & 2038.1054900 & 1.272 & 0.0136996\\
+1983 & 146,219 & 15,950 & 146,219 & 81.4 & 8,397 & 2008.2521900 & 1.290 & 0.0137346\\
+1984 & 143,704 & 15,709 & 143,704 & 80.2 & 8,390 & 3083.5827200 & 1.593 & 0.0214579\\
+1985 & 140,044 & 15,366 & 140,044 & 78.4 & 8,584 & 3570.5549200 & 1.681 & 0.0254960\\
+1986 & 135,865 & 14,974 & 135,865 & 76.4 & 8,646 & 3115.1462500 & 1.620 & 0.0229282\\
+1987 & 132,183 & 14,618 & 132,183 & 74.6 & 8,728 & 2125.9855000 & 1.419 & 0.0160837\\
+1988 & 129,576 & 14,353 & 129,576 & 73.2 & 9,003 & 3071.7136000 & 1.653 & 0.0237059\\
+1989 & 125,970 & 13,998 & 125,970 & 71.4 & 9,175 & 5186.7449000 & 1.875 & 0.0411744\\
+1990 & 120,109 & 13,444 & 120,109 & 68.6 & 9,147 & 4446.2830000 & 1.861 & 0.0370187\\
+1991 & 115,054 & 12,956 & 115,054 & 66.1 & 8,771 & 3913.5771000 & 1.850 & 0.0340151\\
+1992 & 110,582 & 12,517 & 110,582 & 63.9 & 8,453 & 3666.8142000 & 1.834 & 0.0331592\\
+1993 & 106,384 & 12,094 & 106,384 & 61.7 & 8,587 & 4020.7582000 & 1.876 & 0.0377948\\
+1994 & 101,821 & 11,638 & 101,821 & 59.4 & 8,421 & 3707.0460000 & 1.873 & 0.0364075\\
+1995 & 97,615 & 11,209 & 97,615 & 57.2 & 9,215 & 2163.7132000 & 1.669 & 0.0221659\\
+1996 & 95,086 & 10,921 & 95,086 & 55.7 & 6,787 & 1813.9740000 & 1.587 & 0.0190772\\
+1997 & 92,967 & 10,666 & 92,967 & 54.4 & 8,112 & 1582.1585000 & 1.519 & 0.0170184\\
+1998 & 91,124 & 10,435 & 91,124 & 53.2 & 8,996 & 1394.0357000 & 1.449 & 0.0152982\\
+1999 & 89,523 & 10,224 & 89,523 & 52.2 & 11,177 & 853.3116000 & 1.126 & 0.0095317\\
+2000 & 88,553 & 10,064 & 88,553 & 51.4 & 13,712 & 936.4408000 & 1.189 & 0.0105749\\
+2001 & 87,549 & 9,900 & 87,549 & 50.5 & 10,935 & 615.4450000 & 0.918 & 0.0070297\\
+2002 & 86,952 & 9,769 & 86,952 & 49.9 & 10,850 & 877.0320000 & 1.148 & 0.0100864\\
+2003 & 86,126 & 9,618 & 86,126 & 49.1 & 20,516 & 949.4630000 & 1.210 & 0.0110241\\
+2004 & 85,276 & 9,465 & 85,276 & 48.3 & 11,143 & 879.9250000 & 1.163 & 0.0103186\\
+2005 & 84,594 & 9,322 & 84,594 & 47.6 & 9,980 & 773.9670000 & 1.078 & 0.0091492\\
+2006 & 84,054 & 9,192 & 84,054 & 46.9 & 8,322 & 835.3140000 & 1.133 & 0.0099379\\
+2007 & 83,523 & 9,061 & 83,523 & 46.2 & 44,689 & 1106.1950000 & 1.335 & 0.0132441\\
+2008 & 82,771 & 8,913 & 82,771 & 45.5 & 11,278 & 1571.4920000 & 1.569 & 0.0189860\\
+2009 & 81,744 & 8,731 & 81,744 & 44.6 & 12,612 & 1682.7710000 & 1.615 & 0.0205859\\
+2010 & 80,574 & 8,544 & 80,574 & 43.6 & 11,019 & 1490.2500000 & 1.548 & 0.0184953\\
+2011 & 79,633 & 8,376 & 79,633 & 42.7 & 8,228 & 1070.0190000 & 1.331 & 0.0134369\\
+2012 & 79,186 & 8,246 & 79,186 & 42.1 & 7,141 & 987.4390000 & 1.276 & 0.0124698\\
+2013 & 78,869 & 8,127 & 78,869 & 41.5 & 5,867 & 1085.3340000 & 1.340 & 0.0137612\\
+2014 & 78,490 & 8,007 & 78,490 & 40.9 & 4,763 & 900.3480000 & 1.208 & 0.0114709\\
+2015 & 78,340 & 7,907 & 78,340 & 40.3 & 4,928 & 944.8940000 & 1.238 & 0.0120615\\
+2016 & 78,174 & 7,809 & 78,174 & 39.8 & 5,386 & 1012.1680000 & 1.280 & 0.0129475\\
+2017 & 77,968 & 7,713 & 77,968 & 39.4 & 5,128 & 1085.1440000 & 1.322 & 0.0139177\\
+2018 & 77,711 & 7,616 & 77,711 & 38.9 & 4,491 & 895.0970000 & 1.183 & 0.0115183\\
+2019 & 77,671 & 7,541 & 77,671 & 38.5 & 7,350 & 736.7490000 & 1.038 & 0.0094855\\
+2020 & 77,812 & 7,483 & 77,812 & 38.2 & 8,652 & 458.9371000 & 0.731 & 0.0058980\\
+2021 & 78,273 & 7,453 & 78,273 & 38.0 & 9,662 & 411.8235000 & 0.659 & 0.0052614\\
+2022 & 78,815 & 7,433 & 78,815 & 37.9 & 9,689 & 456.9348000 & 0.702 & 0.0057976\\
+2023 & 79,336 & 7,418 & 79,336 & 37.9 & 9,632 & 745.6210000 & 0.987 & 0.0093983\\
+2024 & 79,578 & 7,388 & 79,578 & 37.7 & 9,623 & 757.6970000 & 0.986 & 0.0095215\\
+2025 & 79,818 & 7,364 & 79,818 & 37.6 & 9,616 & 769.4550000 & 0.986 & 0.0096401\\
+2026 & 80,055 & 7,345 & 80,055 & 37.5 & 9,611 & 780.7510000 & 0.985 & 0.0097526\\
+2027 & 80,289 & 7,331 & 80,289 & 37.4 & 9,606 & 791.4910000 & 0.985 & 0.0098580\\
+2028 & 80,518 & 7,321 & 80,518 & 37.4 & 9,603 & 801.6210000 & 0.984 & 0.0099558\\
+2029 & 80,742 & 7,314 & 80,742 & 37.3 & 9,602 & 811.1340000 & 0.984 & 0.0100459\\
+2030 & 80,962 & 7,311 & 80,962 & 37.3 & 9,601 & 820.0420000 & 0.984 & 0.0101287\\
+2031 & 81,177 & 7,310 & 81,177 & 37.3 & 9,600 & 828.3800000 & 0.984 & 0.0102047\\
+2032 & 81,387 & 7,312 & 81,387 & 37.3 & 9,601 & 836.1870000 & 0.984 & 0.0102743\\
+2033 & 81,592 & 7,316 & 81,592 & 37.3 & 9,602 & 843.5010000 & 0.984 & 0.0103380\\
+2034 & 81,794 & 7,321 & 81,794 & 37.4 & 9,604 & 850.3540000 & 0.984 & 0.0103964\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
 
 <!--chapter:end:52tables.Rmd-->
 
