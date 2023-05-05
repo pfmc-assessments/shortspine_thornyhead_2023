@@ -47,6 +47,7 @@ srv_mb_all <-  read_csv(file.path(dir_dat, "survey_mb_indices_all_2023.csv"))
 srv_mb_noslope <-  read_csv(file.path(dir_dat, "survey_mb_indices_noslope_2023.csv"))
 srv_len_all <- read_csv(file.path(dir_dat, "survey_length_comps_all_2023.csv"))
 srv_len_noslope <- read_csv(file.path(dir_dat, "survey_length_comps_noslope_2023.csv"))
+srv_mb_noslope_lognormal <-  read_csv(file.path(dir_dat, "survey_mb_indices_noslope_2023_lognormal.csv"))
 #srv_combined_triennial <- read_csv(file.path(dir_dat, "survey_length_comps_single_triennial_2023.csv"))
 #srv_noslope_combined_triennial <- read_csv(file.path(dir_dat, "survey_length_comps_no_slope_combined_triennial_2023.csv"))
 
@@ -506,6 +507,8 @@ SS_Param2023$Indices$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(s
 SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing(srv_mb_noslope, start.index=5))
 SS_Param2023$Indices$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(fix.fleet.indexing(srv_db_noslope, start.index=4))
 SS_Param2023$Indices$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing(srv_mb_all, start.index=5))
+SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial_lognormal <- as.data.frame(fix.fleet.indexing(srv_mb_noslope_lognormal, start.index=5))
+
 
 # Discard data ----
 SS_Param2023$discard_rates$Content <- "These are the discards data"
