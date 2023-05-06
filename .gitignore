@@ -61,16 +61,9 @@ rebuild.sso
 runnumber.ss
 
 # Ignore most outputs from likelihood profiles
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/CompReport*.sso
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/Report*.sso
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/covar*.sso
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/ss.b0*
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/ss.p0*
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/ss.r0*
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/ss.par_*.sso
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/ss_input_par*.ss
-model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/warning*.sso
-!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_*/*.png
+model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*.png
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*.csv
 
 # Ignore plots
   # JPEG
