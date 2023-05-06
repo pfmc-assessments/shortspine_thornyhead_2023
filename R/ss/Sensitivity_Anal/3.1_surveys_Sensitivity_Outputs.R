@@ -15,13 +15,13 @@
 # *** 
 # 
 # This analysis has been developped based on the following model: 
- 23.model.francis_2 
+# 23.model.francis_2 
 # 
 # Results are stored in the following foler: 
 #	 /Users/andrea/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal/3.1_surveys_Sensitivity 
 # 
 # Features: 
-Testing sensitivity of gamma vs long normal error structure in geostatistical abundance indices 
+#Testing sensitivity of gamma vs long normal error structure in geostatistical abundance indices 
 # ============================================================ #
 
 # ------------------------------------------------------------ #
