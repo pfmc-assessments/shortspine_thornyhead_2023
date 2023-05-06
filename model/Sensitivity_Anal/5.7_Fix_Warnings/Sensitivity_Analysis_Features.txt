@@ -1,0 +1,28 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Fix warnings 
+# Author:  Team Thornyheads 
+# Date: 2023-04-27 13:19:00 
+# Sensitivity Analysis ID: Item 5.7 
+# Name of the model created: 23.fix_warnings 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+ 23.model.recdevs_inityear_1996 
+# 
+# Results are stored in the following foler: 
+#	 /Users/haleyoleynik/Documents/GitHub/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.7_Fix_Warnings 
+# Name of the script used to build the new model: 
+#	 /Users/haleyoleynik/Documents/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.7_Fix_Warnings_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/haleyoleynik/Documents/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.7_Fix_Warnings_Outputs.R .R
+# 
+# Features: 
+Fix warning messages in base model 
+# ============================================================ #
+

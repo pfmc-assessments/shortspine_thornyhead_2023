@@ -1,0 +1,39 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  landings 
+# Specific item in that topic: 
+# 	- Imputed historical landings 
+# 	- 2013 assessment landings 
+# Author:  Adam Hayes 
+# Date: 2023-05-01 13:44:12 
+# Sensitivity Analysis ID: Item 1.1 
+# Names of the models created:
+# 	-  23.land.hist_impute 
+# 	-  23.land.2013 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.land.hist_impute 				 23.model.francis_2 
+# 23.land.2013 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/adam.hayes/Work/GitHub/shortspine_thornyhead_2023/model/Sensitivity_Anal/1.1_Landings_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/adam.hayes/Work/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/1.1_Landings_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/adam.hayes/Work/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/1.1_Landings_Sensitivity_Outputs.R .R
+# 
+# General features: 
+# Replace the landings with values from the 2013 assessment 
+# 
+# Model features:
+# - Model 23.land.hist_impute:
+# Replace the historical landings before 1962 with the imputed values from sablefish landings used in the 2013 assessment 
+# - Model 23.land.2013:
+# Replace all landings until before 2013 with the values used in the 2013 assessment 
+# ============================================================ #
+

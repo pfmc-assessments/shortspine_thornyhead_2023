@@ -1,0 +1,28 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Francis Reweighting 2 
+# Author:  Team Thornyheads 
+# Date: 2023-04-28 14:01:15 
+# Sensitivity Analysis ID: Item 5.8 
+# Name of the model created: 23.model.francis_2 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+ 23.fix_warnings 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.8_Francis_Reweighting_2 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.8_Francis_Reweighting_2_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.8_Francis_Reweighting_2_Outputs.R .R
+# 
+# Features: 
+A second round of francis weighting for the final base model. 
+# ============================================================ #
+

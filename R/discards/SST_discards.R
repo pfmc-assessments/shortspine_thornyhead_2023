@@ -218,6 +218,93 @@ disc_rates_WCGOP_GEMM %>%
 
 ggsave("outputs/discard_data/SST_WCGOP_GEMM_discard_rates.png", dpi=300, height=7, width=10, units='in')
 
+#### Same plots as above but three fleet structure 
+
+#Data wrangling for three fleet 
+disc_catch_share %>%
+  dplyr::select(-strata) %>%
+  mutate(median_boot_discard_mt = NA,
+         sd_boot_discard_mt = NA,
+         median_boot_ratio = NA,
+         sd_boot_ratio = NA,
+         n_bootstrap =NA) %>%
+  relocate(colnames(disc_no_catch_share)) %>%
+  bind_rows(disc_no_catch_share) %>%
+  mutate(area_lg=ifelse(area == "CA", "S", "N"),
+         gear=ifelse(gear == "FixedGears", "Other", gear)) %>%
+  mutate(fleet=paste0(area_lg, gear)) %>%
+  mutate(ob_ratio_boot = ifelse(!is.na(median_boot_ratio), median_boot_ratio, ob_ratio)) -> disc_rates_WCGOP
+
+
+disc_rates_WCGOP %>%
+  mutate(lower=ifelse(ob_ratio_boot-1.96*sd_boot_ratio<0, 0, ob_ratio_boot-1.96*sd_boot_ratio)) %>%
+  mutate(fleet=recode_factor(fleet, !!!c(NTrawl="NTrawl", NOther="Other", STrawl="STrawl", SOther="Other"))) %>%
+  ggplot(aes(x=year, y=ob_ratio_boot)) +
+  geom_point(aes(color=forcats::fct_rev(fleet), shape = catch_shares), size=2.5) +
+  geom_errorbar(aes(ymin=lower, ymax =ob_ratio_boot+1.96*sd_boot_ratio, color=forcats::fct_rev(fleet)), width=.2) +
+  facet_wrap(~fleet)+
+  #facet_wrap(~forcats::fct_rev(fleet), scales="free_y") +
+  scale_shape_manual(values=c(1,19)) +
+  scale_color_manual(values = c( "#F0E442","#E69F00", "#56B4E9","#009E73")) +
+  labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
+  coord_cartesian(ylim=c(0,1)) +
+  theme_bw() +
+  theme(legend.position = "right", legend.text=element_text(size=12),
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14))
+
+ggsave("outputs/discard_data/SST_WCGOP_discard_rates.png", dpi=300, height=7, width=10, units='in')
+
+
+# Relative importance of catch share / non-catch share components
+thorny_GEMM %>%
+  group_by(sector) %>%
+  mutate(catch_share = ifelse(grepl("CS", sector), TRUE, FALSE)) %>%
+  group_by(gear,  catch_share, species, year) %>%
+  summarize(totland  = sum(total_landings_mt, na.rm=T),
+            totdisc= sum(total_discard_with_mort_rates_applied_mt, na.rm=T)) %>% # Here we use the discard rates calculated considering the survivak rate of the discarded individuals
+  mutate(totcatch = totland + totdisc) %>%
+  group_by(gear,  species, year) %>%
+  mutate(tot_catch_gear = sum(totcatch, na.rm=T)) %>% 
+  ungroup() %>%
+  mutate(prop=totcatch/tot_catch_gear)  %>%
+  filter(gear!="research") -> rep_gear
+
+disc_rates_WCGOP %>% 
+  left_join(rep_gear[,c("gear","catch_share","year","prop")], by=c("year", "gear", "catch_shares"="catch_share"))  %>%
+  mutate(fleet=recode_factor(fleet, !!!c(NTrawl="NTrawl", NOther="NonTrawl", STrawl="STrawl", SOther="NonTrawl"))) %>%
+  group_by(year, fleet) %>%
+  mutate(rescale_if_required=sum(prop, na.rm=T)) %>%
+  ungroup() %>%
+  mutate(prop = prop / rescale_if_required) %>%
+  mutate(weighed_discr = prop * ob_ratio_boot) %>%
+  mutate(sd_boot_ratio = ifelse(year>=2011 & catch_shares==T & is.na(sd_boot_ratio), 0, sd_boot_ratio)) %>%
+  mutate(var_boot_ratio = sd_boot_ratio^2) %>%
+  mutate(weighed_var_boot_ratio = var_boot_ratio * prop^2) %>% 
+  group_by(fleet, year) %>%
+  mutate(varsum = sum(weighed_var_boot_ratio,na.rm=T)) %>% # Question there: which uncertainty should we consider??
+  mutate(mean_sd = sqrt(varsum)) %>% 
+  summarize(mean_discr=sum(weighed_discr),
+            mean_sd = unique(mean_sd)) -> disc_rates_WCGOP_GEMM
+
+disc_rates_WCGOP_GEMM %>%
+  mutate(fleet=factor(fleet, levels=c("NTrawl", "STrawl", "NonTrawl"))) %>%
+  mutate(lower=ifelse(mean_discr-1.96*mean_sd<0, 0, mean_discr-1.96*mean_sd)) %>%
+  ggplot(aes(x=year, y=mean_discr)) +
+  geom_point(aes(color=forcats::fct_rev(fleet)), size=2.5) +
+  geom_errorbar(aes(ymin=lower, ymax=mean_discr+1.96*mean_sd, color=forcats::fct_rev(fleet)), width=.2) +
+  facet_wrap(~fleet) +
+  scale_color_manual(values = c("#E69F00","#56B4E9","#009E73")) +
+  labs(x = "Year", y = "Discard rate (Disc./(Disc.+Retained); %)", color="Fleet", shape="Catch shares", title = "Shortspine Thornyhead Discard Fraction (WCGOP)") + 
+  coord_cartesian(ylim=c(0,1)) +
+  theme_classic()  +
+  theme(legend.position = "right", legend.text=element_text(size=12),
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14))
+
+
+ggsave(here::here("doc", "FinalFigs", "Data","SST_WCGOP_GEMM_discard_rates_3fleet.png"), dpi=300, height=7, width=10, units='in')
+
+
+
 
 ###Generate figure with discard in MT for time series to compare to landings 
 

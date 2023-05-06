@@ -1,0 +1,28 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Modify recdev init year 
+# Author:  Team Thornyheads 
+# Date: 2023-04-27 12:16:32 
+# Sensitivity Analysis ID: Item 5.6 
+# Name of the model created: 23.model.recdevs_inityear_1996 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+ 23.model.sexed_survey_selectivity 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.6_Update_Recdevs_Inityear 
+# Name of the script used to build the new model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.6_Update_Recdevs_Inityear_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.6_Update_Recdevs_Inityear_Outputs.R .R
+# 
+# Features: 
+Update the initial year for recdevs 1996 
+# ============================================================ #
+

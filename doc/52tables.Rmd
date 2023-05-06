@@ -1,3 +1,79 @@
 \clearpage
 # Tables
+```{r}
+library(here)
+tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 
+
+#Insert figure 
+#Figure \caption{(\#tab:catch_tab)Catches by fleet.} 
+```
+
+These will likely need reordering 
+```{r}
+
+#These are all labeled a-i
+
+#catch_tab<-read.csv(file.path(tab_dir1, "a_Catches_ES.csv"))
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "a_Catches_ES.csv")),
+                  caption = "Summary of catches by fleet from 2013-2022",
+                  label = "catches")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "b_SSB_ES.csv")),
+                  caption = "SSB.",
+                  label = "ssb")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "c_Recr_ES.csv")),
+                  caption = "Recruitment",
+                  label = "rec")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "e_ReferencePoints_ES.csv")),
+                  caption = "Reference Points",
+                  label = "refPoints")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "f_Manage_ES.csv")),
+                  caption = "Management",
+                  label = "management")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
+                  caption = "Projections",
+                  label = "projetions")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
+                  caption = "Summary table",
+                  label = "summary")
+
+#Other Tables
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
+                  caption = "Catches in all years",
+                  label = "allcatches")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
+                  caption = "Likelihood table",
+                  label = "likelihoods")
+
+# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage_m.csv")),
+#                   caption = "Age table males",
+#                   label = "batagemale")
+# 
+# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage.f.csv")),
+#                   caption = "Age table females",
+#                   label = "batagefem")
+# 
+# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "natage_m.csv")),
+#                   caption = "all ages males",
+#                   label = "natagemale")
+# 
+# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "natage.f.csv")),
+#                   caption = "all ages females",
+#                   label = "natagefem")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "table_labels.csv")),
+                  caption = "Table of lables",
+                  label = "lables")
+
+sa4ss::table_format(x = read.csv(file.path(tab_dir1, "TimeSeries.csv")),
+                  caption = "Times series",
+                  label = "timeseries")
+```

@@ -1,5 +1,0 @@
-### \acrlong{s-aslope}
-
-The \gls{s-aslope} operated during the months of October to November aboard the R/V _Miller Freeman_.
-Partial survey coverage of the US west coast occurred during the years 1988-1996 and complete coverage (north of 34\textdegree 30\textquotesingle S) during the years 1997 and 1999-2001.
-Typically, only these four years that are seen as complete surveys are included in assessments.

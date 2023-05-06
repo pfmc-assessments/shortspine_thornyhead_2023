@@ -66,6 +66,11 @@ runnumber.ss
   # Portable Network Graphics
 *.png
 !doc/*.png
+!doc/FinalFigs/Base/*.png
+!doc/FinalFigs/Intro/*.png
+!doc/FinalFigs/Data/*.png
+!doc/FinalFigs/Sensitivities/*.png
+
   # Tagged Image File Format
 *.tiff, *.tif
   # BMP
