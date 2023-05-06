@@ -236,3 +236,27 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #            base_model = c("23.model.francis_2"),
 #            new_model = c("23.surveys.gamvln"))
 
+# Sensitivity analysis 
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("blk Trawl 89", "blk Trawl mid10",
+                       "blk Trawl 89-mid10", "blk Trawl 89-mid10-19",
+                       "blk Trawl 89-mid10 NonTrawl 05-13", "blk Trawl 89-mid10 NonTrawl 05-13-17"),
+            author = "Pierre-Yves Hernvann",
+            folder_name = "Retention_Selectivity_Sensitivity",
+            script_model = "Retention_Sensitivity_Analyses",
+            script_results = "Retention_Sensitivity_Outputs",
+            base_model = c("23.model.francis_2", "23.model.francis_2",
+                           "23.model.francis_2", "23.model.francis_2",
+                           "23.model.francis_2", "23.model.francis_2"),
+            new_model = c("23.blkret.T1", "23.blkret.T2",
+                          "23.blkret.T3","23.blkret.T4",
+                          "23.blkret.T3.NT1", "23.blkret.T3.NT2"))
+
+
+
+
+
+
+
+
