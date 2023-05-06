@@ -1,0 +1,59 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- blk Trawl 89 
+# 	- blk Trawl mid10 
+# 	- blk Trawl 89-mid10 
+# 	- blk Trawl 89-mid10-19 
+# 	- blk Trawl 89-mid10 NonTrawl 05-13 
+# 	- blk Trawl 89-mid10 NonTrawl 05-13-17 
+# Author:  Pierre-Yves Hernvann 
+# Date: 2023-05-05 22:00:11 
+# Sensitivity Analysis ID: Item 5.10 
+# Names of the models created:
+# 	-  23.blkret.T1 
+# 	-  23.blkret.T2 
+# 	-  23.blkret.T3 
+# 	-  23.blkret.T4 
+# 	-  23.blkret.T3.NT1 
+# 	-  23.blkret.T3.NT2 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.blkret.T1 				 23.model.francis_2 
+# 23.blkret.T2 				 23.model.francis_2 
+# 23.blkret.T3 				 23.model.francis_2 
+# 23.blkret.T4 				 23.model.francis_2 
+# 23.blkret.T3.NT1 				 23.model.francis_2 
+# 23.blkret.T3.NT2 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.10_Retention_Selectivity_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.10_Retention_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.10_Retention_Sensitivity_Outputs.R .R
+# 
+# General features: 
+# Sensitivity analysis to the time blocks in the retention parameters of trawl and non trawl fleets 
+# 
+# Model features:
+# - Model 23.blkret.T1:
+# base blocks for Trawl + break in 1989 
+# - Model 23.blkret.T2:
+# base blocks for Trawl + break in mid-2010s 
+# - Model 23.blkret.T3:
+# base blocks for Trawl + break in 1989 + mid-2010s 
+# - Model 23.blkret.T4:
+# base blocks for Trawl + break in 1989 + mid-2010s + 2019 
+# - Model 23.blkret.T3.NT1:
+# base blocks for Trawl + break in 1989 + mid-2010s & nonTrawl break in 2005 + 2013 
+# - Model 23.blkret.T3.NT2:
+# base blocks for Trawl + break in 1989 + mid-2010s & nonTrawl break in 2005 + 2013 + 2017 
+# ============================================================ #
+
