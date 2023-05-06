@@ -109,20 +109,6 @@ var.to.save <- ls()
 #  3. Developing model 23.model.francis_2  ----
 # ----------------------------------------------------------- #
 
-Dir_23_base_model <- file.path(dir_SensAnal, '5.7_Fix_Warnings', '1_23.fix_warnings', 'run', fsep=fsep)
-replist <- SS_output(
-  dir = Dir_23_base_model,
-  verbose = TRUE,
-  printstats = TRUE
-)
-
-new.francis.weight <- r4ss::tune_comps(
-  replist = replist,
-  option="Francis",
-  dir = Dir_23_base_model,
-  exe = get.ss.exe.path()
-)
-
 # Path to the 23.model.francis_2 repertory
 Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2','1_23.model.francis_2' ,fsep = fsep)
 
@@ -145,6 +131,11 @@ var.to.save <- c(var.to.save, 'Dir_23_model_francis_2')
 # basis of comparison.
 Restart_SA_modeldvpt(base.model="23.fix_warnings", curr.model="23.model.francis_2", files="all")
 
+file.copy(
+  file.path(here::here(), "model", "sst_forecast.ss"),
+  file.path(Dir_23_model_francis_2, "forecast.ss"),
+  overwrite=TRUE
+)
 
 # 3.1  Work on the Starter file ----
 # ======================= #
@@ -246,6 +237,20 @@ Ctl23_model_francis_2 <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
+Dir_23_base_model <- file.path(dir_SensAnal, '5.7_Fix_Warnings', '1_23.fix_warnings', 'run', fsep=fsep)
+replist <- SS_output(
+  dir = Dir_23_base_model,
+  verbose = TRUE,
+  printstats = TRUE
+)
+
+new.francis.weight <- r4ss::tune_comps(
+  replist = replist,
+  option="Francis",
+  dir = Dir_23_base_model,
+  exe = get.ss.exe.path()
+)
+
 Ctl23_model_francis_2$Variance_adjustment_list <- bind_rows(
   Ctl23_model_francis_2$Variance_adjustment_list %>% filter(Data_type == 4) %>% mutate(Value=new.francis.weight$New_Var_adj) ,
   Ctl23_model_francis_2$Variance_adjustment_list %>% filter(Data_type != 4)
@@ -254,11 +259,13 @@ Ctl23_model_francis_2$Variance_adjustment_list <- bind_rows(
 Ctl23_model_francis_2$MG_parms[SS_Param2023$MG_params$M$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$M$base_2023$Value[1]
 
 # Updated init parameters values to ensure best fit
-Ctl23_model_francis_2$SR_parms["SR_LN(R0)",]$INIT <- 10.332
-Ctl23_model_francis_2$Q_parms["LnQ_base_Triennial1(4)",]$INIT <- -1.17642
-Ctl23_model_francis_2$size_selex_parms["SizeSel_P_4_Trawl_N(1)",]$INIT <- 7
-Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_1_Trawl_N(1)",]$INIT <- 29
-Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)",]$INIT <- 4
+Ctl23_model_francis_2$SR_parms["SR_LN(R0)",]$INIT <- 9.33
+#Ctl23_model_francis_2$Q_parms["LnQ_base_Triennial1(4)",]$INIT <- -1.17642
+#Ctl23_model_francis_2$size_selex_parms["SizeSel_P_4_Trawl_N(1)",]$INIT <- 7
+#Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_1_Trawl_N(1)",]$INIT <- 29
+#Ctl23_model_francis_2$size_selex_parms["SizeSel_PRet_3_Trawl_N(1)",]$INIT <- 4
+
+#Ctl23_model_francis_2$size_selex_parms$INIT <- c(30, -15, 5, 7, -999, -999, 30, 3, 4, 0, 31, 0, 4, 5, -999, -999, 25, 3, 10, 0, 43, -2, 5, 5, -999, -999, 26, 4, 2, 0, 25, -7, 4, 4, -999, -999, -2, 0, 0, 0, 1, 22, -7, 5, 5, -999, -999, -1, 0, 0, 0, 1, 31, -1, 5, 5, -999, -999, -4, 0, 0, 0, 1)
 
 # Save the control file for the model
 SS_writectl(
@@ -334,7 +341,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.model.francis_2folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL #ifelse(noHess[1], yes = '-nohess', no = NULL)
+      extra = NULL#ifelse(noHess[1], yes = '-nohess', no = NULL)
       # this is if we want to use '-nohess'
       )
 
@@ -352,7 +359,8 @@ replist <- SS_output(
 # plots the results (store in the 'plots' sub-directory)
 SS_plots(replist,
       dir = Dirplot,
-      printfolder = 'plots'
+      printfolder = 'plots',
+      forecastplot = TRUE
       )
 
 # =======================
