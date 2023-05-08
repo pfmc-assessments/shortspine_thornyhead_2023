@@ -1281,6 +1281,9 @@ Ctl23_blkret_T3_NT1$blocks_per_pattern[1] <- 4
 Ctl23_blkret_T3_NT1$blocks_per_pattern[2] <- 4
 Ctl23_blkret_T3_NT1$blocks_per_pattern[3] <- 2
 
+Ctl23_blkret_T3_NT1$size_selex_parms[which(rownames(Ctl23_blkret_T3_NT1$size_selex_parms) %in% c("SizeSel_PRet_1_Non-trawl(3)","SizeSel_PRet_3_Non-trawl(3)")),"Block"] <- 3
+Ctl23_blkret_T3_NT1$size_selex_parms[which(rownames(Ctl23_blkret_T3_NT1$size_selex_parms) %in% c("SizeSel_PRet_1_Non-trawl(3)","SizeSel_PRet_3_Non-trawl(3)")),"Block_Fxn"] <- 3
+
 Ctl23_blkret_T3_NT1$Block_Design[[1]] <- c(1989, 2006, 2007, 2010, 2011, 2014, 2015, 2022)
 Ctl23_blkret_T3_NT1$Block_Design[[2]] <- c(1989, 2006, 2007, 2010, 2011, 2016, 2017, 2022)
 Ctl23_blkret_T3_NT1$Block_Design[[3]] <- c(2005, 2012, 2013, 2022)
@@ -1308,12 +1311,12 @@ Ctl23_blkret_T3_NT1$size_selex_parms_tv <- Ctl23_blkret_T3_NT1$size_selex_parms_
 
 
 # Save the control file for the model
- SS_writectl(
-       ctllist =  Ctl23_blkret_T3_NT1 ,
-       outfile = file.path(Dir_23_blkret_T3_NT1, 'SST_control.ss', fsep = fsep),
-       version = '3.30',
-       overwrite = TRUE
-       )
+# SS_writectl(
+#       ctllist =  Ctl23_blkret_T3_NT1 ,
+#       outfile = file.path(Dir_23_blkret_T3_NT1, 'SST_control.ss', fsep = fsep),
+#       version = '3.30',
+#       overwrite = TRUE
+#       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1540,17 +1543,51 @@ Ctl23_blkret_T3_NT2 <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+Ctl23_blkret_T3_NT2$blocks_per_pattern[1] <- 4
+Ctl23_blkret_T3_NT2$blocks_per_pattern[2] <- 4
+Ctl23_blkret_T3_NT2$blocks_per_pattern[3] <- 3
+
+Ctl23_blkret_T3_NT2$size_selex_parms[which(rownames(Ctl23_blkret_T3_NT2$size_selex_parms) %in% c("SizeSel_PRet_1_Non-trawl(3)","SizeSel_PRet_3_Non-trawl(3)")),"Block"] <- 3
+Ctl23_blkret_T3_NT2$size_selex_parms[which(rownames(Ctl23_blkret_T3_NT2$size_selex_parms) %in% c("SizeSel_PRet_1_Non-trawl(3)","SizeSel_PRet_3_Non-trawl(3)")),"Block_Fxn"] <- 3
+
+Ctl23_blkret_T3_NT2$Block_Design[[1]] <- c(1989, 2006, 2007, 2010, 2011, 2014, 2015, 2022)
+Ctl23_blkret_T3_NT2$Block_Design[[2]] <- c(1989, 2006, 2007, 2010, 2011, 2016, 2017, 2022)
+Ctl23_blkret_T3_NT2$Block_Design[[3]] <- c(2005, 2012, 2013, 2016, 2017, 2022)
+
+toadd_reten_names <- grep(2011, rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv), value=T)
+toadd_reten <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[grep(2011, rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv)),]
+toadd_reten_names <- gsub("BLK1delta_2011", "BLK1delta_2015", gsub("BLK2delta_2011", "BLK2delta_2017", toadd_reten_names))
+rownames(toadd_reten) <- toadd_reten_names
+
+toadd_reten_names2 <- grep(2011, rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv), value=T)
+toadd_reten2 <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[grep(2011, rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv)),]
+toadd_reten_names2 <- gsub("2011", "1989", toadd_reten_names2)
+rownames(toadd_reten2) <- toadd_reten_names2
+
+toadd_reten_names3 <- grep("BLK1delta", grep("2007|2011", rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv), value=T), value=T)
+toadd_reten3 <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[toadd_reten_names3,]
+toadd_reten_names3 <- gsub("Trawl_N", "Non-trawl", gsub("1)_BLK1delta", "3)_BLK3delta", gsub("2007", "2013", gsub("2011", "2005", toadd_reten_names3))))
+rownames(toadd_reten3) <- toadd_reten_names3
+
+toadd_reten_names4 <- grep("BLK1delta", grep("2011", rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv), value=T), value=T)
+toadd_reten4 <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[toadd_reten_names4,]
+toadd_reten_names4 <- gsub("Trawl_N", "Non-trawl", gsub("1)_BLK1delta", "3)_BLK3delta", gsub("2011", "2017", toadd_reten_names4)))
+rownames(toadd_reten4) <- toadd_reten_names4
+
+Ctl23_blkret_T3_NT2$size_selex_parms_tv <- rbind(Ctl23_blkret_T3_NT2$size_selex_parms_tv, toadd_reten, toadd_reten2, toadd_reten3, toadd_reten4)
+
+Ctl23_blkret_T3_NT2$size_selex_parms_tv <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blkret_T3_NT2$size_selex_parms_tv <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blkret_T3_NT2$size_selex_parms_tv <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
 
 # Save the control file for the model
 # SS_writectl(
-      # ctllist =  Ctl23_blkret_T3_NT2 ,
-      # outfile = file.path(Dir_23_blkret_T3_NT2, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+#       ctllist =  Ctl23_blkret_T3_NT2 ,
+#       outfile = file.path(Dir_23_blkret_T3_NT2, 'SST_control.ss', fsep = fsep),
+#       version = '3.30',
+#       overwrite = TRUE
+#       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
