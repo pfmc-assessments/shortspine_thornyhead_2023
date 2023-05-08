@@ -3,6 +3,7 @@
 
 ```{r}
 library(here)
+library(float)
 fig_dir1 <- here::here("doc", "FinalFigs", "Intro")
 fig_dir2 <- here::here("doc", "FinalFigs", "Data")
 fig_dir3 <- here::here("doc", "FinalFigs", "Base")
@@ -11,6 +12,33 @@ fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")
 #Insert figure 
 #Figure \ref{fig:label}
 ```
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.pos = 'H')
+```
+
+
+```{r, results = "asis"}
+#add_figure_ling(csv=figurecsv, "data_plot$")
+```
+
+
+# Data figures
+
+
+
+
+```{r, catch-figures, results = "asis"}
+# Example function for how to arrange figures in order of the time they were modified--from lingcod asssessment--find that function
+
+# add_figure_ling(dplyr::bind_rows(mapply(
+#   FUN = utils::read.csv,
+#   file = dir(file.path("..","figures"), pattern = "^catch-.+\\.csv",full.names=TRUE),
+#   SIMPLIFY = FALSE
+# )) %>% dplyr::arrange(file.info(filein)$mtime)
+# )
+```
+
 
 ```{r, Intro-figures, results = "asis"}
 #Coastwide CPUE plot from NWFSC combo survey

@@ -2,9 +2,11 @@
 
 
 ### History of Modeling Approaches (not required for an update assessment)
+`r Spp` was first assessed in 1990 by @jacobson_1990 and @jacobson_1991, and subsequently by @ianelli_etal_1991, @rogers_etal_1998, and @piner_methot_2001. What would now be called a data-moderate assessment was conducted in 2005 @hamel_2005 using Stock Synthesis (SS2). More recently, `r spp` were assessed by @taylor_stephens_2013 using SS3. The 2013 model retained many of the assumptions made by @hamel_2005 including a four fisheries fleet structure, sex-specific growth, and no fecundity relationship. A catch-only projection was conducted in 2019 [@taylor_2019].
 
 
 ### Most Recent STAR Panel and SSC Recommendations (not required for an update assessment)
+
 
 
 ### Response to Groundfish Subcommittee Requests (not required in draft)
