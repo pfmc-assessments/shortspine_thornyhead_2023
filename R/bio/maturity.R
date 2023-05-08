@@ -137,8 +137,7 @@ tab_mat_fitplot %>%
   theme_bw()+
   theme(panel.grid = element_blank())
 
-ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_latdepth_detailed.png"), dpi=300, width=10, height=7, units = "in")
-
+ggsave(file.path(here::here(), "doc", "FinalFigs", "Data",  "head2023_maturity_latdepth_glm_fit.png"), dpi=300, width=10, height=7, units = "in")
 
 dat_pred %>%
   ggplot() +
@@ -148,7 +147,7 @@ dat_pred %>%
   labs(fill="L50 (cm)") +
   theme_bw()
 
-ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_latdepth_detailed2.png"), dpi=300, width=10, height=7, units = "in")
+#ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_latdepth_detailed2.png"), dpi=300, width=10, height=7, units = "in")
 
 
 ###------------------------------------------###
@@ -326,7 +325,7 @@ ggplot() +
     axis.title = element_text(size=12)
   ) 
 
-ggsave(file.path(here::here(), "outputs", "maturity", "head2023_maturity_comparison.png"), dpi=300, width=10, height=7, units = "in")
+ggsave(file.path(here::here(), "doc", "FinalFigs", "Data", "comparison_alternative_maturity_curves.png"), dpi=300, width=10, height=7, units = "in")
 
 
 # Finalize ----
