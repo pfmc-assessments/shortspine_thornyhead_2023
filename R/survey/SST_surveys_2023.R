@@ -544,13 +544,15 @@ bio.hauls.master = as.data.frame(rbind(tri_early.survey_hauls, tri_late.survey_h
 haul.sample.info.master = merge(bio.samples.master , bio.hauls.master, by=c("Year","survey"))
 out.dir <- file.path(outputs.dir, "surveys")
 write.csv(haul.sample.info.master, file.path(out.dir, paste0("haul.sample.info.master.csv")))
+write.csv(haul.sample.info.master, "doc/FinalTables/Summary/haul.sample.info.master.csv")
+
 
 # Create table with haul and sample information  ------
 library(kableExtra)
 
 options(knitr.kable.NA = '')
 
-haul_sample_table = haul_sample_table = haul.sample.info.master %>% 
+haul_sample_table = haul.sample.info.master %>% 
   pivot_wider(names_from = survey, 
               values_from = c(samples, hauls)) %>% 
   select("Year", 'samples_tri_early survey',"hauls_tri_early survey",
@@ -573,6 +575,5 @@ haul_sample_table = haul_sample_table = haul.sample.info.master %>%
   #save_kable(file = "doc/FinalTables/haul_sample_table.png",
   #           zoom = 1.5)
 
-haul_sample_table
 
 
