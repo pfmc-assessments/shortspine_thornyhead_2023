@@ -258,6 +258,7 @@ Ctl23_model_francis_2$Variance_adjustment_list <- bind_rows(
 )
 
 Ctl23_model_francis_2$MG_parms[SS_Param2023$MG_params$M$base_2023$Parameter,]$INIT <- SS_Param2023$MG_params$M$base_2023$Value[1]
+Ctl23_model_francis_2$recr_dist_pattern <- data.frame(GPattern=1, month=3, area=1, age=0, row.names = "recr_dist_pattern_1")
 
 # Updated init parameters values to ensure best fit
 Ctl23_model_francis_2$SR_parms["SR_LN(R0)",]$INIT <- 9.33

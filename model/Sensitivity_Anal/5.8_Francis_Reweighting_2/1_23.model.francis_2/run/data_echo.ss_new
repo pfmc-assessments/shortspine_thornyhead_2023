@@ -5,7 +5,7 @@
 #_User_info_available_at:https://vlab.noaa.gov/group/stock-synthesis
 #_Source_code_at:_https://github.com/nmfs-stock-synthesis/stock-synthesis
 
-#_Start_time: Sat May  6 19:34:26 2023
+#_Start_time: Mon May  8 11:52:03 2023
 #_echo_input_data
 #C Data file for Shortspine Thornyhead - 2023 Assessment
 #C These data are the one from the 2013 model and updated for
@@ -839,10 +839,10 @@
 #_mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
 # 0 0 0 0 0 0 0 #_fleet:1_Trawl_N
 # 0 0 0 0 0 0 0 #_fleet:2_Trawl_S
-# 0 0 0 0 0 0 0 #_fleet:3_Non-trawl
-# 0 0 0 0 0 0 0 #_fleet:4_Triennial1
-# 0 0 0 0 0 0 0 #_fleet:5_Triennial2
-# 0 0 0 0 0 0 0 #_fleet:6_NWFSCcombo
+# 0 0 544408064 544408048 0 0 0 #_fleet:3_Non-trawl
+# 0 0 1633967907 1633967907 0 0 0 #_fleet:4_Triennial1
+# 0 0 1818846836 1818846836 0 0 0 #_fleet:5_Triennial2
+# 0 0 101 101 0 0 0 #_fleet:6_NWFSCcombo
 # 0 #_Lbin_method_for_Age_Data: 1=poplenbins; 2=datalenbins; 3=lengths
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
 # partition codes:  (0=combined; 1=discard; 2=retained
