@@ -504,7 +504,7 @@ NWFSC.Combo.master <- PullCatch.fn(SurveyName = "NWFSC.Combo")
 
 # sample size information for surveys by year
 
-for(i in c("t1.survey", "t2.survey", "afsc.slope")) {
+for(i in c("tri_early.survey", "tri_late.survey", "afsc.slope")) {
     x = eval(parse(text = paste0(i, ".bio$Lengths"))) %>% 
     group_by(Year) %>% 
     summarise(samples = n()) %>% 
@@ -519,10 +519,10 @@ for(i in c("nwfsc.combo", "nwfsc.slope")) {
   assign(paste(i, "_samples",sep = ""), x)  
 }
 
-bio.samples.master = as.data.frame(rbind(t1.survey_samples, t2.survey_samples, afsc.slope_samples, 
+bio.samples.master = as.data.frame(rbind(tri_early.survey_samples, tri_late.survey_samples, afsc.slope_samples, 
       nwfsc.slope_samples, nwfsc.combo_samples))
 
-for(i in c("t1.survey", "t2.survey", "afsc.slope")) {
+for(i in c("tri_early.survey", "tri_late.survey", "afsc.slope")) {
   x = unique(eval(parse(text = paste0(i, ".bio$Lengths")))[c("Year", "Vessel", "Pass", "Tow", "Trawl_id")]) %>%  
   group_by(Year) %>% 
   summarise(hauls = n()) %>% 
@@ -538,10 +538,41 @@ for(i in c("nwfsc.combo", "nwfsc.slope")) {
   assign(paste(i, "_hauls",sep = ""), x)  
 }
 
-bio.hauls.master = as.data.frame(rbind(t1.survey_hauls, t2.survey_hauls, afsc.slope_hauls, 
+bio.hauls.master = as.data.frame(rbind(tri_early.survey_hauls, tri_late.survey_hauls, afsc.slope_hauls, 
                                          nwfsc.slope_hauls, nwfsc.combo_hauls))
 
 haul.sample.info.master = merge(bio.samples.master , bio.hauls.master, by=c("Year","survey"))
 out.dir <- file.path(outputs.dir, "surveys")
 write.csv(haul.sample.info.master, file.path(out.dir, paste0("haul.sample.info.master.csv")))
+
+# Create table with haul and sample information  ------
+library(kableExtra)
+
+options(knitr.kable.NA = '')
+
+haul_sample_table = haul.sample.info.master %>% 
+  pivot_wider(names_from = survey, 
+              values_from = c(samples, hauls)) %>% 
+  select("Year", 'samples_tri_early survey',"hauls_tri_early survey",
+         "samples_tri_late survey", "hauls_tri_late survey",
+         "samples_afsc slope", "hauls_afsc slope",
+         "samples_nwfsc slope", "hauls_nwfsc slope",
+         "samples_nwfsc combo", "hauls_nwfsc combo") %>% 
+  kbl(col.names = c("Year", "samples", "hauls",
+                    "samples", "hauls",
+                    "samples", "hauls",
+                    "samples", "hauls",
+                    "samples", "hauls"),
+      align = "c") %>% 
+  kable_classic() %>% 
+  add_header_above(c(" " = 1, "AFSC Triennial Shelf\nSurvey Early" = 2, "AFSC Triennial Shelf\nSurvey Late" = 2, 
+                     "AFSC Slope\nSurvey" = 2, "NWFSC Slope\nSurvey" = 2,
+                     "NWFSC Combo\nSurvey" = 2)) %>%
+  save_kable(file = "outputs/surveys/haul_sample_table.png",
+             zoom = 1.5) %>% 
+  save_kable(file = "doc/FinalTables/haul_sample_table.png",
+             zoom = 1.5)
+
+haul_sample_table
+
 

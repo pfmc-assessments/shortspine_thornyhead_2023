@@ -157,13 +157,23 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # but can turn on later and let run over night.
 # Values should be either: "" (run with hessian), or "-nohess"
 # (run withou hessian).
-use.hessian <- ""
+# use.hessian <- ""
 
 # Save directories and function
 # var.to.save <- c('dir_model', 
 # 'Exe_path',
 # 'dir_script',
 # 'dir_SensAnal') 
+
+
+# Compute the hessian matrix 
+# For each model, indicate if you want to compute the Hessian matrix.
+# If noHess = TRUE for a given model, then the Hessian matrix
+# won't be estimated.
+# Reminder - The following models are considered:#  -  23.male.selex.new 
+noHess <- c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
+
+
 var.to.save <- ls()
 # ----------------------------------------------------------- 
 
@@ -369,7 +379,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.land.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra=use.hessian
+      extra = ifelse(noHess[1], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 3.6  Let's plot the outputs from this model ----
@@ -609,7 +620,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.disc.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[2], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 4.6  Let's plot the outputs from this model ----
@@ -846,7 +858,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.surv_db.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[3], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 5.6  Let's plot the outputs from this model ----
@@ -1085,7 +1098,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.lcs_survey.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[4], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 6.6  Let's plot the outputs from this model ----
@@ -1325,7 +1339,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.lcs_fisheries.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[5], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 7.6  Let's plot the outputs from this model ----
@@ -1561,7 +1576,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.disc_weight.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[6], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 8.6  Let's plot the outputs from this model ----
@@ -1804,7 +1820,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.growth.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[7], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 9.6  Let's plot the outputs from this model ----
@@ -2042,7 +2059,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.maturity.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[8], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 10.6  Let's plot the outputs from this model ----
@@ -2285,7 +2303,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.fecundity.update folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extras = use.hessian
+      extra = ifelse(noHess[9], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 11.6  Let's plot the outputs from this model ----
@@ -2521,6 +2540,8 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the 23.mortality.update folder
       cleanRun = FALSE,
       # clean the folder after the run
+      extra = ifelse(noHess[10], yes = '-nohess', no = '')
+      # this is if we want to use '-nohess'
       )
 
 # 12.6  Let's plot the outputs from this model ----
@@ -2546,10 +2567,20 @@ SS_plots(replist,
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 
-# You are ready to analyze the differences between the models 
-# considered in this sensitivity analysis.
-# This can be done using the 0.2_Update_Data_Outputs.R script.
+## End section ##
 
+# You are ready to analyze the differences between the models
+# considered in this sensitivity analysis.
+# This can be done using the 4.1_Test_Bio_Outputs.R script.
+
+# !!!!! WARNING !!!!!
+# ------------------- #
+# Please do not develop any script that you want to keep after this 
+# warning section - It might be overwritten in the case you add a new 
+# model to this SA.
+# ------------------- #
+
+## End script to develop SA models ##
 
 # -----------------------------------------------------------
 # -----------------------------------------------------------
