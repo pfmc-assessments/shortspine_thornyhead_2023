@@ -2728,7 +2728,7 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
     # } else {
     Which4 <- grep(pattern = "# General features: ", x = file)
     fileOut <- c(fileOut, file[(Which3-1):Which4])
-    fileOut <- c(fileOut, Features)
+    fileOut <- c(fileOut, paste("# ",Features))
     # }
   } else {
     fileOut <- c(fileOut, file[(Which3-1):(length(file)-2)])
