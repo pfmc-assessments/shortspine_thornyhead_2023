@@ -164,7 +164,7 @@
 10	0	0	0	#_6 NWFSCcombo
 #
 #_SizeSelex
-#_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
+#_LO	HI		INIT	  PRIOR	PR_SD	PR_type PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
   10	60	       30	     30	 5	0	  1	0	0	0	0	  0	0	0	#_SizeSel_P_1_Trawl_N(1)         
  -16	16	      -15	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_N(1)         
   -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_N(1)         

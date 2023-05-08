@@ -1,0 +1,44 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Prior on Selectivity - 1 Blk 
+# 	- Prior on Selectivity - 2 Blks 
+# 	- Prior on Selectivity - 3 Blks 
+# Author:  Pierre-Yves Hernvann & Matthieu Veron 
+# Date: 2023-05-08 10:59:58 
+# Sensitivity Analysis ID: Item 5.10 
+# Names of the models created:
+# 	-  23.slx.Prior.1Blk 
+# 	-  23.slx.Prior.2Blk 
+# 	-  23.slx.Prior.3Blk 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.slx.Prior.1Blk 				 23.blkret.T3 
+# 23.slx.Prior.2Blk 				 23.blkret.T3 
+# 23.slx.Prior.3Blk 				 23.blkret.T3 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.10_Prior_Selectivity_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.10_Prior_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.10_Prior_Sensitivity_Outputs.R .R
+# 
+# General features: 
+# Incorporation of Priors and time blocks in Selx parameters (peak) 
+# 
+# Model features:
+# - Model 23.slx.Prior.1Blk:
+# Time block 1 
+# - Model 23.slx.Prior.2Blk:
+# Time block 2 
+# - Model 23.slx.Prior.3Blk:
+# Time block 3 
+# ============================================================ #
+
