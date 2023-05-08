@@ -136,7 +136,8 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # 	-  23.blkret.T4 
 # 	-  23.blkret.T3.NT1 
 # 	-  23.blkret.T3.NT2 
-noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
+#noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
+noHess <- c(FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)
 
 
 var.to.save <- ls()
