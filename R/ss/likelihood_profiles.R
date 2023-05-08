@@ -54,31 +54,6 @@ file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("mod
 run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/"), 
                       model_settings = model_settings)
 
-##### Run profile for Natural Mortality #####
-
-profile.settings <- get_settings_profile(parameters = 'NatM_break_1_Fem_GP_1',
-                                         low = 0.04, high = 0.08,
-                                         step_size = 0.005,
-                                         param_space = 'real',
-                                         use_prior_like = 0)
-
-
-model_settings <- get_settings(settings = list(base_name = '1_23.model.francis_2',
-                                               run = "profile",
-                                               profile_details = profile.settings,
-                                               init_values_src = 1,
-                                               usepar=TRUE,
-                                               globalpar=TRUE,
-                                               parstring="MGparm[1]"
-                                               )
-                               )
-
-
-model_settings$exe <- 'ss_osx'
-file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2"))
-run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/"), 
-                      model_settings = model_settings)
-
 
 # Run profile for Natural Mortality -----------
 #Using r4ss::profile, I believe it *is* possible, you can set linenum or string to be a vector, and it will profile over the two parameters simultaneously. And then profilevec would be a matrix along the lines of cbind(seq(m.low, m.high, length.out = n), nrow = n, ncol = 2)

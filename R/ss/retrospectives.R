@@ -2,6 +2,11 @@ library(here)
 library(r4ss)
 source(file=file.path(here::here(), "R", "utils", "ss_utils.R"))
 
+retro.dir <- file.path(here::here(), "model", "Sensitivity_Anal", "5.8_Francis_Reweighting_2", "1_23.model.francis_2_retro")
+if(dir.exists(retro.dir)){
+  unlink(retro.dir, recursive=TRUE)
+}
+
 model_settings <- get_settings(settings = list(base_name = '1_23.model.francis_2',
                                                run = "retro",
                                                init_values_src = 1,
@@ -19,7 +24,6 @@ run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Rew
 
 
 #### For plotting the base model with uncertainty on
-base.dir <- file.path(here::here(), "model", "Sensitivity_Anal", "5.8_Francis_Reweighting_2", "1_23.model.francis_2_retro")
 retro.output <- SSgetoutput(dirvec = c(file.path(here::here(), "model", "Sensitivity_Anal", "5.8_Francis_Reweighting_2", "1_23.model.francis_2", "run"), 
                                        file.path(base.dir, "retro", "retro-1"),
                                        file.path(base.dir, "retro", "retro-2"), 
