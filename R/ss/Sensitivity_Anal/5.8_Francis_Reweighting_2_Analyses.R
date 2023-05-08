@@ -190,15 +190,16 @@ Dat23_model_francis_2 <- SS_readdat_3.30(
 # Code modifying the data file 
 # ..... 
 # ..... 
-
+Dat23_model_francis_2$len_info <- SS_Param2023$len_info$data$ThreeFleets_NoSlope_CombineTriennial
+Dat23_model_francis_2$lencomp <- SS_Param2023$All_LengthComp$data$ThreeFleets_NoSlope_CombineTriennial
 
 # Save the data file for the model
-# SS_writedat(
-      # datlist =  Dat23_model_francis_2 ,
-      # outfile = file.path(Dir_23_model_francis_2, 'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writedat(
+datlist =  Dat23_model_francis_2 ,
+outfile = file.path(Dir_23_model_francis_2, 'SST_data.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 
 # Check file structure
 # DatFile <- file.path(Dir_23_model_francis_2, 'SST_data.ss', fsep = fsep)
@@ -341,7 +342,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.model.francis_2folder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = NULL#ifelse(noHess[1], yes = '-nohess', no = NULL)
+      extra = NULL #ifelse(noHess[1], yes = '-nohess', no = NULL)
       # this is if we want to use '-nohess'
       )
 
