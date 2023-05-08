@@ -1,7 +1,9 @@
 "Var1","Freq"
-"Q_extraSD_Triennial1(4)",1
-"Retain_L_infl_Trawl_S(2)_BLK2delta_2007",1
-"Size_DblN_descend_se_NWFSCcombo(6)",1
-"Size_DblN_top_logit_NWFSCcombo(6)",2
-"SR_LN(R0)",1
+"Retain_L_asymptote_logit_Trawl_N(1)",78
+"Retain_L_asymptote_logit_Trawl_N(1)_BLK1delta_2007",1
+"Retain_L_asymptote_logit_Trawl_N(1)_BLK1delta_2011",1
+"Retain_L_width_Trawl_N(1)",1
+"Size_DblN_ascend_se_Trawl_S(2)",2
+"Size_DblN_descend_se_Trawl_S(2)",1
+"Size_DblN_top_logit_NWFSCcombo(6)",1
 "SzSel_Male_Ascend_Triennial1(4)",1

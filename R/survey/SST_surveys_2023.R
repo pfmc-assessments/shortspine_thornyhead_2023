@@ -545,3 +545,34 @@ haul.sample.info.master = merge(bio.samples.master , bio.hauls.master, by=c("Yea
 out.dir <- file.path(outputs.dir, "surveys")
 write.csv(haul.sample.info.master, file.path(out.dir, paste0("haul.sample.info.master.csv")))
 
+# Create table with haul and sample information  ------
+library(kableExtra)
+
+options(knitr.kable.NA = '')
+
+haul_sample_table = haul.sample.info.master %>% 
+  pivot_wider(names_from = survey, 
+              values_from = c(samples, hauls)) %>% 
+  select("Year", 'samples_tri_early survey',"hauls_tri_early survey",
+         "samples_tri_late survey", "hauls_tri_late survey",
+         "samples_afsc slope", "hauls_afsc slope",
+         "samples_nwfsc slope", "hauls_nwfsc slope",
+         "samples_nwfsc combo", "hauls_nwfsc combo") %>% 
+  kbl(col.names = c("Year", "samples", "hauls",
+                    "samples", "hauls",
+                    "samples", "hauls",
+                    "samples", "hauls",
+                    "samples", "hauls"),
+      align = "c") %>% 
+  kable_classic() %>% 
+  add_header_above(c(" " = 1, "AFSC Triennial Shelf\nSurvey Early" = 2, "AFSC Triennial Shelf\nSurvey Late" = 2, 
+                     "AFSC Slope\nSurvey" = 2, "NWFSC Slope\nSurvey" = 2,
+                     "NWFSC Combo\nSurvey" = 2)) %>%
+  save_kable(file = "outputs/surveys/haul_sample_table.png",
+             zoom = 1.5) %>% 
+  save_kable(file = "doc/FinalTables/haul_sample_table.png",
+             zoom = 1.5)
+
+haul_sample_table
+
+
