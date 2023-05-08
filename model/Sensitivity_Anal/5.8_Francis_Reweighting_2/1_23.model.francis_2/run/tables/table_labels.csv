@@ -1,0 +1,13 @@
+"caption","altcaption","label","filename"
+"Recent landings by fleet, total landings summed across fleets, and the total mortality including discards.",NA,"removalsES","a_Catches_ES.csv"
+"Estimated recent trend in spawning output and the fraction unfished and the 95 percent intervals.",NA,"ssbES","b_SSB_ES.csv"
+"Estimated recent trend in recruitment and recruitment deviations and the 95 percent intervals.",NA,"recrES","c_Recr_ES.csv"
+"Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95 percent intervals.",NA,"exploitES","d_SPR_ES.csv"
+"Summary of reference points and management quantities, including estimates of the  95 percent intervals.",NA,"referenceES","e_ReferencePoints_ES.csv"
+"Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs),
+                the annual catch limits (ACLs), the total landings, and total mortality (mt).",NA,"manageES","f_Manage_ES.csv"
+"Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.",NA,"projectionES","g_Projections_ES.csv"
+"Summary of recent estimates and managment quantities",NA,"summaryES","i_Summary_ES.csv"
+"Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.",NA,"allcatches","Catches_All_Years.csv"
+"Time series of population estimates from the base model.",NA,"timeseries","TimeSeries.csv"
+"Likelihood components by source.",NA,"likes","likelihoods.csv"

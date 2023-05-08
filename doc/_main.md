@@ -1,6 +1,6 @@
 ---
 geometry: margin=1in
-month: "April"
+month: "May"
 year: "2023"
 preamble: |
 csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
@@ -19,16 +19,16 @@ papersize: letter
 
 ---
 author:
-  - name: Madison Shipley
-    code: 1
-    first: M
-    middle: ''
-    family: Shipley
   - name: Joshua Zahner
     code: 1
     first: J
     middle: ''
     family: Zahner
+  - name: Madison Heller-Shipley
+    code: 1
+    first: M
+    middle: 'A'
+    family: Heller-Shipley
   - name: Sabrina Beyer
     code: 1
     first: S
@@ -41,8 +41,8 @@ author:
     family: Hayes
   - name: Pierre-Yves Hernvann
     code: 2
-    first: P
-    middle: '-'
+    first: P-Y
+    middle: ''
     family: Hernvann
   - name: Andrea Odell
     code: 3
@@ -64,7 +64,7 @@ author:
     first: M
     middle: ''
     family: Veron
-author_list: Shipley, M., J. Zahner, S. Beyer, A. Hayes, P.-. Hernvann, A. Odell,
+author_list: Zahner. J, M.A. Heller-Shipley,  S. Beyer, A. Hayes, P-Y. Hernvann, A. Odell,
   H. Oleynik, J.Y. Sullivan, M. Veron
 affiliation:
   - code: 1
@@ -139,7 +139,7 @@ title: Status of Shortspine Thornyhead (_Sebastolobus alascanus_) along the US W
 
 ## Stock{-}
 
-This assessment reports the status of Shortspine Thornyhead (_Sebastolobus alascanus_) off the US West coast using data through xxxx.
+This assessment reports the status of shortspine thornyhead (_Sebastolobus alascanus_) off the US West coast using data through xxxx.
 
 ## Catches{-}
 
@@ -242,22 +242,66 @@ information gaps that seriously impede the stock assessment.
 
 # Introduction
 ## Basic Information
-This assessment reports the status of Shortspine Thornyhead (_Sebastolobus alascanus_) off the US West coast using data through xxxx.
+This assessment reports the status of shortspine thornyhead (_Sebastolobus alascanus_) off the US West coast using data through xxxx.
+
+\ref{fig:assessment_data_timeseries}
+
+Shortspine Thornyhead (*Sebastolobus alascanus*) are found in the waters off the West Coast of the United States from northern Baja California to the Bering Sea at depths of 20 meters to over 1,500 meters. The majority of the spawning biomass occurs in the oxygen minimum zone between 600 and 1,400 meters. The distribution of the smallest shortspine thornyhead suggests that they tend to settle at around 100–400 meters and are believed to have ontogenetic migration down the slope, although large individuals are found across the depth range. Higher densities (kg/ha) of shortspine thornyhead occur in shallower areas (under 500 meters) off Oregon and Washington, whereas in California, they occur in deeper areas (**above x meters;** Figure \ref{fig:stock-map}).
+
+Despite variation in density across the coast, shortspine thornyheads are present in almost all trawlable areas below 500 meters. They are caught in 91% of trawl survey hauls deeper than 500 m and **XX%** of commercial bottom trawl hauls deeper than 500m. Camera-tows show that thornyheads are spaced randomly across the sea floor, indicating a lack of schooling and territoriality [@du_preez_shortspine_2011; @wakefield_1990].
+
+## Stock Structure
+
+**NOTE: This section was added.** 
+
+Genetic studies of stock structure show few genetic differences among shortspine thornyhead along the Pacific coast, and thus do not suggest separate stocks [@siebenaller_1978, @stepien_1995]. @stepien_1995 suggested that there may be a separate population of shortspine thornyhead in the isolated area around Cortes Bank off San Diego, California. @stepien_1995 also pointed out that juvenile dispersion might be limited in the area where the Alaska and California currents split, which occurs towards the northern boundary of the assessment area, near 48° N.
+
+@stepien_2000, using a more discerning genetic material (mtDNA), found evidence of a pattern of genetic divergence in shortspine thornyhead corresponding to geographic distance. However, this study, which included samples collected from southern California to Alaska, did not identify a clear difference between stocks even at the extremes of the range. No such pattern was seen in longspine thornyhead, which suggests that the shorter pelagic stage (~1 yr vs. ~2 yrs) of shortspine thornyhead may contribute to an increased genetic separation with distance.
+
+@dorval_2022 applied otolith microchemistry to immature fish to redefine population structure of shortspine thornyhead on the west coast. Their results indicate that the population of immature shortspines belongs to two distinct groups distributed north and south of Cape Mendocino. 
 
 ## Life History
-Replace text.
+Shortspine Thornyheads along the West Coast spawn pelagic, gelatinous floating egg masses between December and May [@wakefield_1990; @erickson_pikitch_1993; @pearson_gunderson_2003]. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence for batch spawning in this species on the West Coast, but more recent histological examination of ovaries suggest that some shortspine thornyhead can be batch spawners with two to three batches developing simultaneously (Melissa Head, \gls{nwfsc}, pers. comm.). Juveniles settle at around 1 year of age (22- 27 mm in length), likely in the range of 100-200 m [@vetter_lyn_1997], and migrate down the slope with age and size, although large individuals are found across the depth range.		
+
+Shortspine Thornyhead are notoriously challenging to age, and a recent age validation study using 14C bomb radiocarbon was inconclusive [@kastelle_etal_2020]. However, best available data suggests that the shortspine thornyhead life span may exceed 100 y [@butler_1995; @kline_1996]. Estimates of natural mortality for shortspine thornyhead range from 0.013 [@pearson_gunderson_2003] to 0.07 [@kline_1996]. However, Pearson and Gunderson’s estimate is based upon a regression model, using the gonadosomatic index as a proxy. @butler_1995 estimated M to be 0.05 based upon a maximum lifespan of 100 years for shortspine thornyhead. @butler_1995 also suggested that M may be lower for older, larger shortspine thornyhead residing in the oxygen minimum zone due to lack of predators. All estimates of M for thornyheads are highly uncertain.
+
+Shortspine Thornyhead grow very slowly and may continue growing throughout their lives, reaching maximum lengths of over 70 cm. Females grow to larger sizes than males. Maturity in females has been estimated as occurring near 18 cm, with fish transitioning from immature to mature within a relatively narrow range of sizes between 15 and 20 cm @pearson_gunderson_2003. However, more recent histological data collected in the \gls{s-wcgbt} and analyzed using current best practices suggests that functional maturation, which accounts for abortive maturation and skip spawning, occurs over a broader spectrum of sizes between 10 and 55 cm (length-at-50% maturity, L50 =31.4; personal communication, Melissa Head, \gls{nwfsc}, pers. comm.). 
+
 
 ## Ecosystem Considerations
-Replace text.
+Shortspine Thornyheads have historically been caught alongside longspine thornyheads in a \gls{dts}. Other groundfishes that frequently co-occur in deep waters include a complex of slope rockfishes, Rex sole, longnose skate, roughtail skate, Pacific grenadier, giant grenadier, and Pacific flatnose. Non-groundfish species such as Pacific hagfish and a diverse complex of eelpouts also co-occur with shortspine thornyhead. 
+
+Shortspine Thornyheads typically occur in shallower water than the shallowest longspine thornyheads, and migrate to deeper water as they age. The majority of spawning shortspine thornyheads occur between 600 and 1,400 meters, where longspine thornyheads are most abundant [@jacobson_vetter_1996; @bradburn_2003_2011]. When shortspine thornyheads have reached a depth where they overlap with longspine thornyheads, they are typically larger than the largest longspine thornyheads. 
+
+Species distribution models developed by @Liu_etal_inpress suggest that expected environmental changes over the next decades will lead to a decline in shortspine and  increase in longspine abundance. Shortspine Thornyheads are also projected to shift offshore, into deeper waters, potentially decreasing their availability in fisheries. To date, shortspine thornyheads have been observed in cameras below the 1280 meter limit of the current fishery and survey, but their distribution, abundance, and ecosystem interactions in these deep waters are relatively unknown. Thornyheads spawn gelatinous masses of eggs which float to the surface, which may represent a significant portion of the upward movement of organic carbon from the deep ocean [@wakefield_1990]. 
+
+Shortspine Thornyhead diet composition, derived from stomach content collection in the 1980s and 90s, varied by year [@bizzarro_etal_2023]. In some years their diet consisted primarily of invertebrate species including pandalid shrimp, pink shrimp, and Tanner crab, while in others their stomach content was dominated by finfish species such as Pacific cod and Pacific Hake. As prey themselves, shortspine thornyheads were only found in the stomachs of other species in two years, 1991 and 1992, where they occurred in Sablefish, Pacific hake, and other shortspine thornyhead stomachs [@bizzarro_etal_2023]. 
 
 ## Historical and Current Fishery Information
-Replace text.
+The thornyhead fishing history has experienced fluctuations due to increased depth range of the fisheries, variable markets, and changes in fisheries management. In the early 1900's, landings were minimal because there were few markets for thornyheads and relatively little trawling at depths where the majority of thornyheads occur. Beginning in the 1930’s, thornyhead landings increased as they were landed as incidental catch in the California sablefish fishery. The first significant market for thornyheads began in northern California in the early 1960’s, when larger (30-35 cm) thornyhead were sold as “ocean catfish”. By the early 1980s, the minimum size decreased to 25 cm, and in the late 1980’s a market for small thornyheads (~20 cm) developed due to the depletion of a related species (*Sebastolobus machrochir*) off the coast of Japan. The fishery moved into deeper waters with the demand for smaller thornyheads and began catching more longspine thornyheads. This is reflected in the changes in proportion of shortspine to total thornyheads through time, which decreased from around 90% in 1981 to 40% in 1994 Figure \ref{fig:thornyhead-ratio}.
+
+Landings of shortspine thornyheads off the coast of California peaked around 3,500 mt in 1989, and have exceeded those from further north in most years (Figure \ref{fig:catch_hist}). In the northern area off of Oregon and Washington, the fishery grew in the early 1980’s, with landings peaking in 1991 at around 2200 mt.
+
+Non-trawl landings of shortspine thornyheads were relatively low prior to the mid-1990s, at which point non-trawl landings, dominantly longline, in California began to increase steadily from less than 5 mt in 1994 to 237 mt in 2011. The increase in non-trawl landings was driven by the development of live-fish markets for thornyheads and the fact that ex-vessel prices associated with the non-trawl landings are much higher than those for the trawl fishery. 
+
+**Nominal prices for line-caught shortspine thornyhead increased steadily from \textdollar 0.69/lb in 1993 to \textdollar 3.81/lb in 2008, and have remained near or above that level since.** Citation? 
+
+Trawl prices, on the other hand, changed from \textdollar 0.46/lb to \textdollar 0.72/lb in the same period, although, when Japanese demand was strong they were between \textdollar 0.80 and \textdollar 1.06/lb. In contrast, non-trawl landings of shortspine in Washington and Oregon have remained below the estimated peak of 54 mt in 1991.
+
+The foreign fishery off of the West Coast is estimated to have caught approximately 7,400 mt of shortspine thornyhead during the 11 year period from 1966-1976 [@rogers_species_2003], which is on the order of the estimate of domestic catch (~8,600 mt) during that same period.
+
+**Management measures** have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since **(Table X)**.
 
 ## Summary of Management History and Performance
-Replace text.
+Beginning in 1989, both thornyhead species were managed as part of a \gls{dts}. In 1991, the \gls{pfmc} adopted separate \gls{abc} levels for thornyheads and catch limits were imposed on the thornyhead complex. \gls{hg} were instituted in 1992 along with an increase in the minimum mesh size for bottom trawl fisheries. In 1995 separate landing limits were placed on shortspine and longspine thornyheads and trip limits became more restrictive. Trip limits (predominantly 2-month limits on cumulative vessel landings) have often been adjusted during the year since 1995 in order to not exceed the \gls{hg} or \gls{oy}. At first, the HG for shortspine thornyhead was set higher than the \gls{abc} (1,500 vs. 1,000 mt in 1995-1997) in order to allow a greater catch of longspine thornyhead, which was considered relatively undepleted. In 1999 the \gls{oy} was set at less than 1,000 mt and remained close to that level through 2006. As a result of the 2005 shortspine assessment, catch limits increased to about 2,000 mt per year and have remained near that level **to the present.**
+
+Since early 2011, trawl harvest of each thornyhead species has been managed under the PFMC’s catch share, or \gls{ifq}, program. Whereas the trip limits previously used to limit harvest restricted only the amount of fish each vessel could land, individual vessels fishing under the catch-share program are now held accountable for all of the quota-share species they catch. 
+
+**Landings of shortspine thornyhead have been below the catch limits since 1999. The estimated total catch, including discards, has likewise remained below the limit during this period.**
 
 ## Foreign Fisheries
-Replace text.
+The \gls{afsc} conducts assessments of thornyheads as a mixed stock complex, including shortspine and longspine thornyheads. Results of the 2022 Alaska Thornyhead complex assessment suggest that thornyheads are not being subjected to overfishing [@echave_etal_2022]. 
+
 
 <!--chapter:end:11introduction.Rmd-->
 
@@ -275,112 +319,174 @@ limitations imposed by the Terms of Reference; and
 the presence of an avenue for the inclusion of the data in the assessment model.
 Attributes associated with a data source can change through time,
 as can the applicability of the data source when different modeling approaches are explored (e.g., stock structure or time-varying processes).
-Therefore, the specific data sources included or excluded from this assessment should not necessarily constrain the selection of data sources applicable to future stock assessments for Shortspine Thornyhead.
+Therefore, the specific data sources included or excluded from this assessment should not necessarily constrain the selection of data sources applicable to future stock assessments for shortspine thornyhead.
 Even if a data source is not directly used in the stock assessment they can provide valuable insights into biology, fishery behavior, or localized dynamics.
 
 Data from a wide range of programs were available for possible inclusion in the current assessment model.
-Descriptions of each data source included in the model (Figure \@ref(fig:data-plot)) and sources that were explored but not included in the base model are provided below.
-Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous Shortspine Thornyhead stock assessment.
-In some cases, the inclusion of excluded data sources were explored through sensitivity analyses (see Section \@ref(assessment-model)).
+Descriptions of each data source included in the model (Figure \ref{fig:assessment_data_timeseries}) and sources that were explored but not included in the base model are provided below.
+Data that were excluded from the base model were explicitly explored during the development of this stock assessment or have not changed since their past exploration in a previous shortspine thornyhead stock assessment.
+In some cases, the inclusion of excluded data sources were explored through sensitivity analyses.
+
+TEST 
 
 <!--chapter:end:20data.Rmd-->
 
 ## Fishery-Dependent Data
 
+### Catch History 
+\Gls{pacfin} data from 1981-present was used to estimate landings in the North (Oregon and Washington) and South (California) by gear type (Trawl and Non-Trawl) (Figure \ref{fig:catch_hist}) All landings reported for the shortspine thornyhead and nominal shortspine thornyhead categories were considered shortspine thornyhead, whereas landings categorized as unidentified thornyheads were split between longspine thornyhead and shortspine thornyhead by the ratio of identified longspine and shortspine landings for each year-state-gear combination. The values of this ratio for each state and gear-type from 1981-2023 are shown in Figure \ref{fig:thornyhead-ratio}. 
+
+Catches prior to 1981 are based on historical reconstructions provided by the respective states and a reconstruction of foreign fleet catch. Oregon landings for 1892-1986 are provided by ODFW and outlined in @karnowski_historical_2014 shortspine thornyhead landings are not present in the \gls{pacfin} data for Oregon for the years 1981-1986 and the state reconstruction is used for this period instead. Washington landings for 1954-1980 are provided by WDFW. Landings prior to the beginning of this data are assumed to be zero. California landings are provided by CDFW and SWFSC, and consist of California commercial data for 1969-1980, and a catch reconstruction documented by @ralston_documentation_2010 for 1934-1968. As in the two previous assessments, catch data from @rogers_species_2003 is used to account for catches by foreign fleets during the years 1966-1976. Foreign catch in the Monterey and Eureka \gls{inpfc} areas is attributed to the Southern Trawl fleet, while foreign catch in Columbia and Vancouver areas is attributed to the Northern Trawl fleet, as was the case in the 2013 assessment.
+
+For historical catches prior to 1981, all shortspine thornyhead, nominal shortspine, and unidentified thornyhead landings in the state catch reconstructions are considered shortspine thornyhead. Neither California reconstructions prior to 1978, nor the @karnowski_historical_2014 reconstruction for Oregon, distinguish between shortspine and longspine thornyhead species. It is possible that assigning all thornyhead landings to shortspine overestimates shortspine landings, however, the overwhelming majority of thornyhead landings were shortspine until the late 1980s when vessels began to move into deeper waters and a distinct fishery targeting longspine thornyhead developed [@hamel_2005; @karnowski_historical_2014]. 
+
+This treatment of unassigned thornyhead landings differs from the 2005 and 2013 assessments. The 2005 assessment did not have access to the historical reconstructions used here, and instead imputed shortspine landings as 30% of annual sablefish landings for the years 1901-1961. The 2013 assessment used the same imputed values as the 2005 assessment, but also conducted a sensitivity analysis in which all unassigned thornyheads in historical catch were considered shortspine thornyhead. Stock abundance estimates were found to be largely insensitive to which reconstructions were used [@taylor_stephens_2013]. The imputed historical values used for the 2005 and 2013 assessments will continue to be included as a sensitivity analysis here. Landings after 1961 remain very similar to the landings used in the 2013 assessment (Figure \ref{fig:catch_hist}). 
+
+
+### Discards and retention
+Discards were informed by four data sources covering three different periods. Data sets included, 1) @pikitch_evaluation_1988 Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (J. R. Wallace, pers. comm.), 2) the TEST \gls{edcp} covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the \gls{wcgop}, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the \gls{gemm} data set, covering the same period and completing the \gls{wcgop} with catch-share participation information and estimates of discard survival rates.
+
+While the estimates from the first two data sets were directly integrated into the model, fleet discard rates after 2011 were available separately for catch-share and non-catch-share programs. Final fleet-specific discard rates were thus computed as the average \gls{wcgop} discard rate weighted by the relative proportion of total landings belonging to the catch-share and non-catch-share, respectively. (Figure \ref{fig:disc_rates_WCGOP}). Regardless of the type of data, all estimates derived from these data sets had associated uncertainty accounting for the variability observed within the sample of hauls and fishing trips of each fleet. WCGOP-derived discard rates are an exception as, after the catch share program was initiated in 2011, 100% of hauls from catch share fleets were observed., while non-catch share vessels were only partially covered *_(cite)_*.
+
+The discard data sources were the same as those used in the 2013 assessment. The main improvements are the increased representativity of all 4 fleets (11 more years) and more accurate estimates of discard rates from \gls{edcp}that were not ready at the time of the previous assessment. Last, some errors in the previous assessment were corrected regarding the weight units considered for the average individual weight (\gls{wcgop} provides weight as pounds and not as kg).
+
+### Fishery Length Compositions 
+Commercial fishery length-composition data were obtained from \gls{pacfin} for 1978-2023. Due to variations in sampling effort and because the number of fish sampled by port samplers is not proportional to the amount of landed catch in each trip, the observed length data were expanded using the following algorithm using the PacFINUtilities package in R:
+
+Length data were acquired at the trip level by sex, year and state.
+The raw numbers in each trip were scaled by a per-trip expansion factor calculated by dividing the total weight of trip landings by the total weight of the species sampled. A per-year, per-state expansion factor was computed by dividing the total weight of state landings by the total weight of the species sampled for length in the state. The per-trip expanded numbers were multiplied by the per-state expansion factor and summed to provide the coast-wide length-frequency distributions by year.
+
+Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in *_Table X (landings)_* and *_Table X (discards)_*. Length samples from the Trawl North fleet in the years 1980, 1994, and 1995 showed a very different pattern than the surrounding years. The effective sample sizes for these years were substantially lower than other years (Neff < 15), so the observed differences are likely due to non-representative sampling. Therefore all years with effective sample sizes of less than 15 were not included in the base model. The 2013 assessment found that taking these under-sampled years out made very little difference in model results. 
+
+Input sample sizes (Ninput) for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers.com): 
+\begin{align*}{N_{input} = N_{trips} + 0.138N_{fish}}\qquad\text{ when }\frac{N_{fish}}{N_{trips}}<44 \\
+{N_{input} = 7.06N_{trips}}\qquad\qquad\qquad\text{ when }\frac{N_{fish}}{N_{trips}}\ge 44 \end{align*}
+The method is based on analysis of the input and model-derived effective sample sizes from west coast groundfish stock assessments. A piece-wise linear regression was used to estimate the increase in effective sample size per sample based on fish-per-sample and the maximum effective sample size for large numbers of individual fish.
+
+All length data from commercial fisheries included in the model with sexes combined. This avoids the possibility of bias due to difficulty in sex determination of thornyheads.
+
+### Age Compositions 
+No age composition data was used for this assessment because thornyheads have proven very difficult to age (P. MacDonald, pers. comm.).  Even in directed studies such as those done by @kline_1996 and @butler_1995, there are large inter-reader differences, and a second reading by the same ager can produce a markedly different result. @kline_1996 reported only about 60% of the multiple reads were within 5 years of each other, and inter-reader differences were as large as 24 years for a sample of 50 otoliths. No production ageing of thornyheads is undertaken at this time for the west coast, although shortspine thornyhead otoliths are routinely collected in the NWFSC trawl survey.
+
 <!--chapter:end:21f-.Rmd-->
 
 ## Fishery-Independent Data
-
-<!--chapter:end:21s-.Rmd-->
-
-### \acrlong{s-aslope}
-
-The \gls{s-aslope} operated during the months of October to November aboard the R/V _Miller Freeman_.
-Partial survey coverage of the US west coast occurred during the years 1988-1996 and complete coverage (north of 34\textdegree 30\textquotesingle S) during the years 1997 and 1999-2001.
-Typically, only these four years that are seen as complete surveys are included in assessments.
-
-<!--chapter:end:21s-aslope.Rmd-->
-
-### \acrlong{s-ccfrp}
-
-Since 2007, the \gls{s-ccfrp} has monitored several areas in California to evaluate the performance of \glspl{mpa}
-and understand nearshore fish populations
-[@Wendt2009; @Starr2015].
-In 2017, the survey expanded beyond the four \Gls{mpa}s in central California
-(A&ntilde;o Nuevo, Point Lobos, Point Buchon, and Piedras Blancas)
-to include the entire California coast.
-Fish are collected by volunteer anglers aboard \glspl{cpfv} guided by one of the following academic institutions based on proximity to fishing location:
-Humboldt State University;
-Bodega Marine Laboratories;
-Moss Landing Marine Laboratories;
-Cal Poly San Luis Obispo;
-University of California, Santa Barbara; and
-Scripps Institution of Oceanography.
-
-Surveys consist of fishing with hook-and-line gear for 30-45 minutes within randomly chosen 500 by 500 m grid cells within and outside \glspl{mpa}.
-Prior to 2017, all fish were measured for length and release or descended to depth;
-since then, some were sampled for otoliths and fin clips.
-
-
-<!--chapter:end:21s-ccfrp.Rmd-->
+Four trawl surveys have been conducted on the U.S. west coast over the past four decades. 
 
 ### \acrlong{s-tri}
+The \gls{afsc} conducted a triennial groundfish trawl survey (the "triennial" survey) on the continental shelf from 1977 to 2001, although the 1977 survey had incomplete coverage and is not believed to be comparable to the later years. A final survey was conducted in 2004 by the \gls{nwfsc} using the same survey design. In 1995, the timing of the survey shifted so that instead of occurring between mid-July and late September, it was conducted from early June through mid-August. The years 1980–1992 had a maximum depth of 366 m, while from 1995 onward, the maximum depth was extended to 500 m. The shallow limit of the survey was 55 m in all years, but for purposes of computing indices, only tows deeper than 100 m were used as shortspine thornyhead are rarely seen at shallower depths. The triennial survey consists of 9 data points, from surveys operating every third year spanning the range 1980–2004.
 
-The \gls{s-tri} was first conducted by the \gls{afsc} in 1977, and the survey continued until 2004 [@weinberg_2001_2002].
-Its basic design was a series of equally-spaced east-to-west transects across the continential shelf from which searches for tows in a specific depth range were initiated.
-The survey design changed slightly over time.
-In general, all of the surveys were conducted in the mid summer through early fall.
-The 1977 survey was conducted from early July through late September.
-The surveys from 1980 through 1989 were conducted from mid-July to late September.
-The 1992 survey was conducted from mid July through early October.
-The 1995 survey was conducted from early June through late August.
-The 1998 survey was conducted from early June through early August.
-Finally, the 2001 and 2004 surveys were conducted from May to July.
+For some species, the shift in timing between the 1992 and 1995 surveys would be expected to influence their catchability, availability, or distribution. However, thornyheads are believed to be sedentary enough that the change in timing would not be as influential. On the other hand, the increase in depth is expected to significantly increase the range of shortspine thornyhead habitat covered by the survey. In the 2013 assessment, the triennial survey was split into two-time series, separated by the 366 m depth contour, in order to preserve a time series of maximum length while eliminating the influence of the increased depth range. The first time series, "AFSC Triennial Shelf Survey 1”, consists of 9 data points spanning the range 1980–2004 and covering the depths 100–366 m. The second, “AFSC Triennial Shelf Survey 2”, consists of 4 data points spanning 1995–2004 and covering depths 366–500 m. This second time series is recognized as providing little information about stock status due to the limited number of points and limited depth range, but there was no compelling reason to exclude it from the assessment. However, in contrast to the 2013 assessment, this assessment will treat the triennial survey as a single time series for the construction of geostatistical model-based indices, and will use a different set of latitudinal and depth-based strata for survey length compositions.  
 
-Haul depths ranged from 91-457 m during the 1977 survey with no hauls shallower than 91 m.
-Due to haul performance issues and truncated sampling with respect to depth, the data from 1977 were omitted from this analysis.
-The surveys in 1980, 1983, and 1986 covered the US West Coast south to 36.8\textdegree N latitude and a depth range of 55-366 m.
-The surveys in 1989 and 1992 covered the same depth range but extended the southern range to 34.5\textdegree N (near Point Conception).
-From 1995 through 2004, the surveys covered the depth range 55-500 m and surveyed south to 34.5\textdegree N.
-In 2004, the final year of the \gls{s-tri} series, the \gls{nwfsc} \gls{fram} conducted the survey following similar protocols to earlier years.
-
-<!--chapter:end:21s-tri.RMd-->
+### \acrshort{afsc} and \acrshort{nwfsc} Slope Surveys
+Starting in the late 1990s, two slope surveys were conducted on the west coast. The \gls{s-aslope} was conducted during the years 1997 and 1999–2001 using the research vessel Miller Freeman. The \gls{s-nwslope} was conducted during the years 1998–2002, and was a cooperative survey using commercial fishing vessels. The \gls{s-aslope} was a source of valuable information on the depth distribution and overlap of shortspine and longspine thornyheads in the 1980s, but these early years had very limited latitudinal range and will not be included. This survey also had a different net and larger roller gear than the \gls{s-nwslope}.
 
 ### \acrlong{s-wcgbt}
+In 2003, the design of the \gls{s-nwslope} was modified and the survey was expanded to cover the shelf and slope between 50 m and 1280 m. This combination shelf-slope survey, “NWFSC Combo Survey”, or more recently known as the \gls{s-wcgbt}, has been conducted every year from 2003 to present with consistent design (note that the survey was not conducted in 2020 due to ongoing concerns about COVID-19). Data for the years 2003–2021 were available for this assessment. The \gls{s-wcgbt} represents the largest number of survey observations, the largest depth range, and the most consistent groundfish sampling program in the history of west coast fisheries. Continuing this time series in a consistent manner is vital for improving estimates of current stock status and detecting any future changes in size distribution or abundance of west coast groundfish.
 
-The \Gls{s-wcgbt} is based on a random-grid design;
-covering the coastal waters from a depth of 55-1,280 m [@bradburn_2003_2011].
-This design generally uses four industry-chartered vessels per year assigned to a roughly equal number of randomly selected grid cells and divided into two 'passes' of the coast.
-Two vessels fish from north to south during each pass between late May to early October.
-This design therefore incorporates both vessel-to-vessel differences in catchability,
-as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
+### Survey Stratification
+Data from these four (nominally five for design-based indices) fishery-independent surveys were considered for use in this assessment (Figure \ref{fig:survey_data_timeseries}) to estimate abundance. Two distinct survey abundance estimation methods were considered: design-based indices and geostatistical model-based indices. The 2013 assessment utilized delta-GLMMs following the methods of @thorson_ward_2013, though use of these methods are no longer considered best practice within the field and were not considered here.
 
-<!--chapter:end:21s-wcgbts.Rmd-->
+The five surveys were stratified based on depth and latitude in a similar way to how they were in 2013 *_(Table X; Figure X--Map, should we include?)_*. The \gls{s-tri} was divided into two distinct survey time series, split on the year 1995. The early-Triennial time series (1981-1995) was further stratified into four strata: north and south of 42˚N, and shallower and deeper than 200m. The late-Triennial time series (1995-2004) was also further stratified into four strata: north and south of 40˚N, and shallower and deeper than 200m.  The \gls{s-aslope} was split into two coast-wide strata: shallow and deeper than 550m. The \gls{s-nwslope} was divided into 6 strata, with breaks dividing southern, central, and northern strata at 40.5º N and 43º N, each of which was further divided with a break at 550 m. The \gls{s-wcgbt} was divided into 7 strata, with two southern strata below 34.5º N, one covering 183–550 m and the other covering 550–1280 m. Two central strata, between 34.5º N and 40.5º N, had the same depth ranges. North of 40.5º N, three strata were used, covering the ranges 100–183 m, 183–550 m, and the other covering 550–1280 m. The depth breaks at 183 m and 550 m are associated with changes in sampling intensity of the survey and are recommended to be used. South of 40.5º N, there are very few shortspine thornyhead shallower than 183 m, so no shallow stratum was used in these latitudes. The 2013 stratification was reused for the design-based indices as there was no sufficient evidence to support modifying the existing strata. 
+
+### Design-based Indices of Abundance
+Design-based indices of abundance were derived for all surveys. Note that for these indices of abundance, the \gls{s-tri} was split into two independent time series, separated by the year 1995. The construction of design-based indices mirrors a weighted average approach. For each survey year, an average CPUE is calculated across all tows within a stratum and expanded by area to determine the total estimated biomass. These values are then summed across all strata within the survey to create a time series of design-based indices of abundance. Design-based indices were computed using the official nwfscSurvey R package. 
+
+### Geostatistical Model-based Indices of Abundance
+Model-based indices of abundance for all surveys were derived using geostatistical models @thorson_etal_2015 developed using the R package sdmTMB @Anderson_etal_2022. This approach utilizes geostatistical GLMMs with spatially and spatiotemporally correlated random effects which can account for variables that cause correlations in the data across space and time. For this reason, the \gls{s-tri} survey can be, and was, treated as a single time series rather than split into two-time series based on the introduction of additional sampling at greater depths. For the \gls{s-tri} and \gls{s-wcgbt} surveys,  geostatistical models included spatial and spatiotemporal random effects and depth and depth squared as a scaled covariate. The NWFSC Slope and AFSC Slope surveys did not include additional covariates.
+
+Abundance indices were obtained for models using both gamma and log-normal error structures. There is limited agreement on how best to go about model selection for these types of geostatistical models, and both error structures were tested as sensitivity analyses alongside the simple design-based indices described above. The abundance indices derived from the gamma model were most similar to the design-based indices for the Triennial and WCGBT surveys and were thus used for the base model (indices derived from the log-normal model displayed a similar trend to the gamma model-based indices and the design-based indices, but were consistently larger in scale).
+
+### Length Composition Data
+Length-composition data were available for each year of each survey. In each haul, there is a set number of random samples regardless of the amount of catch, decoupling the sample and catch size. Therefore, the length compositions were calculated using an expansion factor to account for differences in the amount of catch that samples represent. An expansion factor (calculated as weight of caught fish divided by weight of fish sampled) is calculated for each haul, multiplied by the number of fish in each size bin, and then summed across hauls. This algorithm is repeated for each spatial stratum. Length composition data were compiled into *XX length bins, ranging from XX to XX cm*. Year-specific length frequency distributions generated for each survey are shown in Figure \ref{fig:survey_comps}).
+
+### Frequency of Occurrence and Survey Information
+The frequency of occurrence of shortspine and longspine thornyheads in trawl surveys remains extremely high. 91% of the tows in the \gls{s-wcgbt} below 500 m have at least one shortspine thornyhead in the catch (and 96% for longspine thornyhead), similar to the 2013 assessment. The number of survey hauls and shortspine thornyheads sampled available for this assessment is described in *Table X*.
+
+<!--chapter:end:21s-.Rmd-->
 
 ## Biological Data
 
 ### Natural Mortality
 
+**THIS WILL BE UPDATED** 
+
+@butler_1995 estimated the lifespan of shortspine thornyhead to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality developed based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Hamel, pers. comm.). For the base case, natural mortality was fixed at the mean of this prior distribution. This assessment uses an updated prior on M by @hamel_cope_2022, where the median of M is:
+\begin{equation} \frac{5.40}{Age_{max}} \end{equation}
+
+This assessment assumed the same maximum age of 100 as in the previous assessments, with an updated prior of 0.054 (median value) and log-space standard deviation = 0.31 [@hamel_cope_2022]. The 2023 assessment will explore estimating M and fixing M at the prior mean.
 
 ### Maturation and Fecundity
 
+#### Maturity 
+@pearson_gunderson_2003 estimated length at 50% maturity to be 18.2 cm on the West coast, with most females maturing between 17 and 19 cm. This was represented in the 2005 and 2013 assessments by the logistic function,
+\begin{equation} M(L) = (1 + e^{-2.3(L-18.2)})-1\end{equation}
 
-### Sex Ratio
+where L is the length in cm.
 
+The 2013 assessment considered new (at the time) maturity information from ovaries collected for maturity analysis on the 2011 and 2012 WCGBTS. Histological analysis of those samples (M. Head, pers. comm.) indicated puzzling patterns of spawning by female size and by latitude, with a higher fraction of fish spawning in the north than in the south and a higher fraction of spawning fish in the 20-30cm than in the 30-40cm range. However, due to the complexity of these observed patterns and the known ontogenetic migrations of shortspine, samples collected in 2011 and 2013 were not considered adequate for estimation of a new representative maturity curve for the entire shortspine thornyhead population in 2013. Nonetheless, such a maturity curve was considered in a sensitivity analysis. On the basis of the sensitivity analysis, the 2013 assessment suggested that the slow but steady rate of growth for TEST shortspine thornyheads, with growth still occurring at age 100, reduces the importance of assumptions about maturity because older individuals have significantly higher spawning output due to their much larger size, regardless of the fraction spawning.
+
+New maturity analyses of samples collected on the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for the 2023 assessment (M. Head, pers. comm.). The larger number (N=397) and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning.
+
+In the 2013 assessment, the exploration of maturity analyses from the \gls{s-wcgbt} samples highlighted maturity gradients along latitude and depth. To assess a potential relationship between fish location and the shape of the maturity curve, a general linear model (GLM) was designed for estimating maturity curve parameters while integrating latitude and depth as covariates. This GLM consists of a logistic regression in which the functional maturity of samples, modeled with a Bernoulli distribution, is expressed as a linear combination of fish length, latitude, squared latitude, depth and squared depth of collection. Once fitted, the GLM was used to predict the response of the probability of being mature along the range of individual shortspine length considered in the model. For the 2023 assessment, this model prediction was made while setting the latitude and depth at the values of the center of gravity (using number of fish as weighing factor) of the population of shortspine thornyhead sampled during the \gls{s-wcgbt} to develop a single curve for the coastwide population assessment. Thus, this response of functional maturity to length was considered the mean maturity curve of the west coast shortspine thornyhead population. The parameters of the maturity curve L50 and k were arithmetically derived from this response to fish length. The new maturity curve is expressed as follows:
+
+\begin{equation} M(L) = (1+e^{-2.3(L-31.42)})^{-1}\end{equation}
+
+*_Figure MAT-1_* shows the fit of the maturity curve of the model per class of depth and latitude.
+
+A sensitivity analysis will assess the impact of this change in the maturity curve on the model estimates by considering the newly estimated parameters, the Pearson and Gunderson’s relationship from the 2013, and one intermediate option *_(FigureMAT-2)_*.
+
+#### Fecundity 
+The previous assessments assumed spawning biomass was equivalent to spawning output. The 2023 assessment will explore using fecundity-at-length parameters reported in @cooper_etal_2005, where fecundity was modeled as a power function of length. @cooper_etal_2005 estimated the fecundity of 54 females collected from the West Coast and Alaska. The study found no difference in the length-fecundity relationship by region and pooled the samples. The fecundity-at-length parameters in that study were:
+\begin{equation} F = 0.0544L_{3.978} \end{equation}
+where F is fecundity in the number of eggs per female and  L is length in cm. Fecundity information from @cooper_etal_2005 suggests that fecundity increases at a faster rate with length than body weight with length. This means larger females are likely to have greater relative fecundity compared to small females (i.e., large females produce more eggs per kg of body weight). This assessment will explore modeling a fecundity-at-length relationship using the fecundity parameters from @cooper_etal_2005 and scaling the fecundity intercept by one million in SS3 to report fecundity in billions of eggs.
+
+Uncertainty remains in the spawning strategy of shortspine thornyhead. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence for batch spawning in this species (i.e., a determinate, total spawning strategy). However, updated histology information suggests a possibility of batch spawning in this species (Melissa Head, NWFSC, pers. comm.). Batch spawning could influence the fecundity-at-length relationship if not properly accounted for and should be a focus of future research. The histology analysis also found evidence of parasites in the ovaries and atresia (degrading eggs), which could influence fecundity (Melissa Head, NWFSC, pers. comm.). 
 
 ### Length-Weight Relationship
+Fisheries-independent length and weight specimen data are available from the \gls{s-aslope} (1997, 1999-2001; N=7,623) and the \gls{s-wcgbt} (2003-2021, excluding 2020; N=20,142). The \gls{s-wcgbt} data were used to estimate the length-weight relationship because it has the largest sample size and covers the greatest spatiotemporal resolution. The allometric function models weight (W) as an exponential function of length (L), where:
 
+\begin{equation} W = \alpha L^{\beta} \end{equation}
+
+This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of 𝜎2 / 2. Length-weight was estimated for both sexes in R using the lm() function [@r_core_2021]. 
+
+The resulting allometric parameters for 2023 (females: $\alpha$ = 6.49e-6, $\beta$ = 3.18; males: $\alpha$ =6.71e-6, $\beta$=3.17) were similar to the 2013 assessment values, which estimated a single length-weight relationship for males and females combined using \gls{s-wcgbt} data through 2012 (sexes combined: $\alpha$ = 4.77e-6, $\beta$=3.26). The $\beta$ value was higher in the 2013 assessment, indicating a slightly higher weight-at-length for longer fish. We found no temporal trend in the available data and were unable to account for these small differences in results. The available data suggest that length-weight is highly conserved in shortspine thornyhead; therefore, no sensitivity analysis was conducted for this set of parameters in the 2023 assessment.
 
 ### Growth (Length-at-Age)
+No validated ageing methodology currently exists for shortspine thornyhead; therefore, this species is not aged by the \gls{nwfsc} or \gls{swfsc} and length-at-age data are limited for this stock assessment. Two research age datasets exist for shortspine thornyhead in the West Coast region: (1) @kline_1996 includes 319 unsexed fish collected from Monterey Bay in central California in 1991, and (2) @butler_1995 includes 1,023 sexed fish collected in the waters off northern California and Oregon in 1978-1988 and 1990. The Kline specimens were aged by one age reader, and lengths were reported as total lengths, whereas the Butler specimens were aged independently by two separate age readers, and lengths are reported in fork length. The Butler data age data presented in this assessment are the mean ages between the two age readers. 
 
+The length-at-age curve developed in the 2005 stock assessment and used again in 2013 was based on a Schnute parameterization of the Von-Bertalanffy growth function fit to the Kline data. The resulting parameter estimates for this growth function were as follows: growth rate k was 0.018 for both males and females length at age-2 was 7 cm for both males and females, and length at age-100 was 67.5 cm for males and 75 cm for females based on the assumption that the asymptotic length for males should be 90% of the asymptotic length for females [@hamel_2005]. The data and associated analysis from 2005 were lost; however, the original Kline and Butler datasets were obtained for use in this assessment (Donna Kline, pers. comm., March 2023). Using these newly obtained data, we could not reproduce the parameters used in the 2005 assessment. 
+
+Because the Butler data were sex-specific, had a higher sample size, were aged by two readers instead of one, and were collected from a larger geographic area and over more years compared to the Kline data, we determined that Butler was the preferred dataset to estimate the length-at-age relationship for the 2023 stock assessment. We fit sex-specific Schnute growth functions to the Butler data:
+
+\begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
+
+where:
+$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$;$a_{2}=100$ and k is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\frac{\sigma_2}{2}$.
+
+Shortspine Thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growth_LAA1}; *_Table X-LAA-1)_*. The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
+
+Two alternative sensitivity analyses were developed for the 2023 assessment. During the exploratory data analysis phase, we found that specimens collected in the Kline study exhibited higher size-at-age when compared to the Butler specimens (Figure \ref{fig:growth_LAA2}). It is unknown if these differences should be attributed to spatial differences in growth between central California and northern California/Oregon, bias among age readers, or discrepancies between the total and fork length measurements (Donna Kline, pers. comm., March 2023). In order to account for this alternative growth pattern, we increased the lengths at ages 2 and 100 by 25% in the upper sensitivity analysis (Figure \ref{fig:growth_LAA2}). The lower sensitivity analysis was defined by decreasing the lengths at ages 2 and 100 by 10% from the base model. 
 
 ### Ageing Precision and Bias
+
+*REPEAT WITH CLARITY*
 
 <!--chapter:end:22biology.Rmd-->
 
 ## Environmental and Ecosystem Data
 
+No ecological or environmental information was used in this assessment.
+
 <!--chapter:end:23enviro.Rmd-->
+
+## Changes in data from the 2013 assessment 
+
+Most of the data used in the previous assessment has been newly extracted and processed, including length compositions from each fishing fleet and survey, indices of abundance derived from new geostatistical models of survey data, discard rates from both the 1980s Pikitch study and the current \gls{wcgop}, and the time series of catch from 1900-2023.
+
+New data for this assessment include the geostatistical model-based indices of abundance for the four fisheries independent surveys, the histological maturity samples from the \gls {s-wcgbt} survey, and the historical state catch reconstructions. Previous assessments have treated the \gls{afsc} Triennial Shelf Survey as two separate indices of abundance separated by the 366m depth contour, but the transition to using geostatistical model-based indices have rendered this separation unnecessary by implicitly accounting for changes in depth sampling within the model. State-level historical reconstructions also replace previous analyses that imputed historical shortspine thornyhead catch as a fixed proportion of sablefish catch.
+
+<!--chapter:end:24changes.Rmd-->
 
 # Assessment Model
 
@@ -488,12 +594,537 @@ Here are all the mad props!
 # Tables
 
 
+These will likely need reordering 
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:catches)Summary of catches by fleet from 2013-2022}\\
+\toprule
+Year & Trawl\_N & Trawl\_S & Non.trawl & Total.Landings & Total.Dead\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:catches)Summary of catches by fleet from 2013-2022 \textit{(continued)}}\\
+\toprule
+Year & Trawl\_N & Trawl\_S & Non.trawl & Total.Landings & Total.Dead\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.33\\
+2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.35\\
+2015 & 503.14 & 244.29 & 131.30 & 878.73 & 944.89\\
+2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.17\\
+2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.14\\
+2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.10\\
+2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.75\\
+2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.94\\
+2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.82\\
+2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.93\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{(\#tab:ssb)SSB.}\\
+\toprule
+Year & Spawning.Output & Interval & Fraction.Unfished & Interval.1\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:ssb)SSB. \textit{(continued)}}\\
+\toprule
+Year & Spawning.Output & Interval & Fraction.Unfished & Interval.1\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 8,127 & 5,496–10,759 & 0.4 & 0.3–0.5\\
+2014 & 8,007 & 5,390–10,624 & 0.4 & 0.3–0.5\\
+2015 & 7,907 & 5,303–10,511 & 0.4 & 0.3–0.5\\
+2016 & 7,809 & 5,217–10,401 & 0.4 & 0.3–0.5\\
+2017 & 7,713 & 5,132–10,294 & 0.4 & 0.3–0.5\\
+2018 & 7,616 & 5,045–10,188 & 0.4 & 0.3–0.5\\
+2019 & 7,541 & 4,978–10,104 & 0.4 & 0.3–0.5\\
+2020 & 7,483 & 4,928–10,039 & 0.4 & 0.3–0.5\\
+2021 & 7,453 & 4,903–10,003 & 0.4 & 0.3–0.5\\
+2022 & 7,433 & 4,887–9,979 & 0.4 & 0.3–0.5\\
+2023 & 7,418 & 4,874–9,961 & 0.4 & 0.3–0.5\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{(\#tab:rec)Recruitment}\\
+\toprule
+Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:rec)Recruitment \textit{(continued)}}\\
+\toprule
+Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 5,867 & 2,437–14,122 & -0.422 & -1.321–0.478\\
+2014 & 4,763 & 2,044–11,099 & -0.627 & -1.487–0.234\\
+2015 & 4,928 & 2,099–11,571 & -0.590 & -1.459–0.279\\
+2016 & 5,386 & 2,263–12,821 & -0.499 & -1.384–0.387\\
+2017 & 5,128 & 2,164–12,153 & -0.545 & -1.425–0.335\\
+2018 & 4,491 & 1,920–10,506 & -0.675 & -1.539–0.189\\
+2019 & 7,350 & 3,126–17,281 & -0.204 & -1.074–0.667\\
+2020 & 8,652 & 3,513–21,308 & -0.062 & -0.988–0.864\\
+2021 & 9,662 & 3,779–24,702 & 0.026 & -0.946–0.997\\
+2022 & 9,689 & 3,762–24,951 & 0.005 & -0.975–0.986\\
+2023 & 9,632 & 3,742–24,793 & 0.000 & -0.980–0.980\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{(\#tab:refPoints)Reference Points}\\
+\toprule
+X & Estimate & Interval\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:refPoints)Reference Points \textit{(continued)}}\\
+\toprule
+X & Estimate & Interval\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Unfished Spawning Output & 19,597 & 15,956–23,238\\
+Unfished Age 1+ Biomass (mt) & 189,270 & 154,106–224,434\\
+Unfished Recruitment (R0) & 11,169 & 9,094–13,244\\
+Spawning Output (2023) & 7,418 & 4,874–9,961\\
+Fraction Unfished (2023) & 0.38 & 0.30–0.45\\
+Reference Points Based SB40\% &  & \\
+Proxy Spawning Output SB40\% & 7,839 & 6,382–9,295\\
+SPR Resulting in SB40\% & 0.458 & 0.458–0.458\\
+Exploitation Rate Resulting in SB40\% & 0.012 & 0.012–0.012\\
+Yield with SPR Based On SB40\% (mt) & 1,039 & 863–1,215\\
+Reference Points Based on SPR Proxy for MSY &  & \\
+Proxy Spawning Output (SPR50) & 8,743 & 7,119–10,368\\
+SPR50 & 0.500 & -\\
+Exploitation Rate Corresponding to SPR50 & 0.010 & 0.010–0.011\\
+Yield with SPR50 at SB SPR (mt) & 993 & 825–1,160\\
+Reference Points Based on Estimated MSY Values &  & \\
+Spawning Output at MSY (SB MSY) & 5,423 & 4,423–6,423\\
+SPR MSY & 0.347 & 0.345–0.350\\
+Exploitation Rate Corresponding to SPR MSY & 0.017 & 0.017–0.017\\
+MSY (mt) & 1,100 & 914–1,286\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:management)Management}\\
+\toprule
+Year & OFL & ABC & ACL & Landings & Total.Mortality\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:management)Management \textit{(continued)}}\\
+\toprule
+Year & OFL & ABC & ACL & Landings & Total.Mortality\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & fill in & fill in & fill in & 1,009.21 & 1,085.33\\
+2014 & fill in & fill in & fill in & 834.98 & 900.35\\
+2015 & fill in & fill in & fill in & 878.73 & 944.89\\
+2016 & fill in & fill in & fill in & 931.86 & 1,012.17\\
+2017 & fill in & fill in & fill in & 988.97 & 1,085.14\\
+2018 & fill in & fill in & fill in & 814.60 & 895.10\\
+2019 & fill in & fill in & fill in & 674.37 & 736.75\\
+2020 & fill in & fill in & fill in & 421.64 & 458.94\\
+2021 & fill in & fill in & fill in & 378.13 & 411.82\\
+2022 & fill in & fill in & fill in & 424.98 & 456.93\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:projetions)Projections}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:projetions)Projections \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:summary)Summary table}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:summary)Summary table \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:allcatches)Catches in all years}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:allcatches)Catches in all years \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{(\#tab:likelihoods)Likelihood table}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:likelihoods)Likelihood table \textit{(continued)}}\\
+\toprule
+Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
+2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
+2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
+2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
+2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
+2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
+2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
+2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
+2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
+2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
+2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
+2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{(\#tab:lables)Table of lables}\\
+\toprule
+caption & altcaption & label & filename\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:lables)Table of lables \textit{(continued)}}\\
+\toprule
+caption & altcaption & label & filename\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. & NA & removalsES & a\_Catches\_ES.csv\\
+Estimated recent trend in spawning output and the fraction unfished and the 95 percent intervals. & NA & ssbES & b\_SSB\_ES.csv\\
+Estimated recent trend in recruitment and recruitment deviations and the 95 percent intervals. & NA & recrES & c\_Recr\_ES.csv\\
+Estimated recent trend in the (1-SPR)/(1-SPR 50\textbackslash{}\%) where SPR is the spawning potential ratio the exploitation rate, and the  95 percent intervals. & NA & exploitES & d\_SPR\_ES.csv\\
+Summary of reference points and management quantities, including estimates of the  95 percent intervals. & NA & referenceES & e\_ReferencePoints\_ES.csv\\
+Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs),
+                the annual catch limits (ACLs), the total landings, and total mortality (mt). & NA & manageES & f\_Manage\_ES.csv\\
+Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. & NA & projectionES & g\_Projections\_ES.csv\\
+Summary of recent estimates and managment quantities & NA & summaryES & i\_Summary\_ES.csv\\
+Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. & NA & allcatches & Catches\_All\_Years.csv\\
+Time series of population estimates from the base model. & NA & timeseries & TimeSeries.csv\\
+Likelihood components by source. & NA & likes & likelihoods.csv\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}}
+\caption{(\#tab:timeseries)Times series}\\
+\toprule
+Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.Unfished & Age.0.Recruits & Total.Mortality..mt. & X.1.SPR...1.SPR\_50.. & Exploitation.Rate\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:timeseries)Times series \textit{(continued)}}\\
+\toprule
+Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.Unfished & Age.0.Recruits & Total.Mortality..mt. & X.1.SPR...1.SPR\_50.. & Exploitation.Rate\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+1901 & 189,269 & 19,597 & 189,269 & 100.0 & 11,003 & 0.1122950 & 0.000 & 0.0000006\\
+1902 & 189,269 & 19,597 & 189,269 & 100.0 & 10,982 & 0.1382090 & 0.000 & 0.0000007\\
+1903 & 189,267 & 19,597 & 189,267 & 100.0 & 10,959 & 0.1628900 & 0.000 & 0.0000009\\
+1904 & 189,264 & 19,597 & 189,264 & 100.0 & 10,927 & 0.1888040 & 0.000 & 0.0000010\\
+1905 & 189,260 & 19,597 & 189,260 & 100.0 & 10,888 & 0.2134840 & 0.000 & 0.0000011\\
+1906 & 189,256 & 19,597 & 189,256 & 100.0 & 10,849 & 0.2393980 & 0.000 & 0.0000013\\
+1907 & 189,249 & 19,597 & 189,249 & 100.0 & 10,818 & 0.2653130 & 0.000 & 0.0000014\\
+1908 & 189,241 & 19,597 & 189,241 & 100.0 & 10,786 & 0.2899930 & 0.000 & 0.0000015\\
+1909 & 189,231 & 19,597 & 189,231 & 100.0 & 10,742 & 0.3159070 & 0.000 & 0.0000017\\
+1910 & 189,219 & 19,597 & 189,219 & 100.0 & 10,704 & 0.3405870 & 0.000 & 0.0000018\\
+1911 & 189,204 & 19,596 & 189,204 & 100.0 & 10,658 & 0.3665000 & 0.000 & 0.0000019\\
+1912 & 189,187 & 19,596 & 189,187 & 100.0 & 10,624 & 0.3911800 & 0.000 & 0.0000021\\
+1913 & 189,167 & 19,596 & 189,167 & 100.0 & 10,615 & 0.4170920 & 0.000 & 0.0000022\\
+1914 & 189,144 & 19,596 & 189,144 & 100.0 & 10,612 & 0.4417700 & 0.000 & 0.0000023\\
+1915 & 189,117 & 19,596 & 189,117 & 100.0 & 10,573 & 0.4676810 & 0.000 & 0.0000025\\
+1916 & 189,087 & 19,596 & 189,087 & 100.0 & 10,529 & 0.4923570 & 0.000 & 0.0000026\\
+1917 & 189,054 & 19,595 & 189,054 & 100.0 & 10,506 & 0.5182640 & 0.000 & 0.0000027\\
+1918 & 189,016 & 19,595 & 189,016 & 100.0 & 10,492 & 0.5429360 & 0.000 & 0.0000029\\
+1919 & 188,974 & 19,594 & 188,974 & 100.0 & 10,477 & 0.5688400 & 0.000 & 0.0000030\\
+1920 & 188,928 & 19,593 & 188,928 & 100.0 & 10,454 & 0.5935070 & 0.000 & 0.0000031\\
+1921 & 188,878 & 19,592 & 188,878 & 100.0 & 10,440 & 0.6194060 & 0.000 & 0.0000033\\
+1922 & 188,823 & 19,591 & 188,823 & 100.0 & 10,419 & 0.6453020 & 0.000 & 0.0000034\\
+1923 & 188,763 & 19,590 & 188,763 & 100.0 & 10,411 & 0.6699610 & 0.000 & 0.0000035\\
+1924 & 188,699 & 19,588 & 188,699 & 100.0 & 10,413 & 0.6958510 & 0.000 & 0.0000037\\
+1925 & 188,629 & 19,587 & 188,629 & 99.9 & 10,412 & 0.7205040 & 0.001 & 0.0000038\\
+1926 & 188,555 & 19,585 & 188,555 & 99.9 & 10,418 & 0.7463890 & 0.001 & 0.0000040\\
+1927 & 188,477 & 19,582 & 188,477 & 99.9 & 10,429 & 0.7735040 & 0.001 & 0.0000041\\
+1928 & 188,393 & 19,580 & 188,393 & 99.9 & 10,448 & 1.2903600 & 0.001 & 0.0000068\\
+1929 & 188,305 & 19,577 & 188,305 & 99.9 & 10,474 & 2.0428000 & 0.001 & 0.0000108\\
+1930 & 188,211 & 19,574 & 188,211 & 99.9 & 10,509 & 1.7121400 & 0.001 & 0.0000091\\
+1931 & 188,114 & 19,570 & 188,114 & 99.9 & 10,554 & 1.3975400 & 0.001 & 0.0000074\\
+1932 & 188,013 & 19,566 & 188,013 & 99.8 & 10,608 & 0.5166419 & 0.000 & 0.0000027\\
+1933 & 187,909 & 19,561 & 187,909 & 99.8 & 10,673 & 0.7646253 & 0.001 & 0.0000041\\
+1934 & 187,802 & 19,556 & 187,802 & 99.8 & 10,749 & 5.5738870 & 0.004 & 0.0000297\\
+1935 & 187,688 & 19,550 & 187,688 & 99.8 & 10,835 & 7.3338649 & 0.006 & 0.0000391\\
+1936 & 187,569 & 19,544 & 187,569 & 99.7 & 10,931 & 4.5716704 & 0.003 & 0.0000244\\
+1937 & 187,452 & 19,537 & 187,452 & 99.7 & 11,035 & 7.3666203 & 0.006 & 0.0000393\\
+1938 & 187,331 & 19,530 & 187,331 & 99.7 & 11,145 & 7.4312900 & 0.006 & 0.0000397\\
+1939 & 187,210 & 19,522 & 187,210 & 99.6 & 11,255 & 6.5069903 & 0.005 & 0.0000348\\
+1940 & 187,091 & 19,513 & 187,091 & 99.6 & 11,362 & 3.1637620 & 0.002 & 0.0000169\\
+1941 & 186,977 & 19,505 & 186,977 & 99.5 & 11,456 & 5.6164170 & 0.004 & 0.0000300\\
+1942 & 186,862 & 19,496 & 186,862 & 99.5 & 11,532 & 6.5045270 & 0.005 & 0.0000348\\
+1943 & 186,750 & 19,486 & 186,750 & 99.4 & 11,577 & 17.5220900 & 0.013 & 0.0000938\\
+1944 & 186,629 & 19,475 & 186,629 & 99.4 & 11,584 & 8.5984910 & 0.007 & 0.0000461\\
+1945 & 186,522 & 19,465 & 186,522 & 99.3 & 11,542 & 7.9877000 & 0.007 & 0.0000428\\
+1946 & 186,420 & 19,454 & 186,420 & 99.3 & 11,448 & 6.5296970 & 0.006 & 0.0000350\\
+1947 & 186,324 & 19,442 & 186,324 & 99.2 & 11,297 & 6.3834310 & 0.006 & 0.0000343\\
+1948 & 186,232 & 19,431 & 186,232 & 99.2 & 11,092 & 16.6526470 & 0.015 & 0.0000894\\
+1949 & 186,132 & 19,419 & 186,132 & 99.1 & 10,840 & 15.9824768 & 0.014 & 0.0000859\\
+1950 & 186,036 & 19,406 & 186,036 & 99.0 & 10,550 & 8.9854703 & 0.008 & 0.0000483\\
+1951 & 185,950 & 19,394 & 185,950 & 99.0 & 10,206 & 13.5833230 & 0.012 & 0.0000730\\
+1952 & 185,860 & 19,381 & 185,860 & 98.9 & 9,851 & 16.2945130 & 0.015 & 0.0000877\\
+1953 & 185,766 & 19,368 & 185,766 & 98.8 & 9,497 & 6.3777980 & 0.005 & 0.0000343\\
+1954 & 185,680 & 19,356 & 185,680 & 98.8 & 9,153 & 130.1630280 & 0.114 & 0.0007010\\
+1955 & 185,459 & 19,333 & 185,459 & 98.7 & 8,829 & 78.1098160 & 0.069 & 0.0004212\\
+1956 & 185,287 & 19,315 & 185,287 & 98.6 & 8,531 & 161.2407510 & 0.140 & 0.0008702\\
+1957 & 185,019 & 19,289 & 185,019 & 98.4 & 8,265 & 74.4015780 & 0.066 & 0.0004021\\
+1958 & 184,835 & 19,272 & 184,835 & 98.3 & 8,036 & 42.1065330 & 0.037 & 0.0002278\\
+1959 & 184,675 & 19,256 & 184,675 & 98.3 & 7,849 & 66.8688320 & 0.056 & 0.0003621\\
+1960 & 184,476 & 19,239 & 184,476 & 98.2 & 7,708 & 190.3624630 & 0.149 & 0.0010319\\
+1961 & 184,133 & 19,211 & 184,133 & 98.0 & 7,617 & 91.9920480 & 0.075 & 0.0004996\\
+1962 & 183,881 & 19,192 & 183,881 & 97.9 & 7,580 & 143.7440130 & 0.114 & 0.0007817\\
+1963 & 183,558 & 19,169 & 183,558 & 97.8 & 7,600 & 239.3941490 & 0.182 & 0.0013042\\
+1964 & 183,116 & 19,136 & 183,116 & 97.6 & 7,677 & 208.8467030 & 0.163 & 0.0011405\\
+1965 & 182,691 & 19,106 & 182,691 & 97.5 & 7,801 & 353.7137820 & 0.266 & 0.0019361\\
+1966 & 182,094 & 19,063 & 182,094 & 97.3 & 7,957 & 1275.8495380 & 0.837 & 0.0070065\\
+1967 & 180,495 & 18,939 & 180,495 & 96.6 & 8,115 & 1325.6063800 & 0.845 & 0.0073443\\
+1968 & 178,822 & 18,806 & 178,822 & 96.0 & 8,252 & 2126.4637330 & 1.141 & 0.0118915\\
+1969 & 176,275 & 18,597 & 176,275 & 94.9 & 8,355 & 691.2991200 & 0.517 & 0.0039217\\
+1970 & 175,239 & 18,516 & 175,239 & 94.5 & 8,449 & 822.3422540 & 0.593 & 0.0046927\\
+1971 & 174,048 & 18,422 & 174,048 & 94.0 & 8,563 & 1021.9492694 & 0.722 & 0.0058717\\
+1972 & 172,629 & 18,309 & 172,629 & 93.4 & 8,722 & 1864.1213810 & 1.093 & 0.0107984\\
+1973 & 170,298 & 18,116 & 170,298 & 92.4 & 8,907 & 3186.7461060 & 1.470 & 0.0187128\\
+1974 & 166,540 & 17,799 & 166,540 & 90.8 & 9,041 & 1427.8569900 & 0.937 & 0.0085737\\
+1975 & 164,647 & 17,636 & 164,647 & 90.0 & 9,043 & 2376.8869030 & 1.295 & 0.0144363\\
+1976 & 161,733 & 17,384 & 161,733 & 88.7 & 8,867 & 1991.2206700 & 1.172 & 0.0123118\\
+1977 & 159,225 & 17,162 & 159,225 & 87.6 & 8,595 & 1650.2270000 & 1.059 & 0.0103641\\
+1978 & 157,078 & 16,969 & 157,078 & 86.6 & 8,358 & 1244.2157900 & 0.894 & 0.0079210\\
+1979 & 155,364 & 16,810 & 155,364 & 85.8 & 8,251 & 1844.3150300 & 1.152 & 0.0118709\\
+1980 & 153,007 & 16,593 & 153,007 & 84.7 & 8,269 & 1444.4759300 & 1.010 & 0.0094406\\
+1981 & 151,081 & 16,411 & 151,081 & 83.7 & 8,341 & 1806.1787700 & 1.166 & 0.0119550\\
+1982 & 148,771 & 16,192 & 148,771 & 82.6 & 8,386 & 2038.1054900 & 1.272 & 0.0136996\\
+1983 & 146,219 & 15,950 & 146,219 & 81.4 & 8,397 & 2008.2521900 & 1.290 & 0.0137346\\
+1984 & 143,704 & 15,709 & 143,704 & 80.2 & 8,390 & 3083.5827200 & 1.593 & 0.0214579\\
+1985 & 140,044 & 15,366 & 140,044 & 78.4 & 8,584 & 3570.5549200 & 1.681 & 0.0254960\\
+1986 & 135,865 & 14,974 & 135,865 & 76.4 & 8,646 & 3115.1462500 & 1.620 & 0.0229282\\
+1987 & 132,183 & 14,618 & 132,183 & 74.6 & 8,728 & 2125.9855000 & 1.419 & 0.0160837\\
+1988 & 129,576 & 14,353 & 129,576 & 73.2 & 9,003 & 3071.7136000 & 1.653 & 0.0237059\\
+1989 & 125,970 & 13,998 & 125,970 & 71.4 & 9,175 & 5186.7449000 & 1.875 & 0.0411744\\
+1990 & 120,109 & 13,444 & 120,109 & 68.6 & 9,147 & 4446.2830000 & 1.861 & 0.0370187\\
+1991 & 115,054 & 12,956 & 115,054 & 66.1 & 8,771 & 3913.5771000 & 1.850 & 0.0340151\\
+1992 & 110,582 & 12,517 & 110,582 & 63.9 & 8,453 & 3666.8142000 & 1.834 & 0.0331592\\
+1993 & 106,384 & 12,094 & 106,384 & 61.7 & 8,587 & 4020.7582000 & 1.876 & 0.0377948\\
+1994 & 101,821 & 11,638 & 101,821 & 59.4 & 8,421 & 3707.0460000 & 1.873 & 0.0364075\\
+1995 & 97,615 & 11,209 & 97,615 & 57.2 & 9,215 & 2163.7132000 & 1.669 & 0.0221659\\
+1996 & 95,086 & 10,921 & 95,086 & 55.7 & 6,787 & 1813.9740000 & 1.587 & 0.0190772\\
+1997 & 92,967 & 10,666 & 92,967 & 54.4 & 8,112 & 1582.1585000 & 1.519 & 0.0170184\\
+1998 & 91,124 & 10,435 & 91,124 & 53.2 & 8,996 & 1394.0357000 & 1.449 & 0.0152982\\
+1999 & 89,523 & 10,224 & 89,523 & 52.2 & 11,177 & 853.3116000 & 1.126 & 0.0095317\\
+2000 & 88,553 & 10,064 & 88,553 & 51.4 & 13,712 & 936.4408000 & 1.189 & 0.0105749\\
+2001 & 87,549 & 9,900 & 87,549 & 50.5 & 10,935 & 615.4450000 & 0.918 & 0.0070297\\
+2002 & 86,952 & 9,769 & 86,952 & 49.9 & 10,850 & 877.0320000 & 1.148 & 0.0100864\\
+2003 & 86,126 & 9,618 & 86,126 & 49.1 & 20,516 & 949.4630000 & 1.210 & 0.0110241\\
+2004 & 85,276 & 9,465 & 85,276 & 48.3 & 11,143 & 879.9250000 & 1.163 & 0.0103186\\
+2005 & 84,594 & 9,322 & 84,594 & 47.6 & 9,980 & 773.9670000 & 1.078 & 0.0091492\\
+2006 & 84,054 & 9,192 & 84,054 & 46.9 & 8,322 & 835.3140000 & 1.133 & 0.0099379\\
+2007 & 83,523 & 9,061 & 83,523 & 46.2 & 44,689 & 1106.1950000 & 1.335 & 0.0132441\\
+2008 & 82,771 & 8,913 & 82,771 & 45.5 & 11,278 & 1571.4920000 & 1.569 & 0.0189860\\
+2009 & 81,744 & 8,731 & 81,744 & 44.6 & 12,612 & 1682.7710000 & 1.615 & 0.0205859\\
+2010 & 80,574 & 8,544 & 80,574 & 43.6 & 11,019 & 1490.2500000 & 1.548 & 0.0184953\\
+2011 & 79,633 & 8,376 & 79,633 & 42.7 & 8,228 & 1070.0190000 & 1.331 & 0.0134369\\
+2012 & 79,186 & 8,246 & 79,186 & 42.1 & 7,141 & 987.4390000 & 1.276 & 0.0124698\\
+2013 & 78,869 & 8,127 & 78,869 & 41.5 & 5,867 & 1085.3340000 & 1.340 & 0.0137612\\
+2014 & 78,490 & 8,007 & 78,490 & 40.9 & 4,763 & 900.3480000 & 1.208 & 0.0114709\\
+2015 & 78,340 & 7,907 & 78,340 & 40.3 & 4,928 & 944.8940000 & 1.238 & 0.0120615\\
+2016 & 78,174 & 7,809 & 78,174 & 39.8 & 5,386 & 1012.1680000 & 1.280 & 0.0129475\\
+2017 & 77,968 & 7,713 & 77,968 & 39.4 & 5,128 & 1085.1440000 & 1.322 & 0.0139177\\
+2018 & 77,711 & 7,616 & 77,711 & 38.9 & 4,491 & 895.0970000 & 1.183 & 0.0115183\\
+2019 & 77,671 & 7,541 & 77,671 & 38.5 & 7,350 & 736.7490000 & 1.038 & 0.0094855\\
+2020 & 77,812 & 7,483 & 77,812 & 38.2 & 8,652 & 458.9371000 & 0.731 & 0.0058980\\
+2021 & 78,273 & 7,453 & 78,273 & 38.0 & 9,662 & 411.8235000 & 0.659 & 0.0052614\\
+2022 & 78,815 & 7,433 & 78,815 & 37.9 & 9,689 & 456.9348000 & 0.702 & 0.0057976\\
+2023 & 79,336 & 7,418 & 79,336 & 37.9 & 9,632 & 745.6210000 & 0.987 & 0.0093983\\
+2024 & 79,578 & 7,388 & 79,578 & 37.7 & 9,623 & 757.6970000 & 0.986 & 0.0095215\\
+2025 & 79,818 & 7,364 & 79,818 & 37.6 & 9,616 & 769.4550000 & 0.986 & 0.0096401\\
+2026 & 80,055 & 7,345 & 80,055 & 37.5 & 9,611 & 780.7510000 & 0.985 & 0.0097526\\
+2027 & 80,289 & 7,331 & 80,289 & 37.4 & 9,606 & 791.4910000 & 0.985 & 0.0098580\\
+2028 & 80,518 & 7,321 & 80,518 & 37.4 & 9,603 & 801.6210000 & 0.984 & 0.0099558\\
+2029 & 80,742 & 7,314 & 80,742 & 37.3 & 9,602 & 811.1340000 & 0.984 & 0.0100459\\
+2030 & 80,962 & 7,311 & 80,962 & 37.3 & 9,601 & 820.0420000 & 0.984 & 0.0101287\\
+2031 & 81,177 & 7,310 & 81,177 & 37.3 & 9,600 & 828.3800000 & 0.984 & 0.0102047\\
+2032 & 81,387 & 7,312 & 81,387 & 37.3 & 9,601 & 836.1870000 & 0.984 & 0.0102743\\
+2033 & 81,592 & 7,316 & 81,592 & 37.3 & 9,602 & 843.5010000 & 0.984 & 0.0103380\\
+2034 & 81,794 & 7,321 & 81,794 & 37.4 & 9,604 & 850.3540000 & 0.984 & 0.0103964\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
 <!--chapter:end:52tables.Rmd-->
 
 \clearpage
 # Figures
 
-![Summary of data sources used in the base model.\label{fig:data-plot}](data-plot.png){width=100% height=100% alt="Summary of data sources used in the base model"}
+
+
+
+![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=100% alt="."}
+
+![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.\label{fig:thornyhead-ratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
+
+![Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
+
+
+![Summary of data sources used in the base model.\label{fig:assessment_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/assessment_data_timeseries.png){width=100% height=100% alt="."}
+
+![Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png){width=100% height=100% alt="."}
+
+![Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png){width=100% height=100% alt="."}
+
+![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
+
+![Survey length composition data.\label{fig:survey_comps}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
+
+![Growth curve comparison. .\label{fig:growth_LAA1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png){width=100% height=100% alt="."}
+
+![Growth curve sensitivities.\label{fig:growth_LAA2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png){width=100% height=100% alt="."}
+
+
+
+
 
 <!--chapter:end:53figures.Rmd-->
 

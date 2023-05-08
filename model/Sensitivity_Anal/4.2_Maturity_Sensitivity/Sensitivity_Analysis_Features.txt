@@ -1,0 +1,39 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  biological_Info 
+# Specific item in that topic: 
+# 	- PG maturity 
+# 	- Intermediate maturity curve 
+# Author:  Sabrina Beyer and Jane Sullivan 
+# Date: 2023-05-01 09:33:08 
+# Sensitivity Analysis ID: Item 4.2 
+# Names of the models created:
+# 	-  23.maturity.pgcurve 
+# 	-  23.maturity.mix_curve 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.maturity.pgcurve 				 23.model.francis_2 
+# 23.maturity.mix_curve 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/model/Sensitivity_Anal/4.2_Maturity_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.2_Maturity_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.2_Maturity_Sensitivity_Outputs.R .R
+# 
+# General features: 
+# Sensitivity of the 2023 SST base model to different maturity curves 
+# 
+# Model features:
+# - Model 23.maturity.pgcurve:
+# Sensitivity to the more knife-edged maturity curve of Pearson and Gunderson 2003 
+# - Model 23.maturity.mix_curve:
+# Sensitivity to a maturity curve intermediate of Pearson and Gunderson 2003 and WCGBTS maturity assumed by the 2023 assessment 
+# ============================================================ #
+

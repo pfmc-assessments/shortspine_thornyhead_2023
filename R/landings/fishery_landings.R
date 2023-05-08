@@ -146,7 +146,7 @@ p1 <- allcatch %>%
   facet_wrap(~state, ncol = 1) +
   theme_classic() +
   labs(x = 'Year', y = "Catch (mt)", fill = 'Gear', title = 'Unidentified Thornyheads Catch (mt)') +
-  theme(text = element_text(size = 15)) 
+  theme(text = element_text(size = 10)) 
 p1
 
 ggsave("outputs/fishery_data/unid-catch.png", 
@@ -185,7 +185,7 @@ p2 <- prop_sspn %>%
   labs(x = 'Year', y = "Ratio", title = 'Proportion shortspine in identified thornyhead catch',
        shape = 'Source', col = 'Gear') +
   theme_classic() +
-  theme(text = element_text(size = 15)) +
+  theme(text = element_text(size = 10)) +
   expand_limits(y=0)
 p2
 
@@ -336,6 +336,25 @@ finalcatch %>%
 ggsave("outputs/fishery_data/total-landings.png", 
        dpi=300,height=4, width=7, units='in')
 
+finalcatch %>% 
+  mutate(fleet_name = factor(fleet_name,
+                             levels = c('NTrawl', 'NOther','STrawl', 'SOther'),
+                             ordered = TRUE)) %>%
+  ggplot(aes(x = year, y = catch, fill = fleet_name)) +
+  geom_bar(stat = 'identity', colour = 'black', size = 0.1) + 
+  geom_vline(xintercept = 1980.5, lty = 2, col = 'darkgrey', size = 1) +
+  # scale_fill_colorblind7() +
+  scale_fill_manual(values = c("#009E73","#56B4E9", "#F0E442", "#E69F00")) +
+  scale_y_continuous(labels = scales::comma, expand = c(0, NA)) +   
+  labs(x = NULL, y = "Catch (mt)", fill = "Fleet") +
+  theme_classic() +
+  theme(text = element_text(size = 20),
+        legend.position = c(0.15, 0.8))
+
+ggsave("outputs/fishery_data/total-landings2.png", 
+       dpi=300, height=4, width=7, units='in')
+
+# final catch with 3 fleets
 finalcatch %>% 
   mutate(fleet_name = factor(fleet_name,
                              levels = c('NTrawl', 'NOther','STrawl', 'SOther'),

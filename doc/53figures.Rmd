@@ -1,4 +1,86 @@
 \clearpage
 # Figures
 
-![Summary of data sources used in the base model.\label{fig:data-plot}](data-plot.png){width=100% height=100% alt="Summary of data sources used in the base model"}
+```{r}
+library(here)
+fig_dir1 <- here::here("doc", "FinalFigs", "Intro")
+fig_dir2 <- here::here("doc", "FinalFigs", "Data")
+fig_dir3 <- here::here("doc", "FinalFigs", "Base")
+fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")
+
+#Insert figure 
+#Figure \ref{fig:label}
+```
+
+```{r, Intro-figures, results = "asis"}
+#Coastwide CPUE plot from NWFSC combo survey
+sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
+                  caption = "Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.", 
+                  label = "stock-map")
+
+#Unid thornyheads and proportion shortspine
+sa4ss::add_figure(filein = file.path(fig_dir1, "thornyhead-ratio.png "), 
+                  caption = "Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.", 
+                  label = "thornyhead-ratio")
+
+#Catch history
+sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"), 
+                  caption = "Estimated landing history for shortspine thornyhead.", 
+                  label = "catch_hist")
+```
+
+```{r, Data-figures, results = "asis"}
+
+#These figures come out of both the data folder and the model folder
+
+#Data Sources Figure
+sa4ss::add_figure(filein = file.path(fig_dir2, "assessment_data_timeseries.png"), 
+                  caption = "Summary of data sources used in the base model.", 
+                  label = "assessment_data_timeseries")
+
+
+#Discard history
+sa4ss::add_figure(filein = file.path(fig_dir3, "catch7 discards stacked plot (depends on multiple fleets).png"), 
+                  caption = "Predicted discards based estimated retention and selectivity for each fleet.", 
+                  label = "disc_hist")
+
+#Discard Rates 
+sa4ss::add_figure(filein = file.path(fig_dir2, "SST_WCGOP_GEMM_discard_rates_3fleet.png"), 
+                  caption = "Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.", 
+                  label = "disc_rates_WCGOP")
+
+#Survey Data Sources 
+sa4ss::add_figure(filein = file.path(fig_dir2, "survey_data_timeseries.png"), 
+                  caption = "Summary of survey data sources used in the base model.", 
+                  label = "survey_data_timeseries")
+
+#Survey Length Comps 
+sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"), 
+                  caption = "Survey length composition data.", 
+                  label = "survey_comps")
+
+#Growth Curve LAA1
+sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_comparison_LAA1.png"), 
+                  caption = "Growth curve comparison. ", 
+                  label = "growth_LAA1")
+#Growth Curve LAA1
+sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.png"), 
+                  caption = "Growth curve sensitivities", 
+                  label = "growth_LAA2")
+
+```
+
+```{r, BaseModel-figures, results = "asis"}
+
+# sa4ss::add_figure(filein = file.path(fig_dir3, " "), 
+#                   caption = " ", 
+#                   label = " ")
+```
+
+```{r, Sensativity-figures, results = "asis"}
+
+# fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")
+# sa4ss::add_figure(filein = file.path(fig_dir4, " "), 
+#                   caption = " ", 
+#                   label = " ")
+```

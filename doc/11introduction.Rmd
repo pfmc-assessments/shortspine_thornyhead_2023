@@ -2,17 +2,59 @@
 ## Basic Information
 `r executive[["stock"]]`
 
+`r Spp` (*`r spp.sci`*) are found in the waters off the West Coast of the United States from northern Baja California to the Bering Sea at depths of 20 meters to over 1,500 meters. The majority of the spawning biomass occurs in the oxygen minimum zone between 600 and 1,400 meters. The distribution of the smallest `r spp` suggests that they tend to settle at around 100–400 meters and are believed to have ontogenetic migration down the slope, although large individuals are found across the depth range. Higher densities (kg/ha) of `r spp` occur in shallower areas (under 500 meters) off Oregon and Washington, whereas in California, they occur in deeper areas (**above x meters;** Figure \ref{fig:stock-map}).
+
+Despite variation in density across the coast, `r spp`s are present in almost all trawlable areas below 500 meters. They are caught in 91% of trawl survey hauls deeper than 500 m and **XX%** of commercial bottom trawl hauls deeper than 500m. Camera-tows show that thornyheads are spaced randomly across the sea floor, indicating a lack of schooling and territoriality [@du_preez_shortspine_2011; @wakefield_1990].
+
+## Stock Structure
+
+**NOTE: This section was added.** 
+
+Genetic studies of stock structure show few genetic differences among `r spp` along the Pacific coast, and thus do not suggest separate stocks [@siebenaller_1978, @stepien_1995]. @stepien_1995 suggested that there may be a separate population of `r spp` in the isolated area around Cortes Bank off San Diego, California. @stepien_1995 also pointed out that juvenile dispersion might be limited in the area where the Alaska and California currents split, which occurs towards the northern boundary of the assessment area, near 48° N.
+
+@stepien_2000, using a more discerning genetic material (mtDNA), found evidence of a pattern of genetic divergence in `r spp` corresponding to geographic distance. However, this study, which included samples collected from southern California to Alaska, did not identify a clear difference between stocks even at the extremes of the range. No such pattern was seen in longspine thornyhead, which suggests that the shorter pelagic stage (~1 yr vs. ~2 yrs) of `r spp` may contribute to an increased genetic separation with distance.
+
+@dorval_2022 applied otolith microchemistry to immature fish to redefine population structure of `r spp` on the west coast. Their results indicate that the population of immature shortspines belongs to two distinct groups distributed north and south of Cape Mendocino. 
+
 ## Life History
-Replace text.
+`r Spp`s along the West Coast spawn pelagic, gelatinous floating egg masses between December and May [@wakefield_1990; @erickson_pikitch_1993; @pearson_gunderson_2003]. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence for batch spawning in this species on the West Coast, but more recent histological examination of ovaries suggest that some `r spp` can be batch spawners with two to three batches developing simultaneously (Melissa Head, \gls{nwfsc}, pers. comm.). Juveniles settle at around 1 year of age (22- 27 mm in length), likely in the range of 100-200 m [@vetter_lyn_1997], and migrate down the slope with age and size, although large individuals are found across the depth range.		
+
+`r Spp` are notoriously challenging to age, and a recent age validation study using 14C bomb radiocarbon was inconclusive [@kastelle_etal_2020]. However, best available data suggests that the `r spp` life span may exceed 100 y [@butler_1995; @kline_1996]. Estimates of natural mortality for `r spp` range from 0.013 [@pearson_gunderson_2003] to 0.07 [@kline_1996]. However, Pearson and Gunderson’s estimate is based upon a regression model, using the gonadosomatic index as a proxy. @butler_1995 estimated M to be 0.05 based upon a maximum lifespan of 100 years for `r spp`. @butler_1995 also suggested that M may be lower for older, larger `r spp` residing in the oxygen minimum zone due to lack of predators. All estimates of M for thornyheads are highly uncertain.
+
+`r Spp` grow very slowly and may continue growing throughout their lives, reaching maximum lengths of over 70 cm. Females grow to larger sizes than males. Maturity in females has been estimated as occurring near 18 cm, with fish transitioning from immature to mature within a relatively narrow range of sizes between 15 and 20 cm @pearson_gunderson_2003. However, more recent histological data collected in the \gls{s-wcgbt} and analyzed using current best practices suggests that functional maturation, which accounts for abortive maturation and skip spawning, occurs over a broader spectrum of sizes between 10 and 55 cm (length-at-50% maturity, L50 =31.4; personal communication, Melissa Head, \gls{nwfsc}, pers. comm.). 
+
 
 ## Ecosystem Considerations
-Replace text.
+`r Spp`s have historically been caught alongside longspine thornyheads in a \gls{dts}. Other groundfishes that frequently co-occur in deep waters include a complex of slope rockfishes, Rex sole, longnose skate, roughtail skate, Pacific grenadier, giant grenadier, and Pacific flatnose. Non-groundfish species such as Pacific hagfish and a diverse complex of eelpouts also co-occur with `r spp`. 
+
+`r Spp`s typically occur in shallower water than the shallowest longspine thornyheads, and migrate to deeper water as they age. The majority of spawning `r spp`s occur between 600 and 1,400 meters, where longspine thornyheads are most abundant [@jacobson_vetter_1996; @bradburn_2003_2011]. When `r spp`s have reached a depth where they overlap with longspine thornyheads, they are typically larger than the largest longspine thornyheads. 
+
+Species distribution models developed by @Liu_etal_inpress suggest that expected environmental changes over the next decades will lead to a decline in shortspine and  increase in longspine abundance. `r Spp`s are also projected to shift offshore, into deeper waters, potentially decreasing their availability in fisheries. To date, `r spp`s have been observed in cameras below the 1280 meter limit of the current fishery and survey, but their distribution, abundance, and ecosystem interactions in these deep waters are relatively unknown. Thornyheads spawn gelatinous masses of eggs which float to the surface, which may represent a significant portion of the upward movement of organic carbon from the deep ocean [@wakefield_1990]. 
+
+`r Spp` diet composition, derived from stomach content collection in the 1980s and 90s, varied by year [@bizzarro_etal_2023]. In some years their diet consisted primarily of invertebrate species including pandalid shrimp, pink shrimp, and Tanner crab, while in others their stomach content was dominated by finfish species such as Pacific cod and Pacific Hake. As prey themselves, `r spp`s were only found in the stomachs of other species in two years, 1991 and 1992, where they occurred in Sablefish, Pacific hake, and other `r spp` stomachs [@bizzarro_etal_2023]. 
 
 ## Historical and Current Fishery Information
-Replace text.
+The thornyhead fishing history has experienced fluctuations due to increased depth range of the fisheries, variable markets, and changes in fisheries management. In the early 1900's, landings were minimal because there were few markets for thornyheads and relatively little trawling at depths where the majority of thornyheads occur. Beginning in the 1930’s, thornyhead landings increased as they were landed as incidental catch in the California sablefish fishery. The first significant market for thornyheads began in northern California in the early 1960’s, when larger (30-35 cm) thornyhead were sold as “ocean catfish”. By the early 1980s, the minimum size decreased to 25 cm, and in the late 1980’s a market for small thornyheads (~20 cm) developed due to the depletion of a related species (*Sebastolobus machrochir*) off the coast of Japan. The fishery moved into deeper waters with the demand for smaller thornyheads and began catching more longspine thornyheads. This is reflected in the changes in proportion of shortspine to total thornyheads through time, which decreased from around 90% in 1981 to 40% in 1994 Figure \ref{fig:thornyhead-ratio}.
+
+Landings of `r spp`s off the coast of California peaked around 3,500 mt in 1989, and have exceeded those from further north in most years (Figure \ref{fig:catch_hist}). In the northern area off of Oregon and Washington, the fishery grew in the early 1980’s, with landings peaking in 1991 at around 2200 mt.
+
+Non-trawl landings of `r spp`s were relatively low prior to the mid-1990s, at which point non-trawl landings, dominantly longline, in California began to increase steadily from less than 5 mt in 1994 to 237 mt in 2011. The increase in non-trawl landings was driven by the development of live-fish markets for thornyheads and the fact that ex-vessel prices associated with the non-trawl landings are much higher than those for the trawl fishery. 
+
+**Nominal prices for line-caught `r spp` increased steadily from \textdollar 0.69/lb in 1993 to \textdollar 3.81/lb in 2008, and have remained near or above that level since.** Citation? 
+
+Trawl prices, on the other hand, changed from \textdollar 0.46/lb to \textdollar 0.72/lb in the same period, although, when Japanese demand was strong they were between \textdollar 0.80 and \textdollar 1.06/lb. In contrast, non-trawl landings of shortspine in Washington and Oregon have remained below the estimated peak of 54 mt in 1991.
+
+The foreign fishery off of the West Coast is estimated to have caught approximately 7,400 mt of `r spp` during the 11 year period from 1966-1976 [@rogers_species_2003], which is on the order of the estimate of domestic catch (~8,600 mt) during that same period.
+
+**Management measures** have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since **(Table X)**.
 
 ## Summary of Management History and Performance
-Replace text.
+Beginning in 1989, both thornyhead species were managed as part of a \gls{dts}. In 1991, the \gls{pfmc} adopted separate \gls{abc} levels for thornyheads and catch limits were imposed on the thornyhead complex. \gls{hg} were instituted in 1992 along with an increase in the minimum mesh size for bottom trawl fisheries. In 1995 separate landing limits were placed on shortspine and longspine thornyheads and trip limits became more restrictive. Trip limits (predominantly 2-month limits on cumulative vessel landings) have often been adjusted during the year since 1995 in order to not exceed the \gls{hg} or \gls{oy}. At first, the HG for `r spp` was set higher than the \gls{abc} (1,500 vs. 1,000 mt in 1995-1997) in order to allow a greater catch of longspine thornyhead, which was considered relatively undepleted. In 1999 the \gls{oy} was set at less than 1,000 mt and remained close to that level through 2006. As a result of the 2005 shortspine assessment, catch limits increased to about 2,000 mt per year and have remained near that level **to the present.**
+
+Since early 2011, trawl harvest of each thornyhead species has been managed under the PFMC’s catch share, or \gls{ifq}, program. Whereas the trip limits previously used to limit harvest restricted only the amount of fish each vessel could land, individual vessels fishing under the catch-share program are now held accountable for all of the quota-share species they catch. 
+
+**Landings of shortspine thornyhead have been below the catch limits since 1999. The estimated total catch, including discards, has likewise remained below the limit during this period.**
 
 ## Foreign Fisheries
-Replace text.
+The \gls{afsc} conducts assessments of thornyheads as a mixed stock complex, including shortspine and longspine thornyheads. Results of the 2022 Alaska Thornyhead complex assessment suggest that thornyheads are not being subjected to overfishing [@echave_etal_2022]. 
+
