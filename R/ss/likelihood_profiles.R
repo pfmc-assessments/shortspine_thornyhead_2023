@@ -424,66 +424,66 @@ custom.profile <- function(dir,
 } # end function
 
 
+# note: don't run this in your main directory
+# make a copy in case something goes wrong
+base.dir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run")
+mydir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_mortality")
 
-#if (FALSE) {
-  # note: don't run this in your main directory
-  # make a copy in case something goes wrong
-  mydir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_mortality")
+file.copy(
+  base.dir,
+  mydir
+)
 
-  file.copy("model/ss_executables/SS_V3_30_21/ss_osx", mydir)
-  
-  # the following commands related to starter.ss could be done by hand
-  # read starter file
-  starter <- SS_readstarter("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_mortality/starter.ss")
-  # change control file name in the starter file
-  starter[["ctlfile"]] <- "control_modified.ss"
-  # make sure the prior likelihood is calculated
-  # for non-estimated quantities
-  starter[["prior_like"]] <- 1
-  # write modified starter file
-  SS_writestarter(starter, dir = mydir, overwrite = TRUE)
-  
-  # vector of values to profile over
-  m.vec <- cbind(seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005))
-  Nprofile <- length(m.vec)
-  
-  # make a vector for string 
-  string <- c("NatM_p_1_Fem_GP_1","NatM_p_2_Fem_GP_1","NatM_p_1_Mal_GP_1","NatM_p_2_Mal_GP_1")
-  
-  
-  colnames(m.vec) <- string
-  
-  # run profile command
-  profilemodels <- custom.profile(
-    exe = "ss_osx",
-    dir = mydir,
-    oldctlfile = "SST_control.ss",
-    newctlfile = "control_modified.ss",
-    string = string, # subset of parameter label
-    profilevec = m.vec,
-    extras = "-nohess"
-  )
-  
-# below copied from r4ss vignette 
-  
-  # read the output files (with names like Report1.sso, Report2.sso, etc.)
-  profilemodels <- SSgetoutput(dirvec = mydir, keyvec = 1:nrow(m.vec))
-  # summarize output
-  profilesummary <- SSsummarize(profilemodels)
-  
-  # OPTIONAL COMMANDS TO ADD MODEL WITH PROFILE PARAMETER ESTIMATED
-  rep <- r4ss::SS_output(file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run"),
-                         covar = FALSE,
-                         printstats = FALSE, verbose = FALSE
-  )
-  
-  
-  nwfscDiag::profile_plot(
-    mydir = mydir,
-    para = "NatM_break_1_Fem_GP_1",
-    rep = rep,
-    profilesummary = profilesummary
-  )
+# the following commands related to starter.ss could be done by hand
+# read starter file
+starter <- SS_readstarter(file.path(mydir, "starter.ss"))
+# change control file name in the starter file
+starter[["ctlfile"]] <- "control_modified.ss"
+# make sure the prior likelihood is calculated
+# for non-estimated quantities
+starter[["prior_like"]] <- 1
+# write modified starter file
+SS_writestarter(starter, dir = mydir, overwrite = TRUE)
+
+# vector of values to profile over
+m.vec <- cbind(seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005))
+Nprofile <- length(m.vec)
+
+# make a vector for string 
+string <- c("NatM_p_1_Fem_GP_1","NatM_p_2_Fem_GP_1","NatM_p_1_Mal_GP_1","NatM_p_2_Mal_GP_1")
+
+
+colnames(m.vec) <- string
+
+# run profile command
+profilemodels <- custom.profile(
+  exe = "model/ss_executables/SS_V3_30_21/ss_osx",
+  dir = mydir,
+  oldctlfile = "SST_control.ss",
+  newctlfile = "control_modified.ss",
+  string = string, # subset of parameter label
+  profilevec = m.vec,
+  extras = "-nohess"
+)
+
+# read the output files (with names like Report1.sso, Report2.sso, etc.)
+profilemodels <- SSgetoutput(dirvec = mydir, keyvec = 1:nrow(m.vec))
+# summarize output
+profilesummary <- SSsummarize(profilemodels)
+
+# OPTIONAL COMMANDS TO ADD MODEL WITH PROFILE PARAMETER ESTIMATED
+rep <- r4ss::SS_output(file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run"),
+                       covar = FALSE,
+                       printstats = FALSE, verbose = FALSE
+)
+
+
+nwfscDiag::profile_plot(
+  mydir = mydir,
+  para = "NatM_break_1_Fem_GP_1",
+  rep = rep,
+  profilesummary = profilesummary
+)
 
 # Run profile for growth ---------
   #if (FALSE) {
@@ -510,7 +510,7 @@ custom.profile <- function(dir,
   # 0.5, 4, 0.4, 3.5
   
   # vector of values to profile over
-  g.vec <- cbind(seq(10, 15, length.out=11), seq(60, 100, length.out=11), seq(8, 12, length.out=11), seq(55, 90, length.out=11))
+  g.vec <- cbind(seq(10, 15, length.out=11), seq(60, 150, length.out=11), seq(8, 12, length.out=11), seq(55, 140, length.out=11))
   Nprofile <- length(g.vec)
   
   # make a vector for string 

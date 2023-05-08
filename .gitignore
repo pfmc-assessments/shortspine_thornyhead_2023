@@ -27,7 +27,7 @@ outputs/plots/exploratory/*
 */unnamed-chunk*
 
 # SS Model Files
-model/*/plots/*  # Dont track SS plots
+model/*/plots*/*  # Dont track SS plots
 admodel.*        # These are ADMB outputs
 ss*.b0*          # ADMB binary file output
 ss.b01		      
@@ -60,6 +60,12 @@ posterior*.sso
 rebuild.sso
 runnumber.ss
 
+# Ignore most outputs from likelihood profiles
+model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*
+model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_jitter*/*
+model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_retro*/*
+
+
 # Ignore plots
   # JPEG
 *.jpg, *.jpeg, *.jpe, *.jif, *.jfif  
@@ -70,6 +76,13 @@ runnumber.ss
 !doc/FinalFigs/Intro/*.png
 !doc/FinalFigs/Data/*.png
 !doc/FinalFigs/Sensitivities/*.png
+
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*.png
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*.csv
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_jitter*/*.png
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_jitter*/*.csv
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_retro*/*.png
+!model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_retro*/*.csv
 
   # Tagged Image File Format
 *.tiff, *.tif
