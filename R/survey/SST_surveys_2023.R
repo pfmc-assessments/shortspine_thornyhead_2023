@@ -550,7 +550,7 @@ library(kableExtra)
 
 options(knitr.kable.NA = '')
 
-haul_sample_table = haul.sample.info.master %>% 
+haul_sample_table = haul_sample_table = haul.sample.info.master %>% 
   pivot_wider(names_from = survey, 
               values_from = c(samples, hauls)) %>% 
   select("Year", 'samples_tri_early survey',"hauls_tri_early survey",
@@ -567,11 +567,11 @@ haul_sample_table = haul.sample.info.master %>%
   kable_classic() %>% 
   add_header_above(c(" " = 1, "AFSC Triennial Shelf\nSurvey Early" = 2, "AFSC Triennial Shelf\nSurvey Late" = 2, 
                      "AFSC Slope\nSurvey" = 2, "NWFSC Slope\nSurvey" = 2,
-                     "NWFSC Combo\nSurvey" = 2)) %>%
-  save_kable(file = "outputs/surveys/haul_sample_table.png",
-             zoom = 1.5) %>% 
-  save_kable(file = "doc/FinalTables/haul_sample_table.png",
-             zoom = 1.5)
+                     "NWFSC Combo\nSurvey" = 2)) # %>%
+  #save_kable(file = "outputs/surveys/haul_sample_table.png",
+  #           zoom = 1.5) %>% 
+  #save_kable(file = "doc/FinalTables/haul_sample_table.png",
+  #           zoom = 1.5)
 
 haul_sample_table
 
