@@ -504,7 +504,7 @@ NWFSC.Combo.master <- PullCatch.fn(SurveyName = "NWFSC.Combo")
 
 # sample size information for surveys by year
 
-for(i in c("t1.survey", "t2.survey", "afsc.slope")) {
+for(i in c("tri_early.survey", "tri_late.survey", "afsc.slope")) {
     x = eval(parse(text = paste0(i, ".bio$Lengths"))) %>% 
     group_by(Year) %>% 
     summarise(samples = n()) %>% 
@@ -519,10 +519,10 @@ for(i in c("nwfsc.combo", "nwfsc.slope")) {
   assign(paste(i, "_samples",sep = ""), x)  
 }
 
-bio.samples.master = as.data.frame(rbind(t1.survey_samples, t2.survey_samples, afsc.slope_samples, 
+bio.samples.master = as.data.frame(rbind(tri_early.survey_samples, tri_late.survey_samples, afsc.slope_samples, 
       nwfsc.slope_samples, nwfsc.combo_samples))
 
-for(i in c("t1.survey", "t2.survey", "afsc.slope")) {
+for(i in c("tri_early.survey", "tri_late.survey", "afsc.slope")) {
   x = unique(eval(parse(text = paste0(i, ".bio$Lengths")))[c("Year", "Vessel", "Pass", "Tow", "Trawl_id")]) %>%  
   group_by(Year) %>% 
   summarise(hauls = n()) %>% 
@@ -538,7 +538,7 @@ for(i in c("nwfsc.combo", "nwfsc.slope")) {
   assign(paste(i, "_hauls",sep = ""), x)  
 }
 
-bio.hauls.master = as.data.frame(rbind(t1.survey_hauls, t2.survey_hauls, afsc.slope_hauls, 
+bio.hauls.master = as.data.frame(rbind(tri_early.survey_hauls, tri_late.survey_hauls, afsc.slope_hauls, 
                                          nwfsc.slope_hauls, nwfsc.combo_hauls))
 
 haul.sample.info.master = merge(bio.samples.master , bio.hauls.master, by=c("Year","survey"))
