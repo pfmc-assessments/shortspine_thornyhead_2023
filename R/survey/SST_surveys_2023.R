@@ -569,6 +569,8 @@ haul_sample_table = haul.sample.info.master %>%
                      "AFSC Slope\nSurvey" = 2, "NWFSC Slope\nSurvey" = 2,
                      "NWFSC Combo\nSurvey" = 2)) %>%
   save_kable(file = "outputs/surveys/haul_sample_table.png",
+             zoom = 1.5) %>% 
+  save_kable(file = "doc/FinalTables/haul_sample_table.png",
              zoom = 1.5)
 
 haul_sample_table
