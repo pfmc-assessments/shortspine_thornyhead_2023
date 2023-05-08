@@ -20,11 +20,11 @@
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 3 #_Nblock_Patterns
-2 2 1 #_blocks_per_pattern
+4 4 2 #_blocks_per_pattern
 #_begin and end years of blocks
-2007 2010 2011 2022
-2007 2010 2011 2022
-2007 2022
+1989 2006 2007 2010 2011 2014 2015 2022
+1989 2006 2007 2010 2011 2016 2017 2022
+2005 2012 2013 2022
 #
 # controls for all timevary parameters 
 3 #_env/block/dev_adjust_method for all time-vary parms (1=warn relative to base parm bounds; 3=no bound check)
@@ -191,9 +191,9 @@
   -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Non-trawl(3)       
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Non-trawl(3)       
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Non-trawl(3)       
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_1_Non-trawl(3)    
+   5	70	       23	     27	99	0	  3	0	0	0	0	  0	3	3	#_SizeSel_PRet_1_Non-trawl(3)    
  0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Non-trawl(3)    
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_3_Non-trawl(3)    
+ -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	3	3	#_SizeSel_PRet_3_Non-trawl(3)    
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Non-trawl(3)    
   10	60	       30	     30	 5	0	  2	0	0	0	0	  0	0	0	#_SizeSel_P_1_Triennial1(4)      
  -16	16	       -7	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Triennial1(4)      
@@ -232,14 +232,26 @@
 #_No age_selex_parm
 # timevary selex parameters 
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2011
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2007
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2011
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2007
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2011
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2007
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2011
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_1989  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2011  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2015  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_1989  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2007  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2011  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2015  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_1989  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2007  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2011  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2017  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_1989  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2007  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2011  
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2017  
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Non-trawl(3)_BLK3delta_2005
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Non-trawl(3)_BLK3delta_2013
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Non-trawl(3)_BLK3delta_2005
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Non-trawl(3)_BLK3delta_2013
 # info on dev vectors created for selex parms are reported with other devs after tag parameter section
 #
 0 #  use 2D_AR1 selectivity(0/1):  experimental feature
