@@ -176,11 +176,11 @@ Dir_23_blkret_T3_NT2 <- file.path(dir_SensAnal, '5.9_Retention_Selectivity_Sensi
 
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(
-	Dir_23_model_francis_2,
-	Dir_23_model_francis_2,
-	Dir_23_model_francis_2,
-	Dir_23_model_francis_2,
-	Dir_23_model_francis_2,
+	#Dir_23_model_francis_2,
+	#Dir_23_model_francis_2,
+	#Dir_23_model_francis_2,
+	#Dir_23_model_francis_2,
+	#Dir_23_model_francis_2,
 	Dir_23_model_francis_2,
 	Dir_23_blkret_T1,
 	Dir_23_blkret_T2,
@@ -192,11 +192,6 @@ SensiMod <- SSgetoutput(dirvec = c(
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.model.francis_2',
 	'23.model.francis_2',
 	'23.blkret.T1',
 	'23.blkret.T2',
@@ -215,11 +210,6 @@ SSplotComparisons(
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
       legendlabels = c(
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.model.francis_2',
 	'23.model.francis_2',
 	'23.blkret.T1',
 	'23.blkret.T2',
