@@ -1,0 +1,410 @@
+1  reportdetail 0=minimal for data-limited, 1=all, 2=no growth, 3=custom
+1 Y DEFINITIONS report:1
+2 Y LIKELIHOOD report:2
+3 Y Input_Variance_Adjustment report:3
+4 Y Parm_devs_detail report:4
+5 Y PARAMETERS report:5
+6 Y DERIVED_QUANTITIES report:6
+7 Y MGparm_By_Year_after_adjustments report:7
+8 Y selparm(Size)_By_Year_after_adjustments report:8
+9 Y selparm(Age)_By_Year_after_adjustments report:9
+10 Y RECRUITMENT_DIST report:10
+11 Y MORPH_INDEXING report:11
+12 Y SIZEFREQ_TRANSLATION report:12
+13 Y MOVEMENT report:13
+14 Y EXPLOITATION report:14
+15 Y CATCH report:15
+16 Y TIME_SERIES report:16
+17 Y SPR_SERIES report:17
+18 Y Kobe_Plot report:18
+19 Y SPAWN_RECRUIT report:19
+20 Y SPAWN_RECR_CURVE report:20
+21 Y INDEX_1 report:21 summary
+22 Y INDEX_2 report:22 annual
+23 Y INDEX_3 report:23 Qparms
+24 Y DISCARD_SPECIFICATION report:24
+25 Y DISCARD_OUTPUT report:25
+26 Y MEAN_BODY_WT_OUTPUT report:26
+27 Y FIT_LEN_COMPS report:27
+28 Y FIT_AGE_COMPS report:28
+29 Y FIT_SIZE_COMPS report:29
+30 Y OVERALL_COMPS report:30
+31 Y LEN_SELEX report:31
+32 Y AGE_SELEX report:32
+33 Y ENVIRONMENTAL_DATA report:33
+34 Y TAG_Recapture report:34
+35 Y NUMBERS_AT_AGE report:35
+36 Y BIOMASS_AT_AGE report:36
+37 Y NUMBERS_AT_LENGTH report:37
+38 Y BIOMASS_AT_LENGTH report:38
+39 Y F_AT_AGE report:39
+40 Y CATCH_AT_AGE report:40
+41 Y DISCARD_AT_AGE report:41
+42 Y BIOLOGY report:42
+43 Y Natural_Mortality report:43
+44 Y AGE_SPECIFIC_K report:44
+45 Y Growth_Parameters report:45
+46 Y Seas_Effects report:46
+47 Y Biology_at_age_in_endyr report:47
+48 Y MEAN_BODY_WT(Begin) report:48
+49 Y MEAN_SIZE_TIMESERIES report:49
+50 Y AGE_LENGTH_KEY report:50
+51 Y AGE_AGE_KEY report:51
+52 Y COMPOSITION_DATABASE report:52
+53 Y SELEX_database report:53
+54 Y SPR/YPR_Profile report:54
+55 Y GLOBAL_MSY report:55
+56 Y SS_summary.sso report:56
+57 Y rebuilder.sso report:57
+58 Y SIStable.sso report:58
+59 Y Dynamic_Bzero report:59
+60 Y wtatage.ss_new report:60
+0  docheckup
+0  Do_ParmTrace
+0  Do_CumReport
+1  Do_all_priors
+0  SoftBound
+3  N_nudata
+25  Turn_off_phase
+0  MCeval burn_intvl
+1  MCeval thin_intvl
+0  jitter fraction for initial parm values
+-1  STD_Yr_min
+-2  STD_Yr_max (-1 for endyr; -2 for YrMax)
+0  N extra STD years to read
+0.0001  final_conv
+0  retro_yr
+1  Smry_Age
+1  depletion_basis as read; this is also known as Bratio and is a std quantity; has multi-yr and log(ratio) options
+Parse into: depletion_log(ratio): 0 depletion_multi-yr: 0 depletion_basis: 1
+1  depletion_level
+1  SPR_reporting
+1  F_reporting quantity, e.g. 3=sum(apical Fs)
+0  F_std basis as read
+Parse into: F_std_log(ratio): 0 F_std_multi: 0 F_std_basis: 0
+For Kobe plot, set depletion_basis=2; depletion_level=1.0; F_reporting=your choice; F_std_basis=2
+Read files in 3.30 format
+SS will continue reading from starter.ss until it reads 3.30
+read MCMC_output_detail.MCMC_bump as a single real number;  separate values will be parsed from integer and fraction
+MCMC output detail(1=more_detail_to_posts; 2=write_report_for_each_mceval):  0
+MCMC bump to R0:  0
+Now read ALK tolerance which is deprecated. If not 0, it will be reset to 0.
+ALK tolerance:  0
+Now get random number seed; enter -1 to use long(time) as the seed
+random number seed:  -1
+  finish reading starter.ss
+
+1901 start year 
+2022 end year 
+1 N seasons 
+ 12 months/seas (fractions OK) 
+2 Number of subseasons (even number only; min 2) for calculation of ALK 
+ 1 processed season duration (frac. of year) 
+ 0.5 processed subseason duration (frac. of year) 
+ processed subseason cumulative annual time within season 
+ 0 0.5
+SPAWN month: 1; seas: 1; subseas_for_ALK: 1; timing_in_season: 0
+2 N sexes 
+Accumulator age 100
+1 N_areas 
+6 total number of fishing fleets and surveys 
+rows are fleets; columns are: Fleet_#, fleet_type, timing, area, units, need_catch_mult
+1 #  1 -1 1 1 0 # Trawl_N
+2 #  1 -1 1 1 0 # Trawl_S
+3 #  1 -1 1 1 0 # Non-trawl
+4 #  3 1 1 1 0 # Triennial1
+5 #  3 1 1 1 0 # Triennial2
+6 #  3 1 1 1 0 # NWFSCcombo
+YPR_optimize_mask:  1 1 1 0 0 0
+332 records
+first catch record:  1901 1 1 0 0.01
+last catch record:  2023 1 3 0.468107 0.01
+ equ, seas:   -1 1 catches:  0 0 0 0 0 0
+year, seas: 1901 1 catches:  0 0 0.091 0 0 0
+year, seas: 1902 1 catches:  0 0 0.112 0 0 0
+year, seas: 1903 1 catches:  0 0 0.132 0 0 0
+year, seas: 1904 1 catches:  0 0 0.153 0 0 0
+year, seas: 1905 1 catches:  0 0 0.173 0 0 0
+year, seas: 1906 1 catches:  0 0 0.194 0 0 0
+year, seas: 1907 1 catches:  0 0 0.215 0 0 0
+year, seas: 1908 1 catches:  0 0 0.235 0 0 0
+year, seas: 1909 1 catches:  0 0 0.256 0 0 0
+year, seas: 1910 1 catches:  0 0 0.276 0 0 0
+year, seas: 1911 1 catches:  0 0 0.297 0 0 0
+year, seas: 1912 1 catches:  0 0 0.317 0 0 0
+year, seas: 1913 1 catches:  0 0 0.338 0 0 0
+year, seas: 1914 1 catches:  0 0 0.358 0 0 0
+year, seas: 1915 1 catches:  0 0 0.379 0 0 0
+year, seas: 1916 1 catches:  0 0 0.399 0 0 0
+year, seas: 1917 1 catches:  0 0 0.42 0 0 0
+year, seas: 1918 1 catches:  0 0 0.44 0 0 0
+year, seas: 1919 1 catches:  0 0 0.461 0 0 0
+year, seas: 1920 1 catches:  0 0 0.481 0 0 0
+year, seas: 1921 1 catches:  0 0 0.502 0 0 0
+year, seas: 1922 1 catches:  0 0 0.523 0 0 0
+year, seas: 1923 1 catches:  0 0 0.543 0 0 0
+year, seas: 1924 1 catches:  0 0 0.564 0 0 0
+year, seas: 1925 1 catches:  0 0 0.584 0 0 0
+year, seas: 1926 1 catches:  0 0 0.605 0 0 0
+year, seas: 1927 1 catches:  0 0 0.627 0 0 0
+year, seas: 1928 1 catches:  0 0 1.046 0 0 0
+year, seas: 1929 1 catches:  0 0 1.656 0 0 0
+year, seas: 1930 1 catches:  0 0 1.388 0 0 0
+year, seas: 1931 1 catches:  0 0 1.133 0 0 0
+year, seas: 1932 1 catches:  0.002 0 0.417 0 0 0
+year, seas: 1933 1 catches:  0.001 0 0.619 0 0 0
+year, seas: 1934 1 catches:  0 4.56994 0.706 0 0 0
+year, seas: 1935 1 catches:  0.001 6.32715 0.666 0 0 0
+year, seas: 1936 1 catches:  0.003 2.6966 1.454 0 0 0
+year, seas: 1937 1 catches:  0.006 5.42496 1.441 0 0 0
+year, seas: 1938 1 catches:  0 5.61683 1.339 0 0 0
+year, seas: 1939 1 catches:  0.008 5.8087 0.422 0 0 0
+year, seas: 1940 1 catches:  0.187 0.95345 1.596 0 0 0
+year, seas: 1941 1 catches:  0.288 1.9636 2.648 0 0 0
+year, seas: 1942 1 catches:  0.687 1.03374 3.773 0 0 0
+year, seas: 1943 1 catches:  3.058 1.43471 10.167 0 0 0
+year, seas: 1944 1 catches:  5.342 0.212281 1.825 0 0 0
+year, seas: 1945 1 catches:  5.341 0.992459 0.678 0 0 0
+year, seas: 1946 1 catches:  4.073 0.609628 0.994 0 0 0
+year, seas: 1947 1 catches:  4.751 0.0421841 0.716 0 0 0
+year, seas: 1948 1 catches:  13.376 0.0172365 1.025 0 0 0
+year, seas: 1949 1 catches:  13.515 0.0190509 0.344 0 0 0
+year, seas: 1950 1 catches:  6.926 0.00635029 0.82 0 0 0
+year, seas: 1951 1 catches:  11.165 0 0.593 0 0 0
+year, seas: 1952 1 catches:  13.849 0 0.278 0 0 0
+year, seas: 1953 1 catches:  2.626 2.95878 0.245 0 0 0
+year, seas: 1954 1 catches:  112.453 0 0.381 0 0 0
+year, seas: 1955 1 catches:  62.9276 4.98951 0.281979 0 0 0
+year, seas: 1956 1 catches:  133.042 6.81839 0.483094 0 0 0
+year, seas: 1957 1 catches:  63.8796 0 0.494 0 0 0
+year, seas: 1958 1 catches:  27.8021 9.51364 0.136 0 0 0
+year, seas: 1959 1 catches:  28.8111 32.264 0.238 0 0 0
+year, seas: 1960 1 catches:  31.0888 149.612 0.104 0 0 0
+year, seas: 1961 1 catches:  28.5471 56.7575 0.377 0 0 0
+year, seas: 1962 1 catches:  22.4741 113.685 0.445 0 0 0
+year, seas: 1963 1 catches:  7.77 223.17 0.269 0 0 0
+year, seas: 1964 1 catches:  25.1878 173.486 0.778629 0 0 0
+year, seas: 1965 1 catches:  31.7514 307.583 0.13 0 0 0
+year, seas: 1966 1 catches:  623.084 542.103 0.126 0 0 0
+year, seas: 1967 1 catches:  375.821 867.401 0.343 0 0 0
+year, seas: 1968 1 catches:  207.453 1834.26 0.255 0 0 0
+year, seas: 1969 1 catches:  215.727 430.425 0.948133 0 0 0
+year, seas: 1970 1 catches:  179.79 599.245 0.261151 0 0 0
+year, seas: 1971 1 catches:  347.53 607.821 0.0796481 0 0 0
+year, seas: 1972 1 catches:  390.426 1380.65 0.112988 0 0 0
+year, seas: 1973 1 catches:  704.173 2321.09 0.437913 0 0 0
+year, seas: 1974 1 catches:  219.174 1146.08 1.32263 0 0 0
+year, seas: 1975 1 catches:  399.295 1872.54 0.534423 0 0 0
+year, seas: 1976 1 catches:  103.829 1824.32 0.509986 0 0 0
+year, seas: 1977 1 catches:  112.561 1472.13 9.20783 0 0 0
+year, seas: 1978 1 catches:  176.33 1013.53 2.95916 0 0 0
+year, seas: 1979 1 catches:  65.9643 1715.69 6.55932 0 0 0
+year, seas: 1980 1 catches:  179.969 1204.88 2.25457 0 0 0
+year, seas: 1981 1 catches:  132.482 1608.49 2.73831 0 0 0
+year, seas: 1982 1 catches:  293.646 1654.79 2.71136 0 0 0
+year, seas: 1983 1 catches:  480.906 1416.64 2.75735 0 0 0
+year, seas: 1984 1 catches:  1039.29 1841.97 1.17907 0 0 0
+year, seas: 1985 1 catches:  956.351 2397.97 6.00145 0 0 0
+year, seas: 1986 1 catches:  613.114 2331.52 7.98241 0 0 0
+year, seas: 1987 1 catches:  638.838 1322.44 22.1891 0 0 0
+year, seas: 1988 1 catches:  877.446 1965.85 24.9198 0 0 0
+year, seas: 1989 1 catches:  1655.55 3123.78 35.7397 0 0 0
+year, seas: 1990 1 catches:  2092.81 1911.73 31.3587 0 0 0
+year, seas: 1991 1 catches:  2416.99 995.94 53.5426 0 0 0
+year, seas: 1992 1 catches:  1782.91 1455.11 61.2515 0 0 0
+year, seas: 1993 1 catches:  2010.2 1571.84 26.5858 0 0 0
+year, seas: 1994 1 catches:  2083.16 1182.92 21.0037 0 0 0
+year, seas: 1995 1 catches:  953.791 929.273 57.0122 0 0 0
+year, seas: 1996 1 catches:  810.142 699.586 100.089 0 0 0
+year, seas: 1997 1 catches:  689.592 654.172 62.738 0 0 0
+year, seas: 1998 1 catches:  582.085 593.354 62.1811 0 0 0
+year, seas: 1999 1 catches:  373.896 309.073 64.3898 0 0 0
+year, seas: 2000 1 catches:  340.718 421.913 66.5851 0 0 0
+year, seas: 2001 1 catches:  276.613 197.492 57.9773 0 0 0
+year, seas: 2002 1 catches:  288.513 364.764 114.255 0 0 0
+year, seas: 2003 1 catches:  346.05 302.398 166.558 0 0 0
+year, seas: 2004 1 catches:  328.549 286.588 139.485 0 0 0
+year, seas: 2005 1 catches:  292.594 214.106 149.694 0 0 0
+year, seas: 2006 1 catches:  334.063 210.534 159.174 0 0 0
+year, seas: 2007 1 catches:  626.032 222.557 158.798 0 0 0
+year, seas: 2008 1 catches:  972.945 259.939 196.972 0 0 0
+year, seas: 2009 1 catches:  1022.69 308.385 200.624 0 0 0
+year, seas: 2010 1 catches:  834.86 284.221 228.361 0 0 0
+year, seas: 2011 1 catches:  483.466 232.99 260.521 0 0 0
+year, seas: 2012 1 catches:  455.933 263.586 192.072 0 0 0
+year, seas: 2013 1 catches:  547.977 294.832 166.397 0 0 0
+year, seas: 2014 1 catches:  433.116 254.048 147.815 0 0 0
+year, seas: 2015 1 catches:  503.137 244.291 131.302 0 0 0
+year, seas: 2016 1 catches:  577.189 185.731 168.94 0 0 0
+year, seas: 2017 1 catches:  606.856 158.3 223.817 0 0 0
+year, seas: 2018 1 catches:  525.044 105.072 184.48 0 0 0
+year, seas: 2019 1 catches:  402.947 127.942 143.476 0 0 0
+year, seas: 2020 1 catches:  248.473 87.9898 85.1725 0 0 0
+year, seas: 2021 1 catches:  226 73.3863 78.7417 0 0 0
+year, seas: 2022 1 catches:  261.159 97.607 66.2155 0 0 0
+
+#_show_total_catch_by_fleet
+1 type: 1 Trawl_N catch: 36380.2
+2 type: 1 Trawl_S catch: 53115.9
+3 type: 1 Non-trawl catch: 4211.5
+4 type: 3 Triennial1 catch: 0
+5 type: 3 Triennial2 catch: 0
+6 type: 3 NWFSCcombo catch: 0
+
+#_  now read survey characteristics:  fleet_#, svyunits, svyerrtype for each fleet 
+Units:  0=numbers; 1=biomass; 2=F; >=30 for special patterns
+Errtype:  -1=normal; 0=lognormal; >0=T
+SD_Report: 0=no sdreport; 1=enable sdreport
+Fleet Units Err_Type SD_Report
+ 1 1 0 0
+ 2 1 0 0
+ 3 1 0 0
+ 4 1 0 0
+ 5 1 0 0
+ 6 1 0 0
+28 nobs_survey 
+ 1980 7 4 6296.68 0.154443
+ 1983 7 4 6406.37 0.122227
+ 1986 7 4 5441.14 0.146073
+ 1989 7 4 5997.58 0.139764
+ 1992 7 4 4867.11 0.153479
+ 1995 7 4 7535.34 0.0964543
+ 1998 7 4 6247.01 0.0967012
+ 2001 7 4 8234.98 0.0958247
+ 2004 7 4 8654.53 0.112452
+ 2003 7 6 48340.9 0.0747166
+ 2004 7 6 48009.7 0.0800661
+ 2005 7 6 54339 0.0698845
+ 2006 7 6 49203.6 0.0670029
+ 2007 7 6 52366.4 0.0647014
+ 2008 7 6 47120.8 0.0663204
+ 2009 7 6 47353.1 0.0663419
+ 2010 7 6 44829.5 0.0658168
+ 2011 7 6 50098.1 0.066072
+ 2012 7 6 51413.5 0.0662795
+ 2013 7 6 51808.1 0.0751918
+ 2014 7 6 51333.3 0.067633
+ 2015 7 6 52880.6 0.0655534
+ 2016 7 6 57348.8 0.064766
+ 2017 7 6 59170.6 0.0639349
+ 2018 7 6 59656.6 0.0636136
+ 2019 7 6 60574.8 0.0870471
+ 2021 7 6 70483.9 0.0672864
+ 2022 7 6 76809.7 0.0691009
+Successful read of survey data; total N:  28
+Index Survey_name       N   Super_Per    Min_val   max_val  //  Observations:
+4    Triennial1   9     0      4867.11 8654.53 //  6296.68 6406.37 5441.14 5997.58 4867.11 7535.34 6247.01 8234.98 8654.53
+6    NWFSCcombo   19     0      44829.5 76809.7 //  48340.9 48009.7 54339 49203.6 52366.4 47120.8 47353.1 44829.5 50098.1 51413.5 51808.1 51333.3 52880.6 57348.8 59170.6 59656.6 60574.8 70483.9 76809.7
+Number of sdreport index values: 0
+ note order of discard read is now: N fleets with disc, then if Ndisc_fleets>0 read:  fleet, disc_units, disc_error(for 1,Ndisc_fleets), then read obs 
+3 N fleets with discard 
+#_discard_units (1=same_as_catchunits(bio/num);2=fraction; 3=numbers)
+#_discard_error:  >0 for DF of T-dist(read CV below); 0 for normal with CV; -1 for normal with se; -2 for lognormal; -3 for trunc normal with CV
+#Fleet Units Err_Type
+ 1 2 30
+ 2 2 30
+ 3 2 30
+68 N discard obs 
+ 1984 1 1 0.3448 0.780452
+ 1985 1 1 0.3439 0.826112
+ 1986 1 1 0.3663 0.770953
+ 1995 1 1 0.132 0.4
+ 1996 1 1 0.155 0.2
+ 1997 1 1 0.201 0.21
+ 1998 1 1 0.136 0.22
+ 1999 1 1 0.252 0.3
+ 2002 1 1 0.234567 0.134399
+ 2003 1 1 0.301959 0.115967
+ 2004 1 1 0.1859 0.125818
+ 2005 1 1 0.149951 0.162969
+ 2006 1 1 0.150973 0.169901
+ 2007 1 1 0.111781 0.172262
+ 2008 1 1 0.0443222 0.251863
+ 2009 1 1 0.0936823 0.206862
+ 2010 1 1 0.0810228 0.219997
+ 2011 1 1 0.0501173 0.001
+ 2012 1 1 0.0389901 0.001
+ 2013 1 1 0.0599043 0.001
+ 2014 1 1 0.0740646 0.001
+ 2015 1 1 0.00829151 0.0136397
+ 2016 1 1 0.0126316 0.526367
+ 2017 1 1 0.00998992 0.849237
+ 2018 1 1 0.0103604 1.86249
+ 2019 1 1 0.0338272 0.604889
+ 2020 1 1 0.05646 0.0236756
+ 2021 1 1 0.118828 0.37745
+ 2002 1 2 0.171849 0.178112
+ 2003 1 2 0.129364 0.211683
+ 2004 1 2 0.122731 0.261098
+ 2005 1 2 0.114497 0.259987
+ 2006 1 2 0.0565089 0.44991
+ 2007 1 2 0.0245061 0.221554
+ 2008 1 2 0.019454 0.186
+ 2009 1 2 0.0223615 0.195851
+ 2010 1 2 0.0155416 0.214446
+ 2011 1 2 0.00528281 0.001
+ 2012 1 2 0.00750454 0.001
+ 2013 1 2 0.00567696 0.001
+ 2014 1 2 0.0663489 0.001
+ 2015 1 2 0.0101245 0.001
+ 2016 1 2 0.00918049 0.001
+ 2017 1 2 0.0868792 0.001
+ 2018 1 2 0.0248593 0.001
+ 2019 1 2 0.16121 0.001
+ 2020 1 2 0.119628 0.001
+ 2021 1 2 0.0876485 0.001
+ 2002 1 3 0.238105 0.187312
+ 2003 1 3 0.267485 0.230056
+ 2004 1 3 0.277632 0.325311
+ 2005 1 3 0.151678 0.207792
+ 2006 1 3 0.273752 0.47923
+ 2007 1 3 0.285004 0.200705
+ 2008 1 3 0.162713 0.206563
+ 2009 1 3 0.125568 0.256504
+ 2010 1 3 0.197754 0.208168
+ 2011 1 3 0.166887 0.194869
+ 2012 1 3 0.284591 0.178819
+ 2013 1 3 0.318661 0.267254
+ 2014 1 3 0.225628 0.293197
+ 2015 1 3 0.253908 0.300737
+ 2016 1 3 0.405918 0.265932
+ 2017 1 3 0.239115 0.270144
+ 2018 1 3 0.30505 0.253465
+ 2019 1 3 0.18768 0.182514
+ 2020 1 3 0.178679 0.309542
+ 2021 1 3 0.291848 0.289206
+Successful read of discard data 
+Index Survey_name       N   Super_Per    Min_val   max_val  //  Observations:
+1    Trawl_N   28     0      0.00829151 0.3663 //  0.3448 0.3439 0.3663 0.132 0.155 0.201 0.136 0.252 0.234567 0.301959 0.1859 0.149951 0.150973 0.111781 0.0443222 0.0936823 0.0810228 0.0501173 0.0389901 0.0599043 0.0740646 0.00829151 0.0126316 0.00998992 0.0103604 0.0338272 0.05646 0.118828
+2    Trawl_S   20     0      0.00528281 0.171849 //  0.171849 0.129364 0.122731 0.114497 0.0565089 0.0245061 0.019454 0.0223615 0.0155416 0.00528281 0.00750454 0.00567696 0.0663489 0.0101245 0.00918049 0.0868792 0.0248593 0.16121 0.119628 0.0876485
+3    Non-trawl   20     0      0.125568 0.405918 //  0.238105 0.267485 0.277632 0.151678 0.273752 0.285004 0.162713 0.125568 0.197754 0.166887 0.284591 0.318661 0.225628 0.253908 0.405918 0.239115 0.30505 0.18768 0.178679 0.291848
+1 Use mean body size (weight or length); If 0, then no additional input in 3.30 
+30 degrees of freedom for bodywt T-distribution 
+#_yr month fleet part type obs stderr
+# type is a required new input with 3.30.12
+# type makes explicit the infor previously contained in the sign of partition, e.g. 
+# type=1 is for mean length, type=2 is for mean weight, (future, type=3 is for mean true age)
+meansize_obs_#:1 #  2002 1 1 1 2 0.254707 2.07863
+meansize_obs_#:2 #  2003 1 1 1 2 0.284307 1.26543
+60 nobs for mean body size
+meansize_obs_#:60 #  2021 1 3 1 2 1.01763 0.795695
+Successful pre-processing of mean-bodysize data
+2 LenBin_option:  1=set to data bins; 2 generate uniform; 3 = read custom
+ 2 4 90 input for setup of pop length bins 
+2 indicator for length data  
+#_now read controls for processing the length comps:
+Use_length_data == 1: invokes original input format starting with mintailcomp, one row for each fleet
+Use_length_data == 2: invokes list format with fleet and partition preceding controls
+#_fleet: fleet number, or -9999 for terminator row, or negative fleet to use input row as filler for all fleets and partitions
+#_partition: 0=all, 1=discard, 2=retained
+#_mintailcomp: upper and lower distribution for females and males separately are accumulated until exceeding this level.
+#_addtocomp:  after accumulation of tails; this value added to all bins
+#_males and females treated as combined gender below this bin number 
+#_compressbins: accumulate upper tail by this number of bins; acts simultaneous with mintailcomp; set=0 for no forced accumulation
+#_Comp_Error:  0=multinomial, 1=dirichlet using theta * n, 2=dirichlet using beta, 3=MV_Tweedie with phi and power
+#_Comp_ERR-2:  consecutive index of error def to use
+#_minsamplesize: minimum sample size; set to 1 to match 3.24, minimum value is 0.001
+fleet partition mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
+1 0 0 0 1 6 1 6 0  #_fleet: 1 Trawl_N
+Warning 1 :  minimum sample size for length comps must be > 0; minimum sample size set to 0.001 
+Warning 2 Fatal Error! ; length D-M must refer to existing Comp_err definition, or increment by 1:  6
