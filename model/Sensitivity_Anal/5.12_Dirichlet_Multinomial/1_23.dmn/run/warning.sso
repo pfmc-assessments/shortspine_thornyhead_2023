@@ -1,0 +1,2 @@
+Warning 1 :  minimum sample size for length comps must be > 0; minimum sample size set to 0.001 
+Warning 2 Fatal Error! ; length D-M must refer to existing Comp_err definition, or increment by 1:  6

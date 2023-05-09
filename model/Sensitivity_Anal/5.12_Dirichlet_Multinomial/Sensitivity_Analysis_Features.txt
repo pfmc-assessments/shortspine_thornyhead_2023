@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Dirichlet Multinomial Length Comps 
+# Author:  Haley Oleynik 
+# Date: 2023-05-09 15:25:45 
+# Sensitivity Analysis ID: Item 5.12 
+# Name of the model created:
+# 	- 23.dmn 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 /Users/haleyoleynik/Documents/GitHub/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.12_Dirichlet_Multinomial 
+# Name of the script used to build the new model: 
+#	 /Users/haleyoleynik/Documents/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.12_Dirichlet_Multinomial_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/haleyoleynik/Documents/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.12_Dirichlet_Multinomial_Outputs.R .R
+# 
+# Features: 
+#  Use Dirichlet Multinomial for Length comps 
+# ============================================================ #
+

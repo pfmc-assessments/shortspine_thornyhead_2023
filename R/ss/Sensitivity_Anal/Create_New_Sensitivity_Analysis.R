@@ -291,6 +291,16 @@ NewSensAnal(topic = "model",
                           "23.blkret.T3.blksel.T1", "23.blkret.T3.blksel.T2",
                           "23.blkret.T3.blksel.T3", "23.blkret.T3.blksel.T4"))
 
+# dirichelet multinomial 
+NewSensAnal(topic = "model",
+           # names are based on new model
+           object = c("Dirichlet Multinomial Length Comps"),
+           author = "Haley Oleynik",
+           folder_name = "Dirichlet_Multinomial",
+           script_model = "Dirichlet_Multinomial_Analyses",
+           script_results = "Dirichlet_Multinomial_Outputs",
+           base_model = c("23.model.francis_2"),
+           new_model = c("23.dmn"))
 
 
 
