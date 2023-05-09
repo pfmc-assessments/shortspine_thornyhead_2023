@@ -254,24 +254,42 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 #                           "23.blkret.T3.NT1", "23.blkret.T3.NT2"))
 
 
-remove_SA("Item 5.10")
+#remove_SA("Item 5.10")
+#
+#NewSensAnal(topic = "model",
+#            # names are based on new model
+#            object = c("Prior on Selectivity - 1 Blk",
+#                       "Prior on Selectivity - 2 Blks",
+#                       "Prior on Selectivity - 3 Blks"
+#                       ),
+#            author = "Pierre-Yves Hernvann & Matthieu Veron",
+#            folder_name = "Prior_Selectivity_Sensitivity",
+#            script_model = "Prior_Sensitivity_Analyses",
+#            script_results = "Prior_Sensitivity_Outputs",
+#            base_model = c("23.blkret.T3"),
+#            new_model = c("23.slx.Prior.1Blk",
+#                          "23.slx.Prior.2Blk",
+#                          "23.slx.Prior.3Blk"))
 
+# Sensitivity analysis: selectivity 
 NewSensAnal(topic = "model",
             # names are based on new model
-            object = c("Prior on Selectivity - 1 Blk",
-                       "Prior on Selectivity - 2 Blks",
-                       "Prior on Selectivity - 3 Blks"
-                       ),
-            author = "Pierre-Yves Hernvann & Matthieu Veron",
-            folder_name = "Prior_Selectivity_Sensitivity",
-            script_model = "Prior_Sensitivity_Analyses",
-            script_results = "Prior_Sensitivity_Outputs",
-            base_model = c("23.blkret.T3"),
-            new_model = c("23.slx.Prior.1Blk",
-                          "23.slx.Prior.2Blk",
-                          "23.slx.Prior.3Blk"))
-
-
+            object = c("base blksel 2003", "base blksel 2011",
+                       "base blksel 2003+2011", "base blksel 2003+2011+2019",
+                       "blkretT3 blksel 2003", "blkretT3 blksel 2011",
+                       "blkretT3 blksel 2003+2011", "blkretT3 blksel 2003+2011+2019"),
+            author = "Pierre-Yves Hernvann",
+            folder_name = "Selectivity_Sensitivity",
+            script_model = "Selectivity_Sensitivity_Analyses",
+            script_results = "Selectivity_Sensitivity_Outputs",
+            base_model = c("23.model.francis_2", "23.model.francis_2",
+                           "23.model.francis_2", "23.model.francis_2",
+                           "23.blkret.T3", "23.blkret.T3",
+                           "23.blkret.T3","23.blkret.T3"),
+            new_model = c("23.blksel.T1", "23.blksel.T2",
+                          "23.blksel.T3","23.blksel.T4",
+                          "23.blkret.T3.blksel.T1", "23.blkret.T3.blksel.T2",
+                          "23.blkret.T3.blksel.T3", "23.blkret.T3.blksel.T4"))
 
 
 
