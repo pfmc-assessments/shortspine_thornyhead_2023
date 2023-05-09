@@ -23,7 +23,7 @@ knitr::opts_chunk$set(fig.pos = 'H')
 ```
 
 
-# Data figures
+## Data figures
 
 ```{r, catch-figures, results = "asis"}
 # Example function for how to arrange figures in order of the time they were modified--from lingcod asssessment--find that function

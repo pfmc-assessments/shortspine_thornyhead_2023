@@ -1,0 +1,46 @@
+library(tidyverse)
+library(r4ss)
+
+model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", "Imputed Landings", "2013 Landings")
+model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
+               "4.1_Growth_Sensitivity/2_23.growth.low", 
+               "4.1_Growth_Sensitivity/1_23.growth.high", 
+               "4.2_Maturity_Sensitivity/1_23.maturity.pgcurve", 
+               "4.2_Maturity_Sensitivity/2_23.maturity.mix_curve", 
+               "1.1_Landings_Sensitivity/1_23.land.hist_impute", 
+               "1.1_Landings_Sensitivity/2_23.land.2013")
+
+sensi.dir <- file.path(here::here(), "model", "Sensitivity_Anal")
+
+model.dirs <- apply(as.matrix(model.ids), 1, function(x) file.path(sensi.dir, x, "run"))
+
+summary <- matrix(NA, nrow=11, ncol=length(model.names))
+
+for(i in 1:length(model.dirs)){
+  m <- model.dirs[i]
+  replist <- SS_output(m)
+  likes <- replist$likelihoods_used
+  derived <- replist$derived_quants
+  
+  summary[1,i] <- likes["TOTAL",]$values
+  summary[2,i] <- likes["Survey",]$values
+  summary[3,i] <- likes["Length_comp",]$values
+  summary[4,i] <- likes["Discard",]$values
+  summary[5,i] <- likes["Mean_body_wt",]$values
+  summary[6,i] <- likes["Recruitment",]$values
+  summary[7,i] <- likes["Parm_priors",]$values
+  summary[8,i] <- derived["Recr_Virgin",]$Value
+  summary[9,i] <- derived["SSB_2023",]$Value
+  summary[10,i] <- derived["Bratio_2023",]$Value
+  summary[11,i] <- derived["SPRratio_2023",]$Value
+}
+
+summary(c)
+
+#replist$likelihoods_used
+#replist$derived_quants
+
+colnames(summary) <- model.names
+rownames(summary) <- c("Total L", "Survey L", "Length Comp L", "Discards L", "Mean Body Wt L", "Recruitment L", "Prior L", "R0", "B0", "Depletion", "Relative SPR")
+
+write.csv(summary, file = file.path(here::here(), "doc", "FinalTables", "Sensitivities", "summary.csv"))
