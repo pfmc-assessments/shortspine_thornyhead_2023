@@ -131,9 +131,9 @@ dat_filtered %>%
   scale_alpha_manual(values = c(0, 1)) +
   labs(x = NULL, y = NULL) +
   theme_minimal(base_size = 20) +
-  theme(legend.position = 'none')
-
-
+  theme(legend.position = 'none', legend.text=element_text(size=14),
+        legend.title=element_text(size=15), axis.text = element_text(size=15), axis.title.x = element_text(size=15), axis.title.y = element_text(size=15))
+  
 
 #save to document figures
 ggsave('doc/FinalFigs/Data/assessment_data_timeseries.png', 
@@ -148,7 +148,8 @@ dat_filtered %>%
   scale_alpha_manual(values = c(0, 1)) +
   labs(x = NULL, y = NULL) +
   theme_minimal(base_size = 20) +
-  theme(legend.position = 'none')
+  theme(legend.position = 'none', 
+        legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14))
 
 ggsave('doc/FinalFigs/Data/survey_data_timeseries.png', 
        bg='white', dpi=300, height=3, width=11, units="in")

@@ -23,11 +23,6 @@ knitr::opts_chunk$set(fig.pos = 'H')
 ```
 
 
-# Data figures
-
-
-
-
 ```{r, catch-figures, results = "asis"}
 # Example function for how to arrange figures in order of the time they were modified--from lingcod asssessment--find that function
 
@@ -39,24 +34,30 @@ knitr::opts_chunk$set(fig.pos = 'H')
 # )
 ```
 
+## Introductory Figures
 
 ```{r, Intro-figures, results = "asis"}
 #Coastwide CPUE plot from NWFSC combo survey
 sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
                   caption = "Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.", 
                   label = "stock-map")
-
+```
+\newpage
+```{r}
 #Unid thornyheads and proportion shortspine
 sa4ss::add_figure(filein = file.path(fig_dir1, "thornyhead-ratio.png "), 
                   caption = "Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.", 
                   label = "thornyhead-ratio")
-
+```
+\newpage
+```{r}
 #Catch history
 sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"), 
                   caption = "Estimated landing history for shortspine thornyhead.", 
                   label = "catch_hist")
 ```
 
+## Data Figures
 ```{r, Data-figures, results = "asis"}
 
 #These figures come out of both the data folder and the model folder
@@ -76,7 +77,9 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "catch7 discards stacked plot (de
 sa4ss::add_figure(filein = file.path(fig_dir2, "SST_WCGOP_GEMM_discard_rates_3fleet.png"), 
                   caption = "Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.", 
                   label = "disc_rates_WCGOP")
-
+```
+\newpage
+```{r}
 #Survey Data Sources 
 sa4ss::add_figure(filein = file.path(fig_dir2, "survey_data_timeseries.png"), 
                   caption = "Summary of survey data sources used in the base model.", 
@@ -96,8 +99,19 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.
                   caption = "Growth curve sensitivities", 
                   label = "growth_LAA2")
 
+#Maturity 1
+sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_fit.png"), 
+                  caption = "Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.", 
+                  label = "mat1")
+
+#Maturity 2
+sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_curves.png"), 
+                  caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
+                  label = "mat2")
+
 ```
 
+## Base Model Figures
 ```{r, BaseModel-figures, results = "asis"}
 
 # sa4ss::add_figure(filein = file.path(fig_dir3, " "), 
@@ -105,6 +119,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.
 #                   label = " ")
 ```
 
+## Sensitivity Analysis
 ```{r, Sensativity-figures, results = "asis"}
 
 # fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")

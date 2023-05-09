@@ -25,9 +25,9 @@ In the 2013 assessment, the exploration of maturity analyses from the \gls{s-wcg
 
 \begin{equation} M(L) = (1+e^{-2.3(L-31.42)})^{-1}\end{equation}
 
-*_Figure MAT-1_* shows the fit of the maturity curve of the model per class of depth and latitude.
+Figure \ref{fig:mat1} shows the fit of the maturity curve of the model per class of depth and latitude.
 
-A sensitivity analysis will assess the impact of this change in the maturity curve on the model estimates by considering the newly estimated parameters, the Pearson and Gunderson’s relationship from the 2013, and one intermediate option *_(FigureMAT-2)_*.
+A sensitivity analysis will assess the impact of this change in the maturity curve on the model estimates by considering the newly estimated parameters, the Pearson and Gunderson’s relationship from the 2013, and one intermediate option (Figure \ref{fig:mat2}).
 
 #### Fecundity 
 The previous assessments assumed spawning biomass was equivalent to spawning output. The 2023 assessment will explore using fecundity-at-length parameters reported in @cooper_etal_2005, where fecundity was modeled as a power function of length. @cooper_etal_2005 estimated the fecundity of 54 females collected from the West Coast and Alaska. The study found no difference in the length-fecundity relationship by region and pooled the samples. The fecundity-at-length parameters in that study were:
@@ -57,7 +57,7 @@ Because the Butler data were sex-specific, had a higher sample size, were aged b
 where:
 $L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$;$a_{2}=100$ and k is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\frac{\sigma_2}{2}$.
 
-`r Spp` are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growth_LAA1}; *_Table X-LAA-1)_*. The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
+`r Spp` are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growth_LAA1}; *_Table X-LAA-1)_*). The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
 
 Two alternative sensitivity analyses were developed for the 2023 assessment. During the exploratory data analysis phase, we found that specimens collected in the Kline study exhibited higher size-at-age when compared to the Butler specimens (Figure \ref{fig:growth_LAA2}). It is unknown if these differences should be attributed to spatial differences in growth between central California and northern California/Oregon, bias among age readers, or discrepancies between the total and fork length measurements (Donna Kline, pers. comm., March 2023). In order to account for this alternative growth pattern, we increased the lengths at ages 2 and 100 by 25% in the upper sensitivity analysis (Figure \ref{fig:growth_LAA2}). The lower sensitivity analysis was defined by decreasing the lengths at ages 2 and 100 by 10% from the base model. 
 

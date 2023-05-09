@@ -2,55 +2,163 @@
 # Tables
 ```{r}
 library(here)
+library(dplyr)
+library(tidyr)
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 
 
 #Insert figure 
 #Figure \caption{(\#tab:catch_tab)Catches by fleet.} 
+
+#if wanting a new page \newpage
 ```
 
-These will likely need reordering 
+Executive Summary
 ```{r}
 
 #These are all labeled a-i
 
-#catch_tab<-read.csv(file.path(tab_dir1, "a_Catches_ES.csv"))
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "a_Catches_ES.csv")),
-                  caption = "Summary of catches by fleet from 2013-2022",
+catch_tab<-read.csv(file.path(tab_dir1, "a_Catches_ES.csv"))
+names(catch_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")  
+sa4ss::table_format(x = catch_tab,
+                  caption = "Recent landings by fleet, total landings summed across fleets, and the total mortality including discards.",
                   label = "catches")
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "b_SSB_ES.csv")),
-                  caption = "SSB.",
-                  label = "ssb")
+#Spawning stock output
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "c_Recr_ES.csv")),
-                  caption = "Recruitment",
+ssb_tab<-read.csv(file.path(tab_dir1, "b_SSB_ES.csv"))
+names(ssb_tab)<-c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")                 
+# 
+sa4ss::table_format(x = ssb_tab,
+                  caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
+                   label = "ssb")
+#Recruitment
+rec_tab<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
+names(rec_tab)<-c("Year", "Recruitment", "95% CI", "RecDevs", "RecDev 95% CI")    
+sa4ss::table_format(x = rec_tab,
+                  caption = "Estimated recent trend in recruitment and recruitment deviations and the 95\\% confidence intervals (CI) from the base model.",
                   label = "rec")
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "e_ReferencePoints_ES.csv")),
-                  caption = "Reference Points",
-                  label = "refPoints")
+#SPR
+spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
+names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
+sa4ss::table_format(x = spr_tab,
+                  caption = "Estimated recent trend in the (1-SPR)/(1-SPR 50\\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\\% intervals.",
+                  label = "spr")
+```
+\newpage
+```{r}
+#Reference Points 
+ref_tab<-read.csv(file.path(tab_dir1, "e_ReferencePoints_ES.csv"))
+names(ref_tab)<-c("Variable of Interest", "Estimate", "95% CI")  
+sa4ss::table_format(x = ref_tab,
+                  caption = "Summary of reference points and management quantities, including estimates of the  95\\% intervals.",
+                  label = "refPoints",
+                  align = c("l", "l", "l"))
+```
+\newpage
+```{r}
+#management 
+mngmt_tab<-read.csv(file.path(tab_dir1, "f_Manage_ES.csv"))
+names(mngmt_tab)<-c("Year", "OFL", "ABC", "ACL", "Landings", "Total Mortality") 
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "f_Manage_ES.csv")),
-                  caption = "Management",
+#Management values from https://www.pcouncil.org/harvest-specifications-regulations-and-seasons/
+ofl<-c(2333,2310,3203,3169,3144,3116,3089,3063,3211,3194)
+
+abc<-c(2230,2208,2668,2640,2619,2596,2573,2551,2183,2130)
+
+acl<-c(1937,1918,2668,2639,2619,2596,2573,2552,2184,2130)
+
+mngmt_tab<-mngmt_tab%>%
+  mutate(OFL = ofl,
+         ABC = abc,
+         ACL = acl)
+ 
+sa4ss::table_format(x = mngmt_tab,
+                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt).",
                   label = "management")
-
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
-                  caption = "Projections",
+```
+\newpage
+```{r}
+#Projections
+proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES.csv"))
+names(proj_tab)<-c("Year", "Predicted OFL (mt)", "ABC (mt)", "Age 1 Biomass (mt)", "Spawning Output", "Fraction Unfished") 
+sa4ss::table_format(x = proj_tab,
+                  caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.",
                   label = "projetions")
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
-                  caption = "Summary table",
-                  label = "summary")
+#Summary Tables 
+sum_tab<-read.csv(file.path(tab_dir1, "i_Summary_ES.csv"))
+names(sum_tab)<-c("Quantity", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
 
-#Other Tables
+#Split lower and upper intervals into two rows for table formatting
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
-                  caption = "Catches in all years",
+tmp<-sum_tab %>% #slice first row of interest
+  slice(9) %>%
+  pivot_longer(cols= -Quantity, names_to = "Year")%>%
+  separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
+
+tmp<-tmp%>% #Convert back to wide form
+  pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
+  mutate(Quantity = "Lower Interval")%>%
+  bind_rows(tmp%>%
+              pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
+              mutate(Quantity = "Upper Interval"))
+
+tmp2<-sum_tab %>% #Repeat for second row of interest 
+  slice(11) %>%
+  pivot_longer(cols= -Quantity, names_to = "Year")%>%
+  separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
+
+tmp2<-tmp2%>% #Convert back to wide form
+  pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
+  mutate(Quantity = "Lower Interval")%>%
+  bind_rows(tmp2%>%
+              pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
+              mutate(Quantity = "Upper Interval"))
+
+sum_tab<-bind_rows(slice(sum_tab, 1:8), #Bind together
+          tmp,
+          slice(sum_tab, 10),
+          tmp2,
+          slice(sum_tab,12:13))
+
+#Add OFL and ACL
+sum_tab[1,2:11]<-ofl
+sum_tab[1,12]<-3177 #OFL for 2023
+sum_tab[2,2:11]<-acl
+sum_tab[2,12]<-2078 #ACL for 2023
+
+sa4ss::table_format(x = sum_tab,
+                  caption = "Summary of recent estimates and managment quantities.",
+                  label = "summarytab",
+                  align = c("l", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c"),
+                  font_size = 9,
+                  landscape = TRUE)
+
+#Catches 
+allcatches_tab<-read.csv(file.path(tab_dir1, "Catches_All_Years.csv"))
+names(allcatches_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")
+sa4ss::table_format(x = allcatches_tab,
+                  caption = "Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.",
                   label = "allcatches")
-
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
-                  caption = "Likelihood table",
+```
+\newpage
+```{r}
+#Time Series
+ts_tab<-read.csv(file.path(tab_dir1, "TimeSeries.csv"))
+names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Total Biomass (mt)", "Fraction Unfished", "Age 0 Recruits", "Total Mortality", "(1-SPR)/(1-SPR 50%)", "Exploitation Rate")
+sa4ss::table_format(x = ts_tab,
+                  caption = "Time series of population estimates from the base model.",
+                  label = "timeseries")
+```
+\newpage
+```{r}
+#Like
+like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
+names(like_tab)<-c("Source", "Likelihood Component")
+sa4ss::table_format(x = like_tab,
+                  caption = "Likelihood components by source.",
                   label = "likelihoods")
 
 # sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage_m.csv")),
@@ -69,11 +177,13 @@ sa4ss::table_format(x = read.csv(file.path(tab_dir1, "g_Projections_ES.csv")),
 #                   caption = "all ages females",
 #                   label = "natagefem")
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "table_labels.csv")),
-                  caption = "Table of lables",
-                  label = "lables")
+lab_tab<-read.csv(file.path(tab_dir1, "table_labels.csv"))
 
-sa4ss::table_format(x = read.csv(file.path(tab_dir1, "TimeSeries.csv")),
-                  caption = "Times series",
-                  label = "timeseries")
 ```
+
+\newpage
+\begin{landscape}
+```{r}
+
+```
+\end{landscape}

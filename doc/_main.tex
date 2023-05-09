@@ -523,9 +523,9 @@ In the 2013 assessment, the exploration of maturity analyses from the \gls{s-wcg
 
 \begin{equation} M(L) = (1+e^{-2.3(L-31.42)})^{-1}\end{equation}
 
-\emph{\emph{Figure MAT-1}} shows the fit of the maturity curve of the model per class of depth and latitude.
+Figure \ref{fig:mat1} shows the fit of the maturity curve of the model per class of depth and latitude.
 
-A sensitivity analysis will assess the impact of this change in the maturity curve on the model estimates by considering the newly estimated parameters, the Pearson and Gunderson's relationship from the 2013, and one intermediate option \emph{\emph{(FigureMAT-2)}}.
+A sensitivity analysis will assess the impact of this change in the maturity curve on the model estimates by considering the newly estimated parameters, the Pearson and Gunderson's relationship from the 2013, and one intermediate option (Figure \ref{fig:mat2}).
 
 \hypertarget{fecundity}{%
 \paragraph{Fecundity}\label{fecundity}}
@@ -558,7 +558,7 @@ Because the Butler data were sex-specific, had a higher sample size, were aged b
 
 where: \(L_{a_{1}}\) and \(L_{a_{2}}\) are the lengths at reference ages \(a_{1}\) and \(a_{2}\) where \(a_{1}=1\);\(a_{2}=100\) and k is the growth rate. Growth curve estimation was conducted in R using the optim() function (R Core Team 2021). Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of \(\frac{\sigma_2}{2}\).
 
-Shortspine Thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growth_LAA1}; \emph{\emph{Table X-LAA-1)}}. The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
+Shortspine Thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growth_LAA1}; \emph{\emph{Table X-LAA-1)}}). The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
 
 Two alternative sensitivity analyses were developed for the 2023 assessment. During the exploratory data analysis phase, we found that specimens collected in the Kline study exhibited higher size-at-age when compared to the Butler specimens (Figure \ref{fig:growth_LAA2}). It is unknown if these differences should be attributed to spatial differences in growth between central California and northern California/Oregon, bias among age readers, or discrepancies between the total and fork length measurements (Donna Kline, pers. comm., March 2023). In order to account for this alternative growth pattern, we increased the lengths at ages 2 and 100 by 25\% in the upper sensitivity analysis (Figure \ref{fig:growth_LAA2}). The lower sensitivity analysis was defined by decreasing the lengths at ages 2 and 100 by 10\% from the base model.
 
@@ -613,7 +613,7 @@ This assessment assumes a new fecundity relationship, in which fecundity increas
 
 This new assessment, including all exploratory models, profiles, and related analyses, was performed using Stock Synthesis Version 3.30.21 {[}Methot and Wetzel (2013); Methot et al. (2020)). The majority of analyses were performed using multiple recent versions of R (R Core Team 2021), and relied heavily on the `r4ss' R package (Taylor et al. 2021) among others. The assessment model was developed and tested across multiple operating systems, including recent versions of Windows and macOS.
 
-Commercial fisheries landings were divided into three distinct fisheries fleets: a northern trawl fleet (Trawl\_N) operating off the coasts of Oregon and Washington, a southern trawl fleet (Trawl\_S) operating off the coast of California, and a coastwide non-trawl fleet (Non-trawl).
+Commercial fisheries landings were divided into three distinct fisheries fleets: a northern trawl fleet (hereinafter referred to as North Trawl) operating off the coasts of Oregon and Washington, a southern trawl fleet (hereinafter referred to as South Trawl) operating off the coast of California, and a coastwide non-trawl fleet (hereinafter referred to as Non-trawl).
 
 Data from two fisheries-independent scientific surveys were used in this model: the \gls{s-aslope} from 1980-2003, and the more recent WCGBTS from 2004-2022. The triennial survey was further divided into an early (pre-1995) and late period (post-1995) survey to account for the change in depth-sampling that occurred during the 1995 season. These two periods for the triennial survey were treated as separate surveys in the model.
 
@@ -627,7 +627,7 @@ There are 180 estimated parameters in this assessment. The log of unfished recru
 
 Growth, maturity, and fecundity parameters were fixed at values determined by external analyses (\textbf{see 2.3 for more information}). Due to a lack of aging data, growth could not be modeled internally by the assessment, though, like in the 2005 and 2013 models, there is no systematic misfit to the data suggesting that the externally derived growth curves were misspecified. Sensitivity analyses were performed to determine the overall effect of different assumptions regarding growth or maturity (\textbf{Figure XX, Figure XX}).
 
-For this assessment, natural mortality was fixed at a value of 0.04. A likelihood profile exploring alternative natural mortality parameters was also conducted (Figure XX). When naturaly mortality was estimated in the model, the value was \textbf{XX}, which was close to the fixed value of 0.04. This marks a change from the 2013 asessment, where natural mortality was fixed at 0.0505 and a standard deviation on a log scale of 0.5361 (Taylor and Stephens 2013)
+For this assessment, natural mortality was fixed at a value of 0.04. A likelihood profile exploring alternative natural mortality parameters was also conducted (\textbf{Figure XX}). When naturaly mortality was estimated in the model, the value was \textbf{XX}, which was close to the fixed value of 0.04. This marks a change from the 2013 assessment, where natural mortality was fixed at 0.0505 and a standard deviation on a log scale of 0.5361 (Taylor and Stephens 2013)
 
 As in the previous shortspine thornyhead assessment, a Beverton-Holt stock recruitment relationship was assumed. Unlike the 2013 assessment, where steepness was fixed at a value of 0.60, this assessment fixed steepness at 0.72, as recommended by Thorson et al. (2019). A likelihood profile exploring alternative steepness parameters was conducted and the model results were found to be largely insensitive to the assumed value (\textbf{Figure XX}).
 
@@ -672,7 +672,7 @@ The model estimated 135 annual recruitment deviations (1901-2034) as well as the
 
 Selectivity curves for all three fisheries fleets and the three scientific surveys were estimated as dome-shaped.
 
-The early- and late-period Triennial survey possessed the highest degree of dome-shape, with peak selectivity occurring at relatively small length (\textasciitilde26 cm, and \textasciitilde22 cm respectively), before quickly declining. This shape is consistent with the design of the survey which focused its sampling on the relatively shallow shelf, where younger, smaller, shortspine thornyhead live before migrating to deeper waters as they age and mature . and tThere was little difference in the estimated selectivity curves between male and female fish. Meanwhile, the WCGBTS was estimated to have a wide plateau (beginning at \textasciitilde30cm) over which the species is fully selected for, including the lengths over which the species spends the bulk of its lifespan. This indicates that the WCGBTS is sampling a large proportion of the stock, and that annual length composition data from the survey is likely a good representation of the true distribution of lengths in the population.
+The early- and late-period Triennial survey possessed the highest degree of dome-shape, with peak selectivity occurring at relatively small length (\textasciitilde26 cm, and \textasciitilde22 cm respectively), before quickly declining. This shape is consistent with the design of the survey which focused its sampling on the relatively shallow shelf, where younger, smaller, shortspine thornyhead live before migrating to deeper waters as they age and mature . There was little difference in the estimated selectivity curves between male and female fish. Meanwhile, the WCGBTS was estimated to have a wide plateau (beginning at \textasciitilde30cm) over which the species is fully selected for, including the lengths over which the species spends the bulk of its lifespan. This indicates that the WCGBTS is sampling a large proportion of the stock, and that annual length composition data from the survey is likely a good representation of the true distribution of lengths in the population.
 
 The North Trawl fleet was estimated to have a dome-shaped curve with a small plateau around 28 cm in length, and a long tail that spanned nearly the entire range of observed lengths. The South Trawl fleet was estimated to have a very large selectivity plateau (beginning at \textasciitilde30cm, ranging from 30-55cm, with very steep ascending and descending limbs. Finally the Non-Trawl fleet was estimated to have a relatively small plateau beginning at a much higher length than any other fleet or survey (\textasciitilde45 cm). This fits with the assumption that the hook and line gear that is primarily used by the Non-Trawl fleet would not select small shortspine thornyhead.
 
@@ -719,7 +719,7 @@ Twelve-year projections predict that the population is unlikely to experience a 
 Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between ``precautionary'' (B/B0 = 0.40) and ``healthy'' status relative to the reference points (Figure XX). Sustainable total yield (landings plus discards) was estimated at 1,060 mt when using an SPR50\% reference harvest rate and ranged from 870--1,250 mt based on estimates of uncertainty (Table XX). The spawning output equivalent to 40\% of the unfished spawning output (B40\%) was \textbf{8,105 eggs}.\\
 \textbf{The most recent catches (landings plus discards) have been lower than the estimated long-term yields calculated using an SPR50\% reference point, but not as low as the lower bound of the 95\% uncertainty interval. However, this is due to the fishery not fully attaining the full ACL. The \gls{ofl} and \gls{acl} values over the past 6 years have been approximately 2,400 mt and 2,000 mt, respectively.}
 
-Both of those values are higher than the \gls{ofl} and \gls{acl} values predicted in short-term forecasts, which are around 853 mt and 420 mt respectively for 2023--2024 (\textbf{Table XX}). This is reflected in the timeseries of low harvest rates (\textbf{Figure XX}), low 1-SPR values (\textbf{Figure XX}), and the phase plot showing the history of being above the target biomass and below the target fishing intensity reference points (\textbf{Figure XX}).
+Both of those values are higher than the \gls{ofl} and \gls{acl} values predicted in short-term forecasts, which are around \textbf{853 mt and 420 mt} respectively for 2023--2024 (\textbf{Table XX}). This is reflected in the timeseries of low harvest rates (\textbf{Figure XX}), low 1-SPR values (\textbf{Figure XX}), and the phase plot showing the history of being above the target biomass and below the target fishing intensity reference points (\textbf{Figure XX}).
 
 \hypertarget{model-diagnostics}{%
 \subsection{Model Diagnostics}\label{model-diagnostics}}
@@ -904,17 +904,17 @@ West Coast Regional Office. (n.d.). West coast groundfish trawl catch share prog
 \hypertarget{tables}{%
 \section{Tables}\label{tables}}
 
-These will likely need reordering \begingroup\fontsize{10}{12}\selectfont \begingroup\fontsize{10}{12}\selectfont
+Executive Summary \begingroup\fontsize{10}{12}\selectfont \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:catches}Summary of catches by fleet from 2013-2022}\\
+\caption{\label{tab:catches}Recent landings by fleet, total landings summed across fleets, and the total mortality including discards.}\\
 \toprule
-Year & Trawl\_N & Trawl\_S & Non.trawl & Total.Landings & Total.Dead\\
+Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:catches}Summary of catches by fleet from 2013-2022 \textit{(continued)}}\\
+\caption[]{\label{tab:catches}Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. \textit{(continued)}}\\
 \toprule
-Year & Trawl\_N & Trawl\_S & Non.trawl & Total.Landings & Total.Dead\\
+Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endhead
 
@@ -939,14 +939,14 @@ Year & Trawl\_N & Trawl\_S & Non.trawl & Total.Landings & Total.Dead\\
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
-\caption{\label{tab:ssb}SSB.}\\
+\caption{\label{tab:ssb}Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model.}\\
 \toprule
-Year & Spawning.Output & Interval & Fraction.Unfished & Interval.1\\
+Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:ssb}SSB. \textit{(continued)}}\\
+\caption[]{\label{tab:ssb}Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
 \toprule
-Year & Spawning.Output & Interval & Fraction.Unfished & Interval.1\\
+Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
 \midrule
 \endhead
 
@@ -972,14 +972,14 @@ Year & Spawning.Output & Interval & Fraction.Unfished & Interval.1\\
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
-\caption{\label{tab:rec}Recruitment}\\
+\caption{\label{tab:rec}Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model.}\\
 \toprule
-Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
+Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:rec}Recruitment \textit{(continued)}}\\
+\caption[]{\label{tab:rec}Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
 \toprule
-Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
+Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
 \endhead
 
@@ -1004,15 +1004,47 @@ Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:refPoints}Reference Points}\\
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{\label{tab:spr}Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals.}\\
 \toprule
-X & Estimate & Interval\\
+Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:refPoints}Reference Points \textit{(continued)}}\\
+\caption[]{\label{tab:spr}Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals. \textit{(continued)}}\\
 \toprule
-X & Estimate & Interval\\
+Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 1.34 & 1.13–1.55 & 0.0138 & 0.0095–0.0181\\
+2014 & 1.21 & 1.00–1.42 & 0.0115 & 0.0079–0.0151\\
+2015 & 1.24 & 1.02–1.45 & 0.0121 & 0.0083–0.0159\\
+2016 & 1.28 & 1.07–1.49 & 0.0129 & 0.0088–0.0171\\
+2017 & 1.32 & 1.11–1.54 & 0.0139 & 0.0095–0.0184\\
+2018 & 1.18 & 0.96–1.40 & 0.0115 & 0.0078–0.0152\\
+2019 & 1.04 & 0.82–1.25 & 0.0095 & 0.0064–0.0126\\
+2020 & 0.73 & 0.55–0.91 & 0.0059 & 0.0040–0.0078\\
+2021 & 0.66 & 0.49–0.83 & 0.0053 & 0.0036–0.0070\\
+2022 & 0.70 & 0.53–0.87 & 0.0058 & 0.0039–0.0077\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+\newpage
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
+\caption{\label{tab:refPoints}Summary of reference points and management quantities, including estimates of the  95\% intervals.}\\
+\toprule
+Variable of Interest & Estimate & 95\% CI\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:refPoints}Summary of reference points and management quantities, including estimates of the  95\% intervals. \textit{(continued)}}\\
+\toprule
+Variable of Interest & Estimate & 95\% CI\\
 \midrule
 \endhead
 
@@ -1042,51 +1074,51 @@ MSY (mt) & 1,100 & 914–1,286\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
-
+\newpage
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:management}Management}\\
+\caption{\label{tab:management}Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt).}\\
 \toprule
-Year & OFL & ABC & ACL & Landings & Total.Mortality\\
+Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:management}Management \textit{(continued)}}\\
+\caption[]{\label{tab:management}Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). \textit{(continued)}}\\
 \toprule
-Year & OFL & ABC & ACL & Landings & Total.Mortality\\
+Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-2013 & fill in & fill in & fill in & 1,009.21 & 1,085.33\\
-2014 & fill in & fill in & fill in & 834.98 & 900.35\\
-2015 & fill in & fill in & fill in & 878.73 & 944.89\\
-2016 & fill in & fill in & fill in & 931.86 & 1,012.17\\
-2017 & fill in & fill in & fill in & 988.97 & 1,085.14\\
-2018 & fill in & fill in & fill in & 814.60 & 895.10\\
-2019 & fill in & fill in & fill in & 674.37 & 736.75\\
-2020 & fill in & fill in & fill in & 421.64 & 458.94\\
-2021 & fill in & fill in & fill in & 378.13 & 411.82\\
-2022 & fill in & fill in & fill in & 424.98 & 456.93\\*
+2013 & 2333 & 2230 & 1937 & 1,009.21 & 1,085.33\\
+2014 & 2310 & 2208 & 1918 & 834.98 & 900.35\\
+2015 & 3203 & 2668 & 2668 & 878.73 & 944.89\\
+2016 & 3169 & 2640 & 2639 & 931.86 & 1,012.17\\
+2017 & 3144 & 2619 & 2619 & 988.97 & 1,085.14\\
+2018 & 3116 & 2596 & 2596 & 814.60 & 895.10\\
+2019 & 3089 & 2573 & 2573 & 674.37 & 736.75\\
+2020 & 3063 & 2551 & 2552 & 421.64 & 458.94\\
+2021 & 3211 & 2183 & 2184 & 378.13 & 411.82\\
+2022 & 3194 & 2130 & 2130 & 424.98 & 456.93\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
-
+\newpage
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:projetions}Projections}\\
+\caption{\label{tab:projetions}Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.}\\
 \toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+Year & Predicted OFL (mt) & ABC (mt) & Age 1 Biomass (mt) & Spawning Output & Fraction Unfished\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:projetions}Projections \textit{(continued)}}\\
+\caption[]{\label{tab:projetions}Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. \textit{(continued)}}\\
 \toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+Year & Predicted OFL (mt) & ABC (mt) & Age 1 Biomass (mt) & Spawning Output & Fraction Unfished\\
 \midrule
 \endhead
 
@@ -1109,154 +1141,201 @@ Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Outp
 \endgroup{}
 \endgroup{}
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{9}{11}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:summary}Summary table}\\
+\begin{landscape}\begingroup\fontsize{9}{11}\selectfont
+
+\begin{longtable}[t]{l>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}}
+\caption{\label{tab:summarytab}Summary of recent estimates and managment quantities.}\\
 \toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+Quantity & 2013 & 2014 & 2015 & 2016 & 2017 & 2018 & 2019 & 2020 & 2021 & 2022 & 2023\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:summary}Summary table \textit{(continued)}}\\
+\caption[]{\label{tab:summarytab}Summary of recent estimates and managment quantities. \textit{(continued)}}\\
 \toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+Quantity & 2013 & 2014 & 2015 & 2016 & 2017 & 2018 & 2019 & 2020 & 2021 & 2022 & 2023\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
-2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
-2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
-2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
-2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
-2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
-2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
-2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
-2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
-2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
-2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
-2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+OFL & 2333 & 2310 & 3203 & 3169 & 3144 & 3116 & 3089 & 3063 & 3211 & 3194 & 3177\\
+ACL & 1937 & 1918 & 2668 & 2639 & 2619 & 2596 & 2573 & 2552 & 2184 & 2130 & 2078\\
+Total Catch & 1009.206 & 834.979 & 878.73 & 931.86 & 988.973 & 814.596 & 674.365 & 421.6353 & 378.128 & 424.9815 & NA\\
+Total Dead & 1085.334 & 900.348 & 944.894 & 1012.168 & 1085.144 & 895.097 & 736.749 & 458.9371 & 411.8235 & 456.9348 & NA\\
+(1-SPR)/(1-SPR\_50\%) & 1.34 & 1.21 & 1.24 & 1.28 & 1.32 & 1.18 & 1.04 & 0.73 & 0.66 & 0.70 & NA\\
+Exploitation Rate & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & NA\\
+Age 1+ Biomass (mt) & 78,869 & 78,490 & 78,340 & 78,174 & 77,968 & 77,711 & 77,671 & 77,812 & 78,273 & 78,815 & 189,241\\
+Spawning Output & 8,127 & 8,007 & 7,907 & 7,809 & 7,713 & 7,616 & 7,541 & 7,483 & 7,453 & 7,433 & 7,418\\
+Lower Interval & 5,496 & 5,390 & 5,303 & 5,217 & 5,132 & 5,045 & 4,978 & 4,928 & 4,903 & 4,887 & 4,874\\
+Upper Interval & 10,759 & 10,624 & 10,511 & 10,401 & 10,294 & 10,188 & 10,104 & 10,039 & 10,003 & 9,979 & 9,961\\
+Recruits & 5,867 & 4,763 & 4,928 & 5,386 & 5,128 & 4,491 & 7,350 & 8,652 & 9,662 & 9,689 & 9,632\\
+Lower Interval & 2,437 & 2,044 & 2,099 & 2,263 & 2,164 & 1,920 & 3,126 & 3,513 & 3,779 & 3,762 & 3,742\\
+Upper Interval & 14,122 & 11,099 & 11,571 & 12,821 & 12,153 & 10,506 & 17,281 & 21,308 & 24,702 & 24,951 & 24,793\\
+Fraction Unfished & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4\\
+Interval & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5\\*
 \end{longtable}
 \endgroup{}
-\endgroup{}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:allcatches}Catches in all years}\\
-\toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:allcatches}Catches in all years \textit{(continued)}}\\
-\toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
-2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
-2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
-2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
-2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
-2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
-2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
-2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
-2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
-2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
-2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
-2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
-\end{longtable}
-\endgroup{}
+\end{landscape}
 \endgroup{}
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:likelihoods}Likelihood table}\\
+\caption{\label{tab:allcatches}Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.}\\
 \toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:likelihoods}Likelihood table \textit{(continued)}}\\
+\caption[]{\label{tab:allcatches}Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. \textit{(continued)}}\\
 \toprule
-Year & Predicted.OFL..mt. & ABC.Catch..mt. & Age.1..Biomass..mt. & Spawning.Output & Fraction.Unfished\\
+Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
-2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
-2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
-2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
-2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
-2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
-2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
-2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
-2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
-2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
-2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
-2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+1901 & 0.00 & 0.00 & 0.09 & 0.09 & 0.11\\
+1902 & 0.00 & 0.00 & 0.11 & 0.11 & 0.14\\
+1903 & 0.00 & 0.00 & 0.13 & 0.13 & 0.16\\
+1904 & 0.00 & 0.00 & 0.15 & 0.15 & 0.19\\
+1905 & 0.00 & 0.00 & 0.17 & 0.17 & 0.21\\
+1906 & 0.00 & 0.00 & 0.19 & 0.19 & 0.24\\
+1907 & 0.00 & 0.00 & 0.21 & 0.21 & 0.27\\
+1908 & 0.00 & 0.00 & 0.23 & 0.23 & 0.29\\
+1909 & 0.00 & 0.00 & 0.26 & 0.26 & 0.32\\
+1910 & 0.00 & 0.00 & 0.28 & 0.28 & 0.34\\
+1911 & 0.00 & 0.00 & 0.30 & 0.30 & 0.37\\
+1912 & 0.00 & 0.00 & 0.32 & 0.32 & 0.39\\
+1913 & 0.00 & 0.00 & 0.34 & 0.34 & 0.42\\
+1914 & 0.00 & 0.00 & 0.36 & 0.36 & 0.44\\
+1915 & 0.00 & 0.00 & 0.38 & 0.38 & 0.47\\
+1916 & 0.00 & 0.00 & 0.40 & 0.40 & 0.49\\
+1917 & 0.00 & 0.00 & 0.42 & 0.42 & 0.52\\
+1918 & 0.00 & 0.00 & 0.44 & 0.44 & 0.54\\
+1919 & 0.00 & 0.00 & 0.46 & 0.46 & 0.57\\
+1920 & 0.00 & 0.00 & 0.48 & 0.48 & 0.59\\
+1921 & 0.00 & 0.00 & 0.50 & 0.50 & 0.62\\
+1922 & 0.00 & 0.00 & 0.52 & 0.52 & 0.65\\
+1923 & 0.00 & 0.00 & 0.54 & 0.54 & 0.67\\
+1924 & 0.00 & 0.00 & 0.56 & 0.56 & 0.70\\
+1925 & 0.00 & 0.00 & 0.58 & 0.58 & 0.72\\
+1926 & 0.00 & 0.00 & 0.60 & 0.60 & 0.75\\
+1927 & 0.00 & 0.00 & 0.63 & 0.63 & 0.77\\
+1928 & 0.00 & 0.00 & 1.05 & 1.05 & 1.29\\
+1929 & 0.00 & 0.00 & 1.66 & 1.66 & 2.04\\
+1930 & 0.00 & 0.00 & 1.39 & 1.39 & 1.71\\
+1931 & 0.00 & 0.00 & 1.13 & 1.13 & 1.40\\
+1932 & 0.00 & 0.00 & 0.42 & 0.42 & 0.52\\
+1933 & 0.00 & 0.00 & 0.62 & 0.62 & 0.76\\
+1934 & 0.00 & 4.57 & 0.71 & 5.28 & 5.57\\
+1935 & 0.00 & 6.33 & 0.67 & 6.99 & 7.33\\
+1936 & 0.00 & 2.70 & 1.45 & 4.15 & 4.57\\
+1937 & 0.01 & 5.42 & 1.44 & 6.87 & 7.37\\
+1938 & 0.00 & 5.62 & 1.34 & 6.96 & 7.43\\
+1939 & 0.01 & 5.81 & 0.42 & 6.24 & 6.51\\
+1940 & 0.19 & 0.95 & 1.60 & 2.74 & 3.16\\
+1941 & 0.29 & 1.96 & 2.65 & 4.90 & 5.62\\
+1942 & 0.69 & 1.03 & 3.77 & 5.49 & 6.50\\
+1943 & 3.06 & 1.43 & 10.17 & 14.66 & 17.52\\
+1944 & 5.34 & 0.21 & 1.82 & 7.38 & 8.60\\
+1945 & 5.34 & 0.99 & 0.68 & 7.01 & 7.99\\
+1946 & 4.07 & 0.61 & 0.99 & 5.68 & 6.53\\
+1947 & 4.75 & 0.04 & 0.72 & 5.51 & 6.38\\
+1948 & 13.38 & 0.02 & 1.02 & 14.42 & 16.65\\
+1949 & 13.52 & 0.02 & 0.34 & 13.88 & 15.98\\
+1950 & 6.93 & 0.01 & 0.82 & 7.75 & 8.99\\
+1951 & 11.16 & 0.00 & 0.59 & 11.76 & 13.58\\
+1952 & 13.85 & 0.00 & 0.28 & 14.13 & 16.29\\
+1953 & 2.63 & 2.96 & 0.24 & 5.83 & 6.38\\
+1954 & 112.45 & 0.00 & 0.38 & 112.83 & 130.16\\
+1955 & 62.93 & 4.99 & 0.28 & 68.20 & 78.11\\
+1956 & 133.04 & 6.82 & 0.48 & 140.34 & 161.24\\
+1957 & 63.88 & 0.00 & 0.49 & 64.37 & 74.40\\
+1958 & 27.80 & 9.51 & 0.14 & 37.45 & 42.11\\
+1959 & 28.81 & 32.26 & 0.24 & 61.31 & 66.87\\
+1960 & 31.09 & 149.61 & 0.10 & 180.80 & 190.36\\
+1961 & 28.55 & 56.76 & 0.38 & 85.68 & 91.99\\
+1962 & 22.47 & 113.69 & 0.45 & 136.60 & 143.74\\
+1963 & 7.77 & 223.17 & 0.27 & 231.21 & 239.39\\
+1964 & 25.19 & 173.49 & 0.78 & 199.45 & 208.85\\
+1965 & 31.75 & 307.58 & 0.13 & 339.46 & 353.71\\
+1966 & 623.08 & 542.10 & 0.13 & 1,165.31 & 1,275.85\\
+1967 & 375.82 & 867.40 & 0.34 & 1,243.57 & 1,325.61\\
+1968 & 207.45 & 1,834.26 & 0.26 & 2,041.97 & 2,126.46\\
+1969 & 215.73 & 430.43 & 0.95 & 647.10 & 691.30\\
+1970 & 179.79 & 599.25 & 0.26 & 779.30 & 822.34\\
+1971 & 347.53 & 607.82 & 0.08 & 955.43 & 1,021.95\\
+1972 & 390.43 & 1,380.65 & 0.11 & 1,771.19 & 1,864.12\\
+1973 & 704.17 & 2,321.09 & 0.44 & 3,025.70 & 3,186.75\\
+1974 & 219.17 & 1,146.08 & 1.32 & 1,366.58 & 1,427.86\\
+1975 & 399.30 & 1,872.54 & 0.53 & 2,272.37 & 2,376.89\\
+1976 & 103.83 & 1,824.32 & 0.51 & 1,928.66 & 1,991.22\\
+1977 & 112.56 & 1,472.13 & 9.21 & 1,593.90 & 1,650.23\\
+1978 & 176.33 & 1,013.53 & 2.96 & 1,192.82 & 1,244.22\\
+1979 & 65.96 & 1,715.69 & 6.56 & 1,788.21 & 1,844.32\\
+1980 & 179.97 & 1,204.88 & 2.25 & 1,387.10 & 1,444.48\\
+1981 & 132.48 & 1,608.49 & 2.74 & 1,743.71 & 1,806.18\\
+1982 & 293.65 & 1,654.79 & 2.71 & 1,951.15 & 2,038.11\\
+1983 & 480.91 & 1,416.64 & 2.76 & 1,900.30 & 2,008.25\\
+1984 & 1,039.29 & 1,841.97 & 1.18 & 2,882.44 & 3,083.58\\
+1985 & 956.35 & 2,397.97 & 6.00 & 3,360.32 & 3,570.55\\
+1986 & 613.11 & 2,331.52 & 7.98 & 2,952.62 & 3,115.15\\
+1987 & 638.84 & 1,322.44 & 22.19 & 1,983.47 & 2,125.99\\
+1988 & 877.45 & 1,965.85 & 24.92 & 2,868.22 & 3,071.71\\
+1989 & 1,655.55 & 3,123.78 & 35.74 & 4,815.07 & 5,186.74\\
+1990 & 2,092.81 & 1,911.73 & 31.36 & 4,035.90 & 4,446.28\\
+1991 & 2,416.99 & 995.94 & 53.54 & 3,466.47 & 3,913.58\\
+1992 & 1,782.91 & 1,455.11 & 61.25 & 3,299.27 & 3,666.81\\
+1993 & 2,010.20 & 1,571.84 & 26.59 & 3,608.63 & 4,020.76\\
+1994 & 2,083.16 & 1,182.92 & 21.00 & 3,287.08 & 3,707.05\\
+1995 & 953.79 & 929.27 & 57.01 & 1,940.08 & 2,163.71\\
+1996 & 810.14 & 699.59 & 100.09 & 1,609.82 & 1,813.97\\
+1997 & 689.59 & 654.17 & 62.74 & 1,406.50 & 1,582.16\\
+1998 & 582.09 & 593.35 & 62.18 & 1,237.62 & 1,394.04\\
+1999 & 373.90 & 309.07 & 64.39 & 747.36 & 853.31\\
+2000 & 340.72 & 421.91 & 66.59 & 829.22 & 936.44\\
+2001 & 276.61 & 197.49 & 57.98 & 532.08 & 615.45\\
+2002 & 288.51 & 364.76 & 114.25 & 767.53 & 877.03\\
+2003 & 346.05 & 302.40 & 166.56 & 815.01 & 949.46\\
+2004 & 328.55 & 286.59 & 139.49 & 754.62 & 879.92\\
+2005 & 292.59 & 214.11 & 149.69 & 656.39 & 773.97\\
+2006 & 334.06 & 210.53 & 159.17 & 703.77 & 835.31\\
+2007 & 626.03 & 222.56 & 158.80 & 1,007.39 & 1,106.19\\
+2008 & 972.95 & 259.94 & 196.97 & 1,429.86 & 1,571.49\\
+2009 & 1,022.69 & 308.38 & 200.62 & 1,531.70 & 1,682.77\\
+2010 & 834.86 & 284.22 & 228.36 & 1,347.44 & 1,490.25\\
+2011 & 483.47 & 232.99 & 260.52 & 976.98 & 1,070.02\\
+2012 & 455.93 & 263.59 & 192.07 & 911.59 & 987.44\\
+2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.33\\
+2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.35\\
+2015 & 503.14 & 244.29 & 131.30 & 878.73 & 944.89\\
+2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.17\\
+2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.14\\
+2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.10\\
+2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.75\\
+2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.94\\
+2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.82\\
+2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.93\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
-
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
-\caption{\label{tab:lables}Table of lables}\\
-\toprule
-caption & altcaption & label & filename\\
-\midrule
-\endfirsthead
-\caption[]{\label{tab:lables}Table of lables \textit{(continued)}}\\
-\toprule
-caption & altcaption & label & filename\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. & NA & removalsES & a\_Catches\_ES.csv\\
-Estimated recent trend in spawning output and the fraction unfished and the 95 percent intervals. & NA & ssbES & b\_SSB\_ES.csv\\
-Estimated recent trend in recruitment and recruitment deviations and the 95 percent intervals. & NA & recrES & c\_Recr\_ES.csv\\
-Estimated recent trend in the (1-SPR)/(1-SPR 50\textbackslash{}\%) where SPR is the spawning potential ratio the exploitation rate, and the  95 percent intervals. & NA & exploitES & d\_SPR\_ES.csv\\
-Summary of reference points and management quantities, including estimates of the  95 percent intervals. & NA & referenceES & e\_ReferencePoints\_ES.csv\\
-Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs),
-                the annual catch limits (ACLs), the total landings, and total mortality (mt). & NA & manageES & f\_Manage\_ES.csv\\
-Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. & NA & projectionES & g\_Projections\_ES.csv\\
-Summary of recent estimates and managment quantities & NA & summaryES & i\_Summary\_ES.csv\\
-Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. & NA & allcatches & Catches\_All\_Years.csv\\
-Time series of population estimates from the base model. & NA & timeseries & TimeSeries.csv\\
-Likelihood components by source. & NA & likes & likelihoods.csv\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
+\newpage
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}}
-\caption{\label{tab:timeseries}Times series}\\
+\caption{\label{tab:timeseries}Time series of population estimates from the base model.}\\
 \toprule
-Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.Unfished & Age.0.Recruits & Total.Mortality..mt. & X.1.SPR...1.SPR\_50.. & Exploitation.Rate\\
+Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfished & Age 0 Recruits & Total Mortality & (1-SPR)/(1-SPR 50\%) & Exploitation Rate\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:timeseries}Times series \textit{(continued)}}\\
+\caption[]{\label{tab:timeseries}Time series of population estimates from the base model. \textit{(continued)}}\\
 \toprule
-Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.Unfished & Age.0.Recruits & Total.Mortality..mt. & X.1.SPR...1.SPR\_50.. & Exploitation.Rate\\
+Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfished & Age 0 Recruits & Total Mortality & (1-SPR)/(1-SPR 50\%) & Exploitation Rate\\
 \midrule
 \endhead
 
@@ -1400,32 +1479,73 @@ Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.U
 \end{longtable}
 \endgroup{}
 \endgroup{}
+\newpage
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}}
+\caption{\label{tab:likelihoods}Likelihood components by source.}\\
+\toprule
+Source & Likelihood Component\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:likelihoods}Likelihood components by source. \textit{(continued)}}\\
+\toprule
+Source & Likelihood Component\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+TOTAL & 718.4490000\\
+Catch & 0.0000000\\
+Equil catch & 0.0000000\\
+Survey & -47.0082000\\
+Discard & 414.6660000\\
+Mean body wt & -78.9817000\\
+Length comp & 440.1620000\\
+Recruitment & -12.3547000\\
+InitEQ Regime & 0.0000000\\
+Forecast Recruitment & 0.0921290\\
+Parm priors & 1.8730400\\
+Parm devs & 0.0000000\\
+F Ballpark & 0.0000000\\
+F Ballpark(info only) 1999 estF tgtF & 0.0164517\\
+Crash Pen & 0.0000000\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\newpage
+\begin{landscape}
+
+\end{landscape}
 
 \clearpage
 
 \hypertarget{figures}{%
 \section{Figures}\label{figures}}
 
+\hypertarget{introductory-figures}{%
+\subsection{Introductory Figures}\label{introductory-figures}}
+
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png} \newpage
+
+\begin{verbatim}
+
+![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.\label{fig:thornyhead-ratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
+\end{verbatim}
+
+\newpage
+
+\begin{verbatim}
+
+![Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
+\end{verbatim}
+
 \hypertarget{data-figures}{%
-\section{Data figures}\label{data-figures}}
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png}
-\caption{Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png}
-\caption{Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.\label{fig:thornyhead-ratio}}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png}
-\caption{Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}}
-\end{figure}
+\subsection{Data Figures}\label{data-figures}}
 
 \begin{figure}
 \centering
@@ -1439,33 +1559,41 @@ Year & Total.Biomass..mt. & Spawning.Output & Total.Biomass.1...mt. & Fraction.U
 \caption{Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png}
-\caption{Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}}
-\end{figure}
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png} \newpage
 
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png}
-\caption{Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}}
-\end{figure}
+\begin{verbatim}
 
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png}
-\caption{Survey length composition data.\label{fig:survey_comps}}
-\end{figure}
+![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
+\end{verbatim}
 
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png}
-\caption{Growth curve comparison. .\label{fig:growth_LAA1}}
-\end{figure}
+\begin{verbatim}
 
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png}
-\caption{Growth curve sensitivities.\label{fig:growth_LAA2}}
-\end{figure}
+![Survey length composition data.\label{fig:survey_comps}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
+\end{verbatim}
+
+\begin{verbatim}
+
+![Growth curve comparison. .\label{fig:growth_LAA1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png){width=100% height=100% alt="."}
+\end{verbatim}
+
+\begin{verbatim}
+
+![Growth curve sensitivities.\label{fig:growth_LAA2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png){width=100% height=100% alt="."}
+\end{verbatim}
+
+\begin{verbatim}
+
+![Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png){width=100% height=100% alt="."}
+\end{verbatim}
+
+\begin{verbatim}
+
+![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="."}
+\end{verbatim}
+
+\hypertarget{base-model-figures}{%
+\subsection{Base Model Figures}\label{base-model-figures}}
+
+\hypertarget{sensitivity-analysis}{%
+\subsection{Sensitivity Analysis}\label{sensitivity-analysis}}
 \end{document}
