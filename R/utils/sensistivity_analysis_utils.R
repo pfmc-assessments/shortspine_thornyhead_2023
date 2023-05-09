@@ -186,6 +186,20 @@ update_SA_table <- function(SumUp, dir_SensAnal) {
   
   SumUp <- merge(SumUp, Topic, by = "Topic")
   SumUp <- SumUp[order(SumUp$ID),]
+  tmpOrder <- gsub(x = SumUp$`SA number`, pattern = "Item ", replacement = "")
+  tmpOrdered <- NULL
+  for(i in 1:length(tmpOrder)){
+    tmpOrdered <- rbind(tmpOrdered, 
+                        c(i,
+                          an(unlist(strsplit(tmpOrder[i], "[.]"))[1]),
+                          an(unlist(strsplit(tmpOrder[i], "[.]"))[2]))
+    )
+  }
+  tmpOrdered <- as.data.frame(tmpOrdered)
+  tmpOrdered <- tmpOrdered[
+    with(tmpOrdered, order(tmpOrdered[,2], tmpOrdered[,3])),
+  ]
+  SumUp <- SumUp[tmpOrdered$V1,]
   rownames(SumUp) <- NULL
   
   row_top <- NULL
@@ -326,6 +340,26 @@ update_Models_SA_table <- function(Models_SA, dir_SensAnal) {
   Models_SA <- merge(Models_SA, Topic, by = "Topic")
   Models_SA <- rbind(baseModel, Models_SA)
   Models_SA <- Models_SA[order(Models_SA$ID),]
+  
+  tmpOrder <- gsub(x = Models_SA$`SA number`, pattern = "Item ", replacement = "")
+  tmpOrdered <- NULL
+  for(i in 1:length(tmpOrder)){
+    tmpOrdered <- rbind(tmpOrdered, 
+                        c(i,
+                          an(unlist(strsplit(tmpOrder[i], "[.]"))[1]),
+                          an(unlist(strsplit(tmpOrder[i], "[.]"))[2]))
+    )
+  }
+  tmpOrdered <- as.data.frame(tmpOrdered)
+  tmpOrdered <- tmpOrdered[
+    with(tmpOrdered, order(tmpOrdered[,2], tmpOrdered[,3])),
+  ]
+  tmpOrderedNA <- tmpOrdered[which(is.na(tmpOrdered$V2)),]
+  tmpOrderedNA <- tmpOrderedNA[order(tmpOrderedNA$V1),]
+  tmpOrdered <- rbind(tmpOrderedNA,
+                      tmpOrdered[which(!is.na(tmpOrdered$V2)),]
+  )
+  Models_SA <- Models_SA[tmpOrdered$V1,]
   
   row_top <- NULL
   for (i in 1:dim(Models_SA)[1]) {
