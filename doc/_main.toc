@@ -8,11 +8,11 @@
 \contentsline {subsection}{Exploitation status}{v}{section*.11}%
 \contentsline {subsection}{Ecosystem considerations}{viii}{section*.16}%
 \contentsline {subsection}{Reference points}{viii}{section*.17}%
-\contentsline {subsection}{Management performance}{viii}{section*.18}%
-\contentsline {subsection}{Unresolved problems and major uncertainties}{ix}{section*.19}%
-\contentsline {subsection}{Decision table and projections}{ix}{section*.20}%
-\contentsline {subsection}{Scientific uncertainty}{ix}{section*.21}%
-\contentsline {subsection}{Research and data needs}{ix}{section*.22}%
+\contentsline {subsection}{Management performance}{ix}{section*.19}%
+\contentsline {subsection}{Unresolved problems and major uncertainties}{x}{section*.20}%
+\contentsline {subsection}{Decision table and projections}{x}{section*.21}%
+\contentsline {subsection}{Scientific uncertainty}{x}{section*.22}%
+\contentsline {subsection}{Research and data needs}{xi}{section*.23}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Basic Information}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Stock Structure}{1}{subsection.1.2}%

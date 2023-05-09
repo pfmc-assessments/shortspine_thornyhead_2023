@@ -86,7 +86,7 @@ proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES.csv"))
 names(proj_tab)<-c("Year", "Predicted OFL (mt)", "ABC (mt)", "Age 1 Biomass (mt)", "Spawning Output", "Fraction Unfished") 
 sa4ss::table_format(x = proj_tab,
                   caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.",
-                  label = "projetions")
+                  label = "projections")
 
 #Summary Tables 
 sum_tab<-read.csv(file.path(tab_dir1, "i_Summary_ES.csv"))
@@ -148,6 +148,7 @@ sa4ss::table_format(x = allcatches_tab,
 ts_tab<-read.csv(file.path(tab_dir1, "TimeSeries.csv"))
 names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Total Biomass (mt)", "Fraction Unfished", "Age 0 Recruits", "Total Mortality", "(1-SPR)/(1-SPR 50%)", "Exploitation Rate")
 sa4ss::table_format(x = ts_tab,
+                    digits = 2,
                   caption = "Time series of population estimates from the base model.",
                   label = "ts")
 

@@ -1,6 +1,6 @@
 ---
 author:
-  - name: Joshua Zahner
+  - name: Joshua A. Zahner
     code: 1
     first: J
     middle: 'A'
@@ -15,7 +15,7 @@ author:
     first: S
     middle: ''
     family: Beyer
-  - name: Adam Hayes
+  - name: Adam L. Hayes
     code: 1
     first: A
     middle: 'L'
@@ -25,7 +25,7 @@ author:
     first: P-Y
     middle: ''
     family: Hernvann
-  - name: Andrea Odell
+  - name: Andrea N. Odell
     code: 3
     first: A
     middle: 'N'

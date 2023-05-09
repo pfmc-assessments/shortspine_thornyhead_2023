@@ -130,17 +130,49 @@ Note which, if any, ecosystem factors are used in the assessment and how (e.g., 
 
 ## Reference points{-}
 
-Replace text with
-management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
+Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” (B/B0 = 0.40) and “healthy” (B.B0 > 0.40) status relative to the reference points (Figure XX). Sustainable total yield (landings plus discards) was estimated at 1,060 mt when using an SPR50% reference harvest rate and ranged from 870–1,250 mt based on estimates of uncertainty (Table XX). The spawning output equivalent to 40% of the unfished spawning output (B40%) was 8.273 trillion eggs.  The most recent catches (landings plus discards) have been lower than the estimated long-term yields calculated using an SPR50% reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full ACL. The OFL and ABC values over the past 6 years have been approximately 3100 mt and 2,500 mt, respectively.
+
 Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
+```{r, results='asis'}
+#Reference Points 
+ref_tab<-read.csv(file.path(tab_dir1, "e_ReferencePoints_ES.csv"))
+names(ref_tab)<-c("Variable of Interest", "Estimate", "95% CI")  
+sa4ss::table_format(x = ref_tab,
+                  caption = "Summary of reference points and management quantities, including estimates of the  95\\% intervals.",
+                  label = "refPoints",
+                  align = c("l", "l", "l"))
+```
+
+```{r, results = "asis"}
+sa4ss::add_figure(filein = file.path(fig_dir3, "yield2_yield_curve_with_refpoints.png"), 
+                  caption = "Estimated yield curve with reference points.", 
+                  label = "yield curve")
+```
 
 ## Management performance{-}
 
-Include Table of most recent 10 years of
-catches in comparison with OFL, ABC, HG, and OY/ACL values,
-overfishing levels,
-actual catch and discard.
-Include OFL (encountered), OFL (retained), and OFL (dead) if different due to discard and discard mortality.
+Catches for shortspine thornyheads have not fully attained the catch limits in recent years. ACLs have hovered around 2500 mt since 2013, while total mortality has never exceeded 1085 mt, and is often smaller than even that. The fishery for shortspine thornyhead may be limited more by the ACLs on sablefish with which they co-occur and by the challenging economics of deep sea fishing, than by the management measures currently in place.
+```{r, results='asis'}
+#management 
+mngmt_tab<-read.csv(file.path(tab_dir1, "f_Manage_ES.csv"))
+names(mngmt_tab)<-c("Year", "OFL", "ABC", "ACL", "Landings", "Total Mortality") 
+
+#Management values from https://www.pcouncil.org/harvest-specifications-regulations-and-seasons/
+ofl<-c(2333,2310,3203,3169,3144,3116,3089,3063,3211,3194)
+
+abc<-c(2230,2208,2668,2640,2619,2596,2573,2551,2183,2130)
+
+acl<-c(1937,1918,2668,2639,2619,2596,2573,2552,2184,2130)
+
+mngmt_tab<-mngmt_tab%>%
+  mutate(OFL = ofl,
+         ABC = abc,
+         ACL = acl)
+ 
+sa4ss::table_format(x = mngmt_tab,
+                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt).",
+                  label = "management")
+```
 
 ## Unresolved problems and major uncertainties{-}
 
