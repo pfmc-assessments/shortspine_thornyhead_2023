@@ -45,18 +45,25 @@ sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "),
 
 # Figure 2 Unid thornyheads and proportion shortspine
 sa4ss::add_figure(filein = file.path(fig_dir1, "thornyhead-ratio.png "), 
-                  caption = "Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.", 
+                  caption = "Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.", 
                   label = "thornyhead-ratio")
 
 # Add a page break
 cat("\n\\newpage\n\n")
+```
 
+\clearpage
+
+```{r,  results = "asis"}
 # Figure 3 Catch history
 sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"), 
                   caption = "Estimated landing history for shortspine thornyhead.", 
                   label = "catch_hist")
+```
 
+\newpage
 
+```{r,  results = "asis"}
 #These figures come out of both the data folder and the model folder
 
 # Figure 4 Data Sources Figure

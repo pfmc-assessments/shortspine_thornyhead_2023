@@ -73,7 +73,7 @@
 \ifxetex
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
   \usepackage{polyglossia}
-  \setmainlanguage[]{}
+  \setmainlanguage[]{english}
 \else
   \usepackage[shorthands=off,main=english]{babel}
 \fi
@@ -122,8 +122,6 @@
 \trAuthsBack{}. \trYear{}. \trTitle{}. \glsentrylong{pfmc}, Portland, Oregon. \pageref{LastPage}{}\,p.
 \end{hangparas}}
 
-\newcommand\includegraphicsifexists[2][width=\linewidth]{\IfFileExists{#2}{\includegraphics[#1]{#2}}{}}
-
 \begin{document}
 
 %%%%% Frontmatter %%%%%
@@ -140,8 +138,6 @@
 % \textnormal{\MakeTextUppercase{\trTitle{}}}
 \vspace{1.5cm}
 {\Large\textbf\newline{Status of Shortspine Thornyhead (\emph{Sebastolobus alascanus}) along the US West coast in 2023}}
-
-\includegraphicsifexists[width=4in]{figure_title.png}
 \vfill
 by\\
 Joshua Zahner\textsuperscript{1}\\
@@ -219,41 +215,219 @@ Correct citation for this publication:
 \subsection*{Stock}\label{stock}}
 \addcontentsline{toc}{subsection}{Stock}
 
-This assessment reports the status of shortspine thornyhead (\emph{Sebastolobus alascanus}) off the US West coast using data through xxxx.
+This assessment applies to Shortspine thornyhead (Sebastolobus alascanus) off of the west coast of the United States from the U.S.-Canada border to the U.S.-Mexico border using data through 2023. Shortspine thornyheads are modeled in this assessment as a single stock. They have been reported as deep as 1,524 m, and this assessment applies to their full depth range although survey and fishery data are only available down to 1,280 m.
 
 \hypertarget{catches}{%
 \subsection*{Catches}\label{catches}}
 \addcontentsline{toc}{subsection}{Catches}
 
-Replace text with trends and current levels. Include Table for last 10 years. Include Figure with long-term estimates.
+Landings of shortspine are estimated to have risen to a peak of 4,815 mt in 1989, followed by a sharp decline during a period of trip limits and other management measures imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyheads, the fishery had more moderate removals of between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model.
+
+Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline. For this assessment, trawl landings were divided into North (the waters off Washington and Oregon) and South (the waters off California) fleets, and non-trawl landings represent one, coastwide fleet. Discard rates (landings divided by total catch) for shortspine have been estimated as high as 43\% per year, but are more frequently below 20\%. Discard rates in the trawl fleets, available from the West Coast Groundfish Observer Program (WCGOP), declined from 2003--2011 and have since increased from 2012-present, when the catch shares system began.
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\caption{\label{tab:catches}Recent landings by fleet, total landings summed across fleets, and the total mortality including discards.}\\
+\toprule
+Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:catches}Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. \textit{(continued)}}\\
+\toprule
+Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.62\\
+2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.66\\
+2015 & 503.14 & 244.29 & 131.30 & 878.73 & 945.40\\
+2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.75\\
+2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.60\\
+2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.39\\
+2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.82\\
+2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.87\\
+2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.62\\
+2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.65\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png}
+\caption{Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}}
+\end{figure}
 
 \hypertarget{data-and-assessment}{%
 \subsection*{Data and assessment}\label{data-and-assessment}}
 \addcontentsline{toc}{subsection}{Data and assessment}
 
-This assessment uses the stock assessment framework Stock Synthesis
+The most recent assessment for shortspine thornyhead was conducted in 2012 (Taylor and Stephens 2013). Stock status was determined to be above the target biomass and catches did not attain the full management limits so reassessment of thornyheads has not been a higher priority. This assessment used Stock Synthesis (Methot and Wetzel 2013) Version 3.30.21, used in many other recent west coast assessments.
 
-(SS3).
+Data were divided into three fishery fleets: North trawl (the waters off Washington and Oregon), South trawl (the waters off California), and coastwide non-trawl, and three survey fleets: the Alaska Fishery Science Center (AFSC) Triennial Shelf Survey from 1980-2003, which was divided into early (pre-1995) and late period (post-1995) to account for a change in depth-sampling, and the West Coast Groundfish Bottom Trawl Survey (WCGBTS), 2004-2022.
 
-Replace text with date of last assessment, type of assessment model, data available, new information, and information lacking.
+Most data used in the 2012 assessment were newly pulled and processed for this assessment, including length compositions from all fishing and survey fleets, indices of abundance derived from new geostatistical analyses, discard rates from both a 1980s observer study (Pikitch et al., 1988) and the current WCGOP, historical catch data from Washington, Oregon, and California, and all reported catches from 1981-2022. The only data taken from the previous assessment without reanalysis were discard rates from the Enhanced Data Collection Project (EDCP) study in the 1990s.
+
+New maturity analyses of samples collected in the WCGBTS in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (M. Head, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning. This assessment also assumes a new fecundity relationship, in which fecundity increases with body size. New growth curves were estimated, using data from Butler (1995), which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by Thorson et al. (2019). Natural mortality was also slightly updated from the 2013 assessment to be fixed at 0.04.
+
+This assessment estimated 180 parameters. The log of the unfished equilibrium recruitment, log(R0), controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 43 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
 \hypertarget{stock-biomass-and-dynamics}{%
 \subsection*{Stock biomass and dynamics}\label{stock-biomass-and-dynamics}}
 \addcontentsline{toc}{subsection}{Stock biomass and dynamics}
 
-Replace text with trends and current levels relative to virgin or historic levels and description of uncertainty. Include Table for last 10 years. Include Figure with long-term estimates.
+Unfished equilibrium spawning output (B0) is estimated to be 20.332 trillion eggs, with a 95\% confidence interval of 16.338-24.327 trillion eggs. The B0 estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned eggs. Spawning biomass is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs, which represents a stock status or ``depletion'' (represented as spawning biomass in 2023, B2023, divided by B0) of 41.4\% (Figure XX). The depletion in 2013 was estimated to be 43.6\%, a large decrease from what was estimated in 2013 (\textasciitilde75\%).
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{\label{tab:ssb}Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model.}\\
+\toprule
+Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:ssb}Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
+\toprule
+Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 8,875 & 5,904–11,845 & 0.4 & 0.4–0.5\\
+2014 & 8,767 & 5,807–11,727 & 0.4 & 0.4–0.5\\
+2015 & 8,679 & 5,728–11,630 & 0.4 & 0.3–0.5\\
+2016 & 8,593 & 5,650–11,536 & 0.4 & 0.3–0.5\\
+2017 & 8,508 & 5,572–11,445 & 0.4 & 0.3–0.5\\
+2018 & 8,423 & 5,492–11,355 & 0.4 & 0.3–0.5\\
+2019 & 8,358 & 5,431–11,286 & 0.4 & 0.3–0.5\\
+2020 & 8,311 & 5,386–11,236 & 0.4 & 0.3–0.5\\
+2021 & 8,291 & 5,366–11,215 & 0.4 & 0.3–0.5\\
+2022 & 8,280 & 5,355–11,205 & 0.4 & 0.3–0.5\\
+2023 & 8,273 & 5,346–11,201 & 0.4 & 0.3–0.5\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png}
+\caption{Estimated spawning output trajectory for shortspine thornyhead.\label{fig:ssb_trajectory}}
+\end{figure}
 
 \hypertarget{recruitment}{%
 \subsection*{Recruitment}\label{recruitment}}
 \addcontentsline{toc}{subsection}{Recruitment}
 
-Replace text with trends and current levels relative to virgin or historic levels and description of uncertainty. Include Table for last 10 years. Include Figure with long-term estimates.
+This assessment assumed a Beverton-Holt stock recruitment relationship. Steepness (the fraction of expected equilibrium recruitment associated with 20\% of equilibrium spawning biomass) was fixed at 0.7, slightly higher than what was assumed in previous assessments (h=0.60). The scale of the population is largely determined by the log of unfished recruitment (R0), which was estimated to be 9.354. This results in an unfished recruitment of 11,550,000 recruits (9,281,000--13,820,000). Recruitment deviations were estimated for the years 1901 through 2022, and ranged from -0.5 to 1.5 on the log scale. Estimated recruitments do not show high variability, and the uncertainty in each estimate is greater than the variability between estimates.
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{\label{tab:rec}Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model.}\\
+\toprule
+Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:rec}Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
+\toprule
+Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 6,024 & 2,469–14,698 & -0.439 & -1.352–0.474\\
+2014 & 5,962 & 2,446–14,532 & -0.447 & -1.358–0.465\\
+2015 & 5,954 & 2,438–14,542 & -0.446 & -1.360–0.468\\
+2016 & 6,057 & 2,465–14,886 & -0.427 & -1.349–0.495\\
+2017 & 5,836 & 2,385–14,279 & -0.462 & -1.379–0.454\\
+2018 & 5,745 & 2,346–14,069 & -0.476 & -1.393–0.442\\
+2019 & 8,863 & 3,557–22,086 & -0.064 & -1.003–0.874\\
+2020 & 9,536 & 3,760–24,183 & -0.013 & -0.973–0.946\\
+2021 & 10,335 & 3,984–26,811 & 0.044 & -0.943–1.032\\
+2022 & 10,118 & 3,924–26,090 & 0.000 & -0.980–0.980\\
+2023 & 10,117 & 3,924–26,086 & 0.000 & -0.980–0.980\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png}
+\caption{Estimated recruitment timeseries.\label{fig:rec_trajectory}}
+\end{figure}
 
 \hypertarget{exploitation-status}{%
 \subsection*{Exploitation status}\label{exploitation-status}}
 \addcontentsline{toc}{subsection}{Exploitation status}
 
-Replace text with total catch divided by exploitable biomass or SPR harvest rate. Include Table for last 10 years. Include Figure with trend in f relative to target vs.~trend in biomass relative to the target.
+The summary harvest rate (total catch divided by age-1 and older biomass) closely follows the landings trajectory. The harvest rates are estimated to have never exceeded 5\% and have remained below 2\% in the past decade. Expressing exploitation rates in terms of spawning potential ratio (SPR) indicates that the exploitation consistently exceeded the SPR50\% reference point from 1980-2018. However, the stock status is estimated to have never fallen below the B40\% management target, though the uncertainty interval around the 2023 estimate does encapsulate the B40\% target.
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\caption{\label{tab:spr}Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals.}\\
+\toprule
+Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:spr}Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals. \textit{(continued)}}\\
+\toprule
+Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+2013 & 1.25 & 1.03–1.47 & 0.0124 & 0.0084–0.0165\\
+2014 & 1.12 & 0.90–1.34 & 0.0103 & 0.0069–0.0137\\
+2015 & 1.15 & 0.92–1.37 & 0.0109 & 0.0073–0.0145\\
+2016 & 1.19 & 0.96–1.42 & 0.0117 & 0.0078–0.0155\\
+2017 & 1.23 & 1.00–1.46 & 0.0125 & 0.0083–0.0167\\
+2018 & 1.09 & 0.86–1.32 & 0.0103 & 0.0069–0.0138\\
+2019 & 0.95 & 0.73–1.17 & 0.0085 & 0.0056–0.0114\\
+2020 & 0.66 & 0.48–0.84 & 0.0053 & 0.0035–0.0071\\
+2021 & 0.59 & 0.43–0.76 & 0.0047 & 0.0031–0.0063\\
+2022 & 0.64 & 0.47–0.81 & 0.0052 & 0.0034–0.0070\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png}
+\caption{Estimated relative spawning output trajectory for shortspine thornyhead.\label{fig:rel_ssb_trajectory}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png}
+\caption{Summary F rate.\label{fig:summary_f}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png}
+\caption{Estimated spawning potential ratio.\label{fig:spr_trajectory}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png}
+\caption{Phase diagram.\label{fig:phase_diagram}}
+\end{figure}
 
 \hypertarget{ecosystem-considerations}{%
 \subsection*{Ecosystem considerations}\label{ecosystem-considerations}}
@@ -277,7 +451,9 @@ Include Table of most recent 10 years of catches in comparison with OFL, ABC, HG
 \subsection*{Unresolved problems and major uncertainties}\label{unresolved-problems-and-major-uncertainties}}
 \addcontentsline{toc}{subsection}{Unresolved problems and major uncertainties}
 
-Replace text with any special issues that complicate scientific assessment, questions about the best model scenario, etc.
+Major uncertainties in the model are centered around uncertainty in biological processes including growth, maturity, and mortality. The absence of reliable ageing methods for Shortspine thornyhead, particularly, makes it difficult to estimate growth and natural mortality. Sensitivities demonstrated that changes to the growth curve have large effects on the estimated stock status. Likelihood profiles over natural mortality demonstrate the model to be quite sensitive to its assumed value. There is insufficient information in the data to estimate mortality directly, constraining us to use meta-analyses or other mortality estimators, which frequently make use of aging information that is unavailable, and again, highly uncertain for shortspine thornyhead. Due to imperfect seasonal and spatial coverage of histological data for shortspine thornyhead, there is significant uncertainty about the shape of the species' maturity curve, though the model appears to be largely insensitive to variations in maturity.
+
+This model fails to fully capture the observed increase in abundance seen in the WCGBTS index time series in 2021 and 2022. The model also fails to fully capture the peak of the length compositions for the Northern Trawl fleet, underestimating the number of mid-sized fish that the fleet takes \emph{(Figure XX)}. This underestimation appears to be consistent, particularly in the last 10 years \emph{(Figure XX)}, implying a possible recent change in selectivity.
 
 \hypertarget{decision-table-and-projections}{%
 \subsection*{Decision table and projections}\label{decision-table-and-projections}}
@@ -295,7 +471,22 @@ Replace text with the sigma value and the basis for its calculation.
 \subsection*{Research and data needs}\label{research-and-data-needs}}
 \addcontentsline{toc}{subsection}{Research and data needs}
 
-Replace text with information gaps that seriously impede the stock assessment.
+Research and data needs for future assessments include the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Research into ageing methods and availability of reliable age data would be valuable for future stock assessments. Otoliths have been collected in good quantities from the NWFSC survey, but there is currently no validated ageing method for Shortspine thornyhead.
+\item
+  More investigation into maturity of Shortspine thornyhead is necessary to understand the patterns in maturity observed in WCGBTS samples.
+\item
+  Information on possible migration of Shortspine thornyheads would be valuable for understanding stock dynamics. Analysis of trace elements and stable isotopes in shortspine otoliths may provide valuable information on the extent of potential migrations. Possible connections between migration and maturity could likewise be explored.
+\item
+  A greater understanding of the connection between thornyheads and bottom type could be used to refine the indices of abundance. Thornyheads are very well sampled in trawlable habitat, but the extrapolation of density to a survey stratum could be improved by accounting for the proportion of different bottom types within a stratum and the relative density of thornyheads within each bottom type.
+\item
+  Additional investigation into spatial stock structure could be valuable for determining whether future assessments should develop a spatial assessment model, or if shortspine thornyhead should be assessed at distinct spatial scales in the future.
+\end{enumerate}
 
 \pagebreak
 \setlength{\parskip}{5mm plus1mm minus1mm}
@@ -352,7 +543,7 @@ Shortspine Thornyhead diet composition, as derived from stomach content collecti
 \hypertarget{historical-and-current-fishery-information}{%
 \subsection{Historical and Current Fishery Information}\label{historical-and-current-fishery-information}}
 
-Thornyhead harvest has experienced fluctuations over time due to increased depth range of the fisheries, variable markets, and changes in fisheries management. In the early 1900's, landings were minimal because there were few markets for thornyheads and relatively little trawling at depths where the majority of thornyheads occur. Beginning in the 1930s, thornyhead landings increased as they were landed as incidental catch in the California sablefish fishery. The first significant market for thornyheads began in northern California in the early 1960s, when larger (30-35 cm) thornyhead were sold as ``ocean catfish''. By the early 1980s, the minimum marketable size decreased to 25 cm, and in the late 1980s a market for small thornyheads (\textasciitilde20 cm) developed due to the depletion of a related species (\emph{Sebastolobus machrochir}) off the coast of Japan. The fishery moved into deeper waters with the demand for smaller thornyheads and began catching more longspine thornyheads. This is reflected in the changes in proportion of shortspine to total thornyheads through time, which decreased from around 90\% in 1981 to 40\% in 1994 Figure \ref{fig:thornyhead-ratio}.
+Thornyhead harvest has experienced fluctuations over time due to increased depth range of the fisheries, variable markets, and changes in fisheries management. In the early 1900's, landings were minimal because there were few markets for thornyheads and relatively little trawling at depths where the majority of thornyheads occur. Beginning in the 1930s, thornyhead landings increased as they were landed as incidental catch in the California sablefish fishery. The first significant market for thornyheads began in northern California in the early 1960s, when larger (30-35 cm) thornyhead were sold as ``ocean catfish.'' By the early 1980s, the minimum marketable size decreased to 25 cm, and in the late 1980s a market for small thornyheads (\textasciitilde20 cm) developed due to the depletion of a related species (\emph{Sebastolobus machrochir}) off the coast of Japan. The fishery moved into deeper waters with the demand for smaller thornyheads and began catching more longspine thornyheads. This is reflected in the changes in proportion of shortspine to total thornyheads through time, which decreased from around 90\% in 1981 to 40\% in 1994 Figure \ref{fig:thornyhead-ratio}.
 
 Landings of shortspine thornyheads off the coast of California peaked around 3,500 mt in 1989, and have exceeded those from further north in most years (Figure \ref{fig:catch_hist}). In the northern area off of Oregon and Washington, the fishery grew in the early 1980s, with landings peaking in 1991 at around 2200 mt.
 
@@ -452,7 +643,7 @@ Four trawl surveys have been conducted on the U.S. west coast over the past four
 
 The \gls{afsc} conducted a triennial groundfish trawl survey (the ``triennial'' survey) on the continental shelf from 1977 to 2001, although the 1977 survey had incomplete coverage and is not believed to be comparable to the later years. A final survey was conducted in 2004 by the \gls{nwfsc} using the same survey design. In 1995, the timing of the survey shifted so that instead of occurring between mid-July and late September, it was conducted from early June through mid-August. The years 1980--1992 had a maximum depth of 366 m, while from 1995 onward, the maximum depth was extended to 500 m. The shallow limit of the survey was 55 m in all years, but for purposes of computing indices, only tows deeper than 100 m were used as shortspine thornyhead are rarely seen at shallower depths. The triennial survey consists of 9 data points, from surveys operating every third year from 1980--2004.
 
-For some species, the shift in timing between the 1992 and 1995 surveys would be expected to influence their catchability, availability, or distribution. However, thornyheads are believed to be sedentary enough that the change in timing would not be as influential. On the other hand, the increase in depth is expected to significantly increase the range of shortspine thornyhead habitat covered by the survey. In the 2013 assessment, the triennial survey was split into two-time series, separated by the 366 m depth contour, in order to preserve a time series of maximum length while eliminating the influence of the increased depth range. The first time series, ``AFSC Triennial Shelf Survey 1'', consists of 9 data points spanning the range 1980--2004 and covering the depths 100--366 m. The second, ``AFSC Triennial Shelf Survey 2'', consists of 4 data points spanning 1995--2004 and covering depths 366--500 m. This second time series is recognized as providing little information about stock status due to the limited number of points and depth range, but there was no compelling reason to exclude it from the assessment. However, in contrast to the 2013 assessment, this assessment will treat the triennial survey as a single time series for constructing the geostatistical model-based indices, and will use a different set of latitudinal and depth-based strata for survey length compositions.
+For some species, the shift in timing between the 1992 and 1995 surveys would be expected to influence their catchability, availability, or distribution. However, thornyheads are believed to be sedentary enough that the change in timing would not be as influential. On the other hand, the increase in depth is expected to significantly increase the range of shortspine thornyhead habitat covered by the survey. In the 2013 assessment, the triennial survey was split into two-time series, separated by the 366 m depth contour, in order to preserve a time series of maximum length while eliminating the influence of the increased depth range. The first time series, ``AFSC Triennial Shelf Survey 1,'' consists of 9 data points spanning the range 1980--2004 and covering the depths 100--366 m. The second, ``AFSC Triennial Shelf Survey 2,'' consists of 4 data points spanning 1995--2004 and covering depths 366--500 m. This second time series is recognized as providing little information about stock status due to the limited number of points and depth range, but there was no compelling reason to exclude it from the assessment. However, in contrast to the 2013 assessment, this assessment will treat the triennial survey as a single time series for constructing the geostatistical model-based indices, and will use a different set of latitudinal and depth-based strata for survey length compositions.
 
 \hypertarget{and-slope-surveys}{%
 \subsubsection{\texorpdfstring{\acrshort{afsc} and \acrshort{nwfsc} Slope Surveys}{ and  Slope Surveys}}\label{and-slope-surveys}}
@@ -462,7 +653,7 @@ Starting in the late 1990s, two slope surveys were conducted on the west coast. 
 \hypertarget{section-1}{%
 \subsubsection{\texorpdfstring{\acrlong{s-wcgbt}}{}}\label{section-1}}
 
-In 2003, the design of the \gls{s-nwslope} was modified, and the survey was expanded to cover the shelf and slope between 50 m and 1280 m. This combination shelf-slope survey, ``NWFSC Combo Survey'', more recently known as the \gls{s-wcgbt}, has been conducted every year from 2003 to present with consistent design (note that the survey was not conducted in 2020 due to ongoing concerns about COVID-19). Data for the years 2003--2021 were available for this assessment. The \gls{s-wcgbt} represents the largest number of survey observations, the largest depth range, and the most consistent groundfish sampling program in the history of west coast fisheries. Continuing this time series in a consistent manner is vital for improving estimates of current stock status and detecting any future changes in size distribution or abundance of west coast groundfish.
+In 2003, the design of the \gls{s-nwslope} was modified, and the survey was expanded to cover the shelf and slope between 50 m and 1280 m. This combination shelf-slope survey, ``NWFSC Combo Survey,'' more recently known as the \gls{s-wcgbt}, has been conducted every year from 2003 to present with consistent design (note that the survey was not conducted in 2020 due to ongoing concerns about COVID-19). Data for the years 2003--2021 were available for this assessment. The \gls{s-wcgbt} represents the largest number of survey observations, the largest depth range, and the most consistent groundfish sampling program in the history of west coast fisheries. Continuing this time series in a consistent manner is vital for improving estimates of current stock status and detecting any future changes in size distribution or abundance of west coast groundfish.
 
 \hypertarget{survey-stratification}{%
 \subsubsection{Survey Stratification}\label{survey-stratification}}
@@ -921,16 +1112,16 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \endfoot
 \bottomrule
 \endlastfoot
-2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.33\\
-2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.35\\
-2015 & 503.14 & 244.29 & 131.30 & 878.73 & 944.89\\
-2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.17\\
-2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.14\\
-2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.10\\
-2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.75\\
-2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.94\\
-2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.82\\
-2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.93\\*
+2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.62\\
+2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.66\\
+2015 & 503.14 & 244.29 & 131.30 & 878.73 & 945.40\\
+2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.75\\
+2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.60\\
+2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.39\\
+2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.82\\
+2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.87\\
+2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.62\\
+2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.65\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -953,17 +1144,17 @@ Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction 
 \endfoot
 \bottomrule
 \endlastfoot
-2013 & 8,127 & 5,496–10,759 & 0.4 & 0.3–0.5\\
-2014 & 8,007 & 5,390–10,624 & 0.4 & 0.3–0.5\\
-2015 & 7,907 & 5,303–10,511 & 0.4 & 0.3–0.5\\
-2016 & 7,809 & 5,217–10,401 & 0.4 & 0.3–0.5\\
-2017 & 7,713 & 5,132–10,294 & 0.4 & 0.3–0.5\\
-2018 & 7,616 & 5,045–10,188 & 0.4 & 0.3–0.5\\
-2019 & 7,541 & 4,978–10,104 & 0.4 & 0.3–0.5\\
-2020 & 7,483 & 4,928–10,039 & 0.4 & 0.3–0.5\\
-2021 & 7,453 & 4,903–10,003 & 0.4 & 0.3–0.5\\
-2022 & 7,433 & 4,887–9,979 & 0.4 & 0.3–0.5\\
-2023 & 7,418 & 4,874–9,961 & 0.4 & 0.3–0.5\\*
+2013 & 8,875 & 5,904–11,845 & 0.4 & 0.4–0.5\\
+2014 & 8,767 & 5,807–11,727 & 0.4 & 0.4–0.5\\
+2015 & 8,679 & 5,728–11,630 & 0.4 & 0.3–0.5\\
+2016 & 8,593 & 5,650–11,536 & 0.4 & 0.3–0.5\\
+2017 & 8,508 & 5,572–11,445 & 0.4 & 0.3–0.5\\
+2018 & 8,423 & 5,492–11,355 & 0.4 & 0.3–0.5\\
+2019 & 8,358 & 5,431–11,286 & 0.4 & 0.3–0.5\\
+2020 & 8,311 & 5,386–11,236 & 0.4 & 0.3–0.5\\
+2021 & 8,291 & 5,366–11,215 & 0.4 & 0.3–0.5\\
+2022 & 8,280 & 5,355–11,205 & 0.4 & 0.3–0.5\\
+2023 & 8,273 & 5,346–11,201 & 0.4 & 0.3–0.5\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -986,17 +1177,17 @@ Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \endfoot
 \bottomrule
 \endlastfoot
-2013 & 5,867 & 2,437–14,122 & -0.422 & -1.321–0.478\\
-2014 & 4,763 & 2,044–11,099 & -0.627 & -1.487–0.234\\
-2015 & 4,928 & 2,099–11,571 & -0.590 & -1.459–0.279\\
-2016 & 5,386 & 2,263–12,821 & -0.499 & -1.384–0.387\\
-2017 & 5,128 & 2,164–12,153 & -0.545 & -1.425–0.335\\
-2018 & 4,491 & 1,920–10,506 & -0.675 & -1.539–0.189\\
-2019 & 7,350 & 3,126–17,281 & -0.204 & -1.074–0.667\\
-2020 & 8,652 & 3,513–21,308 & -0.062 & -0.988–0.864\\
-2021 & 9,662 & 3,779–24,702 & 0.026 & -0.946–0.997\\
-2022 & 9,689 & 3,762–24,951 & 0.005 & -0.975–0.986\\
-2023 & 9,632 & 3,742–24,793 & 0.000 & -0.980–0.980\\*
+2013 & 6,024 & 2,469–14,698 & -0.439 & -1.352–0.474\\
+2014 & 5,962 & 2,446–14,532 & -0.447 & -1.358–0.465\\
+2015 & 5,954 & 2,438–14,542 & -0.446 & -1.360–0.468\\
+2016 & 6,057 & 2,465–14,886 & -0.427 & -1.349–0.495\\
+2017 & 5,836 & 2,385–14,279 & -0.462 & -1.379–0.454\\
+2018 & 5,745 & 2,346–14,069 & -0.476 & -1.393–0.442\\
+2019 & 8,863 & 3,557–22,086 & -0.064 & -1.003–0.874\\
+2020 & 9,536 & 3,760–24,183 & -0.013 & -0.973–0.946\\
+2021 & 10,335 & 3,984–26,811 & 0.044 & -0.943–1.032\\
+2022 & 10,118 & 3,924–26,090 & 0.000 & -0.980–0.980\\
+2023 & 10,117 & 3,924–26,086 & 0.000 & -0.980–0.980\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1019,16 +1210,16 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \endfoot
 \bottomrule
 \endlastfoot
-2013 & 1.34 & 1.13–1.55 & 0.0138 & 0.0095–0.0181\\
-2014 & 1.21 & 1.00–1.42 & 0.0115 & 0.0079–0.0151\\
-2015 & 1.24 & 1.02–1.45 & 0.0121 & 0.0083–0.0159\\
-2016 & 1.28 & 1.07–1.49 & 0.0129 & 0.0088–0.0171\\
-2017 & 1.32 & 1.11–1.54 & 0.0139 & 0.0095–0.0184\\
-2018 & 1.18 & 0.96–1.40 & 0.0115 & 0.0078–0.0152\\
-2019 & 1.04 & 0.82–1.25 & 0.0095 & 0.0064–0.0126\\
-2020 & 0.73 & 0.55–0.91 & 0.0059 & 0.0040–0.0078\\
-2021 & 0.66 & 0.49–0.83 & 0.0053 & 0.0036–0.0070\\
-2022 & 0.70 & 0.53–0.87 & 0.0058 & 0.0039–0.0077\\*
+2013 & 1.25 & 1.03–1.47 & 0.0124 & 0.0084–0.0165\\
+2014 & 1.12 & 0.90–1.34 & 0.0103 & 0.0069–0.0137\\
+2015 & 1.15 & 0.92–1.37 & 0.0109 & 0.0073–0.0145\\
+2016 & 1.19 & 0.96–1.42 & 0.0117 & 0.0078–0.0155\\
+2017 & 1.23 & 1.00–1.46 & 0.0125 & 0.0083–0.0167\\
+2018 & 1.09 & 0.86–1.32 & 0.0103 & 0.0069–0.0138\\
+2019 & 0.95 & 0.73–1.17 & 0.0085 & 0.0056–0.0114\\
+2020 & 0.66 & 0.48–0.84 & 0.0053 & 0.0035–0.0071\\
+2021 & 0.59 & 0.43–0.76 & 0.0047 & 0.0031–0.0063\\
+2022 & 0.64 & 0.47–0.81 & 0.0052 & 0.0034–0.0070\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1051,26 +1242,26 @@ Variable of Interest & Estimate & 95\% CI\\
 \endfoot
 \bottomrule
 \endlastfoot
-Unfished Spawning Output & 19,597 & 15,956–23,238\\
-Unfished Age 1+ Biomass (mt) & 189,270 & 154,106–224,434\\
-Unfished Recruitment (R0) & 11,169 & 9,094–13,244\\
-Spawning Output (2023) & 7,418 & 4,874–9,961\\
-Fraction Unfished (2023) & 0.38 & 0.30–0.45\\
+Unfished Spawning Output & 20,332 & 16,338–24,327\\
+Unfished Age 1+ Biomass (mt) & 196,023 & 157,510–234,536\\
+Unfished Recruitment (R0) & 11,550 & 9,281–13,820\\
+Spawning Output (2023) & 8,273 & 5,346–11,201\\
+Fraction Unfished (2023) & 0.41 & 0.33–0.49\\
 Reference Points Based SB40\% &  & \\
-Proxy Spawning Output SB40\% & 7,839 & 6,382–9,295\\
+Proxy Spawning Output SB40\% & 8,133 & 6,535–9,731\\
 SPR Resulting in SB40\% & 0.458 & 0.458–0.458\\
-Exploitation Rate Resulting in SB40\% & 0.012 & 0.012–0.012\\
-Yield with SPR Based On SB40\% (mt) & 1,039 & 863–1,215\\
+Exploitation Rate Resulting in SB40\% & 0.012 & 0.011–0.012\\
+Yield with SPR Based On SB40\% (mt) & 1,060 & 869–1,251\\
 Reference Points Based on SPR Proxy for MSY &  & \\
-Proxy Spawning Output (SPR50) & 8,743 & 7,119–10,368\\
+Proxy Spawning Output (SPR50) & 9,071 & 7,289–10,854\\
 SPR50 & 0.500 & -\\
 Exploitation Rate Corresponding to SPR50 & 0.010 & 0.010–0.011\\
-Yield with SPR50 at SB SPR (mt) & 993 & 825–1,160\\
+Yield with SPR50 at SB SPR (mt) & 1,013 & 831–1,195\\
 Reference Points Based on Estimated MSY Values &  & \\
-Spawning Output at MSY (SB MSY) & 5,423 & 4,423–6,423\\
-SPR MSY & 0.347 & 0.345–0.350\\
-Exploitation Rate Corresponding to SPR MSY & 0.017 & 0.017–0.017\\
-MSY (mt) & 1,100 & 914–1,286\\*
+Spawning Output at MSY (SB MSY) & 5,651 & 4,548–6,755\\
+SPR MSY & 0.348 & 0.345–0.351\\
+Exploitation Rate Corresponding to SPR MSY & 0.017 & 0.016–0.017\\
+MSY (mt) & 1,121 & 919–1,323\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1093,16 +1284,16 @@ Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \endfoot
 \bottomrule
 \endlastfoot
-2013 & 2333 & 2230 & 1937 & 1,009.21 & 1,085.33\\
-2014 & 2310 & 2208 & 1918 & 834.98 & 900.35\\
-2015 & 3203 & 2668 & 2668 & 878.73 & 944.89\\
-2016 & 3169 & 2640 & 2639 & 931.86 & 1,012.17\\
-2017 & 3144 & 2619 & 2619 & 988.97 & 1,085.14\\
-2018 & 3116 & 2596 & 2596 & 814.60 & 895.10\\
-2019 & 3089 & 2573 & 2573 & 674.37 & 736.75\\
-2020 & 3063 & 2551 & 2552 & 421.64 & 458.94\\
-2021 & 3211 & 2183 & 2184 & 378.13 & 411.82\\
-2022 & 3194 & 2130 & 2130 & 424.98 & 456.93\\*
+2013 & 2333 & 2230 & 1937 & 1,009.21 & 1,085.62\\
+2014 & 2310 & 2208 & 1918 & 834.98 & 900.66\\
+2015 & 3203 & 2668 & 2668 & 878.73 & 945.40\\
+2016 & 3169 & 2640 & 2639 & 931.86 & 1,012.75\\
+2017 & 3144 & 2619 & 2619 & 988.97 & 1,085.60\\
+2018 & 3116 & 2596 & 2596 & 814.60 & 895.39\\
+2019 & 3089 & 2573 & 2573 & 674.37 & 736.82\\
+2020 & 3063 & 2551 & 2552 & 421.64 & 458.87\\
+2021 & 3211 & 2183 & 2184 & 378.13 & 411.62\\
+2022 & 3194 & 2130 & 2130 & 424.98 & 456.65\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1125,18 +1316,18 @@ Year & Predicted OFL (mt) & ABC (mt) & Age 1 Biomass (mt) & Spawning Output & Fr
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 759.92 & 745.62 & 79,336.10 & 7,417.58 & 0.38\\
-2024 & 773.32 & 757.70 & 79,577.70 & 7,388.20 & 0.38\\
-2025 & 786.24 & 769.46 & 79,817.90 & 7,364.16 & 0.38\\
-2026 & 798.53 & 780.75 & 80,055.30 & 7,345.13 & 0.37\\
-2027 & 810.09 & 791.49 & 80,288.90 & 7,330.73 & 0.37\\
-2028 & 820.87 & 801.62 & 80,518.10 & 7,320.54 & 0.37\\
-2029 & 830.87 & 811.13 & 80,742.50 & 7,314.09 & 0.37\\
-2030 & 840.13 & 820.04 & 80,962.00 & 7,310.89 & 0.37\\
-2031 & 848.69 & 828.38 & 81,176.70 & 7,310.45 & 0.37\\
-2032 & 856.61 & 836.19 & 81,386.60 & 7,312.30 & 0.37\\
-2033 & 863.94 & 843.50 & 81,592.20 & 7,315.99 & 0.37\\
-2034 & 870.74 & 850.35 & 81,793.50 & 7,321.11 & 0.37\\*
+2023 & 856.34 & 420.00 & 88,366.00 & 8,273.34 & 0.41\\
+2024 & 872.85 & 420.00 & 88,980.60 & 8,275.64 & 0.41\\
+2025 & 888.93 & 776.93 & 89,609.70 & 8,284.28 & 0.41\\
+2026 & 899.90 & 778.42 & 89,881.20 & 8,273.27 & 0.41\\
+2027 & 910.21 & 780.05 & 90,156.60 & 8,267.04 & 0.41\\
+2028 & 919.89 & 780.99 & 90,434.90 & 8,265.16 & 0.41\\
+2029 & 929.00 & 781.29 & 90,716.20 & 8,267.24 & 0.41\\
+2030 & 937.62 & 781.04 & 91,000.70 & 8,272.85 & 0.41\\
+2031 & 945.82 & 781.25 & 91,288.50 & 8,281.59 & 0.41\\
+2032 & 953.66 & 780.10 & 91,578.90 & 8,292.98 & 0.41\\
+2033 & 961.20 & 778.58 & 91,873.20 & 8,306.70 & 0.41\\
+2034 & 968.48 & 777.69 & 92,171.70 & 8,322.42 & 0.41\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1163,18 +1354,18 @@ Quantity & 2013 & 2014 & 2015 & 2016 & 2017 & 2018 & 2019 & 2020 & 2021 & 2022 &
 OFL & 2333 & 2310 & 3203 & 3169 & 3144 & 3116 & 3089 & 3063 & 3211 & 3194 & 3177\\
 ACL & 1937 & 1918 & 2668 & 2639 & 2619 & 2596 & 2573 & 2552 & 2184 & 2130 & 2078\\
 Total Catch & 1009.206 & 834.979 & 878.73 & 931.86 & 988.973 & 814.596 & 674.365 & 421.6353 & 378.128 & 424.9815 & NA\\
-Total Dead & 1085.334 & 900.348 & 944.894 & 1012.168 & 1085.144 & 895.097 & 736.749 & 458.9371 & 411.8235 & 456.9348 & NA\\
-(1-SPR)/(1-SPR\_50\%) & 1.34 & 1.21 & 1.24 & 1.28 & 1.32 & 1.18 & 1.04 & 0.73 & 0.66 & 0.70 & NA\\
-Exploitation Rate & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & NA\\
-Age 1+ Biomass (mt) & 78,869 & 78,490 & 78,340 & 78,174 & 77,968 & 77,711 & 77,671 & 77,812 & 78,273 & 78,815 & 189,241\\
-Spawning Output & 8,127 & 8,007 & 7,907 & 7,809 & 7,713 & 7,616 & 7,541 & 7,483 & 7,453 & 7,433 & 7,418\\
-Lower Interval & 5,496 & 5,390 & 5,303 & 5,217 & 5,132 & 5,045 & 4,978 & 4,928 & 4,903 & 4,887 & 4,874\\
-Upper Interval & 10,759 & 10,624 & 10,511 & 10,401 & 10,294 & 10,188 & 10,104 & 10,039 & 10,003 & 9,979 & 9,961\\
-Recruits & 5,867 & 4,763 & 4,928 & 5,386 & 5,128 & 4,491 & 7,350 & 8,652 & 9,662 & 9,689 & 9,632\\
-Lower Interval & 2,437 & 2,044 & 2,099 & 2,263 & 2,164 & 1,920 & 3,126 & 3,513 & 3,779 & 3,762 & 3,742\\
-Upper Interval & 14,122 & 11,099 & 11,571 & 12,821 & 12,153 & 10,506 & 17,281 & 21,308 & 24,702 & 24,951 & 24,793\\
+Total Dead & 1085.616 & 900.664 & 945.402 & 1012.752 & 1085.599 & 895.395 & 736.818 & 458.8692 & 411.6166 & 456.6489 & NA\\
+(1-SPR)/(1-SPR\_50\%) & 1.25 & 1.12 & 1.15 & 1.19 & 1.23 & 1.09 & 0.95 & 0.66 & 0.59 & 0.64 & NA\\
+Exploitation Rate & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.00 & 0.01 & NA\\
+Age 1+ Biomass (mt) & 87,353 & 87,044 & 86,961 & 86,861 & 86,715 & 86,513 & 86,520 & 86,711 & 87,220 & 87,805 & 195,973\\
+Spawning Output & 8,875 & 8,767 & 8,679 & 8,593 & 8,508 & 8,423 & 8,358 & 8,311 & 8,291 & 8,280 & 8,273\\
+Lower Interval & 5,904 & 5,807 & 5,728 & 5,650 & 5,572 & 5,492 & 5,431 & 5,386 & 5,366 & 5,355 & 5,346\\
+Upper Interval & 11,845 & 11,727 & 11,630 & 11,536 & 11,445 & 11,355 & 11,286 & 11,236 & 11,215 & 11,205 & 11,201\\
+Recruits & 6,024 & 5,962 & 5,954 & 6,057 & 5,836 & 5,745 & 8,863 & 9,536 & 10,335 & 10,118 & 10,117\\
+Lower Interval & 2,469 & 2,446 & 2,438 & 2,465 & 2,385 & 2,346 & 3,557 & 3,760 & 3,984 & 3,924 & 3,924\\
+Upper Interval & 14,698 & 14,532 & 14,542 & 14,886 & 14,279 & 14,069 & 22,086 & 24,183 & 26,811 & 26,090 & 26,086\\
 Fraction Unfished & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4\\
-Interval & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5\\*
+Interval & 0.4–0.5 & 0.4–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -1217,109 +1408,109 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 1917 & 0.00 & 0.00 & 0.42 & 0.42 & 0.52\\
 1918 & 0.00 & 0.00 & 0.44 & 0.44 & 0.54\\
 1919 & 0.00 & 0.00 & 0.46 & 0.46 & 0.57\\
-1920 & 0.00 & 0.00 & 0.48 & 0.48 & 0.59\\
+1920 & 0.00 & 0.00 & 0.48 & 0.48 & 0.60\\
 1921 & 0.00 & 0.00 & 0.50 & 0.50 & 0.62\\
 1922 & 0.00 & 0.00 & 0.52 & 0.52 & 0.65\\
 1923 & 0.00 & 0.00 & 0.54 & 0.54 & 0.67\\
 1924 & 0.00 & 0.00 & 0.56 & 0.56 & 0.70\\
 1925 & 0.00 & 0.00 & 0.58 & 0.58 & 0.72\\
 1926 & 0.00 & 0.00 & 0.60 & 0.60 & 0.75\\
-1927 & 0.00 & 0.00 & 0.63 & 0.63 & 0.77\\
+1927 & 0.00 & 0.00 & 0.63 & 0.63 & 0.78\\
 1928 & 0.00 & 0.00 & 1.05 & 1.05 & 1.29\\
-1929 & 0.00 & 0.00 & 1.66 & 1.66 & 2.04\\
-1930 & 0.00 & 0.00 & 1.39 & 1.39 & 1.71\\
+1929 & 0.00 & 0.00 & 1.66 & 1.66 & 2.05\\
+1930 & 0.00 & 0.00 & 1.39 & 1.39 & 1.72\\
 1931 & 0.00 & 0.00 & 1.13 & 1.13 & 1.40\\
 1932 & 0.00 & 0.00 & 0.42 & 0.42 & 0.52\\
-1933 & 0.00 & 0.00 & 0.62 & 0.62 & 0.76\\
-1934 & 0.00 & 4.57 & 0.71 & 5.28 & 5.57\\
-1935 & 0.00 & 6.33 & 0.67 & 6.99 & 7.33\\
-1936 & 0.00 & 2.70 & 1.45 & 4.15 & 4.57\\
-1937 & 0.01 & 5.42 & 1.44 & 6.87 & 7.37\\
-1938 & 0.00 & 5.62 & 1.34 & 6.96 & 7.43\\
-1939 & 0.01 & 5.81 & 0.42 & 6.24 & 6.51\\
-1940 & 0.19 & 0.95 & 1.60 & 2.74 & 3.16\\
-1941 & 0.29 & 1.96 & 2.65 & 4.90 & 5.62\\
-1942 & 0.69 & 1.03 & 3.77 & 5.49 & 6.50\\
-1943 & 3.06 & 1.43 & 10.17 & 14.66 & 17.52\\
-1944 & 5.34 & 0.21 & 1.82 & 7.38 & 8.60\\
-1945 & 5.34 & 0.99 & 0.68 & 7.01 & 7.99\\
-1946 & 4.07 & 0.61 & 0.99 & 5.68 & 6.53\\
-1947 & 4.75 & 0.04 & 0.72 & 5.51 & 6.38\\
-1948 & 13.38 & 0.02 & 1.02 & 14.42 & 16.65\\
-1949 & 13.52 & 0.02 & 0.34 & 13.88 & 15.98\\
-1950 & 6.93 & 0.01 & 0.82 & 7.75 & 8.99\\
-1951 & 11.16 & 0.00 & 0.59 & 11.76 & 13.58\\
-1952 & 13.85 & 0.00 & 0.28 & 14.13 & 16.29\\
-1953 & 2.63 & 2.96 & 0.24 & 5.83 & 6.38\\
-1954 & 112.45 & 0.00 & 0.38 & 112.83 & 130.16\\
-1955 & 62.93 & 4.99 & 0.28 & 68.20 & 78.11\\
-1956 & 133.04 & 6.82 & 0.48 & 140.34 & 161.24\\
-1957 & 63.88 & 0.00 & 0.49 & 64.37 & 74.40\\
-1958 & 27.80 & 9.51 & 0.14 & 37.45 & 42.11\\
-1959 & 28.81 & 32.26 & 0.24 & 61.31 & 66.87\\
-1960 & 31.09 & 149.61 & 0.10 & 180.80 & 190.36\\
-1961 & 28.55 & 56.76 & 0.38 & 85.68 & 91.99\\
-1962 & 22.47 & 113.69 & 0.45 & 136.60 & 143.74\\
-1963 & 7.77 & 223.17 & 0.27 & 231.21 & 239.39\\
-1964 & 25.19 & 173.49 & 0.78 & 199.45 & 208.85\\
-1965 & 31.75 & 307.58 & 0.13 & 339.46 & 353.71\\
-1966 & 623.08 & 542.10 & 0.13 & 1,165.31 & 1,275.85\\
-1967 & 375.82 & 867.40 & 0.34 & 1,243.57 & 1,325.61\\
-1968 & 207.45 & 1,834.26 & 0.26 & 2,041.97 & 2,126.46\\
-1969 & 215.73 & 430.43 & 0.95 & 647.10 & 691.30\\
-1970 & 179.79 & 599.25 & 0.26 & 779.30 & 822.34\\
-1971 & 347.53 & 607.82 & 0.08 & 955.43 & 1,021.95\\
-1972 & 390.43 & 1,380.65 & 0.11 & 1,771.19 & 1,864.12\\
-1973 & 704.17 & 2,321.09 & 0.44 & 3,025.70 & 3,186.75\\
-1974 & 219.17 & 1,146.08 & 1.32 & 1,366.58 & 1,427.86\\
-1975 & 399.30 & 1,872.54 & 0.53 & 2,272.37 & 2,376.89\\
-1976 & 103.83 & 1,824.32 & 0.51 & 1,928.66 & 1,991.22\\
-1977 & 112.56 & 1,472.13 & 9.21 & 1,593.90 & 1,650.23\\
-1978 & 176.33 & 1,013.53 & 2.96 & 1,192.82 & 1,244.22\\
-1979 & 65.96 & 1,715.69 & 6.56 & 1,788.21 & 1,844.32\\
-1980 & 179.97 & 1,204.88 & 2.25 & 1,387.10 & 1,444.48\\
-1981 & 132.48 & 1,608.49 & 2.74 & 1,743.71 & 1,806.18\\
-1982 & 293.65 & 1,654.79 & 2.71 & 1,951.15 & 2,038.11\\
-1983 & 480.91 & 1,416.64 & 2.76 & 1,900.30 & 2,008.25\\
-1984 & 1,039.29 & 1,841.97 & 1.18 & 2,882.44 & 3,083.58\\
-1985 & 956.35 & 2,397.97 & 6.00 & 3,360.32 & 3,570.55\\
-1986 & 613.11 & 2,331.52 & 7.98 & 2,952.62 & 3,115.15\\
-1987 & 638.84 & 1,322.44 & 22.19 & 1,983.47 & 2,125.99\\
-1988 & 877.45 & 1,965.85 & 24.92 & 2,868.22 & 3,071.71\\
-1989 & 1,655.55 & 3,123.78 & 35.74 & 4,815.07 & 5,186.74\\
-1990 & 2,092.81 & 1,911.73 & 31.36 & 4,035.90 & 4,446.28\\
-1991 & 2,416.99 & 995.94 & 53.54 & 3,466.47 & 3,913.58\\
-1992 & 1,782.91 & 1,455.11 & 61.25 & 3,299.27 & 3,666.81\\
-1993 & 2,010.20 & 1,571.84 & 26.59 & 3,608.63 & 4,020.76\\
-1994 & 2,083.16 & 1,182.92 & 21.00 & 3,287.08 & 3,707.05\\
-1995 & 953.79 & 929.27 & 57.01 & 1,940.08 & 2,163.71\\
-1996 & 810.14 & 699.59 & 100.09 & 1,609.82 & 1,813.97\\
-1997 & 689.59 & 654.17 & 62.74 & 1,406.50 & 1,582.16\\
-1998 & 582.09 & 593.35 & 62.18 & 1,237.62 & 1,394.04\\
-1999 & 373.90 & 309.07 & 64.39 & 747.36 & 853.31\\
-2000 & 340.72 & 421.91 & 66.59 & 829.22 & 936.44\\
-2001 & 276.61 & 197.49 & 57.98 & 532.08 & 615.45\\
-2002 & 288.51 & 364.76 & 114.25 & 767.53 & 877.03\\
-2003 & 346.05 & 302.40 & 166.56 & 815.01 & 949.46\\
-2004 & 328.55 & 286.59 & 139.49 & 754.62 & 879.92\\
-2005 & 292.59 & 214.11 & 149.69 & 656.39 & 773.97\\
-2006 & 334.06 & 210.53 & 159.17 & 703.77 & 835.31\\
-2007 & 626.03 & 222.56 & 158.80 & 1,007.39 & 1,106.19\\
-2008 & 972.95 & 259.94 & 196.97 & 1,429.86 & 1,571.49\\
-2009 & 1,022.69 & 308.38 & 200.62 & 1,531.70 & 1,682.77\\
-2010 & 834.86 & 284.22 & 228.36 & 1,347.44 & 1,490.25\\
-2011 & 483.47 & 232.99 & 260.52 & 976.98 & 1,070.02\\
-2012 & 455.93 & 263.59 & 192.07 & 911.59 & 987.44\\
-2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.33\\
-2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.35\\
-2015 & 503.14 & 244.29 & 131.30 & 878.73 & 944.89\\
-2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.17\\
-2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.14\\
-2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.10\\
-2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.75\\
-2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.94\\
-2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.82\\
-2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.93\\*
+1933 & 0.00 & 0.00 & 0.62 & 0.62 & 0.77\\
+1934 & 0.00 & 4.57 & 0.71 & 5.28 & 5.62\\
+1935 & 0.00 & 6.33 & 0.67 & 6.99 & 7.40\\
+1936 & 0.00 & 2.70 & 1.45 & 4.15 & 4.60\\
+1937 & 0.01 & 5.42 & 1.44 & 6.87 & 7.42\\
+1938 & 0.00 & 5.62 & 1.34 & 6.96 & 7.49\\
+1939 & 0.01 & 5.81 & 0.42 & 6.24 & 6.56\\
+1940 & 0.19 & 0.95 & 1.60 & 2.74 & 3.17\\
+1941 & 0.29 & 1.96 & 2.65 & 4.90 & 5.64\\
+1942 & 0.69 & 1.03 & 3.77 & 5.49 & 6.51\\
+1943 & 3.06 & 1.43 & 10.17 & 14.66 & 17.50\\
+1944 & 5.34 & 0.21 & 1.82 & 7.38 & 8.48\\
+1945 & 5.34 & 0.99 & 0.68 & 7.01 & 7.87\\
+1946 & 4.07 & 0.61 & 0.99 & 5.68 & 6.44\\
+1947 & 4.75 & 0.04 & 0.72 & 5.51 & 6.27\\
+1948 & 13.38 & 0.02 & 1.02 & 14.42 & 16.34\\
+1949 & 13.52 & 0.02 & 0.34 & 13.88 & 15.67\\
+1950 & 6.93 & 0.01 & 0.82 & 7.75 & 8.83\\
+1951 & 11.16 & 0.00 & 0.59 & 11.76 & 13.32\\
+1952 & 13.85 & 0.00 & 0.28 & 14.13 & 15.97\\
+1953 & 2.63 & 2.96 & 0.24 & 5.83 & 6.35\\
+1954 & 112.45 & 0.00 & 0.38 & 112.83 & 127.54\\
+1955 & 62.93 & 4.99 & 0.28 & 68.20 & 76.69\\
+1956 & 133.04 & 6.82 & 0.48 & 140.34 & 158.20\\
+1957 & 63.88 & 0.00 & 0.49 & 64.37 & 72.91\\
+1958 & 27.80 & 9.51 & 0.14 & 37.45 & 41.55\\
+1959 & 28.81 & 32.26 & 0.24 & 61.31 & 66.53\\
+1960 & 31.09 & 149.61 & 0.10 & 180.80 & 191.23\\
+1961 & 28.55 & 56.76 & 0.38 & 85.68 & 91.92\\
+1962 & 22.47 & 113.69 & 0.45 & 136.60 & 144.43\\
+1963 & 7.77 & 223.17 & 0.27 & 231.21 & 241.60\\
+1964 & 25.19 & 173.49 & 0.78 & 199.45 & 210.08\\
+1965 & 31.75 & 307.58 & 0.13 & 339.46 & 356.18\\
+1966 & 623.08 & 542.10 & 0.13 & 1,165.31 & 1,265.97\\
+1967 & 375.82 & 867.40 & 0.34 & 1,243.57 & 1,325.03\\
+1968 & 207.45 & 1,834.26 & 0.26 & 2,041.97 & 2,139.58\\
+1969 & 215.73 & 430.43 & 0.95 & 647.10 & 689.99\\
+1970 & 179.79 & 599.25 & 0.26 & 779.30 & 823.42\\
+1971 & 347.53 & 607.82 & 0.08 & 955.43 & 1,018.56\\
+1972 & 390.43 & 1,380.65 & 0.11 & 1,771.19 & 1,866.34\\
+1973 & 704.17 & 2,321.09 & 0.44 & 3,025.70 & 3,188.41\\
+1974 & 219.17 & 1,146.08 & 1.32 & 1,366.58 & 1,431.72\\
+1975 & 399.30 & 1,872.54 & 0.53 & 2,272.37 & 2,381.61\\
+1976 & 103.83 & 1,824.32 & 0.51 & 1,928.66 & 2,002.99\\
+1977 & 112.56 & 1,472.13 & 9.21 & 1,593.90 & 1,658.75\\
+1978 & 176.33 & 1,013.53 & 2.96 & 1,192.82 & 1,247.39\\
+1979 & 65.96 & 1,715.69 & 6.56 & 1,788.21 & 1,855.78\\
+1980 & 179.97 & 1,204.88 & 2.25 & 1,387.10 & 1,449.25\\
+1981 & 132.48 & 1,608.49 & 2.74 & 1,743.71 & 1,815.68\\
+1982 & 293.65 & 1,654.79 & 2.71 & 1,951.15 & 2,044.80\\
+1983 & 480.91 & 1,416.64 & 2.76 & 1,900.30 & 2,009.74\\
+1984 & 1,039.29 & 1,841.97 & 1.18 & 2,882.44 & 3,078.65\\
+1985 & 956.35 & 2,397.97 & 6.00 & 3,360.32 & 3,575.65\\
+1986 & 613.11 & 2,331.52 & 7.98 & 2,952.62 & 3,129.25\\
+1987 & 638.84 & 1,322.44 & 22.19 & 1,983.47 & 2,131.22\\
+1988 & 877.45 & 1,965.85 & 24.92 & 2,868.22 & 3,084.11\\
+1989 & 1,655.55 & 3,123.78 & 35.74 & 4,815.07 & 5,208.77\\
+1990 & 2,092.81 & 1,911.73 & 31.36 & 4,035.90 & 4,451.92\\
+1991 & 2,416.99 & 995.94 & 53.54 & 3,466.47 & 3,907.34\\
+1992 & 1,782.91 & 1,455.11 & 61.25 & 3,299.27 & 3,677.11\\
+1993 & 2,010.20 & 1,571.84 & 26.59 & 3,608.63 & 4,034.78\\
+1994 & 2,083.16 & 1,182.92 & 21.00 & 3,287.08 & 3,716.96\\
+1995 & 953.79 & 929.27 & 57.01 & 1,940.08 & 2,176.77\\
+1996 & 810.14 & 699.59 & 100.09 & 1,609.82 & 1,824.69\\
+1997 & 689.59 & 654.17 & 62.74 & 1,406.50 & 1,592.89\\
+1998 & 582.09 & 593.35 & 62.18 & 1,237.62 & 1,404.29\\
+1999 & 373.90 & 309.07 & 64.39 & 747.36 & 858.57\\
+2000 & 340.72 & 421.91 & 66.59 & 829.22 & 944.10\\
+2001 & 276.61 & 197.49 & 57.98 & 532.08 & 618.30\\
+2002 & 288.51 & 364.76 & 114.25 & 767.53 & 883.27\\
+2003 & 346.05 & 302.40 & 166.56 & 815.01 & 953.33\\
+2004 & 328.55 & 286.59 & 139.49 & 754.62 & 882.55\\
+2005 & 292.59 & 214.11 & 149.69 & 656.39 & 774.51\\
+2006 & 334.06 & 210.53 & 159.17 & 703.77 & 833.84\\
+2007 & 626.03 & 222.56 & 158.80 & 1,007.39 & 1,102.25\\
+2008 & 972.95 & 259.94 & 196.97 & 1,429.86 & 1,563.90\\
+2009 & 1,022.69 & 308.38 & 200.62 & 1,531.70 & 1,673.25\\
+2010 & 834.86 & 284.22 & 228.36 & 1,347.44 & 1,481.92\\
+2011 & 483.47 & 232.99 & 260.52 & 976.98 & 1,069.97\\
+2012 & 455.93 & 263.59 & 192.07 & 911.59 & 987.50\\
+2013 & 547.98 & 294.83 & 166.40 & 1,009.21 & 1,085.62\\
+2014 & 433.12 & 254.05 & 147.81 & 834.98 & 900.66\\
+2015 & 503.14 & 244.29 & 131.30 & 878.73 & 945.40\\
+2016 & 577.19 & 185.73 & 168.94 & 931.86 & 1,012.75\\
+2017 & 606.86 & 158.30 & 223.82 & 988.97 & 1,085.60\\
+2018 & 525.04 & 105.07 & 184.48 & 814.60 & 895.39\\
+2019 & 402.95 & 127.94 & 143.48 & 674.37 & 736.82\\
+2020 & 248.47 & 87.99 & 85.17 & 421.64 & 458.87\\
+2021 & 226.00 & 73.39 & 78.74 & 378.13 & 411.62\\
+2022 & 261.16 & 97.61 & 66.22 & 424.98 & 456.65\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1342,140 +1533,140 @@ Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfi
 \endfoot
 \bottomrule
 \endlastfoot
-1901 & 189,269 & 19,597 & 189,269 & 100.0 & 11,003 & 0.1122950 & 0.000 & 0.0000006\\
-1902 & 189,269 & 19,597 & 189,269 & 100.0 & 10,982 & 0.1382090 & 0.000 & 0.0000007\\
-1903 & 189,267 & 19,597 & 189,267 & 100.0 & 10,959 & 0.1628900 & 0.000 & 0.0000009\\
-1904 & 189,264 & 19,597 & 189,264 & 100.0 & 10,927 & 0.1888040 & 0.000 & 0.0000010\\
-1905 & 189,260 & 19,597 & 189,260 & 100.0 & 10,888 & 0.2134840 & 0.000 & 0.0000011\\
-1906 & 189,256 & 19,597 & 189,256 & 100.0 & 10,849 & 0.2393980 & 0.000 & 0.0000013\\
-1907 & 189,249 & 19,597 & 189,249 & 100.0 & 10,818 & 0.2653130 & 0.000 & 0.0000014\\
-1908 & 189,241 & 19,597 & 189,241 & 100.0 & 10,786 & 0.2899930 & 0.000 & 0.0000015\\
-1909 & 189,231 & 19,597 & 189,231 & 100.0 & 10,742 & 0.3159070 & 0.000 & 0.0000017\\
-1910 & 189,219 & 19,597 & 189,219 & 100.0 & 10,704 & 0.3405870 & 0.000 & 0.0000018\\
-1911 & 189,204 & 19,596 & 189,204 & 100.0 & 10,658 & 0.3665000 & 0.000 & 0.0000019\\
-1912 & 189,187 & 19,596 & 189,187 & 100.0 & 10,624 & 0.3911800 & 0.000 & 0.0000021\\
-1913 & 189,167 & 19,596 & 189,167 & 100.0 & 10,615 & 0.4170920 & 0.000 & 0.0000022\\
-1914 & 189,144 & 19,596 & 189,144 & 100.0 & 10,612 & 0.4417700 & 0.000 & 0.0000023\\
-1915 & 189,117 & 19,596 & 189,117 & 100.0 & 10,573 & 0.4676810 & 0.000 & 0.0000025\\
-1916 & 189,087 & 19,596 & 189,087 & 100.0 & 10,529 & 0.4923570 & 0.000 & 0.0000026\\
-1917 & 189,054 & 19,595 & 189,054 & 100.0 & 10,506 & 0.5182640 & 0.000 & 0.0000027\\
-1918 & 189,016 & 19,595 & 189,016 & 100.0 & 10,492 & 0.5429360 & 0.000 & 0.0000029\\
-1919 & 188,974 & 19,594 & 188,974 & 100.0 & 10,477 & 0.5688400 & 0.000 & 0.0000030\\
-1920 & 188,928 & 19,593 & 188,928 & 100.0 & 10,454 & 0.5935070 & 0.000 & 0.0000031\\
-1921 & 188,878 & 19,592 & 188,878 & 100.0 & 10,440 & 0.6194060 & 0.000 & 0.0000033\\
-1922 & 188,823 & 19,591 & 188,823 & 100.0 & 10,419 & 0.6453020 & 0.000 & 0.0000034\\
-1923 & 188,763 & 19,590 & 188,763 & 100.0 & 10,411 & 0.6699610 & 0.000 & 0.0000035\\
-1924 & 188,699 & 19,588 & 188,699 & 100.0 & 10,413 & 0.6958510 & 0.000 & 0.0000037\\
-1925 & 188,629 & 19,587 & 188,629 & 99.9 & 10,412 & 0.7205040 & 0.001 & 0.0000038\\
-1926 & 188,555 & 19,585 & 188,555 & 99.9 & 10,418 & 0.7463890 & 0.001 & 0.0000040\\
-1927 & 188,477 & 19,582 & 188,477 & 99.9 & 10,429 & 0.7735040 & 0.001 & 0.0000041\\
-1928 & 188,393 & 19,580 & 188,393 & 99.9 & 10,448 & 1.2903600 & 0.001 & 0.0000068\\
-1929 & 188,305 & 19,577 & 188,305 & 99.9 & 10,474 & 2.0428000 & 0.001 & 0.0000108\\
-1930 & 188,211 & 19,574 & 188,211 & 99.9 & 10,509 & 1.7121400 & 0.001 & 0.0000091\\
-1931 & 188,114 & 19,570 & 188,114 & 99.9 & 10,554 & 1.3975400 & 0.001 & 0.0000074\\
-1932 & 188,013 & 19,566 & 188,013 & 99.8 & 10,608 & 0.5166419 & 0.000 & 0.0000027\\
-1933 & 187,909 & 19,561 & 187,909 & 99.8 & 10,673 & 0.7646253 & 0.001 & 0.0000041\\
-1934 & 187,802 & 19,556 & 187,802 & 99.8 & 10,749 & 5.5738870 & 0.004 & 0.0000297\\
-1935 & 187,688 & 19,550 & 187,688 & 99.8 & 10,835 & 7.3338649 & 0.006 & 0.0000391\\
-1936 & 187,569 & 19,544 & 187,569 & 99.7 & 10,931 & 4.5716704 & 0.003 & 0.0000244\\
-1937 & 187,452 & 19,537 & 187,452 & 99.7 & 11,035 & 7.3666203 & 0.006 & 0.0000393\\
-1938 & 187,331 & 19,530 & 187,331 & 99.7 & 11,145 & 7.4312900 & 0.006 & 0.0000397\\
-1939 & 187,210 & 19,522 & 187,210 & 99.6 & 11,255 & 6.5069903 & 0.005 & 0.0000348\\
-1940 & 187,091 & 19,513 & 187,091 & 99.6 & 11,362 & 3.1637620 & 0.002 & 0.0000169\\
-1941 & 186,977 & 19,505 & 186,977 & 99.5 & 11,456 & 5.6164170 & 0.004 & 0.0000300\\
-1942 & 186,862 & 19,496 & 186,862 & 99.5 & 11,532 & 6.5045270 & 0.005 & 0.0000348\\
-1943 & 186,750 & 19,486 & 186,750 & 99.4 & 11,577 & 17.5220900 & 0.013 & 0.0000938\\
-1944 & 186,629 & 19,475 & 186,629 & 99.4 & 11,584 & 8.5984910 & 0.007 & 0.0000461\\
-1945 & 186,522 & 19,465 & 186,522 & 99.3 & 11,542 & 7.9877000 & 0.007 & 0.0000428\\
-1946 & 186,420 & 19,454 & 186,420 & 99.3 & 11,448 & 6.5296970 & 0.006 & 0.0000350\\
-1947 & 186,324 & 19,442 & 186,324 & 99.2 & 11,297 & 6.3834310 & 0.006 & 0.0000343\\
-1948 & 186,232 & 19,431 & 186,232 & 99.2 & 11,092 & 16.6526470 & 0.015 & 0.0000894\\
-1949 & 186,132 & 19,419 & 186,132 & 99.1 & 10,840 & 15.9824768 & 0.014 & 0.0000859\\
-1950 & 186,036 & 19,406 & 186,036 & 99.0 & 10,550 & 8.9854703 & 0.008 & 0.0000483\\
-1951 & 185,950 & 19,394 & 185,950 & 99.0 & 10,206 & 13.5833230 & 0.012 & 0.0000730\\
-1952 & 185,860 & 19,381 & 185,860 & 98.9 & 9,851 & 16.2945130 & 0.015 & 0.0000877\\
-1953 & 185,766 & 19,368 & 185,766 & 98.8 & 9,497 & 6.3777980 & 0.005 & 0.0000343\\
-1954 & 185,680 & 19,356 & 185,680 & 98.8 & 9,153 & 130.1630280 & 0.114 & 0.0007010\\
-1955 & 185,459 & 19,333 & 185,459 & 98.7 & 8,829 & 78.1098160 & 0.069 & 0.0004212\\
-1956 & 185,287 & 19,315 & 185,287 & 98.6 & 8,531 & 161.2407510 & 0.140 & 0.0008702\\
-1957 & 185,019 & 19,289 & 185,019 & 98.4 & 8,265 & 74.4015780 & 0.066 & 0.0004021\\
-1958 & 184,835 & 19,272 & 184,835 & 98.3 & 8,036 & 42.1065330 & 0.037 & 0.0002278\\
-1959 & 184,675 & 19,256 & 184,675 & 98.3 & 7,849 & 66.8688320 & 0.056 & 0.0003621\\
-1960 & 184,476 & 19,239 & 184,476 & 98.2 & 7,708 & 190.3624630 & 0.149 & 0.0010319\\
-1961 & 184,133 & 19,211 & 184,133 & 98.0 & 7,617 & 91.9920480 & 0.075 & 0.0004996\\
-1962 & 183,881 & 19,192 & 183,881 & 97.9 & 7,580 & 143.7440130 & 0.114 & 0.0007817\\
-1963 & 183,558 & 19,169 & 183,558 & 97.8 & 7,600 & 239.3941490 & 0.182 & 0.0013042\\
-1964 & 183,116 & 19,136 & 183,116 & 97.6 & 7,677 & 208.8467030 & 0.163 & 0.0011405\\
-1965 & 182,691 & 19,106 & 182,691 & 97.5 & 7,801 & 353.7137820 & 0.266 & 0.0019361\\
-1966 & 182,094 & 19,063 & 182,094 & 97.3 & 7,957 & 1275.8495380 & 0.837 & 0.0070065\\
-1967 & 180,495 & 18,939 & 180,495 & 96.6 & 8,115 & 1325.6063800 & 0.845 & 0.0073443\\
-1968 & 178,822 & 18,806 & 178,822 & 96.0 & 8,252 & 2126.4637330 & 1.141 & 0.0118915\\
-1969 & 176,275 & 18,597 & 176,275 & 94.9 & 8,355 & 691.2991200 & 0.517 & 0.0039217\\
-1970 & 175,239 & 18,516 & 175,239 & 94.5 & 8,449 & 822.3422540 & 0.593 & 0.0046927\\
-1971 & 174,048 & 18,422 & 174,048 & 94.0 & 8,563 & 1021.9492694 & 0.722 & 0.0058717\\
-1972 & 172,629 & 18,309 & 172,629 & 93.4 & 8,722 & 1864.1213810 & 1.093 & 0.0107984\\
-1973 & 170,298 & 18,116 & 170,298 & 92.4 & 8,907 & 3186.7461060 & 1.470 & 0.0187128\\
-1974 & 166,540 & 17,799 & 166,540 & 90.8 & 9,041 & 1427.8569900 & 0.937 & 0.0085737\\
-1975 & 164,647 & 17,636 & 164,647 & 90.0 & 9,043 & 2376.8869030 & 1.295 & 0.0144363\\
-1976 & 161,733 & 17,384 & 161,733 & 88.7 & 8,867 & 1991.2206700 & 1.172 & 0.0123118\\
-1977 & 159,225 & 17,162 & 159,225 & 87.6 & 8,595 & 1650.2270000 & 1.059 & 0.0103641\\
-1978 & 157,078 & 16,969 & 157,078 & 86.6 & 8,358 & 1244.2157900 & 0.894 & 0.0079210\\
-1979 & 155,364 & 16,810 & 155,364 & 85.8 & 8,251 & 1844.3150300 & 1.152 & 0.0118709\\
-1980 & 153,007 & 16,593 & 153,007 & 84.7 & 8,269 & 1444.4759300 & 1.010 & 0.0094406\\
-1981 & 151,081 & 16,411 & 151,081 & 83.7 & 8,341 & 1806.1787700 & 1.166 & 0.0119550\\
-1982 & 148,771 & 16,192 & 148,771 & 82.6 & 8,386 & 2038.1054900 & 1.272 & 0.0136996\\
-1983 & 146,219 & 15,950 & 146,219 & 81.4 & 8,397 & 2008.2521900 & 1.290 & 0.0137346\\
-1984 & 143,704 & 15,709 & 143,704 & 80.2 & 8,390 & 3083.5827200 & 1.593 & 0.0214579\\
-1985 & 140,044 & 15,366 & 140,044 & 78.4 & 8,584 & 3570.5549200 & 1.681 & 0.0254960\\
-1986 & 135,865 & 14,974 & 135,865 & 76.4 & 8,646 & 3115.1462500 & 1.620 & 0.0229282\\
-1987 & 132,183 & 14,618 & 132,183 & 74.6 & 8,728 & 2125.9855000 & 1.419 & 0.0160837\\
-1988 & 129,576 & 14,353 & 129,576 & 73.2 & 9,003 & 3071.7136000 & 1.653 & 0.0237059\\
-1989 & 125,970 & 13,998 & 125,970 & 71.4 & 9,175 & 5186.7449000 & 1.875 & 0.0411744\\
-1990 & 120,109 & 13,444 & 120,109 & 68.6 & 9,147 & 4446.2830000 & 1.861 & 0.0370187\\
-1991 & 115,054 & 12,956 & 115,054 & 66.1 & 8,771 & 3913.5771000 & 1.850 & 0.0340151\\
-1992 & 110,582 & 12,517 & 110,582 & 63.9 & 8,453 & 3666.8142000 & 1.834 & 0.0331592\\
-1993 & 106,384 & 12,094 & 106,384 & 61.7 & 8,587 & 4020.7582000 & 1.876 & 0.0377948\\
-1994 & 101,821 & 11,638 & 101,821 & 59.4 & 8,421 & 3707.0460000 & 1.873 & 0.0364075\\
-1995 & 97,615 & 11,209 & 97,615 & 57.2 & 9,215 & 2163.7132000 & 1.669 & 0.0221659\\
-1996 & 95,086 & 10,921 & 95,086 & 55.7 & 6,787 & 1813.9740000 & 1.587 & 0.0190772\\
-1997 & 92,967 & 10,666 & 92,967 & 54.4 & 8,112 & 1582.1585000 & 1.519 & 0.0170184\\
-1998 & 91,124 & 10,435 & 91,124 & 53.2 & 8,996 & 1394.0357000 & 1.449 & 0.0152982\\
-1999 & 89,523 & 10,224 & 89,523 & 52.2 & 11,177 & 853.3116000 & 1.126 & 0.0095317\\
-2000 & 88,553 & 10,064 & 88,553 & 51.4 & 13,712 & 936.4408000 & 1.189 & 0.0105749\\
-2001 & 87,549 & 9,900 & 87,549 & 50.5 & 10,935 & 615.4450000 & 0.918 & 0.0070297\\
-2002 & 86,952 & 9,769 & 86,952 & 49.9 & 10,850 & 877.0320000 & 1.148 & 0.0100864\\
-2003 & 86,126 & 9,618 & 86,126 & 49.1 & 20,516 & 949.4630000 & 1.210 & 0.0110241\\
-2004 & 85,276 & 9,465 & 85,276 & 48.3 & 11,143 & 879.9250000 & 1.163 & 0.0103186\\
-2005 & 84,594 & 9,322 & 84,594 & 47.6 & 9,980 & 773.9670000 & 1.078 & 0.0091492\\
-2006 & 84,054 & 9,192 & 84,054 & 46.9 & 8,322 & 835.3140000 & 1.133 & 0.0099379\\
-2007 & 83,523 & 9,061 & 83,523 & 46.2 & 44,689 & 1106.1950000 & 1.335 & 0.0132441\\
-2008 & 82,771 & 8,913 & 82,771 & 45.5 & 11,278 & 1571.4920000 & 1.569 & 0.0189860\\
-2009 & 81,744 & 8,731 & 81,744 & 44.6 & 12,612 & 1682.7710000 & 1.615 & 0.0205859\\
-2010 & 80,574 & 8,544 & 80,574 & 43.6 & 11,019 & 1490.2500000 & 1.548 & 0.0184953\\
-2011 & 79,633 & 8,376 & 79,633 & 42.7 & 8,228 & 1070.0190000 & 1.331 & 0.0134369\\
-2012 & 79,186 & 8,246 & 79,186 & 42.1 & 7,141 & 987.4390000 & 1.276 & 0.0124698\\
-2013 & 78,869 & 8,127 & 78,869 & 41.5 & 5,867 & 1085.3340000 & 1.340 & 0.0137612\\
-2014 & 78,490 & 8,007 & 78,490 & 40.9 & 4,763 & 900.3480000 & 1.208 & 0.0114709\\
-2015 & 78,340 & 7,907 & 78,340 & 40.3 & 4,928 & 944.8940000 & 1.238 & 0.0120615\\
-2016 & 78,174 & 7,809 & 78,174 & 39.8 & 5,386 & 1012.1680000 & 1.280 & 0.0129475\\
-2017 & 77,968 & 7,713 & 77,968 & 39.4 & 5,128 & 1085.1440000 & 1.322 & 0.0139177\\
-2018 & 77,711 & 7,616 & 77,711 & 38.9 & 4,491 & 895.0970000 & 1.183 & 0.0115183\\
-2019 & 77,671 & 7,541 & 77,671 & 38.5 & 7,350 & 736.7490000 & 1.038 & 0.0094855\\
-2020 & 77,812 & 7,483 & 77,812 & 38.2 & 8,652 & 458.9371000 & 0.731 & 0.0058980\\
-2021 & 78,273 & 7,453 & 78,273 & 38.0 & 9,662 & 411.8235000 & 0.659 & 0.0052614\\
-2022 & 78,815 & 7,433 & 78,815 & 37.9 & 9,689 & 456.9348000 & 0.702 & 0.0057976\\
-2023 & 79,336 & 7,418 & 79,336 & 37.9 & 9,632 & 745.6210000 & 0.987 & 0.0093983\\
-2024 & 79,578 & 7,388 & 79,578 & 37.7 & 9,623 & 757.6970000 & 0.986 & 0.0095215\\
-2025 & 79,818 & 7,364 & 79,818 & 37.6 & 9,616 & 769.4550000 & 0.986 & 0.0096401\\
-2026 & 80,055 & 7,345 & 80,055 & 37.5 & 9,611 & 780.7510000 & 0.985 & 0.0097526\\
-2027 & 80,289 & 7,331 & 80,289 & 37.4 & 9,606 & 791.4910000 & 0.985 & 0.0098580\\
-2028 & 80,518 & 7,321 & 80,518 & 37.4 & 9,603 & 801.6210000 & 0.984 & 0.0099558\\
-2029 & 80,742 & 7,314 & 80,742 & 37.3 & 9,602 & 811.1340000 & 0.984 & 0.0100459\\
-2030 & 80,962 & 7,311 & 80,962 & 37.3 & 9,601 & 820.0420000 & 0.984 & 0.0101287\\
-2031 & 81,177 & 7,310 & 81,177 & 37.3 & 9,600 & 828.3800000 & 0.984 & 0.0102047\\
-2032 & 81,387 & 7,312 & 81,387 & 37.3 & 9,601 & 836.1870000 & 0.984 & 0.0102743\\
-2033 & 81,592 & 7,316 & 81,592 & 37.3 & 9,602 & 843.5010000 & 0.984 & 0.0103380\\
-2034 & 81,794 & 7,321 & 81,794 & 37.4 & 9,604 & 850.3540000 & 0.984 & 0.0103964\\*
+1901 & 196,035 & 20,332 & 196,023 & 100.0 & 11,286 & 0.1125890 & 0.000 & 0.0000006\\
+1902 & 196,033 & 20,332 & 196,020 & 100.0 & 11,260 & 0.1385710 & 0.000 & 0.0000007\\
+1903 & 196,029 & 20,332 & 196,016 & 100.0 & 11,227 & 0.1633160 & 0.000 & 0.0000008\\
+1904 & 196,024 & 20,332 & 196,011 & 100.0 & 11,187 & 0.1892990 & 0.000 & 0.0000010\\
+1905 & 196,017 & 20,332 & 196,005 & 100.0 & 11,147 & 0.2140430 & 0.000 & 0.0000011\\
+1906 & 196,009 & 20,332 & 195,996 & 100.0 & 11,113 & 0.2400250 & 0.000 & 0.0000012\\
+1907 & 195,998 & 20,332 & 195,986 & 100.0 & 11,081 & 0.2660070 & 0.000 & 0.0000014\\
+1908 & 195,985 & 20,332 & 195,973 & 100.0 & 11,040 & 0.2907520 & 0.000 & 0.0000015\\
+1909 & 195,970 & 20,332 & 195,958 & 100.0 & 11,001 & 0.3167330 & 0.000 & 0.0000016\\
+1910 & 195,951 & 20,332 & 195,939 & 100.0 & 10,955 & 0.3414770 & 0.000 & 0.0000017\\
+1911 & 195,930 & 20,332 & 195,917 & 100.0 & 10,919 & 0.3674570 & 0.000 & 0.0000019\\
+1912 & 195,904 & 20,332 & 195,892 & 100.0 & 10,909 & 0.3921990 & 0.000 & 0.0000020\\
+1913 & 195,876 & 20,332 & 195,864 & 100.0 & 10,909 & 0.4181770 & 0.000 & 0.0000021\\
+1914 & 195,843 & 20,331 & 195,831 & 100.0 & 10,862 & 0.4429160 & 0.000 & 0.0000023\\
+1915 & 195,806 & 20,331 & 195,794 & 100.0 & 10,810 & 0.4688910 & 0.000 & 0.0000024\\
+1916 & 195,765 & 20,330 & 195,753 & 100.0 & 10,784 & 0.4936270 & 0.000 & 0.0000025\\
+1917 & 195,719 & 20,330 & 195,707 & 100.0 & 10,764 & 0.5195990 & 0.000 & 0.0000027\\
+1918 & 195,669 & 20,329 & 195,657 & 100.0 & 10,745 & 0.5443310 & 0.000 & 0.0000028\\
+1919 & 195,613 & 20,328 & 195,601 & 100.0 & 10,718 & 0.5702980 & 0.000 & 0.0000029\\
+1920 & 195,552 & 20,327 & 195,541 & 100.0 & 10,700 & 0.5950260 & 0.000 & 0.0000030\\
+1921 & 195,486 & 20,325 & 195,475 & 100.0 & 10,679 & 0.6209890 & 0.000 & 0.0000032\\
+1922 & 195,415 & 20,324 & 195,403 & 100.0 & 10,667 & 0.6469500 & 0.000 & 0.0000033\\
+1923 & 195,338 & 20,322 & 195,326 & 99.9 & 10,665 & 0.6716730 & 0.000 & 0.0000034\\
+1924 & 195,256 & 20,320 & 195,244 & 99.9 & 10,660 & 0.6976300 & 0.000 & 0.0000036\\
+1925 & 195,168 & 20,317 & 195,156 & 99.9 & 10,661 & 0.7223500 & 0.000 & 0.0000037\\
+1926 & 195,074 & 20,314 & 195,062 & 99.9 & 10,668 & 0.7483050 & 0.001 & 0.0000038\\
+1927 & 194,975 & 20,311 & 194,963 & 99.9 & 10,681 & 0.7754960 & 0.001 & 0.0000040\\
+1928 & 194,871 & 20,308 & 194,859 & 99.9 & 10,702 & 1.2937000 & 0.001 & 0.0000066\\
+1929 & 194,761 & 20,304 & 194,749 & 99.9 & 10,732 & 2.0481000 & 0.001 & 0.0000105\\
+1930 & 194,645 & 20,299 & 194,633 & 99.8 & 10,770 & 1.7166000 & 0.001 & 0.0000088\\
+1931 & 194,525 & 20,294 & 194,513 & 99.8 & 10,819 & 1.4012000 & 0.001 & 0.0000072\\
+1932 & 194,400 & 20,288 & 194,388 & 99.8 & 10,878 & 0.5179476 & 0.000 & 0.0000027\\
+1933 & 194,273 & 20,282 & 194,261 & 99.8 & 10,949 & 0.7666211 & 0.001 & 0.0000039\\
+1934 & 194,142 & 20,276 & 194,130 & 99.7 & 11,031 & 5.6205140 & 0.004 & 0.0000290\\
+1935 & 194,003 & 20,268 & 193,990 & 99.7 & 11,124 & 7.3973178 & 0.006 & 0.0000381\\
+1936 & 193,859 & 20,260 & 193,847 & 99.6 & 11,228 & 4.6025083 & 0.003 & 0.0000237\\
+1937 & 193,717 & 20,252 & 193,705 & 99.6 & 11,340 & 7.4237263 & 0.006 & 0.0000383\\
+1938 & 193,571 & 20,242 & 193,559 & 99.6 & 11,458 & 7.4900500 & 0.006 & 0.0000387\\
+1939 & 193,425 & 20,232 & 193,413 & 99.5 & 11,578 & 6.5643409 & 0.005 & 0.0000339\\
+1940 & 193,281 & 20,222 & 193,268 & 99.5 & 11,693 & 3.1739210 & 0.002 & 0.0000164\\
+1941 & 193,142 & 20,212 & 193,129 & 99.4 & 11,796 & 5.6375630 & 0.004 & 0.0000292\\
+1942 & 193,003 & 20,200 & 192,990 & 99.4 & 11,878 & 6.5111160 & 0.005 & 0.0000337\\
+1943 & 192,866 & 20,188 & 192,853 & 99.3 & 11,928 & 17.4984200 & 0.013 & 0.0000907\\
+1944 & 192,722 & 20,175 & 192,709 & 99.2 & 11,936 & 8.4803450 & 0.007 & 0.0000440\\
+1945 & 192,591 & 20,162 & 192,578 & 99.2 & 11,892 & 7.8735120 & 0.007 & 0.0000409\\
+1946 & 192,466 & 20,149 & 192,453 & 99.1 & 11,789 & 6.4431010 & 0.005 & 0.0000335\\
+1947 & 192,348 & 20,135 & 192,335 & 99.0 & 11,624 & 6.2745774 & 0.005 & 0.0000326\\
+1948 & 192,234 & 20,122 & 192,221 & 99.0 & 11,400 & 16.3424071 & 0.014 & 0.0000850\\
+1949 & 192,113 & 20,106 & 192,101 & 98.9 & 11,124 & 15.6672740 & 0.014 & 0.0000816\\
+1950 & 191,997 & 20,091 & 191,985 & 98.8 & 10,805 & 8.8264737 & 0.008 & 0.0000460\\
+1951 & 191,889 & 20,077 & 191,878 & 98.7 & 10,427 & 13.3247110 & 0.012 & 0.0000694\\
+1952 & 191,779 & 20,061 & 191,768 & 98.7 & 10,036 & 15.9725920 & 0.014 & 0.0000833\\
+1953 & 191,664 & 20,046 & 191,654 & 98.6 & 9,643 & 6.3477190 & 0.005 & 0.0000331\\
+1954 & 191,558 & 20,031 & 191,548 & 98.5 & 9,259 & 127.5433640 & 0.111 & 0.0006659\\
+1955 & 191,319 & 20,006 & 191,309 & 98.4 & 8,891 & 76.6949000 & 0.067 & 0.0004009\\
+1956 & 191,127 & 19,986 & 191,118 & 98.3 & 8,548 & 158.2049480 & 0.136 & 0.0008278\\
+1957 & 190,840 & 19,958 & 190,831 & 98.2 & 8,235 & 72.9064790 & 0.064 & 0.0003820\\
+1958 & 190,634 & 19,938 & 190,625 & 98.1 & 7,957 & 41.5543860 & 0.036 & 0.0002180\\
+1959 & 190,449 & 19,920 & 190,441 & 98.0 & 7,719 & 66.5343320 & 0.055 & 0.0003494\\
+1960 & 190,225 & 19,901 & 190,217 & 97.9 & 7,524 & 191.2329080 & 0.147 & 0.0010053\\
+1961 & 189,853 & 19,870 & 189,845 & 97.7 & 7,380 & 91.9218760 & 0.074 & 0.0004842\\
+1962 & 189,570 & 19,849 & 189,562 & 97.6 & 7,293 & 144.4288350 & 0.112 & 0.0007619\\
+1963 & 189,213 & 19,823 & 189,205 & 97.5 & 7,270 & 241.6022720 & 0.180 & 0.0012769\\
+1964 & 188,734 & 19,788 & 188,726 & 97.3 & 7,320 & 210.0832910 & 0.160 & 0.0011132\\
+1965 & 188,269 & 19,756 & 188,260 & 97.2 & 7,448 & 356.1798720 & 0.263 & 0.0018920\\
+1966 & 187,627 & 19,710 & 187,619 & 96.9 & 7,658 & 1265.9729090 & 0.822 & 0.0067476\\
+1967 & 185,993 & 19,584 & 185,984 & 96.3 & 7,945 & 1325.0333770 & 0.833 & 0.0071244\\
+1968 & 184,271 & 19,449 & 184,262 & 95.7 & 8,302 & 2139.5774640 & 1.132 & 0.0116116\\
+1969 & 181,659 & 19,237 & 181,650 & 94.6 & 8,713 & 689.9908000 & 0.509 & 0.0037985\\
+1970 & 180,573 & 19,154 & 180,563 & 94.2 & 9,172 & 823.4249880 & 0.585 & 0.0045603\\
+1971 & 179,330 & 19,057 & 179,319 & 93.7 & 9,664 & 1018.5574923 & 0.710 & 0.0056801\\
+1972 & 177,866 & 18,941 & 177,855 & 93.2 & 10,172 & 1866.3356980 & 1.082 & 0.0104936\\
+1973 & 175,487 & 18,745 & 175,476 & 92.2 & 10,640 & 3188.4113480 & 1.460 & 0.0181701\\
+1974 & 171,686 & 18,425 & 171,674 & 90.6 & 10,968 & 1431.7188000 & 0.927 & 0.0083398\\
+1975 & 169,754 & 18,259 & 169,742 & 89.8 & 11,071 & 2381.6094680 & 1.284 & 0.0140308\\
+1976 & 166,807 & 18,003 & 166,795 & 88.5 & 10,910 & 2002.9851950 & 1.164 & 0.0120087\\
+1977 & 164,266 & 17,776 & 164,254 & 87.4 & 10,589 & 1658.7462000 & 1.050 & 0.0100987\\
+1978 & 162,097 & 17,578 & 162,086 & 86.5 & 10,266 & 1247.3870900 & 0.884 & 0.0076958\\
+1979 & 160,376 & 17,415 & 160,365 & 85.7 & 10,081 & 1855.7792600 & 1.144 & 0.0115722\\
+1980 & 158,012 & 17,193 & 158,001 & 84.6 & 10,100 & 1449.2534700 & 1.001 & 0.0091724\\
+1981 & 156,095 & 17,005 & 156,084 & 83.6 & 10,290 & 1815.6792500 & 1.158 & 0.0116327\\
+1982 & 153,801 & 16,781 & 153,790 & 82.5 & 10,486 & 2044.7972500 & 1.263 & 0.0132960\\
+1983 & 151,280 & 16,534 & 151,268 & 81.3 & 10,566 & 2009.7425200 & 1.278 & 0.0132860\\
+1984 & 148,816 & 16,288 & 148,805 & 80.1 & 10,513 & 3078.6473400 & 1.582 & 0.0206891\\
+1985 & 145,227 & 15,941 & 145,215 & 78.4 & 10,418 & 3575.6495500 & 1.673 & 0.0246231\\
+1986 & 141,121 & 15,543 & 141,110 & 76.4 & 10,340 & 3129.2455100 & 1.611 & 0.0221759\\
+1987 & 137,513 & 15,183 & 137,502 & 74.7 & 10,353 & 2131.2216000 & 1.406 & 0.0154996\\
+1988 & 135,000 & 14,914 & 134,989 & 73.4 & 10,553 & 3084.1092000 & 1.643 & 0.0228471\\
+1989 & 131,494 & 14,556 & 131,482 & 71.6 & 10,798 & 5208.7676000 & 1.870 & 0.0396158\\
+1990 & 125,735 & 14,000 & 125,723 & 68.9 & 10,945 & 4451.9208000 & 1.853 & 0.0354106\\
+1991 & 120,810 & 13,513 & 120,799 & 66.5 & 10,529 & 3907.3363000 & 1.838 & 0.0323458\\
+1992 & 116,490 & 13,077 & 116,479 & 64.3 & 10,018 & 3677.1133000 & 1.821 & 0.0315689\\
+1993 & 112,431 & 12,657 & 112,420 & 62.3 & 9,681 & 4034.7846000 & 1.866 & 0.0358903\\
+1994 & 108,009 & 12,205 & 107,999 & 60.0 & 8,899 & 3716.9642000 & 1.860 & 0.0344167\\
+1995 & 103,948 & 11,782 & 103,938 & 57.9 & 8,778 & 2176.7699000 & 1.640 & 0.0209430\\
+1996 & 101,552 & 11,498 & 101,544 & 56.5 & 6,632 & 1824.6920000 & 1.552 & 0.0179695\\
+1997 & 99,563 & 11,248 & 99,555 & 55.3 & 7,224 & 1592.8950000 & 1.479 & 0.0160001\\
+1998 & 97,847 & 11,022 & 97,839 & 54.2 & 7,653 & 1404.2851000 & 1.404 & 0.0143531\\
+1999 & 96,366 & 10,817 & 96,356 & 53.2 & 9,260 & 858.5709000 & 1.075 & 0.0089104\\
+2000 & 95,510 & 10,664 & 95,497 & 52.4 & 11,621 & 944.1047000 & 1.136 & 0.0098863\\
+2001 & 94,612 & 10,507 & 94,597 & 51.7 & 13,999 & 618.2956000 & 0.865 & 0.0065361\\
+2002 & 94,120 & 10,383 & 94,108 & 51.1 & 11,515 & 883.2730000 & 1.091 & 0.0093858\\
+2003 & 93,426 & 10,240 & 93,391 & 50.4 & 32,115 & 953.3340000 & 1.148 & 0.0102080\\
+2004 & 92,710 & 10,097 & 92,697 & 49.7 & 11,038 & 882.5510000 & 1.097 & 0.0095208\\
+2005 & 92,210 & 9,964 & 92,196 & 49.0 & 12,291 & 774.5100000 & 1.010 & 0.0084006\\
+2006 & 91,827 & 9,845 & 91,813 & 48.4 & 12,616 & 833.8440000 & 1.060 & 0.0090820\\
+2007 & 91,421 & 9,726 & 91,407 & 47.8 & 12,325 & 1102.2500000 & 1.258 & 0.0120587\\
+2008 & 90,816 & 9,591 & 90,777 & 47.2 & 34,678 & 1563.8970000 & 1.498 & 0.0172278\\
+2009 & 89,785 & 9,424 & 89,774 & 46.3 & 10,066 & 1673.2530000 & 1.544 & 0.0186385\\
+2010 & 88,786 & 9,251 & 88,776 & 45.5 & 8,768 & 1481.9180000 & 1.470 & 0.0166927\\
+2011 & 87,968 & 9,098 & 87,960 & 44.7 & 8,002 & 1069.9680000 & 1.246 & 0.0121643\\
+2012 & 87,599 & 8,980 & 87,592 & 44.2 & 6,687 & 987.4980000 & 1.189 & 0.0112738\\
+2013 & 87,359 & 8,875 & 87,353 & 43.6 & 6,024 & 1085.6160000 & 1.253 & 0.0124280\\
+2014 & 87,051 & 8,767 & 87,044 & 43.1 & 5,962 & 900.6640000 & 1.119 & 0.0103472\\
+2015 & 86,968 & 8,679 & 86,961 & 42.7 & 5,954 & 945.4020000 & 1.148 & 0.0108716\\
+2016 & 86,867 & 8,593 & 86,861 & 42.3 & 6,057 & 1012.7520000 & 1.190 & 0.0116595\\
+2017 & 86,722 & 8,508 & 86,715 & 41.8 & 5,836 & 1085.5990000 & 1.231 & 0.0125191\\
+2018 & 86,519 & 8,423 & 86,513 & 41.4 & 5,745 & 895.3950000 & 1.091 & 0.0103498\\
+2019 & 86,530 & 8,358 & 86,520 & 41.1 & 8,863 & 736.8180000 & 0.950 & 0.0085161\\
+2020 & 86,721 & 8,311 & 86,711 & 40.9 & 9,536 & 458.8692000 & 0.659 & 0.0052920\\
+2021 & 87,231 & 8,291 & 87,220 & 40.8 & 10,335 & 411.6166000 & 0.594 & 0.0047193\\
+2022 & 87,816 & 8,280 & 87,805 & 40.7 & 10,118 & 456.6489000 & 0.636 & 0.0052007\\
+2023 & 88,377 & 8,273 & 88,366 & 40.7 & 10,117 & 420.0000000 & 0.584 & 0.0047530\\
+2024 & 88,992 & 8,276 & 88,981 & 40.7 & 10,117 & 420.0000000 & 0.575 & 0.0047201\\
+2025 & 89,621 & 8,284 & 89,610 & 40.7 & 10,120 & 776.9270000 & 0.912 & 0.0086701\\
+2026 & 89,892 & 8,273 & 89,881 & 40.7 & 10,117 & 778.4150000 & 0.905 & 0.0086605\\
+2027 & 90,168 & 8,267 & 90,157 & 40.7 & 10,115 & 780.0520000 & 0.899 & 0.0086522\\
+2028 & 90,446 & 8,265 & 90,435 & 40.6 & 10,115 & 780.9870000 & 0.893 & 0.0086359\\
+2029 & 90,727 & 8,267 & 90,716 & 40.7 & 10,115 & 781.2890000 & 0.887 & 0.0086125\\
+2030 & 91,012 & 8,273 & 91,001 & 40.7 & 10,117 & 781.0360000 & 0.881 & 0.0085827\\
+2031 & 91,300 & 8,282 & 91,288 & 40.7 & 10,119 & 781.2480000 & 0.876 & 0.0085580\\
+2032 & 91,590 & 8,293 & 91,579 & 40.8 & 10,122 & 780.0960000 & 0.869 & 0.0085183\\
+2033 & 91,884 & 8,307 & 91,873 & 40.9 & 10,125 & 778.5740000 & 0.863 & 0.0084744\\
+2034 & 92,183 & 8,322 & 92,172 & 40.9 & 10,129 & 777.6860000 & 0.858 & 0.0084374\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -1498,20 +1689,20 @@ Source & Likelihood Component\\
 \endfoot
 \bottomrule
 \endlastfoot
-TOTAL & 718.4490000\\
+TOTAL & 536.6430000\\
 Catch & 0.0000000\\
 Equil catch & 0.0000000\\
-Survey & -47.0082000\\
-Discard & 414.6660000\\
-Mean body wt & -78.9817000\\
-Length comp & 440.1620000\\
-Recruitment & -12.3547000\\
+Survey & -48.5980000\\
+Discard & 406.1260000\\
+Mean body wt & -79.6714000\\
+Length comp & 270.3960000\\
+Recruitment & -13.1937000\\
 InitEQ Regime & 0.0000000\\
-Forecast Recruitment & 0.0921290\\
-Parm priors & 1.8730400\\
+Forecast Recruitment & 0.0125207\\
+Parm priors & 1.5716500\\
 Parm devs & 0.0000000\\
 F Ballpark & 0.0000000\\
-F Ballpark(info only) 1999 estF tgtF & 0.0164517\\
+F Ballpark(info only) 1999 estF tgtF & 0.0148413\\
 Crash Pen & 0.0000000\\*
 \end{longtable}
 \endgroup{}
@@ -1527,39 +1718,43 @@ Crash Pen & 0.0000000\\*
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png}
 \caption{Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png}
-\caption{Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.\label{fig:thornyhead-ratio}}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png}
+\caption{Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.\label{fig:thornyhead-ratio}}
+\end{figure}
+
+\newpage
+
+\clearpage
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png}
+\caption{Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}}
 \end{figure}
 
 \newpage
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png}
-\caption{Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/assessment_data_timeseries.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/assessment_data_timeseries.png}
 \caption{Summary of data sources used in the base model.\label{fig:assessment_data_timeseries}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png}
 \caption{Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png}
 \caption{Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}}
 \end{figure}
 
@@ -1567,37 +1762,37 @@ Crash Pen & 0.0000000\\*
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png}
 \caption{Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png}
 \caption{Survey length composition data.\label{fig:survey_comps}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png}
 \caption{Growth curve comparison. .\label{fig:growth_LAA1}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png}
 \caption{Growth curve sensitivities.\label{fig:growth_LAA2}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png}
 \caption{Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png}
 \caption{Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}}
 \end{figure}
 \end{document}
