@@ -356,21 +356,24 @@ ggsave("outputs/fishery_data/total-landings2.png",
 
 # final catch with 3 fleets
 finalcatch %>% 
+  mutate(fleet_name = case_when(fleet_name %in% c('NOther', 'SOther') ~ 'NonTrawl',
+                                fleet_name == 'NTrawl' ~ 'NTrawl',
+                                fleet_name == 'STrawl' ~ 'STrawl')) %>%
   mutate(fleet_name = factor(fleet_name,
-                             levels = c('NTrawl', 'NOther','STrawl', 'SOther'),
+                             levels = c('NTrawl','STrawl', 'NonTrawl'),
                              ordered = TRUE)) %>%
   ggplot(aes(x = year, y = catch, fill = fleet_name)) +
   geom_bar(stat = 'identity', colour = 'black', size = 0.1) + 
-  geom_vline(xintercept = 1980.5, lty = 2, col = 'darkgrey', size = 1) +
+  #geom_vline(xintercept = 1980.5, lty = 2, col = 'darkgrey', size = 1) +
   # scale_fill_colorblind7() +
-  scale_fill_manual(values = c("#009E73","#56B4E9", "#F0E442", "#E69F00")) +
+  scale_fill_manual(values = c("#009E73", "#F0E442", "#56B4E9"),labels=c('North Trawl', 'South Trawl', 'Non Trawl')) +
   scale_y_continuous(labels = scales::comma, expand = c(0, NA)) +   
-  labs(x = NULL, y = "Catch (mt)", fill = "Fleet") +
+  labs(x = "Year", y = "Catch (mt)", fill = "Fleet") +
   theme_classic() +
-  theme(text = element_text(size = 20),
+  theme(text = element_text(size = 10),
         legend.position = c(0.15, 0.8))
 
-ggsave("outputs/fishery_data/total-landings2.png", 
+ggsave("outputs/fishery_data/total-landings-3fleets.png", 
        dpi=300, height=4, width=7, units='in')
 
 # compare catch time series ----
@@ -460,5 +463,36 @@ new_state_gear %>%
 
 ggsave("outputs/fishery_data/estimated-total-catch-sspn.png", 
        dpi=300, height=7, width=10, units='in')
+
+# look at price info (for introduction) -----------
+short.catch$PRICE_PER_POUND
+
+# filter by gear type too 
+short.catch %>% 
+  dplyr::mutate(fleet = case_when(PACFIN_GROUP_GEAR_CODE %in% c('TWL', 'TWS') ~ 'Trawl',
+                                  PACFIN_GROUP_GEAR_CODE %in% c('NET', 'HKL','POT','TLS','MSC') ~ 'NonTrawl')) %>%
+  group_by(LANDING_YEAR,fleet) %>%
+  summarize(price = mean(PRICE_PER_POUND)) %>%
+  ggplot(aes(x=LANDING_YEAR,y=price, color = fleet)) +
+  geom_line()
+
+HKLprice <- short.catch %>% group_by(LANDING_YEAR) %>%
+  filter(PACFIN_GROUP_GEAR_CODE == "HKL") %>%
+  summarize(price = mean(PRICE_PER_POUND))
+
+TWLprice <- short.catch %>% group_by(LANDING_YEAR) %>%
+  filter(PACFIN_GROUP_GEAR_CODE == "TWL") %>%
+  summarize(price = mean(PRICE_PER_POUND))
+
+library(priceR)
+
+HKLprice$inflation.price <- priceR::adjust_for_inflation(HKLprice$price, country = "US", from_date = HKLprice$LANDING_YEAR, to_date = 2020)
+
+ggplot(HKLprice, aes(x=LANDING_YEAR)) +
+  geom_line(aes(y=price), col= "red") +
+  geom_line(aes(y=inflation.price), col = "blue")
+
+
+
 
 
