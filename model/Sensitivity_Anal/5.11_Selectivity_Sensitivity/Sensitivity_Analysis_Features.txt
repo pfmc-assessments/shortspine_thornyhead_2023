@@ -1,0 +1,69 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- base blksel 2003 
+# 	- base blksel 2011 
+# 	- base blksel 2003+2011 
+# 	- base blksel 2003+2011+2019 
+# 	- blkretT3 blksel 2003 
+# 	- blkretT3 blksel 2011 
+# 	- blkretT3 blksel 2003+2011 
+# 	- blkretT3 blksel 2003+2011+2019 
+# Author:  Pierre-Yves Hernvann 
+# Date: 2023-05-08 23:59:23 
+# Sensitivity Analysis ID: Item 5.11 
+# Names of the models created:
+# 	- 23.blksel.T1 
+# 	- 23.blksel.T2 
+# 	- 23.blksel.T3 
+# 	- 23.blksel.T4 
+# 	- 23.blkret.T3.blksel.T1 
+# 	- 23.blkret.T3.blksel.T2 
+# 	- 23.blkret.T3.blksel.T3 
+# 	- 23.blkret.T3.blksel.T4 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.blksel.T1 				 23.model.francis_2 
+# 23.blksel.T2 				 23.model.francis_2 
+# 23.blksel.T3 				 23.model.francis_2 
+# 23.blksel.T4 				 23.model.francis_2 
+# 23.blkret.T3.blksel.T1 				 23.blkret.T3 
+# 23.blkret.T3.blksel.T2 				 23.blkret.T3 
+# 23.blkret.T3.blksel.T3 				 23.blkret.T3 
+# 23.blkret.T3.blksel.T4 				 23.blkret.T3 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.11_Selectivity_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.11_Selectivity_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.11_Selectivity_Sensitivity_Outputs.R .R
+# 
+# General features: 
+# Sensitivity analysis for the time blocks on selectivity 
+# 
+# Model features:
+# - Model 23.blksel.T1:
+# base model with selectivity time block in 2003 (trawl) 
+# - Model 23.blksel.T2:
+# base model with selectivity time block in 2011 (trawl) 
+# - Model 23.blksel.T3:
+# base model with selectivity time block in 2003+2011 (trawl) 
+# - Model 23.blksel.T4:
+# base model with selectivity time block in 2003+2011+2019 (trawl) 
+# - Model 23.blkret.T3.blksel.T1:
+# Retention time blocks version T3 with selectivity time block in 2003 
+# - Model 23.blkret.T3.blksel.T2:
+# Retention time blocks version T3 with selectivity time block in 2011 
+# - Model 23.blkret.T3.blksel.T3:
+# Retention time blocks version T3 with selectivity time block in 2003+2011 
+# - Model 23.blkret.T3.blksel.T4:
+# Retention time blocks version T3 with selectivity time block in 2003+2011+2019 
+# ============================================================ #
+
