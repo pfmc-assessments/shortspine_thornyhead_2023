@@ -130,14 +130,15 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # For each model, indicate if you want to compute the Hessian matrix.
 # If noHess = TRUE for a given model, then the Hessian matrix
 # won't be estimated.
-# Reminder - The following models are considered:# 	-  23.blkret.T1 
+# Reminder - The following models are considered:
+# 	-  23.blkret.T1 
 # 	-  23.blkret.T2 
 # 	-  23.blkret.T3 
 # 	-  23.blkret.T4 
 # 	-  23.blkret.T3.NT1 
 # 	-  23.blkret.T3.NT2 
-#noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
-noHess <- c(FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)
+noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
+# noHess <- c(FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)
 
 
 var.to.save <- ls()
@@ -166,7 +167,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T1",
+                     files = "all")
 
 
 # 3.1  Work on the Starter file ----
@@ -280,13 +284,23 @@ Ctl23_blkret_T1$size_selex_parms_tv <- Ctl23_blkret_T1$size_selex_parms_tv[order
 Ctl23_blkret_T1$size_selex_parms_tv <- Ctl23_blkret_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T1$size_selex_parms_tv),"_1_|_3_"))),]
 Ctl23_blkret_T1$size_selex_parms_tv <- Ctl23_blkret_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T1$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+
+
+
+
+# Change the bound of the Retain_L_asymptote_logit_Trawl_N(1)	
+# parameters to fix the CHECK - the rowname is SizeSel_PRet_3_Trawl_N(1)
+tmp <- Ctl23_blkret_T1$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+Ctl23_blkret_T1$size_selex_parms <- tmp
+
 # Save the control file for the model
-#SS_writectl(
-#      ctllist =  Ctl23_blkret_T1 ,
-#      outfile = file.path(Dir_23_blkret_T1, 'SST_control.ss', fsep = fsep),
-#      version = '3.30',
-#      overwrite = TRUE
-#      )
+SS_writectl(
+     ctllist =  Ctl23_blkret_T1 ,
+     outfile = file.path(Dir_23_blkret_T1, 'SST_control.ss', fsep = fsep),
+     version = '3.30',
+     overwrite = TRUE
+     )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -415,7 +429,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+
+# Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+#                      curr.model = "23.blkret.T2",
+#                      files = "all")
 
 
 # 4.1  Work on the Starter file ----
@@ -530,12 +547,12 @@ Ctl23_blkret_T2$size_selex_parms_tv <- Ctl23_blkret_T2$size_selex_parms_tv[order
 Ctl23_blkret_T2$size_selex_parms_tv <- Ctl23_blkret_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T2$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
 # Save the control file for the model
-#SS_writectl(
-#      ctllist =  Ctl23_blkret_T2 ,
-#      outfile = file.path(Dir_23_blkret_T2, 'SST_control.ss', fsep = fsep),
-#      version = '3.30',
-#      overwrite = TRUE
-#      )
+SS_writectl(
+     ctllist =  Ctl23_blkret_T2 ,
+     outfile = file.path(Dir_23_blkret_T2, 'SST_control.ss', fsep = fsep),
+     version = '3.30',
+     overwrite = TRUE
+     )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -641,6 +658,33 @@ var.to.save <- ls()
 # -----------------------------------------------------------
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #  5. Developing model 23.blkret.T3  ----
 # ----------------------------------------------------------- #
 
@@ -664,7 +708,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T3",
+                     files = "all")
 
 
 # 5.1  Work on the Starter file ----
@@ -785,12 +832,12 @@ Ctl23_blkret_T3$size_selex_parms_tv <- Ctl23_blkret_T3$size_selex_parms_tv[order
 Ctl23_blkret_T3$size_selex_parms_tv <- Ctl23_blkret_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3 ,
-#       outfile = file.path(Dir_23_blkret_T3, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T3 ,
+      outfile = file.path(Dir_23_blkret_T3, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -919,7 +966,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T4')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T4",
+                     files = "all")
 
 
 # 6.1  Work on the Starter file ----
@@ -1045,12 +1095,12 @@ Ctl23_blkret_T4$size_selex_parms_tv <- Ctl23_blkret_T4$size_selex_parms_tv[order
 Ctl23_blkret_T4$size_selex_parms_tv <- Ctl23_blkret_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T4$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T4 ,
-#       outfile = file.path(Dir_23_blkret_T4, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T4 ,
+      outfile = file.path(Dir_23_blkret_T4, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1180,8 +1230,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_NT1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
 
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T3.NT1",
+                     files = "all")
 
 # 7.1  Work on the Starter file ----
 # ======================= #
@@ -1312,12 +1364,12 @@ Ctl23_blkret_T3_NT1$size_selex_parms_tv <- Ctl23_blkret_T3_NT1$size_selex_parms_
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_NT1 ,
-#       outfile = file.path(Dir_23_blkret_T3_NT1, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T3_NT1 ,
+      outfile = file.path(Dir_23_blkret_T3_NT1, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1446,8 +1498,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_NT2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
 
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T3.NT2",
+                     files = "all")
 
 # 8.1  Work on the Starter file ----
 # ======================= #
@@ -1583,12 +1637,12 @@ Ctl23_blkret_T3_NT2$size_selex_parms_tv <- Ctl23_blkret_T3_NT2$size_selex_parms_
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_NT2 ,
-#       outfile = file.path(Dir_23_blkret_T3_NT2, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T3_NT2 ,
+      outfile = file.path(Dir_23_blkret_T3_NT2, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 

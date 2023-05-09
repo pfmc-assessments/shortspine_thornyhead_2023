@@ -177,8 +177,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T1",
+                     files = "all")
 
 # 3.1  Work on the Starter file ----
 # ======================= #
@@ -291,14 +293,13 @@ tmp<-rbind(c(-10, 10, 0,0,5,6,2),
 Ctl23_blksel_T1$size_selex_parms_tv <- tmp
 rm(tmp)
 
-
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blksel_T1 ,
-#       outfile = file.path(Dir_23_blksel_T1, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blksel_T1 ,
+      outfile = file.path(Dir_23_blksel_T1, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -427,8 +428,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T2",
+                     files = "all")
 
 # 4.1  Work on the Starter file ----
 # ======================= #
@@ -543,12 +546,12 @@ rm(tmp)
 
 
 # Save the control file for the model
-# SS_writectl(
-#     ctllist =  Ctl23_blksel_T2 ,
-#     outfile = file.path(Dir_23_blksel_T2, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+    ctllist =  Ctl23_blksel_T2 ,
+    outfile = file.path(Dir_23_blksel_T2, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -677,8 +680,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T3')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T3",
+                     files = "all")
 
 # 5.1  Work on the Starter file ----
 # ======================= #
@@ -933,8 +938,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T4')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T4",
+                     files = "all")
 
 # 6.1  Work on the Starter file ----
 # ======================= #
@@ -1056,12 +1063,12 @@ rm(tmp)
 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_blksel_T4 ,
-      # outfile = file.path(Dir_23_blksel_T4, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+ctllist =  Ctl23_blksel_T4 ,
+outfile = file.path(Dir_23_blksel_T4, 'SST_control.ss', fsep = fsep),
+version = '3.30',
+overwrite = TRUE
+)
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1190,8 +1197,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T3",
+                     curr.model = "23.blkret.T3.blksel.T1",
+                     files = "all")
 
 # 7.1  Work on the Starter file ----
 # ======================= #
@@ -1306,12 +1315,12 @@ rm(tmp)
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T1 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T1, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T3_blksel_T1 ,
+      outfile = file.path(Dir_23_blkret_T3_blksel_T1, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1440,8 +1449,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T3",
+                     curr.model = "23.blkret.T3.blksel.T2",
+                     files = "all")
 
 # 8.1  Work on the Starter file ----
 # ======================= #
@@ -1556,12 +1567,12 @@ rm(tmp)
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T2 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T2, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T3_blksel_T2 ,
+      outfile = file.path(Dir_23_blkret_T3_blksel_T2, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1690,8 +1701,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T3')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T3",
+                     curr.model = "23.blkret.T3.blksel.T3",
+                     files = "all")
 
 # 9.1  Work on the Starter file ----
 # ======================= #
@@ -1812,12 +1825,12 @@ rm(tmp)
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T3 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T3, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T3_blksel_T3 ,
+      outfile = file.path(Dir_23_blkret_T3_blksel_T3, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1946,8 +1959,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T4')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
-
+# Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T3",
+                     curr.model = "23.blkret.T3.blksel.T4",
+                     files = "all")
 
 # 10.1  Work on the Starter file ----
 # ======================= #
@@ -2069,12 +2084,12 @@ rm(tmp)
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T4 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T4, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T3_blksel_T4 ,
+      outfile = file.path(Dir_23_blkret_T3_blksel_T4, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 

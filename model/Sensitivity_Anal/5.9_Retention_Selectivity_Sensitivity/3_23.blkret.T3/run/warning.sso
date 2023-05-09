@@ -1,7 +1,6 @@
 Note 1 Information: Max data length bin: 72  < max pop len bins: 90; so will accumulate larger pop len bins
-Note 2 Information: settle_month is less than spawn_month, so logical age at settlement calculated to be: 0  for settle_time 1.  Does not match read value of 1 are you sure? 
 Warning 1 : Early recdev biasadj is >2 times ratio of rmse to sigmaR
-Warning 2 : Final gradient: 0.000427504 is larger than final_conv: 0.0001
-Warning 3 : Time-vary parms not bound checked
-Warning 4 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
- 4 warnings  and 2 notes 
+Warning 2 : Time-vary parms not bound checked
+Warning 3 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
+Note 2 Information:  N parameters that are on or within 1% of min-max bound: 1; check results, variance may be suspect
+ 3 warnings  and 2 notes 
