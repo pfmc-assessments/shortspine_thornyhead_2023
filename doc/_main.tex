@@ -406,7 +406,7 @@ This treatment of unassigned thornyhead landings differs from the 2005 and 2013 
 \hypertarget{discards-and-retention}{%
 \subsubsection{Discards and retention}\label{discards-and-retention}}
 
-Discards were informed by four data sources covering three different periods. Data sets included, 1) Pikitch et al. (1988) Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (J. R. Wallace, pers. comm.), 2) the TEST \gls{edcp} covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the \gls{wcgop}, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the \gls{gemm} data set, covering the same period and completing the \gls{wcgop} with catch-share participation information and estimates of discard survival rates.
+Predicted discards were based on estimated retention and selectivity for each fleet and are shown in Figure \ref{fig:disc_hist}. Discards were informed by four data sources covering three different periods. Data sets included, 1) Pikitch et al. (1988) Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (J. R. Wallace, pers. comm.), 2) the TEST \gls{edcp} covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the \gls{wcgop}, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the \gls{gemm} data set, covering the same period and completing the \gls{wcgop} with catch-share participation information and estimates of discard survival rates.
 
 While the estimates from the first two data sets were directly integrated into the model, fleet discard rates after 2011 were available separately for catch-share and non-catch-share programs. Final fleet-specific discard rates were thus computed as the average \gls{wcgop} discard rate weighted by the relative proportion of total landings belonging to the catch-share and non-catch-share, respectively. (Figure \ref{fig:disc_rates_WCGOP}). Regardless of the type of data, all estimates derived from these data sets had associated uncertainty accounting for the variability observed within the sample of hauls and fishing trips of each fleet. WCGOP-derived discard rates are an exception as, after the catch share program was initiated in 2011, 100\% of hauls from catch share fleets were observed., while non-catch share vessels were only partially covered \emph{\emph{(cite)}}.
 
@@ -1184,12 +1184,12 @@ Interval & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{\label{tab:allcatches}Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.}\\
+\caption{\label{tab:allcatch}Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:allcatches}Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. \textit{(continued)}}\\
+\caption[]{\label{tab:allcatch}Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. \textit{(continued)}}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
@@ -1323,17 +1323,17 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \end{longtable}
 \endgroup{}
 \endgroup{}
-\newpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}}
-\caption{\label{tab:timeseries}Time series of population estimates from the base model.}\\
+\caption{\label{tab:ts}Time series of population estimates from the base model.}\\
 \toprule
 Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfished & Age 0 Recruits & Total Mortality & (1-SPR)/(1-SPR 50\%) & Exploitation Rate\\
 \midrule
 \endfirsthead
-\caption[]{\label{tab:timeseries}Time series of population estimates from the base model. \textit{(continued)}}\\
+\caption[]{\label{tab:ts}Time series of population estimates from the base model. \textit{(continued)}}\\
 \toprule
 Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfished & Age 0 Recruits & Total Mortality & (1-SPR)/(1-SPR 50\%) & Exploitation Rate\\
 \midrule
@@ -1479,7 +1479,7 @@ Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfi
 \end{longtable}
 \endgroup{}
 \endgroup{}
-\newpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -1517,35 +1517,33 @@ Crash Pen & 0.0000000\\*
 \endgroup{}
 \endgroup{}
 
-\newpage
-\begin{landscape}
-
-\end{landscape}
-
 \clearpage
 
 \hypertarget{figures}{%
 \section{Figures}\label{figures}}
 
-\hypertarget{introductory-figures}{%
-\subsection{Introductory Figures}\label{introductory-figures}}
+\hypertarget{data-figures}{%
+\section{Data figures}\label{data-figures}}
 
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png} \newpage
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png}
+\caption{Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}}
+\end{figure}
 
-\begin{verbatim}
-
-![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.\label{fig:thornyhead-ratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
-\end{verbatim}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png}
+\caption{Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.\label{fig:thornyhead-ratio}}
+\end{figure}
 
 \newpage
 
-\begin{verbatim}
-
-![Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
-\end{verbatim}
-
-\hypertarget{data-figures}{%
-\subsection{Data Figures}\label{data-figures}}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png}
+\caption{Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -1559,41 +1557,47 @@ Crash Pen & 0.0000000\\*
 \caption{Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}}
 \end{figure}
 
-\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png} \newpage
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png}
+\caption{Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}}
+\end{figure}
 
-\begin{verbatim}
+\newpage
 
-![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
-\end{verbatim}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png}
+\caption{Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}}
+\end{figure}
 
-\begin{verbatim}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png}
+\caption{Survey length composition data.\label{fig:survey_comps}}
+\end{figure}
 
-![Survey length composition data.\label{fig:survey_comps}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
-\end{verbatim}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png}
+\caption{Growth curve comparison. .\label{fig:growth_LAA1}}
+\end{figure}
 
-\begin{verbatim}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png}
+\caption{Growth curve sensitivities.\label{fig:growth_LAA2}}
+\end{figure}
 
-![Growth curve comparison. .\label{fig:growth_LAA1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png){width=100% height=100% alt="."}
-\end{verbatim}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png}
+\caption{Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}}
+\end{figure}
 
-\begin{verbatim}
-
-![Growth curve sensitivities.\label{fig:growth_LAA2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png){width=100% height=100% alt="."}
-\end{verbatim}
-
-\begin{verbatim}
-
-![Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png){width=100% height=100% alt="."}
-\end{verbatim}
-
-\begin{verbatim}
-
-![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="."}
-\end{verbatim}
-
-\hypertarget{base-model-figures}{%
-\subsection{Base Model Figures}\label{base-model-figures}}
-
-\hypertarget{sensitivity-analysis}{%
-\subsection{Sensitivity Analysis}\label{sensitivity-analysis}}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png}
+\caption{Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}}
+\end{figure}
 \end{document}

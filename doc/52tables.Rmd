@@ -1,11 +1,12 @@
 \clearpage
 # Tables
+
 ```{r}
 library(here)
 library(dplyr)
 library(tidyr)
-tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 
+tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 
 #Insert figure 
 #Figure \caption{(\#tab:catch_tab)Catches by fleet.} 
@@ -14,7 +15,7 @@ tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 ```
 
 Executive Summary
-```{r}
+```{r, results='asis'}
 
 #These are all labeled a-i
 
@@ -47,7 +48,7 @@ sa4ss::table_format(x = spr_tab,
                   label = "spr")
 ```
 \newpage
-```{r}
+```{r, results='asis'}
 #Reference Points 
 ref_tab<-read.csv(file.path(tab_dir1, "e_ReferencePoints_ES.csv"))
 names(ref_tab)<-c("Variable of Interest", "Estimate", "95% CI")  
@@ -57,7 +58,7 @@ sa4ss::table_format(x = ref_tab,
                   align = c("l", "l", "l"))
 ```
 \newpage
-```{r}
+```{r, results='asis'}
 #management 
 mngmt_tab<-read.csv(file.path(tab_dir1, "f_Manage_ES.csv"))
 names(mngmt_tab)<-c("Year", "OFL", "ABC", "ACL", "Landings", "Total Mortality") 
@@ -79,7 +80,7 @@ sa4ss::table_format(x = mngmt_tab,
                   label = "management")
 ```
 \newpage
-```{r}
+```{r, results='asis'}
 #Projections
 proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES.csv"))
 names(proj_tab)<-c("Year", "Predicted OFL (mt)", "ABC (mt)", "Age 1 Biomass (mt)", "Spawning Output", "Fraction Unfished") 
@@ -141,26 +142,25 @@ allcatches_tab<-read.csv(file.path(tab_dir1, "Catches_All_Years.csv"))
 names(allcatches_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")
 sa4ss::table_format(x = allcatches_tab,
                   caption = "Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.",
-                  label = "allcatches")
-```
-\newpage
-```{r}
+                  label = "allcatch")
+
 #Time Series
 ts_tab<-read.csv(file.path(tab_dir1, "TimeSeries.csv"))
 names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Total Biomass (mt)", "Fraction Unfished", "Age 0 Recruits", "Total Mortality", "(1-SPR)/(1-SPR 50%)", "Exploitation Rate")
 sa4ss::table_format(x = ts_tab,
                   caption = "Time series of population estimates from the base model.",
-                  label = "timeseries")
-```
-\newpage
-```{r}
+                  label = "ts")
+
+
 #Like
 like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
 names(like_tab)<-c("Source", "Likelihood Component")
 sa4ss::table_format(x = like_tab,
                   caption = "Likelihood components by source.",
                   label = "likelihoods")
+```
 
+```{r}
 # sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage_m.csv")),
 #                   caption = "Age table males",
 #                   label = "batagemale")
@@ -177,13 +177,4 @@ sa4ss::table_format(x = like_tab,
 #                   caption = "all ages females",
 #                   label = "natagefem")
 
-lab_tab<-read.csv(file.path(tab_dir1, "table_labels.csv"))
-
 ```
-
-\newpage
-\begin{landscape}
-```{r}
-
-```
-\end{landscape}

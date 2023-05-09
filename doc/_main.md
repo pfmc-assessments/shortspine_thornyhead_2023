@@ -331,7 +331,7 @@ In some cases, the inclusion of excluded data sources were explored through sens
 ## Fishery-Dependent Data
 
 ### Catch History 
-\Gls{pacfin} data from 1981-present was used to estimate landings in the North (Oregon and Washington) and South (California) by gear type (Trawl and Non-Trawl) (Figure \ref{fig:catch_hist}) All landings reported for the shortspine thornyhead and nominal shortspine thornyhead categories were considered shortspine thornyhead, whereas landings categorized as unidentified thornyheads were split between longspine thornyhead and shortspine thornyhead by the ratio of identified longspine and shortspine landings for each year-state-gear combination. The values of this ratio for each state and gear-type from 1981-2023 are shown in Figure \ref{fig:thornyhead-ratio}. 
+\Gls{pacfin} data from 1981-present was used to estimate landings in the North (Oregon and Washington) and South (California) by gear type (Trawl and Non-Trawl) (Figure \ref{fig:catch_hist}) All landings reported for the shortspine thornyhead and nominal shortspine thornyhead categories were considered shortspine thornyhead, whereas landings categorized as unidentified thornyheads were split between longspine thornyhead and shortspine thornyhead by the ratio of identified longspine and shortspine landings for each year-state-gear combination. The values of this ratio for each state and gear-type from 1981-2023 are shown in Figure \ref{fig:thornyhead-ratio}.
 
 Catches prior to 1981 are based on historical reconstructions provided by the respective states and a reconstruction of foreign fleet catch. Oregon landings for 1892-1986 are provided by ODFW and outlined in @karnowski_historical_2014 shortspine thornyhead landings are not present in the \gls{pacfin} data for Oregon for the years 1981-1986 and the state reconstruction is used for this period instead. Washington landings for 1954-1980 are provided by WDFW. Landings prior to the beginning of this data are assumed to be zero. California landings are provided by CDFW and SWFSC, and consist of California commercial data for 1969-1980, and a catch reconstruction documented by @ralston_documentation_2010 for 1934-1968. As in the two previous assessments, catch data from @rogers_species_2003 is used to account for catches by foreign fleets during the years 1966-1976. Foreign catch in the Monterey and Eureka \gls{inpfc} areas is attributed to the Southern Trawl fleet, while foreign catch in Columbia and Vancouver areas is attributed to the Northern Trawl fleet, as was the case in the 2013 assessment.
 
@@ -341,7 +341,7 @@ This treatment of unassigned thornyhead landings differs from the 2005 and 2013 
 
 
 ### Discards and retention
-Discards were informed by four data sources covering three different periods. Data sets included, 1) @pikitch_evaluation_1988 Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (J. R. Wallace, pers. comm.), 2) the TEST \gls{edcp} covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the \gls{wcgop}, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the \gls{gemm} data set, covering the same period and completing the \gls{wcgop} with catch-share participation information and estimates of discard survival rates.
+Predicted discards were based on estimated retention and selectivity for each fleet and are shown in Figure \ref{fig:disc_hist}. Discards were informed by four data sources covering three different periods. Data sets included, 1) @pikitch_evaluation_1988 Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (J. R. Wallace, pers. comm.), 2) the TEST \gls{edcp} covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the \gls{wcgop}, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the \gls{gemm} data set, covering the same period and completing the \gls{wcgop} with catch-share participation information and estimates of discard survival rates.
 
 While the estimates from the first two data sets were directly integrated into the model, fleet discard rates after 2011 were available separately for catch-share and non-catch-share programs. Final fleet-specific discard rates were thus computed as the average \gls{wcgop} discard rate weighted by the relative proportion of total landings belonging to the catch-share and non-catch-share, respectively. (Figure \ref{fig:disc_rates_WCGOP}). Regardless of the type of data, all estimates derived from these data sets had associated uncertainty accounting for the variability observed within the sample of hauls and fishing trips of each fleet. WCGOP-derived discard rates are an exception as, after the catch share program was initiated in 2011, 100% of hauls from catch share fleets were observed., while non-catch share vessels were only partially covered *_(cite)_*.
 
@@ -661,6 +661,7 @@ Here are all the mad props!
 # Tables
 
 
+
 Executive Summary
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -943,12 +944,12 @@ Interval & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
-\caption{(\#tab:allcatches)Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.}\\
+\caption{(\#tab:allcatch)Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endfirsthead
-\caption[]{(\#tab:allcatches)Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. \textit{(continued)}}\\
+\caption[]{(\#tab:allcatch)Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. \textit{(continued)}}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
@@ -1082,17 +1083,17 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \end{longtable}
 \endgroup{}
 \endgroup{}
-\newpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}}
-\caption{(\#tab:timeseries)Time series of population estimates from the base model.}\\
+\caption{(\#tab:ts)Time series of population estimates from the base model.}\\
 \toprule
 Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfished & Age 0 Recruits & Total Mortality & (1-SPR)/(1-SPR 50\%) & Exploitation Rate\\
 \midrule
 \endfirsthead
-\caption[]{(\#tab:timeseries)Time series of population estimates from the base model. \textit{(continued)}}\\
+\caption[]{(\#tab:ts)Time series of population estimates from the base model. \textit{(continued)}}\\
 \toprule
 Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfished & Age 0 Recruits & Total Mortality & (1-SPR)/(1-SPR 50\%) & Exploitation Rate\\
 \midrule
@@ -1238,7 +1239,7 @@ Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfi
 \end{longtable}
 \endgroup{}
 \endgroup{}
-\newpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -1276,10 +1277,7 @@ Crash Pen & 0.0000000\\*
 \endgroup{}
 \endgroup{}
 
-\newpage
-\begin{landscape}
 
-\end{landscape}
 
 <!--chapter:end:52tables.Rmd-->
 
@@ -1294,69 +1292,41 @@ Crash Pen & 0.0000000\\*
 
 
 
+# Data figures
 
 
-## Introductory Figures
+
 
 
 ![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=100% alt="."}
-\newpage
-
-```
 
 ![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches and longspine and shortspine catches.\label{fig:thornyhead-ratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
-```
+
 \newpage
 
-```
 
 ![Estimated landing history for shortspine thornyhead.\label{fig:catch_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
-```
-
-## Data Figures
 
 ![Summary of data sources used in the base model.\label{fig:assessment_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/assessment_data_timeseries.png){width=100% height=100% alt="."}
 
 ![Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png){width=100% height=100% alt="."}
 
 ![Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png){width=100% height=100% alt="."}
+
 \newpage
 
-```
 
 ![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
-```
-
-```
 
 ![Survey length composition data.\label{fig:survey_comps}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
-```
-
-```
 
 ![Growth curve comparison. .\label{fig:growth_LAA1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_comparison_LAA1.png){width=100% height=100% alt="."}
-```
-
-```
 
 ![Growth curve sensitivities.\label{fig:growth_LAA2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curve_sensitivities_LAA2.png){width=100% height=100% alt="."}
-```
-
-```
 
 ![Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png){width=100% height=100% alt="."}
-```
-
-```
 
 ![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="."}
-```
-
-## Base Model Figures
-
-
-## Sensitivity Analysis
-
 
 <!--chapter:end:53figures.Rmd-->
 
