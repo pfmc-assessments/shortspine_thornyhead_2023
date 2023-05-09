@@ -544,6 +544,8 @@ bio.hauls.master = as.data.frame(rbind(tri_early.survey_hauls, tri_late.survey_h
 haul.sample.info.master = merge(bio.samples.master , bio.hauls.master, by=c("Year","survey"))
 out.dir <- file.path(outputs.dir, "surveys")
 write.csv(haul.sample.info.master, file.path(out.dir, paste0("haul.sample.info.master.csv")))
+write.csv(haul.sample.info.master, "doc/FinalTables/Summary/haul.sample.info.master.csv")
+
 
 # Create table with haul and sample information  ------
 library(kableExtra)
@@ -567,12 +569,11 @@ haul_sample_table = haul.sample.info.master %>%
   kable_classic() %>% 
   add_header_above(c(" " = 1, "AFSC Triennial Shelf\nSurvey Early" = 2, "AFSC Triennial Shelf\nSurvey Late" = 2, 
                      "AFSC Slope\nSurvey" = 2, "NWFSC Slope\nSurvey" = 2,
-                     "NWFSC Combo\nSurvey" = 2)) %>%
-  save_kable(file = "outputs/surveys/haul_sample_table.png",
-             zoom = 1.5) %>% 
-  save_kable(file = "doc/FinalTables/haul_sample_table.png",
-             zoom = 1.5)
+                     "NWFSC Combo\nSurvey" = 2)) # %>%
+  #save_kable(file = "outputs/surveys/haul_sample_table.png",
+  #           zoom = 1.5) %>% 
+  #save_kable(file = "doc/FinalTables/haul_sample_table.png",
+  #           zoom = 1.5)
 
-haul_sample_table
 
 
