@@ -4,14 +4,14 @@
 \contentsline {subsection}{Catches}{i}{section*.4}%
 \contentsline {subsection}{Data and assessment}{ii}{section*.6}%
 \contentsline {subsection}{Stock biomass and dynamics}{iv}{section*.8}%
-\contentsline {subsection}{Recruitment}{iv}{section*.10}%
-\contentsline {subsection}{Exploitation status}{v}{section*.12}%
+\contentsline {subsection}{Recruitment}{v}{section*.10}%
+\contentsline {subsection}{Exploitation status}{vi}{section*.12}%
 \contentsline {subsection}{Ecosystem considerations}{vii}{section*.17}%
 \contentsline {subsection}{Reference points}{vii}{section*.18}%
 \contentsline {subsection}{Management performance}{x}{section*.20}%
 \contentsline {subsection}{Unresolved problems and major uncertainties}{xi}{section*.21}%
 \contentsline {subsection}{Decision table and projections}{xi}{section*.22}%
-\contentsline {subsection}{Scientific uncertainty}{xi}{section*.23}%
+\contentsline {subsection}{Scientific uncertainty}{xii}{section*.23}%
 \contentsline {subsection}{Research and data needs}{xii}{section*.24}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Basic Information}{1}{subsection.1.1}%

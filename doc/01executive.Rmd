@@ -68,6 +68,11 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "assessment_data_timeseries.png")
 
 ## Stock biomass and dynamics{-}
 Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning biomass is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs, which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (Table \ref{tab:ssbES};Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated in 2013 (~75%).
+```{r, results = "asis"}
+sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
+                  caption = "Estimated spawning output trajectory for shortspine thornyhead.", 
+                  label = "ssb_trajectoryES")
+```
 
 ```{r, results='asis'}
 ssb_tab<-read.csv(file.path(tab_dir1, "b_SSB_ES.csv"))
@@ -76,12 +81,6 @@ names(ssb_tab)<-c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction
 sa4ss::table_format(x = ssb_tab,
                   caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
                    label = "ssbES")
-```
-
-```{r, results = "asis"}
-sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
-                  caption = "Estimated spawning output trajectory for shortspine thornyhead.", 
-                  label = "ssb_trajectoryES")
 ```
 
 ## Recruitment{-}
@@ -111,7 +110,7 @@ sa4ss::table_format(x = spr_tab,
                   caption = "Estimated recent trend in the (1-SPR)/(1-SPR 50\\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\\% intervals.",
                   label = "sprES")
 ```
-\newpage
+
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
                   caption = "Estimated relative spawning output trajectory for shortspine thornyhead.", 

@@ -201,6 +201,8 @@ This assessment estimated 180 parameters. The log of the unfished equilibrium re
 ## Stock biomass and dynamics{-}
 Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning biomass is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs, which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (Table \ref{tab:ssbES};Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated in 2013 (~75%).
 
+![Estimated spawning output trajectory for shortspine thornyhead.\label{fig:ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -233,9 +235,6 @@ Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction 
 \end{longtable}
 \endgroup{}
 \endgroup{}
-
-
-![Estimated spawning output trajectory for shortspine thornyhead.\label{fig:ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
 
 ## Recruitment{-}
 This assessment assumed a Beverton-Holt stock recruitment relationship. Steepness (the fraction of expected equilibrium recruitment associated with 20% of equilibrium spawning biomass) was fixed at 0.7, slightly higher than what was assumed in previous assessments ($h=0.60$). The scale of the population is largely determined by the log of unfished recruitment ($R_0$), which was estimated to be 9.354. This results in an unfished recruitment of 11,550,000 recruits (9,281,000–13,820,000). Recruitment deviations were estimated for the years 1901 through 2022, and ranged from -0.5 to 1.5 on the log scale. Estimated recruitments do not show high variability, and the uncertainty in each estimate is greater than the variability between estimates (Table \ref{tab:recES};Figure \ref{fig:rec_trajectoryES}).
@@ -310,13 +309,16 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \end{longtable}
 \endgroup{}
 \endgroup{}
-\newpage
+
 
 ![Estimated relative spawning output trajectory for shortspine thornyhead.\label{fig:rel_ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
 
+
 ![Summary F rate.\label{fig:summary_fES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
 
+
 ![Estimated spawning potential ratio.\label{fig:spr_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
+
 
 ![Phase diagram.\label{fig:phase_diagramES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
 
@@ -739,7 +741,7 @@ There are 180 estimated parameters in this assessment. The log of unfished recru
 #### Growth, Maturity, Fecundity, Mortality, and Recruitment
 Growth, maturity, and fecundity parameters were fixed at values determined by external analyses (see **section 2.3** for more information). Due to a lack of aging data, growth could not be modeled internally by the assessment, though, like in the 2005 and 2013 models, there is no systematic misfit to the data suggesting that the externally derived growth curves were misspecified. Sensitivity analyses were performed to determine the overall effect of different assumptions regarding growth and maturity. 
 
-For this assessment, natural mortality was fixed at a value of 0.04. A likelihood profile exploring alternative natural mortality values was also conducted (Figure \ref{fig:M_prof}). When natural mortality was estimated in the model, the value was **XX**, which was close to the fixed value of 0.04. This marks a change from the 2013 assessment, where natural mortality was fixed at 0.0505 and a standard deviation on a log scale of 0.5361 [@taylor_stephens_2013]
+For this assessment, natural mortality was fixed at a value of 0.04. A likelihood profile exploring alternative natural mortality values was also conducted (Figure \ref{fig:M_prof}). This marks a change from the 2013 assessment, where natural mortality was fixed at 0.0505 and a standard deviation on a log scale of 0.5361 [@taylor_stephens_2013]
 
 As in the previous shortspine thornyhead assessment, a Beverton-Holt stock recruitment relationship was assumed. Unlike the 2013 assessment, where steepness was fixed at a value of 0.60, this assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. A likelihood profile exploring alternative steepness parameters was conducted and the model results were found to be largely insensitive to the assumed value (Figure XX \ref{fig:h_prof}).
 
