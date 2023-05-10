@@ -26,18 +26,6 @@ knitr::opts_chunk$set(fig.pos = 'H')
 
 ## Data figures
 
-```{r, catch-figures, results = "asis"}
-# Example function for how to arrange figures in order of the time they were modified--from lingcod asssessment--find that function
-
-# add_figure_ling(dplyr::bind_rows(mapply(
-#   FUN = utils::read.csv,
-#   file = dir(file.path("..","figures"), pattern = "^catch-.+\\.csv",full.names=TRUE),
-#   SIMPLIFY = FALSE
-# )) %>% dplyr::arrange(file.info(filein)$mtime)
-# )
-```
-
-
 ```{r,  results = "asis"}
 #Figure 1 Coastwide CPUE plot from NWFSC combo survey
 sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
@@ -117,6 +105,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_
 
 ```
 
+# Assessment Model Plots 
 ```{r,  results = "asis"}
 
 #Senitivity Plots 
@@ -148,7 +137,7 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "mngmttarget-1.png"),
                   caption = "Relative spawning output comparisons of the base model and landing sensitivities.", 
                   label = "land_sensitiv_mngmt")
 ```
-
+## Retrospectives 
 ```{r, results = "asis"}
 
 #Retrospectives
@@ -165,7 +154,7 @@ sa4ss::add_figure(filein = file.path(fig_dir5, "compare13_indices_flt6.png"),
                   caption = "Retrospectives showing impact on fits to WCGBTS index.", 
                   label = "retros_indices")
 ```
-
+## Profiles 
 ```{r, results ='asis'}
 
 #profiles 

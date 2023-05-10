@@ -499,7 +499,7 @@ Trawl prices, on the other hand, changed from \textdollar 0.46/lb to \textdollar
 
 The foreign fishery off of the West Coast is estimated to have caught approximately 7,400 mt of shortspine thornyhead during the 11 year period from 1966-1976 [@rogers_species_2003], which is on the order of the estimate of domestic catch (~8,600 mt) during that same period.
 
-**Management measures** have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since **(Table X)**.
+**Management measures** have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since (Table \ref{tab:allcatch}).
 
 In 2011, the west coast trawl fishery was rationalized, with the introduction of the Individual Fishing Quota (IFQ) Program. In order to provide more flexibility for fishers on the west coast, NOAA Fisheries implemented the West Coast Groundfish Trawl Fishery Catch Share Program, which allows for the division of catch allocated to the trawl fishery into shares controlled by individuals or cooperatives [@catchshare]. All vessels that participate in the IFQ program are required to have 100% observer coverage at all times the vessels are at sea.[@catchshare]
 
@@ -567,7 +567,7 @@ Commercial fishery length-composition data were obtained from \gls{pacfin} for 1
 3. A per-year, per-state expansion factor was computed by dividing the total weight of state landings by the total weight of the species sampled for length in the state. 
 4. The per-trip expanded numbers were multiplied by the per-state expansion factor and summed to provide the coast-wide length-frequency distributions by year.
 
-Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in *_Table X (landings)_* and *_Table X (discards)_*. Length samples from the Trawl North fleet in 1980, 1994, and 1995 showed a very different pattern than the surrounding years. The effective sample sizes for these years were substantially lower than other years (Neff < 15), so the observed differences are likely due to non-representative sampling.
+Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in Table \ref{tab:lensamp} (landings) and Table \ref{tab:disclensamp} (discards). Length samples from the Trawl North fleet in 1980, 1994, and 1995 showed a very different pattern than the surrounding years. The effective sample sizes for these years were substantially lower than other years (Neff < 15), so the observed differences are likely due to non-representative sampling.
 
 Input sample sizes ${N_{input}}$ for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers.com): 
 \begin{align*}{N_{input} = N_{trips} + 0.138N_{fish}}\qquad\text{ when }\frac{N_{fish}}{N_{trips}}<44 \\
@@ -904,7 +904,7 @@ Here are all the mad props!
 
 
 
-Executive Summary
+## Executive Summary
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -1485,7 +1485,7 @@ Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & Fraction Unfi
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}}
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2cm}}
 \caption{(\#tab:likelihoods)Likelihood components by source.}\\
 \toprule
 Source & Likelihood Component\\
@@ -1518,6 +1518,117 @@ Crash Pen & 0.0000000\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
+
+\newpage
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}}
+\caption{(\#tab:lensamp)Sample sizes of length compostion samples for shortspine thornyhead landings.}\\
+\toprule
+Year & North Trawl & South Trawl & Non-trawl & NA & NA & NA\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:lensamp)Sample sizes of length compostion samples for shortspine thornyhead landings. \textit{(continued)}}\\
+\toprule
+Year & North Trawl & South Trawl & Non-trawl & NA & NA & NA\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+1981 & 30 & 1 & 737 & 42 & NA & NA\\
+1982 & 150 & 5 & 723 & 57 & NA & NA\\
+1983 & NA & NA & 1230 & 91 & NA & NA\\
+1984 & NA & NA & 2755 & 118 & NA & NA\\
+1985 & NA & NA & 3176 & 136 & 3 & 3\\
+1986 & NA & NA & 978 & 42 & 9 & 9\\
+1987 & NA & NA & 343 & 26 & 54 & 15\\
+1988 & NA & NA & 140 & 15 & 8 & 7\\
+1989 & NA & NA & 741 & 38 & 18 & 12\\
+1990 & 390 & 33 & 517 & 32 & 24 & 14\\
+1991 & 1059 & 47 & 532 & 41 & NA & NA\\
+1992 & 1227 & 52 & 448 & 36 & 75 & 4\\
+1993 & 281 & 12 & 993 & 56 & 3 & 3\\
+1994 & 40 & 1 & 1367 & 65 & 46 & 12\\
+1995 & 24 & 2 & 2248 & 103 & 36 & 6\\
+1996 & 497 & 15 & 2078 & 94 & 26 & 1\\
+1997 & 2322 & 49 & 1720 & 92 & 36 & 2\\
+1998 & 757 & 28 & 1130 & 57 & 130 & 7\\
+1999 & 819 & 27 & 821 & 48 & 1852 & 73\\
+2000 & 660 & 23 & 1027 & 63 & 447 & 20\\
+2001 & 1632 & 45 & 1413 & 73 & 132 & 8\\
+2002 & 2183 & 50 & 2320 & 108 & 1036 & 42\\
+2003 & 2431 & 67 & 1909 & 80 & 834 & 29\\
+2004 & 1509 & 53 & 1073 & 61 & 133 & 10\\
+2005 & 1649 & 50 & 1393 & 75 & 620 & 34\\
+2006 & 1573 & 53 & 3109 & 156 & 596 & 32\\
+2007 & 2452 & 76 & 1893 & 98 & 393 & 17\\
+2008 & 2660 & 90 & 2212 & 106 & 2037 & 80\\
+2009 & 2854 & 85 & 2137 & 87 & 1298 & 60\\
+2010 & 3130 & 91 & 1720 & 88 & 1346 & 75\\
+2011 & 2381 & 67 & 2950 & 106 & 3276 & 163\\
+2012 & 2262 & 67 & 2423 & 102 & 2419 & 137\\
+2013 & 2519 & 84 & 2505 & 102 & 2010 & 115\\
+2014 & 2036 & 73 & 1490 & 77 & 3283 & 149\\
+2015 & 1915 & 65 & 1615 & 69 & 2971 & 152\\
+2016 & 1495 & 59 & 2362 & 82 & 3087 & 147\\
+2017 & 2158 & 75 & 1571 & 48 & 2504 & 139\\
+2018 & 1828 & 78 & 1222 & 29 & 1333 & 91\\
+2019 & 1539 & 68 & 740 & 29 & 1702 & 134\\
+2020 & 951 & 47 & 897 & 26 & 696 & 64\\
+2021 & 1505 & 80 & 294 & 15 & 1067 & 108\\
+2022 & 1103 & 57 & 273 & 13 & 863 & 75\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\caption{(\#tab:disclensamp)Sample sizes of length compostion samples for discards.}\\
+\toprule
+Year & North Trawl & South Trawl & Non-trawl\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:disclensamp)Sample sizes of length compostion samples for discards. \textit{(continued)}}\\
+\toprule
+Year & North Trawl & South Trawl & Non-trawl\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+1985 & 16.22632 & NA & NA\\
+1986 & 87.48274 & NA & NA\\
+1987 & 35.64121 & NA & NA\\
+2005 & NA & NA & 3.214096\\
+2006 & 51.07086 & 27.59563 & 16.964100\\
+2007 & 68.47165 & 31.72899 & 27.133115\\
+2008 & 86.84179 & 32.73610 & 12.463640\\
+2009 & 107.43585 & 41.12611 & 10.456395\\
+2010 & 72.96283 & 24.59450 & 13.229366\\
+2011 & 79.14677 & 38.86878 & 26.530608\\
+2012 & 102.22721 & 45.88032 & 39.337507\\
+2013 & 93.32129 & 57.43540 & 20.535838\\
+2014 & 81.97741 & 47.49991 & 22.700887\\
+2015 & 63.62426 & 50.32624 & 24.877201\\
+2016 & 61.95310 & 38.71170 & 39.647933\\
+2017 & 59.82086 & 19.56019 & 33.550211\\
+2018 & 65.56232 & 24.94754 & 34.180743\\
+2019 & 60.05591 & 32.97007 & 22.550881\\
+2020 & 64.29953 & 37.70679 & 10.950558\\
+2021 & 75.07302 & 37.38572 & 26.191911\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+
+
+
 \newpage
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -1637,52 +1748,55 @@ Unsexed; Total length; One age reader\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
-
+\newpage
 \begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}}
+\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.38cm}>{\raggedright\arraybackslash}p{1.38cm}>{\raggedright\arraybackslash}p{1.38cm}>{\raggedright\arraybackslash}p{1.38cm}>{\raggedright\arraybackslash}p{1.38cm}>{\raggedright\arraybackslash}p{1.38cm}>{\raggedright\arraybackslash}p{1.38cm}}
 \caption{(\#tab:sentivititytab)Comparison of likelihoods for all sensitivity analyses}\\
 \toprule
-X & Base & Low.Growth & High.Growth & X2013.Maturity & Intermediate.Maturity & Imputed.Landings & X2013.Landings\\
+Source & Base Model & Low Growth & High Growth & 2013 Maturity & Indeterm. Maturity & Imputed Landings & 2013 Landings\\
 \midrule
 \endfirsthead
 \caption[]{(\#tab:sentivititytab)Comparison of likelihoods for all sensitivity analyses \textit{(continued)}}\\
 \toprule
-X & Base & Low.Growth & High.Growth & X2013.Maturity & Intermediate.Maturity & Imputed.Landings & X2013.Landings\\
+Source & Base Model & Low Growth & High Growth & 2013 Maturity & Indeterm. Maturity & Imputed Landings & 2013 Landings\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-Total L & 536.643000 & 729.873000 & 695.432000 & 718.427000 & 718.481000 & 536.308000 & 535.813000\\
-Survey L & -48.598000 & -43.944700 & -52.566600 & -47.059600 & -47.016400 & -48.690400 & -49.002700\\
-Length Comp L & 270.396000 & 443.197000 & 435.191000 & 440.203000 & 440.192000 & 270.292000 & 270.614000\\
-Discards L & 406.126000 & 417.364000 & 405.127000 & 414.636000 & 414.648000 & 406.031000 & 406.048000\\
-Mean Body Wt L & -79.671400 & -78.922400 & -79.368100 & -78.982200 & -78.982700 & -79.678900 & -79.684400\\
-Recruitment L & -13.193700 & -9.747200 & -15.400000 & -12.339400 & -12.327500 & -13.233700 & -13.753800\\
-Prior L & 1.571650 & 1.894360 & 1.865240 & 1.874380 & 1.873770 & 1.575950 & 1.579880\\
-R0 & 11550.400000 & 15443.300000 & 7230.490000 & 11159.700000 & 11167.100000 & 11666.700000 & 11879.200000\\
-B0 & 8273.340000 & 7205.460000 & 10956.200000 & 8442.120000 & 8069.820000 & 8167.330000 & 8257.250000\\
-Depletion & 0.406902 & 0.418039 & 0.369732 & 0.401715 & 0.390839 & 0.397684 & 0.394869\\
-Relative SPR & 0.584221 & 1.000000 & 0.981235 & 1.000000 & 0.994848 & 0.583716 & 0.576800\\*
+Total L & 536.643 & 729.873 & 695.432 & 718.427 & 718.481 & 536.308 & 535.813\\
+Survey L & -48.598 & -43.945 & -52.567 & -47.060 & -47.016 & -48.690 & -49.003\\
+Length Comp L & 270.396 & 443.197 & 435.191 & 440.203 & 440.192 & 270.292 & 270.614\\
+Discards L & 406.126 & 417.364 & 405.127 & 414.636 & 414.648 & 406.031 & 406.048\\
+Mean Body Wt L & -79.671 & -78.922 & -79.368 & -78.982 & -78.983 & -79.679 & -79.684\\
+Recruitment L & -13.194 & -9.747 & -15.400 & -12.339 & -12.328 & -13.234 & -13.754\\
+Prior L & 1.572 & 1.894 & 1.865 & 1.874 & 1.874 & 1.576 & 1.580\\
+R0 & 11550.400 & 15443.300 & 7230.490 & 11159.700 & 11167.100 & 11666.700 & 11879.200\\
+B0 & 8273.340 & 7205.460 & 10956.200 & 8442.120 & 8069.820 & 8167.330 & 8257.250\\
+Depletion & 0.407 & 0.418 & 0.370 & 0.402 & 0.391 & 0.398 & 0.395\\
+Relative SPR & 0.584 & 1.000 & 0.981 & 1.000 & 0.995 & 0.584 & 0.577\\*
 \end{longtable}
 \endgroup{}
+\end{landscape}
 \endgroup{}
+\newpage
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}}
 \caption{(\#tab:growthsentivititytab)Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions}\\
 \toprule
-Label & X23.model.francis\_2 & X23.growth.high & X23.growth.low\\
+Source & Base Model & High Growth & Low Growth\\
 \midrule
 \endfirsthead
 \caption[]{(\#tab:growthsentivititytab)Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions \textit{(continued)}}\\
 \toprule
-Label & X23.model.francis\_2 & X23.growth.high & X23.growth.low\\
+Source & Base Model & High Growth & Low Growth\\
 \midrule
 \endhead
 
@@ -1711,6 +1825,8 @@ SPRratio\_2020 & 0.7307130 & 0.8791360 & 0.5893300\\*
 \endgroup{}
 \endgroup{}
 
+
+
 <!--chapter:end:52tables.Rmd-->
 
 \clearpage
@@ -1725,9 +1841,6 @@ SPRratio\_2020 & 0.7307130 & 0.8791360 & 0.5893300\\*
 
 
 ## Data figures
-
-
-
 
 
 ![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=100% alt="."}
@@ -1765,6 +1878,7 @@ SPRratio\_2020 & 0.7307130 & 0.8791360 & 0.5893300\\*
 
 ![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="."}
 
+# Assessment Model Plots 
 
 ![Relative spawning output comparisons of the base model and high growth and low growth assumptions.\label{fig:growth_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Growth/mngmttarget-1.png){width=100% height=100% alt="."}
 
@@ -1775,14 +1889,14 @@ SPRratio\_2020 & 0.7307130 & 0.8791360 & 0.5893300\\*
 ![Relative spawning output comparisons of the base model and maturity sensitivities.\label{fig:mat_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Maturity/mngmttarget-1.png){width=100% height=100% alt="."}
 
 ![Relative spawning output comparisons of the base model and landing sensitivities.\label{fig:land_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Landings/mngmttarget-1.png){width=100% height=100% alt="."}
-
+## Retrospectives 
 
 ![Retrospectives showing impact on spawning output.\label{fig:retros_spawnbio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
 
 ![Retrospectives showing impact on stock status.\label{fig:retros_bratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
 
 ![Retrospectives showing impact on fits to WCGBTS index.\label{fig:retros_indices}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare13_indices_flt6.png){width=100% height=100% alt="."}
-
+## Profiles 
 
 
 <!--chapter:end:53figures.Rmd-->

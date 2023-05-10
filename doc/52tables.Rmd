@@ -10,14 +10,14 @@ library(knitr)
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 tab_dir2 <- here::here("doc", "FinalTables", "Data")
 tab_dir3 <- here::here("doc", "FinalTables", "Sensitivities")
-
+tab_dir4 <- here::here("doc", "FinalTables", "Model")
 #Insert figure 
 #Figure \caption{(\#tab:catch_tab)Catches by fleet.} 
 
 #if wanting a new page \newpage
 ```
 
-Executive Summary
+## Executive Summary
 ```{r, results='asis'}
 
 #These are all labeled a-i
@@ -162,8 +162,30 @@ like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
 names(like_tab)<-c("Source", "Likelihood Component")
 sa4ss::table_format(x = like_tab,
                   caption = "Likelihood components by source.",
-                  label = "likelihoods")
+                  label = "likelihoods",
+                  align = c("l", "l"))
 ```
+
+\newpage
+```{r, results='asis'}
+#Fishery Length Comp Sample Sizes 
+
+lensamp_tab<-read.csv(file.path(tab_dir2,"lencomps_samplesizes.csv"))
+names(lensamp_tab)<-c("Year", "North Trawl", "South Trawl", "Non-trawl")
+sa4ss::table_format(x = lensamp_tab,
+                  caption = "Sample sizes of length compostion samples for shortspine thornyhead landings.",
+                  label = "lensamp")
+
+disclensamp_tab<-read.csv(file.path(tab_dir2,"discard_lencomp_samplesizes.csv"))
+names(disclensamp_tab)<-c("Year", "North Trawl", "South Trawl", "Non-trawl")
+sa4ss::table_format(x = disclensamp_tab,
+                  caption = "Sample sizes of length compostion samples for discards.",
+                  label = "disclensamp")
+```
+
+
+
+
 \newpage
 ```{r, results='asis'}
 
@@ -223,17 +245,38 @@ sa4ss::table_format(x = growth_data,
                    width="2in")
 
 ```
-
+\newpage
 ```{r, results = 'asis'}
 sensitiv_tab<-read.csv(file.path(tab_dir3, "summary.csv"))
+names(sensitiv_tab)<-c("Source", "Base Model", "Low Growth","High Growth", "2013 Maturity", "Indeterm. Maturity", "Imputed Landings", "2013 Landings")
 sa4ss::table_format(x = sensitiv_tab,
                   caption = "Comparison of likelihoods for all sensitivity analyses",
-                  label = "sentivititytab")
+                  label = "sentivititytab",
+                  landscape = TRUE,
+                  align = c("l", "l", "l","l","l", "l", "l","l")
+                  )
+```
+\newpage
 
-
+```{r, results = 'asis'}
 growthsensitiv_tab<-read.csv(file.path(tab_dir3, "growth_table_likelihoods_and_brps.csv"))
+names(growthsensitiv_tab)<-c("Source", "Base Model", "High Growth", "Low Growth")
 sa4ss::table_format(x = growthsensitiv_tab,
                   caption = "Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions",
-                  label = "growthsentivititytab")
+                  label = "growthsentivititytab",
+                  align = c("l", "l", "l","l"))
+
+```
+
+```{r, results = 'asis'}
+
+
+# allpars<-read.csv(file.path(tab_dir4, "Update_Data_comparison_table_all_params.csv"))
+# names(allpars)<-c("model", "Base Model", "High Growth", "Low Growth")
+# sa4ss::table_format(x = growthsensitiv_tab,
+#                   caption = "Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions",
+#                   label = "growthsentivititytab",
+#                   align = c("l", "l", "l","l"))
+
 
 ```
