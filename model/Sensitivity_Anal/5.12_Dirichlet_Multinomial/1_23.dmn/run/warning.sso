@@ -1,2 +1,7 @@
-Warning 1 :  minimum sample size for length comps must be > 0; minimum sample size set to 0.001 
-Warning 2 Fatal Error! ; length D-M must refer to existing Comp_err definition, or increment by 1:  6
+Note 1 Information: Max data length bin: 72  < max pop len bins: 90; so will accumulate larger pop len bins
+Warning 1 : Final gradient: 10342.7 is larger than final_conv: 0.0001
+Warning 2 : Main recdev biasadj is >2 times ratio of rmse to sigmaR
+Warning 3 : Early recdev biasadj is >2 times ratio of rmse to sigmaR
+Warning 4 : Time-vary parms not bound checked
+Warning 5 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
+ 5 warnings  and 1 note 

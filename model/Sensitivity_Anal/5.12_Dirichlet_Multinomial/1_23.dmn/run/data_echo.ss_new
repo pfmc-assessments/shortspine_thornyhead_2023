@@ -5,7 +5,7 @@
 #_User_info_available_at:https://vlab.noaa.gov/group/stock-synthesis
 #_Source_code_at:_https://github.com/nmfs-stock-synthesis/stock-synthesis
 
-#_Start_time: Mon May  8 11:52:03 2023
+#_Start_time: Tue May  9 17:08:15 2023
 #_echo_input_data
 #C Data file for Shortspine Thornyhead - 2023 Assessment
 #C These data are the one from the 2013 model and updated for
@@ -611,7 +611,7 @@
 2 # binwidth for population size comp 
 4 # minimum size in the population (lower edge of first bin and size at age 0.00) 
 90 # maximum size in the population (lower edge of last bin) 
-1 # use length composition data (0/1/2) where 2 invokes new comp_control format
+2 # use length composition data (0/1/2) where 2 invokes new comp_control format
 #_mintailcomp: upper and lower distribution for females and males separately are accumulated until exceeding this level.
 #_addtocomp:  after accumulation of tails; this value added to all bins
 #_combM+F: males and females treated as combined gender below this bin number 
@@ -620,14 +620,18 @@
 #_ParmSelect:  consecutive index for dirichlet or MV_Tweedie
 #_minsamplesize: minimum sample size; set to 1 to match 3.24, minimum value is 0.001
 #
-#_Using old format for composition controls
-#_mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
--1 0.001 0 0 0 0 1 #_fleet:1_Trawl_N
--1 0.001 0 0 0 0 1 #_fleet:2_Trawl_S
--1 0.001 0 0 0 0 1 #_fleet:3_Non-trawl
--1 0.001 0 0 0 0 1 #_fleet:4_Triennial1
--1 0.001 0 0 0 0 1 #_fleet:5_Triennial2
--1 0.001 0 0 0 0 1 #_fleet:6_NWFSCcombo
+#_Using new list format for composition controls
+#_use negative fleet value to fill for all higher numbered fleets (recommended!)
+#_must enter in fleet, partition order; but only need to enter for used combos
+#_fleet = -9999 to terminate list
+#_fleet partition mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
+ 1 2 -1 0.001 0 0 1 1 1
+ 2 2 -1 0.001 0 0 1 2 1
+ 3 2 -1 0.001 0 0 1 3 1
+ 4 0 -1 0.001 0 0 1 4 1
+ 5 0 -1 0.001 0 0 1 5 1
+ 6 0 -1 0.001 0 0 1 6 1
+ -9999 0 0 0 0 0 0 0 0
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
 # partition codes:  (0=combined; 1=discard; 2=retained
 34 #_N_LengthBins; then enter lower edge of each length bin
@@ -839,10 +843,10 @@
 #_mintailcomp addtocomp combM+F CompressBins CompError ParmSelect minsamplesize
 # 0 0 0 0 0 0 0 #_fleet:1_Trawl_N
 # 0 0 0 0 0 0 0 #_fleet:2_Trawl_S
-# 0 0 544408064 544408048 0 0 0 #_fleet:3_Non-trawl
-# 0 0 1633967907 1633967907 0 0 0 #_fleet:4_Triennial1
-# 0 0 1818846836 1818846836 0 0 0 #_fleet:5_Triennial2
-# 0 0 101 101 0 0 0 #_fleet:6_NWFSCcombo
+# 0 0 0 0 0 0 0 #_fleet:3_Non-trawl
+# 0 0 0 0 0 0 0 #_fleet:4_Triennial1
+# 0 0 0 0 0 0 0 #_fleet:5_Triennial2
+# 0 0 0 0 0 0 0 #_fleet:6_NWFSCcombo
 # 0 #_Lbin_method_for_Age_Data: 1=poplenbins; 2=datalenbins; 3=lengths
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
 # partition codes:  (0=combined; 1=discard; 2=retained

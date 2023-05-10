@@ -231,12 +231,12 @@
 #_AgeSelex
 #_No age_selex_parm
 #_Dirichlet parameters
--5	5	0	0	1.813	6	7	0	0	0	0	0	0	0	#_ln(DM_theta)_1
--5	5	0	0	1.813	6	7	0	0	0	0	0	0	0	#_ln(DM_theta)_2
--5	5	0	0	1.813	6	7	0	0	0	0	0	0	0	#_ln(DM_theta)_3
--5	5	0	0	1.813	6	7	0	0	0	0	0	0	0	#_ln(DM_theta)_4
--5	5	0	0	1.813	6	7	0	0	0	0	0	0	0	#_ln(DM_theta)_5
--5	5	0	0	1.813	6	7	0	0	0	0	0	0	0	#_ln(DM_theta)_6
+-5	5	0	0	1.813	6	8	0	0	0	0	0	0	0	#_ln(DM_theta)_1
+-5	5	0	0	1.813	6	8	0	0	0	0	0	0	0	#_ln(DM_theta)_2
+-5	5	0	0	1.813	6	8	0	0	0	0	0	0	0	#_ln(DM_theta)_3
+-5	5	0	0	1.813	6	8	0	0	0	0	0	0	0	#_ln(DM_theta)_4
+-5	5	0	0	1.813	6	8	0	0	0	0	0	0	0	#_ln(DM_theta)_5
+-5	5	0	0	1.813	6	8	0	0	0	0	0	0	0	#_ln(DM_theta)_6
 # timevary selex parameters 
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007

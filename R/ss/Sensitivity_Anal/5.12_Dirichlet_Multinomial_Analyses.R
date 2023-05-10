@@ -189,11 +189,14 @@ Dat23_dmn$use_lencomp <- 2
 Dat23_dmn$len_info
 
 # need to add new columns and row
-Dat23_dmn$len_info$Fleet <- (1:6)
+Dat23_dmn$len_info$Fleet <- c(1:6)
+Dat23_dmn$len_info
+
 Dat23_dmn$len_info$Partition <- 0
 #Dat23_dmn$len_info <- Dat23_dmn$len_info[c('FISHERY', 'FISHERY', 'SURVEY1','SURVEY2', 'SURVEY3'),c(8,9,1:7)]
 
-Dat23_dmn$len_info$Partition[1:3] <- 1:3
+# set partition to 2 for fishery fleets - retained catch in units of weight
+Dat23_dmn$len_info$Partition[1:3] <- 2  
 
 Dat23_dmn$len_info$CompError <- 1
 Dat23_dmn$len_info$ParmSelect <- 1:6
@@ -202,6 +205,14 @@ Dat23_dmn$len_info$ParmSelect <- 1:6
 Dat23_dmn$len_info[7,] <- c(-9999, rep(0,8))
 rownames(Dat23_dmn$len_info)[7] <- 'TERMINATOR'
 
+# if the error is about order - try hard coding the order: 
+x <- cbind(c(1:6,0), c(2,2,2,0,0,0,0), -1, 0.001,0,0,1,c(1:6,0),1)
+#colnames(x) <- c("Fleet",	"Partition",	"mintailcomp","addtocomp", "combine_M_F",	"CompressBins",	"CompError",	"ParmSelect",	"minsamplesize")
+#rownames(x) <- c("Trawl_N","Trawl_S","Non-trawl","Triennial1","Triennial2","NWFSCcombo", "TERMINATOR")
+x[7,] <- c(-9999, rep(0,8))
+x
+
+Dat23_dmn$len_info <- x
 Dat23_dmn$len_info
 
 # Save the data file for the model
@@ -296,6 +307,14 @@ ctllist =  Ctl23_dmn ,
 outfile = file.path(Dir_23_dmn, 'SST_control.ss', fsep = fsep),
 version = '3.30',
 overwrite = TRUE
+)
+
+# Save the starter file for the model
+SS_writestarter(
+  mylist =  Start23_dmn ,
+  dir =  Dir_23_dmn,
+  overwrite = TRUE,
+  verbose = TRUE
 )
 # Check file structure
 # We actually need to run the model to check the file structure
