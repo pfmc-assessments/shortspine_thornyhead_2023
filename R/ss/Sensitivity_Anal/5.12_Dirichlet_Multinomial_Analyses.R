@@ -181,31 +181,31 @@ Dat23_dmn <- SS_readdat_3.30(
 
 # Make your modification if applicable
 # Code modifying the data file 
-# change use length comp to 1 (Dirichlet Multinomial Error (linear))
 names(Dat23_dmn)
 Dat23_dmn$use_lencomp 
 Dat23_dmn$use_lencomp <- 2 
 
 Dat23_dmn$len_info
 
-# need to add new columns and row
-Dat23_dmn$len_info$Fleet <- c(1:6)
-Dat23_dmn$len_info
+# code from Kiva: 
+# # need to add new columns and row
+# Dat23_dmn$len_info$Fleet <- c(1:6)
+# Dat23_dmn$len_info
+# 
+# Dat23_dmn$len_info$Partition <- 0
+# #Dat23_dmn$len_info <- Dat23_dmn$len_info[c('FISHERY', 'FISHERY', 'SURVEY1','SURVEY2', 'SURVEY3'),c(8,9,1:7)]
+# 
+# # set partition to 2 for fishery fleets - retained catch in units of weight
+# Dat23_dmn$len_info$Partition[1:3] <- 2  
+# 
+# Dat23_dmn$len_info$CompError <- 1
+# Dat23_dmn$len_info$ParmSelect <- 1:6
+# 
+# # add terminator row
+# Dat23_dmn$len_info[7,] <- c(-9999, rep(0,8))
+# rownames(Dat23_dmn$len_info)[7] <- 'TERMINATOR'
 
-Dat23_dmn$len_info$Partition <- 0
-#Dat23_dmn$len_info <- Dat23_dmn$len_info[c('FISHERY', 'FISHERY', 'SURVEY1','SURVEY2', 'SURVEY3'),c(8,9,1:7)]
-
-# set partition to 2 for fishery fleets - retained catch in units of weight
-Dat23_dmn$len_info$Partition[1:3] <- 2  
-
-Dat23_dmn$len_info$CompError <- 1
-Dat23_dmn$len_info$ParmSelect <- 1:6
-
-# add terminator row
-Dat23_dmn$len_info[7,] <- c(-9999, rep(0,8))
-rownames(Dat23_dmn$len_info)[7] <- 'TERMINATOR'
-
-# if the error is about order - try hard coding the order: 
+# if the error is about order - try hard coding the order of the len_info table: 
 x <- cbind(c(1:6,0), c(2,2,2,0,0,0,0), -1, 0.001,0,0,1,c(1:6,0),1)
 #colnames(x) <- c("Fleet",	"Partition",	"mintailcomp","addtocomp", "combine_M_F",	"CompressBins",	"CompError",	"ParmSelect",	"minsamplesize")
 #rownames(x) <- c("Trawl_N","Trawl_S","Non-trawl","Triennial1","Triennial2","NWFSCcombo", "TERMINATOR")
