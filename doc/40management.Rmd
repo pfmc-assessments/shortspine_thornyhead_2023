@@ -1,11 +1,23 @@
 # Management 
 
 ## Reference Points
-
-## Unresolved Problems and Major Uncertainties
+Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” (B/B0 = 0.40 ) and “healthy” status relative to the reference points (Figure XX). Sustainable total yield (landings plus discards) was estimated at 1,060 mt when using an SPR50% reference harvest rate and ranged from 870–1,250 mt based on estimates of uncertainty (Table XX). The spawning output equivalent to 40% of the unfished spawning output (B40%) was 8.273 trillion eggs.  The most recent catches (landings plus discards) have been lower than the estimated long-term yields calculated using an SPR50% reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full ACL. The OFL and ABC values over the past 6 years have been approximately 3100 mt and 2,500 mt, respectively. Both of those values are higher than the OFL and ACL values predicted in short-term forecasts, which are around 900 mt and 777 mt respectively for 2025–2026 (Table XX). This is reflected in the timeseries of low harvest rates (Figure XX), high 1-SPR values (Figure XX), and the phase plot showing the history of being above the target biomass but also above the target fishing intensity reference points (Figure XX). The sharp decline in the OFL and ACL in coming years is the result of continued decline in the relative spawning output of the stock, which has placed it very near the “precautionary” zone for management.
 
 ## Harvest Projections and Decision Tables
 
 ## Evaluation of Scientific Uncertainty
+Scientific uncertainty was evaluated via several likelihood profiles and a wide range of sensitivity analyses, not all of which are reported on here. LIkelihood profiles were performed over unfished recruitment (R0), recruitment steepness (h), and natural mortality (M), as required by the Groundfish Terms of Reference. The profiles found the model results, particularly estimates of stock scale, to be relatively sensitive to changes to R0 and M, as would be expected, but largely insensitive to changes in steepness. An additional likelihood profile was also run over growth, and found the model results to be quite sensitive to the assumed values of the growth curve. Sensitivities were performed using alternative growth and maturity curves, alternative time blocks for selectivity and retention, and alternative historical landings timeseries. Model results (particularly estimates of stock status) were largely insensitive to all changes except for growth.
+
+The model estimated uncertainty around the 2023 spawning biomass was 𝜎 = 0.18 and the uncertainty around the OFL was 𝜎 = 0.16.
+
 
 ## Research and Data Needs
+Research and data needs for future assessments include the following: 
+
+1. Research into aging methods and availability of reliable age data would be valuable for future stock assessments. Otoliths have been collected in good quantities from the NWFSC survey, but there is currently no validated aging method for Shortspine thornyhead. 
+2. Additional investigation into growth patterns would provide valuable information for future population projections. We acknowledge that additional work on aging shortspine thornyhead would be required to make such additional growth research possible.
+3. More investigation into maturity of Shortspine thornyhead is necessary to understand the patterns in maturity observed in WCGBTS samples. 
+4. Information on possible migration of Shortspine thornyheads would be valuable for understanding stock dynamics. Analysis of trace elements and stable isotopes in shortspine otoliths may provide valuable information on the extent of potential migrations. Possible connections between migration and maturity could likewise be explored. 
+5. A greater understanding of the connection between thornyheads and bottom type could be used to refine the indices of abundance. Thornyheads are very well sampled in trawlable habitat, but the extrapolation of density to a survey stratum could be improved by accounting for the proportion of different bottom types within a stratum and the relative density of thornyheads within each bottom type.
+6. Additional investigation into spatial stock structure could be valuable for determining whether future assessments should develop a spatial assessment model, or if shortspine thornyhead should be assessed at distinct spatial scales in the future.
+
