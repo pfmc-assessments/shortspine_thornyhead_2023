@@ -229,37 +229,20 @@ write_csv(ss_fleet_str2, 'data/for_ss/landings_length_comps_3fleet_2023.csv')
 samplesizes <- Pdata_new %>% 
   group_by(state, gear, year) %>% 
   dplyr::summarise(nsamps = n(),
-                   ntows = length(unique(towid)))
+                   ntows = length(unique(towid))) %>%
+  ungroup()
 
-write_csv(samplesizes, 'outputs/fishery_landings/lencomps_samplesizes.csv')
+write_csv(samplesizes, 'outputs/fishery_data/lencomps_samplesizes.csv')
 
-# create sampling effort data table ----------
-ss_fleet_str2
+samplesizes2 <- samplesizes %>% 
+  dplyr::mutate(fleet = paste(state, gear, sep = "_")) %>%
+  select(year,nsamps,ntows,fleet) %>%
+  dplyr::mutate(fleet = case_when(fleet %in% c('OR_TWL', 'WA_TWL') ~ 'NTrawl',
+                                  fleet %in% c('CA_TWL') ~ 'STrawl',
+                                  fleet %in% c('OR_NONTWL', 'WA_NONTWL', 'CA_NONTWL') ~ 'NonTrawl')) %>%
+  group_by(year, fleet) %>%
+  summarize(nsamps = sum(nsamps,na.rm=T),
+            ntows = sum(ntows,na.rm=T)) %>%
+  pivot_wider(names_from = fleet, values_from = c(nsamps,ntows))
 
-samptable <- ss_fleet_str2 %>% 
-  select("year", "Nsamp", fleet) %>%
-  pivot_wider(names_from = fleet, values_from = Nsamp) %>%
-  rename('NTrawl' = `1`, 'STrawl' = `2`, 'NonTrawl' = `3`)
-
-samptable <- Pdata_exp %>% group_by(year) %>%
-  tally(SAMPLE_NO) %>%
-  left_join(samptable, by = "year")
-
-Pdata %>% 
-  group_by(year) %>%
-  count()
-
-Pdata_exp2 <- Pdata_exp %>% 
-  dplyr::mutate(fleet = case_when(fleet %in% 'NTrawl' ~ 'NTrawl',
-                                  fleet %in% 'STrawl' ~ 'STrawl',
-                                  fleet %in% c('SOther', 'NOther') ~ 'NonTrawl'))
-
-Pdata_exp2 %>% 
-  group_by(fleet, year) %>%
-  count()
-
-try <- Pdata_exp %>% group_by(year) %>%
-  summarize(haul = length(unique(SAMPLE_MONTH)))
-
-
-
+write_csv(samplesizes2, 'outputs/fishery_data/lencomps_samplesizes2.csv')
