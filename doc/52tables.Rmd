@@ -5,6 +5,7 @@
 library(here)
 library(dplyr)
 library(tidyr)
+library(knitr)
 
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 tab_dir2 <- here::here("doc", "FinalTables", "Data")
@@ -162,14 +163,34 @@ sa4ss::table_format(x = like_tab,
                   caption = "Likelihood components by source.",
                   label = "likelihoods")
 ```
-
+\newpage
 ```{r, results='asis'}
 
-surv_strat <- read.csv(tab_dir2, "SurveyStrat.csv", header = FALSE, stringsAsFactors = FALSE)
-colnames(surv_strat) <- c("Survey", "Strata Definitions")
+surv_strat <- readLines(file.path(tab_dir2, "SurveyStrat.csv"))
+surv_strat <- trimws(surv_strat)
+surv_strat <- gsub("<a0>", "", surv_strat)
 
-surv_strat$Survey <- gsub("\t", " ", table_data$Survey)
-surv_strat$`Strata Definitions` <- gsub("\t", " ", surv_strat$`Strata Definitions`)
-surv_strat$Survey <- gsub("\\s+", " ", table_data$Survey)
-surv_strat$`Strata Definitions` <- gsub("\\s+", " ", surv_strat$`Strata Definitions`)
+con <- textConnection(surv_strat)
+df <- read.csv(con, header = FALSE, stringsAsFactors = FALSE)
+close(con)
+
+# Remove leading and trailing whitespace from each column
+df <- apply(df, 2, trimws)
+
+df <- data.frame(df)
+colnames(df) <- c("Survey", "Strata Definitions")
+
+surv_strat <-df
+
+#surv_strat<-kable(df, format = "markdown", align = c("l", "l"), caption = "Survey stratification", booktabs = TRUE)
+
+
+sa4ss::table_format(x = surv_strat,
+                  caption = "Survey stratification",
+                  label = "surveystrat",
+                  align = c("l", "l"),
+                  custom_width = TRUE,
+                  col_to_adjust = 2,
+                  width="3in")
+
 ```

@@ -1,14 +1,14 @@
 Survey,Strata Definitions
 AFSC Slope,2 strata:
-,"     32.0-49.0?N: 150-500 m, 500-1280 m"
+,"     32.0-49.0 degrees N: 150-500 m, 500-1280 m"
 NWFSC Combo ,7 strata
-,"     32.0-34.5?N: 183-550 m, 550-1280 m"
-(West Coast Groundfish Bottom Trawl Survey),"     34.5-40.5?N: 183-550 m, 550-1280 m"
-,"     40.5-49.0?N: 100-183 m, 183-550 m, 550-1280 m"
+,"     32.0-34.5 degrees N: 183-550 m, 550-1280 m"
+(West Coast Groundfish Bottom Trawl Survey),"     34.5-40.5 degrees N: 183-550 m, 550-1280 m"
+,"     40.5-49.0 degrees N: 100-183 m, 183-550 m, 550-1280 m"
 ,The depth breaks at 183 m and 550 m are associated with changes in sampling intensity of the survey and are recommended to be used.
 NWFSC Slope,6 strata
-,"     32.0-40.5?N: 55-500m, 550-1280m"
-,"     40.5-43.0?N: 55-550m, 550-1280m"
-,"     43.0-49.0?N: 55-550m, 550-1280m"
+,"     32.0-40.5 degrees N: 55-500m, 550-1280m"
+,"     40.5-43.0 degrees N: 55-550m, 550-1280m"
+,"     43.0-49.0 degrees N: 55-550m, 550-1280m"
 AFSC Triennial 1 ,1 stratum: <=366 m
 AFSC Triennial 2 ,1 stratum: 366-500 m
