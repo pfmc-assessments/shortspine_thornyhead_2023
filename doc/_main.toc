@@ -59,7 +59,6 @@
 \contentsline {paragraph}{\numberline {3.2.4.1}Growth, Maturity, Fecundity, Mortality, and Recruitment}{20}{paragraph.3.2.4.1}%
 \contentsline {paragraph}{\numberline {3.2.4.2}Selectivity and Retention}{20}{paragraph.3.2.4.2}%
 \contentsline {paragraph}{\numberline {3.2.4.3}Catchability}{21}{paragraph.3.2.4.3}%
-\contentsline {subsubsection}{\numberline {3.2.5}Key Assumptions and Structural Choices}{22}{subsubsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.3}Base Model Results}{22}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Parameter Estimates}{22}{subsubsection.3.3.1}%
 \contentsline {paragraph}{\numberline {3.3.1.1}Recruitment}{22}{paragraph.3.3.1.1}%
@@ -92,6 +91,6 @@
 \contentsline {section}{\numberline {6}References}{30}{section.6}%
 \contentsline {section}{\numberline {7}Tables}{34}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Executive Summary}{34}{subsection.7.1}%
-\contentsline {section}{\numberline {8}Figures}{65}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Data figures}{65}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Assessment Model Plots}{81}{section.9}%
+\contentsline {section}{\numberline {8}Figures}{66}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Data figures}{66}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Assessment Model Plots}{82}{section.9}%

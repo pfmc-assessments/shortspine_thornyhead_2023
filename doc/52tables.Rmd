@@ -285,3 +285,12 @@ sa4ss::table_format(x = allpars,
                   
 
 ```
+
+```{r, results='asis'}
+recdevs<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
+names(rec_tab)<-c("Year", "Recruitment", "95% CI", "RecDevs", "RecDev 95% CI")    
+sa4ss::table_format(x = recdevs,
+                  caption = "Estimated recent trend in recruitment and recruitment deviations and the 95\\% confidence intervals (CI) from the base model.",
+                  label = "recdevs")
+
+```

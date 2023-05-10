@@ -9,6 +9,8 @@ fig_dir2 <- here::here("doc", "FinalFigs", "Data")
 fig_dir3 <- here::here("doc", "FinalFigs", "Base")
 fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")
 fig_dir5 <- here::here("doc", "FinalFigs", "Retros")
+fig_dir6 <- here::here("doc", "FinalFigs", "Profiles")
+fig_dir7 <- here::here("doc", "FinalFigs", "Jitters")
 
 #Insert figure 
 #Figure \ref{fig:label}
@@ -158,5 +160,21 @@ sa4ss::add_figure(filein = file.path(fig_dir5, "compare13_indices_flt6.png"),
 ```{r, results ='asis'}
 
 #profiles 
+#M
+sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_NatM_break_1_Fem_GP_1.png"), 
+                  caption = "Pinter panel plot showing the impact of changing natural mortality on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
+                  label = "M_prof")
+#h
+sa4ss::add_figure(filein = file.path(fig_dir6, "parameter_panel_SR_BH_steep.png"), 
+                  caption = "Likelihood profile for steepness showing the impact of the steepness value on the change in log likelihood (top-left), the fraction of unfished biomass (top-right), initial spawning biomass (bottom-left) and the terminal year of spawning biomass (bottom-right).", 
+                  label = "h_prof")
 
+```
+## Results 
+```{r}
+
+#annual log deviations
+sa4ss::add_figure(filein = file.path(fig_dir3, "recdevs2_withbars.png"), 
+                  caption = "Annual recruitment deviations with 95% intervals", 
+                  label = "recdevs")
 ```

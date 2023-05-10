@@ -2,10 +2,10 @@
 
 
 ### Parameter Estimates
-A complete set of parameter estimates are available in **Table XX**.
+A complete set of parameter estimates are available in Table \ref{tab:allparstab}.
 
 #### Recruitment
-The model estimated 135 annual recruitment deviations (1901-2034) as well as the log of unfished recruitment LN(R0). Unfished recruitment was estimated to be ~11,000,000 annual age-0 recruits (LN(R0) = 9.34) while annual log deviations were generally estimated between -0.5 and 0.5 (**Figure XX; Table XX**). Deviations in 2003 and 2007 were estimated to be substantially larger than other years. As in the 2013 assessment, uncertainty in the scale of annual deviations was substantially larger than the variation between the deviations. Recruitment bias adjustments were performed following the advice of @methot_adjusting_2011.
+The model estimated 135 annual recruitment deviations (1901-2034) as well as the log of unfished recruitment LN(R0). Unfished recruitment was estimated to be ~11,000,000 annual age-0 recruits (LN(R0) = 9.34) while annual log deviations were generally estimated between -0.5 and 0.5 (Figure \ref{fig:recdevs} ; Table \ref{tab:recdevs}). Deviations in 2003 and 2007 were estimated to be substantially larger than other years. As in the 2013 assessment, uncertainty in the scale of annual deviations was substantially larger than the variation between the deviations. Recruitment bias adjustments were performed following the advice of @methot_adjusting_2011.
 
 #### Selectivity and Retention
 Selectivity curves for all three fisheries fleets and the three scientific surveys were estimated as dome-shaped. 
