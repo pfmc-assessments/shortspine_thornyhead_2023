@@ -312,13 +312,13 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 
 
 ![Estimated relative spawning output trajectory for shortspine thornyhead.\label{fig:rel_ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
-
+\newpage
 
 ![Summary F rate.\label{fig:summary_fES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
-
+\newpage
 
 ![Estimated spawning potential ratio.\label{fig:spr_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
-
+\newpage
 
 ![Phase diagram.\label{fig:phase_diagramES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
 
@@ -710,14 +710,22 @@ Shortspine Thornyhead was first assessed in 1990 by @jacobson_1990 and @jacobson
 
 ### Most Recent STAR Panel and SSC Recommendations (not required for an update assessment)
 
+1. More investigation into maturity of shortspine
+2. Information on possible migration of shortspine thornyheads would be valuable for understanding stock dynamics. 
+3. A greater understanding of catchability of thornyheads would help define the scale of the populations..
+4. Age data and additional research on ageing methods for thornyheads would be valuable.
+5. A greater understanding of the connection between thornyheads and bottom type could be used to refine the indices of abundance. 
+6. A comprehensive catch reconstruction for shortspine and longspine thornyheads should be completed to estimate landings for each species prior to 1981 in each of the three states.
+7. Exploration of simpler assessment methods for thornyheads and evaluation of whether such methods would provide a more robust management strategy than the current approach. 
+8. More tows or visual surveys south of 34.5 deg. N. lat. including the large Cowcod Conservation Area. Because the southern Conception Area is a large potential habitat for thornyheads, more sampling effort would help refine the estimations of their abundance in this area.
 
+Recommendations from the last assessment were taken into consideration in the development of the current assessment model. New histological data from the NWFSC Combo Survey in recent years enabled calculation of new maturity curves for the model. In addition, more comprehensive catch reconstructions from Washington, Oregon, and California were used for catches prior to 1980 in the model. Lastly, model structure for the current assessment was simplified by reducing the number of fishery and survey fleets. 
 
 ### Response to Groundfish Subcommittee Requests (not required in draft)
 
 <!--chapter:end:31summary.Rmd-->
 
 ## Model Structure and Assumptions
-
 
 ### Model Changes from the Last Assessment (not required for an update assessment)
 The most notable changes from the previous assessment, conducted in 2013, include significant modifications to the fleet and survey structure, and major changes to the maturity and fecundity relationships that underlie the model’s biological assumptions. 
@@ -734,14 +742,13 @@ Commercial fisheries landings were divided into three distinct fisheries fleets:
 
 Data from two fisheries-independent scientific surveys were used in this model: the \gls{s-aslope} from 1980-2003, and the more recent \gls{s-wcgbt} from 2004-2022. The \gls{s-tri} was further divided into an early (pre-1995) and late period (post-1995) survey to account for the change in depth-sampling that occurred during the 1995 season. These two periods for the \gls{s-tri} were treated as separate surveys in the model. The contribution of each new data component to the changes in the assessment outcome was analyzed by data piecewise. 
 
-
 ### Model Parameters
 There are 180 estimated parameters in this assessment. The log of unfished recruitment, log(R0), controls the overall scale of the population, while annual deviations in recruitment about the assumed stock-recruit relationship (135 parameters) allow for additional uncertainty in the population trajectory. Selectivity and retention parameters (43 parameters) for three fisheries fleets and three scientific surveys allow for estimation of annual length compositions and discards rates. Two catchability parameters are analytically computed from the data, and one additional parameter, representing additional variability in the early \gls{s-tri}, is directly estimated by the model.
 
 #### Growth, Maturity, Fecundity, Mortality, and Recruitment
 Growth, maturity, and fecundity parameters were fixed at values determined by external analyses (see **section 2.3** for more information). Due to a lack of aging data, growth could not be modeled internally by the assessment, though, like in the 2005 and 2013 models, there is no systematic misfit to the data suggesting that the externally derived growth curves were misspecified. Sensitivity analyses were performed to determine the overall effect of different assumptions regarding growth and maturity. 
 
-For this assessment, natural mortality was fixed at a value of 0.04. A likelihood profile exploring alternative natural mortality values was also conducted (Figure \ref{fig:M_prof}). This marks a change from the 2013 assessment, where natural mortality was fixed at 0.0505 and a standard deviation on a log scale of 0.5361 [@taylor_stephens_2013]
+For this assessment, natural mortality was fixed at a value of 0.04. A likelihood profile exploring alternative natural mortality values was also conducted (Figure \ref{fig:M_prof}). This marks a change from the 2013 assessment, where natural mortality was fixed at 0.0505 and a standard deviation on a log scale of 0.5361 [@taylor_stephens_2013].
 
 As in the previous shortspine thornyhead assessment, a Beverton-Holt stock recruitment relationship was assumed. Unlike the 2013 assessment, where steepness was fixed at a value of 0.60, this assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. A likelihood profile exploring alternative steepness parameters was conducted and the model results were found to be largely insensitive to the assumed value (Figure XX \ref{fig:h_prof}).
 
@@ -843,9 +850,9 @@ A likelihood profile over log(R0) was performed to assess the influence of the v
 
 Likelihood values and model results were largely insensitive to changes in steepness (Figure \ref{fig:h_piner_prof}). The change in negative log likelihood over the range of h = 0.5–1.0 was less than 10 units with the largest contribution coming from recruitment and abundance indices. No other likelihood component had a change of greater than 1 unit. The lowest B0 and depletion values were associated with the most productive population, with h = 1.0, but there was no qualitative difference between any of these cases (total change in depletion values across the range of h tested was 0.02 units; Figure \ref{fig:h_spawnout}). The apparent lack of influence of h on population dynamics for shortspine thornyhead is likely the result of the relatively high estimated stock status across the entire time series, which makes estimation of h difficult. 
 
-A likelihood profile over natural mortality (M) found the model results to be quite sensitive to the assumed value of M: with all values of M 0.03-0.05 resulting in likelihoods within 1 unit of the base model (Figure \ref{fig:M_prof}). Meanwhile there was no support in the data for values of M above 0.06. Length composition data, particularly from the two trawl fleets, was the major contributor to the changes in likelihood observed over the range of tested values for M (Figure \ref{fig:M_prof}). All plausible values of M resulted in similar levels of depletion (Figure \ref{fig:M_relspawnout}), but a wide range of levels for unfished spawning output (Figure ref{fig:M_spawnout})
+A likelihood profile over natural mortality (M) found the model results to be quite sensitive to the assumed value of M: with all values of M 0.03-0.05 resulting in likelihoods within 1 unit of the base model (Figure \ref{fig:M_prof}). Meanwhile there was no support in the data for values of M above 0.06. Length composition data, particularly from the two trawl fleets, was the major contributor to the changes in likelihood observed over the range of tested values for M (Figure \ref{fig:M_prof}). All plausible values of M resulted in similar levels of depletion (Figure \ref{fig:M_relspawnout}), but a wide range of levels for unfished spawning output (Figure \ref{fig:M_spawnout})
 
-Because of the high sensitivity of the model to assumptions about growth, a likelihood profile over growth coefficients, length at minimum age (a_{min}) and length at maximum age (a_{max}), for each sex, was conducted. For the profile, length at amin for females ranged from 10 cm to 15 cm and length at a_{max} ranged from 60 cm to 150 cm. For males, length at a_{min} ranged from 8cm to 12 cm and length at a_{max} ranged from 55 cm to 140 cm. As with the growth sensitivity analysis described above, likelihood was minimized for higher growth scenarios (Figure \ref{fig:growth_prof}). Spawning biomass trajectories showed similar patterns to the growth sensitivity, with higher growth scenarios producing substantially higher spawning output (Figure \ref{fig:growth_spawnout}). Based on both the fishery and survey length compositions, the largest fish, under a high growth model, are not necessarily being observed in the data. This, in combination with a low natural mortality, may be driving the higher spawning output patterns under high growth scenarios.  
+Because of the high sensitivity of the model to assumptions about growth, a likelihood profile over growth coefficients, length at minimum age ($a_{min}$) and length at maximum age ($a_{max}$), for each sex, was conducted. For the profile, length at amin for females ranged from 10 cm to 15 cm and length at a_{max} ranged from 60 cm to 150 cm. For males, length at $a_{min}$ ranged from 8cm to 12 cm and length at $a_{max}$ ranged from 55 cm to 140 cm. As with the growth sensitivity analysis described above, likelihood was minimized for higher growth scenarios (Figure \ref{fig:growth_prof}). Spawning biomass trajectories showed similar patterns to the growth sensitivity, with higher growth scenarios producing substantially higher spawning output (Figure \ref{fig:growth_spawnout}). Based on both the fishery and survey length compositions, the largest fish, under a high growth model, are not necessarily being observed in the data. This, in combination with a low natural mortality, may be driving the higher spawning output patterns under high growth scenarios.  
 
 ### Unresolved Problems and Major Uncertainties
 Few problems remain totally unresolved, though improvements to the model fit to the \gls{s-wcgbt} abundance indices and to the North Trawl fleet length compositions would be desirable. In addition, being able to freely estimate the width of the selectivity plateaus for many of the fleets and surveys would also improve the model. 
