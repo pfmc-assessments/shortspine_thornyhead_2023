@@ -114,28 +114,28 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_
 
 #Growth
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "mngmttarget-1.png"), 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare4_Bratio_uncertainty.png"), 
                   caption = "Relative spawning output comparisons of the base model and high growth and low growth assumptions.", 
                   label = "growth_sensitiv_mngmt")
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "spawningoutput-1.png"), 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare2_spawnbio_uncertainty.png"), 
                   caption = "Spawning output comparisons of the base model and high growth and low growth assumptions.", 
                   label = "growth_sensitiv_spawning")
 
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "index_combosurv-1.png"), 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare13_indices_flt6"), 
                   caption = "Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.", 
                   label = "growth_sensitiv_indx")
 
 #Maturity
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "mngmttarget-1.png"), 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare4_Bratio_uncertainty.png"), 
                   caption = "Relative spawning output comparisons of the base model and maturity sensitivities.", 
                   label = "mat_sensitiv_mngmt")
 
 #Landings 
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "mngmttarget-1.png"), 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_uncertainty.png"), 
                   caption = "Relative spawning output comparisons of the base model and landing sensitivities.", 
                   label = "land_sensitiv_mngmt")
 ```
