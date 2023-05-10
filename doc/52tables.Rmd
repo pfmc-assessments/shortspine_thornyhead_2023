@@ -279,8 +279,9 @@ allpars <- allpars %>%
 
 sa4ss::table_format(x = allpars,
                   caption = "All parameter estimates for the proposed base model",
-                  label = "allparstab")
+                  label = "allparstab",
+                  align = c("l", "l", "l","l","l","l"),
+                  landscape = TRUE)
                   
-
 
 ```

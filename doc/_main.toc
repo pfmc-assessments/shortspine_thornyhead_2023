@@ -91,6 +91,6 @@
 \contentsline {section}{\numberline {6}References}{30}{section.6}%
 \contentsline {section}{\numberline {7}Tables}{34}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Executive Summary}{34}{subsection.7.1}%
-\contentsline {section}{\numberline {8}Figures}{62}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Data figures}{62}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Assessment Model Plots}{78}{section.9}%
+\contentsline {section}{\numberline {8}Figures}{65}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Data figures}{65}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Assessment Model Plots}{81}{section.9}%

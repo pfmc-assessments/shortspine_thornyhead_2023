@@ -1826,9 +1826,10 @@ SPRratio\_2020 & 0.7307130 & 0.8791360 & 0.5893300\\*
 \endgroup{}
 \newpage
 \begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}>{\raggedright\arraybackslash}p{1.83cm}}
 \caption{(\#tab:allparstab)All parameter estimates for the proposed base model}\\
 \toprule
 Source & Value & Phase & Gradient & Lower 95\% CI & Upper 95\% CI\\
@@ -2083,6 +2084,7 @@ Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2007 & 0.0017796 & 4 & 0.00
 Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0015285 & 4 & 0.0000000 & -0.390168 & 0.393225\\*
 \end{longtable}
 \endgroup{}
+\end{landscape}
 \endgroup{}
 
 <!--chapter:end:52tables.Rmd-->
