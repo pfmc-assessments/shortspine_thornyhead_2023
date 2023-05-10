@@ -723,16 +723,16 @@ Shortspine Thornyhead was first assessed in 1990 by @jacobson_1990 and @jacobson
 
 
 ### Model Changes from the Last Assessment (not required for an update assessment)
-
 The most notable changes from the previous assessment, conducted in 2013, include significant modifications to the fleet and survey structure, and major changes to the maturity and fecundity relationships that underlie the model’s biological assumptions. 
 
-The 2013 assessment consisted of four fisheries fleets, and used information from four (nominally five) scientific surveys, while the new assessment uses a condensed structure consisting of just three fisheries fleets and only two (nominally three) surveys (**see 3.2.2 for more details**). 
+The 2013 assessment consisted of four fisheries fleets, and used information from four (nominally five) scientific surveys, while the new assessment uses a condensed structure consisting of just three fisheries fleets and only two (nominally three) surveys (see **section 3.2.2** for more details). 
 
-This assessment assumes a new fecundity relationship, in which fecundity increases with body size, as well as a new maturity relationship, in which fish mature at much larger sizes and thus older ages, than were assumed in the 2013 assessment. Further details on the fecundity and maturity relationships can be found in **Section 2.3.2**. A sensitivity analysis was performed to determine the effect of different maturity assumptions on the final model output **(Figure XX)**.
+This assessment assumes a new fecundity relationship, in which fecundity increases with body size, as well as a new maturity relationship, in which fish mature at much larger sizes and thus older ages, than were assumed in the 2013 assessment. Further details on the fecundity and maturity relationships can be found in **section 2.3.2**. A sensitivity analysis was performed to determine the effect of different maturity assumptions on the final model output (Figure \ref{fig:mat_sensitiv_mngmt}).
 
 ### Modeling Platform and Structure
 This new assessment, including all exploratory models, profiles, and related analyses, was performed using Stock Synthesis Version 3.30.21 [@methot_stock_2013; @ss_manual_2020). The majority of analyses were performed using multiple recent versions of R [@r_core_2021], and relied heavily on the ‘r4ss’ R package [@r4ss] among others. The assessment model was developed and tested across multiple operating systems, including recent versions of Windows and macOS.
 
+### Model Fleet Structure
 Commercial fisheries landings were divided into three distinct fisheries fleets: a northern trawl fleet (hereinafter referred to as North Trawl) operating off the coasts of Oregon and Washington, a southern trawl fleet (hereinafter referred to as South Trawl) operating off the coast of California, and a coastwide non-trawl fleet (hereinafter referred to as Non-trawl).
 
 Data from two fisheries-independent scientific surveys were used in this model: the \gls{s-aslope} from 1980-2003, and the more recent WCGBTS from 2004-2022. The triennial survey was further divided into an early (pre-1995) and late period (post-1995) survey to account for the change in depth-sampling that occurred during the 1995 season. These two periods for the triennial survey were treated as separate surveys in the model. 
@@ -741,7 +741,7 @@ Data from two fisheries-independent scientific surveys were used in this model: 
 There are 180 estimated parameters in this assessment. The log of unfished recruitment, log(R0), controls the overall scale of the population, while annual deviations in recruitment about the assumed stock-recruit relationship (135 parameters) allow for additional uncertainty in the population trajectory. Selectivity and retention parameters (43 parameters) for three fisheries fleets and three scientific surveys allow for estimation of annual length compositions and discards rates. Two catchability parameters are analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, is directly estimated by the model.
 
 #### Growth, Maturity, Fecundity, Mortality, and Recruitment
-Growth, maturity, and fecundity parameters were fixed at values determined by external analyses (**see 2.3 for more information**). Due to a lack of aging data, growth could not be modeled internally by the assessment, though, like in the 2005 and 2013 models, there is no systematic misfit to the data suggesting that the externally derived growth curves were misspecified. Sensitivity analyses were performed to determine the overall effect of different assumptions regarding growth or maturity (**Figure XX, Figure XX**). 
+Growth, maturity, and fecundity parameters were fixed at values determined by external analyses (see **section 2.3** for more information). Due to a lack of aging data, growth could not be modeled internally by the assessment, though, like in the 2005 and 2013 models, there is no systematic misfit to the data suggesting that the externally derived growth curves were misspecified. Sensitivity analyses were performed to determine the overall effect of different assumptions regarding growth (Figure \ref{fig:growth_sensitiv_mngmt}) and maturity (\ref{fig:mat_sensitiv_mngmt})). 
 
 For this assessment, natural mortality was fixed at a value of 0.04. A likelihood profile exploring alternative natural mortality parameters was also conducted (**Figure XX**). When naturaly mortality was estimated in the model, the value was **XX**, which was close to the fixed value of 0.04. This marks a change from the 2013 assessment, where natural mortality was fixed at 0.0505 and a standard deviation on a log scale of 0.5361 [@taylor_stephens_2013]
 

@@ -54,20 +54,21 @@
 \contentsline {subsection}{\numberline {3.2}Model Structure and Assumptions}{18}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Model Changes from the Last Assessment (not required for an update assessment)}{18}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Modeling Platform and Structure}{19}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Model Parameters}{19}{subsubsection.3.2.3}%
-\contentsline {paragraph}{\numberline {3.2.3.1}Growth, Maturity, Fecundity, Mortality, and Recruitment}{20}{paragraph.3.2.3.1}%
-\contentsline {paragraph}{\numberline {3.2.3.2}Selectivity and Retention}{20}{paragraph.3.2.3.2}%
-\contentsline {paragraph}{\numberline {3.2.3.3}Catchability}{21}{paragraph.3.2.3.3}%
-\contentsline {subsubsection}{\numberline {3.2.4}Key Assumptions and Structural Choices}{21}{subsubsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.3}Base Model Results}{21}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Parameter Estimates}{21}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3}Model Fleet Structure}{19}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Model Parameters}{19}{subsubsection.3.2.4}%
+\contentsline {paragraph}{\numberline {3.2.4.1}Growth, Maturity, Fecundity, Mortality, and Recruitment}{20}{paragraph.3.2.4.1}%
+\contentsline {paragraph}{\numberline {3.2.4.2}Selectivity and Retention}{20}{paragraph.3.2.4.2}%
+\contentsline {paragraph}{\numberline {3.2.4.3}Catchability}{21}{paragraph.3.2.4.3}%
+\contentsline {subsubsection}{\numberline {3.2.5}Key Assumptions and Structural Choices}{22}{subsubsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.3}Base Model Results}{22}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Parameter Estimates}{22}{subsubsection.3.3.1}%
 \contentsline {paragraph}{\numberline {3.3.1.1}Recruitment}{22}{paragraph.3.3.1.1}%
 \contentsline {paragraph}{\numberline {3.3.1.2}Selectivity and Retention}{22}{paragraph.3.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.3.2}Fits to the Data}{22}{subsubsection.3.3.2}%
-\contentsline {paragraph}{\numberline {3.3.2.1}Abundance Indices}{22}{paragraph.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Fits to the Data}{23}{subsubsection.3.3.2}%
+\contentsline {paragraph}{\numberline {3.3.2.1}Abundance Indices}{23}{paragraph.3.3.2.1}%
 \contentsline {paragraph}{\numberline {3.3.2.2}Fishery Discard Rates}{23}{paragraph.3.3.2.2}%
 \contentsline {paragraph}{\numberline {3.3.2.3}Fishery Length Compositions}{23}{paragraph.3.3.2.3}%
-\contentsline {paragraph}{\numberline {3.3.2.4}Survey Length Compositions}{23}{paragraph.3.3.2.4}%
+\contentsline {paragraph}{\numberline {3.3.2.4}Survey Length Compositions}{24}{paragraph.3.3.2.4}%
 \contentsline {paragraph}{\numberline {3.3.2.5}Mean Body Weight}{24}{paragraph.3.3.2.5}%
 \contentsline {subsubsection}{\numberline {3.3.3}Population Trajectory}{24}{subsubsection.3.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.4}Reference Points}{24}{subsubsection.3.3.4}%
