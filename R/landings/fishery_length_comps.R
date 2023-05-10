@@ -232,3 +232,34 @@ samplesizes <- Pdata_new %>%
                    ntows = length(unique(towid)))
 
 write_csv(samplesizes, 'outputs/fishery_landings/lencomps_samplesizes.csv')
+
+# create sampling effort data table ----------
+ss_fleet_str2
+
+samptable <- ss_fleet_str2 %>% 
+  select("year", "Nsamp", fleet) %>%
+  pivot_wider(names_from = fleet, values_from = Nsamp) %>%
+  rename('NTrawl' = `1`, 'STrawl' = `2`, 'NonTrawl' = `3`)
+
+samptable <- Pdata_exp %>% group_by(year) %>%
+  tally(SAMPLE_NO) %>%
+  left_join(samptable, by = "year")
+
+Pdata %>% 
+  group_by(year) %>%
+  count()
+
+Pdata_exp2 <- Pdata_exp %>% 
+  dplyr::mutate(fleet = case_when(fleet %in% 'NTrawl' ~ 'NTrawl',
+                                  fleet %in% 'STrawl' ~ 'STrawl',
+                                  fleet %in% c('SOther', 'NOther') ~ 'NonTrawl'))
+
+Pdata_exp2 %>% 
+  group_by(fleet, year) %>%
+  count()
+
+try <- Pdata_exp %>% group_by(year) %>%
+  summarize(haul = length(unique(SAMPLE_MONTH)))
+
+
+
