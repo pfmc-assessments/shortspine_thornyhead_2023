@@ -5,8 +5,11 @@
 library(here)
 library(dplyr)
 library(tidyr)
+library(knitr)
 
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
+tab_dir2 <- here::here("doc", "FinalTables", "Data")
+tab_dir3 <- here::here("doc", "FinalTables", "Sensitivities")
 
 #Insert figure 
 #Figure \caption{(\#tab:catch_tab)Catches by fleet.} 
@@ -160,22 +163,34 @@ sa4ss::table_format(x = like_tab,
                   caption = "Likelihood components by source.",
                   label = "likelihoods")
 ```
+\newpage
+```{r, results='asis'}
 
-```{r}
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage_m.csv")),
-#                   caption = "Age table males",
-#                   label = "batagemale")
-# 
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage.f.csv")),
-#                   caption = "Age table females",
-#                   label = "batagefem")
-# 
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "natage_m.csv")),
-#                   caption = "all ages males",
-#                   label = "natagemale")
-# 
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "natage.f.csv")),
-#                   caption = "all ages females",
-#                   label = "natagefem")
+surv_strat <- readLines(file.path(tab_dir2, "SurveyStrat.csv"))
+surv_strat <- trimws(surv_strat)
+surv_strat <- gsub("<a0>", "", surv_strat)
+
+con <- textConnection(surv_strat)
+df <- read.csv(con, header = FALSE, stringsAsFactors = FALSE)
+close(con)
+
+# Remove leading and trailing whitespace from each column
+df <- apply(df, 2, trimws)
+
+df <- data.frame(df)
+colnames(df) <- c("Survey", "Strata Definitions")
+
+surv_strat <-df
+
+#surv_strat<-kable(df, format = "markdown", align = c("l", "l"), caption = "Survey stratification", booktabs = TRUE)
+
+
+sa4ss::table_format(x = surv_strat,
+                  caption = "Survey stratification",
+                  label = "surveystrat",
+                  align = c("l", "l"),
+                  custom_width = TRUE,
+                  col_to_adjust = 2,
+                  width="3in")
 
 ```
