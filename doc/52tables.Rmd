@@ -267,16 +267,20 @@ sa4ss::table_format(x = growthsensitiv_tab,
                   align = c("l", "l", "l","l"))
 
 ```
-
+\newpage
 ```{r, results = 'asis'}
 
+allpars<-read.csv(file.path(tab_dir4, "Update_Data_comparison_table_all_params.csv"))
+names(allpars)<-c("Model", "Source", "Value", "Phase", "Min", "Max", "Init", "Gradient", "Prior Type", "Prior", "Prior SD", "Prior Like", "Lower 95% CI", "Upper 95% CI")
 
-# allpars<-read.csv(file.path(tab_dir4, "Update_Data_comparison_table_all_params.csv"))
-# names(allpars)<-c("model", "Base Model", "High Growth", "Low Growth")
-# sa4ss::table_format(x = growthsensitiv_tab,
-#                   caption = "Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions",
-#                   label = "growthsentivititytab",
-#                   align = c("l", "l", "l","l"))
+allpars <- allpars %>% 
+  filter(Model == "23.model.francis_2")%>%
+  select(Source, Value, Phase, Gradient, `Lower 95% CI`, `Upper 95% CI`)
+
+sa4ss::table_format(x = allpars,
+                  caption = "All parameter estimates for the proposed base model",
+                  label = "allparstab")
+                  
 
 
 ```
