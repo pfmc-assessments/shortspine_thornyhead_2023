@@ -150,6 +150,17 @@ SSplotComparisons(
 	'23.land.2013')
     )
 
+SSplotComparisons(
+  Version_Summary,
+  print = TRUE,
+  #pdf = TRUE,
+  plotdir = file.path(here::here(), 'doc', 'FinalFigs', 'Sensitivities', 'Landings', fsep = fsep),
+  legendlabels = c(
+    'Base',
+    'Historical Imputation',
+    '2013 Historical Landings')
+)
+
 # Create comparison table for this analisys
 # ####################################### #
 

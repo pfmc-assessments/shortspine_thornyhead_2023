@@ -157,6 +157,17 @@ SSplotComparisons(
 	'23.maturity.mix_curve')
     )
 
+SSplotComparisons(
+  Version_Summary,
+  print = TRUE,
+  plotdir = file.path(here::here(), 'doc', 'FinalFigs', 'Sensitivities', 'Maturity', fsep = fsep),
+  legendlabels = c(
+    'Base',
+    #	'23.model.francis_2',
+    '2013 Curve',
+    'Intermediate Curve')
+)
+
 # Create comparison table for this analisys
 # ####################################### #
 
