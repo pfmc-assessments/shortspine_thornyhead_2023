@@ -113,15 +113,13 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_
 #Senitivity Plots 
 
 #Growth
-
-sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare4_Bratio_uncertainty.png"), 
-                  caption = "Relative spawning output comparisons of the base model and high growth and low growth assumptions.", 
-                  label = "growth_sensitiv_mngmt")
-
 sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare2_spawnbio_uncertainty.png"), 
                   caption = "Spawning output comparisons of the base model and high growth and low growth assumptions.", 
                   label = "growth_sensitiv_spawning")
 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare4_Bratio_uncertainty.png"), 
+                  caption = "Relative spawning output comparisons of the base model and high growth and low growth assumptions.", 
+                  label = "growth_sensitiv_mngmt")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare13_indices_flt6"), 
                   caption = "Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.", 
@@ -129,32 +127,45 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare13_indices_flt6
 
 #Maturity
 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare2_spawnbio_uncertainty.png"), 
+                  caption = "Spawning output comparisons of the base model and maturity sensitivities.", 
+                  label = "mat_sensitiv_spawning")
+
 sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare4_Bratio_uncertainty.png"), 
                   caption = "Relative spawning output comparisons of the base model and maturity sensitivities.", 
                   label = "mat_sensitiv_mngmt")
 
 #Landings 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare2_spawnbio_uncertainty.png"), 
+                  caption = "Spawning output comparisons of the base model and landing sensitivities.", 
+                  label = "land_sensitiv_spawning")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_uncertainty.png"), 
                   caption = "Relative spawning output comparisons of the base model and landing sensitivities.", 
                   label = "land_sensitiv_mngmt")
+
 ```
 ## Retrospectives 
 ```{r, results = "asis"}
 
 #Retrospectives
 
-sa4ss::add_figure(filein = file.path(fig_dir5, "compare2_spawnbio_uncertainty.png"), 
+#Spawnbio NO uncertainty
+sa4ss::add_figure(filein = file.path(fig_dir5, "compare1_spawnbio.png"), 
                   caption = "Retrospectives showing impact on spawning output.", 
                   label = "retros_spawnbio")
-
-sa4ss::add_figure(filein = file.path(fig_dir5, "compare4_Bratio_uncertainty.png"), 
+#Stock status NO uncertainty
+sa4ss::add_figure(filein = file.path(fig_dir5, "compare3_Bratio.png"), 
                   caption = "Retrospectives showing impact on stock status.", 
                   label = "retros_bratio")
-
+#index 
 sa4ss::add_figure(filein = file.path(fig_dir5, "compare13_indices_flt6.png"), 
                   caption = "Retrospectives showing impact on fits to WCGBTS index.", 
                   label = "retros_indices")
+#Spawnbio WITH uncertainty
+sa4ss::add_figure(filein = file.path(fig_dir5, "compare4_Bratio_uncertainty.png"), 
+                  caption = "Retrospectives showing impact on spawning output.", 
+                  label = "retros_spawnbio_uncertainty")
 ```
 ## Profiles 
 ```{r, results ='asis'}
@@ -162,19 +173,150 @@ sa4ss::add_figure(filein = file.path(fig_dir5, "compare13_indices_flt6.png"),
 #profiles 
 #M
 sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_NatM_break_1_Fem_GP_1.png"), 
-                  caption = "Pinter panel plot showing the impact of changing natural mortality on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
+                  caption = "Piner panel plot showing the impact of changing natural mortality on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
                   label = "M_prof")
+
+sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png"), 
+                  caption = "High to low values of M and impact on relative spawning output.", 
+                  label = "M_relspawnout")
+
+sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
+                  caption = "High to low values of M and impact on spawning output.", 
+                  label = "M_spawnout")
+
 #h
 sa4ss::add_figure(filein = file.path(fig_dir6, "parameter_panel_SR_BH_steep.png"), 
                   caption = "Likelihood profile for steepness showing the impact of the steepness value on the change in log likelihood (top-left), the fraction of unfished biomass (top-right), initial spawning biomass (bottom-left) and the terminal year of spawning biomass (bottom-right).", 
                   label = "h_prof")
 
+sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_SR_BH_steep.png"), 
+                  caption = "Piner panel plot showing the impact of changing h on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
+                  label = "h_piner_prof")
+
+sa4ss::add_figure(filein = file.path(fig_dir6, "SR_BH_steep_trajectories_compare3_Bratio.png"), 
+                  caption = "High to low values of h and impact on relative spawning output.", 
+                  label = "h_spawnout")
+
+
+#R0
+sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_SR_LN(R0).png"), 
+                  caption = "Piner panel plot showing the impact of changing R0 on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
+                  label = "R0_prof")
+
+sa4ss::add_figure(filein = file.path(fig_dir6, "SR_LN(R0)_trajectories_compare3_Bratio.png"), 
+                  caption = "High to low values of R0 and impact on spawning output.", 
+                  label = "R0_spawnout")
+
+#growth
+sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_L_at_Amax_Fem_GP_1.png"), 
+                  caption = "Piner panel plot showing the impact of low to high a_{max} assumptions on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
+                  label = "growth_prof")
+
+sa4ss::add_figure(filein = file.path(fig_dir6, "L_at_Amax_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
+                  caption = "Low to high values of a_{max} and impact on spawning output.", 
+                  label = "growth_spawnout")
+
 ```
 ## Results 
-```{r}
+```{r, results ='asis'}
 
 #annual log deviations
 sa4ss::add_figure(filein = file.path(fig_dir3, "recdevs2_withbars.png"), 
                   caption = "Annual recruitment deviations with 95% intervals", 
                   label = "recdevs")
+
+#selectivity curves
+sa4ss::add_figure(filein = file.path(fig_dir3, "sel01_multiple_fleets_length1.png"), 
+                  caption = "Selectivity at length for multiple fleets.", 
+                  label = "selcurvs")
+
+#Fits to Tri
+sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_Triennial1.png"), 
+                  caption = "Fit to index data for Triennial1. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  label = "fitsTri1")
+
+#Fits to combo
+sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_NWFSCcombo.png"), 
+                  caption = "Fit to index data for NWFSCcombo. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines (if present) indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  label = "fitscombo")
+
+#Discard fits Trawl N
+sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_N.png"), 
+                  caption = "Discard fraction for the North Trawl fleet.", 
+                  label = "northtrl_disc")
+#Discard fits Trawl S
+sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_S.png"), 
+                  caption = "Discard fraction for the South Trawl fleet.", 
+                  label = "southtrl_disc")
+
+#Discard fits Trawl S
+sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitNon-trawl.png"), 
+                  caption = "Discard fraction for the South Trawl fleet.", 
+                  label = "nontrl_disc")
+
+#all length comps 
+sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit__aggregated_across_time.png"), 
+                  caption = "Length comps, aggregated across time by fleet. Labels 'retained' and 'discard' indicate discarded or retained sampled for each fleet. Panels without this designation represent the whole catch.", 
+                  label = "lencomps_all")
+
+#Trawl North last 10 years length comps 
+sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt1mkt2_page2.png"), 
+                  caption = "The most recent ten years of length comps and fit for North Trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
+                  label = "ntrawl_comps_ten")
+
+#Length comps whole catch, NWFSC combo
+sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt6mkt0.png"), 
+                  caption = "Length comps, whole catch, for the WCGBTS. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
+                  label = "fits_wcgbts")
+
+#Pearsons resids Tri1
+sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_residsflt4mkt0.png"), 
+                  caption = "Pearson residuals, whole catch, for the early Triennial survey (max=1.04). Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).", 
+                  label = "resids_tri1")
+
+#Pearsons resids Tri2
+sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_residsflt5mkt0.png"), 
+                  caption = "Pearson residuals, whole catch, for the late Triennial survey (max=1.34). Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).", 
+                  label = "resids_tri2")
+
+#Pearsons resids WCGBTS
+sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_residsflt6mkt0.png"), 
+                  caption = "Pearson residuals, whole catch, for the WCGBTS (max=1.78). Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).", 
+                  label = "resids_wcgbts")
+
+#Mean Weights North Trawl
+sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltTrawl_N.png"), 
+                  caption = "Mean weight in discard for the North Trawl fleet.", 
+                  label = "weightNorthTrl")
+
+#Mean Weights South Trawl
+sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltTrawl_S.png"), 
+                  caption = "Mean weight in discard for the South Trawl fleet.", 
+                  label = "weightSouthTrl")
+
+#Mean Weights Non-trawl
+sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltNon-trawl.png"), 
+                  caption = "Mean weight in discard for the Non-trawl fleet.", 
+                  label = "weightNonTrl")
+
+#Spawning output
+sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
+                  caption = "Spawning output with ~95% asymptotic intervals.", 
+                  label = "spawnout")
+
+#Relative spawning output- Management 
+sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
+                  caption = "Relative spawning output: B/B_0 with ~95% asymptotic intervals.", 
+                  label = "relspawnout")
+
+#Forcasted spawning output
+sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_forecast_with_95_asymptotic_intervals_forecast_intervals.png"), 
+                  caption = "Forcasted spawning output with ~95% asymptotic intervals.", 
+                  label = "spawnnout_forcast")
+
+#Forcasted relative spawning output- Management 
+sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_forecast.png"), 
+                  caption = "Forcasted spawning output: B/B_0 with ~95% asymptotic intervals.", 
+                  label = "relspawnout_forcast")
+
 ```

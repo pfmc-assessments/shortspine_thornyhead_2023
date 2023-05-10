@@ -70,14 +70,13 @@
 \contentsline {paragraph}{\numberline {3.3.2.4}Survey Length Compositions}{24}{paragraph.3.3.2.4}%
 \contentsline {paragraph}{\numberline {3.3.2.5}Mean Body Weight}{24}{paragraph.3.3.2.5}%
 \contentsline {subsubsection}{\numberline {3.3.3}Population Trajectory}{24}{subsubsection.3.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.4}Reference Points}{24}{subsubsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.4}Model Diagnostics}{25}{subsection.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}Convergence}{25}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Sensitivity Analyses}{25}{subsubsection.3.4.2}%
 \contentsline {paragraph}{\numberline {3.4.2.1}Sensitivity to growth parameters}{25}{paragraph.3.4.2.1}%
 \contentsline {paragraph}{\numberline {3.4.2.2}Sensitivity to maturity}{26}{paragraph.3.4.2.2}%
 \contentsline {paragraph}{\numberline {3.4.2.3}Sensitivity to Landings}{26}{paragraph.3.4.2.3}%
-\contentsline {paragraph}{\numberline {3.4.2.4}Sensitivity to retention and selectivity}{27}{paragraph.3.4.2.4}%
+\contentsline {paragraph}{\numberline {3.4.2.4}Sensitivity to retention and selectivity}{26}{paragraph.3.4.2.4}%
 \contentsline {subsubsection}{\numberline {3.4.3}Retrospective Analysis}{27}{subsubsection.3.4.3}%
 \contentsline {subsubsection}{\numberline {3.4.4}Likelihood Profiles}{27}{subsubsection.3.4.4}%
 \contentsline {subsubsection}{\numberline {3.4.5}Unresolved Problems and Major Uncertainties}{28}{subsubsection.3.4.5}%
@@ -93,4 +92,4 @@
 \contentsline {subsection}{\numberline {7.1}Executive Summary}{34}{subsection.7.1}%
 \contentsline {section}{\numberline {8}Figures}{66}{section.8}%
 \contentsline {subsection}{\numberline {8.1}Data figures}{66}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Assessment Model Plots}{82}{section.9}%
+\contentsline {section}{\numberline {9}Assessment Model Plots}{84}{section.9}%
