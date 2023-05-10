@@ -3,94 +3,93 @@
 \contentsline {subsection}{Stock}{i}{section*.3}%
 \contentsline {subsection}{Catches}{i}{section*.4}%
 \contentsline {subsection}{Data and assessment}{ii}{section*.7}%
-\contentsline {subsection}{Stock biomass and dynamics}{iv}{section*.9}%
-\contentsline {subsection}{Recruitment}{vii}{section*.11}%
-\contentsline {subsection}{Exploitation status}{vii}{section*.13}%
-\contentsline {subsection}{Ecosystem considerations}{ix}{section*.18}%
-\contentsline {subsection}{Reference points}{ix}{section*.19}%
-\contentsline {subsection}{Management performance}{xii}{section*.21}%
-\contentsline {subsection}{Unresolved problems and major uncertainties}{xiii}{section*.22}%
-\contentsline {subsection}{Decision table and projections}{xiii}{section*.25}%
-\contentsline {subsection}{Scientific uncertainty}{xvi}{section*.26}%
-\contentsline {subsection}{Research and data needs}{xvi}{section*.27}%
+\contentsline {subsection}{Stock biomass and dynamics}{v}{section*.9}%
+\contentsline {subsection}{Recruitment}{v}{section*.11}%
+\contentsline {subsection}{Exploitation status}{vi}{section*.13}%
+\contentsline {subsection}{Ecosystem considerations}{viii}{section*.18}%
+\contentsline {subsection}{Reference points}{viii}{section*.19}%
+\contentsline {subsection}{Management performance}{xi}{section*.21}%
+\contentsline {subsection}{Unresolved problems and major uncertainties}{xii}{section*.22}%
+\contentsline {subsection}{Decision table and projections}{xii}{section*.25}%
+\contentsline {subsection}{Scientific uncertainty}{xii}{section*.26}%
+\contentsline {subsection}{Research and data needs}{xv}{section*.27}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Basic Information}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Stock Structure}{1}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Life History}{2}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Ecosystem Considerations}{2}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Historical and Current Fishery Information}{3}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Summary of Management History and Performance}{5}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.6}Summary of Management History and Performance}{4}{subsection.1.6}%
 \contentsline {subsection}{\numberline {1.7}Foreign Fisheries}{5}{subsection.1.7}%
 \contentsline {section}{\numberline {2}Data}{5}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Fishery-Dependent Data}{6}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Catch History}{6}{subsubsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2.1.2}Discards and retention}{7}{subsubsection.2.1.2}%
-\contentsline {subsubsection}{\numberline {2.1.3}Fishery Length Compositions}{8}{subsubsection.2.1.3}%
-\contentsline {subsubsection}{\numberline {2.1.4}Age Compositions}{9}{subsubsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.2}Fishery-Independent Data}{9}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}\acrlong {s-tri}}{9}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}\acrshort {afsc} and \acrshort {nwfsc} Slope Surveys}{10}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}\acrlong {s-wcgbt}}{10}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}Survey Stratification}{11}{subsubsection.2.2.4}%
-\contentsline {subsubsection}{\numberline {2.2.5}Design-based Indices of Abundance}{11}{subsubsection.2.2.5}%
-\contentsline {subsubsection}{\numberline {2.2.6}Geostatistical Model-based Indices of Abundance}{12}{subsubsection.2.2.6}%
-\contentsline {subsubsection}{\numberline {2.2.7}Length Composition Data}{12}{subsubsection.2.2.7}%
-\contentsline {subsubsection}{\numberline {2.2.8}Frequency of Occurrence and Survey Information}{12}{subsubsection.2.2.8}%
-\contentsline {subsection}{\numberline {2.3}Biological Data}{13}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Natural Mortality}{13}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Maturation and Fecundity}{13}{subsubsection.2.3.2}%
-\contentsline {paragraph}{\numberline {2.3.2.1}Maturity}{13}{paragraph.2.3.2.1}%
-\contentsline {paragraph}{\numberline {2.3.2.2}Fecundity}{14}{paragraph.2.3.2.2}%
-\contentsline {subsubsection}{\numberline {2.3.3}Length-Weight Relationship}{15}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Growth (Length-at-Age)}{16}{subsubsection.2.3.4}%
-\contentsline {subsubsection}{\numberline {2.3.5}Ageing Precision and Bias}{17}{subsubsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.4}Environmental and Ecosystem Data}{17}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Changes in data from the 2013 assessment}{17}{subsection.2.5}%
-\contentsline {section}{\numberline {3}Assessment Model}{18}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Summary of Previous Assessments and Reviews}{18}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}History of Modeling Approaches (not required for an update assessment)}{18}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Most Recent STAR Panel and SSC Recommendations (not required for an update assessment)}{18}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Response to Groundfish Subcommittee Requests (not required in draft)}{18}{subsubsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.2}Model Structure and Assumptions}{18}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Model Changes from the Last Assessment (not required for an update assessment)}{18}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Modeling Platform and Structure}{19}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Model Fleet Structure}{19}{subsubsection.3.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.4}Model Parameters}{19}{subsubsection.3.2.4}%
-\contentsline {paragraph}{\numberline {3.2.4.1}Growth, Maturity, Fecundity, Mortality, and Recruitment}{20}{paragraph.3.2.4.1}%
-\contentsline {paragraph}{\numberline {3.2.4.2}Selectivity and Retention}{20}{paragraph.3.2.4.2}%
-\contentsline {paragraph}{\numberline {3.2.4.3}Catchability}{21}{paragraph.3.2.4.3}%
-\contentsline {subsection}{\numberline {3.3}Base Model Results}{22}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Parameter Estimates}{22}{subsubsection.3.3.1}%
-\contentsline {paragraph}{\numberline {3.3.1.1}Recruitment}{22}{paragraph.3.3.1.1}%
-\contentsline {paragraph}{\numberline {3.3.1.2}Selectivity and Retention}{22}{paragraph.3.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.3.2}Fits to the Data}{23}{subsubsection.3.3.2}%
-\contentsline {paragraph}{\numberline {3.3.2.1}Abundance Indices}{23}{paragraph.3.3.2.1}%
-\contentsline {paragraph}{\numberline {3.3.2.2}Fishery Discard Rates}{23}{paragraph.3.3.2.2}%
-\contentsline {paragraph}{\numberline {3.3.2.3}Fishery Length Compositions}{23}{paragraph.3.3.2.3}%
-\contentsline {paragraph}{\numberline {3.3.2.4}Survey Length Compositions}{24}{paragraph.3.3.2.4}%
-\contentsline {paragraph}{\numberline {3.3.2.5}Mean Body Weight}{24}{paragraph.3.3.2.5}%
-\contentsline {subsubsection}{\numberline {3.3.3}Population Trajectory}{24}{subsubsection.3.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.4}Reference Points}{24}{subsubsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.4}Model Diagnostics}{25}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Convergence}{25}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Sensitivity Analyses}{25}{subsubsection.3.4.2}%
-\contentsline {paragraph}{\numberline {3.4.2.1}Sensitivity to growth parameters}{25}{paragraph.3.4.2.1}%
-\contentsline {paragraph}{\numberline {3.4.2.2}Sensitivity to maturity}{26}{paragraph.3.4.2.2}%
-\contentsline {paragraph}{\numberline {3.4.2.3}Sensitivity to Landings}{26}{paragraph.3.4.2.3}%
-\contentsline {paragraph}{\numberline {3.4.2.4}Sensitivity to retention and selectivity}{27}{paragraph.3.4.2.4}%
-\contentsline {subsubsection}{\numberline {3.4.3}Retrospective Analysis}{27}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Likelihood Profiles}{27}{subsubsection.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}Unresolved Problems and Major Uncertainties}{28}{subsubsection.3.4.5}%
-\contentsline {section}{\numberline {4}Management}{29}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Reference Points}{29}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Unresolved Problems and Major Uncertainties}{29}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Harvest Projections and Decision Tables}{29}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Evaluation of Scientific Uncertainty}{29}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Research and Data Needs}{29}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Acknowledgments}{29}{section.5}%
-\contentsline {section}{\numberline {6}References}{30}{section.6}%
-\contentsline {section}{\numberline {7}Tables}{34}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Executive Summary}{34}{subsection.7.1}%
-\contentsline {section}{\numberline {8}Figures}{66}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Data figures}{66}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Assessment Model Plots}{82}{section.9}%
+\contentsline {subsubsection}{\numberline {2.1.3}Fishery Length Compositions}{7}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Age Compositions}{8}{subsubsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.2}Fishery-Independent Data}{8}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}\acrlong {s-tri}}{8}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}\acrshort {afsc} and \acrshort {nwfsc} Slope Surveys}{9}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}\acrlong {s-wcgbt}}{9}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Survey Stratification}{10}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Design-based Indices of Abundance}{10}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Geostatistical Model-based Indices of Abundance}{10}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Length Composition Data}{11}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Frequency of Occurrence and Survey Information}{11}{subsubsection.2.2.8}%
+\contentsline {subsection}{\numberline {2.3}Biological Data}{11}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Natural Mortality}{11}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Maturation and Fecundity}{12}{subsubsection.2.3.2}%
+\contentsline {paragraph}{\numberline {2.3.2.1}Maturity}{12}{paragraph.2.3.2.1}%
+\contentsline {paragraph}{\numberline {2.3.2.2}Fecundity}{13}{paragraph.2.3.2.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Length-Weight Relationship}{14}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Growth (Length-at-Age)}{14}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.5}Ageing Precision and Bias}{15}{subsubsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.4}Environmental and Ecosystem Data}{16}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Changes in data from the 2013 assessment}{16}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Assessment Model}{16}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Summary of Previous Assessments and Reviews}{16}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}History of Modeling Approaches (not required for an update assessment)}{16}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Most Recent STAR Panel and SSC Recommendations (not required for an update assessment)}{17}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Response to Groundfish Subcommittee Requests (not required in draft)}{17}{subsubsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Model Structure and Assumptions}{17}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Model Changes from the Last Assessment (not required for an update assessment)}{17}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Modeling Platform and Structure}{17}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Model Fleet Structure}{17}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Model Parameters}{18}{subsubsection.3.2.4}%
+\contentsline {paragraph}{\numberline {3.2.4.1}Growth, Maturity, Fecundity, Mortality, and Recruitment}{18}{paragraph.3.2.4.1}%
+\contentsline {paragraph}{\numberline {3.2.4.2}Selectivity and Retention}{19}{paragraph.3.2.4.2}%
+\contentsline {paragraph}{\numberline {3.2.4.3}Catchability}{19}{paragraph.3.2.4.3}%
+\contentsline {subsection}{\numberline {3.3}Base Model Results}{20}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Parameter Estimates}{20}{subsubsection.3.3.1}%
+\contentsline {paragraph}{\numberline {3.3.1.1}Recruitment}{20}{paragraph.3.3.1.1}%
+\contentsline {paragraph}{\numberline {3.3.1.2}Selectivity and Retention}{20}{paragraph.3.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.3.2}Fits to the Data}{20}{subsubsection.3.3.2}%
+\contentsline {paragraph}{\numberline {3.3.2.1}Abundance Indices}{20}{paragraph.3.3.2.1}%
+\contentsline {paragraph}{\numberline {3.3.2.2}Fishery Discard Rates}{21}{paragraph.3.3.2.2}%
+\contentsline {paragraph}{\numberline {3.3.2.3}Fishery Length Compositions}{21}{paragraph.3.3.2.3}%
+\contentsline {paragraph}{\numberline {3.3.2.4}Survey Length Compositions}{21}{paragraph.3.3.2.4}%
+\contentsline {paragraph}{\numberline {3.3.2.5}Mean Body Weight}{22}{paragraph.3.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.3.3}Population Trajectory}{22}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Reference Points}{22}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}Model Diagnostics}{23}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Convergence}{23}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Sensitivity Analyses}{23}{subsubsection.3.4.2}%
+\contentsline {paragraph}{\numberline {3.4.2.1}Sensitivity to growth parameters}{23}{paragraph.3.4.2.1}%
+\contentsline {paragraph}{\numberline {3.4.2.2}Sensitivity to maturity}{23}{paragraph.3.4.2.2}%
+\contentsline {paragraph}{\numberline {3.4.2.3}Sensitivity to Landings}{24}{paragraph.3.4.2.3}%
+\contentsline {paragraph}{\numberline {3.4.2.4}Sensitivity to retention and selectivity}{24}{paragraph.3.4.2.4}%
+\contentsline {subsubsection}{\numberline {3.4.3}Retrospective Analysis}{24}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Likelihood Profiles}{25}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Unresolved Problems and Major Uncertainties}{26}{subsubsection.3.4.5}%
+\contentsline {section}{\numberline {4}Management}{26}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Reference Points}{26}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Harvest Projections and Decision Tables}{27}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Evaluation of Scientific Uncertainty}{27}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Research and Data Needs}{27}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Acknowledgments}{28}{section.5}%
+\contentsline {section}{\numberline {6}References}{29}{section.6}%
+\contentsline {section}{\numberline {7}Tables}{33}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Executive Summary}{33}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Figures}{65}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Data figures}{65}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Assessment Model Plots}{81}{section.9}%
