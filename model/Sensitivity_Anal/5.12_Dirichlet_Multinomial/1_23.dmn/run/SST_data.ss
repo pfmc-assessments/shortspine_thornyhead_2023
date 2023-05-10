@@ -556,14 +556,14 @@
 2 #_use_lencomp
 #
 #_len_info
-#_mintailcomp	addtocomp	combine_M_F	CompressBins	CompError	ParmSelect	minsamplesize	Fleet	Partition
-   -1	0.001	0	0	1	1	1	1	1	#_Trawl_N   
-   -1	0.001	0	0	1	2	1	2	2	#_Trawl_S   
-   -1	0.001	0	0	1	3	1	3	3	#_Non-trawl 
-   -1	0.001	0	0	1	4	1	4	0	#_Triennial1
-   -1	0.001	0	0	1	5	1	5	0	#_Triennial2
-   -1	0.001	0	0	1	6	1	6	0	#_NWFSCcombo
--9999	    0	0	0	0	0	0	0	0	#_TERMINATOR
+#_	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+    1	2	-1	0.001	0	0	1	1	1
+    2	2	-1	0.001	0	0	1	2	1
+    3	2	-1	0.001	0	0	1	3	1
+    4	0	-1	0.001	0	0	1	4	1
+    5	0	-1	0.001	0	0	1	5	1
+    6	0	-1	0.001	0	0	1	6	1
+-9999	0	 0	    0	0	0	0	0	0
 34 #_N_lbins
 #_lbin_vector
 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 #_lbin_vector
