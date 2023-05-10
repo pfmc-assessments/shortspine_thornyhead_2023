@@ -8,6 +8,7 @@ fig_dir1 <- here::here("doc", "FinalFigs", "Intro")
 fig_dir2 <- here::here("doc", "FinalFigs", "Data")
 fig_dir3 <- here::here("doc", "FinalFigs", "Base")
 fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")
+fig_dir5 <- here::here("doc", "FinalFigs", "Retros")
 
 #Insert figure 
 #Figure \ref{fig:label}
@@ -113,5 +114,60 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_f
 sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_curves.png"), 
                   caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
                   label = "mat2")
+
+```
+
+```{r,  results = "asis"}
+
+#Senitivity Plots 
+
+#Growth
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "mngmttarget-1.png"), 
+                  caption = "Relative spawning output comparisons of the base model and high growth and low growth assumptions.", 
+                  label = "growth_sensitiv_mngmt")
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "spawningoutput-1.png"), 
+                  caption = "Spawning output comparisons of the base model and high growth and low growth assumptions.", 
+                  label = "growth_sensitiv_spawning")
+
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "index_combosurv-1.png"), 
+                  caption = "Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.", 
+                  label = "growth_sensitiv_indx")
+
+#Maturity
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "mngmttarget-1.png"), 
+                  caption = "Relative spawning output comparisons of the base model and maturity sensitivities.", 
+                  label = "mat_sensitiv_mngmt")
+
+#Landings 
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "mngmttarget-1.png"), 
+                  caption = "Relative spawning output comparisons of the base model and landing sensitivities.", 
+                  label = "land_sensitiv_mngmt")
+```
+
+```{r, results = "asis"}
+
+#Retrospectives
+
+sa4ss::add_figure(filein = file.path(fig_dir5, "compare2_spawnbio_uncertainty.png"), 
+                  caption = "Retrospectives showing impact on spawning output.", 
+                  label = "retros_spawnbio")
+
+sa4ss::add_figure(filein = file.path(fig_dir5, "compare4_Bratio_uncertainty.png"), 
+                  caption = "Retrospectives showing impact on stock status.", 
+                  label = "retros_bratio")
+
+sa4ss::add_figure(filein = file.path(fig_dir5, "compare13_indices_flt6.png"), 
+                  caption = "Retrospectives showing impact on fits to WCGBTS index.", 
+                  label = "retros_indices")
+```
+
+```{r, results ='asis'}
+
+#profiles 
 
 ```

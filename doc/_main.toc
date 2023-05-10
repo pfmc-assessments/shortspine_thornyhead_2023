@@ -72,19 +72,23 @@
 \contentsline {subsubsection}{\numberline {3.3.3}Population Trajectory}{24}{subsubsection.3.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.4}Reference Points}{24}{subsubsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.4}Model Diagnostics}{25}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Convergence}{26}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Sensitivity Analyses}{26}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Retrospective Analysis}{26}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Likelihood Profiles}{26}{subsubsection.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}Unresolved Problems and Major Uncertainties}{26}{subsubsection.3.4.5}%
-\contentsline {section}{\numberline {4}Management}{26}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Reference Points}{26}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Unresolved Problems and Major Uncertainties}{26}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Harvest Projections and Decision Tables}{26}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Evaluation of Scientific Uncertainty}{26}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Research and Data Needs}{26}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Acknowledgments}{26}{section.5}%
-\contentsline {section}{\numberline {6}References}{27}{section.6}%
-\contentsline {section}{\numberline {7}Tables}{31}{section.7}%
-\contentsline {section}{\numberline {8}Figures}{46}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Data figures}{46}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {3.4.1}Convergence}{25}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Sensitivity Analyses}{25}{subsubsection.3.4.2}%
+\contentsline {paragraph}{\numberline {3.4.2.1}Sensitivity to growth parameters}{25}{paragraph.3.4.2.1}%
+\contentsline {paragraph}{\numberline {3.4.2.2}Sensitivity to maturity}{26}{paragraph.3.4.2.2}%
+\contentsline {paragraph}{\numberline {3.4.2.3}Sensitivity to Landings}{26}{paragraph.3.4.2.3}%
+\contentsline {paragraph}{\numberline {3.4.2.4}Sensitivity to retention and selectivity}{27}{paragraph.3.4.2.4}%
+\contentsline {subsubsection}{\numberline {3.4.3}Retrospective Analysis}{27}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Likelihood Profiles}{27}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Unresolved Problems and Major Uncertainties}{28}{subsubsection.3.4.5}%
+\contentsline {section}{\numberline {4}Management}{29}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Reference Points}{29}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Unresolved Problems and Major Uncertainties}{29}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Harvest Projections and Decision Tables}{29}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Evaluation of Scientific Uncertainty}{29}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Research and Data Needs}{29}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Acknowledgments}{29}{section.5}%
+\contentsline {section}{\numberline {6}References}{30}{section.6}%
+\contentsline {section}{\numberline {7}Tables}{34}{section.7}%
+\contentsline {section}{\numberline {8}Figures}{52}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Data figures}{52}{subsection.8.1}%

@@ -154,8 +154,9 @@ sa4ss::table_format(x = ts_tab,
                     digits = 2,
                   caption = "Time series of population estimates from the base model.",
                   label = "ts")
-
-
+```
+\newpage
+```{r, results='asis'}
 #Like
 like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
 names(like_tab)<-c("Source", "Likelihood Component")
@@ -186,11 +187,53 @@ surv_strat <-df
 
 
 sa4ss::table_format(x = surv_strat,
-                  caption = "Survey stratification",
+                  caption = "Survey stratification information for each of the fishery independent surveys",
                   label = "surveystrat",
                   align = c("l", "l"),
                   custom_width = TRUE,
                   col_to_adjust = 2,
                   width="3in")
+
+```
+\newpage
+```{r, results = 'asis'}
+survinfo_tab<-read.csv(file.path(tab_dir1, "haul.sample.info.master.csv"))
+
+survinfo_tab<-survinfo_tab[,2:5]
+sa4ss::table_format(x = survinfo_tab,
+                   caption = "Survey samples and hauls for each of the fishery independent surveys for available years spanning from 1989 to 2022.",
+                   label = "survinfo")
+```
+\newpage
+```{r, results = 'asis'}
+growth_data <- data.frame(
+  Source = c("Butler et al. 1995", "Kline 1996"),
+  Region = c("OR and northern CA", "Central CA"),
+  Years = c("1978-87, 1988, 1990", "1991"),
+  Details = c("N=1,023; Sexed;\nFork length;\nTwo age readers",
+              "N=319;\nUnsexed; Total length; One age reader")
+)
+
+sa4ss::table_format(x = growth_data,
+                   caption = "Description of the Butler and Kline data sets, including collection region, years, samples sizes, length determination, and number of age readers",
+                   label = "growthsource",
+                   align = c("l", "l", "l", "l"),
+                   custom_width = TRUE,
+                   col_to_adjust = 4,
+                   width="2in")
+
+```
+
+```{r, results = 'asis'}
+sensitiv_tab<-read.csv(file.path(tab_dir3, "summary.csv"))
+sa4ss::table_format(x = sensitiv_tab,
+                  caption = "Comparison of likelihoods for all sensitivity analyses",
+                  label = "sentivititytab")
+
+
+growthsensitiv_tab<-read.csv(file.path(tab_dir3, "growth_table_likelihoods_and_brps.csv"))
+sa4ss::table_format(x = growthsensitiv_tab,
+                  caption = "Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions",
+                  label = "growthsentivititytab")
 
 ```
