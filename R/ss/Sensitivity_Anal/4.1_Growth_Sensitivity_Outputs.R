@@ -157,6 +157,18 @@ SSplotComparisons(
 	'23.growth.low')
     )
 
+SSplotComparisons(
+  Version_Summary,
+  print = TRUE,
+  #pdf = TRUE,
+  plotdir = file.path(here::here(), "doc", "FinalFigs", "Sensitivities", "Growth", fsep = fsep),
+  legendlabels = c(
+    'Base',
+    #	'23.model.francis_2',
+    'High Growth',
+    'Low Growth')
+)
+
 # Create comparison table for this analisys
 # ####################################### #
 
