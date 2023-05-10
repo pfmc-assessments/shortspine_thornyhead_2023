@@ -860,3 +860,17 @@ MeanWeights_ThreeFleets <- disc_weight %>%
   write.csv(  # Save to ss directory
     file.path(here::here(), "data", "for_ss", "discardWeights_ss_3Fleets.csv"))
 
+# Format length comp sample size table for introduction  ----------------
+discard <- readr::read_csv("data/for_ss/discardLenComp_ss_3Fleets.csv")
+
+discard2 <- discard %>%
+  select(Yr, Flt, Nsamp) %>%
+  pivot_wider(names_from = Flt, values_from = Nsamp) %>%
+  rename("Year" = "Yr", "NTrawl" = `1`, "STrawl" = `2`,"NonTrawl"= `3`) %>%
+  arrange(Year)
+
+readr::write_csv(discard2, "doc/FinalTables/Data/discard_lencomp_samplesizes.csv")
+
+
+
+
