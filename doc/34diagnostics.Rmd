@@ -3,7 +3,7 @@
 ### Convergence
 The maximum likelihood parameter estimates found by \gls{admb} indicated a well-converged model. The base model had a small maximum gradient component (0.0002317) and a positive definite Hessian matrix, both of which are associated with converged models.
 
-Runs with 100 alternative sets of starting parameter values found no models with a better likelihood (Table \ref{tab:likelihoods}). Of the 100 jittered model runs, 74 reconverged to the best estimates associated with the base model, while 76 reconverged to within 0.25% of the best estimate. This indicates that the data is relatively informative about the population dynamics of the stock, as the model fits to the data were virtually identical.
+Runs with 100 alternative sets of starting parameter values found no models with a better likelihood (**Table JITTER RESULTS**). Of the 100 jittered model runs, 74 reconverged to the best estimates associated with the base model, while 76 reconverged to within 0.25% of the best estimate. This indicates that the data is relatively informative about the population dynamics of the stock, as the model fits to the data were virtually identical.
 
 ### Sensitivity Analyses
 #### Sensitivity to growth parameters
