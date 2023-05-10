@@ -6,13 +6,13 @@
 \contentsline {subsection}{Stock biomass and dynamics}{iv}{section*.9}%
 \contentsline {subsection}{Recruitment}{vii}{section*.11}%
 \contentsline {subsection}{Exploitation status}{vii}{section*.13}%
-\contentsline {subsection}{Ecosystem considerations}{viii}{section*.18}%
-\contentsline {subsection}{Reference points}{x}{section*.19}%
-\contentsline {subsection}{Management performance}{xi}{section*.21}%
-\contentsline {subsection}{Unresolved problems and major uncertainties}{xii}{section*.22}%
-\contentsline {subsection}{Decision table and projections}{xii}{section*.25}%
-\contentsline {subsection}{Scientific uncertainty}{xii}{section*.26}%
-\contentsline {subsection}{Research and data needs}{xiii}{section*.27}%
+\contentsline {subsection}{Ecosystem considerations}{ix}{section*.18}%
+\contentsline {subsection}{Reference points}{ix}{section*.19}%
+\contentsline {subsection}{Management performance}{xii}{section*.21}%
+\contentsline {subsection}{Unresolved problems and major uncertainties}{xiii}{section*.22}%
+\contentsline {subsection}{Decision table and projections}{xiii}{section*.25}%
+\contentsline {subsection}{Scientific uncertainty}{xvi}{section*.26}%
+\contentsline {subsection}{Research and data needs}{xvi}{section*.27}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Basic Information}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Stock Structure}{1}{subsection.1.2}%

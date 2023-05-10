@@ -7,6 +7,8 @@ library(dplyr)
 library(tidyr)
 
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
+tab_dir2 <- here::here("doc", "FinalTables", "Data")
+tab_dir3 <- here::here("doc", "FinalTables", "Sensitivities")
 
 #Insert figure 
 #Figure \caption{(\#tab:catch_tab)Catches by fleet.} 
@@ -161,21 +163,13 @@ sa4ss::table_format(x = like_tab,
                   label = "likelihoods")
 ```
 
-```{r}
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage_m.csv")),
-#                   caption = "Age table males",
-#                   label = "batagemale")
-# 
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "batage.f.csv")),
-#                   caption = "Age table females",
-#                   label = "batagefem")
-# 
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "natage_m.csv")),
-#                   caption = "all ages males",
-#                   label = "natagemale")
-# 
-# sa4ss::table_format(x = read.csv(file.path(tab_dir1, "natage.f.csv")),
-#                   caption = "all ages females",
-#                   label = "natagefem")
+```{r, results='asis'}
 
+surv_strat <- read.csv(tab_dir2, "SurveyStrat.csv", header = FALSE, stringsAsFactors = FALSE)
+colnames(surv_strat) <- c("Survey", "Strata Definitions")
+
+surv_strat$Survey <- gsub("\t", " ", table_data$Survey)
+surv_strat$`Strata Definitions` <- gsub("\t", " ", surv_strat$`Strata Definitions`)
+surv_strat$Survey <- gsub("\\s+", " ", table_data$Survey)
+surv_strat$`Strata Definitions` <- gsub("\\s+", " ", surv_strat$`Strata Definitions`)
 ```
