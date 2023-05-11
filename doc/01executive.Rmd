@@ -6,7 +6,7 @@ library(tidyr)
 executive <- list()
 executive[["stock"]] <- paste0("This assessment reports the status of ",
   spp, " (_", spp.sci, "_) off the ", coast, 
-  " coast using data through xxxx.")
+  " coast using data through 2022.")
 
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 
@@ -101,7 +101,7 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts11_Age-0_recruits_(1000s)_with
 ```
 
 ## Exploitation status{-}
-The summary harvest rate (total catch divided by age-1 and older biomass) closely follows the landings trajectory. The harvest rates are estimated to have never exceeded 5% and have remained below 2% in the past decade. Expressing exploitation rates in terms of spawning potential ratio (SPR) indicates that the exploitation consistently exceeded the $SPR_{50\%}$ reference point from 1980-2018. However, the stock status is estimated to have never fallen below the $B_{40\%}$ management target, though the uncertainty interval around the 2023 estimate does encapsulate the $B_{40\%}$ target (Table \ref{tab:sprES}; Figure \ref{fig:rel_ssb_trajectoryES}-\ref{fig:phase_diagramES}).
+The summary harvest rate (total catch divided by age-1 and older biomass) closely follows the landings trajectory. The harvest rates are estimated to have never exceeded 5% and have remained below 2% in the past decade. Expressing exploitation rates in terms of spawning potential ratio (SPR) indicates that the exploitation consistently exceeded the $SPR_{50\%}$ reference point from 1980-2018. However, the stock status is estimated to have never fallen below the $B_{40\%}$ management target, though the uncertainty interval around the 2023 estimate does encapsulate the $B_{40\%}$ target (Table \ref{tab:sprES}; Figures \ref{fig:rel_ssb_trajectoryES} -\ref{fig:phase_diagramES}).
 
 ```{r, results='asis'}
 spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
@@ -186,14 +186,18 @@ sa4ss::table_format(x = mngmt_tab,
 
 Major uncertainties in the model are centered around uncertainty in biological processes including growth, maturity, and mortality. The absence of reliable ageing methods for `r spp`, particularly, makes it difficult to estimate growth and natural mortality. Sensitivities demonstrated that changes to the growth curve have large effects on the estimated stock status. Likelihood profiles over natural mortality demonstrate the model to be quite sensitive to its assumed value. There is insufficient information in the data to estimate mortality directly, constraining us to use meta-analyses or other mortality estimators, which frequently make use of aging information that is unavailable, and again, highly uncertain for `r spp`. Due to imperfect seasonal and spatial coverage of histological data for `r spp`, there is significant uncertainty about the shape of the species’ maturity curve, though the model appears to be largely insensitive to variations in maturity.
 
-This model fails to fully capture the observed increase in abundance seen in the \gls{s-wcgbt} index time series in 2021 and 2022. The model also fails to fully capture the peak of the length compositions for the Northern Trawl fleet, underestimating the number of mid-sized fish that the fleet takes (Figure \ref{fig:lencomp_allES}). This underestimation appears to be consistent, particularly in the last 10 years (Figure \ref{fig:lencomp_Nt_2ES}), implying a possible recent change in selectivity.
+This model fails to fully capture the observed increase in abundance seen in the \gls{s-wcgbt} index time series in 2021 and 2022. The model also fails to fully capture the peak of the length compositions for the Northern Trawl fleet, underestimating the number of mid-sized fish that the fleet takes. This underestimation appears to be consistent, particularly in the last 10 years, implying a possible recent change in selectivity.
 
 ```{r, results = "asis"}
+#(Figure \ref{fig:lencomp_allES})
+
 # sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit__aggregated_across_time.png"), 
 #                   caption = "Length comps, aggregated across time by fleet.
 # Labels 'retained' and 'discard' indicate discarded or retained sampled for each fleet. Panels without this designation represent the whole catch.", 
 #                   label = "lencomp_allES")
-# 
+
+#(Figure \ref{fig:lencomp_Nt_2ES})
+
 # sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt1mkt2_page2.png"), 
 #                   caption = "Length comps of retained catches in the Northern Trawl fleet for the last ten years.'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method. ", 
 #                   label = "lencomp_Nt_2ES")
