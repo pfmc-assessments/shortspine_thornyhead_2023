@@ -19,9 +19,8 @@ fig_dir7 <- here::here("doc", "FinalFigs", "Jitters")
 knitr::opts_chunk$set(fig.pos = 'H')
 ```
 
-Introduction and Data
 ```{r,  results = "asis"}
-#Introduction
+#Introduction and Data
 
 #Figure 1 Coastwide CPUE plot from NWFSC combo survey
 sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
@@ -39,7 +38,7 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"),
                   label = "catch_hist")
 
 # Figure 4 Data Sources Figure
-sa4ss::add_figure(filein = file.path(fig_dir2, "assessment_data_timeseries.png"), 
+sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"), 
                   caption = "Summary of data sources used in the base model.", 
                   label = "assessment_data_timeseries")
 
@@ -81,11 +80,12 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_f
 sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_curves.png"), 
                   caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
                   label = "mat2")
-```
-Assessment Model Plots 
-Base Model Plots 
-```{r, results ='asis'}
 
+```
+\clearpage
+```{r, results ='asis'}
+#Assessment Model Plots 
+#Base Model Plots 
 
 #annual log deviations
 sa4ss::add_figure(filein = file.path(fig_dir3, "recdevs2_withbars.png"), 
@@ -187,8 +187,9 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_for
                   label = "relspawnout_forcast")
 
 ```
-Likelihood Profiles 
+\clearpage
 ```{r, results ='asis'}
+#Likelihood Profiles 
 
 #R0
 sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_SR_LN(R0).png"), 
@@ -236,8 +237,10 @@ sa4ss::add_figure(filein = file.path(fig_dir6, "L_at_Amax_Fem_GP_1_trajectories_
                   label = "growth_spawnout")
 
 ```
-Retrospectives
+\clearpage
 ```{r, results = "asis"}
+
+#Retrospectives
 
 #Spawnbio NO uncertainty
 sa4ss::add_figure(filein = file.path(fig_dir5, "compare1_spawnbio.png"), 
@@ -256,14 +259,17 @@ sa4ss::add_figure(filein = file.path(fig_dir5, "compare4_Bratio_uncertainty.png"
                   caption = "Retrospectives showing impact on spawning output.", 
                   label = "retros_spawnbio_uncertainty")
 ```
-Jitters
+\clearpage
 ```{r,  results = "asis"}
+#Jitters
 
 #Place jitter stuff here
 
 ```
-Model Impacts
+\clearpage
 ```{r,  results = "asis"}
+
+#Model Impacts
 
 #Growth
 sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare2_spawnbio_uncertainty.png"), 
