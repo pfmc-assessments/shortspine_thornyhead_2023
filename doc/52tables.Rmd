@@ -225,27 +225,37 @@ sa4ss::table_format(x = surv_strat,
 survinfo_tab<-read.csv(file.path(tab_dir1, "haul.sample.info.master.csv"))
 
 survinfo_tab<-survinfo_tab[,2:5]
+
+survinfo_tab<-survinfo_tab%>%
+  mutate(survey = case_when(
+    survey == "tri_early survey" ~ "Early Triennial",
+    survey == "tri_late survey" ~ "Late Triennial",
+    survey == "afsc slope" ~ "AFSC Slope",
+    survey == "nwfsc slope" ~ "WCGBTS",
+    TRUE ~ survey  # Keep the original name if it doesn't match any condition
+  ))
+  
 sa4ss::table_format(x = survinfo_tab,
                    caption = "Survey samples and hauls for each of the fishery independent surveys for available years spanning from 1989 to 2022.",
                    label = "survinfo")
 ```
 \newpage
 ```{r, results = 'asis'}
-growth_data <- data.frame(
-  Source = c("Butler et al. 1995", "Kline 1996"),
-  Region = c("OR and northern CA", "Central CA"),
-  Years = c("1978-87, 1988, 1990", "1991"),
-  Details = c("N=1,023; Sexed;\nFork length;\nTwo age readers",
-              "N=319;\nUnsexed; Total length; One age reader")
-)
-
-sa4ss::table_format(x = growth_data,
-                   caption = "Description of the Butler and Kline data sets, including collection region, years, samples sizes, length determination, and number of age readers",
-                   label = "growthsource",
-                   align = c("l", "l", "l", "l"),
-                   custom_width = TRUE,
-                   col_to_adjust = 4,
-                   width="2in")
+# growth_data <- data.frame(
+#   Source = c("Butler et al. 1995", "Kline 1996"),
+#   Region = c("OR and northern CA", "Central CA"),
+#   Years = c("1978-87, 1988, 1990", "1991"),
+#   Details = c("N=1,023; Sexed;\nFork length;\nTwo age readers",
+#               "N=319;\nUnsexed; Total length; One age reader")
+# )
+# 
+# sa4ss::table_format(x = growth_data,
+#                    caption = "Description of the Butler and Kline data sets, including collection region, years, samples sizes, length determination, and number of age readers",
+#                    label = "growthsource",
+#                    align = c("l", "l", "l", "l"),
+#                    custom_width = TRUE,
+#                    col_to_adjust = 4,
+#                    width="2in")
 
 ```
 \newpage
@@ -262,12 +272,12 @@ sa4ss::table_format(x = sensitiv_tab,
 \newpage
 
 ```{r, results = 'asis'}
-growthsensitiv_tab<-read.csv(file.path(tab_dir3, "growth_table_likelihoods_and_brps.csv"))
-names(growthsensitiv_tab)<-c("Source", "Base Model", "High Growth", "Low Growth")
-sa4ss::table_format(x = growthsensitiv_tab,
-                  caption = "Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions",
-                  label = "growthsentivititytab",
-                  align = c("l", "l", "l","l"))
+# growthsensitiv_tab<-read.csv(file.path(tab_dir3, "growth_table_likelihoods_and_brps.csv"))
+# names(growthsensitiv_tab)<-c("Source", "Base Model", "High Growth", "Low Growth")
+# sa4ss::table_format(x = growthsensitiv_tab,
+#                   caption = "Comparison of likelihoods for the base model, high growth assumptions, and low growth assumptions",
+#                   label = "growthsentivititytab",
+#                   align = c("l", "l", "l","l"))
 
 ```
 \newpage
