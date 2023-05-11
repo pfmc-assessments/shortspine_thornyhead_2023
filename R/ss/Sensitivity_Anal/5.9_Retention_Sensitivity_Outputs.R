@@ -208,7 +208,7 @@ SSplotComparisons(
       Version_Summary,
       # print = TRUE,
       pdf = TRUE,
-      plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
+      plotdir = file.path("C:/Users/pyher/Documents/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Retention", fsep = fsep),
       legendlabels = c(
 	'23.model.francis_2',
 	'23.blkret.T1',
