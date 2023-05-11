@@ -303,6 +303,17 @@ NewSensAnal(topic = "model",
            new_model = c("23.dmn"))
 
 
+#NewSensAnal(topic = "surveys",
+#            # names are based on new model
+#            object = c("MB vs DB indices"),
+#            author = "Andrea Odell",
+#            folder_name = "surveys2_Sensitivity",
+#            script_model = "surveys2_Sensitivity_Analyses",
+#            script_results = "surveys2_Sensitivity_Outputs",
+#            base_model = c("23.model.francis_2"),
+#            new_model = c("23.surveys.db"))
+
+
 
 
 
