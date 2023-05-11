@@ -56,7 +56,9 @@ run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Rew
 
 
 # Run profile for Natural Mortality -----------
-#Using r4ss::profile, I believe it *is* possible, you can set linenum or string to be a vector, and it will profile over the two parameters simultaneously. And then profilevec would be a matrix along the lines of cbind(seq(m.low, m.high, length.out = n), nrow = n, ncol = 2)
+#Using r4ss::profile, I believe it *is* possible, you can set linenum or string to be 
+# a vector, and it will profile over the two parameters simultaneously. And then profilevec 
+# would be a matrix along the lines of cbind(seq(m.low, m.high, length.out = n), nrow = n, ncol = 2)
 
 custom.profile <- function(dir,
                           oldctlfile = "control.ss_new",
@@ -421,7 +423,7 @@ starter[["prior_like"]] <- 1
 SS_writestarter(starter, dir = mydir, overwrite = TRUE)
 
 # vector of values to profile over
-m.vec <- cbind(seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005), seq(0.03, 0.055, by=0.005))
+m.vec <- cbind(seq(0.02, 0.08, by=0.005), seq(0.02, 0.08, by=0.005), seq(0.02, 0.08, by=0.005), seq(0.02, 0.08, by=0.005))
 Nprofile <- length(m.vec)
 
 # make a vector for string 
