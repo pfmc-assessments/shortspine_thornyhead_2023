@@ -136,8 +136,8 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # 	-  23.blkret.T4 
 # 	-  23.blkret.T3.NT1 
 # 	-  23.blkret.T3.NT2 
-#noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
-noHess <- c(FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)
+noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
+#noHess <- c(FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)
 
 
 var.to.save <- ls()
@@ -166,7 +166,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T1",
+                     files = "all")
 
 
 # 3.1  Work on the Starter file ----
@@ -280,13 +282,21 @@ Ctl23_blkret_T1$size_selex_parms_tv <- Ctl23_blkret_T1$size_selex_parms_tv[order
 Ctl23_blkret_T1$size_selex_parms_tv <- Ctl23_blkret_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T1$size_selex_parms_tv),"_1_|_3_"))),]
 Ctl23_blkret_T1$size_selex_parms_tv <- Ctl23_blkret_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T1$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+#Ctl23_blkret_T1$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- 3.0
+# Change the bound of the Retain_L_asymptote_logit_Trawl_N(1)	
+# parameters to fix the CHECK - the rowname is SizeSel_PRet_3_Trawl_N(1)
+tmp <- Ctl23_blkret_T1$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T1$size_selex_parms <- tmp
+
 # Save the control file for the model
-#SS_writectl(
-#      ctllist =  Ctl23_blkret_T1 ,
-#      outfile = file.path(Dir_23_blkret_T1, 'SST_control.ss', fsep = fsep),
-#      version = '3.30',
-#      overwrite = TRUE
-#      )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T1 ,
+      outfile = file.path(Dir_23_blkret_T1, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -415,7 +425,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T2",
+                     files = "all")
 
 
 # 4.1  Work on the Starter file ----
@@ -529,13 +541,21 @@ Ctl23_blkret_T2$size_selex_parms_tv <- Ctl23_blkret_T2$size_selex_parms_tv[order
 Ctl23_blkret_T2$size_selex_parms_tv <- Ctl23_blkret_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T2$size_selex_parms_tv),"_1_|_3_"))),]
 Ctl23_blkret_T2$size_selex_parms_tv <- Ctl23_blkret_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T2$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+#Ctl23_blkret_T1$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- 3.0
+# Change the bound of the Retain_L_asymptote_logit_Trawl_N(1)	
+# parameters to fix the CHECK - the rowname is SizeSel_PRet_3_Trawl_N(1)
+tmp <- Ctl23_blkret_T2$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T2$size_selex_parms <- tmp
+
 # Save the control file for the model
-#SS_writectl(
-#      ctllist =  Ctl23_blkret_T2 ,
-#      outfile = file.path(Dir_23_blkret_T2, 'SST_control.ss', fsep = fsep),
-#      version = '3.30',
-#      overwrite = TRUE
-#      )
+SS_writectl(
+      ctllist =  Ctl23_blkret_T2 ,
+      outfile = file.path(Dir_23_blkret_T2, 'SST_control.ss', fsep = fsep),
+      version = '3.30',
+      overwrite = TRUE
+      )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -664,7 +684,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T3",
+                     files = "all")
 
 
 # 5.1  Work on the Starter file ----
@@ -784,13 +806,21 @@ Ctl23_blkret_T3$size_selex_parms_tv <- Ctl23_blkret_T3$size_selex_parms_tv[order
 Ctl23_blkret_T3$size_selex_parms_tv <- Ctl23_blkret_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3$size_selex_parms_tv),"_1_|_3_"))),]
 Ctl23_blkret_T3$size_selex_parms_tv <- Ctl23_blkret_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+#Ctl23_blkret_T1$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- 3.0
+# Change the bound of the Retain_L_asymptote_logit_Trawl_N(1)	
+# parameters to fix the CHECK - the rowname is SizeSel_PRet_3_Trawl_N(1)
+tmp <- Ctl23_blkret_T3$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T3$size_selex_parms <- tmp
+
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3 ,
-#       outfile = file.path(Dir_23_blkret_T3, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T3 ,
+       outfile = file.path(Dir_23_blkret_T3, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -919,7 +949,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T4')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T4",
+                     files = "all")
 
 
 # 6.1  Work on the Starter file ----
@@ -1020,8 +1052,8 @@ Ctl23_blkret_T4 <- SS_readctl_3.30(
 Ctl23_blkret_T4$blocks_per_pattern[1] <- 5
 Ctl23_blkret_T4$blocks_per_pattern[2] <- 5
 
-Ctl23_blkret_T4$Block_Design[[1]] <- c(1989, 2006, 2007, 2010, 2011, 2014, 2015, 2018, 2019, 2022)
-Ctl23_blkret_T4$Block_Design[[2]] <- c(1989, 2006, 2007, 2010, 2011, 2016, 2017, 2018, 2019, 2022)
+Ctl23_blkret_T4$Block_Design[[1]] <- c(1989, 2006, 2007, 2010, 2011, 2014, 2015, 2019, 2020, 2022)
+Ctl23_blkret_T4$Block_Design[[2]] <- c(1989, 2006, 2007, 2010, 2011, 2016, 2017, 2019, 2020, 2022)
 
 toadd_reten_names <- grep(2011, rownames(Ctl23_blkret_T4$size_selex_parms_tv), value=T)
 toadd_reten <- Ctl23_blkret_T4$size_selex_parms_tv[grep(2011, rownames(Ctl23_blkret_T4$size_selex_parms_tv)),]
@@ -1035,7 +1067,7 @@ rownames(toadd_reten2) <- toadd_reten_names2
 
 toadd_reten_names3 <- grep(2011, rownames(Ctl23_blkret_T4$size_selex_parms_tv), value=T)
 toadd_reten3 <- Ctl23_blkret_T4$size_selex_parms_tv[grep(2011, rownames(Ctl23_blkret_T4$size_selex_parms_tv)),]
-toadd_reten_names3 <- gsub("2011", "2019", toadd_reten_names3)
+toadd_reten_names3 <- gsub("2011", "2020", toadd_reten_names3)
 rownames(toadd_reten3) <- toadd_reten_names3
 
 Ctl23_blkret_T4$size_selex_parms_tv <- rbind(Ctl23_blkret_T4$size_selex_parms_tv, toadd_reten, toadd_reten2, toadd_reten3)
@@ -1044,13 +1076,21 @@ Ctl23_blkret_T4$size_selex_parms_tv <- Ctl23_blkret_T4$size_selex_parms_tv[order
 Ctl23_blkret_T4$size_selex_parms_tv <- Ctl23_blkret_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T4$size_selex_parms_tv),"_1_|_3_"))),]
 Ctl23_blkret_T4$size_selex_parms_tv <- Ctl23_blkret_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T4$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+#Ctl23_blkret_T1$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- 3.0
+# Change the bound of the Retain_L_asymptote_logit_Trawl_N(1)	
+# parameters to fix the CHECK - the rowname is SizeSel_PRet_3_Trawl_N(1)
+tmp <- Ctl23_blkret_T4$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T4$size_selex_parms <- tmp
+
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T4 ,
-#       outfile = file.path(Dir_23_blkret_T4, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T4 ,
+       outfile = file.path(Dir_23_blkret_T4, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1180,7 +1220,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_NT1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T3.NT1",
+                     files = "all")
 
 
 # 7.1  Work on the Starter file ----
@@ -1310,14 +1352,20 @@ Ctl23_blkret_T3_NT1$size_selex_parms_tv <- Ctl23_blkret_T3_NT1$size_selex_parms_
 Ctl23_blkret_T3_NT1$size_selex_parms_tv <- Ctl23_blkret_T3_NT1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_NT1$size_selex_parms_tv),"_1_|_3_"))),]
 Ctl23_blkret_T3_NT1$size_selex_parms_tv <- Ctl23_blkret_T3_NT1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_NT1$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
-
+#Ctl23_blkret_T1$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- 3.0
+# Change the bound of the Retain_L_asymptote_logit_Trawl_N(1)	
+# parameters to fix the CHECK - the rowname is SizeSel_PRet_3_Trawl_N(1)
+tmp <- Ctl23_blkret_T3_NT1$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T3_NT1$size_selex_parms <- tmp
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_NT1 ,
-#       outfile = file.path(Dir_23_blkret_T3_NT1, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T3_NT1 ,
+       outfile = file.path(Dir_23_blkret_T3_NT1, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1446,7 +1494,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_NT2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blkret.T3.NT2",
+                     files = "all")
 
 
 # 8.1  Work on the Starter file ----
@@ -1581,14 +1631,21 @@ Ctl23_blkret_T3_NT2$size_selex_parms_tv <- Ctl23_blkret_T3_NT2$size_selex_parms_
 Ctl23_blkret_T3_NT2$size_selex_parms_tv <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv),"_1_|_3_"))),]
 Ctl23_blkret_T3_NT2$size_selex_parms_tv <- Ctl23_blkret_T3_NT2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_NT2$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+#Ctl23_blkret_T1$size_selex_parms["SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- 3.0
+# Change the bound of the Retain_L_asymptote_logit_Trawl_N(1)	
+# parameters to fix the CHECK - the rowname is SizeSel_PRet_3_Trawl_N(1)
+tmp <- Ctl23_blkret_T3_NT2$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T3_NT2$size_selex_parms <- tmp
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_NT2 ,
-#       outfile = file.path(Dir_23_blkret_T3_NT2, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T3_NT2 ,
+       outfile = file.path(Dir_23_blkret_T3_NT2, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1679,7 +1736,9 @@ SS_plots(replist,
 
 # =======================
 
-
+var.to.save <- var.to.save[!var.to.save %in% c('Start23_blkret_T3_NT2','Dat23_blkret_T3_NT2','Ctl23_blkret_T3_NT2','Fore23_blkret_T3_NT2')]
+rm(list = setdiff(ls(), var.to.save))
+var.to.save <- ls()
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 
