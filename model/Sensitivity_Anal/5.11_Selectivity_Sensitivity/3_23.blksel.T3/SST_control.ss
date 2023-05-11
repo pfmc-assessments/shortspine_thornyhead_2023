@@ -173,7 +173,7 @@
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_N(1)         
    5	70	       23	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
  0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_N(1)      
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
+ -10	25	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_N(1)      
   10	60	       30	     30	 5	0	  1	0	0	0	0	  0	3	3	#_SizeSel_P_1_Trawl_S(2)         
   -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_S(2)         
@@ -232,14 +232,14 @@
 #_No age_selex_parm
 # timevary selex parameters 
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE
- -10	 10	0	0	  5	6	2	#_1                                       
- -10	 10	0	0	  5	6	2	#_2                                       
- -10	 10	0	0	  5	6	2	#_3                                       
- -10	 10	0	0	  5	6	2	#_4                                       
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2003   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2011   
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2011
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2007
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2011
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2003   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2011   
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2007
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2011
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2007

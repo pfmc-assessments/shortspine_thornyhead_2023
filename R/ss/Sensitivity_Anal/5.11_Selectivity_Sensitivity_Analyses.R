@@ -177,7 +177,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T1",
+                     files = "all")
+
 
 
 # 3.1  Work on the Starter file ----
@@ -285,20 +288,31 @@ Ctl23_blksel_T1$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blksel_T1$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp <-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blksel_T1$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blksel_T1$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blksel_T1$Block_Design[[3]][seq(from=1, to=length(Ctl23_blksel_T1$Block_Design[[3]]), by=2)], each=2)) 
 Ctl23_blksel_T1$size_selex_parms_tv <- tmp
-rm(tmp)
+Ctl23_blksel_T1$size_selex_parms_tv <- Ctl23_blksel_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T1$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blksel_T1$size_selex_parms_tv <- Ctl23_blksel_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T1$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blksel_T1$size_selex_parms_tv <- Ctl23_blksel_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T1$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+rm(tmp)
+tmp <- Ctl23_blksel_T1$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blksel_T1$size_selex_parms <- tmp
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blksel_T1 ,
-#       outfile = file.path(Dir_23_blksel_T1, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blksel_T1 ,
+       outfile = file.path(Dir_23_blksel_T1, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -427,7 +441,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T2",
+                     files = "all")
 
 
 # 4.1  Work on the Starter file ----
@@ -535,20 +551,33 @@ Ctl23_blksel_T2$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blksel_T2$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp<-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blksel_T2$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blksel_T2$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blksel_T2$Block_Design[[3]][seq(from=1, to=length(Ctl23_blksel_T2$Block_Design[[3]]), by=2)], each=2)) 
 Ctl23_blksel_T2$size_selex_parms_tv <- tmp
+Ctl23_blksel_T2$size_selex_parms_tv <- Ctl23_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T2$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blksel_T2$size_selex_parms_tv <- Ctl23_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T2$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blksel_T2$size_selex_parms_tv <- Ctl23_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T2$size_selex_parms_tv),"_P_|_Pret_"))),]
+Ctl23_blksel_T2$size_selex_parms_tv <- Ctl23_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T2$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
+
 rm(tmp)
+tmp <- Ctl23_blksel_T2$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blksel_T2$size_selex_parms <- tmp
 
 
 # Save the control file for the model
-# SS_writectl(
-#     ctllist =  Ctl23_blksel_T2 ,
-#     outfile = file.path(Dir_23_blksel_T2, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+     ctllist =  Ctl23_blksel_T2 ,
+     outfile = file.path(Dir_23_blksel_T2, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -677,7 +706,10 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T3')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T3",
+                     files = "all")
+
 
 
 # 5.1  Work on the Starter file ----
@@ -789,14 +821,26 @@ Ctl23_blksel_T3$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blksel_T3$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp<-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blksel_T3$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blksel_T3$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blksel_T3$Block_Design[[3]][seq(from=1, to=length(Ctl23_blksel_T3$Block_Design[[3]]), by=2)], 2)) 
 Ctl23_blksel_T3$size_selex_parms_tv <- tmp
-rm(tmp)
+Ctl23_blksel_T3$size_selex_parms_tv <- Ctl23_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T3$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blksel_T3$size_selex_parms_tv <- Ctl23_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T3$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blksel_T3$size_selex_parms_tv <- Ctl23_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T3$size_selex_parms_tv),"_P_|_Pret_"))),]
+Ctl23_blksel_T3$size_selex_parms_tv <- Ctl23_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T3$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+rm(tmp)
+tmp <- Ctl23_blksel_T3$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blksel_T3$size_selex_parms <- tmp
 
 # Save the control file for the model
  SS_writectl(
@@ -933,7 +977,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blksel_T4')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.model.francis_2",
+                     curr.model = "23.blksel.T4",
+                     files = "all")
 
 
 # 6.1  Work on the Starter file ----
@@ -1031,7 +1077,7 @@ Ctl23_blksel_T4 <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-Ctl23_blksel_T4$Block_Design[[3]] <- c(2003, 2010, 2011, 2018, 2019, 2022)
+Ctl23_blksel_T4$Block_Design[[3]] <- c(2003, 2010, 2011, 2019, 2020, 2022)
 
 Ctl23_blksel_T4$blocks_per_pattern[3] <- 3
 
@@ -1044,24 +1090,36 @@ Ctl23_blksel_T4$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blksel_T4$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp<-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blksel_T4$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blksel_T4$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blksel_T4$Block_Design[[3]][seq(from=1, to=length(Ctl23_blksel_T4$Block_Design[[3]]), by=2)], 2)) 
 Ctl23_blksel_T4$size_selex_parms_tv <- tmp
-rm(tmp) 
+Ctl23_blksel_T4$size_selex_parms_tv <- Ctl23_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T4$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blksel_T4$size_selex_parms_tv <- Ctl23_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T4$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blksel_T4$size_selex_parms_tv <- Ctl23_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T4$size_selex_parms_tv),"_P_|_Pret_"))),]
+Ctl23_blksel_T4$size_selex_parms_tv <- Ctl23_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blksel_T4$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+rm(tmp)
+tmp <- Ctl23_blksel_T4$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blksel_T4$size_selex_parms <- tmp
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_blksel_T4 ,
-      # outfile = file.path(Dir_23_blksel_T4, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+ SS_writectl(
+       ctllist =  Ctl23_blksel_T4 ,
+       outfile = file.path(Dir_23_blksel_T4, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1190,7 +1248,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T1')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T4",
+                     curr.model = "23.blkret.T3.blksel.T1",
+                     files = "all")
 
 
 # 7.1  Work on the Starter file ----
@@ -1298,20 +1358,32 @@ Ctl23_blkret_T3_blksel_T1$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp<-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blkret_T3_blksel_T1$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blkret_T3_blksel_T1$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blkret_T3_blksel_T1$Block_Design[[3]][seq(from=1, to=length(Ctl23_blkret_T3_blksel_T1$Block_Design[[3]]), by=2)], 2)) 
 Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv <- tmp
-rm(tmp)
+Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv),"_P_|_Pret_"))),]
+Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T1$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+rm(tmp)
+tmp <- Ctl23_blkret_T3_blksel_T1$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T3_blksel_T1$size_selex_parms <- tmp
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T1 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T1, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T3_blksel_T1 ,
+       outfile = file.path(Dir_23_blkret_T3_blksel_T1, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1440,7 +1512,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T2')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T4",
+                     curr.model = "23.blkret.T3.blksel.T2",
+                     files = "all")
 
 
 # 8.1  Work on the Starter file ----
@@ -1548,20 +1622,33 @@ Ctl23_blkret_T3_blksel_T2$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp<-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blkret_T3_blksel_T2$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blkret_T3_blksel_T2$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blkret_T3_blksel_T2$Block_Design[[3]][seq(from=1, to=length(Ctl23_blkret_T3_blksel_T2$Block_Design[[3]]), by=2)], each=2)) 
 Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv <- tmp
+Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv),"_P_|_Pret_"))),]
+Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T2$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
+
 rm(tmp)
+tmp <- Ctl23_blkret_T3_blksel_T2$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T3_blksel_T2$size_selex_parms <- tmp
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T2 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T2, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T3_blksel_T2 ,
+       outfile = file.path(Dir_23_blkret_T3_blksel_T2, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1690,7 +1777,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T3')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T4",
+                     curr.model = "23.blkret.T3.blksel.T3",
+                     files = "all")
 
 
 # 9.1  Work on the Starter file ----
@@ -1802,22 +1891,35 @@ Ctl23_blkret_T3_blksel_T3$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp<-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blkret_T3_blksel_T3$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blkret_T3_blksel_T3$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blkret_T3_blksel_T3$Block_Design[[3]][seq(from=1, to=length(Ctl23_blkret_T3_blksel_T3$Block_Design[[3]]), by=2)], 2)) 
 Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv <- tmp
+Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv),"_P_|_Pret_"))),]
+Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T3$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
+
 rm(tmp)
+tmp <- Ctl23_blkret_T3_blksel_T3$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T3_blksel_T3$size_selex_parms <- tmp
 
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T3 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T3, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T3_blksel_T3 ,
+       outfile = file.path(Dir_23_blkret_T3_blksel_T3, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -1946,7 +2048,9 @@ var.to.save <- c(var.to.save, 'Dir_23_blkret_T3_blksel_T4')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model = "23.blkret.T4",
+                     curr.model = "23.blkret.T3.blksel.T4",
+                     files = "all")
 
 
 # 10.1  Work on the Starter file ----
@@ -2044,7 +2148,7 @@ Ctl23_blkret_T3_blksel_T4 <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-Ctl23_blkret_T3_blksel_T4$Block_Design[[3]] <- c(2003, 2010, 2011, 2018, 2019, 2022)
+Ctl23_blkret_T3_blksel_T4$Block_Design[[3]] <- c(2003, 2010, 2011, 2019, 2020, 2022)
 
 Ctl23_blkret_T3_blksel_T4$blocks_per_pattern[3] <- 3
 
@@ -2057,24 +2161,36 @@ Ctl23_blkret_T3_blksel_T4$size_selex_parms <- tmp
 rm(tmp)
 
 tmp <- Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv
-tmp<-rbind(c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
-           c(-10, 10, 0,0,5,6,2),
+tmp<-rbind(c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
+           c(-15, 15, 0,0,5,6,2),
            tmp)
+rownames(tmp)[1:(length(Ctl23_blkret_T3_blksel_T4$Block_Design[[3]])/2*2)] <-
+  paste0(rep(c("SizeSel_P_1_Trawl_N(1)_BLK1","SizeSel_P_1_Trawl_S(2)_BLK2"), each=(length(Ctl23_blkret_T3_blksel_T4$Block_Design[[3]])/2)),
+         "delta_",
+         rep(Ctl23_blkret_T3_blksel_T4$Block_Design[[3]][seq(from=1, to=length(Ctl23_blkret_T3_blksel_T4$Block_Design[[3]]), by=2)], 2)) 
 Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv <- tmp
-rm(tmp) 
+Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv), paste(seq(1985, 2022), collapse="|")))),]
+Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv),"_1_|_3_"))),]
+Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv),"_P_|_Pret_"))),]
+Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv <- Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv[order(unlist(str_extract(rownames(Ctl23_blkret_T3_blksel_T4$size_selex_parms_tv),"BLK1delta|BLK2delta|BLK3delta"))),]
 
+rm(tmp)
+tmp <- Ctl23_blkret_T3_blksel_T4$size_selex_parms
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 25
+#tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 25
+Ctl23_blkret_T3_blksel_T4$size_selex_parms <- tmp
 
 # Save the control file for the model
-# SS_writectl(
-#       ctllist =  Ctl23_blkret_T3_blksel_T4 ,
-#       outfile = file.path(Dir_23_blkret_T3_blksel_T4, 'SST_control.ss', fsep = fsep),
-#       version = '3.30',
-#       overwrite = TRUE
-#       )
+ SS_writectl(
+       ctllist =  Ctl23_blkret_T3_blksel_T4 ,
+       outfile = file.path(Dir_23_blkret_T3_blksel_T4, 'SST_control.ss', fsep = fsep),
+       version = '3.30',
+       overwrite = TRUE
+       )
 # Check file structure
 # We actually need to run the model to check the file structure
 

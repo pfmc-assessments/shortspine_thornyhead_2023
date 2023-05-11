@@ -13,18 +13,18 @@
 0 # unused option
 # for each settlement assignment:
 #_GPattern	month	area	age
-1	3	1	0	#_recr_dist_pattern_1
+1	3	1	0	#_recr_dist_pattern1
 #
 #_Cond 0 # N_movement_definitions goes here if N_areas > 1
 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 3 #_Nblock_Patterns
-2 2 1 #_blocks_per_pattern
+2 2 3 #_blocks_per_pattern
 #_begin and end years of blocks
 2007 2010 2011 2022
 2007 2010 2011 2022
-2007 2022
+2003 2010 2011 2019 2020 2022
 #
 # controls for all timevary parameters 
 3 #_env/block/dev_adjust_method for all time-vary parms (1=warn relative to base parm bounds; 3=no bound check)
@@ -165,7 +165,7 @@
 #
 #_SizeSelex
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-  10	60	       30	     30	 5	0	  1	0	0	0	0	  0	0	0	#_SizeSel_P_1_Trawl_N(1)         
+  10	60	       30	     30	 5	0	  1	0	0	0	0	  0	3	3	#_SizeSel_P_1_Trawl_N(1)         
  -16	16	      -15	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_N(1)         
   -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_N(1)         
   -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_N(1)         
@@ -173,9 +173,9 @@
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_N(1)         
    5	70	       23	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
  0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_N(1)      
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
+ -10	25	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_N(1)      
-  10	60	       30	     30	 5	0	  1	0	0	0	0	  0	0	0	#_SizeSel_P_1_Trawl_S(2)         
+  10	60	       30	     30	 5	0	  1	0	0	0	0	  0	3	3	#_SizeSel_P_1_Trawl_S(2)         
   -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_S(2)         
   -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_S(2)         
   -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_S(2)         
@@ -232,10 +232,16 @@
 #_No age_selex_parm
 # timevary selex parameters 
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2003   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2011   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2020   
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2011
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2007
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2011
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2003   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2011   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2020   
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2007
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2011
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2007

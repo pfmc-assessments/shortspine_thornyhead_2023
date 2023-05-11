@@ -13,18 +13,18 @@
 0 # unused option
 # for each settlement assignment:
 #_GPattern	month	area	age
-1	3	1	1	#_recr_dist_pattern1
+1	3	1	0	#_recr_dist_pattern1
 #
 #_Cond 0 # N_movement_definitions goes here if N_areas > 1
 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 3 #_Nblock_Patterns
-4 4 3 #_blocks_per_pattern
+5 5 3 #_blocks_per_pattern
 #_begin and end years of blocks
-1989 2006 2007 2010 2011 2014 2015 2022
-1989 2006 2007 2010 2011 2016 2017 2022
-2003 2010 2011 2018 2019 2022
+1989 2006 2007 2010 2011 2014 2015 2019 2020 2022
+1989 2006 2007 2010 2011 2016 2017 2019 2020 2022
+2003 2010 2011 2019 2020 2022
 #
 # controls for all timevary parameters 
 3 #_env/block/dev_adjust_method for all time-vary parms (1=warn relative to base parm bounds; 3=no bound check)
@@ -89,11 +89,11 @@
 0 # 0/1 to use steepness in initial equ recruitment calculation
 0 # future feature: 0/1 to make realized sigmaR a function of SR curvature
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn # parm_name
-  7	13	10.332	   10	   10	0	 4	0	0	0	0	0	0	0	#_SR_LN(R0)  
-0.2	 1	  0.72	0.779	0.152	0	-2	0	0	0	0	0	0	0	#_SR_BH_steep
-  0	 2	   0.5	  0.5	  0.8	0	-4	0	0	0	0	0	0	0	#_SR_sigmaR  
- -5	 5	     0	    0	    1	0	-4	0	0	0	0	0	0	0	#_SR_regime  
- -1	 1	     0	    0	  100	0	-1	0	0	0	0	0	0	0	#_SR_autocorr
+  7	13	9.33	   10	   10	0	 4	0	0	0	0	0	0	0	#_SR_LN(R0)  
+0.2	 1	0.72	0.779	0.152	0	-2	0	0	0	0	0	0	0	#_SR_BH_steep
+  0	 2	 0.5	  0.5	  0.8	0	-4	0	0	0	0	0	0	0	#_SR_sigmaR  
+ -5	 5	   0	    0	    1	0	-4	0	0	0	0	0	0	0	#_SR_regime  
+ -1	 1	   0	    0	  100	0	-1	0	0	0	0	0	0	0	#_SR_autocorr
 #_no timevary SR parameters
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1996 # first year of main recr_devs; early devs can preceed this era
@@ -140,7 +140,7 @@
 -9999	0	0	0	0	0	#_terminator
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-  -5	  5	 -1.17642	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(4) 
+  -5	  5	 -2.17642	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(4) 
 0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial1(4)
   -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(6) 
 #_no timevary Q parameters
@@ -168,12 +168,12 @@
   10	60	       30	     30	 5	0	  1	0	0	0	0	  0	3	3	#_SizeSel_P_1_Trawl_N(1)         
  -16	16	      -15	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_N(1)         
   -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_N(1)         
-  -5	10	        7	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_N(1)         
+  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_N(1)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Trawl_N(1)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_N(1)         
-   5	70	       29	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
+   5	70	       23	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
  0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_N(1)      
- -10	10	        4	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
+ -10	25	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_N(1)      
   10	60	       30	     30	 5	0	  1	0	0	0	0	  0	3	3	#_SizeSel_P_1_Trawl_S(2)         
   -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_S(2)         
@@ -232,28 +232,32 @@
 #_No age_selex_parm
 # timevary selex parameters 
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE
- -10	 10	0	0	  5	6	2	#_1                                       
- -10	 10	0	0	  5	6	2	#_2                                       
- -10	 10	0	0	  5	6	2	#_3                                       
- -10	 10	0	0	  5	6	2	#_4                                       
- -10	 10	0	0	  5	6	2	#_5                                       
- -10	 10	0	0	  5	6	2	#_6                                       
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2003   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2011   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK1delta_2020   
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_1989
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2011
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2015
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2020
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_1989
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2007
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2011
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2015
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2020
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2003   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2011   
+ -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK2delta_2020   
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_1989
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2007
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2011
  -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2017
+ -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2020
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_1989
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2007
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2011
 -0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2017
+-0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2020
 # info on dev vectors created for selex parms are reported with other devs after tag parameter section
 #
 0 #  use 2D_AR1 selectivity(0/1):  experimental feature
