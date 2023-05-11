@@ -1,4 +1,8 @@
 library(sa4ss)
+library(here)
+library(float)
+library(flextable)
+
 setwd(file.path(here::here(), "doc"))
 # sa4ss::draft(authors = c("Madison Shipley", "Joshua Zahner", 
 #                          "Sabrina Beyer", "Adam Hayes", "Pierre-Yves Hernvann",
