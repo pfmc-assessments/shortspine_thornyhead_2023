@@ -1736,7 +1736,9 @@ SS_plots(replist,
 
 # =======================
 
-
+var.to.save <- var.to.save[!var.to.save %in% c('Start23_blkret_T3_NT2','Dat23_blkret_T3_NT2','Ctl23_blkret_T3_NT2','Fore23_blkret_T3_NT2')]
+rm(list = setdiff(ls(), var.to.save))
+var.to.save <- ls()
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 
