@@ -1,0 +1,20 @@
+Type,Fleet,Year,Justification,Base,RetT1,RetT2,RetT3,RetT4,RetT3.NT1,RetT3NT2,SelT1,SelT2,SelT3,SelT4,SelT5,SelT6,SelT7,SelT8
+Retention,TrawlN,1989,Coastwide trawl trip for deepwater complex,,x,,x,x,x,x,,,,,x,x,x,x
+Retention,TrawlN,2007,After peak in recruitment,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
+Retention,TrawlN,2011,Start of IFQ program,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
+Retention,TrawlN,2015,Late IFQ period + changes observed in data,,,x,x,x,x,x,,,,,x,x,x,x
+Retention,TrawlN,2020,Covid + changes observed in data,,,,,x,,,,,,,x,x,x,x
+Retention,TrawlS,1989,Coastwide trawl trip for deepwater complex,,x,,x,x,x,x,,,,,x,x,x,x
+Retention,TrawlS,2007,After peak in recruitment,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
+Retention,TrawlS,2011,Start of IFQ program,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
+Retention,TrawlS,2017,Late IFQ period + changes observed in data,,,,,x,x,x,,,,,x,x,x,x
+Retention,TrawlS,2020,Covid + changes observed in data,,,,,,,,,,,,,,,
+Retention,Non-Trawl,2008,Changes observed in data,,,,,,x,x,,,,,,,,
+Retention,Non-Trawl,2012,Changes observed in data,,,,,,x,x,,,,,,,,
+Retention,Non-Trawl,2017,Changes observed in data,,,,,,,x,,,,,,,,
+Selectivity,TrawlN,2003,MPAs implementation,,,,,,,,x,,x,x,x,,x,x
+Selectivity,TrawlN,2011,Start of IFQ program,,,,,,,,,x,x,x,,x,x,x
+Selectivity,TrawlN,2020,Late IFQ period + Covid +  Changes observed,,,,,,,,,,,x,,,,x
+Selectivity,TrawlS,2003,MPAs implementation,,,,,,,,x,,x,x,x,,x,x
+Selectivity,TrawlS,2011,Start of IFQ program,,,,,,,,,x,x,x,,x,x,x
+Selectivity,TrawlS,2020,Late IFQ period + Covid +  Changes observed,,,,,,,,,,,x,,,,x
