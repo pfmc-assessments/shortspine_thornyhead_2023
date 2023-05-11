@@ -66,11 +66,17 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"),
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_comparison_LAA1.png"), 
                   caption = "Growth curve comparison. ", 
                   label = "growth_LAA1")
+
 #Figure 10 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.png"), 
                   caption = "Growth curve sensitivities", 
                   label = "growth_LAA2")
 
+### Figure at the end of this code floating 
+
+```
+\clearpage
+```{r,  results = "asis"}
 #Figure 11 Maturity 1
 sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_fit.png"), 
                   caption = "Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.", 
@@ -81,6 +87,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_
                   caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
                   label = "mat2")
 
+# NO CAPTION SHOWING 
 ```
 \clearpage
 ```{r, results ='asis'}
