@@ -10,6 +10,11 @@ author:
     first: M
     middle: 'A'
     family: Heller-Shipley
+  - name: Haley A. Oleynik
+    code: 4
+    first: H
+    middle: 'A'
+    family: Oleynik
   - name: Sabrina Beyer
     code: 1
     first: S
@@ -30,11 +35,6 @@ author:
     first: A
     middle: 'N'
     family: Odell
-  - name: Haley Oleynik
-    code: 4
-    first: H
-    middle: ''
-    family: Oleynik
   - name: Jane Y. Sullivan
     code: 5
     first: J

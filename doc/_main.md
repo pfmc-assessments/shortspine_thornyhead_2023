@@ -29,6 +29,11 @@ author:
     first: M
     middle: 'A'
     family: Heller-Shipley
+  - name: Haley A. Oleynik
+    code: 4
+    first: H
+    middle: 'A'
+    family: Oleynik
   - name: Sabrina Beyer
     code: 1
     first: S
@@ -49,11 +54,6 @@ author:
     first: A
     middle: 'N'
     family: Odell
-  - name: Haley Oleynik
-    code: 4
-    first: H
-    middle: ''
-    family: Oleynik
   - name: Jane Y. Sullivan
     code: 5
     first: J
@@ -912,6 +912,7 @@ Here are all the mad props!
 
 
 ## Executive Summary
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -947,7 +948,7 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{3cm}}
 \caption{(\#tab:ssb)Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model.}\\
 \toprule
 Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
@@ -976,11 +977,13 @@ Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction 
 \end{longtable}
 \endgroup{}
 \endgroup{}
+\
+clearpage
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\begin{longtable}[t]{cccc>{\centering\arraybackslash}p{2.5cm}}
 \caption{(\#tab:rec)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model.}\\
 \toprule
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
@@ -1013,7 +1016,7 @@ Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{4cm}ccc}
 \caption{(\#tab:spr)Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals.}\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
@@ -1087,7 +1090,7 @@ MSY (mt) & 1,121 & 919–1,323\\*
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\begin{longtable}[t]{ccccc>{\centering\arraybackslash}p{2.7cm}}
 \caption{(\#tab:management)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt).}\\
 \toprule
 Year & OFL & ABC & ACL & Landings & Total Mortality\\
@@ -1119,7 +1122,7 @@ Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
+\begin{longtable}[t]{ccc>{\centering\arraybackslash}p{2cm}cc}
 \caption{(\#tab:projections)Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.}\\
 \toprule
 Year & Predicted OFL (mt) & ABC (mt) & Age 1 Biomass (mt) & Spawning Output & Fraction Unfished\\

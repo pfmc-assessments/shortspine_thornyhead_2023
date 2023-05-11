@@ -21,6 +21,7 @@ tab_dir4 <- here::here("doc", "FinalTables", "Model")
 ```
 
 ## Executive Summary
+
 ```{r, results='asis'}
 
 #These are all labeled a-i
@@ -37,21 +38,35 @@ ssb_tab<-read.csv(file.path(tab_dir1, "b_SSB_ES.csv"))
 names(ssb_tab)<-c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")                 
 # 
 sa4ss::table_format(x = ssb_tab,
-                  caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
-                   label = "ssb")
+                    caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
+                    label = "ssb",
+                    custom_width = TRUE,
+                    col_to_adjust = c(2, 3, 4, 5),
+                    width = c('2cm', '2.5cm', '2cm', '3cm'))
+```
+\
+clearpage
+
+```{r, results='asis'}
 #Recruitment
 rec_tab<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
 names(rec_tab)<-c("Year", "Recruitment", "95% CI", "RecDevs", "RecDev 95% CI")    
 sa4ss::table_format(x = rec_tab,
                   caption = "Estimated recent trend in recruitment and recruitment deviations and the 95\\% confidence intervals (CI) from the base model.",
-                  label = "rec")
+                  label = "rec",
+                  custom_width = TRUE,
+                  col_to_adjust = c(5),
+                  width=c("2.5cm"))
 
 #SPR
 spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
 names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
 sa4ss::table_format(x = spr_tab,
                   caption = "Estimated recent trend in the (1-SPR)/(1-SPR 50\\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\\% intervals.",
-                  label = "spr")
+                  label = "spr",
+                  custom_width = TRUE,
+                  col_to_adjust = c(2),
+                  width=c("4cm"))
 ```
 \newpage
 ```{r, results='asis'}
@@ -83,7 +98,10 @@ mngmt_tab<-mngmt_tab%>%
  
 sa4ss::table_format(x = mngmt_tab,
                   caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt).",
-                  label = "management")
+                  label = "management",
+                  custom_width = TRUE,
+                  col_to_adjust = c(6),
+                  width=c("2.7cm"))
 ```
 \newpage
 ```{r, results='asis'}
@@ -92,7 +110,10 @@ proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES.csv"))
 names(proj_tab)<-c("Year", "Predicted OFL (mt)", "ABC (mt)", "Age 1 Biomass (mt)", "Spawning Output", "Fraction Unfished") 
 sa4ss::table_format(x = proj_tab,
                   caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.",
-                  label = "projections")
+                  label = "projections",
+                  custom_width = TRUE,
+                  col_to_adjust = c(4),
+                  width=c("2cm"))
 
 #Summary Tables 
 sum_tab<-read.csv(file.path(tab_dir1, "i_Summary_ES.csv"))
