@@ -16,81 +16,114 @@ fig_dir7 <- here::here("doc", "FinalFigs", "Jitters")
 ```
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.pos = 'H')
+knitr::opts_chunk$set(fig.pos = 'h')
 ```
 
+## Introduction and Data
 ```{r,  results = "asis"}
 #Introduction and Data
 
 #Figure 1 Coastwide CPUE plot from NWFSC combo survey
 sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
                   caption = "Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.", 
-                  label = "stock-map")
+                  label = "stock-map",
+                  height=80)
+```
 
+```{r,  results = "asis"}
 # Figure 2 Unid thornyheads and proportion shortspine
 sa4ss::add_figure(filein = file.path(fig_dir1, "thornyhead-ratio.png "), 
                   caption = "Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.", 
                   label = "thornyhead-ratio")
+```
 
+
+```{r,  results = "asis"}
 # Figure 3 Catch history
 sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"), 
                   caption = "Estimated landing history for shortspine thornyhead.", 
                   label = "catch_hist")
+```
 
+
+```{r,  results = "asis"}
 # Figure 4 Data Sources Figure
 sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"), 
                   caption = "Summary of data sources used in the base model.", 
                   label = "assessment_data_timeseries")
+```
 
+
+```{r,  results = "asis"}
 #Figure 5 Discard history
 sa4ss::add_figure(filein = file.path(fig_dir3, "catch7 discards stacked plot (depends on multiple fleets).png"), 
                   caption = "Predicted discards based estimated retention and selectivity for each fleet.", 
                   label = "disc_hist")
+```
 
+
+```{r,  results = "asis"}
 #Figure 6 Discard Rates 
 sa4ss::add_figure(filein = file.path(fig_dir2, "SST_WCGOP_GEMM_discard_rates_3fleet.png"), 
                   caption = "Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.", 
                   label = "disc_rates_WCGOP")
+```
 
+
+```{r,  results = "asis"}
 # Figure 7 Survey Data Sources 
 sa4ss::add_figure(filein = file.path(fig_dir2, "survey_data_timeseries.png"), 
                   caption = "Summary of survey data sources used in the base model.", 
                   label = "survey_data_timeseries")
+```
 
+
+```{r,  results = "asis"}
 #Figure 8 Survey Length Comps 
 sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"), 
                   caption = "Survey length composition data.", 
                   label = "survey_comps")
+```
 
+
+```{r,  results = "asis"}
 #Figure 9 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_comparison_LAA1.png"), 
                   caption = "Growth curve comparison. ", 
                   label = "growth_LAA1")
+```
 
+
+```{r,  results = "asis"}
 #Figure 10 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.png"), 
                   caption = "Growth curve sensitivities", 
                   label = "growth_LAA2")
+```
 
+```{r,  results = "asis"}
 ### Figure at the end of this code floating 
 
-```
-\clearpage
-```{r,  results = "asis"}
 #Figure 11 Maturity 1
 sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_fit.png"), 
                   caption = "Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.", 
                   label = "mat1")
+```
 
+
+```{r,  results = "asis"}
 #Figure 12 Maturity 2
 sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_curves.png"), 
                   caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
                   label = "mat2")
 
-# NO CAPTION SHOWING 
+# NO CAPTION SHOWING
 ```
+
 \clearpage
-```{r, results ='asis'}
+
+## Base Model Results and Fits
+```{r,  results = "asis"}
 #Assessment Model Plots 
 #Base Model Plots 
 
@@ -192,10 +225,12 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_forecas
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_forecast.png"), 
                   caption = "Forcasted spawning output: B/B_0 with ~95% asymptotic intervals.", 
                   label = "relspawnout_forcast")
-
 ```
+
 \clearpage
-```{r, results ='asis'}
+
+## Likelihood Profiles, Retrospectives, and Sensitivity Analyses
+```{r,  results = "asis"}
 #Likelihood Profiles 
 
 #R0
@@ -242,11 +277,11 @@ sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_L_at_Amax_Fem_GP_1.p
 sa4ss::add_figure(filein = file.path(fig_dir6, "L_at_Amax_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
                   caption = "Low to high values of a_{max} and impact on spawning output.", 
                   label = "growth_spawnout")
-
 ```
-\clearpage
-```{r, results = "asis"}
 
+\clearpage
+
+```{r,  results = "asis"}
 #Retrospectives
 
 #Spawnbio NO uncertainty
@@ -266,48 +301,49 @@ sa4ss::add_figure(filein = file.path(fig_dir5, "compare4_Bratio_uncertainty.png"
                   caption = "Retrospectives showing impact on spawning output.", 
                   label = "retros_spawnbio_uncertainty")
 ```
-\clearpage
+
 ```{r,  results = "asis"}
 #Jitters
 
 #Place jitter stuff here
 
 ```
-\clearpage
+
 ```{r,  results = "asis"}
 
 #Model Impacts
 
 #Growth
-sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare2_spawnbio_uncertainty.png"), 
-                  caption = "Spawning output comparisons of the base model and high growth and low growth assumptions.", 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare2_spawnbio_uncertainty.png"),
+                  caption = "Spawning output comparisons of the base model and high growth and low growth assumptions.",
                   label = "growth_sensitiv_spawning")
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare4_Bratio_uncertainty.png"), 
-                  caption = "Relative spawning output comparisons of the base model and high growth and low growth assumptions.", 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare4_Bratio_uncertainty.png"),
+                  caption = "Relative spawning output comparisons of the base model and high growth and low growth assumptions.",
                   label = "growth_sensitiv_mngmt")
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare13_indices_flt6"), 
-                  caption = "Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.", 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare13_indices_flt6"),
+                  caption = "Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.",
                   label = "growth_sensitiv_indx")
 
 #Maturity
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare2_spawnbio_uncertainty.png"), 
-                  caption = "Spawning output comparisons of the base model and maturity sensitivities.", 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare2_spawnbio_uncertainty.png"),
+                  caption = "Spawning output comparisons of the base model and maturity sensitivities.",
                   label = "mat_sensitiv_spawning")
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare4_Bratio_uncertainty.png"), 
-                  caption = "Relative spawning output comparisons of the base model and maturity sensitivities.", 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare4_Bratio_uncertainty.png"),
+                  caption = "Relative spawning output comparisons of the base model and maturity sensitivities.",
                   label = "mat_sensitiv_mngmt")
+# 
+# #Landings 
 
-#Landings 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare2_spawnbio_uncertainty.png"), 
-                  caption = "Spawning output comparisons of the base model and landing sensitivities.", 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare2_spawnbio_uncertainty.png"),
+                  caption = "Spawning output comparisons of the base model and landing sensitivities.",
                   label = "land_sensitiv_spawning")
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_uncertainty.png"), 
-                  caption = "Relative spawning output comparisons of the base model and landing sensitivities.", 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_uncertainty.png"),
+                  caption = "Relative spawning output comparisons of the base model and landing sensitivities.",
                   label = "land_sensitiv_mngmt")
 
 #Selectivity
