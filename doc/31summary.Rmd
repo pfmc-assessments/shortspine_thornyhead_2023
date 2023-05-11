@@ -7,16 +7,16 @@
 
 ### Most Recent STAR Panel and SSC Recommendations
 
-1. More investigation into maturity of shortspine
-2. Information on possible migration of shortspine thornyheads would be valuable for understanding stock dynamics. 
-3. A greater understanding of catchability of thornyheads would help define the scale of the populations..
+1. More investigation into maturity of `r spp`.
+2. Information on possible migration of `r spp` would be valuable for understanding stock dynamics. 
+3. A greater understanding of catchability of `r spp` would help define the scale of the populations..
 4. Age data and additional research on ageing methods for thornyheads would be valuable.
-5. A greater understanding of the connection between thornyheads and bottom type could be used to refine the indices of abundance. 
+5. A greater understanding of the connection between `r spp` and bottom type could be used to refine the indices of abundance. 
 6. A comprehensive catch reconstruction for shortspine and longspine thornyheads should be completed to estimate landings for each species prior to 1981 in each of the three states.
-7. Exploration of simpler assessment methods for thornyheads and evaluation of whether such methods would provide a more robust management strategy than the current approach. 
-8. More tows or visual surveys south of 34.5 deg. N. lat. including the large Cowcod Conservation Area. Because the southern Conception Area is a large potential habitat for thornyheads, more sampling effort would help refine the estimations of their abundance in this area.
+7. Exploration of simpler assessment methods for `r spp` and evaluation of whether such methods would provide a more robust management strategy than the current approach. 
+8. More tows or visual surveys south of 34.5 deg. N. lat. including the large \gls{cca}. Because the southern Conception Area is a large potential habitat for `r spp`, more sampling effort would help refine the estimations of their abundance in this area.
 
-Recommendations from the last assessment were taken into consideration in the development of the current assessment model. New histological data from the NWFSC Combo Survey in recent years enabled calculation of new maturity curves for the model. In addition, more comprehensive catch reconstructions from Washington, Oregon, and California were used for catches prior to 1980 in the model. Lastly, model structure for the current assessment was simplified by reducing the number of fishery and survey fleets. 
+Recommendations from the last assessment were taken into consideration in the development of the current assessment model. New histological data from the \gls{s-wcgbt} in recent years enabled calculation of new maturity curves for the model. In addition, more comprehensive catch reconstructions from Washington, Oregon, and California were used for catches prior to 1980 in the model. Lastly, model structure for the current assessment was simplified by reducing the number of fishery and survey fleets. 
 
 ### Response to Groundfish Subcommittee Requests
 

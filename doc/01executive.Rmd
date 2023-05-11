@@ -6,7 +6,7 @@ library(tidyr)
 executive <- list()
 executive[["stock"]] <- paste0("This assessment reports the status of ",
   spp, " (_", spp.sci, "_) off the ", coast, 
-  " coast using data through 2022.")
+  " coast using data through 2023.")
 
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
 
