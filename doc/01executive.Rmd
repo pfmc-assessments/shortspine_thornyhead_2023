@@ -61,7 +61,7 @@ This assessment estimated 180 parameters. The log of the unfished equilibrium re
 
 ```{r, results = "asis"}
 #Data sources
-sa4ss::add_figure(filein = file.path(fig_dir2, "assessment_data_timeseries.png"),
+sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"),
                   caption = "Summary of data sources used in the base model.",
                   label = "assessment_data_timeseriesES")
 ```

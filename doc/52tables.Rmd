@@ -173,11 +173,12 @@ sa4ss::table_format(x = allcatches_tab,
 
 #Time Series
 ts_tab<-read.csv(file.path(tab_dir1, "TimeSeries.csv"))
-names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Total Biomass (mt)", "Fraction Unfished", "Age 0 Recruits", "Total Mortality", "(1-SPR)/(1-SPR 50%)", "Exploitation Rate")
+names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Total Biomass (mt)", "% Unfished", "Age 0 Recruits", "Total Mortality", "SPR Ratio", "Expl Rate")
 sa4ss::table_format(x = ts_tab,
                     digits = 2,
                   caption = "Time series of population estimates from the base model.",
-                  label = "ts")
+                  label = "ts",
+                  font_size = 9)
 ```
 \newpage
 ```{r, results='asis'}
@@ -195,7 +196,7 @@ sa4ss::table_format(x = like_tab,
 #Fishery Length Comp Sample Sizes 
 
 lensamp_tab<-read.csv(file.path(tab_dir2,"lencomps_samplesizes.csv"))
-names(lensamp_tab)<-c("Year", "North Trawl", "South Trawl", "Non-trawl")
+names(lensamp_tab)<-c("Year", "Samples North Trawl", "Tows North Trawl","Samples South Trawl", "Tows South Trawl","Samples Non-trawl", "Tows Non-trawl")
 sa4ss::table_format(x = lensamp_tab,
                   caption = "Sample sizes of length compostion samples for shortspine thornyhead landings.",
                   label = "lensamp")
@@ -206,7 +207,6 @@ sa4ss::table_format(x = disclensamp_tab,
                   caption = "Sample sizes of length compostion samples for discards.",
                   label = "disclensamp")
 ```
-
 
 
 
@@ -252,32 +252,29 @@ survinfo_tab<-survinfo_tab%>%
     survey == "tri_early survey" ~ "Early Triennial",
     survey == "tri_late survey" ~ "Late Triennial",
     survey == "afsc slope" ~ "AFSC Slope",
-    survey == "nwfsc slope" ~ "WCGBTS",
+    survey == "nwfsc combo" ~ "WCGBTS",
+    survey == "nwfsc slope" ~ "NWFSC Slope",
     TRUE ~ survey  # Keep the original name if it doesn't match any condition
   ))
   
 sa4ss::table_format(x = survinfo_tab,
                    caption = "Survey samples and hauls for each of the fishery independent surveys for available years spanning from 1989 to 2022.",
-                   label = "survinfo")
+                   label = "survinfo",
+                   custom_width = TRUE,
+                   col_to_adjust = 2,
+                   width="2in")
 ```
 \newpage
 ```{r, results = 'asis'}
-# growth_data <- data.frame(
-#   Source = c("Butler et al. 1995", "Kline 1996"),
-#   Region = c("OR and northern CA", "Central CA"),
-#   Years = c("1978-87, 1988, 1990", "1991"),
-#   Details = c("N=1,023; Sexed;\nFork length;\nTwo age readers",
-#               "N=319;\nUnsexed; Total length; One age reader")
-# )
-# 
-# sa4ss::table_format(x = growth_data,
-#                    caption = "Description of the Butler and Kline data sets, including collection region, years, samples sizes, length determination, and number of age readers",
-#                    label = "growthsource",
-#                    align = c("l", "l", "l", "l"),
-#                    custom_width = TRUE,
-#                    col_to_adjust = 4,
-#                    width="2in")
-
+jitter_tab<-read.csv(file.path(tab_dir3, "jitter_results_summary.csv"))
+names(jitter_tab)<-c("Total Likelihood", "Change from Base", "% Change","Frequency")
+sa4ss::table_format(x = growth_data,
+                   caption = "Jitter results.",
+                   label = "jittertab",
+                   align = c("l", "l", "l", "l"),
+                   custom_width = TRUE,
+                   col_to_adjust = 4,
+                   width="2in")
 ```
 \newpage
 ```{r, results = 'asis'}
@@ -305,9 +302,9 @@ sa4ss::table_format(x = sensitiv_tab,
 ```{r, results = 'asis'}
 # timeblock_tab<-read.csv(file.path(tab_dir3, "sensi_ret_sel_summary.csv"))
 # timeblock_tab$Year <- as.character(timeblock_tab$Year)
-# 
-# flextable(timeblock_tab) %>% 
-#   flextable::bold(part = "header") %>% 
+
+# timeblock<-flextable(timeblock_tab) %>%
+#   flextable::bold(part = "header") %>%
 #   flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
 #   flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
 #   flextable::merge_at(i = grep("Non-Trawl", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
@@ -317,8 +314,14 @@ sa4ss::table_format(x = sensitiv_tab,
 #   flextable::merge_at(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 ) %>%
 #   flextable::rotate(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 , rotation="btlr", align = NULL) %>%
 #   flextable::rotate(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 , rotation="btlr", align = NULL) %>%
-#   flextable::rotate(j = 2 , rotation="btlr", align = NULL) %>%
-# theme_vanilla()
+#   flextable::rotate(j = 2 , rotation="btlr", align = NULL) 
+
+
+# sa4ss::table_format(x = timeblock_tab,
+#                   caption = "Blocked parameters and the years for blocking and justification for all fleets.",
+#                   label = "timeblocking",
+#                   landscape = TRUE)
+
 
 ```
 \newpage

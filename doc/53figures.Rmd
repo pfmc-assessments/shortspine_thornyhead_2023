@@ -59,29 +59,34 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "survey_data_timeseries.png"),
                   caption = "Summary of survey data sources used in the base model.", 
                   label = "survey_data_timeseries")
 
-#Figure 8 Survey Length Comps 
+#Figure 8 Design Based Survey
+sa4ss::add_figure(filein = file.path(fig_dir2, "2013_2023_survey_indices_comparison.png"), 
+                  caption = "Design-based indices for all scientific surveys.", 
+                  label = "designbasedsurv")
+
+#Figure 9 Survey Length Comps 
 sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"), 
                   caption = "Summary of annual length composition data from available scientific surveys.", 
                   label = "survey_comps")
 
-#Figure 9 Growth Curve LAA1
+#Figure 10 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_comparison_LAA1.png"), 
                   caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment.", 
                   label = "growth_LAA1")
 
-#Figure 10 Growth Curve LAA1
+#Figure 11 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.png"), 
                   caption = "2023 growth curves with +25% and -10% uncertainity intervals. The upper and low uncertainty bounds were used to conduct sensitivty analyses to the assessment model.", 
                   label = "growth_LAA2")
 
 ### Figure at the end of this code floating 
 
-#Figure 11 Maturity 2
+#Figure 12 Maturity 2
 sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_curves.png"), 
                   caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
                   label = "mat2")
 
-#Figure 12 Maturity 1
+#Figure 13 Maturity 1
 sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_fit.png"), 
                   caption = "Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.", 
                   label = "mat1")
@@ -209,6 +214,11 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asym
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
                   caption = "Relative spawning output: $B/B_0$ with ~95% asymptotic intervals.", 
                   label = "relspawnout")
+
+#Retention Curve 
+sa4ss::add_figure(filein = file.path(fig_dir3, "retention_curves.png"), 
+                  caption = "Retention curves for all fleets.", 
+                  label = "retencurvs")
 ```
 
 \clearpage
@@ -327,6 +337,14 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_unce
                   caption = "Relative spawning output comparisons of the base model and landing sensitivities.",
                   label = "land_sensitiv_mngmt")
 
-#Selectivity
+#Selectivity and Retention
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "compare4_Bratio_uncertainty.png"),
+                  caption = "Relative spawning output comparisons of the base model and selectivity sensitivities.",
+                  label = "selec_sensitiv_mngmt")
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Retention", "compare4_Bratio_uncertainty.png"),
+                  caption = "Relative spawning output comparisons of the base model and retention sensitivities.",
+                  label = "reten_sensitiv_mngmt")
 
 ```

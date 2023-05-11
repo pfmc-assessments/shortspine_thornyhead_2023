@@ -48,7 +48,7 @@ Beginning in 1989, both thornyhead species were managed as part of a \gls{dts}. 
 
 Since early 2011, trawl harvest of each thornyhead species has been managed under the \gls{pfmc}’s catch share, or \gls{ifq}, program. Whereas the trip limits previously used to limit harvest restricted only the amount of fish each vessel could land, individual vessels fishing under the catch-share program are now held accountable for all of the quota-share species they catch. 
 
-Landings of shortspine thornyhead have been below the catch limits since 1999. The estimated total catch, including discards, has likewise remained below the limit during this period (Table \ref{tab:mgmt_perf}).
+Landings of shortspine thornyhead have been below the catch limits since 1999. The estimated total catch, including discards, has likewise remained below the limit during this period (Table \ref{tab:management}).
 
 ## Foreign Fisheries
 The \gls{afsc} conducts assessments of thornyheads as a mixed stock complex, including shortspine and longspine thornyheads. Results of the 2022 Alaska Thornyhead complex assessment suggest that thornyheads are not being subjected to overfishing [@echave_etal_2022]. 
