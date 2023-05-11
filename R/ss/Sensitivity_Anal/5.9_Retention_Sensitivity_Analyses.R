@@ -270,7 +270,7 @@ Ctl23_blkret_T1$blocks_per_pattern[1] <- 3
 Ctl23_blkret_T1$blocks_per_pattern[2] <- 3
 
 Ctl23_blkret_T1$Block_Design[[1]] <- c(1989, 2006, 2007, 2010, 2011, 2022)
-Ctl23_blkret_T1$Block_Design[[2]] <- c(1989, 2006, 2007, 2010, 2011, 2022)
+Ctl23_blkret_T1$Block_Design[[2]] <- c(1989, 2006, 2007, 2010, 2011, 2022)tmp
 
 toadd_reten_names <- grep(2011, rownames(Ctl23_blkret_T1$size_selex_parms_tv), value=T)
 toadd_reten <- Ctl23_blkret_T1$size_selex_parms_tv[grep(2011, rownames(Ctl23_blkret_T1$size_selex_parms_tv)),]
