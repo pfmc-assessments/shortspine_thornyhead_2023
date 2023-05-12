@@ -1,0 +1,5 @@
+Label,Phase,23.model.francis_2,23.surveys.db
+SR_LN(R0),4,9.35448,9.24004
+LnQ_base_Triennial1(4),-1,-0.472564,-1.69841
+LnQ_base_NWFSCcombo(6),-1,0.182302,0.327534
+LnQ_base_Triennial2(5),-1,NA,-0.290372
