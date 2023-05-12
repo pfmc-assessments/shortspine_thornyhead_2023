@@ -268,7 +268,7 @@ sa4ss::table_format(x = survinfo_tab,
 ```{r, results = 'asis'}
 jitter_tab<-read.csv(file.path(tab_dir3, "jitter_results_summary.csv"))
 names(jitter_tab)<-c("Total Likelihood", "Change from Base", "% Change","Frequency")
-sa4ss::table_format(x = growth_data,
+sa4ss::table_format(x = jitter_tab,
                    caption = "Jitter results.",
                    label = "jittertab",
                    align = c("l", "l", "l", "l"),

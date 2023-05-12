@@ -15,21 +15,21 @@ author:
     first: H
     middle: 'A'
     family: Oleynik
-  - name: Sabrina Beyer
+  - name: Sabrina G. Beyer
     code: 1
     first: S
-    middle: ''
+    middle: 'G'
     family: Beyer
-  - name: Adam L. Hayes
-    code: 1
-    first: A
-    middle: 'L'
-    family: Hayes
   - name: Pierre-Yves Hernvann
     code: 2
     first: P-Y
     middle: ''
     family: Hernvann
+  - name: Matthieu Véron
+    code: 6
+    first: M
+    middle: ''
+    family: Véron
   - name: Andrea N. Odell
     code: 3
     first: A
@@ -40,13 +40,13 @@ author:
     first: J
     middle: 'Y'
     family: Sullivan
-  - name: Matthieu Veron
-    code: 6
-    first: M
-    middle: ''
-    family: Veron
-author_list: Zahner. J.A, M.A. Heller-Shipley,  S. Beyer, A.L. Hayes, P-Y. Hernvann, A.N. Odell,
-  H. Oleynik, J.Y. Sullivan, M. Veron
+  - name: Adam L. Hayes
+    code: 1
+    first: A
+    middle: 'L'
+    family: Hayes
+author_list: Zahner. J.A, M.A. Heller-Shipley, H.A. Oleynik, S.G. Beyer, P-Y. Hernvann, M. Véron, A.N. Odell,
+   J.Y. Sullivan, A.L. Hayes
 affiliation:
   - code: 1
     address: School of Aquatic and Fishery Sciences, University of Washington, 1122
