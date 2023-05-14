@@ -79,17 +79,26 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.
                   caption = "2023 growth curves with +25% and -10% uncertainity intervals. The upper and low uncertainty bounds were used to conduct sensitivty analyses to the assessment model.", 
                   label = "growth_LAA2")
 
+#Figure 12 Growth Curve LAA1
+sa4ss::add_figure(filein = file.path(fig_dir2, "lengthweight.png"), 
+                  caption = "2023 length-weight relationship and fits to WCGBTS weight-length data.", 
+                  label = "lengthweight")
+
 ### Figure at the end of this code floating 
 
-#Figure 12 Maturity 2
+#Figure 13 Maturity 2
 sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_curves.png"), 
                   caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
                   label = "mat2")
 
-#Figure 13 Maturity 1
+#Figure 1 Maturity 1
 sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_fit.png"), 
                   caption = "Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.", 
                   label = "mat1")
+
+sa4ss::add_figure(filein = file.path(fig_dir2, "fecundity.png"), 
+                  caption = "Fecundity-at-length relationship.", 
+                  label = "fec")
 
 # NO CAPTION SHOWING
 ```
