@@ -205,11 +205,19 @@ Dat23_dmn$len_info
 # Dat23_dmn$len_info[7,] <- c(-9999, rep(0,8))
 # rownames(Dat23_dmn$len_info)[7] <- 'TERMINATOR'
 
-# if the error is about order - try hard coding the order of the len_info table: 
-x <- cbind(c(1:6,0), c(2,2,2,0,0,0,0), -1, 0.001,0,0,1,c(1:6,0),1)
+# # Create table by hand to read in the correct order: 
+# x <- cbind(c(1:6,0), c(2,2,2,0,0,0,0), -1, 0.001,0,0,1,c(1:6,0),1)
+# #colnames(x) <- c("Fleet",	"Partition",	"mintailcomp","addtocomp", "combine_M_F",	"CompressBins",	"CompError",	"ParmSelect",	"minsamplesize")
+# #rownames(x) <- c("Trawl_N","Trawl_S","Non-trawl","Triennial1","Triennial2","NWFSCcombo", "TERMINATOR")
+# x[7,] <- c(-9999, rep(0,8))
+# x
+
+# Create table with discard fleets - !! not tested yet !! 
+x <- cbind(c(1,1,2,2,3,3,4,5,6,0), c(2,1,2,1,2,1,0,0,0,0), -1, 0.001,0,0,1,c(1:9,0),1)
+# can't have row or column names in the data file: 
 #colnames(x) <- c("Fleet",	"Partition",	"mintailcomp","addtocomp", "combine_M_F",	"CompressBins",	"CompError",	"ParmSelect",	"minsamplesize")
-#rownames(x) <- c("Trawl_N","Trawl_S","Non-trawl","Triennial1","Triennial2","NWFSCcombo", "TERMINATOR")
-x[7,] <- c(-9999, rep(0,8))
+#rownames(x) <- c("Trawl_N","Trawl_N.1","Trawl_S","Trawl_S.1","Non-trawl","Non-trawl.1","Triennial1","Triennial2","NWFSCcombo", "TERMINATOR")
+x[10,] <- c(-9999, rep(0,8))
 x
 
 Dat23_dmn$len_info <- x
@@ -258,7 +266,7 @@ Ctl23_dmn <- SS_readctl_3.30(
 
 # Now update control file
 # make D-M parameter table, structured just like other parameter tables
-n_dm_pars <- max(Dat23_dmn$len_info$ParmSelect)
+n_dm_pars <- 9 #max(Dat23_dmn$len_info$ParmSelect) # have to change by hand because column names were taken off 
 
 dm_table <- matrix(0, nrow = n_dm_pars,
                    ncol = ncol(Ctl23_dmn$size_selex_parms),

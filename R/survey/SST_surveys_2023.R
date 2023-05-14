@@ -501,6 +501,22 @@ NWFSC.Combo.master <- PullCatch.fn(SurveyName = "NWFSC.Combo")
       mutate(sst_present = sst >= 1)
 
     SST.freq.occurrence.tows.longspine = mean(NWFSC.Combo.by.tow.longspine$sst_present) 
+    
+# find depts for each state 
+names(NWFSC.Combo.master)
+
+# latitude
+# 42.06 - CA OR 
+# 46.23 - OR WA 
+
+NWFSC.Combo.master %>% filter(Latitude_dd > 46.23) %>% # WA 
+                       filter(Common_name == "shortspine thornyhead") %>%
+                       summarize(depth = mean(Depth_m, na.rm=T))
+
+NWFSC.Combo.master %>% filter(Latitude_dd > 46.23) %>% # WA 
+  filter(Common_name == "shortspine thornyhead") %>%
+  summarize(depth = mean(Depth_m, na.rm=T))
+
 
 # sample size information for surveys by year
 
