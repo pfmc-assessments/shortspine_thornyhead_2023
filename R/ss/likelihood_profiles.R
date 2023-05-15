@@ -1,4 +1,4 @@
-library(here)
+ library(here)
 library(r4ss)
 source(file=file.path(here::here(), "R", "utils", "ss_utils.R"))
 
@@ -423,7 +423,7 @@ starter[["prior_like"]] <- 1
 SS_writestarter(starter, dir = mydir, overwrite = TRUE)
 
 # vector of values to profile over
-m.vec <- cbind(seq(0.02, 0.08, by=0.005), seq(0.02, 0.08, by=0.005), seq(0.02, 0.08, by=0.005), seq(0.02, 0.08, by=0.005))
+m.vec <- cbind(seq(0.025, 0.055, by=0.005), seq(0.025, 0.055, by=0.005), seq(0.025, 0.055, by=0.005), seq(0.025, 0.055, by=0.005))
 Nprofile <- length(m.vec)
 
 # make a vector for string 
@@ -434,7 +434,7 @@ colnames(m.vec) <- string
 
 # run profile command
 profilemodels <- custom.profile(
-  exe = "model/ss_executables/SS_V3_30_21/ss_osx",
+  exe = file.path(here::here(), "model/ss_executables/SS_V3_30_21/ss_osx"),
   dir = mydir,
   oldctlfile = "SST_control.ss",
   newctlfile = "control_modified.ss",
