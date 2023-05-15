@@ -76,6 +76,10 @@ model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_retro*/*
 !doc/FinalFigs/Intro/*.png
 !doc/FinalFigs/Data/*.png
 !doc/FinalFigs/Sensitivities/*.png
+!doc/FinalFigs/bridging/*.png
+!doc/FinalFigs/Jitters/*.png
+!doc/FinalFigs/Profiles/*.png
+!doc/FinalFigs/Retros/*.png
 
 !model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*.png
 !model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*.csv
