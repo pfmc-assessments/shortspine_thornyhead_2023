@@ -10,6 +10,7 @@ fig_dir4 <- here::here("doc", "FinalFigs", "Sensitivities")
 fig_dir5 <- here::here("doc", "FinalFigs", "Retros")
 fig_dir6 <- here::here("doc", "FinalFigs", "Profiles")
 fig_dir7 <- here::here("doc", "FinalFigs", "Jitters")
+fig_dir8 <- here::here("doc", "FinalFigs", "bridging")
 
 #Insert figure 
 #Figure \ref{fig:label}
@@ -61,7 +62,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "survey_data_timeseries.png"),
 
 #Figure 8 Design Based Survey
 sa4ss::add_figure(filein = file.path(fig_dir2, "2013_2023_survey_indices_comparison.png"), 
-                  caption = "Design-based indices for all scientific surveys.", 
+                  caption = "Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.", 
                   label = "designbasedsurv")
 
 #Figure 9 Survey Length Comps 
@@ -69,15 +70,19 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"),
                   caption = "Summary of annual length composition data from available scientific surveys.", 
                   label = "survey_comps")
 
-#Figure 10 Growth Curve LAA1
-sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_comparison_LAA1.png"), 
-                  caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment.", 
-                  label = "growth_LAA1")
+sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curves.png"),
+                  caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as ghigh and low growth sensitivities.",
+                  label = "growthcurve")
 
-#Figure 11 Growth Curve LAA1
-sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.png"), 
-                  caption = "2023 growth curves with +25% and -10% uncertainity intervals. The upper and low uncertainty bounds were used to conduct sensitivty analyses to the assessment model.", 
-                  label = "growth_LAA2")
+# #Figure 10 Growth Curve LAA1
+# sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_comparison_LAA1.png"), 
+#                   caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment.", 
+#                   label = "growth_LAA1")
+# 
+# #Figure 11 Growth Curve LAA1
+# sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.png"), 
+#                   caption = "2023 growth curves with +25% and -10% uncertainity intervals. The upper and low uncertainty bounds were used to conduct sensitivty analyses to the assessment model.", 
+#                   label = "growth_LAA2")
 
 #Figure 12 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "lengthweight.png"), 
@@ -105,6 +110,26 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "fecundity.png"),
 
 \clearpage
 
+## Bridging Analyses
+
+```{r, results="asis"}
+
+sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts2_Bratio.png"), 
+                  caption = "Relative spawning biomass timeseries for models run on updated Stock Synthesis versions.", 
+                  label = "bridge_bratio")
+
+sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts3_Spawning_Output.png"), 
+                  caption = "Spawning output timeseries for piecewise data updates.", 
+                  label = "bridge_spawnout_data")
+
+sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts4_Bratio.png"), 
+                  caption = "Relative spawning biomass timeseries for for piecewise data updates", 
+                  label = "bridge_bratio_data")
+
+```
+
+\clearpage
+
 ## Base Model Results and Fits
 ```{r,  results = "asis"}
 #Assessment Model Plots 
@@ -114,6 +139,10 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "fecundity.png"),
 sa4ss::add_figure(filein = file.path(fig_dir3, "recdevs2_withbars.png"), 
                   caption = "Annual recruitment deviations with 95% intervals.", 
                   label = "recdevs")
+
+sa4ss::add_figure(filein = file.path(fig_dir3, "recruit_fit_bias_adjust.png"), 
+                  caption = "Recommended bias adjustment for recruitment deviations, from Hamel and Cope (2022).", 
+                  label = "recdevs_bias_adjust")
 
 #selectivity curves
 sa4ss::add_figure(filein = file.path(fig_dir3, "sel01_multiple_fleets_length1.png"), 
@@ -223,6 +252,21 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asym
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
                   caption = "Relative spawning output: $B/B_0$ with ~95% asymptotic intervals.", 
                   label = "relspawnout")
+
+# Fishing Rate
+sa4ss::add_figure(filein = file.path(fig_dir3, "ts_summaryF.png"), 
+                  caption = "Summary F rate.", 
+                  label = "summary_f")
+
+# SPR Trajectory
+sa4ss::add_figure(filein = file.path(fig_dir3, "SPR3_ratiointerval.png"), 
+                  caption = "Estimated spawning potential ratio.", 
+                  label = "spr_trajectory")
+
+# Phase Diagram
+sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"), 
+                  caption = "Phase diagram.", 
+                  label = "phase_diagram")
 
 #Retention Curve 
 sa4ss::add_figure(filein = file.path(fig_dir3, "retention_curves.png"), 
