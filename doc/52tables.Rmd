@@ -11,6 +11,7 @@ if(!"flextable" %in% rownames(installed.packages())) {
 library(flextable) 
 
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
+#tab_dir1 <- here::here("model", "Sensitivity_Anal", "5.8_Francis_Reweighting_2", "1_23.model.francis_2", "run", "tables")
 tab_dir2 <- here::here("doc", "FinalTables", "Data")
 tab_dir3 <- here::here("doc", "FinalTables", "Sensitivities")
 tab_dir4 <- here::here("doc", "FinalTables", "Model")
@@ -18,6 +19,15 @@ tab_dir4 <- here::here("doc", "FinalTables", "Model")
 #Figure \caption{(\#tab:catch_tab)Catches by fleet.} 
 
 #if wanting a new page \newpage
+
+comma <- function(x, digits = 0) {
+    formatC(x, big.mark = ",", digits, format = "f")
+}
+
+print.numeric <- function(x, digits) {
+    formatC(x, digits = digits, format = "f")
+  }
+
 ```
 
 ## Executive Summary
@@ -27,6 +37,7 @@ tab_dir4 <- here::here("doc", "FinalTables", "Model")
 #These are all labeled a-i
 
 catch_tab<-read.csv(file.path(tab_dir1, "a_Catches_ES.csv"))
+#catch_tab <- round(catch_tab, 2)
 names(catch_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")  
 sa4ss::table_format(x = catch_tab,
                   caption = "Recent landings by fleet, total landings summed across fleets, and the total mortality including discards.",
@@ -35,7 +46,12 @@ sa4ss::table_format(x = catch_tab,
 #Spawning stock output
 
 ssb_tab<-read.csv(file.path(tab_dir1, "b_SSB_ES.csv"))
-names(ssb_tab)<-c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")                 
+ssb_tab <- data.frame(
+      ssb_tab$Year,
+      comma(ssb_tab$Spawning.Output, digits = 0), paste0(comma(ssb_tab$Lower.Interval, digits = 0), "\u2013", comma(ssb_tab$Upper.Interval, digits = 0)),
+      print(ssb_tab$Fraction.Unfished, digits = 3), paste0(print.numeric(ssb_tab$Lower.Interval.1, digits = 3), "\u2013", print.numeric(ssb_tab$Upper.Interval.1, digits = 3))
+    )
+colnames(ssb_tab) <- c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")
 # 
 sa4ss::table_format(x = ssb_tab,
                     caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
@@ -97,7 +113,7 @@ mngmt_tab<-mngmt_tab%>%
          ACL = acl)
  
 sa4ss::table_format(x = mngmt_tab,
-                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt).",
+                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality includes fishery catch and model estimated discards.",
                   label = "management",
                   custom_width = TRUE,
                   col_to_adjust = c(6),
@@ -107,6 +123,16 @@ sa4ss::table_format(x = mngmt_tab,
 ```{r, results='asis'}
 #Projections
 proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES.csv"))
+
+proj_tab <- data.frame(
+        proj_tab$Year,
+        comma(proj_tab$Predicted.OFL..mt., 2),
+        comma(proj_tab$ABC.Catch..mt., 2),
+        comma(proj_tab$Age.1..Biomass..mt., 2),
+        comma(proj_tab$Spawning.Output, 2),
+        print(proj_tab$Fraction.Unfished, 3)
+      )
+
 names(proj_tab)<-c("Year", "Predicted OFL (mt)", "ABC (mt)", "Age 1 Biomass (mt)", "Spawning Output", "Fraction Unfished") 
 sa4ss::table_format(x = proj_tab,
                   caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.",
@@ -121,41 +147,54 @@ names(sum_tab)<-c("Quantity", "2013", "2014", "2015", "2016", "2017", "2018", "2
 
 #Split lower and upper intervals into two rows for table formatting
 
-tmp<-sum_tab %>% #slice first row of interest
-  slice(9) %>%
-  pivot_longer(cols= -Quantity, names_to = "Year")%>%
-  separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
+# tmp<-sum_tab %>% #slice first row of interest
+#   slice(9) %>%
+#   pivot_longer(cols= -Quantity, names_to = "Year")%>%
+#   separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
+# 
+# tmp<-tmp%>% #Convert back to wide form
+#   pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
+#   mutate(Quantity = "Lower Interval")%>%
+#   bind_rows(tmp%>%
+#               pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
+#               mutate(Quantity = "Upper Interval"))
+# 
+# tmp2<-sum_tab %>% #Repeat for second row of interest 
+#   slice(11) %>%
+#   pivot_longer(cols= -Quantity, names_to = "Year")%>%
+#   separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
+# 
+# tmp2<-tmp2%>% #Convert back to wide form
+#   pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
+#   mutate(Quantity = "Lower Interval")%>%
+#   bind_rows(tmp2%>%
+#               pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
+#               mutate(Quantity = "Upper Interval"))
 
-tmp<-tmp%>% #Convert back to wide form
-  pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
-  mutate(Quantity = "Lower Interval")%>%
-  bind_rows(tmp%>%
-              pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
-              mutate(Quantity = "Upper Interval"))
-
-tmp2<-sum_tab %>% #Repeat for second row of interest 
-  slice(11) %>%
-  pivot_longer(cols= -Quantity, names_to = "Year")%>%
-  separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
-
-tmp2<-tmp2%>% #Convert back to wide form
-  pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
-  mutate(Quantity = "Lower Interval")%>%
-  bind_rows(tmp2%>%
-              pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
-              mutate(Quantity = "Upper Interval"))
-
-sum_tab<-bind_rows(slice(sum_tab, 1:8), #Bind together
-          tmp,
-          slice(sum_tab, 10),
-          tmp2,
-          slice(sum_tab,12:13))
+# sum_tab<-bind_rows(slice(sum_tab, 1:8), #Bind together
+#           tmp,
+#           slice(sum_tab, 10),
+#           tmp2,
+#           slice(sum_tab,12:13))
 
 #Add OFL and ACL
 sum_tab[1,2:11]<-ofl
 sum_tab[1,12]<-3177 #OFL for 2023
 sum_tab[2,2:11]<-acl
 sum_tab[2,12]<-2078 #ACL for 2023
+
+sum_tab[5,2:11] <- print.numeric(as.numeric(unlist(sum_tab[5,2:11])), 2)
+sum_tab[6,2:11] <- print.numeric(as.numeric(unlist(sum_tab[6,2:11])), 2)
+sum_tab[7,2:12] <- comma(as.numeric(unlist(sum_tab[7,2:12])), 0)
+sum_tab[8,2:12] <- comma(as.numeric(unlist(sum_tab[8,2:12])), 0)
+sum_tab[9,2:12] <- comma(as.numeric(unlist(sum_tab[9,2:12])), 0)
+sum_tab[10,2:12] <- comma(as.numeric(unlist(sum_tab[10,2:12])), 0)
+sum_tab[11,2:12] <- comma(as.numeric(unlist(sum_tab[11,2:12])), 0)
+sum_tab[12,2:12] <- comma(as.numeric(unlist(sum_tab[12,2:12])), 0)
+sum_tab[13,2:12] <- comma(as.numeric(unlist(sum_tab[13,2:12])), 0)
+sum_tab[14,2:12] <- print.numeric(as.numeric(unlist(sum_tab[14,2:12])), 3)
+sum_tab[15,2:12] <- print.numeric(as.numeric(unlist(sum_tab[15,2:12])), 3)
+sum_tab[16,2:12] <- print.numeric(as.numeric(unlist(sum_tab[16,2:12])), 3)
 
 sa4ss::table_format(x = sum_tab,
                   caption = "Summary of recent estimates and managment quantities.",
@@ -168,7 +207,7 @@ sa4ss::table_format(x = sum_tab,
 allcatches_tab<-read.csv(file.path(tab_dir1, "Catches_All_Years.csv"))
 names(allcatches_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")
 sa4ss::table_format(x = allcatches_tab,
-                  caption = "Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year.",
+                  caption = "Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. Total dead includes fishery catch and model estimated discards.",
                   label = "allcatch")
 
 #Time Series
@@ -184,6 +223,7 @@ sa4ss::table_format(x = ts_tab,
 ```{r, results='asis'}
 #Like
 like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
+like_tab$Total <- print.numeric(like_tab$Total, 3)
 names(like_tab)<-c("Source", "Likelihood Component")
 sa4ss::table_format(x = like_tab,
                   caption = "Likelihood components by source.",

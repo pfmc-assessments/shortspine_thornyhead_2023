@@ -162,4 +162,12 @@ out %>%
 ##############################################
 
 replist <- SS_output(Dir_23_model_francis_2)
-SSexecutivesummary(replist)
+SSexecutivesummary(
+  replist,
+)
+SSexecutivesummary(
+  replist,
+  tables=c('b', 'g', 'h', 'likes'),
+  format=FALSE,
+  match_digits = TRUE
+)
