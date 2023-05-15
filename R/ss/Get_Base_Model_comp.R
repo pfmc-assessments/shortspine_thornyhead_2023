@@ -79,7 +79,8 @@ SensiMod <- SSgetoutput(dirvec = c(Dir_Base2013_SS3_24,Dir_23_sq_fix,Dir_23_sq_f
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('SST_2013_V3.24','SST_2013_3.30.21_fix','SST_2013_V3.30.21')
+#names(SensiMod) <- c('SST_2013_V3.24','SST_2013_3.30.21_fix','SST_2013_V3.30.21')
+names(SensiMod) <- c('2013 Model SS V3.24','2013 Model SS V3.30.21 Fixed Params','2013 Model SS V3.30.21')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -90,8 +91,10 @@ SSplotComparisons(
   print = TRUE,
   subplots = c(2,4),
   plotdir = dir_out,
-  legendlabels = names(SensiMod)
+  legendlabels = names(SensiMod),
+  uncertainty = TRUE
 )
+
 file.rename(from = file.path(dir_out, "compare2_spawnbio_uncertainty.png", fsep = fsep),
             to = file.path(dir_out, "Bridg_ts1_Spawning_Output.png", fsep = fsep))
 file.rename(from = file.path(dir_out, "compare4_Bratio_uncertainty.png", fsep = fsep),
@@ -135,7 +138,10 @@ SensiMod <- SSgetoutput(dirvec = c(Dir_23_sq_floatQ,Dir_Base23_land_update,Dir_B
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c('SST_2013_V3.30.21','23.land.update', '23.dic.update', '23.surv_db.update', '23.lcs_survey.update','23.lcs_fisheries.update', '23.disc_weight.update', '23.growth.update', '23.maturity.update', '23.fecundity.update', '23.mortality.update')
+#names(SensiMod) <- c('SST_2013_V3.30.21','23.land.update', '23.dic.update', '23.surv_db.update', '23.lcs_survey.update','23.lcs_fisheries.update', '23.disc_weight.update', '23.growth.update', '23.maturity.update', '23.fecundity.update', '23.mortality.update')
+names(SensiMod) <- c('2013 Model SS V3.30.21','Updated Landings', 'Updated Discards', 'Updated Survey (DB)', 
+                     'Updated Survey Length Comps','Updated Fishery Length Comps', 'Updated Discard Weights', 
+                     'Updated Growth', 'Updated Maturity', 'Updated Fecundity', 'Updated Nat Mortality')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -148,7 +154,8 @@ SSplotComparisons(
   subplots = c(2,4),
   legendlabels = names(SensiMod),
   legendncol = 2,
-  ylimAdj = 1.45
+  ylimAdj = 1.45,
+  uncertainty = c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
 )
 file.rename(from = file.path(dir_out, "compare2_spawnbio_uncertainty.png", fsep = fsep),
             to = file.path(dir_out, "Bridg_ts3_Spawning_Output.png", fsep = fsep))
@@ -175,16 +182,22 @@ Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2','1
 SensiMod <- SSgetoutput(dirvec = c(
   Dir_23_mortality_update,
   Dir_23_model_francis,
-  Dir_23_model_recdevs_inityear_1996,
+  #Dir_23_model_recdevs_inityear_1996,
   Dir_23_model_francis_2))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
+# names(SensiMod) <- c(
+#   '23.mortality.update',
+#   '23.model.fleetstruct_5',
+#   '23.model.recdevs_Update',
+#   '23.Base.model')
+
 names(SensiMod) <- c(
-  '23.mortality.update',
-  '23.model.fleetstruct_5',
-  '23.model.recdevs_Update',
-  '23.Base.model')
+  '2023 Mortality Updated',
+  '2023 Fleet Struture Updated',
+  '2023 Base Model')
+
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -195,7 +208,8 @@ SSplotComparisons(
   print = TRUE,
   subplots = c(2,4,11),
   plotdir = dir_out,
-  legendlabels = names(SensiMod)
+  legendlabels = names(SensiMod),
+  uncertainty=c(FALSE, FALSE, TRUE)
 )
 file.rename(from = file.path(dir_out, "compare2_spawnbio_uncertainty.png", fsep = fsep),
             to = file.path(dir_out, "Bridg_ts5_Spawning_Output.png", fsep = fsep))
