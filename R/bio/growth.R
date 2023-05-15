@@ -346,18 +346,23 @@ sensitivities <- ages %>%
               mutate(sex = 'Male',
                      assessment = '2005/2013'))
 
+colorBlindBlack8  <- c("#000000", "#E69F00", "#56B4E9", "#009E73", 
+                       "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 # plots comparing assessment curves
-ggplot() +
+p1 <- ggplot() +
   geom_point(data = butler, aes(x = age, y = length_cm), size = 1.5, shape = 16) +
   geom_line(data = pred, aes(x = age, y = length_cm, col = assessment),
             size = 1.5) +
-  scale_fill_colorblind7() +
-  scale_color_colorblind7() +
-  facet_wrap(~sex, ncol = 1) +
-  labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment')
+  scale_color_manual(values = c("#009E73", "#CC79A7")) +
+  facet_wrap(~sex, ncol = 2) +
+  labs(x = 'Age (y)', y = 'Length (cm)', col = 'Assessment', fill = 'Assessment') +
+  theme(legend.position = c(0.1, .9))
 
+p1
 ggsave(paste0(out_path, '/growth_curve_comparison.png'), units = 'in', 
-       width = 6, height = 8, dpi = 300)
+       width = 9, height = 5, dpi = 300)
+ggsave(paste0('doc/FinalFigs/Data/growth_curve_comparison.png'), units = 'in', 
+       width = 9, height = 5, dpi = 300)
 
 # ggplot() +
 #   geom_point(data = butler, 
@@ -572,7 +577,7 @@ ggplot() +
 # ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
 #        width = 6, height = 8, dpi = 300)
 
-ggplot() +
+p2 <- ggplot() +
   geom_point(data = kline %>% 
                mutate(`Kline data` = 'Unsexed'),
              aes(x = age, y = length_cm, shape = `Kline data`), 
@@ -595,7 +600,17 @@ ggplot() +
   labs(x = 'Age (y)', y = 'Length (cm)', col = 'Butler data', fill = 'Butler data') +
   theme(legend.position = c(0.1, 0.8))
 
+p2
 ggsave(paste0(out_path, '/growth_curve_sensitivities_with_kline.png'), units = 'in', 
+       width = 10, height = 7, dpi = 300)
+ggsave(paste0('doc/FinalFigs/Data/growth_curve_sensitivities_with_kline.png'), units = 'in', 
+       width = 10, height = 7, dpi = 300)
+
+cowplot::plot_grid(p1 + theme(legend.position = 'right'), 
+                   p2 + theme(legend.position = 'right'), 
+                   ncol = 1)
+
+ggsave(paste0('doc/FinalFigs/Data/growth_curves_final.png'), units = 'in', 
        width = 10, height = 7, dpi = 300)
 
 kline %>% 
