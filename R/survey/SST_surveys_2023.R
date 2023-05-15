@@ -511,11 +511,15 @@ names(NWFSC.Combo.master)
 
 NWFSC.Combo.master %>% filter(Latitude_dd > 46.23) %>% # WA 
                        filter(Common_name == "shortspine thornyhead") %>%
-                       summarize(depth = mean(Depth_m, na.rm=T))
+                       summarize(depth = mean(Depth_m, na.rm=T)) #342.5079
 
-NWFSC.Combo.master %>% filter(Latitude_dd > 46.23) %>% # WA 
+NWFSC.Combo.master %>% filter(between(Latitude_dd, 42.06, 46.23)) %>% # OR 
   filter(Common_name == "shortspine thornyhead") %>%
-  summarize(depth = mean(Depth_m, na.rm=T))
+  summarize(depth = mean(Depth_m, na.rm=T)) #340.4969
+
+NWFSC.Combo.master %>% filter(Latitude_dd < 42.06) %>% # CA 
+  filter(Common_name == "shortspine thornyhead") %>%
+  summarize(depth = mean(Depth_m, na.rm=T)) #442.4481
 
 
 # sample size information for surveys by year
