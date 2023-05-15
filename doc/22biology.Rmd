@@ -2,7 +2,7 @@
 
 ### Natural Mortality
 
-@butler_1995 estimated the lifespan of `r spp` to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality developed based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Hamel, pers. comm.). For the base model, natural mortality was fixed 0.04 This implies an $A_{max}$ of ~135 years following the mortality estimate of @hamel_cope_2022. 
+@butler_1995 estimated the lifespan of `r spp` to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality developed based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Hamel, pers. comm.). For the base model, natural mortality was fixed 0.04 This implies an $A_{max}$ of ~135 years following the mortality prior of @hamel_cope_2022. 
 
 ### Maturation and Fecundity
 
