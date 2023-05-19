@@ -30,8 +30,6 @@ print.numeric <- function(x, digits) {
 
 ```
 
-## Executive Summary
-
 ```{r, results='asis'}
 
 #These are all labeled a-i
@@ -67,7 +65,7 @@ sa4ss::table_format(x = ssb_tab,
 rec_tab<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
 names(rec_tab)<-c("Year", "Recruitment", "95% CI", "RecDevs", "RecDev 95% CI")    
 sa4ss::table_format(x = rec_tab,
-                  caption = "Estimated recent trend in recruitment and recruitment deviations and the 95\\% confidence intervals (CI) from the base model.",
+                  caption = "Estimated recent trend in recruitment and recruitment deviations (RecDevs) and the 95\\% confidence intervals (CI) from the base model.",
                   label = "rec",
                   custom_width = TRUE,
                   col_to_adjust = c(5),
@@ -77,7 +75,7 @@ sa4ss::table_format(x = rec_tab,
 spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
 names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
 sa4ss::table_format(x = spr_tab,
-                  caption = "Estimated recent trend in the (1-SPR)/(1-SPR 50\\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\\% intervals.",
+                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\\%})$",
                   label = "spr",
                   custom_width = TRUE,
                   col_to_adjust = c(2),
@@ -182,6 +180,8 @@ sum_tab[1,12]<-3177 #OFL for 2023
 sum_tab[2,2:11]<-acl
 sum_tab[2,12]<-2078 #ACL for 2023
 
+sum_tab[3,2:11] <- print.numeric(as.numeric(unlist(sum_tab[3,2:11])), 0)
+sum_tab[4,2:11] <- print.numeric(as.numeric(unlist(sum_tab[4,2:11])), 0)
 sum_tab[5,2:11] <- print.numeric(as.numeric(unlist(sum_tab[5,2:11])), 2)
 sum_tab[6,2:11] <- print.numeric(as.numeric(unlist(sum_tab[6,2:11])), 2)
 sum_tab[7,2:12] <- comma(as.numeric(unlist(sum_tab[7,2:12])), 0)
@@ -198,7 +198,7 @@ sum_tab[16,2:12] <- print.numeric(as.numeric(unlist(sum_tab[16,2:12])), 3)
 sa4ss::table_format(x = sum_tab,
                   caption = "Summary of recent estimates and managment quantities.",
                   label = "summarytab",
-                  align = c("l", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c"),
+                  align = c("l", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r", "r"),
                   font_size = 9,
                   landscape = TRUE)
 
@@ -380,14 +380,5 @@ sa4ss::table_format(x = allpars,
                   align = c("l", "l", "l","l","l","l"),
                   landscape = TRUE)
                   
-
-```
-
-```{r, results='asis'}
-recdevs<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
-names(rec_tab)<-c("Year", "Recruitment", "95% CI", "RecDevs", "RecDev 95% CI")    
-sa4ss::table_format(x = recdevs,
-                  caption = "Estimated recent trend in recruitment and recruitment deviations and the 95\\% confidence intervals (CI) from the base model.",
-                  label = "recdevs")
 
 ```
