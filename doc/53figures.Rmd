@@ -71,7 +71,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"),
                   label = "survey_comps")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curves.png"),
-                  caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as ghigh and low growth sensitivities.",
+                  caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.",
                   label = "growthcurve")
 
 # #Figure 10 Growth Curve LAA1
@@ -123,7 +123,7 @@ sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts3_Spawning_Output.png"),
                   label = "bridge_spawnout_data")
 
 sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts4_Bratio.png"), 
-                  caption = "Relative spawning biomass timeseries for for piecewise data updates", 
+                  caption = "Relative spawning biomass timeseries for piecewise data updates", 
                   label = "bridge_bratio_data")
 
 ```
@@ -151,26 +151,26 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "sel01_multiple_fleets_length1.pn
 
 #Fits to Tri
 sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_Triennial1.png"), 
-                  caption = "Fit to index data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  caption = "Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
                   label = "fitsTri1")
 
 #Fits to combo
 sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_NWFSCcombo.png"), 
-                  caption = "Fit to index data for WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  caption = "Fit to index of abundance data for the WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
                   label = "fitscombo")
 
 #Discard fits Trawl N
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_N.png"), 
-                  caption = "Discard fraction for the North trawl fleet.", 
+                  caption = "Discard fraction (percent of total catch that is not landed) for the North trawl fleet.", 
                   label = "northtrl_disc")
 #Discard fits Trawl S
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_S.png"), 
-                  caption = "Discard fraction for the South trawl fleet.", 
+                  caption = "Discard fraction (percent of total catch that is not landed) for the South trawl fleet.", 
                   label = "southtrl_disc")
 
 #Discard fits Trawl S
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitNon-trawl.png"), 
-                  caption = "Discard fraction for the Non-trawl fleet.", 
+                  caption = "Discard fraction (percent of total catch that is not landed) for the Non-trawl fleet.", 
                   label = "nontrl_disc")
 
 #all length comps 
@@ -230,22 +230,22 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit__page2_multi-fleet_c
 
 #Mean Weights North Trawl
 sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltTrawl_N.png"), 
-                  caption = "Mean weight in discard for the North trawl fleet.", 
+                  caption = "Mean individual body weight (kg) in discard for the North trawl fleet.", 
                   label = "weightNorthTrl")
 
 #Mean Weights South Trawl
 sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltTrawl_S.png"), 
-                  caption = "Mean weight in discard for the South trawl fleet.", 
+                  caption = "Mean individual body weight (kg) in discard for the South trawl fleet.", 
                   label = "weightSouthTrl")
 
 #Mean Weights Non-trawl
 sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltNon-trawl.png"), 
-                  caption = "Mean weight in discard for the Non-trawl fleet.", 
+                  caption = "Mean individual body weight (kg) in discard for the Non-trawl fleet.", 
                   label = "weightNonTrl")
 
 #Spawning output
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
-                  caption = "Spawning output with ~95% asymptotic intervals.", 
+                  caption = "Spawning output (eggs) with ~95% asymptotic intervals.", 
                   label = "spawnout")
 
 #Relative spawning output- Management 
@@ -255,17 +255,17 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_int
 
 # Fishing Rate
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts_summaryF.png"), 
-                  caption = "Summary F rate.", 
+                  caption = "Summary fishing mortality rate (total landings / summary biomass).", 
                   label = "summary_f")
 
 # SPR Trajectory
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR3_ratiointerval.png"), 
-                  caption = "Estimated spawning potential ratio.", 
+                  caption = "Estimated relative fishing intensity as a function of spawning potential ratio (SPR).", 
                   label = "spr_trajectory")
 
 # Phase Diagram
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"), 
-                  caption = "Phase diagram.", 
+                  caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.", 
                   label = "phase_diagram")
 
 #Retention Curve 

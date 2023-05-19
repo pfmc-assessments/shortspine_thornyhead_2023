@@ -22,9 +22,9 @@ knitr::opts_chunk$set(fig.pos = 'h')
 This assessment applies to `r spp` (*`r spp.sci`*) off of the west coast of the United States from the U.S.-Canada border to the U.S.-Mexico border using data through 2022. `r Spp` are modeled in this assessment as a single stock. They have been reported as deep as 1,524 m, and this assessment applies to their full depth range although survey and fishery data are only available down to 1,280 m. 
 
 ## Catches{-}
-Historically, landings of `r spp` remained under 500 metric tons until the late 1960s when landings began to increase steadily, rising to a peak of 4,815 mt in 1989, followed by a sharp decline during a period when trip limits and other management measures were imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
+Historically, landings of `r spp` remained under 500 metric tons until the late 1960s when landings began to increase steadily, rising to a peak of 4,815 mt in 1989, followed by a sharp decline during a period when trip limits and other management measures were imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995-1998. Landings fell below 1,000 mt per year from 1999-2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
 
-Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets, and non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for `r spp` have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. 
+Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for `r spp` have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. 
 
 ```{r, results='asis'}
 
@@ -48,13 +48,13 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"),
 
 
 ## Data and assessment{-}
-The most recent assessment for `r spp` was conducted in 2013 [@taylor_stephens_2013]. Stock status was determined to be above the management target and catches did not attain the full management limits, so reassessment of thornyheads has not been a higher priority. This assessment uses Stock Synthesis [@methot_stock_2013] Version 3.30.21, used in many other recent west coast assessments. 
+The most recent assessment for `r spp` was conducted in 2013 [@taylor_stephens_2013]. Stock status was determined to be above the management target and catches did not attain the full management limits, so reassessment of thornyheads has not been a higher priority. This assessment uses Stock Synthesis [@methot_stock_2013] Version 3.30.21, used in many other recent US West Coast assessments. 
 					
 Data were divided into three fishery fleets: North trawl (the waters off Washington and Oregon), South trawl (the waters off California), and coastwide Non-trawl, and three survey fleets: the \gls{s-tri} from 1980-2004, which was divided into early (pre-1995) and late period (post-1995) to account for a change in depth-sampling, and the \gls{s-wcgbt}, 2003-2022 (Figure \ref{fig:assessment_data_timeseriesES}). 
 
 Most data used in the 2013 assessment were newly pulled and processed for this assessment, including length compositions from all fishing and survey fleets, indices of abundance derived from new geostatistical analyses, discard rates from both a 1980s observer study [@pikitch_evaluation_1988] and the current \gls{wcgop}, historical catch data from Washington, Oregon, and California, and all reported catches from 1981-2022. The only data  taken from the previous assessment without reanalysis were discard rates from the \gls{edcp} study in the 1990s. 
 
-New maturity analyses of samples collected in the \gls{wcgop} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (M. Head, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning. This assessment also assumes a new fecundity relationship, in which fecundity increases with body size. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
+New maturity analyses of samples collected in the \gls{wcgop} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (Melissa Head, NWFSC, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning. This assessment also assumes a new fecundity relationship, in which fecundity increases with body size. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
 
 This assessment estimated 180 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 43 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
@@ -68,7 +68,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"),
 ```
 
 ## Stock biomass and dynamics{-}
-Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs (5.346-11.201 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (33\%-49\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated in 2013 (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
+Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs (5.346-11.201 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (33\%-49\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
@@ -117,31 +117,31 @@ The summary harvest rate (total catch divided by age-1 and older biomass) closel
 spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
 names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
 sa4ss::table_format(x = spr_tab,
-                  caption = "Estimated recent trend in the (1-SPR)/(1-SPR 50\\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\\% intervals.",
+                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\\%})$. ",
                   label = "sprES")
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
-                  caption = "Estimated relative spawning output trajectory for shortspine thornyhead.", 
+                  caption = "Estimated spawning output relative to unfished equilibrium for shortspine thornyhead.", 
                   label = "rel_ssb_trajectoryES")
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts_summaryF.png"), 
-                  caption = "Summary F rate.", 
+                  caption = "Summary fishing mortality rate (total landings / summary biomass).", 
                   label = "summary_fES")
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR3_ratiointerval.png"), 
-                  caption = "Estimated spawning potential ratio.", 
+                  caption = "Estimated relative fishing intensity as a function of spawning potential ratio (SPR).", 
                   label = "spr_trajectoryES")
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"), 
-                  caption = "Phase diagram.", 
+                  caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.",  
                   label = "phase_diagramES")
 
 ```
