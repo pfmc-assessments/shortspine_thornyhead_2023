@@ -60,8 +60,7 @@ sa4ss::table_format(x = ssb_tab,
                     col_to_adjust = c(2, 3, 4, 5),
                     width = c('2cm', '2.5cm', '2cm', '3cm'))
 ```
-\
-clearpage
+\clearpage
 
 ```{r, results='asis'}
 #Recruitment
@@ -135,7 +134,7 @@ proj_tab <- data.frame(
 
 names(proj_tab)<-c("Year", "Predicted OFL (mt)", "ABC (mt)", "Age 1 Biomass (mt)", "Spawning Output", "Fraction Unfished") 
 sa4ss::table_format(x = proj_tab,
-                  caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished.",
+                  caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.",
                   label = "projections",
                   custom_width = TRUE,
                   col_to_adjust = c(4),
@@ -295,7 +294,8 @@ survinfo_tab<-survinfo_tab%>%
     survey == "nwfsc combo" ~ "WCGBTS",
     survey == "nwfsc slope" ~ "NWFSC Slope",
     TRUE ~ survey  # Keep the original name if it doesn't match any condition
-  ))
+  )) %>%
+  rename(Fish=samples, Survey=survey, Hauls=hauls)
   
 sa4ss::table_format(x = survinfo_tab,
                    caption = "Survey samples and hauls for each of the fishery independent surveys for available years spanning from 1989 to 2022.",

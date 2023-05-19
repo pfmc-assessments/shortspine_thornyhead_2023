@@ -22,7 +22,7 @@ knitr::opts_chunk$set(fig.pos = 'h')
 This assessment applies to `r spp` (*`r spp.sci`*) off of the west coast of the United States from the U.S.-Canada border to the U.S.-Mexico border using data through 2022. `r Spp` are modeled in this assessment as a single stock. They have been reported as deep as 1,524 m, and this assessment applies to their full depth range although survey and fishery data are only available down to 1,280 m. 
 
 ## Catches{-}
-Landings of `r spp` rose to a peak of 4,815 mt in 1989, followed by a sharp decline during a period of trip limits and other management measures imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
+Historically, landings of `r spp` remained under 500 metric tons until the late 1960s when landings began to increase steadily, rising to a peak of 4,815 mt in 1989, followed by a sharp decline during a period when trip limits and other management measures were imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
 
 Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets, and non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for `r spp` have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. 
 
@@ -31,7 +31,7 @@ Commercial landings are dominantly bottom trawl caught, and non-trawl landings i
 catch_tab<-read.csv(file.path(tab_dir1, "a_Catches_ES.csv"))
 names(catch_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")  
 sa4ss::table_format(x = catch_tab,
-                  caption = "Recent landings by fleet, total landings summed across fleets, and the total mortality including discards.",
+                  caption = "Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. Total dead fish is the combined landings and model estimated discards.",
                   label = "catchesES")
 ```
 
@@ -54,7 +54,7 @@ Data were divided into three fishery fleets: North trawl (the waters off Washing
 
 Most data used in the 2013 assessment were newly pulled and processed for this assessment, including length compositions from all fishing and survey fleets, indices of abundance derived from new geostatistical analyses, discard rates from both a 1980s observer study [@pikitch_evaluation_1988] and the current \gls{wcgop}, historical catch data from Washington, Oregon, and California, and all reported catches from 1981-2022. The only data  taken from the previous assessment without reanalysis were discard rates from the \gls{edcp} study in the 1990s. 
 
-New maturity analyses of samples collected in the \gls{wcgop} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (M. Head, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning. This assessment also assumes a new fecundity relationship, in which fecundity increases with body size. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated from the 2013 assessment to be fixed at 0.04. 
+New maturity analyses of samples collected in the \gls{wcgop} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (M. Head, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning. This assessment also assumes a new fecundity relationship, in which fecundity increases with body size. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
 
 This assessment estimated 180 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 43 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
@@ -68,7 +68,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"),
 ```
 
 ## Stock biomass and dynamics{-}
-Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning biomass is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs (5.346-11.201 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (33\%-49\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated in 2013 (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
+Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs (5.346-11.201 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (33\%-49\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated in 2013 (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
@@ -78,15 +78,23 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asym
 
 ```{r, results='asis'}
 ssb_tab<-read.csv(file.path(tab_dir1, "b_SSB_ES.csv"))
-names(ssb_tab)<-c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")                 
+ssb_tab <- data.frame(
+      ssb_tab$Year,
+      comma(ssb_tab$Spawning.Output, digits = 0), paste0(comma(ssb_tab$Lower.Interval, digits = 0), "\u2013", comma(ssb_tab$Upper.Interval, digits = 0)),
+      print(ssb_tab$Fraction.Unfished, digits = 3), paste0(print.numeric(ssb_tab$Lower.Interval.1, digits = 3), "\u2013", print.numeric(ssb_tab$Upper.Interval.1, digits = 3))
+    )
+colnames(ssb_tab) <- c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")
 # 
 sa4ss::table_format(x = ssb_tab,
-                  caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
-                   label = "ssbES")
+                    caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
+                    label = "ssbES",
+                    custom_width = TRUE,
+                    col_to_adjust = c(2, 3, 4, 5),
+                    width = c('2cm', '2.5cm', '2cm', '3cm'))
 ```
 
 ## Recruitment{-}
-This assessment assumed a Beverton-Holt stock recruitment relationship. Steepness ($h$, the fraction of expected equilibrium recruitment associated with 20% of equilibrium spawning biomass) was fixed at 0.72, slightly higher than what was assumed in previous assessments ($h=0.60$). The scale of the population is largely determined by the log of unfished recruitment ($R_0$), which was estimated to be 9.354. This results in an unfished recruitment of 11,550,000 recruits (9,281,000–13,820,000). Recruitment deviations were estimated for the years 1901 through 2022, and ranged from -0.5 to 1.5 on the log scale. Estimated recruitments do not show high variability, and the uncertainty in each estimate is greater than the variability between estimates (Table \ref{tab:recES}; Figure \ref{fig:rec_trajectoryES}).
+This assessment assumed a Beverton-Holt stock recruitment relationship. Steepness ($h$, the fraction of expected equilibrium recruitment associated with 20% of equilibrium spawning biomass) was fixed at 0.72, slightly higher than what was assumed in previous assessments ($h=0.60$). The scale of the population is largely determined by the log of unfished recruitment ($R_0$), which was estimated to be 9.354. This results in an unfished recruitment of 11,550,000 recruits (9,281,000–13,820,000). Recruitment variation ($\sigma_R$) was fixed at 0.50, as was done in the 2013 assessment. Recruitment deviations were estimated for the years 1901 through 2022, and ranged from -0.5 to 1.5 on the log scale. Estimated recruitments do not show high variability, and the uncertainty in each estimate is greater than the variability between estimates (Table \ref{tab:recES}; Figure \ref{fig:rec_trajectoryES}).
 
 ```{r, results='asis'}
 rec_tab<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
@@ -180,7 +188,7 @@ mngmt_tab<-mngmt_tab%>%
          ACL = acl)
  
 sa4ss::table_format(x = mngmt_tab,
-                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt).",
+                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards.",
                   label = "managementES")
 ```
 
