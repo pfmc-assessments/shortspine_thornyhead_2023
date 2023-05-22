@@ -57,7 +57,7 @@ if(!file.exists(file.path)){
 }
 
 # File path for depth covariate included
-file.path <- file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023_depth.csv")
+file.path <- file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023_depth=.csv")
 if(!file.exists(file.path)){
   wcgbt.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dg_depth.Rdata"), "WCGBTS", "delta-gamma")
   wcgbt.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dln_depth.Rdata"), "WCGBTS", "delta-lognormal")
@@ -91,9 +91,16 @@ if(!file.exists(file.path)){
   
 }
 
-indices <- read_csv(file.path, col_names = TRUE, col_types="dfddddddff")
+indices <- read_csv(file.path, col_names = TRUE, col_types="dfddddddff") %>% 
+  filter(method=="delta-gamma", survey %in% c("Triennial", "WCGBTS")) %>%
+  mutate(
+    area=case_when(area=="Total" ~ "Coastwide",
+                   area=="California" ~ "California",
+                   area=="Oregon" ~ "Oregon",
+                   area=="Washington" ~ "Washington")
+  )
 
-ggplot(indices %>% filter(area=="Total"), aes(x=year, y=est, ymin=lwr, ymax=upr, color=survey, fill=survey, shape=survey, linetype=method))+
+ggplot(indices , aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area, shape=survey, linetype=area))+
   #geom_pointrange()+
   geom_line()+
   geom_ribbon(alpha=0.25)+
@@ -101,9 +108,9 @@ ggplot(indices %>% filter(area=="Total"), aes(x=year, y=est, ymin=lwr, ymax=upr,
   scale_fill_colorblind7()+
   scale_shape_manual(values=c(16, 1, 100, 20))+
   scale_y_continuous(breaks=seq(0, 125000, 25000), labels=scales::comma)+
-  labs(x="Year", y="Estimated Biomass (mt)", title="WCGBTS Model-based Index of Abundance", color="State")+
+  labs(x="Year", y="Estimated Biomass (mt)", title="Model-based Indices of Abundance", color="State")+
   guides(fill="none")+
-  facet_wrap(~method)+
+  facet_wrap(~survey)+
   theme_classic()+
   theme(
     panel.grid.major.y = element_line(),
@@ -111,7 +118,7 @@ ggplot(indices %>% filter(area=="Total"), aes(x=year, y=est, ymin=lwr, ymax=upr,
   )+
   guides(linetype="none", shape="none")
 
-ggsave(file.path(here::here(), "outputs", "surveys", "wcgbts_geostat_indices_comparison.png"), dpi=300, width=10, height=7, units = "in")
+ggsave(file.path(here::here(), "outputs", "surveys", "wcgbts_geostat_indices_state_comparison.png"), dpi=300, width=10, height=7, units = "in")
 
 ggplot(indices, aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area))+
   #geom_pointrange()+
@@ -135,7 +142,14 @@ ggplot(indices, aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area))+
 
 
 dbi <- read_csv(file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv")) %>%
-    mutate(assessment="2023") #%>%
+    filter(survey %in% c("AFSC Triennial Shelf Survey 1", "AFSC Triennial Shelf Survey 2", "West Coast Groundfish Bottom Trawl Survey")) %>%
+    mutate(
+      assessment="2023",
+      survey=case_when(survey == "AFSC Triennial Shelf Survey 1" ~ "Triennial",
+                       survey == "AFSC Triennial Shelf Survey 2" ~ "Triennial 2",
+                       survey == "West Coast Groundfish Bottom Trawl Survey" ~ "WCGBTS")
+    )
+    
     # bind_rows(
     #   read_csv(file.path(here::here(), "data" ,"processed", "surveys", "survey_indices_2013.csv")) %>%
     #     mutate(assessment="2013")
@@ -147,23 +161,24 @@ format.indices <- indices %>%
       mutate(
         Fleet=NA,
         Season=NA,
-        survey=case_when(survey == "Triennial" ~ "AFSC Triennial Shelf Survey 1",
-                         survey == "WCGBTS" ~ "West Coast Groundfish Bottom Trawl Survey",
-                         survey == "NWFSC Slope Survey" ~ "NWFSC Slope Survey",
-                         survey == "AFSC Slope Survey" ~ "AFSC Slope Survey")
+        # survey=case_when(survey == "Triennial" ~ "Triennial",
+        #                  survey == "WCGBTS" ~ "West Coast Groundfish Bottom Trawl Survey",
+        #                  survey == "NWFSC Slope Survey" ~ "NWFSC Slope Survey",
+        #                  survey == "AFSC Slope Survey" ~ "AFSC Slope Survey")
       ) %>%
       rename(Value=est, lci=lwr, uci=upr, seLogB=se, Year=year) %>%
       relocate(Year, Season, Fleet, Value, seLogB, survey, lci, uci, method) %>% 
-      filter(method=="delta-gamma")
+      filter(method=="delta-gamma", survey %in% c("Triennial", "Triennial 2", "WCGBTS"))
 
 ggplot(dbi, aes(x=Year, y=Value, ymin=lci, ymax=uci, color=survey, fill=survey, group=survey))+
-  geom_pointrange(linetype="longdash", aes(shape=assessment))+
+  geom_pointrange(linetype="longdash")+
   geom_line(data=format.indices , aes(group=survey, linetype=method))+
   geom_ribbon(data=format.indices, aes(linetype=method), alpha=0.25)+
   scale_color_colorblind7()+
   scale_fill_colorblind7()+
-  scale_y_continuous(labels = scales::comma)+
-  labs(x="Year", y="Estimated Biomass (mt)", color="Survey", fill="Survey")+
+  scale_y_continuous(labels = scales::comma, breaks=seq(0, 100000, 20000))+
+  coord_cartesian(ylim=c(0, 100000), expand = FALSE)+
+  labs(x="Year", y="Estimated Biomass (mt)", color="Survey", fill="Survey", title="Shortspine Thornyhead Survey Abundance Indices")+
   theme_minimal()+
   theme(
     panel.grid.minor = element_blank(),
@@ -172,6 +187,6 @@ ggplot(dbi, aes(x=Year, y=Value, ymin=lci, ymax=uci, color=survey, fill=survey, 
     axis.text = element_text(size=12),
     axis.title = element_text(size=12)
   )+
-  guides(linetype="none", color=guide_legend(nrow=2))
+  guides(linetype="none", color=guide_legend(ncol=2))
 
-ggsave(file.path(here::here(), "outputs", "surveys", "geostat_db_comp.png"), dpi=300, width=10, height=7, units = "in")
+ggsave(file.path(here::here(), "outputs", "surveys", "geostat_db_comp_wgcbts_tri.png"), dpi=300, width=10, height=7, units = "in")

@@ -358,7 +358,7 @@ survey.indices.ss.geo.all <- read_csv(file.path(here::here(), "data", "processed
   ) %>%
   print(n=100)
 
-survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "processed", "surveys", "sdm_tmb_indices_2023.csv")) %>%
+survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "processed", "surveys", "sdm_tmb_indices_2023_depth.csv")) %>%
   filter(area == "Total", method=="delta-gamma") %>%
   filter(!(survey %in% c("AFSC Slope Survey", "NWFSC Slope Survey"))) %>%
   mutate(
@@ -370,7 +370,7 @@ survey.indices.ss.geo.noslope <- read_csv(file.path(here::here(), "data", "proce
   rename(year=year, seas=Season, fleet=Fleet, index=est, se_log=se) %>%
   arrange(fleet) %>%
   write_csv(  # Save survey indices to processed data directory
-    file.path(here::here(), "data", "for_ss", "survey_mb_indices_noslope_2023.csv")
+    file.path(here::here(), "data", "for_ss", "survey_mb_indices_noslope_2023_depth.csv")
   ) %>%
   print(n=100)
 
