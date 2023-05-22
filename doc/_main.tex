@@ -142,24 +142,24 @@
 by\\
 Joshua A. Zahner\textsuperscript{1}\\
 Madison Heller-Shipley\textsuperscript{1}\\
-Haley A. Oleynik\textsuperscript{4}\\
+Haley A. Oleynik\textsuperscript{2}\\
 Sabrina G. Beyer\textsuperscript{1}\\
-Pierre-Yves Hernvann\textsuperscript{7}\\
-Matthieu Véron\textsuperscript{6}\\
-Andrea N. Odell\textsuperscript{3}\\
-Jane Y. Sullivan\textsuperscript{5}\\
+Pierre-Yves Hernvann\textsuperscript{3,4}\\
+Matthieu Véron\textsuperscript{1,5}\\
+Andrea N. Odell\textsuperscript{6}\\
+Jane Y. Sullivan\textsuperscript{7}\\
 Adam L. Hayes\textsuperscript{1}\\
-Vladlena Gertseva\textsuperscript{2}\\
-Kiva L. Oken\textsuperscript{2}\\
-Owen Hamel\textsuperscript{2}\\
-Melissa A. Haltuch\textsuperscript{6}\vfill
+Vladlena Gertseva\textsuperscript{4}\\
+Kiva L. Oken\textsuperscript{4}\\
+Owen Hamel\textsuperscript{4}\\
+Melissa A. Haltuch\textsuperscript{5}\vfill
 \textsuperscript{1}School of Aquatic and Fishery Sciences, University of Washington, 1122 NE Boat Street, Seattle, Washington 98195\\
-\textsuperscript{2}Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake Boulevard East, Seattle, Washington 98112\\
-\textsuperscript{3}University of California Davis, One Shields Avenue, Davis, California 95616\\
-\textsuperscript{4}Institute for the Oceans and Fisheries, University of British Columbia, 2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4\\
-\textsuperscript{5}Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109 Point Lena Loop Road, Juneau, Alaska 99801\\
-\textsuperscript{6}Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 7600 Sand Point Way N.E., Seattle, Washington 98115\\
-\textsuperscript{7}Institute of Marine Sciences' Fisheries Collaborative Program, University of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064\vfill
+\textsuperscript{2}Institute for the Oceans and Fisheries, University of British Columbia, 2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4\\
+\textsuperscript{3}Institute of Marine Sciences' Fisheries Collaborative Program, University of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064\\
+\textsuperscript{4}Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake Boulevard East, Seattle, Washington 98112\\
+\textsuperscript{5}Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 7600 Sand Point Way N.E., Seattle, Washington 98115\\
+\textsuperscript{6}University of California Davis, One Shields Avenue, Davis, California 95616\\
+\textsuperscript{7}Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109 Point Lena Loop Road, Juneau, Alaska 99801\vfill
 \trMonth{} \trYear{}
 \end{center}
 \clearpage
@@ -791,7 +791,7 @@ The frequency of occurrence of shortspine and longspine thornyhead in trawl surv
 \hypertarget{natural-mortality}{%
 \subsubsection{Natural Mortality}\label{natural-mortality}}
 
-Butler (1995) estimated the lifespan of shortspine thornyhead to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Owen Hamel, \gls{nwfsc}, pers. comm.). For the base model, natural mortality was fixed 0.04, implying an \(A_{max}\) of \textasciitilde135 years following the mortality prior of Hamel and Cope (2022).
+Butler (1995) estimated the lifespan of shortspine thornyhead to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Owen Hamel,\gls{nwfsc}, pers. comm.). For the base model, natural mortality was fixed at 0.04. This implies an \(A_{max}\) of \textasciitilde135 years following the mortality prior of Hamel and Cope (2022).
 
 \hypertarget{maturation-and-fecundity}{%
 \subsubsection{Maturation and Fecundity}\label{maturation-and-fecundity}}
@@ -848,7 +848,16 @@ Because the Butler data were sex-specific, had a higher sample size, were aged b
 
 \begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
 
-where: \(L_{a_{1}}\) and \(L_{a_{2}}\) are the lengths at reference ages \(a_{1}\) and \(a_{2}\) where \(a_{1}=1\); \(a_{2}=100\) and \(k\) is the growth rate. Growth curve estimation was conducted in R using the optim() function (R Core Team 2021). Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of \(\sigma^2/2\).
+where: \(L_{a_{1}}\) and \(L_{a_{2}}\) are the lengths at reference ages \(a_{1}\) and \(a_{2}\) where \(a_{1}=1\); \(a_{2}=100\) and \(k\) is the growth rate. Growth curve estimation was conducted in R using the optim() function (R Core Team 2021). Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of \(\sigma^2/2\). Updated growth parameters were fixed in the assessment at the following values using the reference lengths and equation described above:
+
+Females: \(L{a_{1}}\) = 11.4 cm; \(L{a_{2}}\) = 73.6 cm; \(k\) = 0.0099 per year\\
+Males: \(L{a_{1}}\) = 9.2 cm; \(L{a_{2}}\) = 66.1 cm; \(k\) = 0.0168 per year
+
+For reference, the equivalent von-Bertalanffy growth parameters are:
+
+Females: \(t{_0}\) = -8.931; \(L{_{inf}}\) = 111.0 cm; \(k\) = 0.0099 per year
+
+Males: \(t{_0}\) = -5.314; \(L{_{inf}}\) = 79.4 cm; \(k\) = 0.0168 per year
 
 Shortspine thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growthcurve}). The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
 

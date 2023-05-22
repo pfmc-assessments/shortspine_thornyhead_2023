@@ -30,7 +30,7 @@ author:
     middle: 'A'
     family: Heller-Shipley
   - name: Haley A. Oleynik
-    code: 4
+    code: 2
     first: H
     middle: 'A'
     family: Oleynik
@@ -40,22 +40,22 @@ author:
     middle: 'G'
     family: Beyer
   - name: Pierre-Yves Hernvann
-    code: 7
+    code: 3,4
     first: P-Y
     middle: ''
     family: Hernvann
   - name: Matthieu Véron
-    code: 6
+    code: 1,5
     first: M
     middle: ''
     family: Véron
   - name: Andrea N. Odell
-    code: 3
+    code: 6
     first: A
     middle: 'N'
     family: Odell
   - name: Jane Y. Sullivan
-    code: 5
+    code: 7
     first: J
     middle: 'Y'
     family: Sullivan
@@ -65,22 +65,22 @@ author:
     middle: 'L'
     family: Hayes
   - name: Vladlena Gertseva
-    code: 2
+    code: 4
     first: V
-    middle: ''
+    middle: 'G'
     family: Gertseva
   - name: Kiva L. Oken
-    code: 2
+    code: 4
     first: K
     middle: 'L'
     family: Oken
   - name: Owen Hamel
-    code: 2
+    code: 4
     first: O
     middle: 'S'
     family: Hamel
   - name: Melissa A. Haltuch
-    code: 6
+    code: 5
     first: M
     middle: 'A'
     family: Haltuch
@@ -91,43 +91,43 @@ affiliation:
     address: School of Aquatic and Fishery Sciences, University of Washington, 1122
       NE Boat Street, Seattle, Washington 98195
   - code: 2
+    address: Institute for the Oceans and Fisheries, University of British Columbia,
+      2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - code: 3
+    address:  Institute of Marine Sciences’ Fisheries Collaborative Program, University
+      of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+  - code: 4
     address: Northwest Fisheries Science Center, U.S. Department of Commerce, National
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
       Montlake Boulevard East, Seattle, Washington 98112
-  - code: 3
-    address: University of California Davis, One Shields Avenue, Davis, California
-      95616
-  - code: 4
-    address: Institute for the Oceans and Fisheries, University of British Columbia,
-      2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4
   - code: 5
-    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
-      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109
-      Point Lena Loop Road, Juneau, Alaska 99801
-  - code: 6
     address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 7600
       Sand Point Way N.E., Seattle, Washington 98115
+  - code: 6
+    address: University of California Davis, One Shields Avenue, Davis, California
+      95616
   - code: 7
-    address:  Institute of Marine Sciences’ Fisheries Collaborative Program, University
-      of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109
+      Point Lena Loop Road, Juneau, Alaska 99801
 address:
   - ^1^School of Aquatic and Fishery Sciences, University of Washington, 1122 NE Boat
     Street, Seattle, Washington 98195
-  - ^2^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^2^Institute for the Oceans and Fisheries, University of British Columbia, 2202
+    Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - ^3^Institute of Marine Sciences’ Fisheries Collaborative Program, University of 
+    California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+  - ^4^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
     Boulevard East, Seattle, Washington 98112
-  - ^3^University of California Davis, One Shields Avenue, Davis, California 95616
-  - ^4^Institute for the Oceans and Fisheries, University of British Columbia, 2202
-    Main Mall, Vancouver, British Columbia Canada V6T 1Z4
-  - ^5^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^6^University of California Davis, One Shields Avenue, Davis, California 95616
+  - ^7^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 17109 Point
     Lena Loop Road, Juneau, Alaska 99801
-  - ^6^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^5^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 7600 Sand Point
     Way N.E., Seattle, Washington 98115
-  - ^7^Institute of Marine Sciences’ Fisheries Collaborative Program, University of 
-    California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
 ---
 
 <!--chapter:end:00authors.Rmd-->
@@ -657,7 +657,7 @@ The frequency of occurrence of shortspine and longspine thornyhead in trawl surv
 
 ### Natural Mortality
 
-@butler_1995 estimated the lifespan of shortspine thornyhead to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Owen Hamel, \gls{nwfsc}, pers. comm.). For the base model, natural mortality was fixed 0.04, implying an $A_{max}$ of ~135 years following the mortality prior of @hamel_cope_2022. 
+@butler_1995 estimated the lifespan of shortspine thornyhead to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Owen Hamel,\gls{nwfsc}, pers. comm.). For the base model, natural mortality was fixed at 0.04. This implies an $A_{max}$ of ~135 years following the mortality prior of @hamel_cope_2022. 
 
 ### Maturation and Fecundity
 
@@ -707,7 +707,16 @@ Because the Butler data were sex-specific, had a higher sample size, were aged b
 \begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
 
 where:
-$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$; $a_{2}=100$ and $k$ is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\sigma^2/2$.
+$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$; $a_{2}=100$ and $k$ is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\sigma^2/2$. Updated growth parameters were fixed in the assessment at the following values using the reference lengths and equation described above:  
+
+Females: $L{a_{1}}$ = 11.4 cm; $L{a_{2}}$ = 73.6 cm; $k$ = 0.0099 per year  
+Males: $L{a_{1}}$ = 9.2 cm; $L{a_{2}}$ = 66.1 cm; $k$ = 0.0168 per year  
+  
+For reference, the equivalent von-Bertalanffy growth parameters are:  
+  
+Females: $t{_0}$ = -8.931; $L{_{inf}}$ = 111.0 cm; $k$ = 0.0099 per year
+
+Males: $t{_0}$ = -5.314; $L{_{inf}}$ = 79.4 cm; $k$ = 0.0168 per year  
 
 Shortspine thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growthcurve}). The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
 

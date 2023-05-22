@@ -11,7 +11,7 @@ author:
     middle: 'A'
     family: Heller-Shipley
   - name: Haley A. Oleynik
-    code: 4
+    code: 2
     first: H
     middle: 'A'
     family: Oleynik
@@ -21,22 +21,22 @@ author:
     middle: 'G'
     family: Beyer
   - name: Pierre-Yves Hernvann
-    code: 7
+    code: 3,4
     first: P-Y
     middle: ''
     family: Hernvann
   - name: Matthieu Véron
-    code: 6
+    code: 1,5
     first: M
     middle: ''
     family: Véron
   - name: Andrea N. Odell
-    code: 3
+    code: 6
     first: A
     middle: 'N'
     family: Odell
   - name: Jane Y. Sullivan
-    code: 5
+    code: 7
     first: J
     middle: 'Y'
     family: Sullivan
@@ -46,22 +46,22 @@ author:
     middle: 'L'
     family: Hayes
   - name: Vladlena Gertseva
-    code: 2
+    code: 4
     first: V
-    middle: ''
+    middle: 'G'
     family: Gertseva
   - name: Kiva L. Oken
-    code: 2
+    code: 4
     first: K
     middle: 'L'
     family: Oken
   - name: Owen Hamel
-    code: 2
+    code: 4
     first: O
     middle: 'S'
     family: Hamel
   - name: Melissa A. Haltuch
-    code: 6
+    code: 5
     first: M
     middle: 'A'
     family: Haltuch
@@ -72,41 +72,41 @@ affiliation:
     address: School of Aquatic and Fishery Sciences, University of Washington, 1122
       NE Boat Street, Seattle, Washington 98195
   - code: 2
+    address: Institute for the Oceans and Fisheries, University of British Columbia,
+      2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - code: 3
+    address:  Institute of Marine Sciences’ Fisheries Collaborative Program, University
+      of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+  - code: 4
     address: Northwest Fisheries Science Center, U.S. Department of Commerce, National
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
       Montlake Boulevard East, Seattle, Washington 98112
-  - code: 3
-    address: University of California Davis, One Shields Avenue, Davis, California
-      95616
-  - code: 4
-    address: Institute for the Oceans and Fisheries, University of British Columbia,
-      2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4
   - code: 5
-    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
-      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109
-      Point Lena Loop Road, Juneau, Alaska 99801
-  - code: 6
     address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 7600
       Sand Point Way N.E., Seattle, Washington 98115
+  - code: 6
+    address: University of California Davis, One Shields Avenue, Davis, California
+      95616
   - code: 7
-    address:  Institute of Marine Sciences’ Fisheries Collaborative Program, University
-      of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109
+      Point Lena Loop Road, Juneau, Alaska 99801
 address:
   - ^1^School of Aquatic and Fishery Sciences, University of Washington, 1122 NE Boat
     Street, Seattle, Washington 98195
-  - ^2^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^2^Institute for the Oceans and Fisheries, University of British Columbia, 2202
+    Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - ^3^Institute of Marine Sciences’ Fisheries Collaborative Program, University of 
+    California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+  - ^4^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
     Boulevard East, Seattle, Washington 98112
-  - ^3^University of California Davis, One Shields Avenue, Davis, California 95616
-  - ^4^Institute for the Oceans and Fisheries, University of British Columbia, 2202
-    Main Mall, Vancouver, British Columbia Canada V6T 1Z4
-  - ^5^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^6^University of California Davis, One Shields Avenue, Davis, California 95616
+  - ^7^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 17109 Point
     Lena Loop Road, Juneau, Alaska 99801
-  - ^6^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^5^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 7600 Sand Point
     Way N.E., Seattle, Washington 98115
-  - ^7^Institute of Marine Sciences’ Fisheries Collaborative Program, University of 
-    California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
 ---
