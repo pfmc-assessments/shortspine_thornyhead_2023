@@ -466,6 +466,35 @@ out <- out %>%
   select(Sensitivity_Run, Sex, A1, A2, Length_at_A1, 
          Length_at_A2, k) 
 
+ # Convert to von Bertalanffy parameters ----
+  # (Schnute and Fournier 1980)
+        # reference ages
+        a_1 = 2 
+        a_2 = 100
+        
+        # Females
+        Schnute.k.f     <-  exp(-optim.f[3]) # the above equation gives you VB K (different from the Schnute k in the paper)
+        L_inf_convert.f <- (optim.f[2]-optim.f[1]*Schnute.k.f^(a_2 - 1))/ (1 - Schnute.k.f^(a_2 -1))
+        k.convert.f     <-  -log(Schnute.k.f)
+        t0_convert.f    <-  a_1 - (1/log(Schnute.k.f))*log((optim.f[2] - optim.f[1])/(optim.f[2] - optim.f[1]*Schnute.k.f^(a_2-1)))
+        converted.VB.f  <-  c(t0_convert.f, L_inf_convert.f, k.convert.f)
+        names(converted.VB.f) <-c("VB.t0.f","VB.l_inf.f","VB.k.f")
+        optim.f         #Schnute lognormal params
+        converted.VB.f  #converted back to VB params
+        
+        # Males
+        Schnute.k.m     <-  exp(-optim.m[3])
+        L_inf_convert.m <- (optim.m[2]-optim.m[1]*Schnute.k.m^(a_2 - 1))/ (1 - Schnute.k.m^(a_2 -1))
+        k.convert.m     <-  -log(Schnute.k.m)
+        t0_convert.m    <-  a_1 - (1/log(Schnute.k.m))*log((optim.m[2] - optim.m[1])/(optim.m[2] - optim.m[1]*Schnute.k.m^(a_2-1)))
+        converted.VB.m  <-  c(t0_convert.m, L_inf_convert.m, k.convert.m)
+        names(converted.VB.m) <-c("VB.t0.m","VB.l_inf.m","VB.k.m")
+        optim.m         #Schnute lognormal params
+        converted.VB.m  #converted back to VB params
+
+
+
+
 # kline ----
 
 kline <- read_csv(file.path(dat_path, "S. alascanus_Kline 1996_formatted.csv")) %>% 
