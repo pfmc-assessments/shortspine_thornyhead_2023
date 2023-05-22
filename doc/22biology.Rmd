@@ -52,7 +52,7 @@ Because the Butler data were sex-specific, had a higher sample size, were aged b
 \begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
 
 where:
-$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$; $a_{2}=100$ and $k$ is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\sigma^2/2$. Updated growth parameters were fixed in the assessment at the following values using the reference lengths and equation described above:  
+$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$; $a_{2}=100$ and $k$ is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\sigma^2/2$. Updated growth parameters were fixed in the assessment at the following values using the reference ages and equation described above:  
 
 Females: $L{a_{1}}$ = 11.4 cm; $L{a_{2}}$ = 73.6 cm; $k$ = 0.0099 per year  
 Males: $L{a_{1}}$ = 9.2 cm; $L{a_{2}}$ = 66.1 cm; $k$ = 0.0168 per year  
