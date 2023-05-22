@@ -9,20 +9,30 @@
 # Topic of the sensitivity analysis:  surveys 
 # Specific item in that topic: 
 # 	- MB vs DB indices 
+# 	- WCGBTS MBIs Depth Covariate 
 # Author:  Andrea Odell 
-# Date: 2023-05-11 14:33:13 
-# Name of the model created:
+# Date: 2023-05-21 11:54:04 
+# Names of the models created:
 # 	- 23.surveys.db 
+# 	- 23.surveys.wcgbts_depth 
 # *** 
 # 
-# This analysis has been developped based on the following model: 
-# 23.model.francis_2 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.surveys.db 				 23.model.francis_2 
+# 23.surveys.wcgbts_depth 				 23.model.francis_2 
 # 
 # Results are stored in the following foler: 
-#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal/3.2_surveys2_Sensitivity 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/3.2_surveys2_Sensitivity 
 # 
-# Features: 
-#  Base model with design-based indices of abundance 
+# General features: 
+# Model-based indices with a depth covariate for the WCGBTS 
+# 
+# Model features:
+# - Model 23.surveys.db:
+# depth covariate for WCGBTS
+# - Model 23.surveys.wcgbts_depth:
+# 23.model.francis_2 + depth covariate for WCGBTS indices
 # ============================================================ #
 
 # ------------------------------------------------------------ #
@@ -104,21 +114,32 @@ var.to.save <- ls()
 # Path to the base model (23.model.francis_2) repertory
 Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
 
+
+# Path to the base model (23.model.francis_2) repertory
+Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
+
 # Root directory for this sensitivity analysis
 SA_path <- file.path('model','Sensitivity_Anal','3.2_surveys2_Sensitivity',fsep = fsep)
 # Path to the 23.surveys.db repertory
 Dir_23_surveys_db <- file.path(dir_SensAnal, '3.2_surveys2_Sensitivity','1_23.surveys.db' , 'run',fsep = fsep)
 
+# Path to the 23.surveys.wcgbts_depth repertory
+Dir_23_surveys_wcgbts_depth <- file.path(dir_SensAnal, '3.2_surveys2_Sensitivity','2_23.surveys.wcgbts_depth' , 'run',fsep = fsep)
+
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(
 	Dir_23_model_francis_2,
-	Dir_23_surveys_db))
+	Dir_23_model_francis_2,
+	Dir_23_surveys_db,
+	Dir_23_surveys_wcgbts_depth))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
 	'23.model.francis_2',
-	'23.surveys.db')
+	'23.model.francis_2',
+	'23.surveys.db',
+	'23.surveys.wcgbts_depth')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -131,7 +152,9 @@ SSplotComparisons(
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
       legendlabels = c(
 	'23.model.francis_2',
-	'23.surveys.db')
+	'23.model.francis_2',
+	'23.surveys.db',
+	'23.surveys.wcgbts_depth')
     )
 
 # Create comparison table for this analisys
