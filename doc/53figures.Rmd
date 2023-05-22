@@ -28,7 +28,7 @@ knitr::opts_chunk$set(fig.pos = 'h')
 sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
                   caption = "Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.", 
                   label = "stock-map",
-                  height=80)
+                  height=75)
 
 # Figure 2 Unid thornyheads and proportion shortspine
 sa4ss::add_figure(filein = file.path(fig_dir1, "thornyhead-ratio.png "), 

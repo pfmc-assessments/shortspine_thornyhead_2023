@@ -27,7 +27,7 @@ Commercial fishery length-composition data were obtained from \gls{pacfin} for 1
 
 Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in Table \ref{tab:lensamp} (landings) and Table \ref{tab:disclensamp} (discards).
 
-Input sample sizes ${N_{input}}$ for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers. comm.): 
+Input sample sizes, ${N_{input}}$, for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers. comm.): 
 
 \begin{equation} {N_{input} = N_{trips} + 0.138N_{fish}}\qquad\text{ when }\frac{N_{fish}}{N_{trips}}<44 \end{equation}
 

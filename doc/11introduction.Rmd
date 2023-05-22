@@ -39,7 +39,7 @@ Non-trawl landings of `r spp` were relatively low prior to the mid-1990s, at whi
 
 The foreign fishery off of the West Coast is estimated to have caught approximately 7,400 mt of `r spp` during the 11 year period from 1966-1976 [@rogers_species_2003], which is similar to the estimated domestic catch (~8,600 mt) during that same period.
 
-**Management measures** have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since (Table \ref{tab:allcatch}).
+Management measures have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since (Table \ref{tab:allcatch}).
 
 In 2011, the west coast trawl fishery was rationalized, with the introduction of the Individual Fishing Quota (IFQ) Program. In order to provide more flexibility for fishers on the west coast, NOAA Fisheries implemented the West Coast Groundfish Trawl Fishery Catch Share Program, which allows for the division of catch allocated to the trawl fishery into shares controlled by individuals or cooperatives [@catchshare]. All vessels that participate in the IFQ program are required to have 100% observer coverage at all times the vessels are at sea [@catchshare].
 

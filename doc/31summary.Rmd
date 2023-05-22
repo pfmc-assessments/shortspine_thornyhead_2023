@@ -28,7 +28,7 @@ The most recent assessment made a number of recommendations for data availabilit
 
 7. Exploration of simpler assessment methods for `r spp` and evaluation of whether such methods would provide a more robust management strategy than the current approach. 
 
-*Progress: While simple methods were not tested for this assessment, the model structure was significantly simplified from four fleets and five surveys, to three fleets and two surveys. This significantly reduced the total number of parameters that needed to be estimated by the model.*
+*Progress: While simpler methods were not tested for this assessment, the model structure was significantly reduced from four fleets and five surveys, to three fleets and two surveys. This significantly reduced the total number of parameters that needed to be estimated by the model.*
 
 8. More tows or visual surveys south of 34.5 deg. N. lat. including the large \gls{cca}. Because the southern Conception Area is a large potential habitat for `r spp`, more sampling effort would help refine the estimations of their abundance in this area.
 

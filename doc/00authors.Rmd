@@ -21,7 +21,7 @@ author:
     middle: 'G'
     family: Beyer
   - name: Pierre-Yves Hernvann
-    code: 2
+    code: 7
     first: P-Y
     middle: ''
     family: Hernvann
@@ -89,6 +89,9 @@ affiliation:
     address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 7600
       Sand Point Way N.E., Seattle, Washington 98115
+  - code: 7
+    address:  Institute of Marine Sciences’ Fisheries Collaborative Program, University
+      of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
 address:
   - ^1^School of Aquatic and Fishery Sciences, University of Washington, 1122 NE Boat
     Street, Seattle, Washington 98195
@@ -104,4 +107,6 @@ address:
   - ^6^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 7600 Sand Point
     Way N.E., Seattle, Washington 98115
+  - ^7^Institute of Marine Sciences’ Fisheries Collaborative Program, University of 
+    California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
 ---
