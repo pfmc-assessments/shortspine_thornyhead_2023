@@ -61,9 +61,18 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "survey_data_timeseries.png"),
                   label = "survey_data_timeseries")
 
 #Figure 8 Design Based Survey
+
 sa4ss::add_figure(filein = file.path(fig_dir2, "2013_2023_survey_indices_comparison.png"), 
-                  caption = "Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.", 
+                  caption = "Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.", 
                   label = "designbasedsurv")
+
+sa4ss::add_figure(filein = file.path(fig_dir2, "geostat_db_comp_wgcbts_tri.png"), 
+                  caption = "Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.", 
+                  label = "modelbasedsurv")
+
+sa4ss::add_figure(filein = file.path(fig_dir2, "geostat_indices_state_comparison.png"), 
+                  caption = "State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.", 
+                  label = "state_indices")
 
 #Figure 9 Survey Length Comps 
 sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"), 
@@ -379,8 +388,8 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare2_spawnbio_un
 sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare4_Bratio_uncertainty.png"),
                   caption = "Relative spawning output comparisons of the base model and maturity sensitivities.",
                   label = "mat_sensitiv_mngmt")
-# 
-# #Landings 
+ 
+# Landings 
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare2_spawnbio_uncertainty.png"),
                   caption = "Spawning output comparisons of the base model and landing sensitivities.",
@@ -389,6 +398,16 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare2_spawnbio_un
 sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_uncertainty.png"),
                   caption = "Relative spawning output comparisons of the base model and landing sensitivities.",
                   label = "land_sensitiv_mngmt")
+
+# Surveys 
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare2_spawnbio_uncertainty.png"),
+                  caption = "Spawning output comparisons of the base model and survey sensitivities.",
+                  label = "surv_sensitiv_spawning")
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare4_Bratio_uncertainty.png"),
+                  caption = "Relative spawning output comparisons of the base model and survey sensitivities.",
+                  label = "surv_sensitiv_mngmt")
 
 #Selectivity and Retention
 

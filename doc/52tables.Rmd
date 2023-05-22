@@ -340,29 +340,30 @@ sa4ss::table_format(x = sensitiv_tab,
 ```
 \newpage
 ```{r, results = 'asis'}
-# timeblock_tab<-read.csv(file.path(tab_dir3, "sensi_ret_sel_summary.csv"))
-# timeblock_tab$Year <- as.character(timeblock_tab$Year)
 
-# timeblock<-flextable(timeblock_tab) %>%
-#   flextable::bold(part = "header") %>%
-#   flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
-#   flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
-#   flextable::merge_at(i = grep("Non-Trawl", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
-#   flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
-#   flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
-#   flextable::merge_at(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 ) %>%
-#   flextable::merge_at(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 ) %>%
-#   flextable::rotate(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 , rotation="btlr", align = NULL) %>%
-#   flextable::rotate(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 , rotation="btlr", align = NULL) %>%
-#   flextable::rotate(j = 2 , rotation="btlr", align = NULL) 
+# Let's clean this up. I think we can remove some of the columns as not every 
+# combination tested yielded particularly interesting results.
+timeblock_tab<-read.csv(file.path(tab_dir3, "sensi_ret_sel_summary.csv"))
+timeblock_tab$Year <- as.character(timeblock_tab$Year)
 
-
-# sa4ss::table_format(x = timeblock_tab,
-#                   caption = "Blocked parameters and the years for blocking and justification for all fleets.",
-#                   label = "timeblocking",
-#                   landscape = TRUE)
+timeblock<-flextable(timeblock_tab) %>%
+  flextable::bold(part = "header") %>%
+  flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
+  flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
+  flextable::merge_at(i = grep("Non-Trawl", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
+  flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
+  flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
+  flextable::merge_at(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 ) %>%
+  flextable::merge_at(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 ) %>%
+  flextable::rotate(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 , rotation="btlr", align = "center") %>%
+  flextable::rotate(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 , rotation="btlr", align = "center") %>%
+  flextable::rotate(j = 2 , rotation="btlr", align = "center")
 
 
+sa4ss::table_format(x = timeblock_tab,
+                  caption = "Blocked parameters and the years for blocking and justification for all fleets.",
+                  label = "timeblocking",
+                  landscape = TRUE)
 ```
 \newpage
 ```{r, results = 'asis'}
