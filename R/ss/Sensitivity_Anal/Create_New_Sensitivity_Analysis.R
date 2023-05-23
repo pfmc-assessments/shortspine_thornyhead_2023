@@ -303,6 +303,18 @@ NewSensAnal(topic = "model",
            new_model = c("23.dmn"))
 
 
+# Fecundity sensitivity analysis 
+NewSensAnal(topic = "biological_Info",
+            # names are based on new model
+            object = c("Sensitivity to fecundity"),
+            author = "Sabrina Beyer",
+            folder_name = "Fecundity_Sensitivity",
+            script_model = "Fecundity_Sensitivity_Analyses",
+            script_results = "Fecundity_Sensitivity_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.biology.no_fecundity"))
+
+
 #NewSensAnal(topic = "surveys",
 #            # names are based on new model
 #            object = c("MB vs DB indices"),
