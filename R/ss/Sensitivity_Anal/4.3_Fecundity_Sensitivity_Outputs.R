@@ -134,6 +134,47 @@ SSplotComparisons(
 	'23.biology.no_fecundity')
     )
 
+# plot fecundity at length model output
+# This is so clunky! Is there a better way to compare the biology plots?
+# Everything below is a work in progress!
+
+?SS_plots()
+?SSplotBiology()
+
+No_fec_replist <- SS_output(dir = c(
+  Dir_23_biology_no_fecundity))
+names(No_fec_replist)
+
+Yes_fec_replist <- SS_output(dir = c(
+  Dir_23_model_francis_2))
+names(Yes_fec_replist)
+
+# spawning output at length (maturity*fecundity)
+SSplotBiology(
+  replist= No_fec_replist,
+  subplots = 10,
+  plotdir = file.path(SA_path, 'SA_plots', fsep = fsep)
+)
+
+SSplotBiology(
+  replist= Yes_fec_replist,
+  add = TRUE,
+  subplots = 10,
+  colvec = c("blue"),
+  plotdir = file.path(SA_path, 'SA_plots', fsep = fsep)
+)
+#add legend
+SSplotBiology(
+  replist= Yes_fec_replist,
+  add = TRUE,
+  subplots = 10,
+  colvec = c("white"),
+  legend("topleft", legend=c("Base model", "Remove fecundity"), col=c("blue","red"), lty=1, bty="n"),
+  plotdir = file.path(SA_path, 'SA_plots', fsep = fsep)
+)
+
+
+
 # Create comparison table for this analisys
 # ####################################### #
 
