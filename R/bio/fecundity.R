@@ -27,6 +27,8 @@ b <- 3.978
 fecatlength <- data.frame(length = lens) %>% 
   mutate(fec = a * length ^ b)
 
+options(scipen = 999) #turn off scientific notation
+
 ggplot(fecatlength, aes(x = length, y = fec)) +
   geom_line() + 
   labs(x = 'Length (cm)', y = 'Fecundity',
@@ -75,3 +77,49 @@ Fecundity <- data.frame(Param = c("Eggs_alpha_Fem_GP_1","Eggs_beta_Fem_GP_1"),
                         Value = c(a.param.SST.million.eggs,b.param.SST.million.eggs))
 
 write_csv(Fecundity, 'data/for_ss/fecundity_2023.csv')
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Extra Fecundity explorations----
+## Relative Fecundity----
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# What does the relative fecundity relationship look like?
+
+# female weight (kg) at length (cm) relationship 
+# this is the WL relationship from WCGBTS that was used in the assessment
+a.WL <- 0.00000648508
+b.WL <- 3.17975
+
+wtatlength <- data.frame(length = lens) %>% 
+  mutate(wt = a.WL * length ^ b.WL)
+
+wt.fec.df <- merge(wtatlength, fecatlength, by = "length" )
+
+relfecatlength <- wt.fec.df %>%
+                    select(length, wt, fec) %>%
+                    mutate(relfec = fec / wt)     #note, total weight
+
+# relative fecundity at weight relationship
+relfec.mod<-lm(relfec~wt, data=relfecatlength)
+summary(relfec.mod)
+coef(relfec.mod)
+
+relfec.intercept   <-coef(relfec.mod)[1]
+relfec.slope <-coef(relfec.mod)[2]
+
+options(scipen = 999) #turn off scientific notation
+
+#relative fecundity at weight
+ggplot(relfecatlength, aes(x = wt, y = relfec)) +
+  geom_line() + 
+  labs(x = 'Weight (kg)', y = 'Relative Fecundity (eggs/kg)',
+       title = 'Shortspine thornyhead relative fecundity-at-weight ')+
+  theme_bw() 
+
+#relative fecundity at length
+ggplot(relfecatlength, aes(x = length, y = relfec)) +
+  geom_line() + 
+  labs(x = 'Length (cm)', y = 'Relative Fecundity (eggs/kg)',
+       title = 'Shortspine thornyhead relative fecundity-at-length ')+
+  theme_bw()
