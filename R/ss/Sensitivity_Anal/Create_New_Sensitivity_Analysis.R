@@ -315,6 +315,18 @@ NewSensAnal(topic = "biological_Info",
             new_model = c("23.biology.no_fecundity"))
 
 
+# ASHOP catches sensitivity analysis 
+NewSensAnal(topic = "landings",
+            # names are based on new model
+            object = c("ASHOP Catches"),
+            author = "Joshua Zahner",
+            folder_name = "Landings_ashop",
+            script_model = "Landings_ashop_Analyses",
+            script_results = "Landings_ashop_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.landings.ashop"))
+
+
 #NewSensAnal(topic = "surveys",
 #            # names are based on new model
 #            object = c("MB vs DB indices"),
