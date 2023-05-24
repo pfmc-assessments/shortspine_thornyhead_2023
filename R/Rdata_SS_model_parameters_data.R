@@ -56,6 +56,7 @@ srv_mb_noslope_lognormal <-  read_csv(file.path(dir_dat, "survey_mb_indices_nosl
 # structure (NTrawl, NOther, STrawl, SOther) and the new 3 fleet structure
 # (NTrawl, STrawl, Other)
 landings3 <-  read_csv(file.path(dir_dat, "landings_3fleet_2023.csv"))
+landings3.ashop <- read_csv(file.path(dir_dat, "landings_3fleet_ashop_2023.csv"))
 landings4 <-  read_csv(file.path(dir_dat, "landings_4fleet_2023.csv"))
 landings_lencomps3 <-  read_csv(file.path(dir_dat, "landings_length_comps_3fleet_2023.csv"))
 landings_lencomps4 <-  read_csv(file.path(dir_dat, "landings_length_comps_4fleet_2023.csv"))
@@ -496,6 +497,7 @@ SS_Param2023$Catch$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(lan
 SS_Param2023$Catch$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(landings3)
 SS_Param2023$Catch$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(landings3)
 SS_Param2023$Catch$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(landings3)
+SS_Param2023$Catch$data$ThreeFleets_NoSlope_CombineTriennial_ASHOP <- as.data.frame(landings3.ashop)
 
 # Survey data ----
 SS_Param2023$Indices$Content <- "These are the survey data"
