@@ -1793,7 +1793,8 @@ write_SA_files <- function(out = NULL,
     
     ModcompBase <-
       Modcomp[which(!Modcomp$base_model %in% Modcomp$new_model), ]
-    for (m in 1:dim(ModcompBase)[1]) {
+    # for (m in 1:dim(ModcompBase)[1]) {
+    for (m in 1:length(unique(ModcompBase$base_model))) {
       cat("\n")
       cat("# Path to the base model (",
           ModcompBase[m, "base_model"],
@@ -2724,7 +2725,8 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
   fileOut <- c(fileOut, paste("# Date:", timeSA))
   
   # 3. Add the names of the new models
-  Which2 <- grep(pattern = "# This analysis has been developped based on the following", x = file)
+  # Which2 <- grep(pattern = "# This analysis has been developed based on the following", x = file)
+  Which2 <- grep(pattern = "# This analysis has been develo", x = file)
   fileOut <- c(fileOut, file[(Which1+2):(Which2-3)])
   NamMod <- paste("# \t-", new_model)
   fileOut <- c(fileOut, NamMod)
@@ -2765,7 +2767,10 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
     fileOut <- c(fileOut, paste("# ",Features))
     # }
   } else {
-    fileOut <- c(fileOut, file[(Which3-1):(length(file)-2)])
+    # fileOut <- c(fileOut, file[(Which3-1):(length(file)-2)])
+    
+    Which4 <- grep(pattern = "# Model features:", x = file)
+    fileOut <- c(fileOut, file[(Which3-1):(Which4-1)])
   }
   
   # Add the model features
@@ -2807,6 +2812,7 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
   Mod_Feat <- Mod_Feat[-1]
   fileOut <- c(fileOut,paste("#",Mod_Feat,sep=""))
   fileOut <- c(fileOut,file[(length(file)-1):length(file)])
+  fileOut <- fileOut[!fileOut==""]
   base::writeLines(text = fileOut, con = out)
   
   cat(
@@ -2905,6 +2911,12 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
   outBeg <-
     file.path(WD, "Sensitivity_Analysis_Features.txt", fsep = fsep)
   Beg <- readLines(outBeg)
+  
+  Which1 <-  grep(pattern = "# Sensitivity Analysis ID:", x = Beg)
+  Beg <- Beg[-c(Which1)]
+  Which2 <-  grep(pattern = "# Name of the script used to build the new model", x = Beg)
+  Beg <- Beg[-c(Which2:(Which2+3))]
+  
   WhichFirst <-  grep(pattern = "# Topic of the sensitivity analysis", x = Beg)
   Beg <- Beg[(WhichFirst-1):length(Beg)]
   Beg <- c("# ============================================================ #",
@@ -3001,6 +3013,7 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
   
   environment(write_SA_files) <- environment()
   write_SA_files(out = out, do_results = TRUE)
+  
   # Update model features
   file <- readLines(out)
   WhichLast <- grep(pattern = "# Model features:", x = file)
@@ -3024,7 +3037,7 @@ The current feature is:\n", tmpInfo$Features[1], sep = "")
        file = file.path(dirScript_SensAnal, "SA_info.RData", fsep = fsep))
   # ========================================================
   
-} 
+}
 
 
 
