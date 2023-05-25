@@ -1099,7 +1099,7 @@ SS_plots(replist,
 
 # You are ready to analyze the differences between the models
 # considered in this sensitivity analysis.
-# This can be done using the 4.1_Test_Bio_Outputs.R script.
+# This can be done using the 5.5_Improve_LC_Fits_Outputs.R 
 
 # !!!!! WARNING !!!!!
 # ------------------- #

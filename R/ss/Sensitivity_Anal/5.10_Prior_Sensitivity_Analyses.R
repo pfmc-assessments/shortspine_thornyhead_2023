@@ -863,12 +863,20 @@ SS_plots(replist,
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 
+## End section ##
+
 # You are ready to analyze the differences between the models
 # considered in this sensitivity analysis.
 # This can be done using the 5.10_Prior_Sensitivity_Outputs.R script.
 
+# !!!!! WARNING !!!!!
+# ------------------- #
+# Please do not develop any script that you want to keep after this 
+# warning section - It might be overwritten in the case you add a new 
+# model to this SA.
+# ------------------- #
+
+## End script to develop SA models ##
 
 # -----------------------------------------------------------
 # -----------------------------------------------------------
-
-
