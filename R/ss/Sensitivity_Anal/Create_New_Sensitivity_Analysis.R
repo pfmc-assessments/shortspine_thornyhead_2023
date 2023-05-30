@@ -337,7 +337,9 @@ NewSensAnal(topic = "landings",
 #            base_model = c("23.model.francis_2"),
 #            new_model = c("23.surveys.db"))
 
-
-
-
+# Add_Newmodel(SA_ID = "Item 1.1", new_model="23.landings.ashop2", base_model="23.model.francis_2", object = "Landings")
+# 
+# SOMEONE RUNS THESE MODELS! ASK JOSH FOR WHAT THESE SHOULD BE IF NOT CLEAR.
+# Add_Newmodel(SA_ID = "Item 3.2", new_model="23.surveys.useslope", base_model="23.model.francis_2", object = "Surveys")
+# Add_Newmodel(SA_ID = "Item 1.1", new_model="23.landings.4fleet", base_model="23.model.francis_2", object = "Landings")
 
