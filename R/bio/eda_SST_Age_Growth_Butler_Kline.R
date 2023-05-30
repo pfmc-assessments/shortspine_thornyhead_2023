@@ -266,7 +266,7 @@ dim(SST.dat)
         NULL
       
       #save last plot
-      ggsave("SST.VBGF.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=dirPlots)
+     # ggsave("SST.VBGF.Kline.Butler.png", plot = last_plot(),width=6, height= 4,path=dirPlots)
       
 
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -274,11 +274,13 @@ dim(SST.dat)
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       unique(fish.bio2.ages$sex) #categories for sex; 1=male, 2=female, U=unknown sex
       
-      #choose a_1 = 2 and a_2 = 100
+      #choose 
+      a_1 = 2  
+      a_2 = 100
       
       vbgf.nls2 <- nls(length_cm ~ la1[sex] + (la2[sex] - la1[sex]) * 
-                         (1-exp(-k[sex]*(age-1))) / 
-                         (1-exp(-k[sex]*99)), 
+                         (1-exp(-k[sex]*(age-a_1))) / 
+                         (1-exp(-k[sex]*(a_2-a_1))), 
                        data = fish.bio2.ages, 
                        start = list(la1 = rep(7,3),     #rep 2 for 2 sexes
                                     la2 = rep(75,3),    #rep 2 for 2 sexes
@@ -296,7 +298,7 @@ dim(SST.dat)
       abline(h=0)
       #don't want "fanning"
       #if there is fanning then transform the data
-      
+ 
       #~~~~~~~~~~~~~~~~~~~~~~~~
       ###Lognormal errors----
       #~~~~~~~~~~~~~~~~~~~~~~~~

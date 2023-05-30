@@ -167,6 +167,22 @@ optim.m  <- exp(vbgf.optim$par)[c(1,3,5)]
 optim.f  <- exp(vbgf.optim$par)[c(2,4,6)]
 
 aic1 <- -2 * vbgf.optim$value + 2 * length(vbgf.optim$par)
+      
+      #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # compare to vbgf (nls) to get an idea of standard error of the parameter estimate
+      # note, not directly comparable (assumes normal errors); get different parameter estimates 
+        butler$sex2<-as.factor(as.character(butler$sex))
+        a_1<-2
+        a_2<-100
+        vbgf.nls2 <- nls(length_cm ~ la1[sex2] + (la2[sex2] - la1[sex2]) * 
+                           (1-exp(-k[sex2]*(age-a_1))) / 
+                           (1-exp(-k[sex2]*(a_2-a_1))), 
+                         data = butler, 
+                         start = list(la1 = rep(8,2),     
+                                      la2 = rep(70,2),    
+                                      k   = rep(0.01,2))) 
+        summary(vbgf.nls2)
+      #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Schnute with sex-specific L2 and k parameters ----
 
