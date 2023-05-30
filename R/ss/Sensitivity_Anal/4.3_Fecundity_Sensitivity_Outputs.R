@@ -117,8 +117,8 @@ SensiMod <- SSgetoutput(dirvec = c(
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
-	'23.model.francis_2',
-	'23.biology.no_fecundity')
+	'Base',
+	'No Fecundity Relationship (2013)')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -129,10 +129,16 @@ SSplotComparisons(
       # print = TRUE,
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c(
-	'23.model.francis_2',
-	'23.biology.no_fecundity')
-    )
+      legendlabels = names(SensiMod)
+)
+
+SSplotComparisons(
+  Version_Summary,
+  print = TRUE,
+  #pdf = TRUE,
+  plotdir = file.path(here::here(), "doc", "FinalFigs", "Sensitivities", "Fecundity", fsep = fsep),
+  legendlabels = names(SensiMod)
+)
 
 # plot fecundity at length model output
 # This is so clunky! Is there a better way to compare the biology plots?
@@ -171,6 +177,15 @@ SSplotBiology(
   colvec = c("white"),
   legend("topleft", legend=c("Base model", "Remove fecundity"), col=c("blue","red"), lty=1, bty="n"),
   plotdir = file.path(SA_path, 'SA_plots', fsep = fsep)
+)
+
+SSplotBiology(
+  replist= Yes_fec_replist,
+  add = TRUE,
+  subplots = 10,
+  colvec = c("white"),
+  legend("topleft", legend=c("Base", "No Fecundity Relationship (2013"), col=c("blue","red"), lty=1, bty="n"),
+  plotdir = file.path(here::here(), "doc", "FinalFigs", "Sensitivities", "Fecundity", fsep = fsep)
 )
 
 
