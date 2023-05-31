@@ -5,8 +5,10 @@
 # Plot fishery landings and discard length distributions by fleet   
 
 # set up ---- 
-discards <- read_csv("outputs/fishery_data/discard_lengths.csv")
+discards <- read_csv("outputs/discard_data/disc_lencomp_3.csv")
 landings <- read_csv("outputs/fishery_data/fishery_lengths.csv")
+
+#Edited for Madi 
 
 # take black out of colorblind theme
 scale_fill_colorblind7 = function(.ColorList = 2L:8L, ...){

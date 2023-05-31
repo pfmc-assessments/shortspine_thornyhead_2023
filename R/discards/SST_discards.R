@@ -439,7 +439,36 @@ disc_lencomp_WCGOP %>%
 
 #Output disc_lencomp for a combo plot 
 
-write.csv(disc_lencomp_WCGOP, "outputs/discard_data/disc_lencomp.csv")
+
+###### THREE FLEET Stucture 
+
+
+disc_length <- read_excel(paste0(processed_discards_path, "/SSPN_WCGOP_WAOR-CA_Trawl-NonTrawl.xlsx"),
+                          sheet = "Length Frequency")
+
+disc_length %>%
+  mutate(area_lg = ifelse(State == "CA", "S", "N"),
+         Gear = ifelse(Gear == "NonTRAWL", "Other", "Trawl")) %>%
+  mutate(fleet = paste0(area_lg, Gear)) -> disc_lencomp_WCGOP
+
+disc_lencomp_WCGOP %>%
+  mutate(fleet = recode_factor(fleet, !!!c(NTrawl = "NTrawl", STrawl = "STrawl", NOther = "NonTrawl", SOther = "NonTrawl"))) %>%
+  mutate(meanLen = Lenbin + 1) %>% 
+  group_by(meanLen, fleet) %>%
+  summarize(Nfish = sum(N_Fish)) %>%
+  ggplot(aes(x = meanLen, y = Nfish, fill = forcats::fct_rev(fleet), color = forcats::fct_rev(fleet))) +
+  geom_col(position = "identity", alpha = 0.5) +
+  scale_fill_manual(values = c(NTrawl = "#009E73", STrawl = "#56B4E9", NonTrawl = "#E69F00"),
+                    breaks = c("NTrawl", "STrawl", "NonTrawl"), name = "Fleet") +
+  scale_color_manual(values = c(NTrawl = "#009E73", STrawl = "#56B4E9", NonTrawl = "#E69F00"),
+                     breaks = c("NTrawl", "STrawl", "NonTrawl"), name = "Fleet") +
+  xlab("Length (cm)") + ylab("Number of fish") +
+  facet_wrap(~fleet, nrow = 1) + 
+  theme_classic() +
+  labs(x = "Length (cm)", y = "Number of fish", title = "Shortspine Thornyhead Discard Length Compositions")+
+  write.csv(disc_lencomp_WCGOP, "outputs/discard_data/disc_lencomp_3.csv")
+
+
 
 
 # write.csv(, "outputs/discard_data/*******.csv")
