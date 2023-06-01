@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  landings 
+# Specific item in that topic: 
+# 	- ASHOP Catches 
+# Author:  Joshua Zahner 
+# Date: 2023-05-24 14:51:58 
+# Sensitivity Analysis ID: Item 1.2 
+# Name of the model created:
+# 	- 23.landings.ashop 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/1.2_Landings_ashop 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/1.2_Landings_ashop_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/1.2_Landings_ashop_Outputs.R .R
+# 
+# Features: 
+#  Integrating At-Sea Hake catches of SST. This data was provided in May and processed by Kiva Oken. 
+# ============================================================ #
+

@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  biological_Info 
+# Specific item in that topic: 
+# 	- Sensitivity to fecundity 
+# Author:  Sabrina Beyer 
+# Date: 2023-05-23 15:25:35 
+# Sensitivity Analysis ID: Item 4.3 
+# Name of the model created:
+# 	- 23.biology.no_fecundity 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/model/Sensitivity_Anal/4.3_Fecundity_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.3_Fecundity_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.3_Fecundity_Sensitivity_Outputs.R .R
+# 
+# Features: 
+#  Sensitivity of the base model to removing the length-fecundity relationship and assuming spawning biomass is equivalent to spawning output 
+# ============================================================ #
+

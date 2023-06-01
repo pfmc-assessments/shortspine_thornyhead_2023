@@ -1739,15 +1739,26 @@ SS_plots(replist,
 var.to.save <- var.to.save[!var.to.save %in% c('Start23_blkret_T3_NT2','Dat23_blkret_T3_NT2','Ctl23_blkret_T3_NT2','Fore23_blkret_T3_NT2')]
 rm(list = setdiff(ls(), var.to.save))
 var.to.save <- ls()
+
+
+
 # -----------------------------------------------------------
 # -----------------------------------------------------------
+
+## End section ##
 
 # You are ready to analyze the differences between the models
 # considered in this sensitivity analysis.
-# This can be done using the 5.9_Retention_Sensitivity_Outputs.R script.
+# This can be done using the 5.9_Retention_Sensitivity_Outputs.R script 
 
+# !!!!! WARNING !!!!!
+# ------------------- #
+# Please do not develop any script that you want to keep after this 
+# warning section - It might be overwritten in the case you add a new 
+# model to this SA.
+# ------------------- #
+
+## End script to develop SA models ##
 
 # -----------------------------------------------------------
 # -----------------------------------------------------------
-
-

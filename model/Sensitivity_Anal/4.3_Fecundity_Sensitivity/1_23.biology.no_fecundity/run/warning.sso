@@ -1,0 +1,7 @@
+Note 1 Information: Max data length bin: 72  < max pop len bins: 90; so will accumulate larger pop len bins
+Warning 1 : Early recdev biasadj is >2 times ratio of rmse to sigmaR
+Warning 2 : Final gradient: 0.000172849 is larger than final_conv: 0.0001
+Warning 3 : Time-vary parms not bound checked
+Warning 4 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
+Note 2 Information:  N parameters that are on or within 1% of min-max bound: 1; check results, variance may be suspect
+ 4 warnings  and 2 notes 

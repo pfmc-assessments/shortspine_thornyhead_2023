@@ -10,25 +10,25 @@ The most recent assessment made a number of recommendations for data availabilit
 
 1. More investigation into maturity of `r spp`.
 
-*A new maturity curve was derived from new histological samples taken during the WCGBTS and processed by Melissa Head. The new maturity curve implies that maturation occurs at mych larger lengths, and much more slowly, than what was assumed in 2013.*
+*Progress: A new maturity curve was derived from new histological samples taken during the WCGBTS and processed by Melissa Head. The new maturity curve implies that maturation occurs at much larger lengths, and much more slowly, than what was assumed in 2013.*
 
 2. Information on possible migration of `r spp` would be valuable for understanding stock dynamics. 
 3. A greater understanding of catchability of `r spp` would help define the scale of the populations.
 
-*The degree of uncertainty in the scale of the population has substantially decreased since 2012, and the catchability coefficients in the current model are computed analytically by Stock Synthesis. Likelihood profiles over $R_0$ and $M$ imply they have a much stronger relationship with overall population scale the analytically derived catchability values.*
+*Progress: The degree of uncertainty in the scale of the population has substantially decreased since 2012, and the catchability coefficients in the current model are computed analytically by Stock Synthesis. Likelihood profiles over $R_0$ and $M$ imply they have a much stronger relationship with overall population scale the analytically derived catchability values.*
 
 4. Age data and additional research on ageing methods for thornyheads would be valuable.
 
-*Age data and aging methods remain limited for `r spp`.*
+*Progress: Age data and aging methods remain limited for `r spp`.*
 
 5. A greater understanding of the connection between `r spp` and bottom type could be used to refine the indices of abundance. 
 6. A comprehensive catch reconstruction for shortspine and longspine thornyheads should be completed to estimate landings for each species prior to 1981 in each of the three states.
 
-*State-level catch reconstructions were integrated into the base model for 2023. They represented a minimal change in the catch timeseries as compared to the 2013 assessment.*
+*Progress: State-level catch reconstructions were integrated into the base model for 2023. They represented a minimal change in the catch timeseries as compared to the 2013 assessment.*
 
 7. Exploration of simpler assessment methods for `r spp` and evaluation of whether such methods would provide a more robust management strategy than the current approach. 
 
-*While simple methods were not tested for this assessment, the model structure was significantly simplified from four fleets and five surveys, to three fleets and two surveys. This significantly reduced the total number of parameters that needed to be estimated by the model.*
+*Progress: While simpler methods were not tested for this assessment, the model structure was significantly reduced from four fleets and five surveys, to three fleets and two surveys. This significantly reduced the total number of parameters that needed to be estimated by the model.*
 
 8. More tows or visual surveys south of 34.5 deg. N. lat. including the large \gls{cca}. Because the southern Conception Area is a large potential habitat for `r spp`, more sampling effort would help refine the estimations of their abundance in this area.
 

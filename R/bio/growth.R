@@ -167,6 +167,22 @@ optim.m  <- exp(vbgf.optim$par)[c(1,3,5)]
 optim.f  <- exp(vbgf.optim$par)[c(2,4,6)]
 
 aic1 <- -2 * vbgf.optim$value + 2 * length(vbgf.optim$par)
+      
+      #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # compare to vbgf (nls) to get an idea of standard error of the parameter estimate
+      # note, not directly comparable (assumes normal errors); get different parameter estimates 
+        butler$sex2<-as.factor(as.character(butler$sex))
+        a_1<-2
+        a_2<-100
+        vbgf.nls2 <- nls(length_cm ~ la1[sex2] + (la2[sex2] - la1[sex2]) * 
+                           (1-exp(-k[sex2]*(age-a_1))) / 
+                           (1-exp(-k[sex2]*(a_2-a_1))), 
+                         data = butler, 
+                         start = list(la1 = rep(8,2),     
+                                      la2 = rep(70,2),    
+                                      k   = rep(0.01,2))) 
+        summary(vbgf.nls2)
+      #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Schnute with sex-specific L2 and k parameters ----
 
@@ -470,6 +486,35 @@ out <- out %>%
                      Sensitivity_Run = 'Decrease_Lengths_at_A1_and_A2_10percent')) %>% 
   select(Sensitivity_Run, Sex, A1, A2, Length_at_A1, 
          Length_at_A2, k) 
+
+ # Convert to von Bertalanffy parameters ----
+  # (Schnute and Fournier 1980)
+        # reference ages
+        a_1 = 2 
+        a_2 = 100
+        
+        # Females
+        Schnute.k.f     <-  exp(-optim.f[3]) # the above equation gives you VB K (different from the Schnute k in the paper)
+        L_inf_convert.f <- (optim.f[2]-optim.f[1]*Schnute.k.f^(a_2 - 1))/ (1 - Schnute.k.f^(a_2 -1))
+        k.convert.f     <-  -log(Schnute.k.f)
+        t0_convert.f    <-  a_1 - (1/log(Schnute.k.f))*log((optim.f[2] - optim.f[1])/(optim.f[2] - optim.f[1]*Schnute.k.f^(a_2-1)))
+        converted.VB.f  <-  c(t0_convert.f, L_inf_convert.f, k.convert.f)
+        names(converted.VB.f) <-c("VB.t0.f","VB.l_inf.f","VB.k.f")
+        optim.f         #Schnute lognormal params
+        converted.VB.f  #converted back to VB params
+        
+        # Males
+        Schnute.k.m     <-  exp(-optim.m[3])
+        L_inf_convert.m <- (optim.m[2]-optim.m[1]*Schnute.k.m^(a_2 - 1))/ (1 - Schnute.k.m^(a_2 -1))
+        k.convert.m     <-  -log(Schnute.k.m)
+        t0_convert.m    <-  a_1 - (1/log(Schnute.k.m))*log((optim.m[2] - optim.m[1])/(optim.m[2] - optim.m[1]*Schnute.k.m^(a_2-1)))
+        converted.VB.m  <-  c(t0_convert.m, L_inf_convert.m, k.convert.m)
+        names(converted.VB.m) <-c("VB.t0.m","VB.l_inf.m","VB.k.m")
+        optim.m         #Schnute lognormal params
+        converted.VB.m  #converted back to VB params
+
+
+
 
 # kline ----
 

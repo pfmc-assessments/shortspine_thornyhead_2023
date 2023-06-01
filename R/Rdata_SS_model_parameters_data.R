@@ -45,6 +45,7 @@ srv_db_all <-  read_csv(file.path(dir_dat, "survey_db_indices_all_2023.csv"))
 srv_db_noslope <-  read_csv(file.path(dir_dat, "survey_db_indices_noslope_2023.csv"))
 srv_mb_all <-  read_csv(file.path(dir_dat, "survey_mb_indices_all_2023.csv"))
 srv_mb_noslope <-  read_csv(file.path(dir_dat, "survey_mb_indices_noslope_2023.csv"))
+srv_mb_noslope_depth <-  read_csv(file.path(dir_dat, "survey_mb_indices_noslope_2023_depth.csv"))
 srv_len_all <- read_csv(file.path(dir_dat, "survey_length_comps_all_2023.csv"))
 srv_len_noslope <- read_csv(file.path(dir_dat, "survey_length_comps_noslope_2023.csv"))
 srv_mb_noslope_lognormal <-  read_csv(file.path(dir_dat, "survey_mb_indices_noslope_2023_lognormal.csv"))
@@ -55,6 +56,7 @@ srv_mb_noslope_lognormal <-  read_csv(file.path(dir_dat, "survey_mb_indices_nosl
 # structure (NTrawl, NOther, STrawl, SOther) and the new 3 fleet structure
 # (NTrawl, STrawl, Other)
 landings3 <-  read_csv(file.path(dir_dat, "landings_3fleet_2023.csv"))
+landings3.ashop <- read_csv(file.path(dir_dat, "landings_3fleet_ashop_2023.csv"))
 landings4 <-  read_csv(file.path(dir_dat, "landings_4fleet_2023.csv"))
 landings_lencomps3 <-  read_csv(file.path(dir_dat, "landings_length_comps_3fleet_2023.csv"))
 landings_lencomps4 <-  read_csv(file.path(dir_dat, "landings_length_comps_4fleet_2023.csv"))
@@ -495,6 +497,7 @@ SS_Param2023$Catch$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(lan
 SS_Param2023$Catch$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(landings3)
 SS_Param2023$Catch$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(landings3)
 SS_Param2023$Catch$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(landings3)
+SS_Param2023$Catch$data$ThreeFleets_NoSlope_CombineTriennial_ASHOP <- as.data.frame(landings3.ashop)
 
 # Survey data ----
 SS_Param2023$Indices$Content <- "These are the survey data"
@@ -505,6 +508,7 @@ SS_Param2023$Indices$data$FourFleets_UseSlope_SplitTriennial <- as.data.frame(sr
 SS_Param2023$Indices$data$FourFleets_UseSlope_CombineTriennial <- as.data.frame(srv_mb_all)
 SS_Param2023$Indices$data$FourFleets_NoSlope_CombineTriennial <- as.data.frame(srv_mb_noslope)
 SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing(srv_mb_noslope, start.index=5))
+SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial_depth <- as.data.frame(fix.fleet.indexing(srv_mb_noslope_depth, start.index=5))
 SS_Param2023$Indices$data$ThreeFleets_NoSlope_SplitTriennial <- as.data.frame(fix.fleet.indexing(srv_db_noslope, start.index=4))
 SS_Param2023$Indices$data$ThreeFleets_UseSlope_CombineTriennial <- as.data.frame(fix.fleet.indexing(srv_mb_all, start.index=5))
 SS_Param2023$Indices$data$ThreeFleets_NoSlope_CombineTriennial_lognormal <- as.data.frame(fix.fleet.indexing(srv_mb_noslope_lognormal, start.index=5))

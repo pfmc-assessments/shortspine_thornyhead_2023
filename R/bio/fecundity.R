@@ -27,6 +27,8 @@ b <- 3.978
 fecatlength <- data.frame(length = lens) %>% 
   mutate(fec = a * length ^ b)
 
+options(scipen = 999) #turn off scientific notation
+
 ggplot(fecatlength, aes(x = length, y = fec)) +
   geom_line() + 
   labs(x = 'Length (cm)', y = 'Fecundity',
@@ -75,3 +77,4 @@ Fecundity <- data.frame(Param = c("Eggs_alpha_Fem_GP_1","Eggs_beta_Fem_GP_1"),
                         Value = c(a.param.SST.million.eggs,b.param.SST.million.eggs))
 
 write_csv(Fecundity, 'data/for_ss/fecundity_2023.csv')
+

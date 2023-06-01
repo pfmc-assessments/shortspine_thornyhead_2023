@@ -303,6 +303,30 @@ NewSensAnal(topic = "model",
            new_model = c("23.dmn"))
 
 
+# Fecundity sensitivity analysis 
+NewSensAnal(topic = "biological_Info",
+            # names are based on new model
+            object = c("Sensitivity to fecundity"),
+            author = "Sabrina Beyer",
+            folder_name = "Fecundity_Sensitivity",
+            script_model = "Fecundity_Sensitivity_Analyses",
+            script_results = "Fecundity_Sensitivity_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.biology.no_fecundity"))
+
+
+# ASHOP catches sensitivity analysis 
+NewSensAnal(topic = "landings",
+            # names are based on new model
+            object = c("ASHOP Catches"),
+            author = "Joshua Zahner",
+            folder_name = "Landings_ashop",
+            script_model = "Landings_ashop_Analyses",
+            script_results = "Landings_ashop_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.landings.ashop"))
+
+
 #NewSensAnal(topic = "surveys",
 #            # names are based on new model
 #            object = c("MB vs DB indices"),
@@ -313,7 +337,9 @@ NewSensAnal(topic = "model",
 #            base_model = c("23.model.francis_2"),
 #            new_model = c("23.surveys.db"))
 
-
-
-
+# Add_Newmodel(SA_ID = "Item 1.1", new_model="23.landings.ashop2", base_model="23.model.francis_2", object = "Landings")
+# 
+# SOMEONE RUNS THESE MODELS! ASK JOSH FOR WHAT THESE SHOULD BE IF NOT CLEAR.
+# Add_Newmodel(SA_ID = "Item 3.2", new_model="23.surveys.useslope", base_model="23.model.francis_2", object = "Surveys")
+# Add_Newmodel(SA_ID = "Item 1.1", new_model="23.landings.4fleet", base_model="23.model.francis_2", object = "Landings")
 

@@ -30,7 +30,7 @@ author:
     middle: 'A'
     family: Heller-Shipley
   - name: Haley A. Oleynik
-    code: 4
+    code: 2
     first: H
     middle: 'A'
     family: Oleynik
@@ -40,22 +40,22 @@ author:
     middle: 'G'
     family: Beyer
   - name: Pierre-Yves Hernvann
-    code: 2
+    code: 3,4
     first: P-Y
     middle: ''
     family: Hernvann
   - name: Matthieu Véron
-    code: 6
+    code: 1,5
     first: M
     middle: ''
     family: Véron
   - name: Andrea N. Odell
-    code: 3
+    code: 6
     first: A
     middle: 'N'
     family: Odell
   - name: Jane Y. Sullivan
-    code: 5
+    code: 7
     first: J
     middle: 'Y'
     family: Sullivan
@@ -65,22 +65,22 @@ author:
     middle: 'L'
     family: Hayes
   - name: Vladlena Gertseva
-    code: 2
+    code: 4
     first: V
-    middle: ''
+    middle: 'G'
     family: Gertseva
   - name: Kiva L. Oken
-    code: 2
+    code: 4
     first: K
     middle: 'L'
     family: Oken
   - name: Owen Hamel
-    code: 2
+    code: 4
     first: O
     middle: 'S'
     family: Hamel
   - name: Melissa A. Haltuch
-    code: 6
+    code: 5
     first: M
     middle: 'A'
     family: Haltuch
@@ -91,36 +91,41 @@ affiliation:
     address: School of Aquatic and Fishery Sciences, University of Washington, 1122
       NE Boat Street, Seattle, Washington 98195
   - code: 2
+    address: Institute for the Oceans and Fisheries, University of British Columbia,
+      2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - code: 3
+    address:  Institute of Marine Sciences’ Fisheries Collaborative Program, University
+      of California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+  - code: 4
     address: Northwest Fisheries Science Center, U.S. Department of Commerce, National
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
       Montlake Boulevard East, Seattle, Washington 98112
-  - code: 3
-    address: University of California Davis, One Shields Avenue, Davis, California
-      95616
-  - code: 4
-    address: Institute for the Oceans and Fisheries, University of British Columbia,
-      2202 Main Mall, Vancouver, British Columbia Canada V6T 1Z4
   - code: 5
-    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
-      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109
-      Point Lena Loop Road, Juneau, Alaska 99801
-  - code: 6
     address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
       Oceanic and Atmospheric Administration, National Marine Fisheries Service, 7600
       Sand Point Way N.E., Seattle, Washington 98115
+  - code: 6
+    address: University of California Davis, One Shields Avenue, Davis, California
+      95616
+  - code: 7
+    address: Alaska Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 17109
+      Point Lena Loop Road, Juneau, Alaska 99801
 address:
   - ^1^School of Aquatic and Fishery Sciences, University of Washington, 1122 NE Boat
     Street, Seattle, Washington 98195
-  - ^2^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^2^Institute for the Oceans and Fisheries, University of British Columbia, 2202
+    Main Mall, Vancouver, British Columbia Canada V6T 1Z4
+  - ^3^Institute of Marine Sciences’ Fisheries Collaborative Program, University of 
+    California-Santa Cruz, 1156 High Street, Santa Cruz, California 95064
+  - ^4^Northwest Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 2725 Montlake
     Boulevard East, Seattle, Washington 98112
-  - ^3^University of California Davis, One Shields Avenue, Davis, California 95616
-  - ^4^Institute for the Oceans and Fisheries, University of British Columbia, 2202
-    Main Mall, Vancouver, British Columbia Canada V6T 1Z4
-  - ^5^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^6^University of California Davis, One Shields Avenue, Davis, California 95616
+  - ^7^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 17109 Point
     Lena Loop Road, Juneau, Alaska 99801
-  - ^6^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
+  - ^5^Alaska Fisheries Science Center, U.S. Department of Commerce, National Oceanic
     and Atmospheric Administration, National Marine Fisheries Service, 7600 Sand Point
     Way N.E., Seattle, Washington 98115
 ---
@@ -140,6 +145,13 @@ title: Status of Shortspine Thornyhead (_Sebastolobus alascanus_) along the US W
 ---
 
 <!--chapter:end:00title.Rmd-->
+
+*These materials do not constitute a formal publication and are for information
+only. They are in a pre-review, pre-decisional state and should not be formally cited or reproduced. They are to be considered provisional and do not represent any determination or policy of NOAA or the Department of Commerce.*
+
+
+
+<!--chapter:end:00z.Rmd-->
 
 \pagebreak
 \pagenumbering{roman}
@@ -163,9 +175,9 @@ title: Status of Shortspine Thornyhead (_Sebastolobus alascanus_) along the US W
 This assessment applies to shortspine thornyhead (*Sebastolobus alascanus*) off of the west coast of the United States from the U.S.-Canada border to the U.S.-Mexico border using data through 2022. Shortspine thornyhead are modeled in this assessment as a single stock. They have been reported as deep as 1,524 m, and this assessment applies to their full depth range although survey and fishery data are only available down to 1,280 m. 
 
 ## Catches{-}
-Historically, landings of shortspine thornyhead` remained under 500 metric tons until the late 1960s when landings began to increase steadily, rising to a peak of 4,815 mt in 1989, followed by a sharp decline during a period when trip limits and other management measures were imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
+Historically, landings of shortspine thornyhead remained under 500 metric tons until the late 1960s when landings began to increase steadily, rising to a peak of 4,815 mt in 1989, followed by a sharp decline during a period when trip limits and other management measures were imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995-1998. Landings fell below 1,000 mt per year from 1999-2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
 
-Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets, and non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for shortspine thornyhead have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. 
+Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for shortspine thornyhead have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. 
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -204,13 +216,14 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 
 
 ## Data and assessment{-}
-The most recent assessment for shortspine thornyhead was conducted in 2013 [@taylor_stephens_2013]. Stock status was determined to be above the management target and catches did not attain the full management limits, so reassessment of thornyheads has not been a higher priority. This assessment uses Stock Synthesis [@methot_stock_2013] Version 3.30.21, used in many other recent west coast assessments. 
+
+The most recent assessment for shortspine thornyhead was conducted in 2013 [@taylor_stephens_2013]. Stock status was determined to be above the management target and catches did not attain the full management limits, so reassessment of thornyheads has not been a higher priority. This assessment uses Stock Synthesis [@methot_stock_2013] Version 3.30.21, used in many other recent US West Coast assessments. 
 					
 Data were divided into three fishery fleets: North trawl (the waters off Washington and Oregon), South trawl (the waters off California), and coastwide Non-trawl, and three survey fleets: the \gls{s-tri} from 1980-2004, which was divided into early (pre-1995) and late period (post-1995) to account for a change in depth-sampling, and the \gls{s-wcgbt}, 2003-2022 (Figure \ref{fig:assessment_data_timeseriesES}). 
 
 Most data used in the 2013 assessment were newly pulled and processed for this assessment, including length compositions from all fishing and survey fleets, indices of abundance derived from new geostatistical analyses, discard rates from both a 1980s observer study [@pikitch_evaluation_1988] and the current \gls{wcgop}, historical catch data from Washington, Oregon, and California, and all reported catches from 1981-2022. The only data  taken from the previous assessment without reanalysis were discard rates from the \gls{edcp} study in the 1990s. 
 
-New maturity analyses of samples collected in the \gls{wcgop} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (M. Head, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning. This assessment also assumes a new fecundity relationship, in which fecundity increases with body size. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
+New maturity analyses of samples collected in the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (Melissa Head, \gls{nwfsc}, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of females spawning. This assessment also assumes a new fecundity relationship, in which fecundity is modeled as a power function of length. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
 
 This assessment estimated 180 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 43 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
@@ -219,7 +232,9 @@ This assessment estimated 180 parameters. The log of the unfished equilibrium re
 ![Summary of data sources used in the base model.\label{fig:assessment_data_timeseriesES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/data_plot.png){width=80% height=100% alt="."}
 
 ## Stock biomass and dynamics{-}
-Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs (5.346-11.201 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (33\%-49\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated in 2013 (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
+
+Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs (5.346-11.201 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (33\%-49\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
+
 
 
 ![Estimated spawning output trajectory for shortspine thornyhead.\label{fig:ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
@@ -303,12 +318,12 @@ The summary harvest rate (total catch divided by age-1 and older biomass) closel
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
-\caption{(\#tab:sprES)Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals.}\\
+\caption{(\#tab:sprES)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\%})$. }\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{(\#tab:sprES)Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals. \textit{(continued)}}\\
+\caption[]{(\#tab:sprES)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\%})$.  \textit{(continued)}}\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
@@ -332,16 +347,16 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \endgroup{}
 
 
-![Estimated relative spawning output trajectory for shortspine thornyhead.\label{fig:rel_ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
+![Estimated spawning output relative to unfished equilibrium for shortspine thornyhead.\label{fig:rel_ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
 
 
-![Summary F rate.\label{fig:summary_fES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
+![Summary fishing mortality rate (total landings / summary biomass).\label{fig:summary_fES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
 
 
-![Estimated spawning potential ratio.\label{fig:spr_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
+![Estimated relative fishing intensity as a function of spawning potential ratio (SPR).\label{fig:spr_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
 
 
-![Phase diagram.\label{fig:phase_diagramES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
+![Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.\label{fig:phase_diagramES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
 
 ## Ecosystem considerations{-}
 This stock assessment does not explicitly incorporate trophic interactions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
@@ -453,6 +468,8 @@ Research and data needs for future assessments include the following:
 6. Additional investigation into spatial stock structure could be valuable for determining whether future assessments should develop a spatial assessment model, or if shortspine thornyhead should be assessed at distinct spatial scales in the future.
 7. Further research into the Dirichilet-Multinmoial (DMN) data-weighting method for length-composition data is needed for integration with length-based data-moderate assessments like shortspine thornyhead. The DMN method has not, to date, been thoroughly simulation tested with length-composition data, and an attempted sensitivity analysis performed for the 2023 assessment failed to converge entirely. This is a general research need, and is widely applicable to many data-moderate or length-based assessments, not just shortspine thornyhead.
 
+*We were recently provided with non-nominal shortspine thornyhead catches from the At-Sea Hake Fishery that have not yet been integrated into the model presented here. Additionally, recent analyses have identified selectivity/retention time blocks that vastly improve model fits to the available data with minimal changes to stock scale or status. This new information will be integrated into the base model in the coming weeks. As such, the model and results that will be presented at STAR panel on June 5-9, 2023, may differ slightly than what is presented here.*
+
 
 
 <!--chapter:end:01executive.Rmd-->
@@ -485,11 +502,11 @@ Genetic studies of stock structure show few genetic differences among shortspine
 @dorval_2022 applied otolith microchemistry to immature fish to redefine population structure of shortspine thornyhead on the west coast. Their results indicate that the population of immature shortspines belongs to two distinct groups distributed north and south of Cape Mendocino, California. 
 
 ## Life History
-Shortspine thornyheads along the West Coast spawn pelagic, gelatinous floating egg masses between December and May [@wakefield_1990; @erickson_pikitch_1993; @pearson_gunderson_2003]. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence for batch spawning in this species on the West Coast, but more recent histological examination of ovaries suggest that some shortspine thornyhead can be batch spawners with two to three batches developing simultaneously (Melissa Head, NWFSC, pers. comm.). Juveniles settle at around 1 year of age (22- 27 mm in length), likely in the range of 100-200 m [@vetter_lyn_1997], and migrate down the slope with age and size, although large individuals are found across the depth range.		
+Shortspine thornyheads along the West Coast spawn pelagic, gelatinous floating egg masses between December and May [@wakefield_1990; @erickson_pikitch_1993; @pearson_gunderson_2003]. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence for batch spawning in this species on the West Coast, but more recent histological examination of ovaries suggest that some shortspine thornyhead can be batch spawners with two to three batches developing simultaneously (Melissa Head, \gls{nwfsc}, pers. comm.). Juveniles settle at around 1 year of age (22- 27 mm in length), likely in the range of 100-200 m [@vetter_lyn_1997], and migrate down the slope with age and size, although large individuals are found across the depth range.		
 
 Shortspine thornyhead are notoriously challenging to age, and a recent age validation study using 14C bomb radiocarbon was inconclusive [@kastelle_etal_2020]. However, best available data suggests that the shortspine thornyhead life span may exceed 100 years [@butler_1995; @kline_1996]. Estimates of natural mortality for shortspine thornyhead range from 0.013 [@pearson_gunderson_2003] to 0.07 [@kline_1996]. However, the Pearson and Gunderson estimate is based upon a regression model, using the gonadosomatic index as a proxy. @butler_1995 estimated M to be 0.05 based upon a maximum lifespan of 100 years. @butler_1995 also suggested that M may be lower for older, larger shortspine thornyhead residing in the oxygen minimum zone due to lack of predators. All estimates of M for thornyheads are highly uncertain.
 
-Shortspine thornyhead grow very slowly and may continue growing throughout their lives, reaching maximum lengths of over 70 cm. Females grow to larger sizes than males. Maturity in females has been previously estimated as occurring near 18 cm, with fish transitioning from immature to mature within a relatively narrow range of sizes between 15 and 20 cm [@pearson_gunderson_2003]. However, more recent histological data collected in the \gls{s-wcgbt} and analyzed using current best practices suggests that functional maturation, which accounts for abortive maturation and skip spawning, occurs over a broader spectrum of sizes between 10 and 55 cm (length-at-50% maturity, L50 =31.4; personal communication, Melissa Head, \gls{nwfsc}, pers. comm.). 
+Shortspine thornyhead grow very slowly and may continue growing throughout their lives, reaching maximum lengths of over 70 cm. Females grow to larger sizes than males. Maturity in females was previously estimated as occurring near 18 cm, with fish transitioning from immature to mature within a relatively narrow range of sizes between 15 and 20 cm [@pearson_gunderson_2003]. However, more recent histological data of gonads collected in the \gls{s-wcgbt} and analyzed using current best practices suggests that functional maturation, which accounts for abortive maturation and skip spawning, occurs over a broader spectrum of sizes between 10 and 55 cm (length-at-50% maturity, L50 =31.4; personal communication, Melissa Head, \gls{nwfsc}, pers. comm.). 
 
 ## Ecosystem Considerations
 Shortspine thornyhead have historically been caught alongside longspine thornyhead in a \gls{dts}. Other groundfishes that frequently co-occur in deep waters include a complex of slope rockfishes, Rex sole, longnose skate, roughtail skate, Pacific grenadier, giant grenadier, and Pacific flatnose. Non-groundfish species such as Pacific hagfish and a diverse complex of eelpouts also co-occur with shortspine thornyhead. 
@@ -509,12 +526,12 @@ Non-trawl landings of shortspine thornyhead were relatively low prior to the mid
 
 The foreign fishery off of the West Coast is estimated to have caught approximately 7,400 mt of shortspine thornyhead during the 11 year period from 1966-1976 [@rogers_species_2003], which is similar to the estimated domestic catch (~8,600 mt) during that same period.
 
-**Management measures** have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since (Table \ref{tab:allcatch}).
+Management measures have contributed to a decline in coastwide landings from an estimated peak of 4,815 mt in 1989 to between 1,000 and 2,000 mt per year from 1995 through 1998. Landings fell below 1,000 mt per year from 1999 through 2006, then rose to 1,531 in 2009 and have declined since (Table \ref{tab:allcatch}).
 
 In 2011, the west coast trawl fishery was rationalized, with the introduction of the Individual Fishing Quota (IFQ) Program. In order to provide more flexibility for fishers on the west coast, NOAA Fisheries implemented the West Coast Groundfish Trawl Fishery Catch Share Program, which allows for the division of catch allocated to the trawl fishery into shares controlled by individuals or cooperatives [@catchshare]. All vessels that participate in the IFQ program are required to have 100% observer coverage at all times the vessels are at sea [@catchshare].
 
 ## Summary of Management History and Performance
-Beginning in 1989, both thornyhead species were managed as part of a \gls{dts} complex. In 1991, the \gls{pfmc} adopted separate \gls{abc} levels for thornyheads and catch limits were imposed on the thornyhead complex. \Gls{hg}s were instituted in 1992 along with an increase in the minimum mesh size for bottom trawl fisheries. In 1995 separate landing limits were placed on shortspine and longspine thornyhead and trip limits became more restrictive. Trip limits (predominantly 2-month limits on cumulative vessel landings) have often been adjusted during the year since 1995 in order to not exceed the \Gls{hg} or \gls{oy}. At first, the \gls{hg} for shortspine thornyhead was set higher than the \gls{abc} (1,500 vs. 1,000 mt in 1995-1997) in order to allow a greater catch of longspine thornyhead, which was considered relatively undepleted. In 1999 the \gls{oy} was set at less than 1,000 mt and remained close to that level through 2006. As a result of the 2005 shortspine thornyhead assessment, catch limits increased to about 2,000 mt per year and have remained between 2,000 mt and 3,000 mt per year to present.
+Beginning in 1989, both thornyhead species were managed as part of a \gls{dts} complex. In 1991, the \gls{pfmc} adopted separate \gls{abc} levels for thornyheads and catch limits were imposed on the thornyhead complex, under the Pacific Coast Groundfish Fishery Management Plan (FMP). \Gls{hg}s were instituted in 1992 along with an increase in the minimum mesh size for bottom trawl fisheries. In 1995 separate landing limits were placed on shortspine and longspine thornyhead and trip limits became more restrictive. Trip limits (predominantly 2-month limits on cumulative vessel landings) have often been adjusted during the year since 1995 in order to not exceed the \Gls{hg} or \gls{oy}. At first, the \gls{hg} for shortspine thornyhead was set higher than the \gls{abc} (1,500 vs. 1,000 mt in 1995-1997) in order to allow a greater catch of longspine thornyhead, which was considered relatively undepleted. In 1999 the \gls{oy} was set at less than 1,000 mt and remained close to that level through 2006. As a result of the 2005 shortspine thornyhead assessment, catch limits increased to about 2,000 mt per year and have remained between 2,000 mt and 3,000 mt per year to present.
 
 Since early 2011, trawl harvest of each thornyhead species has been managed under the \gls{pfmc}’s catch share, or \gls{ifq}, program. Whereas the trip limits previously used to limit harvest restricted only the amount of fish each vessel could land, individual vessels fishing under the catch-share program are now held accountable for all of the quota-share species they catch. 
 
@@ -568,14 +585,14 @@ This treatment of historical thornyhead landings differs from the 2005 and 2013 
 
 
 ### Discards and retention
-Predicted discards were based on estimated retention and selectivity for each fleet (Figure \ref{fig:disc_hist}). Discards were informed by four data sources covering three different periods. Data sets included, 1) @pikitch_evaluation_1988 Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (J. R. Wallace, pers. comm.), 2) the \gls{edcp} covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the \gls{wcgop}, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the \gls{gemm} data set, covering the same period as the \gls{wcgop} with catch-share participation information and estimates of discard survival rates.
+Predicted discards were based on estimated retention and selectivity for each fleet (Figure \ref{fig:disc_hist}). Discards were informed by four data sources covering three different periods. Data sets included, 1) @pikitch_evaluation_1988 Discard and Mesh Studies, used to estimate both discard rates and length composition of the northern trawl fleet between 1985 and 1987 (John. R. Wallace, \gls{nwfsc} pers. comm.), 2) the \gls{edcp} covering 1995-1999, which only informed discard rates of the northern trawl fleet, 3) the \gls{wcgop}, which provided discard rates, length composition, and individual average weight for years between 2002 and 2021 for all fleets, and 4) the \gls{gemm} data set, covering the same period as the \gls{wcgop} with catch-share participation information and estimates of discard survival rates.
 
 While the estimates from the first two data sets were directly integrated into the model, fleet discard rates after 2011 were available separately for catch-share and non-catch-share programs. Final, fleet-specific, discard rates were thus computed as the average \gls{wcgop} discard rate weighted by the relative proportion of total landings belonging to the catch-share and non-catch-share, respectively (Figure \ref{fig:disc_rates_WCGOP}). Regardless of the type of data, all estimates derived from these data sets had associated uncertainty accounting for the variability observed within the sample of hauls and fishing trips of each fleet. WCGOP-derived discard rates are an exception as, after the catch share program was initiated in 2011, 100% of hauls from catch share fleets were observed, while non-catch share vessels were only partially covered [@catchshare].
 
 The discard data sources were the same as those used in the 2013 assessment. The main improvements are the increased representativeness of all 4 fleets (11 more years) and more accurate estimates of discard rates from \gls{edcp} that were not ready at the time of the previous assessment. Last, some errors in the previous assessment were corrected regarding the weight units considered for the average individual weight (\gls{wcgop} provides weight as pounds and not as kg).
 
 ### Fishery Length Compositions 
-Commercial fishery length-composition data were obtained from \gls{pacfin} for 1978-2023. Due to variations in sampling effort and because the number of fish sampled by port samplers is not proportional to the amount of landed catch in each trip, the observed length data were expanded using the following algorithm using the `PacFIN.Utilities` package in R:
+Commercial fishery length-composition data were obtained from \gls{pacfin} for 1978-2023. Due to variations in sampling effort and because the number of fish sampled by port samplers is not proportional to the amount of landed catch in each trip, the observed length data were expanded using the following algorithm using the `PacFIN.Utilities` package in R [@pacfin_utils]:
 
 1. Length data were acquired at the trip level by sex, year and state.
 2. The raw numbers in each trip were scaled by a per-trip expansion factor calculated by dividing the total weight of trip landings by the total weight of the species sampled. 
@@ -584,17 +601,18 @@ Commercial fishery length-composition data were obtained from \gls{pacfin} for 1
 
 Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in Table \ref{tab:lensamp} (landings) and Table \ref{tab:disclensamp} (discards).
 
-Input sample sizes ${N_{input}}$ for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers. comm.): 
+Input sample sizes, ${N_{input}}$, for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers. comm.): 
 
-\begin{align*}{N_{input} = N_{trips} + 0.138N_{fish}}\qquad\text{ when }\frac{N_{fish}}{N_{trips}}<44 \\
-{N_{input} = 7.06N_{trips}}\qquad\qquad\qquad\text{ when }\frac{N_{fish}}{N_{trips}}\ge 44 \end{align*}
+\begin{equation} {N_{input} = N_{trips} + 0.138N_{fish}}\qquad\text{ when }\frac{N_{fish}}{N_{trips}}<44 \end{equation}
+
+ \begin{equation} {N_{input} = 7.06N_{trips}}\qquad\qquad\qquad\text{ when }\frac{N_{fish}}{N_{trips}}\ge 44 \end{equation}
 
 The method is based on analysis of the input and model-derived effective sample sizes from west coast groundfish stock assessments. A piece-wise linear regression was used to estimate the increase in effective sample size per sample based on fish-per-sample and the maximum effective sample size for large numbers of individual fish.
 
 All length data from commercial fisheries were included in the model with sexes combined. This avoids the possibility of bias due to difficulty in sex determination of thornyheads.
 
 ### Age Compositions 
-No age composition data was used for this assessment because thornyheads have proven very difficult to age (P. MacDonald, pers. comm.).  Even in directed studies such as those done by @kline_1996 and @butler_1995, there are large inter-reader differences, and a second reading by the same ager can produce a markedly different result. @kline_1996 reported only about 60% of the multiple reads were within 5 years of each other, and inter-reader differences were as large as 24 years for a sample of 50 otoliths. No production ageing of thornyheads is undertaken at this time for the west coast (or Alaska), although shortspine thornyhead otoliths are routinely collected in the NWFSC trawl survey.
+No age composition data was used for this assessment because thornyheads are very difficult to age (Patrick MacDonald, \gls{nwfsc}, pers. comm.).  Even in directed studies such as those done by @kline_1996 and @butler_1995, there are large inter-reader differences, and a second reading by the same ager can produce a markedly different result. @kline_1996 reported only about 60% of the multiple reads were within 5 years of each other, and inter-reader differences were as large as 24 years for a sample of 50 otoliths. No production ageing of thornyheads is undertaken at this time for the west coast (or Alaska), although shortspine thornyhead otoliths are routinely collected in the NWFSC trawl survey.
 
 <!--chapter:end:21f-.Rmd-->
 
@@ -604,7 +622,7 @@ Four trawl surveys have been conducted on the U.S. west coast over the past four
 ### \acrlong{s-tri}
 The \gls{afsc} conducted a triennial groundfish trawl survey (the \Gls{s-tri}) on the continental shelf from 1977 to 2001, although the 1977 survey had incomplete coverage and is not believed to be comparable to the later years. A final survey was conducted in 2004 by the \gls{nwfsc} using the same survey design. In 1995, the timing of the survey shifted from  mid-July and late September to  early June through mid-August. In 1980–1992 the survey had a maximum depth of 366 m, while from 1995 onward, the maximum depth was extended to 500 m. The shallow limit of the survey was 55 m in all years, but for purposes of computing indices, only tows deeper than 100 m were used as shortspine thornyhead are rarely seen at shallower depths. 
 
-For some species, the shift in timing between the 1992 and 1995 surveys would be expected to influence their catchability, availability, or distribution. However, thornyheads are believed to be sedentary enough that the change in timing would not be as influential. On the other hand, the increase in depth is expected to significantly increase the range of shortspine thornyhead habitat covered by the survey. In the 2013 assessment, the triennial survey was split into two-time series, separated by the 366 m depth contour, in order to preserve a time series of maximum duration while eliminating the influence of the increased depth range. The first time series, "AFSC Triennial Shelf Survey 1”, consisted of 9 data points spanning the range 1980–2004 and covering the depths 100–366 m. The second, “AFSC Triennial Shelf Survey 2”, consisted of 4 data points spanning 1995–2004 and covering depths 366–500 m. This second time series is recognized as providing little information about stock status due to the limited number of points and depth range, but there was no compelling reason to exclude it from the 2013 assessment. In contrast to the 2013 assessment, this assessment treated the \gls{s-tri} as a single time series for the geostatistical model-based indices, and used a different set of latitudinal and depth-based strata for survey length compositions (see Section 2.2.7). 
+For some species, the shift in timing between the 1992 and 1995 surveys would be expected to influence their catchability, availability, or distribution. However, thornyheads are believed to be sedentary enough that the change in timing would not be as influential. On the other hand, the increase in depth is expected to significantly increase the range of shortspine thornyhead habitat covered by the survey. In the 2013 assessment, the triennial survey was split into two timeseries, separated by the 366 m depth contour, in order to preserve a time series of maximum duration while eliminating the influence of the increased depth range. The first time series, "AFSC Triennial Shelf Survey 1”, consisted of 9 data points spanning the range 1980–2004 and covering the depths 100–366 m. The second, “AFSC Triennial Shelf Survey 2”, consisted of 4 data points spanning 1995–2004 and covering depths 366–500 m. This second time series is recognized as providing little information about stock status due to the limited number of points and depth range, but there was no compelling reason to exclude it from the 2013 assessment. In contrast to the 2013 assessment, this assessment treated the \gls{s-tri} as a single time series for the geostatistical model-based indices, and used a different set of latitudinal and depth-based strata for survey length compositions (see Section 2.2.7). 
 
 ### \acrshort{afsc} and \acrshort{nwfsc} Slope Surveys
 Starting in the late 1990s, two slope surveys were conducted on the west coast. The \gls{s-aslope} was conducted during the years 1997 and 1999–2001 using the research vessel Miller Freeman. The \gls{s-nwslope} was conducted from 1998–2002, and was conducted cooperatively using commercial fishing vessels. The \gls{s-aslope} was a source of valuable information on the depth distribution and overlap of shortspine and longspine thornyheads in the 1980s, but these early years had a very limited latitudinal range and will not be included. This survey also had a different net and larger roller gear than the \gls{s-nwslope}.
@@ -615,20 +633,20 @@ Neither of these surveys were included in the base model, as they represent rela
 In 2003, the design of the \gls{s-nwslope} was modified, and the survey was expanded to cover the shelf and slope between 50 m and 1280 m. This combination shelf-slope survey, “NWFSC Combo Survey”, more recently known as the \gls{s-wcgbt}, has been conducted every year from 2003 to present with consistent design (note that the survey was not conducted in 2020 due to ongoing concerns about COVID-19). Data for the years 2003–2022 were available for this assessment. The \gls{s-wcgbt} represents the largest number of survey observations, the largest depth range, and the most consistent groundfish sampling program in the history of west coast fisheries. Continuing this time series in a consistent manner is vital for improving estimates of current stock status and detecting any future changes in size distribution or abundance of west coast groundfish.
 
 ### Survey Stratification
-Data from these four (nominally five for design-based indices) fishery-independent surveys were considered for use in this assessment (Figure \ref{fig:survey_data_timeseries}) to estimate abundance. Two distinct survey abundance estimation methods were considered: design-based and geostatistical model-based indices. The 2013 assessment utilized delta-GLMMs following the methods of @thorson_ward_2013, but these methods are no longer considered best practice within the field and were not considered in this assessment.
+Data from these four (nominally five for design-based indices) fishery-independent surveys were considered for use in this assessment (Figure \ref{fig:survey_data_timeseries}) to estimate abundance. Two distinct survey abundance estimation methods were considered: design-based and geostatistical model-based indices. The 2013 assessment utilized delta-GLMMs, following the methods of @thorson_ward_2013,  to compute their indices of abundances, but these methods are no longer considered best practice within the field and were not considered in this assessment.
 
-The five surveys were stratified based on depth and latitude, similar to how they were in 2013 (Table \ref{tab:surveystrat}). The \gls{s-tri} was divided into two distinct survey time series, split on the year 1995. The early-Triennial time series (1981-1992) was further stratified into four strata: north and south of 42˚N, and shallower and deeper than 200m. The late-Triennial time series (1995-2004) was also further stratified into four strata: north and south of 40˚N, and shallower and deeper than 200m.  The \gls{s-aslope} was split into two coast-wide strata: shallow and deeper than 550m. The \gls{s-nwslope} was divided into 6 strata, with breaks dividing southern, central, and northern strata at 40.5º N and 43º N, each of which was further divided with a break at 550 m. The \gls{s-wcgbt} was divided into 7 strata, with two southern strata below 34.5º N, one covering 183–550 m and the other covering 550–1280 m. Two central strata, between 34.5º N and 40.5º N, had the same depth ranges. The latitudinal divide around 34.5º N is associated with changes in sampling intensity. North of 40.5º N, three strata were used, covering the ranges 100–183 m, 183–550 m, and the other covering 550–1280 m. The depth breaks at 183 m and 550 m are also associated with changes in the sampling intensity of the survey and are recommended to be used. South of 40.5º N, there are very few shortspine thornyhead shallower than 183 m, so no shallow stratum was used in these latitudes. The 2013 stratification was reused for the design-based indices as there was not sufficient evidence to support modifying the existing strata. 
+The five surveys were stratified based on depth and latitude, similar to how they were in 2013 (Table \ref{tab:surveystrat}). The \gls{s-tri} was divided into two distinct survey time series, split on the year 1995. The early-Triennial time series (1981-1992) was further stratified into four strata: north and south of 42˚N, and shallower and deeper than 200m. The late-Triennial time series (1995-2004) was also further stratified into four strata: north and south of 40˚N, and shallower and deeper than 200m. Note that this stratification scheme, as well as the two timeseries, applied to the \gls{s-tri} length composition data and design-based indices of abundance only. The geostatistical model-based inidices that are used in the base model treate the \gls{s-tri} as a single timeseries of abundance. The \gls{s-aslope} was split into two coast-wide strata: shallow and deeper than 550m. The \gls{s-nwslope} was divided into 6 strata, with breaks dividing southern, central, and northern strata at 40.5º N and 43º N, each of which was further divided with a break at 550 m. The \gls{s-wcgbt} was divided into 7 strata, with two southern strata below 34.5º N, one covering 183–550 m and the other covering 550–1280 m. Two central strata, between 34.5º N and 40.5º N, had the same depth ranges. The latitudinal divide around 34.5º N is associated with changes in sampling intensity. North of 40.5º N, three strata were used, covering the ranges 100–183 m, 183–550 m, and the other covering 550–1280 m. The depth breaks at 183 m and 550 m are also associated with changes in the sampling intensity of the survey and are recommended to be used. South of 40.5º N, there are very few shortspine thornyhead shallower than 183 m, so no shallow stratum was used in these latitudes. The 2013 stratification was reused for the design-based indices as there was not sufficient evidence to support modifying the existing strata. 
 
 ### Design-based Indices of Abundance
-Design-based indices of abundance were derived for all surveys (Figure \ref{fig:designbasedsurv}). Note that for these indices of abundance, the \gls{s-tri} was split into two independent time series, separated by the year 1995. The construction of design-based indices mirrors a weighted average approach. For each survey year, an average CPUE is calculated across all tows within a stratum and expanded by area to determine the total estimated biomass. These values are then summed across all strata within the survey to create a time series of design-based indices of abundance. Design-based indices were computed using the official `nwfscSurvey` R package. 
+Design-based indices of abundance were derived for all surveys (Figure \ref{fig:designbasedsurv}). Note that for these indices of abundance, the \gls{s-tri} was split into two independent time series, separated by the year 1995. The construction of design-based indices mirrors a weighted average approach. For each survey year, an average CPUE is calculated across all tows within a stratum and expanded by area to determine the total estimated biomass. These values are then summed across all strata within the survey to create a time series of design-based indices of abundance. Design-based indices were computed using the official `nwfscSurvey` R package [@nwfsc_survey]. 
 
 ### Geostatistical Model-based Indices of Abundance
-Model-based indices of abundance for all surveys were derived using geostatistical models [@thorson_etal_2015] developed using the R package sdmTMB [@Anderson_etal_2022]. This approach utilizes geostatistical GLMMs with spatially and spatiotemporally correlated random effects, which can account for variables that cause correlations in the data across space and time. For this reason, the \gls{s-tri} survey can be, and was, treated as a single time series rather than split into two timeseries based on the introduction of additional sampling at greater depths. For the \gls{s-tri} and \gls{s-wcgbt} surveys,  geostatistical models included spatial and spatiotemporal random effects and depth and depth squared as a scaled covariate. Geostatistical models for the \gls{s-nwslope} and \gls{s-aslope} were not run with depth as a covariate.
+Model-based indices of abundance (Figure \ref{fig:modelbasedsurv}) for all surveys were derived using geostatistical models [@thorson_etal_2015] developed using the R package sdmTMB [@Anderson_etal_2022]. This approach utilizes geostatistical GLMMs with spatially and spatiotemporally correlated random effects, which can account for variables that cause correlations in the data across space and time. For this reason, the \gls{s-tri} can be, and was, treated as a single time series rather than split into two timeseries based on the introduction of additional sampling at greater depths. For the \gls{s-tri}, the geostatistical model included spatial and spatiotemporal random effects and depth and depth squared as a scaled covariate. Geostatistical models for the \gls{s-nwslope}, \gls{s-aslope}, and \gls{s-wcgbt} surveys were not run with depth as a covariate.
 
 Abundance indices were obtained for models using both gamma and log-normal error structures. There is limited agreement on how best to go about model selection for these types of geostatistical models, and both error structures were tested as sensitivity analyses alongside the simple design-based indices described above. The abundance indices derived from the gamma model were most similar to the design-based indices for the Triennial and WCGBT surveys and were thus used for the base model (indices derived from the log-normal model displayed a similar trend to the gamma model-based indices, and the design-based indices, but were consistently larger in scale).
 
 ### Length Composition Data
-Length-composition data were available for each year of each survey including the \gls{s-aslope}, the \gls{s-nwslope}, the \gls{s-wcgbt}, and the \ref{s-tri}. For the Triennial survey, length compositions were divided into an early period (pre-1995), hereafter referred to as the “early-period Triennial” and late period (post-1995), hereafter referred to as the “late-period Triennial” survey, to account for the change in depth-sampling, and resulting selectivity, that occurred during the 1995 season. The early-period Triennial survey only uses data from 1989 and 1992 due to limited spatial coverage and sample sizes in other years. For all surveys, each haul consists of a set number of random samples regardless of the amount of catch, decoupling the sample and catch size. Therefore, the length compositions were calculated using an expansion factor to account for differences in the amount of catch that samples represent. An expansion factor (calculated as weight of caught fish divided by weight of fish sampled) is calculated for each haul, multiplied by the number of fish in each size bin, and then summed across hauls. This algorithm is repeated for each spatial stratum. Length composition data were compiled into 34, $2 cm$, length bins, ranging from 6 to 72 cm. Year-specific length frequency distributions generated for each survey are shown in Figure \ref{fig:survey_comps}.
+Length-composition data were available for each year of each survey including the \gls{s-aslope}, the \gls{s-nwslope}, the \gls{s-wcgbt}, and the \gls{s-tri}. For the Triennial survey, length compositions were divided into an early period (pre-1995), hereafter referred to as the “early-period Triennial” and late period (post-1995), hereafter referred to as the “late-period Triennial” survey, to account for the change in depth-sampling, and resulting selectivity, that occurred during the 1995 season. The early-period Triennial survey only uses data from 1989 and 1992 due to limited spatial coverage and sample sizes in other years. For all surveys, each haul consists of a set number of random samples regardless of the amount of catch, decoupling the sample and catch size. Therefore, the length compositions were calculated using an expansion factor to account for differences in the amount of catch that samples represent. An expansion factor (calculated as weight of caught fish divided by weight of fish sampled) is calculated for each haul, multiplied by the number of fish in each size bin, and then summed across hauls. This algorithm is repeated for each spatial stratum. Length composition data were compiled into 34, $2 cm$, length bins, ranging from 6 to 72 cm. Year-specific length frequency distributions generated for each survey are shown in Figure \ref{fig:survey_comps}.
 
 ### Frequency of Occurrence and Survey Information
 The frequency of occurrence of shortspine and longspine thornyhead in trawl surveys remains extremely high. 91% of the tows in the \gls{s-wcgbt} below 500 m have at least one shortspine thornyhead in the catch (and 96% for longspine thornyhead), similar to the 2013 assessment. The number of survey hauls and shortspine thornyhead sampled available for this assessment is described in Table \ref{tab:survinfo}.
@@ -639,57 +657,66 @@ The frequency of occurrence of shortspine and longspine thornyhead in trawl surv
 
 ### Natural Mortality
 
-@butler_1995 estimated the lifespan of shortspine thornyhead to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality developed based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Hamel, pers. comm.). For the base model, natural mortality was fixed 0.04 This implies an $A_{max}$ of ~135 years following the mortality prior of @hamel_cope_2022. 
+@butler_1995 estimated the lifespan of shortspine thornyhead to exceed 100 years and suggested that M was likely less than 0.05. M may decrease with age as shortspine migrate ontogenetically down the slope to the oxygen minimum zone, which is largely devoid of predators for fish of their body size. The 2005 assessment fixed the natural mortality parameter at 0.05, while the 2013 assessment used a prior on natural mortality based on a maximum age of 100 years. The prior had a mean of 0.0505 and a standard deviation on a log scale of 0.5361 (Owen Hamel,\gls{nwfsc}, pers. comm.). For the base model, natural mortality was fixed at 0.04. This implies an $A_{max}$ of ~135 years following the mortality prior of @hamel_cope_2022. 
 
 ### Maturation and Fecundity
 
-#### Maturity 
-@pearson_gunderson_2003 estimated length at 50% maturity to be 18.2 cm on the West coast, with most females maturing between 17 and 19 cm. This was represented in the 2005 and 2013 assessments by the logistic function,
+#### Maturity   
+@pearson_gunderson_2003 estimated a length at 50% maturity of 18.2 cm on the West Coast, with most females maturing between 17 and 19 cm. This was represented in the 2005 and 2013 assessments by the logistic function,
 \begin{equation} M(L) = (1 + e^{-2.3(L-18.2)})-1\end{equation}
 
 where L is the length in cm.
 
-The 2013 assessment considered new (at the time) maturity information from ovaries collected for maturity analysis on the 2011 and 2012 \gls{s-wcgbt}. Histological analysis of those samples (M. Head, pers. comm.) indicated puzzling patterns of spawning by female size and by latitude, with a higher fraction of fish spawning in the north than in the south and a higher fraction of spawning fish in the 20-30cm than in the 30-40cm range. However, due to the complexity of these observed patterns and the known ontogenetic migrations of shortspine thornyhead, samples collected in 2011 and 2013 were not considered adequate for estimation of a new representative maturity curve for the entire shortspine thornyhead population in 2013. Nonetheless, such a maturity curve was considered in a sensitivity analysis. On the basis of the sensitivity analysis, the 2013 assessment suggested that the slow but steady rate of growth for shortspine thornyhead, with growth still occurring at age 100, reduces the importance of assumptions about maturity because older individuals have significantly higher spawning output due to their much larger size, regardless of the fraction spawning.
+The 2013 assessment considered new (at the time) maturity information from ovaries collected for maturity analysis on the 2011 and 2012 \gls{s-wcgbt}. Histological analysis of those samples (Melissa Head, \gls{nwfsc}, pers. comm.) indicated puzzling patterns of spawning by female size and by latitude, with a higher fraction of fish spawning in the north than in the south and a higher fraction of spawning fish in the 20-30 cm range than in the 30-40 cm range. However, due to the complexity of these observed patterns and the known ontogenetic migrations of shortspine thornyhead, samples collected in 2011 and 2013 were not considered adequate for estimation of a new representative maturity curve for the entire shortspine thornyhead population in 2013. Nonetheless, such a maturity curve was considered in a sensitivity analysis. On the basis of the sensitivity analysis, the 2013 assessment suggested that the slow but steady rate of growth for shortspine thornyhead, with growth still occurring at age 100, reduces the importance of assumptions about maturity because older individuals have significantly higher spawning output due to their much larger size, regardless of the fraction spawning.
 
-New maturity analyses of samples collected on the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for the 2023 assessment (M. Head, pers. comm.). The larger number (N=397) and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning.
+New maturity analyses of samples collected on the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for the 2023 assessment (Melissa Head, \gls{nwfsc}, pers. comm.). The larger number ($N$=397) and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of female spawning.
 
-In the 2013 assessment, the exploration of maturity analyses from the \gls{s-wcgbt} samples highlighted maturity gradients along latitude and depth. To assess a potential relationship between fish location and the shape of the maturity curve, a \gls{glm} was designed for estimating maturity curve parameters while integrating latitude and depth as covariates. This \gls{glm} consists of a logistic regression in which the functional maturity of samples, modeled with a Bernoulli distribution, is expressed as a linear combination of fish length, latitude, latitude squared, depth and depth squared. Once fitted, the \gls{glm} was used to predict the response of the probability of being mature along the range of individual shortspine thornyhead length considered in the model. For the 2023 assessment, this model prediction was made while setting the latitude and depth at the values of the center of gravity (using number of fish as weighing factor) of the population of shortspine thornyhead sampled during the \gls{s-wcgbt} to develop a single curve for the coastwide population assessment. Thus, this response of functional maturity to length was considered the mean maturity curve of the west coast shortspine thornyhead population. The parameters of the maturity curve $L_{50}$ and $k$ were arithmetically derived from this response to fish length. The new maturity curve is expressed as follows:
+In the 2013 assessment, the exploration of maturity analyses from the \gls{s-wcgbt} samples highlighted maturity gradients along latitude and depth. To assess a potential relationship between fish location and the shape of the maturity curve, a \gls{glm} was designed for estimating maturity curve parameters while integrating latitude and depth as covariates. This \gls{glm} consists of a logistic regression in which the functional maturity of samples, modeled with a Bernoulli distribution, is expressed as a linear combination of fish length, latitude, latitude squared, depth and depth squared. Once fitted, the \gls{glm} was used to predict the response of the probability of being mature along the range of individual shortspine thornyhead length considered in the model. For the 2023 assessment, this model prediction was made while setting the latitude and depth at the values of the center of gravity (using number of fish as a weighing factor) of the population of shortspine thornyhead sampled by the \gls{s-wcgbt} to develop a single curve for the coastwide population assessment. Thus, this response of functional maturity to length was considered the mean maturity curve of the west coast shortspine thornyhead population. The parameters of the maturity curve $L_{50}$ and $k$ were arithmetically derived from this response to fish length. The new maturity curve is expressed as follows:
 
 \begin{equation} M(L) = (1+e^{-2.3(L-31.42)})^{-1}\end{equation}
 
 Figure \ref{fig:mat1} shows the fit of the maturity curve of the model per class of depth and latitude.
 
-A sensitivity analysis assessed the impact of this change in the maturity curve on the model estimates by considering the newly estimated parameters, the Pearson and Gunderson relationship from  2013, and one intermediate option (Figure \ref{fig:mat2}).
+A sensitivity analysis assessed the impact of this change in the maturity curve on the model estimates by considering the newly estimated parameters, the Pearson and Gunderson relationship from  2013, and an intermediate option (Figure \ref{fig:mat2}).
 
-#### Fecundity 
-The previous assessments assumed spawning biomass was equivalent to spawning output. The current assessment uses fecundity-at-length parameters reported in @cooper_etal_2005, where fecundity was modeled as a power function of length:
+#### Fecundity   
+The previous assessments assumed spawning biomass was equivalent to spawning output. The current assessment uses fecundity-at-length parameters reported in @cooper_etal_2005. Fecundity is modeled as a power function of length:
 
 \begin{equation} F = 0.0544L^{3.978} \end{equation}
 
-where F is fecundity in the number of eggs per female and  L is length in cm. @cooper_etal_2005 estimated the fecundity of 54 females collected from the West Coast and Alaska and found no difference in the length-fecundity relationship by region, and pooled the samples. The study suggests that fecundity increases at a faster rate with length than body weight with length for shortspine thornyhead, meaning that larger females have greater relative fecundity compared to small females. This assessment models a fecundity-at-length relationship using the fecundity parameters from @cooper_etal_2005 (Figure \ref{fig:fec}) and scaling the fecundity intercept by one million to report fecundity in billions of eggs.
+where $F$ is fecundity in the number of eggs per female and  $L$ is length in cm. @cooper_etal_2005 estimated the fecundity of 54 females collected from the West Coast and Alaska. They found no difference in the length-fecundity relationship by region and pooled the samples. That study suggested that fecundity increases at a faster rate with length than body weight with length for shortspine thornyhead, meaning that larger females have greater relative fecundity compared to small females. This assessment models a fecundity-at-length relationship using the fecundity parameters from @cooper_etal_2005 (Figure \ref{fig:fec}) and scaling the fecundity intercept by one million to report fecundity in billions of eggs.
 
-Uncertainty remains in the spawning strategy of shortspine thornyhead. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence for batch spawning in this species (i.e., a determinate, total spawning strategy). However, updated histology information suggests a possibility of batch spawning in this species (Melissa Head, NWFSC, pers. comm.). Batch spawning could influence the fecundity-at-length relationship if not properly accounted for and should be a focus of future research.
+Uncertainty remains in the spawning strategy of shortspine thornyhead. @cooper_etal_2005 and @pearson_gunderson_2003 found no evidence of batch spawning in this species (i.e., a determinate, total spawning strategy). However, updated histological information suggests a possibility of batch spawning (Melissa Head, NWFSC, pers. comm.). Batch spawning could influence the fecundity-at-length relationship if not properly accounted for and should be a focus of future research.
 
 ### Length-Weight Relationship
-Fisheries-independent length and weight specimen data are available from the \gls{s-aslope} (1997, 1999-2001; N=7,623) and the \gls{s-wcgbt} (2003-2021, excluding 2020; N=20,142). The \gls{s-wcgbt} data were used to estimate the length-weight relationship because it has the largest sample size and covers the greatest spatiotemporal resolution. The allometric function models weight (W) as an exponential function of length (L), where:
+Fisheries-independent length and weight specimen data were available from the \gls{s-aslope} (1997, 1999-2001; $N$=7,623) and the \gls{s-wcgbt} (2003-2021, excluding 2020; $N$=20,142). The \gls{s-wcgbt} data were used to estimate the length-weight relationship because it had the largest sample size and covered the greatest spatio-temporal resolution. The allometric function models weight ($W$) as a power function of length ($L$), where:
 
 \begin{equation} W = \alpha L^{\beta} \end{equation}
 
-This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of $\sigma^2 / 2$. Length-weight was estimated for both sexes in R using the `lm()` function [@r_core_2021]. 
+This function can be linearized by taking the natural logarithm of both sides. The predicted weight-at-length values were bias-corrected using a multiplier of $\sigma^2 / 2$. The length-weight parameters were estimated for both sexes in R using the `lm()` function [@r_core_2021]. 
 
-The resulting allometric parameters for 2023 (females: $\alpha = 6.49e-6$, $\beta = 3.18$; males: $\alpha = 6.71e-6$, $\beta = 3.17$; Figure \ref{fig:lengthweight}) were similar to the 2013 assessment values, which estimated a single length-weight relationship for males and females combined using \gls{s-wcgbt} data through 2012 (sexes combined: $\alpha = 4.77e-6$, $\beta=3.26$). The $\beta$ value was higher in the 2013 assessment, indicating a slightly higher weight-at-length for longer fish. We found no temporal trend in the available data and were unable to account for these small differences in results. The available data suggest that length-weight is highly conserved in shortspine thornyhead; therefore, no sensitivity analysis was conducted for this set of parameters in the 2023 assessment.
+The resulting parameters for 2023 (females: $\alpha = 6.49*10^{-6}$, $\beta = 3.18$; males: $\alpha = 6.71*10^{-6}$, $\beta = 3.17$; Figure \ref{fig:lengthweight}) were similar to the 2013 assessment values, which estimated a single length-weight relationship for males and females combined using \gls{s-wcgbt} data through 2012 (sexes combined: $\alpha = 4.77*10^{-6}$, $\beta=3.26$). The $\beta$ value was higher in the 2013 assessment, indicating a slightly higher weight-at-length for longer fish. We found no temporal trend in the available data and were unable to account for these small differences in results. The available data suggested that length-weight is highly conserved in shortspine thornyhead; therefore, no sensitivity analysis was conducted for this set of parameters in the 2023 assessment.
 
 ### Growth (Length-at-Age)
-No validated ageing methodology currently exists for shortspine thornyhead; therefore, this species is not aged by the \gls{nwfsc} or \gls{swfsc} and length-at-age data are limited for this stock assessment. Two research age datasets exist for shortspine thornyhead in the West Coast region: (1) @kline_1996 includes 319 unsexed fish collected from Monterey Bay in central California in 1991, and (2) @butler_1995 includes 1,023 sexed fish collected in the waters off northern California and Oregon in 1978-1988 and 1990. The Kline specimens were aged by one age reader, and lengths were reported as total lengths, whereas the Butler specimens were aged independently by two separate age readers, and lengths are reported in fork length. The Butler data age data presented in this assessment are the mean ages between the two age readers. 
+No validated ageing methods currently exist for shortspine thornyhead; therefore, this species is not aged by the \gls{nwfsc} or \gls{swfsc} and length-at-age data were limited for this stock assessment. Two research age datasets exist for shortspine thornyhead in the West Coast region: (1) @kline_1996 includes 319 unsexed fish collected from Monterey Bay in central California in 1991, and (2) @butler_1995 includes 1,023 sexed fish collected in the waters off northern California and Oregon in 1978-1988 and 1990. The Kline specimens were aged by one age reader, and lengths were reported as total lengths, whereas the Butler specimens were aged independently by two separate age readers, and lengths were reported in fork length. The Butler data age data used in this assessment are the mean ages between the two age readers. 
 
-The length-at-age curve developed in the 2005 stock assessment and used again in 2013 was based on a Schnute parameterization of the Von-Bertalanffy growth function fit to the Kline data. The resulting parameter estimates for this growth function were as follows: growth rate k was 0.018 for both males and females length at age-2 was 7 cm for both males and females, and length at age-100 was 67.5 cm for males and 75 cm for females based on the assumption that the asymptotic length for males should be 90% of the asymptotic length for females [@hamel_2005]. The data and associated analysis from 2005 were lost; however, the original Kline and Butler datasets were obtained for use in this assessment (Donna Kline, pers. comm., March 2023). Using these newly obtained data, we could not reproduce the parameters used in the 2005 assessment. 
+The length-at-age curve developed in the 2005 stock assessment and used again in 2013 was based on a Schnute parameterization of the Von-Bertalanffy growth function fit to the Kline data. The resulting parameter estimates for this growth function were as follows: growth rate $k$ was 0.018 for both males and females, length at age-2 was 7 cm for both males and females, and length at age-100 was 67.5 cm for males and 75 cm for females based on the assumption that the asymptotic length for males should be 90% of the asymptotic length for females [@hamel_2005]. The data and associated analysis from 2005 were lost; however, the original Kline and Butler datasets were obtained for use in this assessment (Donna Kline, pers. comm., March 2023). Using these newly obtained data, we could not reproduce the parameters used in the 2005 assessment. 
 
 Because the Butler data were sex-specific, had a higher sample size, were aged by two readers instead of one, and were collected from a larger geographic area and over more years compared to the Kline data, we determined that Butler was the preferred dataset to estimate the length-at-age relationship for the 2023 stock assessment. We fit sex-specific Schnute growth functions to the Butler data:
 
 \begin{equation} \hat{L}_{a} = L_{a_{1}}+\frac{(L_{a_{2}}-L_{a_{1}})(1-exp(-k(a_{2}-a_{1})))}{(1-exp(-k(a_{2}-a_{1})))}\end{equation}
 
 where:
-$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$;$a_{2}=100$ and k is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\sigma^2/2$.
+$L_{a_{1}}$ and $L_{a_{2}}$ are the lengths at reference ages $a_{1}$ and $a_{2}$ where $a_{1}=1$; $a_{2}=100$ and $k$ is the growth rate. Growth curve estimation was conducted in R using the optim() function [@r_core_2021]. Errors were assumed to be lognormally distributed and predicted length-at-age was bias-corrected using a multiplier of $\sigma^2/2$. Updated growth parameters were fixed in the assessment at the following values using the reference lengths and equation described above:  
+
+Females: $L{a_{1}}$ = 11.4 cm; $L{a_{2}}$ = 73.6 cm; $k$ = 0.0099 per year  
+Males: $L{a_{1}}$ = 9.2 cm; $L{a_{2}}$ = 66.1 cm; $k$ = 0.0168 per year  
+  
+For reference, the equivalent von-Bertalanffy growth parameters are:  
+  
+Females: $t{_0}$ = -8.931; $L{_{inf}}$ = 111.0 cm; $k$ = 0.0099 per year
+
+Males: $t{_0}$ = -5.314; $L{_{inf}}$ = 79.4 cm; $k$ = 0.0168 per year  
 
 Shortspine thornyhead are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growthcurve}). The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
 
@@ -728,25 +755,25 @@ The most recent assessment made a number of recommendations for data availabilit
 
 1. More investigation into maturity of shortspine thornyhead.
 
-*A new maturity curve was derived from new histological samples taken during the WCGBTS and processed by Melissa Head. The new maturity curve implies that maturation occurs at mych larger lengths, and much more slowly, than what was assumed in 2013.*
+*Progress: A new maturity curve was derived from new histological samples taken during the WCGBTS and processed by Melissa Head. The new maturity curve implies that maturation occurs at much larger lengths, and much more slowly, than what was assumed in 2013.*
 
 2. Information on possible migration of shortspine thornyhead would be valuable for understanding stock dynamics. 
 3. A greater understanding of catchability of shortspine thornyhead would help define the scale of the populations.
 
-*The degree of uncertainty in the scale of the population has substantially decreased since 2012, and the catchability coefficients in the current model are computed analytically by Stock Synthesis. Likelihood profiles over $R_0$ and $M$ imply they have a much stronger relationship with overall population scale the analytically derived catchability values.*
+*Progress: The degree of uncertainty in the scale of the population has substantially decreased since 2012, and the catchability coefficients in the current model are computed analytically by Stock Synthesis. Likelihood profiles over $R_0$ and $M$ imply they have a much stronger relationship with overall population scale the analytically derived catchability values.*
 
 4. Age data and additional research on ageing methods for thornyheads would be valuable.
 
-*Age data and aging methods remain limited for shortspine thornyhead.*
+*Progress: Age data and aging methods remain limited for shortspine thornyhead.*
 
 5. A greater understanding of the connection between shortspine thornyhead and bottom type could be used to refine the indices of abundance. 
 6. A comprehensive catch reconstruction for shortspine and longspine thornyheads should be completed to estimate landings for each species prior to 1981 in each of the three states.
 
-*State-level catch reconstructions were integrated into the base model for 2023. They represented a minimal change in the catch timeseries as compared to the 2013 assessment.*
+*Progress: State-level catch reconstructions were integrated into the base model for 2023. They represented a minimal change in the catch timeseries as compared to the 2013 assessment.*
 
 7. Exploration of simpler assessment methods for shortspine thornyhead and evaluation of whether such methods would provide a more robust management strategy than the current approach. 
 
-*While simple methods were not tested for this assessment, the model structure was significantly simplified from four fleets and five surveys, to three fleets and two surveys. This significantly reduced the total number of parameters that needed to be estimated by the model.*
+*Progress: While simpler methods were not tested for this assessment, the model structure was significantly reduced from four fleets and five surveys, to three fleets and two surveys. This significantly reduced the total number of parameters that needed to be estimated by the model.*
 
 8. More tows or visual surveys south of 34.5 deg. N. lat. including the large \gls{cca}. Because the southern Conception Area is a large potential habitat for shortspine thornyhead, more sampling effort would help refine the estimations of their abundance in this area.
 
@@ -766,15 +793,15 @@ The 2013 assessment consisted of four fisheries fleets, and used information fro
 This assessment assumes a new fecundity relationship, in which fecundity increases with body size, as well as a new maturity relationship, in which fish mature at much larger sizes and thus older ages, than were assumed in the 2013 assessment. Further details on the fecundity and maturity relationships can be found in Section 2.3.2. A sensitivity analysis was performed to determine the effect of different maturity assumptions on the final model output.
 
 ### Modeling Platform and Bridging Analysis
-This new assessment, including all exploratory models, profiles, and related analyses, was performed using Stock Synthesis Version 3.30.21 [@methot_stock_2013; @ss_manual_2020). The majority of analyses were performed using multiple recent versions of R [@r_core_2021], and relied heavily on the ‘r4ss’ R package [@r4ss] among others. The assessment model was developed and tested across multiple operating systems, including recent versions of Windows and macOS.
+This new assessment, including all exploratory models, profiles, and related analyses, was performed using Stock Synthesis Version 3.30.21 [@methot_stock_2013; @ss_manual_2020). The majority of analyses were performed using multiple recent versions of R [@r_core_2021], and relied heavily on the `r4ss` R package [@r4ss] among others. The assessment model was developed and tested across multiple operating systems, including recent versions of Windows and macOS.
 
 The process of bridging to a new model occurred in two steps. The initial bridging phase focused on the conversion from version SS-V3.24o to version SS-V3.30.21 using the same data and model assumptions used in the 2013 assessment. Two models were built during this first step: an initial model which fixed parameter values at the values estimated in the 2013 assessment (“2013 Model SS V3.30.21 Fixed Params”) and a second model which estimated  all parameters as assumed in the 2013 assessment (“2013 Model SS V3.30.21”). 
 
-The subsequent bridging exercise involved updating the model (“2013 Model SS V3.30.21”) with the addition of new and reprocessed data through 2023 as well as updating biological parameters (growth, maturity, fecundity, and mortality parameters - see 2.3 for more details). Additional data include new catch, discard, survey indices, length-composition, and mean body weight (for discards only) data. The contribution of each data component and parameter update to the changes in the model outcome were analyzed by adding data and updating parameters in a linear piecewise fashion.
+The subsequent bridging exercise involved updating the model (“2013 Model SS V3.30.21”) with the addition of new and reprocessed data through 2023 as well as updating biological parameters (growth, maturity, fecundity, and mortality parameters - see Section 2.3 for more details). Additional data include new catch, discard, survey indices, length-composition, and mean body weight (for discards only) data. The contribution of each data component and parameter update to the changes in the model outcome were analyzed by adding data and updating parameters in a linear piecewise fashion.
 
-While there were no discernible changes between the 2013 assessment and the “2013 Model SS V3.30.21 Fixed Params" model, differences were observed in the estimated spawning biomass, recruitment (age-0 fish), and fraction of unfished time series between these two models and the “2013 Model SS V3.30.21” model (marginally smaller spawning biomass and recruitment along with a smaller depletion level from the end 1970s onward; Figure \ref{fig:bridge_bratio}). The source of these changes can be attributed to differences in the way of analytically computing survey catchability (“floatQ”  approach, see 3.2.4.3) between the two versions of Stock Synthesis. 
+While there were no discernible changes between the 2013 assessment and the “2013 Model SS V3.30.21 Fixed Params" model, differences were observed in the estimated spawning biomass, recruitment (age-0 fish), and fraction of unfished time series between these two models and the “2013 Model SS V3.30.21” model (marginally smaller spawning biomass and recruitment along with a smaller depletion level from the end 1970s onward; Figure \ref{fig:bridge_bratio}). The source of these changes can be attributed to differences in the way of analytically computing survey catchability (“floatQ”  approach, see Section 3.2.4.3) between the two versions of Stock Synthesis. 
 
-Inclusion of new data and updated parameters resulted in a series of changes to model outcomes (Figure \ref{fig:bridge_spawnout_data}, Figure \ref{fig:bridge_bratio_data}). While the update of both growth and maturity parameters led to variation of spawning biomass in the range of the uncertainty previously observed (models "Updated Growth" and "Updated Maturity", respectively), the one notable change in the estimates of spawning biomass occurs with the update of fecundity parameters (model "Updated Fecundity") which resulted in a strong downward revision of the spawning biomass time series. This major change can be explained by the use of a new length-based fecundity relationship which was not considered in the previous assessment (see section 1.1.1 for more information).
+Inclusion of new data and updated parameters resulted in a series of changes to model outcomes (Figure \ref{fig:bridge_spawnout_data}, Figure \ref{fig:bridge_bratio_data}). While the update of both growth and maturity parameters led to variation of spawning biomass in the range of the uncertainty previously observed (models "Updated Growth" and "Updated Maturity", respectively), the one notable change in the estimates of spawning biomass occurs with the update of fecundity parameters (model "Updated Fecundity") which resulted in a strong downward revision of the spawning biomass time series. This major change can be explained by the use of a new length-based fecundity relationship which was not considered in the previous assessment (see Section 1.1.1 for more information).
 
 ### Model Structure
 Similar to the 2013 assessment, the 2023 assessment model is a two-sex, length-based age-structured model that estimates population dynamics from 1901 onwards. The model assumes a steady equilibrium state with no fishing prior to the start year of the model (1901) and considers a spatially homogeneous unit stock in the waters off the U.S. West Coast.
@@ -788,7 +815,7 @@ Data from two fisheries-independent scientific surveys were used in this model: 
 There are 180 estimated parameters in this assessment. The log of unfished recruitment, $\ln(R_0)$, controls the overall scale of the population, while annual deviations in recruitment about the assumed stock-recruit relationship (135 parameters) allow for additional uncertainty in the population trajectory and tracking of recent recruitment events. Selectivity and retention parameters (43 parameters) for three fisheries fleets and three scientific surveys allow for estimation of annual length compositions and discards rates. Two catchability parameters are analytically computed from the data, and one additional parameter, representing additional variability in the early \gls{s-tri}, is directly estimated by the model. Three retention time blocks are also included for the trawl fleets: 1901-2006, 2007-2011, and 2011-2022 (Figure \ref{fig:retencurvs}).
 
 #### Growth, Maturity, Fecundity, Mortality, and Recruitment
-Growth, maturity, and fecundity parameters were fixed at values determined by external analyses (see **section 2.3** for more information). Due to a lack of aging data, growth could not be modeled internally by the assessment, though, like in the 2005 and 2013 models, there is no systematic misfit to the data suggesting that the externally derived growth curves were misspecified. Sensitivity analyses were performed to determine the overall effect of different assumptions regarding growth and maturity. 
+Growth, maturity, and fecundity parameters were fixed at values determined by external analyses (see **Section 2.3** for more information). Due to a lack of aging data, growth could not be modeled internally by the assessment, though, like in the 2005 and 2013 models, there is no systematic misfit to the data suggesting that the externally derived growth curves were misspecified. Sensitivity analyses were performed to determine the overall effect of different assumptions regarding growth and maturity. 
 
 For this assessment, natural mortality ($M$) was fixed at a value of 0.04, as such a value provided better fits to the data and literature information implies that the maximum age of shortspine thornyhead could be well over 100 years. A likelihood profile exploring alternative natural mortality values was also conducted (Figure \ref{fig:M_prof}). In the 2013 assessment, M was fixed at 0.0505 @taylor_stephens_2013, however, because shortspine thornyhead are difficult to age, aging error may bias age to be lower and they may live longer than those caught in surveys or fishing fleets, likely at deeper depths. Recent shortspine thornyhead assessments in Alaska and British Columbia used much lower M, as low as 0.03, in their models [@starr_haigh_2017; @echave_etal_2022].
 
@@ -822,7 +849,7 @@ This model depends on the assumptions that thornyheads are long-lived, slow-grow
 A complete set of parameter estimates are available in Table \ref{tab:allparstab}.
 
 #### Recruitment
-The model estimated 135 annual recruitment deviations (1901-2034) as well as the log of unfished recruitment $\ln(R_0)$. Unfished recruitment was estimated to be ~11,000,000 annual age-0 recruits ($\ln(R_0) = 9.34$) while annual log deviations were generally estimated between -0.5 and 0.5 (Figure \ref{fig:recdevs} ; Table \ref{tab:recdevs}). Deviations in 2003 and 2007 were estimated to be substantially larger than other years. As in the 2013 assessment, uncertainty in the scale of annual deviations was substantially larger than the variation between the deviations. Recruitment bias adjustments were performed following the advice of @methot_adjusting_2011.
+The model estimated 135 annual recruitment deviations (1901-2034) as well as the log of unfished recruitment $\ln(R_0)$. Unfished recruitment was estimated to be ~11,000,000 annual age-0 recruits ($\ln(R_0) = 9.34$) while annual log deviations were generally estimated between -0.5 and 0.5 (Figure \ref{fig:recdevs} ; Table \ref{tab:rec}). Deviations in 2003 and 2007 were estimated to be substantially larger than other years. As in the 2013 assessment, uncertainty in the scale of annual deviations was substantially larger than the variation between the deviations. Recruitment bias adjustments were performed following the advice of @methot_adjusting_2011.
 
 #### Selectivity and Retention
 Selectivity curves for all three fisheries fleets and the three scientific surveys were estimated as dome-shaped (Figure \ref{fig:selcurvs}). 
@@ -842,7 +869,7 @@ The base model reasonably fit the available index data with the exception of the
 The model reasonably fit the discard rates for all three fisheries fleets. The three timeblocks, carried over and extended where necessary from the 2013 model, allowed for the declining trend in discards for the North Trawl fleet to be adequately captured, however, there is a period from 2015-2018 where discard rates for the North Trawl fleet are exceptionally low, that the model fails to fully capture (Figure \ref{fig:northtrl_disc}). Discards rates in the Southern Trawl fleet are well fit 2006-2014, before and after which the model systematically underestimates the observed discards rates (Figure \ref{fig:southtrl_disc}). The discard rates for the coastwide Non-Trawl fleet are exceptionally well fit by the model, and there is no evidence that time blocking is necessary for this fleet (Figure \ref{fig:nontrl_disc}).
 
 #### Fishery Length Compositions
-The base model fit the fishery and discard length compositions reasonably well in aggregate (Figure \ref{fig:lencomps_all}), though there was significant annual variability in the quality of fit, often due to differences in effective sample sizes. The South trawl and Non-trawl fleets were exceptionally well fit by the model, while the model fit to the length compositions from the North trawl fleet underestimated the scale of the peak of the distribution. This type of misfit was similarly observed in the model fits on an annual basis, with all years 2018-2022 displaying a similar underestimation of either the location or scale of the peak of the distribution (Figures \ref{fig:ntrawl_comps_1} - \ref{fig:ntrawl_comps_2}). The exact causes of this under-estimation remain unknown at this time, but could be due to subtle changes in selectivity or availability. The effect of including time-varying selectivity was assessed in a sensitivity analysis (see **section 3.4.2.4** for details). 
+The base model fit the fishery and discard length compositions reasonably well in aggregate (Figure \ref{fig:lencomps_all}), though there was significant annual variability in the quality of fit, often due to differences in effective sample sizes. The South trawl and Non-trawl fleets were exceptionally well fit by the model, while the model fit to the length compositions from the North trawl fleet underestimated the scale of the peak of the distribution. This type of misfit was similarly observed in the model fits on an annual basis, with all years 2018-2022 displaying a similar underestimation of either the location or scale of the peak of the distribution (Figures \ref{fig:ntrawl_comps_1} - \ref{fig:ntrawl_comps_2}). The exact causes of this under-estimation remain unknown at this time, but could be due to subtle changes in selectivity or availability. The effect of including time-varying selectivity was assessed in a sensitivity analysis (see **Section 3.4.2.4** for details). 
 
 Trawl discards length compositions were well fit by the model in both the north and south regions, while the model struggled to adequately fit discard compositions from the Non-Trawl fleet (Figure \ref{fig:lencomps_all}). The Non-Trawl discards were of a larger size and were generally more dispersed than the discard compositions in the two trawl fleets, a feature the model did pick up on, but the model fit a wide plateau rather than narrow peak to these composition data. This is likely due to the wide variability in annual length compositions seen in this fleet, as well as the wide spatial coverage.
 
@@ -871,20 +898,20 @@ Runs with 100 alternative sets of starting parameter values found no models with
 Growth parameters are uncertain for shortspine thornyhead due to difficulties in determining age from otoliths and subsequent lack of length-at-age information for this species, thus, sensitivities of length-at-age 25% higher and 10% lower was conducted to encompass the uncertainty in growth within and between data sets. Different assumptions about growth did not have much influence on relative spawning depletion. Depletion levels in the final year were slightly greater in a higher growth scenario and slightly lower in a lower growth scenario (Figure \ref{fig:growth_sensitiv_mngmt}). Spawning output was more sensitive to assumptions about growth, with much higher spawning output when assuming a higher growth scenario (Figure \ref{fig:growth_sensitiv_spawning}). The high growth sensitivity had a slightly better overall fit to the data, including to the survey indices and length compositions (Table \ref{tab:sentivititytab}). Different assumptions about growth influence recruitment patterns and the timing of strong year classes. However, the influence of different growth assumptions is also sensitive to changes in other parameters, such as natural mortality.
 
 #### Sensitivity to maturity
-The 2023 assessment uses updated maturity-at-length information from the \gls{s-wcgbt} and port-sampling (Melissa Head, pers. comms.), which show a larger length at 50% maturity ($L_{50\%} = 31.4 cm$) and slower rate of maturation (slope = -0.177) in the logistic curve compared to the smaller $L_{50\%}$ (18.1 cm) and faster rate of maturation (slope = -2.304) assumed in the 2013 assessment based on @pearson_gunderson_2003. A sensitivity was conducted to maturity information from the two datasets and to an intermediate maturity-at-length logistic curve (mix_curve, $L_{50\%} = 24.8 cm$ and slope = -0.350). As in the 2013 assessment, estimates of population scale and status in the base model were not sensitive to different maturity assumptions (Figure \ref{fig:mat_sensitiv_spawning}; Figure \ref{fig:mat_sensitiv_mngmt}). Differences in fits to the data were negligible. The slightly higher stock status in the final year with the @pearson_gunderson_2003 maturity assumptions is likely due to females from strong cohorts in the 2000s maturing at younger ages compared to the base model. As stated in the 2013 assessment, the slow but steady rate of growth for shortspine thornyhead, with growth still occurring at age 100, reduces the importance of assumptions about maturity because older individuals will have significantly higher spawning output due to their much larger size, regardless of the fraction spawning. 
+The 2023 assessment used updated maturity-at-length information from the \gls{s-wcgbt} and port-sampling (Melissa Head,\gls{nwfsc}, pers. comms.), which showed a larger length at 50% maturity ($L_{50\%} = 31.4 cm$) and slower rate of maturation (slope = -0.177) in the logistic curve compared to the smaller $L_{50\%}$ (18.1 cm) and faster rate of maturation (slope = -2.304) assumed in the 2013 assessment based on @pearson_gunderson_2003. A sensitivity was conducted to maturity information from the two datasets and to an intermediate maturity-at-length logistic curve (mix_curve, $L_{50\%} = 24.8 cm$ and slope = -0.350). As in the 2013 assessment, estimates of population scale and status in the base model were not sensitive to different maturity assumptions (Figure \ref{fig:mat_sensitiv_spawning}; Figure \ref{fig:mat_sensitiv_mngmt}). Differences in fits to the data were negligible. The slightly higher stock status in the final year with the @pearson_gunderson_2003 maturity assumptions is likely due to females from strong cohorts in the 2000s assumed to mature at younger ages compared to the base model. As stated in the 2013 assessment, the slow growth rate of shortspine thornyhead, with growth still occurring at age 100, reduces the importance of assumptions about maturity because older individuals will have significantly higher spawning output due to their much larger size, regardless of the fraction spawning. 
 
 #### Sensitivity to Landings
 Two sensitivities were conducted to explore how changes in the historical landings timeseries effect modern-day estimates of stock status. One sensitivity replaces the historical landings reconstructions prior to 1962 with the imputed landings that were used in the 2005 and 2013 assessments. A second sensitivity replaces all landings information prior to 2013 with the values that were used in the 2013 assessment. There was little appreciable difference to base model fits across the two sensitivities (Figure \ref{fig:land_sensitiv_spawning}; Figure \ref{fig:land_sensitiv_mngmt}). This is likely due to the fact that historical catches (pre-1962), and changes in catches due to state-level catch reconstruction updates, were relatively small and thus would have had minimal impact of the biomass timeseries. 
 
 #### Sensitivity to retention and selectivity
-The 2023 assessment substantially extends the period over both length data of retained and discarded catch, mean individual weight in discards and discard rates estimates are available. This data may reflect the dynamics of the thornyhead of the population but also structural, technical or behavioral changes in the fishing fleets. Due to the uncertainty around the impact of such changes on the retention and selectivity of the fleets, we assessed the sensitivity of the model to alternative combinations of time blocks for these parameters. The sensitivity to time blocks in retention (inflection, asymptotic retention) was first performed and the most pertinent model (good fit to the data and parsimony) and the base model were then used to conduct the sensitivity to time blocks in selectivity (peak). Time blocks explored were based on a combination of breaks that are summarized in **Table XX**.
+The 2023 assessment substantially extends the period over both length data of retained and discarded catch, mean individual weight in discards and discard rates estimates are available. This data may reflect the dynamics of the thornyhead of the population but also structural, technical or behavioral changes in the fishing fleets. Due to the uncertainty around the impact of such changes on the retention and selectivity of the fleets, we assessed the sensitivity of the model to alternative combinations of time blocks for these parameters. The sensitivity to time blocks in retention (inflection, asymptotic retention) was first performed and the most pertinent model (good fit to the data and parsimony) and the base model were then used to conduct the sensitivity to time blocks in selectivity (peak). Time blocks explored were based on a combination of breaks that are summarized in Table \ref{tab:timeblocking}.
 
 Setting up additional time blocks for the retention parameters improved the fit of the model to the length distributions and the discard rates, hence reducing the corresponding likelihood of the model. However, the impact on the other components of the model likelihood were very limited. None of the time blocks tested substantially reduced other components of the model likelihood. Except a slight offset for the estimated trends in spawning output between the models with selectivity change considered in 2011 only (Figure \ref{fig:selec_sensitiv_mngmt}), all model estimates produced similar diagnostic of the population status. In particular, with no regard to the number or the location of time blocks used for retention or selectivity, the fraction of unfished biomass overlay (Figure \ref{fig:reten_sensitiv_mngmt}).  
 
 #### Sensitivity to Abundance Index Methods
-The 2023 assessment derives model-based indices of abundance using geostatistical models. The use of geostatistical models to estimate indices of abundance differs from previously used design-based approaches and there limited agreement on how best to approach model selection. Therefore, two sensitivity analyses were conducted on the methods used to estimate indices of abundance. First, we ran a sensitivity analysis using a lognormal error structure in the geostatistical model (compared to a gamma error structure in the base model). We then ran a sensitivity analysis using design-based indices of abundance, following the same fleet structure as the base model.
+The 2023 assessment uses model-based indices (MBIs) of abundance derived from geostatistical models, which differs from previously used design-based approaches (DBIs). There remains limited agreement on how best to approach model selection for such models. Therefore, two sensitivity analyses were conducted on the methods used to estimate indices of abundance: 1) using MBIs derived from a geostatistical model that assumed a lognormal error structure (compared to a gamma error structure in the base model); and 2) using newly calculated DBIs.
 
-Estimates of population scale and status were not sensitive to changes in error structure used in the model-based indices or changes in estimation methods (i.e. use of design-based indices). Small reductions in estimated spawning output were observed when lognormal error structures were used in model-based indices as well as when design-based indices were used. No appreciable improvements to model fit were observed between model-based indices that used gamma or lognormal error structures. The use of design-based indices of abundance reduced model fit compared to the base model (model-based indices with gamma error structure).
+Estimates of population scale and status were not sensitive to changes in error structure used in the MBIs or changes in estimation methods (i.e. use of design-based indices). Small reductions in estimated spawning output were observed when lognormal error structures were used in MBIs as well as when design-based indices were used. No appreciable improvements to model fit were observed between model-based indices that used gamma or lognormal error structures. The use of DBIs reduced model fit compared to the base model (Figure \ref{fig:surv_sensitiv_spawning}-\ref{fig:surv_sensitiv_mngmt}).
 
 
 
@@ -900,16 +927,16 @@ A likelihood profile over $\ln(R_0)$ was performed to assess the influence of th
 
 Likelihood values and model results were largely insensitive to changes in steepness (Figure \ref{fig:h_piner_prof}). The change in negative log likelihood over the range of $h = 0.5–1.0$ was less than 10 units with the largest contribution coming from recruitment and abundance indices. No other likelihood component had a change of greater than 1 unit. The lowest $B_0$ and depletion values were associated with the most productive population, with $h = 1.0$, but there was no qualitative difference between any of these cases (total change in depletion values across the range of $h$ tested was 0.02 units; Figure \ref{fig:h_spawnout}). The apparent lack of influence of h on population dynamics for shortspine thornyhead is likely the result of the relatively high estimated stock status across the entire time series, which makes estimation of h difficult. 
 
-A likelihood profile over natural mortality ($M$) found the model results to be quite sensitive to the assumed value of $M$: with all values of $M$ 0.03-0.05 resulting in likelihoods within 1 unit of the base model (Figure \ref{fig:M_prof}). Meanwhile there was no support in the data for values of $M$ above 0.06. Length composition data, particularly from the two trawl fleets, was the major contributor to the changes in likelihood observed over the range of tested values for $M$ (Figure \ref{fig:M_prof}). All plausible values of $M$ resulted in similar levels of depletion (Figure \ref{fig:M_relspawnout}), but a wide range of levels for unfished spawning output (Figure \ref{fig:M_spawnout})
+A likelihood profile over natural mortality ($M$) found the model results to be quite sensitive to the assumed value of $M$: with all values of $M$ 0.025-0.055 resulting in likelihoods within 5 units of the base model (Figure \ref{fig:M_prof}). Meanwhile there was no support in the data for values of $M$ above 0.06 or below 0.02. Length composition data, particularly from the two trawl fleets, was the major contributor to the changes in likelihood observed over the range of tested values for $M$ (Figure \ref{fig:M_prof}). All plausible values of $M$ resulted in similar levels of depletion (Figure \ref{fig:M_relspawnout}), but a wide range of levels for unfished spawning output (Figure \ref{fig:M_spawnout})
 
-Because reliable age data is sparse for shortspine thornyhead, making growth a major uncertainty in this assessment, a likelihood profile over growth coefficients, length at minimum age ($a_{min}$) and length at maximum age ($a_{max}$), for each sex, was conducted. For the profile, length at amin for females ranged from 10 cm to 15 cm and length at $a_{max}$ ranged from 60 cm to 150 cm. For males, length at $a_{min}$ ranged from 8cm to 12 cm and length at $a_{max}$ ranged from 55 cm to 140 cm. As with the growth sensitivity analysis described above, likelihood was minimized for higher growth scenarios (Figure \ref{fig:growth_prof}). Spawning biomass trajectories showed similar patterns to the growth sensitivity, with higher growth scenarios producing substantially higher spawning output (Figure \ref{fig:growth_spawnout}). Based on both the fishery and survey length compositions, the largest fish, under a high growth model, are not necessarily being observed in the data. This, in combination with a low natural mortality, may be driving the higher spawning output patterns under high growth scenarios.  
+Because reliable age data are sparse for shortspine thornyhead, making growth a major uncertainty in this assessment, a likelihood profile over growth coefficients, length at minimum age ($a_{min}$) and length at maximum age ($a_{max}$), for each sex, was conducted. For the profile, length at amin for females ranged from 10 cm to 15 cm and length at $a_{max}$ ranged from 60 cm to 150 cm. For males, length at $a_{min}$ ranged from 8cm to 12 cm and length at $a_{max}$ ranged from 55 cm to 140 cm. As with the growth sensitivity analysis described above, likelihood was minimized for higher growth scenarios (Figure \ref{fig:growth_prof}). Spawning biomass trajectories showed similar patterns to the growth sensitivity, with higher growth scenarios producing substantially higher spawning output (Figure \ref{fig:growth_spawnout}). Based on both the fishery and survey length compositions, the largest fish, under a high growth model, are not necessarily being observed in the data. This, in combination with a low natural mortality, may be driving the higher spawning output patterns under high growth scenarios.  
 
 ### Unresolved Problems and Major Uncertainties
 Few problems remain totally unresolved, though improvements to the model fit to the \gls{s-wcgbt} abundance indices and to the North Trawl fleet length compositions would be desirable. In addition, being able to freely estimate the width of the selectivity plateaus for many of the fleets and surveys would also improve the model. 
 
 The model fails, at this time, to fully capture the observed increase in abundance seen in the \gls{s-wcgbt} index time series, significantly underestimating the abundance in 2021 and 2022 (Figure \ref{fig:fitscombo}). Better fits to \gls{s-wcgbt} length compositions in those years could possibly improve fits to the indices, but improvements to the length composition fits proved difficult without introducing time-blocked selectivity. As the \gls{s-wcgbt} is supposed to follow highly standardized survey methodologies, there seems to be minimal justification for introducing time-varying selectivity in the model at this time. The model also fails to fully capture the peak of the length compositions for the Northern Trawl fleet, underestimating the number of mid-sized fish that the fleet takes (Figure \ref{fig:lencomps_all}). This underestimation appears to be consistent, particularly in the last 10 years (Figure \ref{fig:ntrawl_comps_2}), implying a possible recent change in selectivity. While time-varying selectivity was not investigated here, if this trend persists, future assessments may wish to apply a selectivity time block to this fleet in order to better capture the peaks of the length compositions.
 
-Major uncertainties in the model are centered around uncertainty in the biological parameters that govern growth, maturity, and mortality. Due to a lack of reliable aging methods, growth was estimated externally to data collected in the 1990s (see **section 2.3.4** for more information). Sensitivities conducted on the length-at-age-100 demonstrated that changes to the growth function could have large effects on the estimated stock status (Figure \ref{fig:growth_sensitiv_mngmt}). Due to inconsistent histological data for shortspine thornyhead, there is some uncertainty about the shape of the species’ maturity curve, though the model appears to be largely insensitive to variations in maturity (Figure \ref{fig:mat_sensitiv_mngmt}). Finally, likelihood profiles over natural mortality demonstrate the model to be quite sensitive to its assumed value. There is insufficient information in the data to estimate mortality directly, constraining us to using meta-analyses or other mortality estimators, which frequently make use of aging information that is unavailable or highly uncertain for shortspine thornyhead.
+Major uncertainties in the model are centered around uncertainty in the biological parameters that govern growth, maturity, and natural mortality. Due to a lack of reliable aging methods, growth was estimated externally to data collected in the 1990s (see Section 2.3.4 for more information). Sensitivities conducted on length-at-age demonstrated that changes to the assumed growth function could have large effects on the estimated stock status (Figure \ref{fig:growth_sensitiv_mngmt}). Due to inconsistent histological data, which suggest spatial variation in maturity-at-length for shortspine thornyhead, there remains some uncertainty about the shape of the species’ maturity curve, though the model appears to be largely insensitive to variation in maturity (Figure \ref{fig:mat_sensitiv_mngmt}). Finally, likelihood profiles over natural mortality demonstrate the model to be quite sensitive to its assumed value. There is insufficient information in the data to estimate natural mortality directly, constraining us to using meta-analyses or other natural mortality estimators, which frequently make use of aging information that is largely unavailable and highly uncertain for shortspine thornyhead.
 
 <!--chapter:end:34diagnostics.Rmd-->
 
@@ -929,10 +956,10 @@ The model estimated uncertainty around the 2023 spawning biomass was $\sigma = 0
 ## Research and Data Needs
 Research and data needs for future assessments include the following: 
 
-1. Research into aging methods and availability of reliable age data would be valuable for future stock assessments. Otoliths have been collected in good quantities from the NWFSC survey, but there is currently no validated aging method for Shortspine thornyhead. 
+1. Research into aging methods and availability of reliable age data would be valuable for future stock assessments. Otoliths have been collected in good quantities from the NWFSC survey, but there is currently no validated aging method for shortspine thornyhead. 
 2. Additional investigation into growth patterns would provide valuable information for future population projections. We acknowledge that additional work on aging shortspine thornyhead would be required to make such additional growth research possible.
-3. More investigation into maturity of Shortspine thornyhead is necessary to understand the patterns in maturity observed in WCGBTS samples. 
-4. Information on possible migration of Shortspine thornyheads would be valuable for understanding stock dynamics. Analysis of trace elements and stable isotopes in shortspine otoliths may provide valuable information on the extent of potential migrations. Possible connections between migration and maturity could likewise be explored. 
+3. More investigation into maturity of shortspine thornyhead is necessary to understand the patterns in maturity observed in \gls{s-wcgbt} samples. 
+4. Information on possible migration of shortspine thornyheads would be valuable for understanding stock dynamics. Analysis of trace elements and stable isotopes in shortspine otoliths may provide valuable information on the extent of potential migrations. Possible connections between migration and maturity could likewise be explored. 
 5. A greater understanding of the connection between thornyheads and bottom type could be used to refine the indices of abundance. Thornyheads are very well sampled in trawlable habitat, but the extrapolation of density to a survey stratum could be improved by accounting for the proportion of different bottom types within a stratum and the relative density of thornyheads within each bottom type.
 6. Additional investigation into spatial stock structure could be valuable for determining whether future assessments should develop a spatial assessment model, or if shortspine thornyhead should be assessed at distinct spatial scales in the future.
 7. Further research into the Dirichilet-Multinmoial (DMN) data-weighting method for length-composition data is needed for integration with length-based data-moderate assessments like shortspine thornyhead. The DMN method has not, to date, been thoroughly simulation tested with length-composition data, and an attempted sensitivity analysis performed for the 2023 assessment failed to converge entirely. This is a general research need, and is widely applicable to many data-moderate or length-based assessments, not just shortspine thornyhead.
@@ -941,7 +968,7 @@ Research and data needs for future assessments include the following:
 <!--chapter:end:40management.Rmd-->
 
 # Acknowledgments
-The West Coast shortspine thornyhead stock assessment was developed as part of the FISH 576/577 graduate course in Applied Stock Assessment at the University of Washington School of Aquatic and Fisheries Science (SAFS) in Spring 2023. This assessment would not have been possible without guidance from the course instructors, Vlada Gertseva, Kiva Oken, Owen Hamel, and Melissa Haltuch. This assessment draws heavily on the text and analyses from the 2019, 2013, and 2005 assessments and has benefited greatly from the efforts of all authors contributing to those analyses, including Owen Hamel, Ian Taylor, and Andi Stephens.
+The West Coast shortspine thornyhead stock assessment was developed as part of the FISH 576/577 graduate course in Applied Stock Assessment at the University of Washington School of Aquatic and Fisheries Science (SAFS) in Spring 2023. This assessment draws heavily on the text and analyses from the 2019, 2013, and 2005 assessments and has benefited greatly from the efforts of all authors contributing to those analyses, including Owen Hamel, Ian Taylor, and Andi Stephens.
 
 Additionally, we would like to acknowledge the many \gls{nwfsc}, state, and external partners who provided data and subject matter expertise to this assessment. They include the following: Donna Kline, who generously shared her own and John Butler’s experimental age data sets, which was used for growth estimation; Melissa Head, who provided updated maturity data for use in this assessment; Katherine Pearson, who assisted with interpretation of the differences between the historical and updated maturity curves; John Wallace, who provided discard data for the assessment; Kelli Johnson, who developed our model-based indices of abundance; Chantel Wetzel, who provided our modern commercial landings time series, and length compositions for the survey, commercial landings, and commercial discards; Julia Coates, Ali Whitman, and Theresa Tsou, who provided historical landings data for California, Oregon, and Washington, respectively; Andi Stephens, who provided WCGOP discard length compositions and discard mean weights; and to the numerous survey biologists, observers, and port samplers who collect data annually for use in stock assessments. 
 
@@ -972,8 +999,6 @@ Additionally, we would like to acknowledge the hard work of Kelli Johnson, Chant
 # Tables
 
 
-
-## Executive Summary
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -1045,12 +1070,12 @@ Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction 
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{cccc>{\centering\arraybackslash}p{2.5cm}}
-\caption{(\#tab:rec)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model.}\\
+\caption{(\#tab:rec)Estimated recent trend in recruitment and recruitment deviations (RecDevs) and the 95\% confidence intervals (CI) from the base model.}\\
 \toprule
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{(\#tab:rec)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
+\caption[]{(\#tab:rec)Estimated recent trend in recruitment and recruitment deviations (RecDevs) and the 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
 \toprule
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
@@ -1078,12 +1103,12 @@ Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{4cm}ccc}
-\caption{(\#tab:spr)Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals.}\\
+\caption{(\#tab:spr)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\%})$}\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{(\#tab:spr)Estimated recent trend in the (1-SPR)/(1-SPR 50\%) where SPR is the spawning potential ratio the exploitation rate, and the  95\% intervals. \textit{(continued)}}\\
+\caption[]{(\#tab:spr)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\%})$ \textit{(continued)}}\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
@@ -1218,7 +1243,7 @@ Year & Predicted OFL (mt) & ABC (mt) & Age 1 Biomass (mt) & Spawning Output & Fr
 
 \begin{landscape}\begingroup\fontsize{9}{11}\selectfont
 
-\begin{longtable}[t]{l>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}>{\centering\arraybackslash}p{0.92cm}}
+\begin{longtable}[t]{l>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}>{\raggedleft\arraybackslash}p{0.92cm}}
 \caption{(\#tab:summarytab)Summary of recent estimates and managment quantities.}\\
 \toprule
 Quantity & 2013 & 2014 & 2015 & 2016 & 2017 & 2018 & 2019 & 2020 & 2021 & 2022 & 2023\\
@@ -1235,8 +1260,8 @@ Quantity & 2013 & 2014 & 2015 & 2016 & 2017 & 2018 & 2019 & 2020 & 2021 & 2022 &
 \endlastfoot
 OFL & 2333 & 2310 & 3203 & 3169 & 3144 & 3116 & 3089 & 3063 & 3211 & 3194 & 3177\\
 ACL & 1937 & 1918 & 2668 & 2639 & 2619 & 2596 & 2573 & 2552 & 2184 & 2130 & 2078\\
-Total Catch & 1009.206 & 834.979 & 878.73 & 931.86 & 988.973 & 814.596 & 674.365 & 421.6353 & 378.128 & 424.9815 & NA\\
-Total Dead & 1085.616 & 900.664 & 945.402 & 1012.752 & 1085.599 & 895.395 & 736.818 & 458.8692 & 411.6166 & 456.6489 & NA\\
+Total Catch & 1009 & 835 & 879 & 932 & 989 & 815 & 674 & 422 & 378 & 425 & NA\\
+Total Dead & 1086 & 901 & 945 & 1013 & 1086 & 895 & 737 & 459 & 412 & 457 & NA\\
 (1-SPR)/(1-SPR\_50\%) & 1.25 & 1.12 & 1.15 & 1.19 & 1.23 & 1.09 & 0.95 & 0.66 & 0.59 & 0.64 & NA\\
 Exploitation Rate & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.00 & 0.01 & NA\\
 Age 1+ Biomass (mt) & 87,353 & 87,044 & 86,961 & 86,861 & 86,715 & 86,513 & 86,520 & 86,711 & 87,220 & 87,805 & 195,973\\
@@ -1862,7 +1887,48 @@ Relative SPR & 0.584 & 1.000 & 0.981 & 1.000 & 0.995 & 0.584 & 0.577\\*
 
 
 \newpage
+\begingroup\fontsize{10}{12}\selectfont
 
+\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}>{\centering\arraybackslash}p{0.58cm}}
+\caption{(\#tab:timeblocking)Blocked parameters and the years for blocking and justification for all fleets.}\\
+\toprule
+Type & Fleet & Year & Justification & Base & RetT1 & RetT2 & RetT3 & RetT4 & RetT3.NT1 & RetT3NT2 & SelT1 & SelT2 & SelT3 & SelT4 & SelT5 & SelT6 & SelT7 & SelT8\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:timeblocking)Blocked parameters and the years for blocking and justification for all fleets. \textit{(continued)}}\\
+\toprule
+Type & Fleet & Year & Justification & Base & RetT1 & RetT2 & RetT3 & RetT4 & RetT3.NT1 & RetT3NT2 & SelT1 & SelT2 & SelT3 & SelT4 & SelT5 & SelT6 & SelT7 & SelT8\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Retention & TrawlN & 1989 & Coastwide trawl trip for deepwater complex &  & x &  & x & x & x & x &  &  &  &  & x & x & x & x\\
+Retention & TrawlN & 2007 & After peak in recruitment & x & x & x & x & x & x & x & x & x & x & x & x & x & x & x\\
+Retention & TrawlN & 2011 & Start of IFQ program & x & x & x & x & x & x & x & x & x & x & x & x & x & x & x\\
+Retention & TrawlN & 2015 & Late IFQ period + changes observed in data &  &  & x & x & x & x & x &  &  &  &  & x & x & x & x\\
+Retention & TrawlN & 2020 & Covid + changes observed in data &  &  &  &  & x &  &  &  &  &  &  & x & x & x & x\\
+Retention & TrawlS & 1989 & Coastwide trawl trip for deepwater complex &  & x &  & x & x & x & x &  &  &  &  & x & x & x & x\\
+Retention & TrawlS & 2007 & After peak in recruitment & x & x & x & x & x & x & x & x & x & x & x & x & x & x & x\\
+Retention & TrawlS & 2011 & Start of IFQ program & x & x & x & x & x & x & x & x & x & x & x & x & x & x & x\\
+Retention & TrawlS & 2017 & Late IFQ period + changes observed in data &  &  &  &  & x & x & x &  &  &  &  & x & x & x & x\\
+Retention & TrawlS & 2020 & Covid + changes observed in data &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+Retention & Non-Trawl & 2008 & Changes observed in data &  &  &  &  &  & x & x &  &  &  &  &  &  &  & \\
+Retention & Non-Trawl & 2012 & Changes observed in data &  &  &  &  &  & x & x &  &  &  &  &  &  &  & \\
+Retention & Non-Trawl & 2017 & Changes observed in data &  &  &  &  &  &  & x &  &  &  &  &  &  &  & \\
+Selectivity & TrawlN & 2003 & MPAs implementation &  &  &  &  &  &  &  & x &  & x & x & x &  & x & x\\
+Selectivity & TrawlN & 2011 & Start of IFQ program &  &  &  &  &  &  &  &  & x & x & x &  & x & x & x\\
+Selectivity & TrawlN & 2020 & Late IFQ period + Covid +  Changes observed &  &  &  &  &  &  &  &  &  &  & x &  &  &  & x\\
+Selectivity & TrawlS & 2003 & MPAs implementation &  &  &  &  &  &  &  & x &  & x & x & x &  & x & x\\
+Selectivity & TrawlS & 2011 & Start of IFQ program &  &  &  &  &  &  &  &  & x & x & x &  & x & x & x\\
+Selectivity & TrawlS & 2020 & Late IFQ period + Covid +  Changes observed &  &  &  &  &  &  &  &  &  &  & x &  &  &  & x\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
+\endgroup{}
 \newpage
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -2126,39 +2192,6 @@ Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0015285 & 4 & 0.00
 \end{landscape}
 \endgroup{}
 
-\begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
-\caption{(\#tab:recdevs)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model.}\\
-\toprule
-Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
-\midrule
-\endfirsthead
-\caption[]{(\#tab:recdevs)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
-\toprule
-Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-2013 & 6,024 & 2,469–14,698 & -0.439 & -1.352–0.474\\
-2014 & 5,962 & 2,446–14,532 & -0.447 & -1.358–0.465\\
-2015 & 5,954 & 2,438–14,542 & -0.446 & -1.360–0.468\\
-2016 & 6,057 & 2,465–14,886 & -0.427 & -1.349–0.495\\
-2017 & 5,836 & 2,385–14,279 & -0.462 & -1.379–0.454\\
-2018 & 5,745 & 2,346–14,069 & -0.476 & -1.393–0.442\\
-2019 & 8,863 & 3,557–22,086 & -0.064 & -1.003–0.874\\
-2020 & 9,536 & 3,760–24,183 & -0.013 & -0.973–0.946\\
-2021 & 10,335 & 3,984–26,811 & 0.044 & -0.943–1.032\\
-2022 & 10,118 & 3,924–26,090 & 0.000 & -0.980–0.980\\
-2023 & 10,117 & 3,924–26,086 & 0.000 & -0.980–0.980\\*
-\end{longtable}
-\endgroup{}
-\endgroup{}
-
 <!--chapter:end:52tables.Rmd-->
 
 \clearpage
@@ -2169,7 +2202,7 @@ Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
 
 ## Introduction and Data
 
-![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=80% alt="."}
+![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=75% alt="."}
 
 ![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.\label{fig:thornyhead-ratio}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
 
@@ -2183,11 +2216,15 @@ Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
 
 ![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
 
-![Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.\label{fig:designbasedsurv}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/2013_2023_survey_indices_comparison.png){width=100% height=100% alt="."}
+![Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.\label{fig:designbasedsurv}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/2013_2023_survey_indices_comparison.png){width=100% height=100% alt="."}
+
+![Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.\label{fig:modelbasedsurv}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_db_comp_wgcbts_tri.png){width=100% height=100% alt="."}
+
+![State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.\label{fig:state_indices}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_indices_state_comparison.png){width=100% height=100% alt="."}
 
 ![Summary of annual length composition data from available scientific surveys.\label{fig:survey_comps}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
 
-![Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as ghigh and low growth sensitivities.\label{fig:growthcurve}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curves.png){width=100% height=100% alt="."}
+![Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.\label{fig:growthcurve}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curves.png){width=100% height=100% alt="."}
 
 ![2023 length-weight relationship and fits to WCGBTS weight-length data.\label{fig:lengthweight}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/lengthweight.png){width=100% height=100% alt="."}
 
@@ -2206,7 +2243,7 @@ Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
 
 ![Spawning output timeseries for piecewise data updates.\label{fig:bridge_spawnout_data}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts3_Spawning_Output.png){width=100% height=100% alt="."}
 
-![Relative spawning biomass timeseries for for piecewise data updates.\label{fig:bridge_bratio_data}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts4_Bratio.png){width=100% height=100% alt="."}
+![Relative spawning biomass timeseries for piecewise data updates.\label{fig:bridge_bratio_data}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts4_Bratio.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -2218,15 +2255,15 @@ Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
 
 ![Selectivity at length for each combination of sex and fleet. Note that the three commerical fishery fleets were not modeled as having sex-specific selectivity.\label{fig:selcurvs}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/sel01_multiple_fleets_length1.png){width=100% height=100% alt="."}
 
-![Fit to index data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitsTri1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_Triennial1.png){width=100% height=100% alt="."}
+![Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitsTri1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_Triennial1.png){width=100% height=100% alt="."}
 
-![Fit to index data for WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitscombo}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_NWFSCcombo.png){width=100% height=100% alt="."}
+![Fit to index of abundance data for the WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitscombo}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_NWFSCcombo.png){width=100% height=100% alt="."}
 
-![Discard fraction for the North trawl fleet.\label{fig:northtrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_N.png){width=100% height=100% alt="."}
+![Discard fraction (percent of total catch that is not landed) for the North trawl fleet.\label{fig:northtrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_N.png){width=100% height=100% alt="."}
 
-![Discard fraction for the South trawl fleet.\label{fig:southtrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_S.png){width=100% height=100% alt="."}
+![Discard fraction (percent of total catch that is not landed) for the South trawl fleet.\label{fig:southtrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_S.png){width=100% height=100% alt="."}
 
-![Discard fraction for the Non-trawl fleet.\label{fig:nontrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitNon-trawl.png){width=100% height=100% alt="."}
+![Discard fraction (percent of total catch that is not landed) for the Non-trawl fleet.\label{fig:nontrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitNon-trawl.png){width=100% height=100% alt="."}
 
 ![Length comps, aggregated across time by fleet. Labels 'retained' and 'discard' indicate discarded or retained samples for each fleet. Panels without this designation represent the whole catch.\label{fig:lencomps_all}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__aggregated_across_time.png){width=100% height=100% alt="."}
 
@@ -2252,21 +2289,21 @@ Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
 
 ![Pearson residuals, whole catch, for the three scientific surveys. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected). Red bubbles are female, blue bubbles are male, and grey bubble are unsexed.\label{fig:resids_survey}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__page2_multi-fleet_comparison.png){width=100% height=100% alt="."}
 
-![Mean weight in discard for the North trawl fleet.\label{fig:weightNorthTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_N.png){width=100% height=100% alt="."}
+![Mean individual body weight (kg) in discard for the North trawl fleet.\label{fig:weightNorthTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_N.png){width=100% height=100% alt="."}
 
-![Mean weight in discard for the South trawl fleet.\label{fig:weightSouthTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_S.png){width=100% height=100% alt="."}
+![Mean individual body weight (kg) in discard for the South trawl fleet.\label{fig:weightSouthTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_S.png){width=100% height=100% alt="."}
 
-![Mean weight in discard for the Non-trawl fleet.\label{fig:weightNonTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltNon-trawl.png){width=100% height=100% alt="."}
+![Mean individual body weight (kg) in discard for the Non-trawl fleet.\label{fig:weightNonTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltNon-trawl.png){width=100% height=100% alt="."}
 
-![Spawning output with ~95% asymptotic intervals.\label{fig:spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
+![Spawning output (eggs) with ~95% asymptotic intervals.\label{fig:spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
 
 ![Relative spawning output: $B/B_0$ with ~95% asymptotic intervals.\label{fig:relspawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
 
-![Summary F rate.\label{fig:summary_f}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
+![Summary fishing mortality rate (total landings / summary biomass).\label{fig:summary_f}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
 
-![Estimated spawning potential ratio.\label{fig:spr_trajectory}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
+![Estimated relative fishing intensity as a function of spawning potential ratio (SPR).\label{fig:spr_trajectory}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
 
-![Phase diagram.\label{fig:phase_diagram}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
+![Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.\label{fig:phase_diagram}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
 
 ![Retention curves for all fleets.\label{fig:retencurvs}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/retention_curves.png){width=100% height=100% alt="."}
 
@@ -2319,6 +2356,10 @@ Year & Recruitment & Interval & Recruitment.Deviations & Interval.1\\
 ![Spawning output comparisons of the base model and landing sensitivities.\label{fig:land_sensitiv_spawning}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Landings/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
 
 ![Relative spawning output comparisons of the base model and landing sensitivities.\label{fig:land_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Landings/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+
+![Spawning output comparisons of the base model and survey sensitivities.\label{fig:surv_sensitiv_spawning}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Surveys/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
+
+![Relative spawning output comparisons of the base model and survey sensitivities.\label{fig:surv_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Surveys/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
 
 ![Relative spawning output comparisons of the base model and selectivity sensitivities.\label{fig:selec_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
 
