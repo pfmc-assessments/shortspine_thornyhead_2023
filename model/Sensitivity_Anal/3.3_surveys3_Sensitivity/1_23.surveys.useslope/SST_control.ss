@@ -13,7 +13,7 @@
 0 # unused option
 # for each settlement assignment:
 #_GPattern	month	area	age
-1	3	1	0	#_recr_dist_pattern_1
+1	3	1	0	#_recr_dist_pattern1
 #
 #_Cond 0 # N_movement_definitions goes here if N_areas > 1
 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
@@ -135,99 +135,104 @@
 #
 #_Q_setup for fleets with cpue or survey data
 #_fleet	link	link_info	extra_se	biasadj	float  #  fleetname
-    4	1	0	1	0	1	#_Triennial1
-    6	1	0	0	0	1	#_NWFSCcombo
--9999	0	0	0	0	0	#_terminator
+    5	1	0	1	0	1	#_Triennial_Late
+    6	1	0	0	0	1	#_AFSCslope     
+    7	1	0	0	0	1	#_NWFSCslope    
+    8	1	0	0	0	1	#_NWFSCcombo    
+-9999	0	0	0	0	0	#_terminator    
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-  -5	  5	 -2.17642	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial1(4) 
-0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial1(4)
-  -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(6) 
+0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial_Late(5)
+  -5	  5	 -2.15589	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial_Late(5) 
+  -5	  5	 0.185658	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_AFSCslope(6)      
+  -5	  5	  -1.2867	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope(7)     
+  -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(8)     
 #_no timevary Q parameters
 #
 #_size_selex_patterns
 #_Pattern	Discard	Male	Special
-24	1	0	0	#_1 Trawl_N   
-24	1	0	0	#_2 Trawl_S   
-24	1	0	0	#_3 Non-trawl 
-24	0	3	0	#_4 Triennial1
-24	0	3	0	#_5 Triennial2
-24	0	3	0	#_6 NWFSCcombo
+24	1	0	0	#_1 Trawl_N        
+24	1	0	0	#_2 Trawl_S        
+24	1	0	0	#_3 Non-trawl      
+24	0	0	0	#_4 Triennial_Early
+24	0	0	0	#_5 Triennial_Late 
+24	0	0	0	#_6 AFSCslope      
+24	0	0	0	#_7 NWFSCslope     
+24	0	0	0	#_8 NWFSCcombo     
 #
 #_age_selex_patterns
 #_Pattern	Discard	Male	Special
-10	0	0	0	#_1 Trawl_N   
-10	0	0	0	#_2 Trawl_S   
-10	0	0	0	#_3 Non-trawl 
-10	0	0	0	#_4 Triennial1
-10	0	0	0	#_5 Triennial2
-10	0	0	0	#_6 NWFSCcombo
+10	0	0	0	#_1 Trawl_N        
+10	0	0	0	#_2 Trawl_S        
+10	0	0	0	#_3 Non-trawl      
+10	0	0	0	#_4 Triennial_Early
+10	0	0	0	#_5 Triennial_Late 
+10	0	0	0	#_6 AFSCslope      
+10	0	0	0	#_7 NWFSCslope     
+10	0	0	0	#_8 NWFSCcombo     
 #
 #_SizeSelex
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-  10	60	       30	     30	 5	0	  1	0	0	0	0	  0	0	0	#_SizeSel_P_1_Trawl_N(1)         
- -16	16	      -15	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_N(1)         
-  -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_N(1)         
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_N(1)         
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Trawl_N(1)         
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_N(1)         
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
- 0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_N(1)      
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
-  -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_N(1)      
-  10	60	       30	     30	 5	0	  1	0	0	0	0	  0	0	0	#_SizeSel_P_1_Trawl_S(2)         
-  -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_S(2)         
-  -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_S(2)         
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_S(2)         
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Trawl_S(2)         
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_S(2)         
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	2	3	#_SizeSel_PRet_1_Trawl_S(2)      
- 0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_S(2)      
- -10	11	       10	2.19722	99	0	 -3	0	0	0	0	  0	2	3	#_SizeSel_PRet_3_Trawl_S(2)      
-  -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_S(2)      
-  10	60	       30	     30	 5	0	  2	0	0	0	0	  0	0	0	#_SizeSel_P_1_Non-trawl(3)       
-  -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Non-trawl(3)       
-  -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Non-trawl(3)       
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Non-trawl(3)       
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Non-trawl(3)       
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Non-trawl(3)       
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_1_Non-trawl(3)    
- 0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Non-trawl(3)    
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_3_Non-trawl(3)    
-  -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Non-trawl(3)    
-  10	60	       30	     30	 5	0	  2	0	0	0	0	  0	0	0	#_SizeSel_P_1_Triennial1(4)      
- -16	16	       -7	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Triennial1(4)      
-  -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Triennial1(4)      
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Triennial1(4)      
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Triennial1(4)      
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Triennial1(4)      
- -15	15	 -2.85457	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_1_Triennial1(4)
- -15	15	-0.150036	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_2_Triennial1(4)
- -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_3_Triennial1(4)
- -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_4_Triennial1(4)
- -15	15	        1	      0	 5	0	 -4	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_5_Triennial1(4)
-  10	60	       30	     30	 5	0	  2	0	0	0	0	  0	0	0	#_SizeSel_P_1_Triennial2(5)      
- -16	16	       -7	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Triennial2(5)      
-  -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Triennial2(5)      
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Triennial2(5)      
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Triennial2(5)      
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Triennial2(5)      
- -15	15	 -2.85457	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_1_Triennial2(5)
- -15	15	-0.150036	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_2_Triennial2(5)
- -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_3_Triennial2(5)
- -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_4_Triennial2(5)
- -15	15	        1	      0	 5	0	 -4	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_5_Triennial2(5)
-  10	60	       30	     30	 5	0	  2	0	0	0	0	  0	0	0	#_SizeSel_P_1_NWFSCcombo(6)      
-  -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_NWFSCcombo(6)      
-  -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_NWFSCcombo(6)      
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_NWFSCcombo(6)      
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_NWFSCcombo(6)      
--999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_NWFSCcombo(6)      
- -15	15	 -4.26284	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_1_NWFSCcombo(6)
- -15	15	-0.347213	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_2_NWFSCcombo(6)
- -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_3_NWFSCcombo(6)
- -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_4_NWFSCcombo(6)
- -15	15	        1	      0	 5	0	 -4	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_5_NWFSCcombo(6)
+   10	60	  30	  30	 5	0	  1	0	0	0	0	0	0	0	#_SizeSel_P_1_Trawl_N(1)        
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Trawl_N(1)        
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Trawl_N(1)        
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Trawl_N(1)        
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Trawl_N(1)        
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Trawl_N(1)        
+    5	70	  23	  27	99	0	  3	0	0	0	0	0	1	3	#_SizeSel_PRet_1_Trawl_N(1)     
+  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Trawl_N(1)     
+1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	1	3	#_SizeSel_PRet_3_Trawl_N(1)     
+   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Trawl_N(1)     
+   10	60	  30	  30	 5	0	  1	0	0	0	0	0	0	0	#_SizeSel_P_1_Trawl_S(2)        
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Trawl_S(2)        
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Trawl_S(2)        
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Trawl_S(2)        
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Trawl_S(2)        
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Trawl_S(2)        
+    5	70	  23	  27	99	0	  3	0	0	0	0	0	2	3	#_SizeSel_PRet_1_Trawl_S(2)     
+  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Trawl_S(2)     
+1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	2	3	#_SizeSel_PRet_3_Trawl_S(2)     
+   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Trawl_S(2)     
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Non-trawl(3)      
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Non-trawl(3)      
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Non-trawl(3)      
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Non-trawl(3)      
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Non-trawl(3)      
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Non-trawl(3)      
+    5	70	  23	  27	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_1_Non-trawl(3)   
+  0.1	40	   2	  15	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_2_Non-trawl(3)   
+1e-04	 1	 0.9	 0.9	99	0	  3	0	0	0	0	0	0	0	#_SizeSel_PRet_3_Non-trawl(3)   
+   -3	 3	   0	   0	 3	0	 -4	0	0	0	0	0	0	0	#_SizeSel_PRet_4_Non-trawl(3)   
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial_Early(4)
+   -7	 7	  -7	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial_Early(4)
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial_Early(4)
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial_Early(4)
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial_Early(4)
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial_Early(4)
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_Triennial_Late(5) 
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_Triennial_Late(5) 
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_Triennial_Late(5) 
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_Triennial_Late(5) 
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_Triennial_Late(5) 
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_Triennial_Late(5) 
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_AFSCslope(6)      
+   -7	 7	  -7	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_AFSCslope(6)      
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_AFSCslope(6)      
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_AFSCslope(6)      
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_AFSCslope(6)      
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_AFSCslope(6)      
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCslope(7)     
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCslope(7)     
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCslope(7)     
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCslope(7)     
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCslope(7)     
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCslope(7)     
+   10	60	  30	  30	 5	0	  2	0	0	0	0	0	0	0	#_SizeSel_P_1_NWFSCcombo(8)     
+   -7	 7	   0	-0.5	 2	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_2_NWFSCcombo(8)     
+   -5	10	   3	1.75	 5	0	  3	0	0	0	0	0	0	0	#_SizeSel_P_3_NWFSCcombo(8)     
+   -5	10	   5	 0.1	 2	0	  4	0	0	0	0	0	0	0	#_SizeSel_P_4_NWFSCcombo(8)     
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_5_NWFSCcombo(8)     
+ -999	15	-999	   0	 5	0	-99	0	0	0	0	0	0	0	#_SizeSel_P_6_NWFSCcombo(8)     
 #_AgeSelex
 #_No age_selex_parm
 # timevary selex parameters 
@@ -250,25 +255,31 @@
 #
 # Input variance adjustments factors: 
 #_Data_type	Fleet	Value
-    4	1	0.036909	#_Variance_adjustment_list1 
-    4	2	 0.08848	#_Variance_adjustment_list2 
-    4	3	0.046561	#_Variance_adjustment_list3 
-    4	4	0.150731	#_Variance_adjustment_list4 
-    4	5	0.129522	#_Variance_adjustment_list5 
-    4	6	 0.03538	#_Variance_adjustment_list6 
-    5	1	       1	#_Variance_adjustment_list7 
-    5	2	       1	#_Variance_adjustment_list8 
-    5	3	       1	#_Variance_adjustment_list9 
-    5	4	       1	#_Variance_adjustment_list10
-    5	5	       1	#_Variance_adjustment_list11
-    5	6	       1	#_Variance_adjustment_list12
-    6	1	       1	#_Variance_adjustment_list13
-    6	2	       1	#_Variance_adjustment_list14
-    6	3	       1	#_Variance_adjustment_list15
-    6	4	       1	#_Variance_adjustment_list16
-    6	5	       1	#_Variance_adjustment_list17
-    6	6	       1	#_Variance_adjustment_list18
--9999	0	       0	#_terminator                
+    4	1	0.5595	#_Variance_adjustment_list1 
+    4	2	0.9773	#_Variance_adjustment_list2 
+    4	3	0.4723	#_Variance_adjustment_list3 
+    4	4	0.6812	#_Variance_adjustment_list4 
+    4	5	0.6494	#_Variance_adjustment_list5 
+    4	6	     1	#_Variance_adjustment_list6 
+    4	7	0.5126	#_Variance_adjustment_list7 
+    4	8	     1	#_Variance_adjustment_list8 
+    5	1	     1	#_Variance_adjustment_list9 
+    5	2	     1	#_Variance_adjustment_list10
+    5	3	     1	#_Variance_adjustment_list11
+    5	4	     1	#_Variance_adjustment_list12
+    5	5	     1	#_Variance_adjustment_list13
+    5	6	     1	#_Variance_adjustment_list14
+    5	7	     1	#_Variance_adjustment_list15
+    5	8	     1	#_Variance_adjustment_list16
+    6	1	     1	#_Variance_adjustment_list17
+    6	2	     1	#_Variance_adjustment_list18
+    6	3	     1	#_Variance_adjustment_list19
+    6	4	     1	#_Variance_adjustment_list20
+    6	5	     1	#_Variance_adjustment_list21
+    6	6	     1	#_Variance_adjustment_list22
+    6	7	     1	#_Variance_adjustment_list23
+    6	8	     1	#_Variance_adjustment_list24
+-9999	0	     0	#_terminator                
 #
 5 #_maxlambdaphase
 1 #_sd_offset; must be 1 if any growthCV, sigmaR, or survey extraSD is an estimated parameter

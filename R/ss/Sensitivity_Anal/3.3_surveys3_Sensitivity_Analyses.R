@@ -282,21 +282,40 @@ Ctl23_surveys_useslope <- SS_readctl_3.30(
 
 
 # Adjust Nfleets
+Ctl23_surveys_useslope$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_UseSlope_CombineTriennial
 
 # Adjust fleetnames
+Ctl23_surveys_useslope$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial
 
 # adjust Q_options
+Ctl23_surveys_useslope$Q_options <- SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial %>% 
+  filter(fleet != 4)
+Ctl23_surveys_useslope$Q_options$extra_se[1] <- 1
+
+  
 
 # adjust Qparms
+Ctl23_surveys_useslope$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial
+row.names(Ctl23_surveys_useslope$Q_parms)[row.names(Ctl23_surveys_useslope$Q_parms) == "Q_extraSD_Triennial_Early(4)"] <- "Q_extraSD_Triennial_Late(5)"
+Ctl23_surveys_useslope$Q_parms  <- Ctl23_surveys_useslope$Q_parms[-1,]
+
+#adjust size and age selectivity types and parms
+Ctl23_surveys_useslope$size_selex_types <- SS_Param2023$size_selex_types$data$ThreeFleets_UseSlope_CombineTriennial
+Ctl23_surveys_useslope$age_selex_types <- SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial
+Ctl23_surveys_useslope$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_UseSlope_CombineTriennial
+Ctl23_surveys_useslope$size_selex_parms_tv <- SS_Param2023$size_selex_parms_tv$data$ThreeFleets_UseSlope_CombineTriennial
+
+Ctl23_surveys_useslope$Variance_adjustment_list <- SS_Param2023$Variance_adjustment_list$data$ThreeFleets_UseSlope_CombineTriennial
+
 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_surveys_useslope ,
-      # outfile = file.path(Dir_23_surveys_useslope, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+     ctllist =  Ctl23_surveys_useslope ,
+     outfile = file.path(Dir_23_surveys_useslope, 'SST_control.ss', fsep = fsep),
+     version = '3.30',
+     overwrite = TRUE
+     )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -425,7 +444,7 @@ var.to.save <- c(var.to.save, 'Dir_23_surveys_extaSDwcgbts')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.surveys.extaSDwcgbts", files="all")
 
 
 # 4.1  Work on the Starter file ----
@@ -523,17 +542,20 @@ Ctl23_surveys_extaSDwcgbts <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+
+# adjust Q parms and Q options
+Ctl23_surveys_extaSDwcgbts$Q_options$extra_se[2] <- 1
+Ctl23_surveys_extaSDwcgbts$Q_parms <- rbind(Ctl23_surveys_extaSDwcgbts$Q_parms, Ctl23_surveys_extaSDwcgbts$Q_parms[2,])
+row.names(Ctl23_surveys_extaSDwcgbts$Q_parms)[row.names(Ctl23_surveys_extaSDwcgbts$Q_parms) == "Q_extraSD_Triennial1(4)1"] <- "Q_extraSD_NWFSCcombo(6)"
 
 
 # Save the control file for the model
-# SS_writectl(
-      # ctllist =  Ctl23_surveys_extaSDwcgbts ,
-      # outfile = file.path(Dir_23_surveys_extaSDwcgbts, 'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )
+SS_writectl(
+     ctllist =  Ctl23_surveys_extaSDwcgbts ,
+     outfile = file.path(Dir_23_surveys_extaSDwcgbts, 'SST_control.ss', fsep = fsep),
+     version = '3.30',
+     overwrite = TRUE
+     )
 # Check file structure
 # We actually need to run the model to check the file structure
 
@@ -662,7 +684,7 @@ var.to.save <- c(var.to.save, 'Dir_23_surveys_notriennial')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt()
+Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.surveys.notriennial", files="all")
 
 
 # 5.1  Work on the Starter file ----
