@@ -326,6 +326,16 @@ NewSensAnal(topic = "landings",
             base_model = c("23.model.francis_2"),
             new_model = c("23.landings.ashop"))
 
+NewSensAnal(
+  topic = "model",
+  object = c("Prelim DT - Low State", "Prelim DT - Base State", "Prelim DT - High State"),
+  author = "Joshua Zahner",
+  folder_name = "Initial_Decision_Table",
+  script_model = "Initial_Decision_Table_Analyses",
+  script_results = "Initial_Decision_Table_Results",
+  base_model = c("23.model.francis_2", "23.model.francis_2", "23.model.francis_2"),
+  new_model = c("23.decision.low", "23.decision.mid", "23.decision.high")
+)
 
 #NewSensAnal(topic = "surveys",
 #            # names are based on new model
