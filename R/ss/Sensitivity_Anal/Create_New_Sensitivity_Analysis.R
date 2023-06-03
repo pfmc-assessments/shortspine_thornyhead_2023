@@ -355,13 +355,13 @@ NewSensAnal(
 
 
 # 4 survey structure sensitivity analysis
-NewSensAnal(topic = "surveys",
-            # names are based on new model
-            object = c("2 survey vs 4 survey structure", "extra SD on WCGBTS", "No Triennial Survey"),
-            author = "Andrea Odell",
-            folder_name = "surveys3_Sensitivity",
-            script_model = "surveys3_Sensitivity_Analyses",
-            script_results = "surveys3_Sensitivity_Outputs",
-            base_model = c("23.model.francis_2"),
-            new_model = c("23.surveys.useslope", "23.surveys.extaSDwcgbts", "23.surveys.notriennial"))
+#NewSensAnal(topic = "surveys",
+#            # names are based on new model
+#            object = c("2 survey vs 4 survey structure", "extra SD on WCGBTS", "No Triennial Survey"),
+#            author = "Andrea Odell",
+#            folder_name = "surveys3_Sensitivity",
+#            script_model = "surveys3_Sensitivity_Analyses",
+#            script_results = "surveys3_Sensitivity_Outputs",
+#            base_model = c("23.model.francis_2"),
+#            new_model = c("23.surveys.useslope", "23.surveys.extaSDwcgbts", "23.surveys.notriennial"))
 
