@@ -199,42 +199,54 @@ Dat23_surveys_useslope <- SS_readdat_3.30(
 # Make your modification if applicable
 # Code modifying the data file 
 
-# adjust Nfleets
-Dat23_surveys_useslope$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_UseSlope_CombineTriennial
+Dat23_surveys_useslope_save <- Dat23_surveys_useslope
 
-# adjust Fleet info
-Dat23_surveys_useslope$fleetinfo <- SS_Param2023$fleet_info$data$ThreeFleets_UseSlope_CombineTriennial %>% 
-  mutate(surveytiming = c(-1,-1,-1, 7, 7, 7, 7, 7))
+#Fleet Number (Nfleets!=Nfleet; Nfleets=Nfleet+NSurvey)
+Dat23_surveys_useslope$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_UseSlope_CombineTriennial	
 
-#adjust fleet names
-Dat23_surveys_useslope$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial
+#Fleets Info
+Dat23_surveys_useslope$fleetinfo <- SS_Param2023$fleet_info$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust CPUE info
-Dat23_surveys_useslope$CPUEinfo <- SS_Param2023$CPUEinfo$data$ThreeFleets_UseSlope_CombineTriennial
+#Areas 
+Dat23_surveys_useslope$areas <- SS_Param2023$areas$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust CPUE data
-Dat23_surveys_useslope$CPUE <- SS_Param2023$Indices$data$ThreeFleets_UseSlope_CombineTriennial
+#catch /!\ Mismatch in the name of this variable - Upper vs Lower case
+Dat23_surveys_useslope$catch <- SS_Param2023$Catch$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust areas
-Dat23_surveys_useslope$areas <- SS_Param2023$areas$data$ThreeFleets_UseSlope_CombineTriennial 
+#CPUE info
+Dat23_surveys_useslope$CPUEinfo <- SS_Param2023$CPUEinfo$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust survey timing
-Dat23_surveys_useslope$surveytiming <- SS_Param2023$surveytiming$data$ThreeFleets_UseSlope_CombineTriennial
+#CPUE
+Dat23_surveys_useslope$CPUE <- SS_Param2023$Indices$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust length info
-Dat23_surveys_useslope$len_info <- SS_Param2023$len_info$data$ThreeFleets_UseSlope_CombineTriennial 
+#NB DISCARD FLEETS
+Dat23_surveys_useslope$N_discard_fleets <- SS_Param2023$N_discard_fleets$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust length comps
-Dat23_surveys_useslope$lencomp <- SS_Param2023$Fishery_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial
+# DISCARD info
+Dat23_surveys_useslope$discard_fleet_info <- SS_Param2023$discard_fleet_info$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust number of surveys
-Dat23_surveys_useslope$Nsurveys <- SS_Param2023$Nsurveys$data$ThreeFleets_UseSlope_CombineTriennial
+# Discard rates /!\ Mismatch in the name of this variable - discard_data vs discard_rates
+Dat23_surveys_useslope$discard_data <- SS_Param2023$discard_rates$data$ThreeFleets_UseSlope_CombineTriennial	
 
-# adjust survey timing vector
-Dat23_surveys_useslope$surveytiming <- c(-1,-1,-1, 7, 7, 7, 7, 7)
 
-# adjust max combined length bins to match number of fleet/surveys
-Dat23_surveys_useslope$max_combined_lbin <- c(0,0,0,0,0,0,0,0)
+# Discard mean indiv weight /!\ Mismatch in the name of this variable - Upper vs Lower case
+Dat23_surveys_useslope$meanbodywt <- SS_Param2023$Meanbodywt$data$ThreeFleets_UseSlope_CombineTriennial	
+
+# Info on length composition
+Dat23_surveys_useslope$len_info <- SS_Param2023$len_info$data$ThreeFleets_UseSlope_CombineTriennial	
+
+# Length composition - includes fisheries, surveys, landings, discards
+Dat23_surveys_useslope$lencomp <- SS_Param2023$All_LengthComp$data$ThreeFleets_UseSlope_CombineTriennial	
+
+# Number of Fishing fleets
+Dat23_surveys_useslope$Nfleet <- SS_Param2023$Nfleet$data$ThreeFleets_UseSlope_CombineTriennial	
+
+# Number of Surveys
+Dat23_surveys_useslope$Nsurveys <- SS_Param2023$Nsurveys$data$ThreeFleets_UseSlope_CombineTriennial	
+
+#max_combined_lbin
+Dat23_surveys_useslope$max_combined_lbin <- Dat23_surveys_useslope$max_combined_lbin[-grep("slope|Non.trawl_S", colnames(Dat23_surveys_useslope_save$fleetinfo1))]
+
 
 # Save the data file for the model
 SS_writedat(
@@ -279,33 +291,43 @@ Ctl23_surveys_useslope <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
+Ctl23_surveys_useslope$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_UseSlope_CombineTriennial	
+Ctl23_surveys_useslope$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial	
+Ctl23_surveys_useslope$Q_options <- as_tibble(SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial) %>% filter(fleet != 4) %>% as.data.frame 	
+Ctl23_surveys_useslope$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial_Early", rowname))) %>% tibble::column_to_rownames()
 
-
-# Adjust Nfleets
-Ctl23_surveys_useslope$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_UseSlope_CombineTriennial
-
-# Adjust fleetnames
-Ctl23_surveys_useslope$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial
-
-# adjust Q_options
-Ctl23_surveys_useslope$Q_options <- SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial %>% 
-  filter(fleet != 4)
-Ctl23_surveys_useslope$Q_options$extra_se[1] <- 1
-
-  
-
-# adjust Qparms
-Ctl23_surveys_useslope$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial
-row.names(Ctl23_surveys_useslope$Q_parms)[row.names(Ctl23_surveys_useslope$Q_parms) == "Q_extraSD_Triennial_Early(4)"] <- "Q_extraSD_Triennial_Late(5)"
-Ctl23_surveys_useslope$Q_parms  <- Ctl23_surveys_useslope$Q_parms[-1,]
-
-#adjust size and age selectivity types and parms
-Ctl23_surveys_useslope$size_selex_types <- SS_Param2023$size_selex_types$data$ThreeFleets_UseSlope_CombineTriennial
-Ctl23_surveys_useslope$age_selex_types <- SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial
-Ctl23_surveys_useslope$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_UseSlope_CombineTriennial
-Ctl23_surveys_useslope$size_selex_parms_tv <- SS_Param2023$size_selex_parms_tv$data$ThreeFleets_UseSlope_CombineTriennial
+Ctl23_surveys_useslope$size_selex_types <- SS_Param2023$size_selex_types$data$ThreeFleets_UseSlope_CombineTriennial	
+Ctl23_surveys_useslope$age_selex_types <- SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial	
+Ctl23_surveys_useslope$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_UseSlope_CombineTriennial	
+Ctl23_surveys_useslope$size_selex_parms_tv <- SS_Param2023$size_selex_parms_tv$data$ThreeFleets_UseSlope_CombineTriennial	
 
 Ctl23_surveys_useslope$Variance_adjustment_list <- SS_Param2023$Variance_adjustment_list$data$ThreeFleets_UseSlope_CombineTriennial
+
+# # Adjust Nfleets
+# Ctl23_surveys_useslope$Nfleets <- SS_Param2023$Nfleets$data$ThreeFleets_UseSlope_CombineTriennial
+# 
+# # Adjust fleetnames
+# Ctl23_surveys_useslope$fleetnames <- SS_Param2023$fleetnames$data$ThreeFleets_UseSlope_CombineTriennial
+# 
+# # adjust Q_options
+# Ctl23_surveys_useslope$Q_options <- SS_Param2023$Q_options$data$ThreeFleets_UseSlope_CombineTriennial %>% 
+#   filter(fleet != 4)
+# Ctl23_surveys_useslope$Q_options$extra_se[1] <- 1
+# 
+#   
+# 
+# # adjust Qparms
+# Ctl23_surveys_useslope$Q_parms <- SS_Param2023$Q_parms$data$ThreeFleets_UseSlope_CombineTriennial
+# row.names(Ctl23_surveys_useslope$Q_parms)[row.names(Ctl23_surveys_useslope$Q_parms) == "Q_extraSD_Triennial_Early(4)"] <- "Q_extraSD_Triennial_Late(5)"
+# Ctl23_surveys_useslope$Q_parms  <- Ctl23_surveys_useslope$Q_parms[-1,]
+# 
+# #adjust size and age selectivity types and parms
+# Ctl23_surveys_useslope$size_selex_types <- SS_Param2023$size_selex_types$data$ThreeFleets_UseSlope_CombineTriennial
+# Ctl23_surveys_useslope$age_selex_types <- SS_Param2023$age_selex_types$data$ThreeFleets_UseSlope_CombineTriennial
+# Ctl23_surveys_useslope$size_selex_parms <- SS_Param2023$size_selex_parms$data$ThreeFleets_UseSlope_CombineTriennial
+# Ctl23_surveys_useslope$size_selex_parms_tv <- SS_Param2023$size_selex_parms_tv$data$ThreeFleets_UseSlope_CombineTriennial
+# 
+# Ctl23_surveys_useslope$Variance_adjustment_list <- SS_Param2023$Variance_adjustment_list$data$ThreeFleets_UseSlope_CombineTriennial
 
 
 
@@ -403,6 +425,50 @@ SS_plots(replist,
       dir = Dirplot,
       printfolder = 'plots'
       )
+
+
+new.francis.weight <- r4ss::tune_comps(
+  replist = replist,
+  option="Francis",
+  dir = Dirplot,
+  exe = get.ss.exe.path()
+)
+
+Ctlfile <-file.path(Dir_23_surveys_useslope,Start23_surveys_useslope$ctlfile, fsep = fsep)
+Ctl23_surveys_useslope <- SS_readctl_3.30(
+  file = Ctlfile,
+  use_datlist = TRUE,
+  datlist = file.path(Dir_23_surveys_useslope, 'run','data_echo.ss_new', fsep = fsep),
+  verbose = TRUE
+)
+
+Ctl23_surveys_useslope$Variance_adjustment_list <- bind_rows(
+  Ctl23_surveys_useslope$Variance_adjustment_list %>% filter(Data_type == 4) %>% mutate(Value=new.francis.weight$New_Var_adj) ,
+  Ctl23_surveys_useslope$Variance_adjustment_list %>% filter(Data_type != 4)
+)
+
+SS_writectl(
+  ctllist =  Ctl23_surveys_useslope ,
+  outfile = file.path(Dir_23_surveys_useslope, 'SST_control.ss', fsep = fsep),
+  version = '3.30',
+  overwrite = TRUE
+)
+
+run_SS(SS_version = '3.30.21',
+       # version of SS
+       base_path =Dir_23_surveys_useslope,
+       # root directory where the input file are housed
+       pathRun = NULL,
+       # A 'run' folder is created if needed (where output files will be stored)
+       copy_files = TRUE,
+       # copy the input files from the23.surveys.useslopefolder
+       cleanRun = TRUE,
+       # clean the folder after the run
+       extra = ifelse(noHess[1], yes = '-nohess', no = '')
+       # this is if we want to use '-nohess'
+)
+
+# 
 
 # =======================
 

@@ -135,18 +135,17 @@
 #
 #_Q_setup for fleets with cpue or survey data
 #_fleet	link	link_info	extra_se	biasadj	float  #  fleetname
-    5	1	0	1	0	1	#_Triennial_Late
+    5	1	0	0	0	1	#_Triennial_Late
     6	1	0	0	0	1	#_AFSCslope     
     7	1	0	0	0	1	#_NWFSCslope    
     8	1	0	0	0	1	#_NWFSCcombo    
 -9999	0	0	0	0	0	#_terminator    
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn  #  parm_name
-0.01	0.5	     0.05	0.05	0.1	0	 4	0	0	0	0	0	0	0	#_Q_extraSD_Triennial_Late(5)
-  -5	  5	 -2.15589	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial_Late(5) 
-  -5	  5	 0.185658	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_AFSCslope(6)      
-  -5	  5	  -1.2867	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope(7)     
-  -5	  5	-0.840803	   0	  1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(8)     
+-5	5	 -2.15589	0	1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_Triennial_Late(5)
+-5	5	 0.185658	0	1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_AFSCslope(6)     
+-5	5	  -1.2867	0	1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCslope(7)    
+-5	5	-0.840803	0	1	0	-1	0	0	0	0	0	0	0	#_LnQ_base_NWFSCcombo(8)    
 #_no timevary Q parameters
 #
 #_size_selex_patterns
@@ -255,31 +254,31 @@
 #
 # Input variance adjustments factors: 
 #_Data_type	Fleet	Value
-    4	1	0.5595	#_Variance_adjustment_list1 
-    4	2	0.9773	#_Variance_adjustment_list2 
-    4	3	0.4723	#_Variance_adjustment_list3 
-    4	4	0.6812	#_Variance_adjustment_list4 
-    4	5	0.6494	#_Variance_adjustment_list5 
-    4	6	     1	#_Variance_adjustment_list6 
-    4	7	0.5126	#_Variance_adjustment_list7 
-    4	8	     1	#_Variance_adjustment_list8 
-    5	1	     1	#_Variance_adjustment_list9 
-    5	2	     1	#_Variance_adjustment_list10
-    5	3	     1	#_Variance_adjustment_list11
-    5	4	     1	#_Variance_adjustment_list12
-    5	5	     1	#_Variance_adjustment_list13
-    5	6	     1	#_Variance_adjustment_list14
-    5	7	     1	#_Variance_adjustment_list15
-    5	8	     1	#_Variance_adjustment_list16
-    6	1	     1	#_Variance_adjustment_list17
-    6	2	     1	#_Variance_adjustment_list18
-    6	3	     1	#_Variance_adjustment_list19
-    6	4	     1	#_Variance_adjustment_list20
-    6	5	     1	#_Variance_adjustment_list21
-    6	6	     1	#_Variance_adjustment_list22
-    6	7	     1	#_Variance_adjustment_list23
-    6	8	     1	#_Variance_adjustment_list24
--9999	0	     0	#_terminator                
+    4	1	0.109488	#_Variance_adjustment_list1 
+    4	2	0.113127	#_Variance_adjustment_list2 
+    4	3	0.058587	#_Variance_adjustment_list3 
+    4	4	0.237274	#_Variance_adjustment_list4 
+    4	5	0.091031	#_Variance_adjustment_list5 
+    4	6	0.419663	#_Variance_adjustment_list6 
+    4	7	0.015363	#_Variance_adjustment_list7 
+    4	8	0.074069	#_Variance_adjustment_list8 
+    5	1	       1	#_Variance_adjustment_list9 
+    5	2	       1	#_Variance_adjustment_list10
+    5	3	       1	#_Variance_adjustment_list11
+    5	4	       1	#_Variance_adjustment_list12
+    5	5	       1	#_Variance_adjustment_list13
+    5	6	       1	#_Variance_adjustment_list14
+    5	7	       1	#_Variance_adjustment_list15
+    5	8	       1	#_Variance_adjustment_list16
+    6	1	       1	#_Variance_adjustment_list17
+    6	2	       1	#_Variance_adjustment_list18
+    6	3	       1	#_Variance_adjustment_list19
+    6	4	       1	#_Variance_adjustment_list20
+    6	5	       1	#_Variance_adjustment_list21
+    6	6	       1	#_Variance_adjustment_list22
+    6	7	       1	#_Variance_adjustment_list23
+    6	8	       1	#_Variance_adjustment_list24
+-9999	0	       0	#_terminator                
 #
 5 #_maxlambdaphase
 1 #_sd_offset; must be 1 if any growthCV, sigmaR, or survey extraSD is an estimated parameter
