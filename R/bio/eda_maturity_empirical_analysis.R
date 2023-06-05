@@ -505,3 +505,73 @@ ggplot(matatlength, aes(x = length, y = pmat)) +
 
 #matatlength %>% write_csv('outputs/maturity/WCGBTS_maturity_length.csv')
 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# plot for presentation----
+
+library(dplyr); library(ggplot2)
+
+#𝑀(𝐿) = (1 + 𝑒−2.3(𝐿−31.42))−1
+
+lens <- seq(6, 72, 0.1)
+
+
+# 2023 parameters
+# WCGBTS and port sampling (M.Head)
+# From P-Y's spatial analysis and using center of gravity for the population
+a.2023   <- -5.571311
+b.2023   <- 0.1772908
+L50.2023 <- 31.42471
+
+# Pearson and Gunderson values
+# Reference: Pearson, K.E., and D.R. Gunderson, 2003. Reproductive biology and
+# ecology of shortspine thornyhead rockfish (Sebastolobus alascanus) and
+# longspine thornyhead rockfish (S. altivelis) from the northeastern Pacific
+# Ocean. Environ. Biol. Fishes 67:11-136.
+len = 40 # doesn't matter what length you use here
+
+a.pg <- 41.913	
+b.pg <- -2.3046
+pg_l50 <- -a.pg/b.pg
+pg_kmat <- (a.pg + b.pg*len)/(len-pg_l50)
+
+# Intermediate L50 and slope for sensitivity
+alt_l50 <- mean(c(L50.2023, pg_l50))
+alt_kmat <- -0.35
+
+#plot
+
+pred.plot <- data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
+  mutate(            pred =  1 / (1 + exp(-b.2023 * (Length_cm - L50.2023))),
+                     version = '2023 Base model: WCGBTS') %>% 
+  bind_rows(data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
+              mutate(pred =  1 / (1 + exp(b.pg    * (Length_cm - pg_l50))),
+                     version = 'Sensitivity: Pearson and Gunderson (2003)')) %>% 
+  bind_rows(data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
+              mutate(pred =  1 / (1 + exp(alt_kmat * (Length_cm - alt_l50))),
+                     version = 'Sensitivity: Intermediate sensitivity'))
+
+options(scipen = 999) #turn off scientific notation
+
+ggplot() +
+  geom_line(data = pred.plot, aes(Length_cm, pred, lty = version), size = 1.5, color="grey30") +
+  # facet_wrap(~grad) +
+  scale_colour_brewer(palette = "Greens")+
+  scale_y_continuous(labels = scales::comma)+
+  labs(x="Length (cm)", y="P(mature)", color="Latitude", lty = 'Version')+
+  theme_minimal()+
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(),
+    legend.position = c(0.70, 0.25), # "right"
+    axis.text = element_text(size=20),
+    axis.title = element_text(size=25),
+    legend.title = element_text(size=22),
+    legend.text = element_text(size=22),
+    panel.border = element_rect(colour = "darkgrey", fill=NA, linewidth=2)
+  ) 
+
+
+ggsave(file.path(here::here(), "outputs", "maturity", "presentation_compare_maturity_curves.png"), 
+       dpi=300, width=12, height=7, units = "in")
+

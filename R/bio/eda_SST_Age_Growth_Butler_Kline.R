@@ -47,6 +47,7 @@ unique(Butler.SST.dat$Species)
 # Figure out what to do with "duplicate" fish in Butler et al. dataset Issue:
 # Some fish had two otoliths collected and multiple reads of both for a single
 # fish (each otolith is a separate row in the file, so the fish is duplicated)
+names(Butler.SST.dat)
 head(Butler.SST.dat)
 nrow(Butler.SST.dat)
 length(unique(Butler.SST.dat$OTO))
@@ -88,6 +89,9 @@ dim(SST.dat)
           SST.dat[SST.dat$sex=="M",]$sex  <- "U" #label U for unknown
           SST.dat[SST.dat$sex=="F",]$sex  <- "U" #label U for unknown
         unique(SST.dat$sex)
+        
+        hist(SST.dat$age)
+        max(SST.dat[complete.cases(SST.dat$age),]$age)
         
         
       #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  

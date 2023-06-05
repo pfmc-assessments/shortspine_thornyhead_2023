@@ -1,4 +1,4 @@
-Label,Phase,23.model.francis_2,23.biology.no_fecundity
-SR_LN(R0),4,9.35448,9.35586
-LnQ_base_Triennial1(4),-1,-0.472564,-0.474165
-LnQ_base_NWFSCcombo(6),-1,0.182302,0.180183
+Label,Phase,23.model.francis_2,23.biology.no_fecundity,23.SummaryBioAge30,23.SummaryBioAge30.nofec,23.fec.units.eggsperfemale,23.no.fec.SSO.onethird
+SR_LN(R0),4,9.35448,9.35586,9.35448,9.35586,9.35448,9.35586
+LnQ_base_Triennial1(4),-1,-0.472564,-0.474165,-0.472564,-0.474165,-0.472565,-0.474165
+LnQ_base_NWFSCcombo(6),-1,0.182302,0.180183,0.182302,0.180183,0.1823,0.180183

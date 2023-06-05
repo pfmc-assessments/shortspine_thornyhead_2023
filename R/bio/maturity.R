@@ -323,7 +323,8 @@ ggplot() +
     legend.position = "right",
     axis.text = element_text(size=12),
     axis.title = element_text(size=12)
-  ) 
+  ) +
+theme_bw()
 
 ggsave(file.path(here::here(), "doc", "FinalFigs", "Data", "comparison_alternative_maturity_curves.png"), dpi=300, width=10, height=7, units = "in")
 

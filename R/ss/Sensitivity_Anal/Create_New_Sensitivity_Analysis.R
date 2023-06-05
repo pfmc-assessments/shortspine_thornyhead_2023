@@ -337,9 +337,21 @@ NewSensAnal(topic = "landings",
 #            base_model = c("23.model.francis_2"),
 #            new_model = c("23.surveys.db"))
 
+# Add a new model to an existing sensitivity
+# warning--re-writes the Outputs script so you loose any modification you had made before
+# but seems ok at keeping modifications in Analyses script
+
 # Add_Newmodel(SA_ID = "Item 1.1", new_model="23.landings.ashop2", base_model="23.model.francis_2", object = "Landings")
 # 
 # SOMEONE RUNS THESE MODELS! ASK JOSH FOR WHAT THESE SHOULD BE IF NOT CLEAR.
 # Add_Newmodel(SA_ID = "Item 3.2", new_model="23.surveys.useslope", base_model="23.model.francis_2", object = "Surveys")
 # Add_Newmodel(SA_ID = "Item 1.1", new_model="23.landings.4fleet", base_model="23.model.francis_2", object = "Landings")
+
+# Sabrina's fecundity explorations
+# Add_Newmodel(SA_ID = "Item 4.3", new_model="23.SummaryBioAge30", base_model="23.model.francis_2", object = "biological_Info")
+# Add_Newmodel(SA_ID = "Item 4.3", new_model="23.SummaryBioAge30.nofec", base_model="23.model.francis_2", object = "biological_Info")
+# Add_Newmodel(SA_ID = "Item 4.3", new_model="23.fec.units.eggsperfemale", base_model="23.model.francis_2", object = "biological_Info")
+# Add_Newmodel(SA_ID = "Item 4.3", new_model="23.fec.units.eggsperfemale", base_model="23.model.francis_2", object = "biological_Info")
+# Add_Newmodel(SA_ID = "Item 4.3", new_model="23.no.fec.SSO.onethird", base_model="23.model.francis_2", object = "biological_Info")
+# Add_Newmodel(SA_ID = "Item 4.3", new_model="23.no.fec.SSO.0.2198", base_model="23.model.francis_2", object = "biological_Info")
 

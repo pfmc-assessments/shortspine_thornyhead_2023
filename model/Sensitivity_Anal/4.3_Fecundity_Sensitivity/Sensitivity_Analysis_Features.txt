@@ -6,15 +6,31 @@
 # Topic of the sensitivity analysis:  biological_Info 
 # Specific item in that topic: 
 # 	- Sensitivity to fecundity 
+# 	- biological_Info
+# 	- biological_Info
+# 	- biological_Info
+# 	- biological_Info
+# 	- biological_Info
 # Author:  Sabrina Beyer 
-# Date: 2023-05-23 15:25:35 
+# Date: 2023-05-31 20:47:42
 # Sensitivity Analysis ID: Item 4.3 
 # Name of the model created:
 # 	- 23.biology.no_fecundity 
+# 	- 23.SummaryBioAge30
+# 	- 23.SummaryBioAge30.nofec
+# 	- 23.fec.units.eggsperfemale
+# 	- 23.no.fec.SSO.onethird
+# 	- 23.no.fec.SSO.0.2198
 # *** 
 # 
 # This analysis has been developped based on the following model: 
-# 23.model.francis_2 
+# New model 					 Base model
+# 23.biology.no_fecundity				23.model.francis_2
+# 23.SummaryBioAge30 				 23.model.francis_2
+# 23.SummaryBioAge30.nofec 				 23.model.francis_2
+# 23.fec.units.eggsperfemale 				 23.model.francis_2
+# 23.no.fec.SSO.onethird 				 23.model.francis_2
+# 23.no.fec.SSO.0.2198 				 23.model.francis_2
 # 
 # Results are stored in the following foler: 
 #	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/model/Sensitivity_Anal/4.3_Fecundity_Sensitivity 
@@ -23,7 +39,20 @@
 # Name of the script used to analyze the results from this model: 
 #	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.3_Fecundity_Sensitivity_Outputs.R .R
 # 
-# Features: 
-#  Sensitivity of the base model to removing the length-fecundity relationship and assuming spawning biomass is equivalent to spawning output 
+# General features: 
+#  Try again convert weight to scale of millions of eggs with a.fec/a.weight
+#  Explore setting summary biomass to A50, which is around 30 years old
+# Model features:
+# - Model 23.biology.no_fecundity:
+# remove the fecundity relationship, 2013 assumptions
+# - Model 23.SummaryBioAge30:
+# - Model 23.SummaryBioAge30.nofec:
+# summary biomass at 30 years (mostly spawning females) and no fecundity
+# - Model 23.fec.units.eggsperfemale:
+# base model with fec on original scale
+# - Model 23.no.fec.SSO.onethird:
+# fecundity option 1 (no fecundity), but set alpha to 1/3
+# - Model 23.no.fec.SSO.0.2198:
+# convert no fec alpha by a.fec/a.weight=0.2198
+# base.model, Summary Biomass Age 30
 # ============================================================ #
-
