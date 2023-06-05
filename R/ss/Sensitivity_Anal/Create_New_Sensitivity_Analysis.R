@@ -77,6 +77,23 @@ source(file.path(dir_script, "utils", "sensistivity_analysis_utils.R", fsep = fs
 
 # ----------------------------------------------------------
 
+NewSensAnal(pool = "star_panel",
+            topic = "model",
+            object = c("New Pool 1", "New Pool 2"),
+            author = "Dream Team",
+            folder_name = "New Pool",
+            script_model = "New_Pool_Analyses",
+            script_results = "New_Pool_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.New.Pool", "23.New.Pool_2"))
+
+
+
+
+
+
+
+
 
 # 2. Set up a new sensitivity analysis ----
 # ---------------------------------------------------------- #
