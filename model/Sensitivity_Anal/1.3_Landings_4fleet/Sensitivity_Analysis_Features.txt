@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  landings 
+# Specific item in that topic: 
+# 	- 23.landings.4fleet 
+# Author:  Adam Hayes 
+# Date: 2023-06-05 07:30:41 
+# Sensitivity Analysis ID: Item 1.3 
+# Name of the model created:
+# 	- 23.landings.4fleet 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/adam.hayes/Work/GitHub/shortspine_thornyhead_2023/model/Sensitivity_Anal/1.3_Landings_4fleet 
+# Name of the script used to build the new model: 
+#	 C:/Users/adam.hayes/Work/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/1.3_Landings_4fleet_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/adam.hayes/Work/GitHub/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/1.3_Landings_4fleet_Outputs.R .R
+# 
+# Features: 
+#  Base Model + 4 commercial fleets 
+# ============================================================ #
+
