@@ -543,7 +543,7 @@ alt_kmat <- -0.35
 
 pred.plot <- data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
   mutate(            pred =  1 / (1 + exp(-b.2023 * (Length_cm - L50.2023))),
-                     version = '2023 Base model: WCGBTS') %>% 
+                     version = '2023 Base model: WCGBTS, WDFW, ODFW') %>% 
   bind_rows(data.frame(Length_cm = seq(6, 72, 0.2)) %>% 
               mutate(pred =  1 / (1 + exp(b.pg    * (Length_cm - pg_l50))),
                      version = 'Sensitivity: Pearson and Gunderson (2003)')) %>% 
