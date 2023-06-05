@@ -202,9 +202,9 @@ Dat23_landings_4fleet$CPUE <-  SS_Param2023$Indices$data$FourFleets_NoSlope_Comb
   dplyr::select(year, seas, index, obs, se_log) %>% data.frame
 
 # In base model: 
-# Triennial1 = fleet 4. CPUE data (Triennial_Late in the SS_Param? Fleet 6)
-# Triennial2 = fleet 5. No CPUE data (Triennial_Early in the SS_Param? Fleet 5)
-# NWFSCCcombo = fleet 6. CPUE data (Fleet 7)
+# Triennial1 = fleet 4 -> Triennial_Early?
+# Triennial2 = fleet 5 -> Triennial_Late?
+# NWFSCCcombo = fleet 6
 
 Dat23_landings_4fleet$N_discard_fleets <- SS_Param2023$N_discard_fleets$data$FourFleets_NoSlope_CombineTriennial
 Dat23_landings_4fleet$discard_fleet_info <- SS_Param2023$discard_fleet_info$data$FourFleets_NoSlope_CombineTriennial
@@ -274,21 +274,21 @@ Ctl23_landings_4fleet$F_4_Fleet_Parms <- bind_rows(Ctl23_landings_4fleet$F_4_Fle
                                                    data.frame(Fleet=4,start_F=0.05,first_parm_phase=99))
 row.names(Ctl23_landings_4fleet$F_4_Fleet_Parms)[4] <- "F_4_Fleet_Parms4"
 
+# Q options and parms: this change seems to match base model specification
 Ctl23_landings_4fleet$Q_options <- as_tibble(SS_Param2023$Q_options$data$FourFleets_NoSlope_CombineTriennial) %>% 
   filter(fleet != 6) %>% as.data.frame 	
 row.names(Ctl23_landings_4fleet$Q_options) <- c("Triennial_Early", "NWFSCcombo")
-
 Ctl23_landings_4fleet$Q_parms <- SS_Param2023$Q_parms$data$FourFleets_NoSlope_CombineTriennial	 %>% tibble::rownames_to_column() %>% filter(!(grepl("Triennial_Late", rowname))) %>% tibble::column_to_rownames()
 
 
-# Change 'Male' to 3 for the survey fleets
-# try switching this back and see if it runs OK
+# Change 'Male' to 3 for the survey fleets - requires a change to size selectivity parms later
 Ctl23_landings_4fleet$size_selex_types <-  SS_Param2023$size_selex_types$data$FourFleets_NoSlope_CombineTriennial
 Ctl23_landings_4fleet$size_selex_types$Male[5:7] <- 3
 
 Ctl23_landings_4fleet$age_selex_types <- SS_Param2023$age_selex_types$data$FourFleets_NoSlope_CombineTriennial
 # use parameters from base model - just add parameters for new fleet
 # code is clunky - but couldn't make it more elegant quickly
+# Ctl23_landings_4fleet$size_selex_parms <-  SS_Param2023$size_selex_parms$data$FourFleets_NoSlope_CombineTriennial
 row.names(Ctl23_landings_4fleet$size_selex_parms) <- gsub("Triennial1(4)","Triennial_Early(5)",row.names(Ctl23_landings_4fleet$size_selex_parms),fixed=TRUE)
 row.names(Ctl23_landings_4fleet$size_selex_parms) <- gsub("Triennial2(5)","Triennial_Late(6)",row.names(Ctl23_landings_4fleet$size_selex_parms),fixed=TRUE)
 row.names(Ctl23_landings_4fleet$size_selex_parms) <- gsub("NWFSCcombo(6)","NWFSCcombo(7)",row.names(Ctl23_landings_4fleet$size_selex_parms),fixed=TRUE)
@@ -300,11 +300,11 @@ Ctl23_landings_4fleet$size_selex_parms <- bind_rows(Ctl23_landings_4fleet$size_s
                       sizeselex_ntn, sizeselex_nts, 
                       Ctl23_landings_4fleet$size_selex_parms[31:63,]) %>% data.frame
 
-#$ Ctl23_landings_4fleet$size_selex_parms <-  SS_Param2023$size_selex_parms$data$FourFleets_NoSlope_CombineTriennial
 # leave time-varying selectivity the same as base model
 # Ctl23_landings_4fleet$size_selex_parms_tv <- SS_Param2023$size_selex_parms_tv$data$FourFleets_NoSlope_CombineTriennial
 
 # not sure what the variance adjustment is - the manual isn't helpful
+# change to the SS_Param2023 values for now
 Ctl23_landings_4fleet$Variance_adjustment_list <-  SS_Param2023$Variance_adjustment_list$data$FourFleets_NoSlope_CombineTriennial
 
 # Looking at control file compared to base model:
