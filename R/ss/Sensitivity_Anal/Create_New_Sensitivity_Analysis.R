@@ -365,3 +365,11 @@ NewSensAnal(
 #            base_model = c("23.model.francis_2"),
 #            new_model = c("23.surveys.useslope", "23.surveys.extaSDwcgbts", "23.surveys.notriennial"))
 
+NewSensAnal(topic="landings", 
+            object = "23.landings.4fleet", 
+            author = "Adam Hayes",
+            folder_name = "Landings_4fleet",
+            script_model = "Landings_4fleet_Analyses",
+            script_results = "Landings_4fleet_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.landings.4fleet"))
