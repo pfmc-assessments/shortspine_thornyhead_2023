@@ -373,3 +373,23 @@ NewSensAnal(topic="landings",
             script_results = "Landings_4fleet_Outputs",
             base_model = c("23.model.francis_2"),
             new_model = c("23.landings.4fleet"))
+
+
+
+
+# Sensitivity analyses for the STAR Panel
+# ============================================================ #
+
+# Request 3
+# Provide two sensitivity runs with M=0.045 and M=0.05, reported in the format 
+# requested in request #1. 
+# Additionally, show the fits to survey indices and all length comps.
+NewSensAnal(pool = "star_panel",
+            topic="model", 
+            author = "Matthieu VERON",
+            folder_name = "Request_3",
+            script_model = "Request_3_Analyses",
+            script_results = "Request_3_Outputs",
+            object = c("Fix M at 0.045", "Fix M at 0.05"), 
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.STAR.Panel.M.045", "23.STAR.Panel.M.05"))
