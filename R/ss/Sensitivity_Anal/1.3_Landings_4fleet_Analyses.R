@@ -101,7 +101,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # If noHess = TRUE for a given model, then the Hessian matrix
 # won't be estimated.
 # Reminder - The following models are considered:# 	-  23.landings.4fleet 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -211,7 +211,11 @@ Dat23_landings_4fleet$discard_fleet_info <- SS_Param2023$discard_fleet_info$data
 Dat23_landings_4fleet$discard_data <- SS_Param2023$discard_rates$data$FourFleets_NoSlope_CombineTriennial
 Dat23_landings_4fleet$meanbodywt <- SS_Param2023$Meanbodywt$data$FourFleets_NoSlope_CombineTriennial
 Dat23_landings_4fleet$len_info <- SS_Param2023$len_info$data$FourFleets_NoSlope_CombineTriennial
-Dat23_landings_4fleet$lencomp <- SS_Param2023$All_LengthComp$data$FourFleets_NoSlope_CombineTriennial
+
+lencomp_colnames <- colnames(Dat23_landings_4fleet$lencomp) # make sure length comp names match, remove zeroes (shouldn't matter, but cleaner)
+Dat23_landings_4fleet$lencomp <- SS_Param2023$All_LengthComp$data$FourFleets_NoSlope_CombineTriennial %>%
+  filter(Nsamp>0)
+colnames(Dat23_landings_4fleet$lencomp) <- lencomp_colnames
 
 Dat23_landings_4fleet$Nfleet <- SS_Param2023$Nfleet$data$FourFleets_NoSlope_CombineTriennial
 Dat23_landings_4fleet$Nsurveys <- SS_Param2023$Nsurveys$data$FourFleets_NoSlope_CombineTriennial
@@ -303,9 +307,33 @@ Ctl23_landings_4fleet$size_selex_parms <- bind_rows(Ctl23_landings_4fleet$size_s
 # leave time-varying selectivity the same as base model
 # Ctl23_landings_4fleet$size_selex_parms_tv <- SS_Param2023$size_selex_parms_tv$data$FourFleets_NoSlope_CombineTriennial
 
-# not sure what the variance adjustment is - the manual isn't helpful
-# change to the SS_Param2023 values for now
-Ctl23_landings_4fleet$Variance_adjustment_list <-  SS_Param2023$Variance_adjustment_list$data$FourFleets_NoSlope_CombineTriennial
+# rerun variance adjustment procedure
+replist <- SS_output(
+  dir = Dir_23_base_model,
+  verbose = TRUE,
+  printstats = TRUE
+)
+
+new.francis.weight <- r4ss::tune_comps(
+  replist = replist,
+  option="Francis",
+  dir = Dir_23_base_model,
+  exe = get.ss.exe.path()
+)
+# initialize the new variance adjustment
+add_var_adj_rows <- data.frame(Data_type = 4:6, Fleet = 4, 
+                               Value = Ctl23_landings_4fleet$Variance_adjustment_list$Value[which(Ctl23_landings_4fleet$Variance_adjustment_list$Fleet %in% 3)])
+Ctl23_landings_4fleet$Variance_adjustment_list <- bind_rows(Ctl23_landings_4fleet$Variance_adjustment_list %>%
+                                                              mutate(Fleet = ifelse(Fleet > 3, Fleet + 1, Fleet)), 
+                                                            add_var_adj_rows) %>% 
+  arrange(Data_type, Fleet) %>%
+  data.frame
+row.names(Ctl23_landings_4fleet$Variance_adjustment_list) <- paste0("Variance_adjustment_list",1:nrow(Ctl23_landings_4fleet$Variance_adjustment_list))
+# replace the existing variance adjustment list with the new parameters
+Ctl23_landings_4fleet$Variance_adjustment_list <- bind_rows(
+  Ctl23_landings_4fleet$Variance_adjustment_list %>% filter(Data_type == 4) %>% mutate(Value=new.francis.weight$New_Var_adj) ,
+  Ctl23_landings_4fleet$Variance_adjustment_list %>% filter(Data_type != 4)
+)
 
 # Looking at control file compared to base model:
 # there are several size selectivity parameters that appear in the base model

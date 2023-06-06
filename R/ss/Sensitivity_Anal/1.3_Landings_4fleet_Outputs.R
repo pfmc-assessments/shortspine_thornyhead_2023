@@ -114,6 +114,7 @@ SensiMod <- SSgetoutput(dirvec = c(
 	Dir_23_model_francis_2,
 	Dir_23_landings_4fleet))
 
+
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(

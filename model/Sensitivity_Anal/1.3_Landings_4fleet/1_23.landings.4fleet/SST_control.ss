@@ -263,28 +263,28 @@
 #
 # Input variance adjustments factors: 
 #_Data_type	Fleet	Value
-    4	1	0.5595	#_Variance_adjustment_list1 
-    4	2	0.9773	#_Variance_adjustment_list2 
-    4	3	0.5422	#_Variance_adjustment_list3 
-    4	4	0.4042	#_Variance_adjustment_list4 
-    4	5	0.6812	#_Variance_adjustment_list5 
-    4	6	0.6494	#_Variance_adjustment_list6 
-    4	7	     1	#_Variance_adjustment_list7 
-    5	1	     1	#_Variance_adjustment_list8 
-    5	2	     1	#_Variance_adjustment_list9 
-    5	3	     1	#_Variance_adjustment_list10
-    5	4	     1	#_Variance_adjustment_list11
-    5	5	     1	#_Variance_adjustment_list12
-    5	6	     1	#_Variance_adjustment_list13
-    5	7	     1	#_Variance_adjustment_list14
-    6	1	     1	#_Variance_adjustment_list15
-    6	2	     1	#_Variance_adjustment_list16
-    6	3	     1	#_Variance_adjustment_list17
-    6	4	     1	#_Variance_adjustment_list18
-    6	5	     1	#_Variance_adjustment_list19
-    6	6	     1	#_Variance_adjustment_list20
-    6	7	     1	#_Variance_adjustment_list21
--9999	0	     0	#_terminator                
+    4	1	0.077651	#_Variance_adjustment_list1 
+    4	2	0.113864	#_Variance_adjustment_list2 
+    4	3	 0.29331	#_Variance_adjustment_list3 
+    4	4	 0.04735	#_Variance_adjustment_list4 
+    4	5	0.197129	#_Variance_adjustment_list5 
+    4	6	0.111198	#_Variance_adjustment_list6 
+    4	7	0.071827	#_Variance_adjustment_list7 
+    5	1	       1	#_Variance_adjustment_list8 
+    5	2	       1	#_Variance_adjustment_list9 
+    5	3	       1	#_Variance_adjustment_list10
+    5	4	       1	#_Variance_adjustment_list11
+    5	5	       1	#_Variance_adjustment_list12
+    5	6	       1	#_Variance_adjustment_list13
+    5	7	       1	#_Variance_adjustment_list14
+    6	1	       1	#_Variance_adjustment_list15
+    6	2	       1	#_Variance_adjustment_list16
+    6	3	       1	#_Variance_adjustment_list17
+    6	4	       1	#_Variance_adjustment_list18
+    6	5	       1	#_Variance_adjustment_list19
+    6	6	       1	#_Variance_adjustment_list20
+    6	7	       1	#_Variance_adjustment_list21
+-9999	0	       0	#_terminator                
 #
 5 #_maxlambdaphase
 1 #_sd_offset; must be 1 if any growthCV, sigmaR, or survey extraSD is an estimated parameter
