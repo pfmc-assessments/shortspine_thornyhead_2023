@@ -1489,16 +1489,16 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the starter file for the model\n")
       cat(
-        "# SS_writestarter(
-      # mylist = ",
+        "SS_writestarter(
+      mylist = ",
         ext[1],
         ",
-      # dir = ",
+      dir = ",
         paste0(Dirmod, ","),
         "
-      # overwrite = TRUE,
-      # verbose = TRUE
-      # )\n"
+      overwrite = TRUE,
+      verbose = TRUE
+      )\n"
       )
       cat("\n")
       cat("# Check file structure\n")
@@ -1547,16 +1547,16 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the data file for the model\n")
       cat(
-        "# SS_writedat(
-      # datlist = ",
+        "SS_writedat(
+      datlist = ",
         ext[2],
         ",
-      # outfile =",
+      outfile =",
         paste0("file.path(", Dirmod, ","),
         "'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n"
+      version = '3.30',
+      overwrite = TRUE
+      )\n"
       )
       cat("\n")
       cat("# Check file structure\n")
@@ -1626,16 +1626,16 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the control file for the model\n")
       cat(
-        "# SS_writectl(
-      # ctllist = ",
+        "SS_writectl(
+      ctllist = ",
         ext[3],
         ",
-      # outfile =",
+      outfile =",
         paste0("file.path(", Dirmod, ","),
         "'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n"
+      version = '3.30',
+      overwrite = TRUE
+      )\n"
       )
       cat("# Check file structure\n")
       cat("# We actually need to run the model to check the file structure\n")
@@ -1678,18 +1678,18 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the forecast file for the model\n")
       cat(
-        "# SS_writeforecast(
-      # mylist = ",
+        "SS_writeforecast(
+      mylist = ",
         ext[4],
         ",
-      # dir =",
+      dir =",
         paste0(Dirmod, ","),
         "
-      # file = 'forecast.ss',
-      # writeAll = TRUE,
-      # verbose = TRUE,
-      # overwrite = TRUE
-      # )\n"
+      file = 'forecast.ss',
+      writeAll = TRUE,
+      verbose = TRUE,
+      overwrite = TRUE
+      )\n"
       )
       cat("\n")
       cat("# Check file structure\n")
@@ -3374,16 +3374,16 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writestarter(
-      # mylist = ",
+      "SS_writestarter(
+      mylist = ",
       ext[1],
       ",
-      # dir = ",
+      dir = ",
       paste0(Dirmod, ","),
       "
-      # overwrite = TRUE,
-      # verbose = TRUE
-      # )\n",
+      overwrite = TRUE,
+      verbose = TRUE
+      )\n",
       file = out,
       append = TRUE
     )
@@ -3479,16 +3479,16 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writedat(
-      # datlist = ",
+      "SS_writedat(
+      datlist = ",
       ext[2],
       ",
-      # outfile =",
+      outfile =",
       paste0("file.path(", Dirmod, ","),
       "'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n",
+      version = '3.30',
+      overwrite = TRUE
+      )\n",
       file = out,
       append = TRUE
     )
@@ -3601,16 +3601,16 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writectl(
-      # ctllist = ",
+      "SS_writectl(
+      ctllist = ",
       ext[3],
       ",
-      # outfile =",
+      outfile =",
       paste0("file.path(", Dirmod, ","),
       "'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n",
+      version = '3.30',
+      overwrite = TRUE
+      )\n",
       file = out,
       append = TRUE
     )
@@ -3694,18 +3694,18 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writeforecast(
-      # mylist = ",
+      "SS_writeforecast(
+      mylist = ",
       ext[4],
       ",
-      # dir =",
+      dir =",
       paste0(Dirmod, ","),
       "
-      # file = 'forecast.ss',
-      # writeAll = TRUE,
-      # verbose = TRUE,
-      # overwrite = TRUE
-      # )\n",
+      file = 'forecast.ss',
+      writeAll = TRUE,
+      verbose = TRUE,
+      overwrite = TRUE
+      )\n",
       file = out,
       append = TRUE
     )
