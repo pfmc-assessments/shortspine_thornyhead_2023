@@ -65,12 +65,12 @@ model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2",
                "3.2_surveys2_Sensitivity/1_23.surveys.db",
                "3.2_surveys2_Sensitivity/2_23.surveys.wcgbts_depth",
                "3.3_surveys3_Sensitivity/1_23.surveys.useslope",
-               "3.3_surveys3_Sensitivity/2_23.surveys.extaSDwcgbts")
+               "3.3_surveys3_Sensitivity/2_23.surveys.extaSDwcgbts",
+               "5.9_Retention_Selectivity_Sensitivity/4_23.blkret.T4",
+               "5.11_Selectivity_Sensitivity/3_23.blksel.T3",
+               "5.11_Selectivity_Sensitivity/7_23.blkret.T3.blksel.T3")
 
-,
-"5.9_Retention_Selectivity_Sensitivity/4_23.blkret.T4",
-"5.11_Selectivity_Sensitivity/3_23.blksel.T3",
-"5.11_Selectivity_Sensitivity/7_23.blkret.T3.blksel.T3"
+
 
 
 sensi.dir <- file.path(here::here(), "model", "Sensitivity_Anal")
