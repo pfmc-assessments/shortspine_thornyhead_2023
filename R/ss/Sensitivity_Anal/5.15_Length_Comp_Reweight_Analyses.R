@@ -235,7 +235,7 @@ Ctl23_length_comp_reweight <- SS_readctl_3.30(
 
 # 50% of the length comp weights
 Ctl23_length_comp_reweight$Variance_adjustment_list = Ctl23_length_comp_reweight$Variance_adjustment_list %>% 
-  mutate(Value = ifelse(Data_type == 4, Value/2, 1))
+  mutate(Value = ifelse(Data_type == 4, 0, 1))
 
 
 

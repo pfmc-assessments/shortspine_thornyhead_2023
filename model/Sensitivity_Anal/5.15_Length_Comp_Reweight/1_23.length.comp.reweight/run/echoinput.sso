@@ -1202,12 +1202,12 @@ Recalc_flag_for_age_selex_recalc_by_year
 6 NWFSCcombo  1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
 0 TG_custom (need to read even if no tag data ); tag_data?: 0 N_Fleet: 3
  read var_adjust list until -9999
- 4 1 0.0222205
- 4 2 0.051898
- 4 3 0.02458
- 4 4 0.0695025
- 4 5 0.0555595
- 4 6 0.038094
+ 4 1 0
+ 4 2 0
+ 4 3 0
+ 4 4 0
+ 4 5 0
+ 4 6 0
  5 1 1
  5 2 1
  5 3 1
@@ -1226,7 +1226,7 @@ Recalc_flag_for_age_selex_recalc_by_year
  0 0 0 0 0 0
  0 0 0 0 0 0
  0 0 0 0 0 0
- 0.0222205 0.051898 0.02458 0.0695025 0.0555595 0.038094
+ 0 0 0 0 0 0
  1 1 1 1 1 1
  1 1 1 1 1 1
  1 1 1 1 1 1
@@ -3253,15 +3253,15 @@ Finished time_series
 Finished survey obj_fun  0 0 0 -6.90353 0 -12.5416
 Finished discard obj_fun  486.079 414.143 -12.5071 0 0 0
  Finished meanwt obj_fun  26.0599 -30.0503 -8.07576 0 0 0
-Finished lencomp obj_fun  172.769 136.894 65.6668 36.0988 349.655 872.243
+Finished lencomp obj_fun  66.0058 29.2534 23.4923 2.19225 6.06073 10.1677
  initequ_catch -log(L)  0 0 0 0 0 0
  catch -log(L)  2.25196e-12 3.70765e-13 5.45505e-13 0 0 0
 Finished recruitdev obj_fun -28.0725 40.5 0.5
- OK with obj_func 2464.42
-Iterations: 698
-Calculated Fspr 0.0184951 0.5
-Calculated Btgt: 0.0210396 0.4
-Calculated Fmsy 0.0300762 1758.89
+ OK with obj_func 968.263
+Iterations: 887
+Calculated Fspr 0.0180127 0.5
+Calculated Btgt: 0.0205204 0.4
+Calculated Fmsy 0.0295119 1284.96
 Finished calculating benchmarks
 Finished forecast
 Writing wtatage.ss_new
