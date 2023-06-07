@@ -50,15 +50,16 @@ write.csv(summary, file = file.path(here::here(), "doc", "FinalTables", "Sensiti
 
 ### summary table w/ all sensitivity
 
-model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", 
+model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", "Updated W-L",
                  "Imputed Landings", "2013 Landings", "ASGOP Landings", "LogNorm Error MBI", "DBI", 
                  "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD", "all retention blocks",
-                 "all selectivity blocks", "ret + sel blocks", "Updated W-L")
+                 "all selectivity blocks", "ret + sel blocks")
 model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
                "4.1_Growth_Sensitivity/2_23.growth.low", 
                "4.1_Growth_Sensitivity/1_23.growth.high", 
                "4.2_Maturity_Sensitivity/1_23.maturity.pgcurve", 
-               "4.2_Maturity_Sensitivity/2_23.maturity.mix_curve", 
+               "4.2_Maturity_Sensitivity/2_23.maturity.mix_curve",
+               "STAR_Panel/4.4_WL_Sensitivity/1_23.WL.sensitivity", 
                "1.1_Landings_Sensitivity/1_23.land.hist_impute", 
                "1.1_Landings_Sensitivity/2_23.land.2013",
                "1.2_Landings_ashop/1_23.landings.ashop",
@@ -69,8 +70,7 @@ model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2",
                "3.3_surveys3_Sensitivity/2_23.surveys.extaSDwcgbts",
                "5.9_Retention_Selectivity_Sensitivity/4_23.blkret.T4",
                "5.11_Selectivity_Sensitivity/3_23.blksel.T3",
-               "5.11_Selectivity_Sensitivity/7_23.blkret.T3.blksel.T3",
-               "STAR_Panel/4.4_WL_Sensitivity/1_23.WL.sensitivity")
+               "5.11_Selectivity_Sensitivity/7_23.blkret.T3.blksel.T3")
 
 
 
@@ -105,6 +105,8 @@ summary_table <- summary_table %>%                   # Using dplyr functions
 summary_table %>%
   kbl() %>%
   kable_classic(full_width = F, html_font = "Times New Roman") %>%
+  add_header_above(c(" " = 1, " " = 1, "Biology" = 5, "Landings" = 3, 
+                     "Surveys" = 5, "Retention + Selectivity" = 3)) %>% 
   save_kable(file = file.path(here::here(), "outputs", "summary_table.jpeg"),
              zoom = 2)
 
