@@ -72,15 +72,15 @@
 2 # basis for input Fcast catch: -1=read basis with each obs; 2=dead catch; 3=retained catch; 99=input apical_F; NOTE: bio vs num based on fleet's catchunits
 #enter list of Fcast catches or Fa; terminate with line having year=-9999
 #_Yr Seas Fleet Catch(or_F)
-2023 1 1 250
-2023 1 2 100
-2023 1 3 70
+2023 1 1 488.42
+2023 1 2 133.32
+2023 1 3 134.37
 2023 1 4 0
 2023 1 5 0
 2023 1 6 0
-2024 1 1 250
-2024 1 2 100
-2024 1 3 70
+2024 1 1 488.42
+2024 1 2 133.32
+2024 1 3 134.37
 2024 1 4 0
 2024 1 5 0
 2024 1 6 0

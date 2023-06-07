@@ -407,3 +407,25 @@ NewSensAnal(pool = "star_panel",
             object = c("Estimate Maximum Retention"), 
             base_model = c("23.blkret.T3.blksel.T3"),
             new_model = c("23.est.max.ret"))
+
+
+# length comp reweighting 
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("Length Comp Re-weight"),
+            author = "Andrea Odell",
+            folder_name = "Length_Comp_Reweight",
+            script_model = "Length_Comp_Reweight_Analyses",
+            script_results = "Length_Comp_Reweight_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.length.comp.reweight"))
+
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("lenght comp combo only", "lenght comp add triennial", "lenght comp add NonTrawl", "lenght comp add SouthTrawl", "lenght comp add NorthTrawl"),
+            author = "Andrea Odell",
+            folder_name = "LenComp_Reweight_by_Fleet",
+            script_model = "LenComp_Reweight_by_Fleet_Analyses",
+            script_results = "LenComp_Reweight_by_Fleet_Outputs",
+            base_model = c("23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2"),
+            new_model = c("23.lencomp.Combo.Only", "23.lencomp.AddTriennial", "23.lencomp.AddNonTrawl", "23.lencomp.AddSouthTrawl", "23.lencomp.AddNorthTrawl"))
