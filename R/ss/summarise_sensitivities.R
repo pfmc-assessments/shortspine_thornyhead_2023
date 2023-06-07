@@ -90,7 +90,17 @@ tmp_summary  = SSsummarize(
 summary_table = SStableComparisons(
   tmp_summary,
   modelnames = model.names,
-  csv = TRUE,
+  names = c(
+    "Recr_Virgin",
+    "R0",
+    "steep",
+    "NatM",
+    "L_at_Amax",
+    "VonBert_K",
+    "SSB_Virg",
+    "Bratio_2023",
+    "SPRratio_2022"),
+  csv = FALSE,
   csvdir = file.path(here::here(), "doc", "FinalTables", "Sensitivities")
 )
 

@@ -569,7 +569,7 @@ write.csv(haul.sample.info.master, "doc/FinalTables/Summary/haul.sample.info.mas
 
 # Create table with haul and sample information  ------
 library(kableExtra)
-
+haul.sample.info.master <- read_csv("doc/FinalTables/Summary/haul.sample.info.master.csv")
 options(knitr.kable.NA = '')
 
 haul_sample_table = haul.sample.info.master %>% 
@@ -586,7 +586,7 @@ haul_sample_table = haul.sample.info.master %>%
                     "samples", "hauls",
                     "samples", "hauls"),
       align = "c") %>% 
-  kable_classic() %>% 
+  kable_classic(full_width = F, html_font = "Times New Roman") %>% 
   add_header_above(c(" " = 1, "AFSC Triennial Shelf\nSurvey Early" = 2, "AFSC Triennial Shelf\nSurvey Late" = 2, 
                      "AFSC Slope\nSurvey" = 2, "NWFSC Slope\nSurvey" = 2,
                      "NWFSC Combo\nSurvey" = 2)) # %>%
