@@ -50,7 +50,10 @@ write.csv(summary, file = file.path(here::here(), "doc", "FinalTables", "Sensiti
 
 ### summary table w/ all sensitivity
 
-model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", "Imputed Landings", "2013 Landings", "Gamma vs LogNorm Error MBI", "DBI", "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD")
+model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", 
+                 "Imputed Landings", "2013 Landings", "LogNorm Error MBI", "DBI", 
+                 "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD", "all retention blocks",
+                 "all selectivity blocks", "ret + sel blocks")
 model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
                "4.1_Growth_Sensitivity/2_23.growth.low", 
                "4.1_Growth_Sensitivity/1_23.growth.high", 
@@ -62,8 +65,13 @@ model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2",
                "3.2_surveys2_Sensitivity/1_23.surveys.db",
                "3.2_surveys2_Sensitivity/2_23.surveys.wcgbts_depth",
                "3.3_surveys3_Sensitivity/1_23.surveys.useslope",
-               "3.3_surveys3_Sensitivity/2_23.surveys.extaSDwcgbts"
-               )
+               "3.3_surveys3_Sensitivity/2_23.surveys.extaSDwcgbts")
+
+,
+"5.9_Retention_Selectivity_Sensitivity/4_23.blkret.T4",
+"5.11_Selectivity_Sensitivity/3_23.blksel.T3",
+"5.11_Selectivity_Sensitivity/7_23.blkret.T3.blksel.T3"
+
 
 sensi.dir <- file.path(here::here(), "model", "Sensitivity_Anal")
 
@@ -91,11 +99,13 @@ summary_table <- summary_table %>%                   # Using dplyr functions
 
 
 
-jpeg(file.path(here::here(), "outputs", "summary_table.jpeg"))
+
 summary_table %>%
   kbl() %>%
-  kable_classic(full_width = F, html_font = "Cambria")
-dev.off()
+  kable_classic(full_width = F, html_font = "Times New Roman") %>%
+  save_kable(file = file.path(here::here(), "outputs", "summary_table.jpeg"),
+             zoom = 2)
+
 
 
 
