@@ -1,4 +1,4 @@
-"Label","Base","Low Growth","High Growth","2013 Maturity","Intermediate Maturity","Updated W-L","Imputed Landings","2013 Landings","ASGOP Landings","LogNorm Error MBI","DBI","MBI Depth-cov.","+ Slope Survey","WCGBTS extra SD","all retention blocks","all selectivity blocks","ret + sel blocks"
+"Label","Base","Low Growth","High Growth","2013 Maturity","Intermediate Maturity","Updated W-L","Imputed Landings","2013 Landings","ASHOP Landings","LogNorm Error MBI","DBI","MBI Depth-cov.","+ Slope Survey","WCGBTS extra SD","all retention blocks","all selectivity blocks","ret + sel blocks"
 "TOTAL_like",536.643,544.202,530.747,536.587,536.643,537.799,536.308,535.813,537.167,538.556,524.366,533.769,927.277,534.944,262.913,518.113,242.448
 "Survey_like",-48.598,-44.2597,-53.3518,-48.6386,-48.6074,-48.4651,-48.6904,-49.0027,-48.4579,-41.8341,-54.3306,-46.9579,-64.1448,-45.554,-48.6756,-50.6566,-50.072
 "Length_comp_like",270.396,269.085,283.699,270.417,270.409,270.513,270.292,270.614,270.404,269.516,269.253,269.737,563.371,269.445,269.964,260.666,257.076

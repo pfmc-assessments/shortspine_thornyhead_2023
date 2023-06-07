@@ -51,7 +51,7 @@ write.csv(summary, file = file.path(here::here(), "doc", "FinalTables", "Sensiti
 ### summary table w/ all sensitivity
 
 model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", "Updated W-L",
-                 "Imputed Landings", "2013 Landings", "ASGOP Landings", "LogNorm Error MBI", "DBI", 
+                 "Imputed Landings", "2013 Landings", "ASHOP Landings", "LogNorm Error MBI", "DBI", 
                  "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD", "all retention blocks",
                  "all selectivity blocks", "ret + sel blocks")
 model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
@@ -94,13 +94,10 @@ summary_table = SStableComparisons(
   csvdir = file.path(here::here(), "doc", "FinalTables", "Sensitivities")
 )
 
-summary_table <- summary_table %>%                   # Using dplyr functions
+summary_table <- summary_table %>%  
   mutate_if(is.numeric,
             round,
             digits = 3)
-
-
-
 
 summary_table %>%
   kbl() %>%
