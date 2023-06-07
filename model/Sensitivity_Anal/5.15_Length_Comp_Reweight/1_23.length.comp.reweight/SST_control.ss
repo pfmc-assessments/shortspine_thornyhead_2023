@@ -125,10 +125,10 @@
 4 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
 3.5 # max F or harvest rate, depends on F_Method
 #_Fleet	start_F	first_parm_phase
-    1	0.05	99	#_1         
-    2	0.05	99	#_2         
-    3	0.05	99	#_3         
--9999	   0	 0	#_terminator
+    1	0.05	99	#_F_4_Fleet_Parms1
+    2	0.05	99	#_F_4_Fleet_Parms2
+    3	0.05	99	#_F_4_Fleet_Parms3
+-9999	   0	 0	#_terminator      
 5 # N iterations for tuning F in hybrid method (recommend 3 to 7)
 #
 #_initial_F_parms; count = 0
@@ -250,25 +250,25 @@
 #
 # Input variance adjustments factors: 
 #_Data_type	Fleet	Value
-    4	1	0.044441	#_Variance_adjustment_list1 
-    4	2	0.103796	#_Variance_adjustment_list2 
-    4	3	 0.04916	#_Variance_adjustment_list3 
-    4	4	0.139005	#_Variance_adjustment_list4 
-    4	5	0.111119	#_Variance_adjustment_list5 
-    4	6	0.076188	#_Variance_adjustment_list6 
-    5	1	       1	#_Variance_adjustment_list7 
-    5	2	       1	#_Variance_adjustment_list8 
-    5	3	       1	#_Variance_adjustment_list9 
-    5	4	       1	#_Variance_adjustment_list10
-    5	5	       1	#_Variance_adjustment_list11
-    5	6	       1	#_Variance_adjustment_list12
-    6	1	       1	#_Variance_adjustment_list13
-    6	2	       1	#_Variance_adjustment_list14
-    6	3	       1	#_Variance_adjustment_list15
-    6	4	       1	#_Variance_adjustment_list16
-    6	5	       1	#_Variance_adjustment_list17
-    6	6	       1	#_Variance_adjustment_list18
--9999	0	       0	#_terminator                
+    4	1	0.0222205	#_Variance_adjustment_list1 
+    4	2	 0.051898	#_Variance_adjustment_list2 
+    4	3	  0.02458	#_Variance_adjustment_list3 
+    4	4	0.0695025	#_Variance_adjustment_list4 
+    4	5	0.0555595	#_Variance_adjustment_list5 
+    4	6	 0.038094	#_Variance_adjustment_list6 
+    5	1	        1	#_Variance_adjustment_list7 
+    5	2	        1	#_Variance_adjustment_list8 
+    5	3	        1	#_Variance_adjustment_list9 
+    5	4	        1	#_Variance_adjustment_list10
+    5	5	        1	#_Variance_adjustment_list11
+    5	6	        1	#_Variance_adjustment_list12
+    6	1	        1	#_Variance_adjustment_list13
+    6	2	        1	#_Variance_adjustment_list14
+    6	3	        1	#_Variance_adjustment_list15
+    6	4	        1	#_Variance_adjustment_list16
+    6	5	        1	#_Variance_adjustment_list17
+    6	6	        1	#_Variance_adjustment_list18
+-9999	0	        0	#_terminator                
 #
 5 #_maxlambdaphase
 1 #_sd_offset; must be 1 if any growthCV, sigmaR, or survey extraSD is an estimated parameter

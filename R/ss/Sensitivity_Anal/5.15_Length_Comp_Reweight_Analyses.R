@@ -102,7 +102,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # won't be estimated.
 # Reminder - The following models are considered:
 # 	-  23.length.comp.reweight 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -232,8 +232,11 @@ Ctl23_length_comp_reweight <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+
+# 50% of the length comp weights
+Ctl23_length_comp_reweight$Variance_adjustment_list = Ctl23_length_comp_reweight$Variance_adjustment_list %>% 
+  mutate(Value = ifelse(Data_type == 4, Value/2, 1))
+
 
 
 # Save the control file for the model
