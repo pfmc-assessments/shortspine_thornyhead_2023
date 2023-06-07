@@ -1,0 +1,54 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- lenght comp combo only 
+# 	- lenght comp add triennial 
+# 	- lenght comp add NonTrawl 
+# 	- lenght comp add SouthTrawl 
+# 	- lenght comp add NorthTrawl 
+# Author:  Andrea Odell 
+# Date: 2023-06-07 14:10:32 
+# Sensitivity Analysis ID: Item 5.16 
+# Names of the models created:
+# 	- 23.lencomp.Combo.Only 
+# 	- 23.lencomp.AddTriennial 
+# 	- 23.lencomp.AddNonTrawl 
+# 	- 23.lencomp.AddSouthTrawl 
+# 	- 23.lencomp.AddNorthTrawl 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.lencomp.Combo.Only 				 23.model.francis_2 
+# 23.lencomp.AddTriennial 				 23.model.francis_2 
+# 23.lencomp.AddNonTrawl 				 23.model.francis_2 
+# 23.lencomp.AddSouthTrawl 				 23.model.francis_2 
+# 23.lencomp.AddNorthTrawl 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal//5.16_LenComp_Reweight_by_Fleet 
+# Name of the script used to build the new model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.16_LenComp_Reweight_by_Fleet_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.16_LenComp_Reweight_by_Fleet_Outputs.R .R
+# 
+# General features: 
+# Iteratively adjust length comp weighting starting with combo survey only (everything else set to 0), then add triennial, non-trawl, south trawl, then north trawl 
+# 
+# Model features:
+# - Model 23.lencomp.Combo.Only:
+# combo only with variance adjustment value, everything else set to 0 
+# - Model 23.lencomp.AddTriennial:
+# combo + triennial with variance adjustment value, rest set to 0 
+# - Model 23.lencomp.AddNonTrawl:
+# combo + triennial + Nontrawl, rest set to 0 
+# - Model 23.lencomp.AddSouthTrawl:
+# combo + triennial + Nontrawl + South trawl, rest set to 0 
+# - Model 23.lencomp.AddNorthTrawl:
+# combo + triennial + Nontrawl + South trawl + north trawl 
+# ============================================================ #
+

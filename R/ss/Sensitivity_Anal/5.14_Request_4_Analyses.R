@@ -250,11 +250,12 @@ Ctl23_est_max_ret <- SS_readctl_3.30(
 tmp <- Ctl23_est_max_ret$size_selex_parms
 #tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","INIT"] <- 999
 #tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","INIT"] <- 999
-tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","PHASE"] <- 3
-tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- 3
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","PHASE"] <- -3
+tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","PHASE"] <- -3
 tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_N(1)","HI"] <- 10
 tmp[rownames(tmp) %in% "SizeSel_PRet_3_Trawl_S(2)","HI"] <- 10
 Ctl23_est_max_ret$size_selex_parms <- tmp
+
 
 
 # Save the control file for the model
