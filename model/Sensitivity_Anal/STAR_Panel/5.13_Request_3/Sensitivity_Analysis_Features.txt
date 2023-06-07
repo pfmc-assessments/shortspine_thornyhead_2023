@@ -1,0 +1,39 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Fix M at 0.045 
+# 	- Fix M at 0.05 
+# Author:  Matthieu VERON 
+# Date: 2023-06-06 15:25:46 
+# Sensitivity Analysis ID: Item 5.13 
+# Names of the models created:
+# 	- 23.STAR.Panel.M.045 
+# 	- 23.STAR.Panel.M.05 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.STAR.Panel.M.045 				 23.model.francis_2 
+# 23.STAR.Panel.M.05 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.13_Request_3 
+# Name of the script used to build the new model: 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.13_Request_3_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/Matthieu Verson/Documents/GitHub/Forked_repos/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.13_Request_3_Outputs.R .R
+# 
+# General features: 
+# Provide two sensitivity runs with M=0.045 and M=0.05 
+# 
+# Model features:
+# - Model 23.STAR.Panel.M.045:
+# This model fixes M at 0.045 
+# - Model 23.STAR.Panel.M.05:
+# This model fixes M at 0.05 
+# ============================================================ #
+
