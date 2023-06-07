@@ -142,14 +142,30 @@ Version_Summary <- SSsummarize(SensiMod)
 # make plots comparing the models
 SSplotComparisons(
       Version_Summary,
-      # print = TRUE,
-      pdf = TRUE,
+      print = TRUE,
+      # pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
       legendlabels = c(
-	'23.model.francis_2',
-	'23.STAR.Panel.M.045',
-	'23.STAR.Panel.M.05')
+        "Base", 
+        "M fixed to 0.045",
+        "M fixed to 0.05")
     )
+
+
+
+
+SSplotComparisons(
+  Version_Summary,
+  print = TRUE,
+  subplots = 13,ylimAdj = 1.2,
+  # pdf = TRUE,
+  plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
+  legendlabels = c(
+    "Base", 
+    "M fixed to 0.045",
+    "M fixed to 0.05")
+)
+
 
 # Create comparison table for this analisys
 # ####################################### #
@@ -175,3 +191,16 @@ names(out) <- c('Label', unique(tmp$Model))
 
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
+
+
+# Save table for the STAR Panel request
+require(magick)
+out
+colnames(out) <- c("", "Base", "M fixed to 0.045","M fixed to 0.05")
+
+out %>%
+  kbl() %>%
+  kable_classic(full_width = T, html_font = "Times New Roman") %>%
+  save_kable(file = file.path(here::here(), "outputs", "summary_SA_table.jpeg"),
+             zoom = 2)
+
