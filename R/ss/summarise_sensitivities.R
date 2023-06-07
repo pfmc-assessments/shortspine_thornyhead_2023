@@ -1,5 +1,6 @@
 library(tidyverse)
 library(r4ss)
+library(kableExtra)
 
 model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", "Imputed Landings", "2013 Landings")
 model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
@@ -44,3 +45,60 @@ colnames(summary) <- model.names
 rownames(summary) <- c("Total L", "Survey L", "Length Comp L", "Discards L", "Mean Body Wt L", "Recruitment L", "Prior L", "R0", "B0", "Depletion", "Relative SPR")
 
 write.csv(summary, file = file.path(here::here(), "doc", "FinalTables", "Sensitivities", "summary.csv"))
+
+
+
+### summary table w/ all sensitivity
+
+model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", "Imputed Landings", "2013 Landings", "Gamma vs LogNorm Error MBI", "DBI", "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD")
+model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
+               "4.1_Growth_Sensitivity/2_23.growth.low", 
+               "4.1_Growth_Sensitivity/1_23.growth.high", 
+               "4.2_Maturity_Sensitivity/1_23.maturity.pgcurve", 
+               "4.2_Maturity_Sensitivity/2_23.maturity.mix_curve", 
+               "1.1_Landings_Sensitivity/1_23.land.hist_impute", 
+               "1.1_Landings_Sensitivity/2_23.land.2013",
+               "3.1_surveys_Sensitivity/1_23.surveys.gamvln",
+               "3.2_surveys2_Sensitivity/1_23.surveys.db",
+               "3.2_surveys2_Sensitivity/2_23.surveys.wcgbts_depth",
+               "3.3_surveys3_Sensitivity/1_23.surveys.useslope",
+               "3.3_surveys3_Sensitivity/2_23.surveys.extaSDwcgbts"
+               )
+
+sensi.dir <- file.path(here::here(), "model", "Sensitivity_Anal")
+
+model.dirs <- apply(as.matrix(model.ids), 1, function(x) file.path(sensi.dir, x, "run"))
+
+tmp = SSgetoutput(
+  dirvec = model.dirs,
+)
+
+
+tmp_summary  = SSsummarize(
+  tmp
+)
+summary_table = SStableComparisons(
+  tmp_summary,
+  modelnames = model.names,
+  csv = TRUE,
+  csvdir = file.path(here::here(), "doc", "FinalTables", "Sensitivities")
+)
+
+summary_table <- summary_table %>%                   # Using dplyr functions
+  mutate_if(is.numeric,
+            round,
+            digits = 3)
+
+
+
+jpeg(file.path(here::here(), "outputs", "summary_table.jpeg"))
+summary_table %>%
+  kbl() %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+dev.off()
+
+
+
+
+
+
