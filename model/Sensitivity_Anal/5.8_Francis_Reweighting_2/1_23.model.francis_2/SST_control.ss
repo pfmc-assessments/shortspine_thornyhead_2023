@@ -13,7 +13,7 @@
 0 # unused option
 # for each settlement assignment:
 #_GPattern	month	area	age
-1	3	1	0	#_recr_dist_pattern_1
+1	3	1	1	#_recr_dist_pattern1
 #
 #_Cond 0 # N_movement_definitions goes here if N_areas > 1
 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
@@ -54,8 +54,8 @@
 #
 #_growth_parms
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env_var&link	dev_link	dev_minyr	dev_maxyr	dev_PH	Block	Block_Fxn
- 0.01	0.15	       0.04	-3.129	0.5361	3	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Fem_GP_1  
-   -3	   3	       0.04	     0	   0.2	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Fem_GP_1  
+ 0.01	0.15	      0.054	-3.129	0.5361	3	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Fem_GP_1  
+   -3	   3	      0.054	     0	   0.2	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Fem_GP_1  
     3	  25	    11.3832	     9	     2	0	 -2	0	0	0	0	0	0	0	#_L_at_Amin_Fem_GP_1 
    55	  95	    73.6079	    70	     5	0	 -2	0	0	0	0	0	0	0	#_L_at_Amax_Fem_GP_1 
 0.001	0.03	 0.00989856	 0.017	   0.8	0	 -3	0	0	0	0	0	0	0	#_VonBert_K_Fem_GP_1 
@@ -67,8 +67,8 @@
    -3	 100	  -0.177291	  -0.4	   0.8	0	 -3	0	0	0	0	0	0	0	#_Mat_slope_Fem_GP_1 
     0	 100	   5.44e-08	     1	   0.8	0	 -3	0	0	0	0	0	0	0	#_Eggs_alpha_Fem_GP_1
     0	 100	      3.978	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_Eggs_beta_Fem_GP_1 
-   -3	   3	       0.04	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Mal_GP_1  
-   -3	   3	       0.04	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Mal_GP_1  
+   -3	   3	      0.054	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_1_Mal_GP_1  
+   -3	   3	      0.054	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_NatM_p_2_Mal_GP_1  
    -3	  25	     9.1733	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_L_at_Amin_Mal_GP_1 
    -3	  75	    66.0728	  -0.1	   0.8	0	 -2	0	0	0	0	0	0	0	#_L_at_Amax_Mal_GP_1 
    -3	   3	  0.0167854	     0	   0.8	0	 -3	0	0	0	0	0	0	0	#_VonBert_K_Mal_GP_1 
@@ -89,7 +89,7 @@
 0 # 0/1 to use steepness in initial equ recruitment calculation
 0 # future feature: 0/1 to make realized sigmaR a function of SR curvature
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env-var	use_dev	dev_mnyr	dev_mxyr	dev_PH	Block	Blk_Fxn # parm_name
-  7	13	9.33	   10	   10	0	 4	0	0	0	0	0	0	0	#_SR_LN(R0)  
+  7	13	10.3	   10	   10	0	 4	0	0	0	0	0	0	0	#_SR_LN(R0)  
 0.2	 1	0.72	0.779	0.152	0	-2	0	0	0	0	0	0	0	#_SR_BH_steep
   0	 2	 0.5	  0.5	  0.8	0	-4	0	0	0	0	0	0	0	#_SR_sigmaR  
  -5	 5	   0	    0	    1	0	-4	0	0	0	0	0	0	0	#_SR_regime  
@@ -125,10 +125,10 @@
 4 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
 3.5 # max F or harvest rate, depends on F_Method
 #_Fleet	start_F	first_parm_phase
-    1	0.05	99	#_F_4_Fleet_Parms1
-    2	0.05	99	#_F_4_Fleet_Parms2
-    3	0.05	99	#_F_4_Fleet_Parms3
--9999	   0	 0	#_terminator      
+    1	0.05	99	#_1         
+    2	0.05	99	#_2         
+    3	0.05	99	#_3         
+-9999	   0	 0	#_terminator
 5 # N iterations for tuning F in hybrid method (recommend 3 to 7)
 #
 #_initial_F_parms; count = 0
@@ -250,12 +250,12 @@
 #
 # Input variance adjustments factors: 
 #_Data_type	Fleet	Value
-    4	1	0.036909	#_Variance_adjustment_list1 
-    4	2	 0.08848	#_Variance_adjustment_list2 
-    4	3	0.046561	#_Variance_adjustment_list3 
-    4	4	0.150731	#_Variance_adjustment_list4 
-    4	5	0.129522	#_Variance_adjustment_list5 
-    4	6	 0.03538	#_Variance_adjustment_list6 
+    4	1	0.044441	#_Variance_adjustment_list1 
+    4	2	0.103796	#_Variance_adjustment_list2 
+    4	3	 0.04916	#_Variance_adjustment_list3 
+    4	4	0.139005	#_Variance_adjustment_list4 
+    4	5	0.111119	#_Variance_adjustment_list5 
+    4	6	0.076188	#_Variance_adjustment_list6 
     5	1	       1	#_Variance_adjustment_list7 
     5	2	       1	#_Variance_adjustment_list8 
     5	3	       1	#_Variance_adjustment_list9 

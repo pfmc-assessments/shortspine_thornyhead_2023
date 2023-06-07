@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Length Comp Re-weight 
+# Author:  Andrea Odell 
+# Date: 2023-06-07 12:42:03 
+# Sensitivity Analysis ID: Item 5.15 
+# Name of the model created:
+# 	- 23.length.comp.reweight 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal//5.15_Length_Comp_Reweight 
+# Name of the script used to build the new model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.15_Length_Comp_Reweight_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.15_Length_Comp_Reweight_Outputs.R .R
+# 
+# Features: 
+#  Exploring reweighting of the length comps to improve indices fit in later years 
+# ============================================================ #
+

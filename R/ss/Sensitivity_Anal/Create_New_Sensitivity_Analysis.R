@@ -407,3 +407,15 @@ NewSensAnal(pool = "star_panel",
             object = c("Estimate Maximum Retention"), 
             base_model = c("23.blkret.T3.blksel.T3"),
             new_model = c("23.est.max.ret"))
+
+
+# length comp reweighting 
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("Length Comp Re-weight"),
+            author = "Andrea Odell",
+            folder_name = "Length_Comp_Reweight",
+            script_model = "Length_Comp_Reweight_Analyses",
+            script_results = "Length_Comp_Reweight_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.length.comp.reweight"))
