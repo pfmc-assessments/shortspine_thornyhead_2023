@@ -419,3 +419,13 @@ NewSensAnal(topic = "model",
             script_results = "Length_Comp_Reweight_Outputs",
             base_model = c("23.model.francis_2"),
             new_model = c("23.length.comp.reweight"))
+
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("lenght comp combo only", "lenght comp add triennial", "lenght comp add NonTrawl", "lenght comp add SouthTrawl", "lenght comp add NorthTrawl"),
+            author = "Andrea Odell",
+            folder_name = "LenComp_Reweight_by_Fleet",
+            script_model = "LenComp_Reweight_by_Fleet_Analyses",
+            script_results = "LenComp_Reweight_by_Fleet_Outputs",
+            base_model = c("23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2"),
+            new_model = c("23.lencomp.Combo.Only", "23.lencomp.AddTriennial", "23.lencomp.AddNonTrawl", "23.lencomp.AddSouthTrawl", "23.lencomp.AddNorthTrawl"))
