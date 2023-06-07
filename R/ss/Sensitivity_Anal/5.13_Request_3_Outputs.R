@@ -201,7 +201,7 @@ out <- SStableComparisons(Version_Summary,
                             "Base", 
                             "M fixed to 0.045",
                             "M fixed to 0.05"))
-names(out) <- c('Label', unique(tmp$Model))
+#names(out) <- c('Label', unique(tmp$Model))
 
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
