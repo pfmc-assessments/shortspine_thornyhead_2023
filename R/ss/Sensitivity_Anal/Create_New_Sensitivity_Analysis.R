@@ -393,3 +393,17 @@ NewSensAnal(pool = "star_panel",
             object = c("Fix M at 0.045", "Fix M at 0.05"), 
             base_model = c("23.model.francis_2"),
             new_model = c("23.STAR.Panel.M.045", "23.STAR.Panel.M.05"))
+
+# Request 4
+# Provide two sensitivity runs with M=0.045 and M=0.05, reported in the format 
+# requested in request #1. 
+# Additionally, show the fits to survey indices and all length comps.
+NewSensAnal(pool = "star_panel",
+            topic="model", 
+            author = "P.Y. HERNVANN",
+            folder_name = "Request_4",
+            script_model = "Request_4_Analyses",
+            script_results = "Request_4_Outputs",
+            object = c("Estimate Maximum Retention"), 
+            base_model = c("23.blkret.T3.blksel.T3"),
+            new_model = c("23.est.max.ret"))
