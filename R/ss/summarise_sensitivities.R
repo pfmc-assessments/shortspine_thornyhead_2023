@@ -51,9 +51,9 @@ write.csv(summary, file = file.path(here::here(), "doc", "FinalTables", "Sensiti
 ### summary table w/ all sensitivity
 
 model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", 
-                 "Imputed Landings", "2013 Landings", "LogNorm Error MBI", "DBI", 
+                 "Imputed Landings", "2013 Landings", "ASGOP Landings", "LogNorm Error MBI", "DBI", 
                  "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD", "all retention blocks",
-                 "all selectivity blocks", "ret + sel blocks")
+                 "all selectivity blocks", "ret + sel blocks", "Updated W-L")
 model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
                "4.1_Growth_Sensitivity/2_23.growth.low", 
                "4.1_Growth_Sensitivity/1_23.growth.high", 
@@ -61,6 +61,7 @@ model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2",
                "4.2_Maturity_Sensitivity/2_23.maturity.mix_curve", 
                "1.1_Landings_Sensitivity/1_23.land.hist_impute", 
                "1.1_Landings_Sensitivity/2_23.land.2013",
+               "1.2_Landings_ashop/1_23.landings.ashop",
                "3.1_surveys_Sensitivity/1_23.surveys.gamvln",
                "3.2_surveys2_Sensitivity/1_23.surveys.db",
                "3.2_surveys2_Sensitivity/2_23.surveys.wcgbts_depth",
@@ -68,7 +69,8 @@ model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2",
                "3.3_surveys3_Sensitivity/2_23.surveys.extaSDwcgbts",
                "5.9_Retention_Selectivity_Sensitivity/4_23.blkret.T4",
                "5.11_Selectivity_Sensitivity/3_23.blksel.T3",
-               "5.11_Selectivity_Sensitivity/7_23.blkret.T3.blksel.T3")
+               "5.11_Selectivity_Sensitivity/7_23.blkret.T3.blksel.T3",
+               "STAR_Panel/4.4_WL_Sensitivity/1_23.WL.sensitivity")
 
 
 
