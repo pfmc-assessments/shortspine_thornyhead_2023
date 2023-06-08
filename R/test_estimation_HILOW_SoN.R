@@ -3,7 +3,7 @@
 
 library(r4ss)
 
-new_base_loc <- file.path("C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/****/****/run")
+new_base_loc <- file.path("C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.20_STAR_base/1_23.STAR.base/run")
 
 new_base = SS_output(new_base_loc)
 
