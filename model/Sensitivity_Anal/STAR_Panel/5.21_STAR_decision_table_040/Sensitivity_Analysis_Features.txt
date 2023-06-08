@@ -1,0 +1,44 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Low-State 040 
+# 	- Base Case 040 
+# 	- High-State 040 
+# Author:  Team Thornyhead 
+# Date: 2023-06-08 15:40:22 
+# Sensitivity Analysis ID: Item 5.21 
+# Names of the models created:
+# 	- 23.dt.low 
+# 	- 23.dt.base 
+# 	- 23.dt.high 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.dt.low 				 23.STAR.base 
+# 23.dt.base 				 23.STAR.base 
+# 23.dt.high 				 23.STAR.base 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.21_STAR_decision_table_040 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.21_STAR_decision_table_040_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.21_STAR_decision_table_040_Outputs.R .R
+# 
+# General features: 
+# Decision table models for STAR Panel. Axes of uncertainty are the value of natural mortality. 
+# 
+# Model features:
+# - Model 23.dt.low:
+# Low state of nature M=0.0373 
+# - Model 23.dt.base:
+# Base case M=0.040 
+# - Model 23.dt.high:
+# High state of nature M=0.0461 
+# ============================================================ #
+
