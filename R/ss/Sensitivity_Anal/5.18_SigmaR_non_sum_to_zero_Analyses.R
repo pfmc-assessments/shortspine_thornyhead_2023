@@ -102,7 +102,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # won't be estimated.
 # Reminder - The following models are considered:
 # 	-  23.model.SigmaR.non.zero 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -232,9 +232,8 @@ Ctl23_model_SigmaR_non_zero <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
 
+Ctl23_model_SigmaR_non_zero$do_recdev <- 2 #free up recdevs to not sum to zero
 
 # Save the control file for the model
 SS_writectl(
