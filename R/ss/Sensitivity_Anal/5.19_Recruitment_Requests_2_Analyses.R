@@ -102,7 +102,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # won't be estimated.
 # Reminder - The following models are considered:
 # 	-  23.model.rec_long_main_period 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -234,7 +234,7 @@ Ctl23_model_rec_long_main_period <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_model_rec_long_main_period$MainRdevYrFirst <- 1901
 
 # Save the control file for the model
 SS_writectl(
