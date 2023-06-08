@@ -131,7 +131,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # 	-  23.lencomp.AddNonTrawl 
 # 	-  23.lencomp.AddSouthTrawl 
 # 	-  23.lencomp.AddNorthTrawl 
-noHess <- c(FALSE,FALSE,FALSE,FALSE,FALSE)
+noHess <- c(TRUE,TRUE,TRUE,TRUE,TRUE)
 
 
 var.to.save <- ls()
@@ -261,8 +261,11 @@ Ctl23_lencomp_Combo_Only <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+
+#Dat23_lencomp_Combo_Only$fleetinfo
+
+Ctl23_lencomp_Combo_Only$Variance_adjustment_list = Ctl23_lencomp_Combo_Only$Variance_adjustment_list %>% 
+  mutate(Value = ifelse(Data_type == 4 & Fleet != 6, 0, Value))
 
 
 # Save the control file for the model
@@ -501,8 +504,10 @@ Ctl23_lencomp_AddTriennial <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+
+Ctl23_lencomp_AddTriennial$Variance_adjustment_list = Ctl23_lencomp_AddTriennial$Variance_adjustment_list %>% 
+  mutate(Value = ifelse(Data_type == 4 & Fleet != c(4,5,6), 0, Value))
+
 
 
 # Save the control file for the model
@@ -741,8 +746,10 @@ Ctl23_lencomp_AddNonTrawl <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+
+Ctl23_lencomp_AddNonTrawl$Variance_adjustment_list = Ctl23_lencomp_AddNonTrawl$Variance_adjustment_list %>% 
+  mutate(Value = ifelse(Data_type == 4 & Fleet %in% c(1,2), 0, Value))
+
 
 
 # Save the control file for the model
@@ -981,8 +988,10 @@ Ctl23_lencomp_AddSouthTrawl <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+
+Ctl23_lencomp_AddSouthTrawl$Variance_adjustment_list = Ctl23_lencomp_AddSouthTrawl$Variance_adjustment_list %>% 
+  mutate(Value = ifelse(Data_type == 4 & Fleet == 1, 0, Value))
+
 
 
 # Save the control file for the model
@@ -1221,9 +1230,9 @@ Ctl23_lencomp_AddNorthTrawl <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
 
+Ctl23_lencomp_AddNorthTrawl$Variance_adjustment_list = Ctl23_lencomp_AddNorthTrawl$Variance_adjustment_list %>% 
+  mutate(Value = ifelse(Data_type == 4 & Fleet %in% c(1,6), 0, Value))
 
 # Save the control file for the model
 SS_writectl(

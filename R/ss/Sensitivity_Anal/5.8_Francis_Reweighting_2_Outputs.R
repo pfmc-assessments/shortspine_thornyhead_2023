@@ -122,6 +122,18 @@ names(SensiMod) <- c(
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
 
+#Calculate average recdevs - requested at star panel day 3 
+#
+#main_recdevs = Version_Summary$recdevs %>% 
+#  select("23.model.francis_2", Yr) %>% 
+#  filter(Yr %in% 1996:2018) %>% 
+#  select("23.model.francis_2")
+#
+#mean(main_recdevs_entire$`23.model.francis_2`)
+#mean(main_recdevs$`23.model.francis_2`)
+
+
+
 # make plots comparing the models
 SSplotComparisons(
       Version_Summary,
