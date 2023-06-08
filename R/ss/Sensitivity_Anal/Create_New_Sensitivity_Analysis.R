@@ -465,3 +465,27 @@ NewSensAnal(
   base_model = c("23.base.day2.update"),
   new_model = c("23.model.SigmaR.non.zero")
 )
+
+NewSensAnal(
+  pool = "star_panel",
+  topic = "model",
+  author = "Team Thornyhead",
+  folder_name = "STAR_base",
+  script_model = "STAR_base_Analyses",
+  script_results = "STAR_base_Outputs",
+  object = c("STAR Approved Base Model"),
+  base_model = c("23.model.rec_long_main_period"),
+  new_model = c("23.STAR.base")
+)
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="STAR_decision_table_040",
+  script_model="STAR_decision_table_040_Analyses",
+  script_results="STAR_decision_table_040_Outputs",
+  object=c("Low-State 040", "Base Case 040", "High-State 040"),
+  base_model=c("23.STAR.base", "23.STAR.base", "23.STAR.base"),
+  new_model=c("23.dt.low", "23.dt.base", "23.dt.high")
+)
