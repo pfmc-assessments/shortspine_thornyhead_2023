@@ -441,3 +441,16 @@ NewSensAnal(
   base_model = c("23.base.day2.update", "23.base.day2.update"),
   new_model = c("23.model.rec_biasadj", "23.model.rec_main_period")
 )
+
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model", 
+  author = "Joshua Zahner",
+  folder_name = "Recruitment_Requests_2",
+  script_model = "Recruitment_Requests_2_Analyses",
+  script_results = "Recruitment_Requests_2_Outputs",
+  object = c("New Recruitment Main Period Full"), 
+  base_model = c("23.base.day2.update"),
+  new_model = c("23.model.rec_long_main_period")
+)
