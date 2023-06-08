@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  biological_Info 
+# Specific item in that topic: 
+# 	- Sensitivity to sigmaR 
+# Author:  Sabrina Beyer 
+# Date: 2023-06-07 09:22:36 
+# Sensitivity Analysis ID: Item 4.5 
+# Name of the model created:
+# 	- 23.SigmaR.sensitivity 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/4.5_SigmaR_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.5_SigmaR_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.5_SigmaR_Sensitivity_Outputs.R .R
+# 
+# Features: 
+#  Change the sigmaR input to 0.76 as suggested in model tuning 
+# ============================================================ #
+

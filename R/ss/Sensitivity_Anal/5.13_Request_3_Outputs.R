@@ -186,8 +186,22 @@ tmp %>%
   tidyr::pivot_wider(id_cols = c(Label, Phase), names_from = Model, values_from = Value) %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_lnQ_SRlnR0.csv', sep = fsep))
 
-out <- SStableComparisons(Version_Summary)
-names(out) <- c('Label', unique(tmp$Model))
+out <- SStableComparisons(Version_Summary,
+                          names = c(
+                            "Recr_Virgin",
+                            "R0",
+                            "steep",
+                            "NatM",
+                            "L_at_Amax",
+                            "VonBert_K",
+                            "SSB_Virg",
+                            "Bratio_2023",
+                            "SPRratio_2022"),
+                          modelnames = c(
+                            "Base", 
+                            "M fixed to 0.045",
+                            "M fixed to 0.05"))
+#names(out) <- c('Label', unique(tmp$Model))
 
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
