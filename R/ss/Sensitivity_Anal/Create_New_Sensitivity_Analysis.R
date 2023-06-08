@@ -429,3 +429,15 @@ NewSensAnal(topic = "model",
             script_results = "LenComp_Reweight_by_Fleet_Outputs",
             base_model = c("23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2"),
             new_model = c("23.lencomp.Combo.Only", "23.lencomp.AddTriennial", "23.lencomp.AddNonTrawl", "23.lencomp.AddSouthTrawl", "23.lencomp.AddNorthTrawl"))
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model", 
+  author = "Joshua Zahner",
+  folder_name = "Recruitment_Requests",
+  script_model = "Recruitment_Requests_Analyses",
+  script_results = "Recruitment_Requests_Outputs",
+  object = c("Recuritment Bias Adustment", "New Recruitment Main Period"), 
+  base_model = c("23.base.day2.update", "23.base.day2.update"),
+  new_model = c("23.model.rec_biasadj", "23.model.rec_main_period")
+)
