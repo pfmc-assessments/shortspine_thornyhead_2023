@@ -234,7 +234,7 @@ Ctl23_STAR_base <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_STAR_base$max_bias_adj <- 0.30
 
 # Save the control file for the model
 SS_writectl(
@@ -254,6 +254,12 @@ var.to.save <- ls()
 
 # 3.4  Work on the forecast file ----
 # ======================= #
+
+file.copy(
+  from=file.path(here::here(), "model", "sst_forecast_STAR_Pstar_40.ss"),
+  to=file.path(Dir_23_STAR_base, 'forecast.ss', fsep = fsep),
+  overwrite = TRUE
+)
 
 # Read in the file
 ForeFile <- file.path(Dir_23_STAR_base, 'forecast.ss', fsep = fsep)
