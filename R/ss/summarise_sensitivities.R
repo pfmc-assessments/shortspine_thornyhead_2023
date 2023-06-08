@@ -50,11 +50,7 @@ write.csv(summary, file = file.path(here::here(), "doc", "FinalTables", "Sensiti
 
 ### summary table w/ all sensitivity
 
-<<<<<<< HEAD
-model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", 
-=======
 model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermediate Maturity", "Updated W-L",
->>>>>>> 831b3a7a0590690c85a088dc8a7e9e1929f46fbd
                  "Imputed Landings", "2013 Landings", "ASHOP Landings", "LogNorm Error MBI", "DBI", 
                  "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD", "all retention blocks",
                  "all selectivity blocks", "ret + sel blocks")
