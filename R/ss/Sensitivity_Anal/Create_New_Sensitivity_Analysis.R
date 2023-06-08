@@ -489,3 +489,15 @@ NewSensAnal(
   base_model=c("23.STAR.base", "23.STAR.base", "23.STAR.base"),
   new_model=c("23.dt.low", "23.dt.base", "23.dt.high")
 )
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="STAR_decision_table_045",
+  script_model="STAR_decision_table_045_Analyses",
+  script_results="STAR_decision_table_045_Outputs",
+  object=c("Low-State 045", "Base Case 045", "High-State 045"),
+  base_model=c("23.STAR.base", "23.STAR.base", "23.STAR.base"),
+  new_model=c("23.dt.low_045", "23.dt.base_045", "23.dt.high_045")
+)
