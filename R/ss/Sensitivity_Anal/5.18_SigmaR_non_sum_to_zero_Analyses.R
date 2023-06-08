@@ -102,7 +102,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # won't be estimated.
 # Reminder - The following models are considered:
 # 	-  23.model.SigmaR.non.zero 
-noHess <- c(TRUE)
+noHess <- c(FALSE)
 
 
 var.to.save <- ls()
