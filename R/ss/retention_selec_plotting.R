@@ -1,7 +1,8 @@
 ###########################3#####
 ##### 
+modloc <- file.path("C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.14_Day2_Base_Update/1_23.base.day2.update/run")
 
-modloc <- "C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.14_Request_4/1_23.est.max.ret/run"
+#modloc <- "C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.14_Request_4/1_23.est.max.ret/run"
 mod <- SS_output(dir = modloc)
 
 plot_sel_ret <- function(mod,
@@ -48,7 +49,7 @@ plot_sel_ret <- function(mod,
                     ),
                     legendloc = "topright",
                     years = years,
-                    subplot = 6,
+                    subplot = 1,
                     plot = TRUE,
                     print = FALSE,
                     infotable = infotable,

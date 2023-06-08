@@ -1,4 +1,4 @@
-Dirplot <- file.path("C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.14_Request_4/1_23.est.max.ret/run")
+Dirplot <- file.path("C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.14_Day2_Base_Update/1_23.base.day2.update/run")
 
 replist <- SS_output(
   dir = Dirplot,
