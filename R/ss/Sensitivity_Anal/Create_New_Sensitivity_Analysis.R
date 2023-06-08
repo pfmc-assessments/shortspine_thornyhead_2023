@@ -446,6 +446,18 @@ NewSensAnal(
   pool="star_panel",
   topic="model", 
   author = "Joshua Zahner",
+  folder_name = "Recruitment_Requests_2",
+  script_model = "Recruitment_Requests_2_Analyses",
+  script_results = "Recruitment_Requests_2_Outputs",
+  object = c("New Recruitment Main Period Full"), 
+  base_model = c("23.base.day2.update"),
+  new_model = c("23.model.rec_long_main_period")
+)
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model", 
+  author = "Sabrina Beyer", 
   folder_name = "SigmaR_non_sum_to_zero",
   script_model = "SigmaR_non_sum_to_zero_Analyses",
   script_results = "SigmaR_non_sum_to_zero_Outputs",

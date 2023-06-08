@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- New Recruitment Main Period Full 
+# Author:  Joshua Zahner 
+# Date: 2023-06-08 13:03:04 
+# Sensitivity Analysis ID: Item 5.19 
+# Name of the model created:
+# 	- 23.model.rec_long_main_period 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.base.day2.update 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.19_Recruitment_Requests_2 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.19_Recruitment_Requests_2_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.19_Recruitment_Requests_2_Outputs.R .R
+# 
+# Features: 
+#  Extended main phase deviate period. 
+# ============================================================ #
+
