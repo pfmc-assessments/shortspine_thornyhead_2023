@@ -251,7 +251,7 @@ Ctl23_dt_low <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_dt_low$MG_parms[grepl("NatM", rownames(Ctl23_dt_low$MG_parms)),]$INIT <- rep(0.03, 4)
 
 # Save the control file for the model
 SS_writectl(
@@ -274,6 +274,13 @@ var.to.save <- ls()
 
 # Read in the file
 ForeFile <- file.path(Dir_23_dt_low, 'forecast.ss', fsep = fsep)
+
+file.copy(
+  from=file.path(here::here(), "model/sst_forecast_STAR_Pstar_40.ss"),
+  to=ForeFile,
+  overwrite=TRUE
+)
+
 Fore23_dt_low <-SS_readforecast(
       file = ForeFile,
       version = '3.30',
@@ -285,6 +292,8 @@ Fore23_dt_low <-SS_readforecast(
 # Code modifying the forecast file 
 # ..... 
 # ..... 
+#Fore23_dt_low$Flimitfraction <- 1
+#Fore23_dt_high$Flimitfraction_m <- data.frame()
 
 
 # Save the forecast file for the model
@@ -327,7 +336,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.dt.lowfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[1], yes = '-nohess', no = '')
+      extra = "-nohess"#ifelse(noHess[1], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
@@ -345,7 +354,8 @@ replist <- SS_output(
 # plots the results (store in the 'plots' sub-directory)
 SS_plots(replist,
       dir = Dirplot,
-      printfolder = 'plots'
+      printfolder = 'plots',
+      forecastplot = TRUE
       )
 
 # =======================
@@ -491,7 +501,7 @@ Ctl23_dt_base <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_dt_high$MG_parms[grepl("NatM", rownames(Ctl23_dt_high$MG_parms)),]$INIT <- rep(0.045, 4)
 
 # Save the control file for the model
 SS_writectl(
@@ -514,6 +524,13 @@ var.to.save <- ls()
 
 # Read in the file
 ForeFile <- file.path(Dir_23_dt_base, 'forecast.ss', fsep = fsep)
+
+file.copy(
+  from=file.path(here::here(), "model/sst_forecast_STAR_Pstar_40.ss"),
+  to=ForeFile,
+  overwrite=TRUE
+)
+
 Fore23_dt_base <-SS_readforecast(
       file = ForeFile,
       version = '3.30',
@@ -567,7 +584,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.dt.basefolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[2], yes = '-nohess', no = '')
+      extra = "-nohess" #ifelse(noHess[2], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
@@ -731,7 +748,7 @@ Ctl23_dt_high <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_dt_high$MG_parms[grepl("NatM",rownames(Ctl23_dt_high$MG_parms)),]$INIT <- rep(0.05, 4)
 
 # Save the control file for the model
 SS_writectl(
@@ -754,6 +771,11 @@ var.to.save <- ls()
 
 # Read in the file
 ForeFile <- file.path(Dir_23_dt_high, 'forecast.ss', fsep = fsep)
+file.copy(
+  from=file.path(here::here(), "model/sst_forecast_STAR_Pstar_40.ss"),
+  to=ForeFile,
+  overwrite=TRUE
+)
 Fore23_dt_high <-SS_readforecast(
       file = ForeFile,
       version = '3.30',
@@ -807,7 +829,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.dt.highfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[3], yes = '-nohess', no = '')
+      extra = "-nohess" #ifelse(noHess[3], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
