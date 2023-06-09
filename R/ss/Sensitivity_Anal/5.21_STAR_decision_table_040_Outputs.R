@@ -152,8 +152,8 @@ Version_Summary <- SSsummarize(SensiMod)
 # make plots comparing the models
 SSplotComparisons(
       Version_Summary,
-      # print = TRUE,
-      pdf = TRUE,
+      print = TRUE,
+      #pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
       legendlabels = c(
 	'23.STAR.base',
@@ -161,6 +161,12 @@ SSplotComparisons(
 	'23.dt.base',
 	'23.dt.high')
     )
+
+######
+for(i in 2:4){
+  model <- SensiMod[[i]]$derived_quants %>% filter(Label == "OFLCatch_2023") %>% pull(Value)
+  print(model)
+}
 
 # Create comparison table for this analisys
 # ####################################### #
