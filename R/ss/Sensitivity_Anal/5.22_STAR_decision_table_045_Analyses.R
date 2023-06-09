@@ -119,7 +119,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # 	-  23.dt.low_045 
 # 	-  23.dt.base_045 
 # 	-  23.dt.high_045 
-noHess <- c(FALSE,FALSE,FALSE)
+noHess <- c(TRUE,TRUE,TRUE)
 
 
 var.to.save <- ls()
@@ -249,8 +249,9 @@ Ctl23_dt_low_045 <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+Ctl23_dt_low_045$MG_parms[c("NatM_p_1_Fem_GP_1", "NatM_p_2_Fem_GP_1", "NatM_p_1_Mal_GP_1", "NatM_p_2_Mal_GP_1"),]$INIT <- c(0.03, 0.03, 0.03, 0.03)
+
+
 
 
 # Save the control file for the model
@@ -273,7 +274,10 @@ var.to.save <- ls()
 # ======================= #
 
 # Read in the file
+file.copy(from = file.path(here::here(),"model", "sst_forecast_STAR_Pstar_45.ss"), to = file.path(Dir_23_dt_low_045, "forecast.ss"), overwrite = TRUE)
+
 ForeFile <- file.path(Dir_23_dt_low_045, 'forecast.ss', fsep = fsep)
+
 Fore23_dt_low_045 <-SS_readforecast(
       file = ForeFile,
       version = '3.30',
@@ -281,21 +285,46 @@ Fore23_dt_low_045 <-SS_readforecast(
       readAll = T
       )
 
-# Make your modification if applicable
-# Code modifying the forecast file 
-# ..... 
-# ..... 
-
-
 # Save the forecast file for the model
 SS_writeforecast(
-      mylist =  Fore23_dt_low_045 ,
-      dir = Dir_23_dt_low_045, 
-      file = 'forecast.ss',
-      writeAll = TRUE,
-      verbose = TRUE,
-      overwrite = TRUE
-      )
+  mylist =  Fore23_dt_low_045 ,
+  dir = Dir_23_dt_low_045, 
+  file = 'forecast.ss',
+  writeAll = TRUE,
+  verbose = TRUE,
+  overwrite = TRUE
+)
+
+#Fore23_dt_low_045$Flimitfraction <- 1
+#Fore23_dt_low_045$Flimitfraction_m <- data.frame()
+#
+#forecast_catches <- replist$timeseries %>% select(Yr, starts_with#("dead(B)")) %>% filter(Yr > 2022)
+#fore_catches = forecast_catches %>% 
+#  tidyr::pivot_longer(starts_with("dead(B)"), names_to="Fleet", #values_to="Catch(or_F)") %>%
+#  mutate(
+#    Seas=1,
+#    Fleet = case_when(
+#      Fleet=="dead(B):_1" ~ 1,
+#      Fleet=="dead(B):_2" ~ 2,
+#      Fleet=="dead(B):_3" ~ 3
+#    )
+#  ) %>% 
+#  select(Yr, Seas, Fleet, "Catch(or_F)") %>%
+#  print(n=100)
+#
+#Fore23_dt_low_045$ForeCatch <- fore_catches
+
+# Save the forecast file for the model
+#SS_writeforecast(
+#      mylist =  Fore23_dt_low_045 ,
+#      dir = file.path(here::here(),"model"), 
+#      file = 'sst_forecast_STAR_Pstar_45.ss',
+#      writeAll = TRUE,
+#      verbose = TRUE,
+#      overwrite = TRUE
+#      )
+
+
 
 # Check file structure
 # ForeFile <- file.path(Dir_23_dt_low_045, 'forecast.ss', fsep = fsep)
@@ -582,6 +611,8 @@ replist <- SS_output(
       printstats = TRUE
       )
 
+
+
 # plots the results (store in the 'plots' sub-directory)
 SS_plots(replist,
       dir = Dirplot,
@@ -609,6 +640,7 @@ var.to.save <- ls()
 # ----------------------------------------------------------- #
 
 # Path to the 23.dt.high_045 repertory
+
 Dir_23_dt_high_045 <- file.path(dir_SensAnal, '5.22_STAR_decision_table_045','3_23.dt.high_045' ,fsep = fsep)
 
 # Add the model directory to the saved variables
@@ -729,8 +761,8 @@ Ctl23_dt_high_045 <- SS_readctl_3.30(
 
 # Make your modification if applicable
 # Code modifying the control file 
-# ..... 
-# ..... 
+
+Ctl23_dt_high_045$MG_parms[c("NatM_p_1_Fem_GP_1", "NatM_p_2_Fem_GP_1", "NatM_p_1_Mal_GP_1", "NatM_p_2_Mal_GP_1"),]$INIT <- c(0.05, 0.05, 0.05, 0.05)
 
 
 # Save the control file for the model
@@ -753,6 +785,8 @@ var.to.save <- ls()
 # ======================= #
 
 # Read in the file
+file.copy(from = file.path(here::here(),"model", "sst_forecast_STAR_Pstar_45.ss"), to = file.path(Dir_23_dt_high_045, "forecast.ss"), overwrite = TRUE)
+
 ForeFile <- file.path(Dir_23_dt_high_045, 'forecast.ss', fsep = fsep)
 Fore23_dt_high_045 <-SS_readforecast(
       file = ForeFile,
