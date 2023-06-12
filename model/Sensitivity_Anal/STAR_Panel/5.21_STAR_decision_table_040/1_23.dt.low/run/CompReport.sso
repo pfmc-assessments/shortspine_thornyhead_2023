@@ -1,5 +1,5 @@
 #V3.30.21.00;_safe;_compile_date:_Feb 10 2023;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_13.1
-StartTime: Thu Jun  8 17:53:26 2023
+StartTime: Fri Jun  9 10:40:35 2023
 
 Size_Bins_pop;_(Pop_len_mid_used_for_calc_of_selex_and_bio_quantities)
 Pop_Bin:  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44
@@ -12,7 +12,7 @@ Len_mid:  7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53 
 Combine_males_with_females_thru_sizedata_bin  0 0 0 0 0 0
  0 0 0 0 0 0
  0 0 0 0 0 0
-Combine_males_with_females_thru_Age_Data_bin:  0 0 0 0 0 0
+Combine_males_with_females_thru_Age_Data_bin:  0 0 45809889 24576 43767519 24576
 
 Method_for_Lbin_definition_for_agecomp_data: 0
 For_Sizefreq;_Lbin_Lo_is_units(bio_or_numbers);_Lbin_hi_is_scale(kg,_lb,_cm,_in),_Ageerr_is_method

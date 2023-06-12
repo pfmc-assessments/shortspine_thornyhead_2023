@@ -545,6 +545,10 @@ var.to.save <- ls()
 file.copy(from = file.path(here::here(),"model", "sst_forecast_STAR_Pstar_45.ss"), to = file.path(Dir_23_dt_base_045, "forecast.ss"), overwrite = TRUE)
 
 ForeFile <- file.path(Dir_23_dt_base_045, 'forecast.ss', fsep = fsep)
+
+file.copy(from = file.path(here::here(),"model", "sst_forecast_45.ss"), to = ForeFile, overwrite = TRUE)
+
+
 Fore23_dt_base_045 <-SS_readforecast(
       file = ForeFile,
       version = '3.30',

@@ -133,18 +133,19 @@ Dir_23_dt_high_045 <- file.path(dir_SensAnal, '5.22_STAR_decision_table_045','3_
 
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(
-	Dir_23_STAR_base,
+	#Dir_23_STAR_base,
 	Dir_23_dt_low_045,
-	Dir_23_dt_base_045,
+	Dir_23_STAR_base,
+	#Dir_23_dt_base_045,
 	Dir_23_dt_high_045))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
-	'23.STAR.base',
-	'23.dt.low_045',
-	'23.dt.base_045',
-	'23.dt.high_045')
+	'Low State of Nature',
+	'Base Case',
+	#'23.dt.base_045',
+	'High State of Nature')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -152,15 +153,13 @@ Version_Summary <- SSsummarize(SensiMod)
 # make plots comparing the models
 SSplotComparisons(
       Version_Summary,
-      # print = TRUE,
-      pdf = TRUE,
+      print = TRUE,
+      #pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c(
-	'23.STAR.base',
-	'23.dt.low_045',
-	'23.dt.base_045',
-	'23.dt.high_045')
-    )
+      legendlabels = names(SensiMod),
+      endyrvec = 2034,
+      col=c("red", "black", "blue")
+)
 
 # Create comparison table for this analisys
 # ####################################### #

@@ -119,7 +119,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # 	-  23.dt.low 
 # 	-  23.dt.base 
 # 	-  23.dt.high 
-noHess <- c(FALSE,FALSE,FALSE)
+noHess <- c(TRUE,TRUE,TRUE)
 
 
 var.to.save <- ls()
