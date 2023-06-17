@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Official Base 
+# Author:  Team Thornyhead 
+# Date: 2023-06-16 21:50:12 
+# Sensitivity Analysis ID: Item 5.23 
+# Name of the model created:
+# 	- 23.base.official 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.STAR.base 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal/Base_Model/5.23_Official_Base 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.23_Official_Base_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.23_Official_Base_Outputs.R .R
+# 
+# Features: 
+#  The official base model for Shortspine Thornyhead in 2023. This model formulation was approved via the STAR Panel review process on June 9, 2023. 
+# ============================================================ #
+
