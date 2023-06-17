@@ -65,9 +65,9 @@ model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile*/*
 model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_jitter*/*
 model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_retro*/*
 
-model/Sensitivity_Anal/Base_Model/5.23_Official_Base/profiles/*
-model/Sensitivity_Anal/Base_Model/5.23_Official_Base/jitters/*
-model/Sensitivity_Anal/Base_Model/5.23_Official_Base/retros/*
+model/Sensitivity_Anal/Base_Model/profiles/*
+model/Sensitivity_Anal/Base_Model/jitters/*
+model/Sensitivity_Anal/Base_Model/retros/*
 
 
 # Ignore plots
@@ -92,12 +92,12 @@ model/Sensitivity_Anal/Base_Model/5.23_Official_Base/retros/*
 !model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_retro*/*.png
 !model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_retro*/*.csv
 
-!model/Sensitivity_Anal/Base_Model/5.23_Official_Base/profiles/*/*.png
-!model/Sensitivity_Anal/Base_Model/5.23_Official_Base/profiles/*/*.csv
-!model/Sensitivity_Anal/Base_Model/5.23_Official_Base/jitters/*/*.png
-!model/Sensitivity_Anal/Base_Model/5.23_Official_Base/jitters/*/*.csv
-!model/Sensitivity_Anal/Base_Model/5.23_Official_Base/retros/*/*.png
-!model/Sensitivity_Anal/Base_Model/5.23_Official_Base/retros/*/*.csv
+!model/Sensitivity_Anal/Base_Model/profiles/*/*.png
+!model/Sensitivity_Anal/Base_Model/profiles/*/*.csv
+!model/Sensitivity_Anal/Base_Model/jitters/*/*.png
+!model/Sensitivity_Anal/Base_Model/jitters/*/*.csv
+!model/Sensitivity_Anal/Base_Model/retros/*/*.png
+!model/Sensitivity_Anal/Base_Model/retros/*/*.csv
 
   # Tagged Image File Format
 *.tiff, *.tif
