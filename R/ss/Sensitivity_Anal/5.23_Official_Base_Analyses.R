@@ -235,6 +235,8 @@ Ctl23_base_official <- SS_readctl_3.30(
 # ..... 
 # ..... 
 
+Ctl23_base_official$size_selex_parms$INIT <- c(30, -15, 3, 5, -999, -999, 16, 10, 1, 0, 28, 0, 3, 5, -999, -999, 24, 11, 4, 0, 30, 0, 3, 5, -999, -999, 11, 10, 1, 0, 30, -7, 3, 6, -999, -999, -3, 0, 0, 0, 1, 30 ,-7, 3, 5, -999, -999, -2.85757, -0.150036, 0, 0, 1, 30, 0, 3, 5, -999, -999, -4.26284, -0.347213, 0, 0, 1)
+Ctl23_base_official$size_selex_parms_tv$INIT <- c(0, 0.80, -0.76, 0.62, -0.45, 0, -0.65, -0.36, 0, 0, 0, 0, 0, -1, -0.7, 0, -0.27, 0, -0.38, -0.17, 0, 0, 0, 0)
 
 # Save the control file for the model
 SS_writectl(
@@ -317,7 +319,7 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.base.officialfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = ifelse(noHess[1], yes = '-nohess', no = '')
+      extra = "-nohess"#ifelse(noHess[1], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 

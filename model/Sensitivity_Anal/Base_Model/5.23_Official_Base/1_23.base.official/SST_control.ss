@@ -171,19 +171,19 @@
   -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_N(1)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Trawl_N(1)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_N(1)         
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
- 0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_N(1)      
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
+   5	70	       16	     27	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_1_Trawl_N(1)      
+ 0.1	40	       10	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_N(1)      
+ -10	10	        1	2.19722	99	0	  3	0	0	0	0	  0	1	3	#_SizeSel_PRet_3_Trawl_N(1)      
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_N(1)      
-  10	60	       30	     30	 5	0	  1	0	0	0	0	  0	3	3	#_SizeSel_P_1_Trawl_S(2)         
+  10	60	       28	     30	 5	0	  1	0	0	0	0	  0	3	3	#_SizeSel_P_1_Trawl_S(2)         
   -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Trawl_S(2)         
   -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Trawl_S(2)         
   -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Trawl_S(2)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Trawl_S(2)         
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Trawl_S(2)         
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	2	3	#_SizeSel_PRet_1_Trawl_S(2)      
- 0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_S(2)      
- -10	10	       10	2.19722	99	0	  3	0	0	0	0	  0	2	3	#_SizeSel_PRet_3_Trawl_S(2)      
+   5	70	       24	     27	99	0	  3	0	0	0	0	  0	2	3	#_SizeSel_PRet_1_Trawl_S(2)      
+ 0.1	40	       11	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Trawl_S(2)      
+ -10	10	        4	2.19722	99	0	  3	0	0	0	0	  0	2	3	#_SizeSel_PRet_3_Trawl_S(2)      
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Trawl_S(2)      
   10	60	       30	     30	 5	0	  2	0	0	0	0	  0	0	0	#_SizeSel_P_1_Non-trawl(3)       
   -7	 7	        0	   -0.5	 2	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Non-trawl(3)       
@@ -191,18 +191,18 @@
   -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Non-trawl(3)       
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Non-trawl(3)       
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Non-trawl(3)       
-   5	70	       23	     27	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_1_Non-trawl(3)    
- 0.1	40	        2	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Non-trawl(3)    
- -10	10	  2.19722	2.19722	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_3_Non-trawl(3)    
+   5	70	       11	     27	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_1_Non-trawl(3)    
+ 0.1	40	       10	     15	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_2_Non-trawl(3)    
+ -10	10	        1	2.19722	99	0	  3	0	0	0	0	  0	0	0	#_SizeSel_PRet_3_Non-trawl(3)    
   -3	 3	        0	      0	 3	0	 -4	0	0	0	0	  0	0	0	#_SizeSel_PRet_4_Non-trawl(3)    
   10	60	       30	     30	 5	0	  2	0	0	0	0	  0	0	0	#_SizeSel_P_1_Triennial1(4)      
  -16	16	       -7	   -0.5	 2	0	 -3	0	0	0	0	  0	0	0	#_SizeSel_P_2_Triennial1(4)      
   -5	10	        3	   1.75	 5	0	  3	0	0	0	0	  0	0	0	#_SizeSel_P_3_Triennial1(4)      
-  -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Triennial1(4)      
+  -5	10	        6	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Triennial1(4)      
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Triennial1(4)      
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Triennial1(4)      
- -15	15	 -2.85457	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_1_Triennial1(4)
- -15	15	-0.150036	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_2_Triennial1(4)
+ -15	15	       -3	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_1_Triennial1(4)
+ -15	15	        0	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_2_Triennial1(4)
  -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_3_Triennial1(4)
  -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_4_Triennial1(4)
  -15	15	        1	      0	 5	0	 -4	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_5_Triennial1(4)
@@ -212,7 +212,7 @@
   -5	10	        5	    0.1	 2	0	  4	0	0	0	0	  0	0	0	#_SizeSel_P_4_Triennial2(5)      
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_5_Triennial2(5)      
 -999	15	     -999	      0	 5	0	-99	0	0	0	0	  0	0	0	#_SizeSel_P_6_Triennial2(5)      
- -15	15	 -2.85457	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_1_Triennial2(5)
+ -15	15	 -2.85757	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_1_Triennial2(5)
  -15	15	-0.150036	      0	 5	0	  3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_2_Triennial2(5)
  -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_3_Triennial2(5)
  -15	15	        0	      0	 5	0	 -3	0	0	0	0	0.5	0	0	#_SizeSel_PMalOff_4_Triennial2(5)
@@ -232,30 +232,30 @@
 #_No age_selex_parm
 # timevary selex parameters 
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE
- -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK3delta_2003   
- -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK3delta_2011   
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_1989
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2011
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2015
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2020
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_1989
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2007
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2011
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2015
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2020
- -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK3delta_2003   
- -15	 15	0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK3delta_2011   
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_1989
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2007
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2011
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2017
- -10	 10	0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2020
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_1989
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2007
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2011
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2017
--0.5	0.5	0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2020
+ -15	 15	    0	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK3delta_2003   
+ -15	 15	  0.8	0	  5	6	2	#_SizeSel_P_1_Trawl_N(1)_BLK3delta_2011   
+ -10	 10	-0.76	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_1989
+ -10	 10	 0.62	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2007
+ -10	 10	-0.45	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2011
+ -10	 10	    0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2015
+ -10	 10	-0.65	0	  5	6	4	#_SizeSel_PRet_1_Trawl_N(1)_BLK1delta_2020
+-0.5	0.5	-0.36	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_1989
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2007
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2011
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2015
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_N(1)_BLK1delta_2020
+ -15	 15	    0	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK3delta_2003   
+ -15	 15	   -1	0	  5	6	2	#_SizeSel_P_1_Trawl_S(2)_BLK3delta_2011   
+ -10	 10	 -0.7	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_1989
+ -10	 10	    0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2007
+ -10	 10	-0.27	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2011
+ -10	 10	    0	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2017
+ -10	 10	-0.38	0	  5	6	4	#_SizeSel_PRet_1_Trawl_S(2)_BLK2delta_2020
+-0.5	0.5	-0.17	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_1989
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2007
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2011
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2017
+-0.5	0.5	    0	0	0.2	6	4	#_SizeSel_PRet_3_Trawl_S(2)_BLK2delta_2020
 # info on dev vectors created for selex parms are reported with other devs after tag parameter section
 #
 0 #  use 2D_AR1 selectivity(0/1):  experimental feature
