@@ -158,3 +158,26 @@ names(out) <- c('Label', unique(tmp$Model))
 
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
+
+
+# get OFL Values and compute corresponding values of M
+######################################################
+
+out <- SS_output(Dir_23_base_official)
+OFL23 <- out$derived_quants["OFLCatch_2023",]$Value
+OFL.sigma <- out$OFL_sigma
+
+OFL.low <- OFL23/exp(-1.15*OFL.sigma)
+OFL.high <- OFL23/exp(1.15*OFL.sigma)
+
+m.vec <- seq(0.025, 0.055, 0.005)
+mort.profile.dir <- file.path(here::here(), "model/Sensitivity_Anal/Base_model/profiles/mortality")
+profile.models <- SSgetoutput(dirvec = mort.profile.dir, keyvec = 1:length(m.vec))
+
+# Values closest to 12.5th and 87.5th percentile are 0.035 and 0.044
+# Values closest to  2.5th and 97.5th percentile are 0.030 and 0.047
+for(i in 1:length(m.vec)){
+  replist <- profile.models[[i]]
+  ofl <- replist$derived_quants["OFLCatch_2023",]$Value
+  print(paste("M =", m.vec[i], ":" , ofl, ";", ofl-OFL.low, ";", ofl-OFL.high))
+}
