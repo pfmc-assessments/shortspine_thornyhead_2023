@@ -119,10 +119,18 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # 	-  23.base.dt_base_45 
 # 	-  23.base.dt_low_45 
 # 	-  23.base.dt_high_45 
-noHess <- c(FALSE,FALSE,FALSE)
+noHess <- c(TRUE, TRUE, TRUE)
 
 
 var.to.save <- ls()
+
+#  2.5 Update the forecast files to have the proper forecasted catch stream
+update.forecast.files(
+  model.dir = file.path(dir_SensAnal, '5.25_Decision_Table_045','1_23.base.dt_base_45', "run", fsep = fsep),
+  forecast.file = file.path(here::here(), "model", "sst_forecast_STAR_Pstar_45.ss")
+)
+
+
 # ----------------------------------------------------------- 
 
 #  3. Developing model 23.base.dt_base_45  ----
@@ -274,6 +282,12 @@ var.to.save <- ls()
 
 # Read in the file
 ForeFile <- file.path(Dir_23_base_dt_base_45, 'forecast.ss', fsep = fsep)
+file.copy(
+  from = file.path(here::here(), "model", "sst_forecast_STAR_Pstar_45.ss"),
+  to=ForeFile,
+  overwrite = TRUE
+)
+
 Fore23_base_dt_base_45 <-SS_readforecast(
       file = ForeFile,
       version = '3.30',
@@ -334,19 +348,19 @@ run_SS(SS_version = '3.30.21',
 # 3.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_base_dt_base_45, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_base_dt_base_45, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
@@ -491,7 +505,7 @@ Ctl23_base_dt_low_45 <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_base_dt_low_45$MG_parms[grepl("NatM", rownames(Ctl23_base_dt_low_45$MG_parms)),]$INIT <- rep(0.03, 4)
 
 # Save the control file for the model
 SS_writectl(
@@ -514,6 +528,12 @@ var.to.save <- ls()
 
 # Read in the file
 ForeFile <- file.path(Dir_23_base_dt_low_45, 'forecast.ss', fsep = fsep)
+file.copy(
+  from = file.path(here::here(), "model", "sst_forecast_STAR_Pstar_45.ss"),
+  to=ForeFile,
+  overwrite = TRUE
+)
+
 Fore23_base_dt_low_45 <-SS_readforecast(
       file = ForeFile,
       version = '3.30',
@@ -574,19 +594,19 @@ run_SS(SS_version = '3.30.21',
 # 4.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_base_dt_low_45, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_base_dt_low_45, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
@@ -731,7 +751,7 @@ Ctl23_base_dt_high_45 <- SS_readctl_3.30(
 # Code modifying the control file 
 # ..... 
 # ..... 
-
+Ctl23_base_dt_high_45$MG_parms[grepl("NatM", rownames(Ctl23_base_dt_high_45$MG_parms)),]$INIT <- rep(0.05, 4)
 
 # Save the control file for the model
 SS_writectl(
@@ -754,6 +774,12 @@ var.to.save <- ls()
 
 # Read in the file
 ForeFile <- file.path(Dir_23_base_dt_high_45, 'forecast.ss', fsep = fsep)
+file.copy(
+  from = file.path(here::here(), "model", "sst_forecast_STAR_Pstar_45.ss"),
+  to=ForeFile,
+  overwrite = TRUE
+)
+
 Fore23_base_dt_high_45 <-SS_readforecast(
       file = ForeFile,
       version = '3.30',
@@ -814,19 +840,19 @@ run_SS(SS_version = '3.30.21',
 # 5.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_base_dt_high_45, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_base_dt_high_45, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
