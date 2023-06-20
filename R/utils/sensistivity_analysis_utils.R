@@ -99,7 +99,8 @@ DialogBox <- function(message,
 Restart_SA_modeldvpt <-
   function(base.model = NULL,
            curr.model = NULL,
-           files = NULL) {
+           files = NULL,
+           Overwrite.base = FALSE) {
     mess1 <-
       "Do you want rebuild from scratch one (or several) SS input file(s) for this sensitivity analysis?
 This ensures that you start from the same basis as your base model if you already have
@@ -144,7 +145,8 @@ written one or several new input files for your new model."
       if (!is.null(SSfiles))
         copy_BaseModel_SSinputs(base_model = modelBase,
                                 Dvpt_model = modelDvpt,
-                                SS_file = SSfiles)
+                                SS_file = SSfiles,
+                                Overwrite_base = Overwrite.base)
     }
   }
 # ----------------------------------------------------------
@@ -2270,13 +2272,17 @@ remove_SA <- function(SA_ID = NULL,
 #' and paste all the input files (starter.ss, forecast.ss, control.ss, data.ss
 #' and either 'data_echo.ss_new' or 'data.ss_new')
 #' from the base model directory to your current model in development.
+#' @param Overwrite_base (logical) - Overwrite the base model to be used. If 
+#' \code{Overwrite_base = TRUE}, then a "new base" model can be used as a basis
+#' to restart the SA.
 #'
 #' @author Matthieu Veron
 #  Contact: mveron@uw.edu
 #'
 copy_BaseModel_SSinputs <- function(base_model = NULL,
                                     Dvpt_model = NULL,
-                                    SS_file = NULL) {
+                                    SS_file = NULL,
+                                    Overwrite_base = NULL) {
   # local declarations
   fsep <- .Platform$file.sep
   # Directories
@@ -2299,12 +2305,14 @@ copy_BaseModel_SSinputs <- function(base_model = NULL,
   colnames(Models_SA) <- gsub(" ", "_", colnames(Models_SA))
   
   # check the inputs
-  if (dim(dplyr::filter(SumUp, Base_model == base_model &
-                        New_model == Dvpt_model))[1] == 0) {
-    stop(
-      "This sensitivty analysis has not been implemented. Please check the definition
+  if(!Overwrite_base){
+    if (dim(dplyr::filter(SumUp, Base_model == base_model &
+                          New_model == Dvpt_model))[1] == 0) {
+      stop(
+        "This sensitivty analysis has not been implemented. Please check the definition
 of both your 'base mode' and 'development model.\n"
-    )
+      )
+    }
   }
   
   # check for presence of SS files
