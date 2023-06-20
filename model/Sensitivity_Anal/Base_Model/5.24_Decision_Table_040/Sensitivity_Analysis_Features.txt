@@ -1,0 +1,44 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Base Case P*=0.40 
+# 	- Low-State P*=0.40 
+# 	- High-State P*=0.40 
+# Author:  Team Thornyhead 
+# Date: 2023-06-19 12:29:07 
+# Sensitivity Analysis ID: Item 5.24 
+# Names of the models created:
+# 	- 23.base.dt_base_40 
+# 	- 23.base.dt_low_40 
+# 	- 23.base.dt_high_40 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.base.dt_base_40 				 23.base.official 
+# 23.base.dt_low_40 				 23.base.official 
+# 23.base.dt_high_40 				 23.base.official 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal/Base_Model/5.24_Decision_Table_040 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.24_Base_dt_040_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.24_Base_dt_040_Outputs.R .R
+# 
+# General features: 
+# Low, base, and high-state of nature model runs using for decision table using P*=0.40. 
+# 
+# Model features:
+# - Model 23.base.dt_base_40:
+# Base model 
+# - Model 23.base.dt_low_40:
+# Low-state of nature (M~0.03) 
+# - Model 23.base.dt_high_40:
+# Hgh-state of nature (M~0.05) 
+# ============================================================ #
+
