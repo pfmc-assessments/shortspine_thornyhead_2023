@@ -1,0 +1,7 @@
+Note 1 Information: Max data length bin: 72  < max pop len bins: 90; so will accumulate larger pop len bins
+Note 2 Suggestion: Are you sure you want so few early recrdevs? Better to include in range of main recdevs 1
+Warning 1 : Final gradient: 0.000133092 is larger than final_conv: 0.0001
+Warning 2 : Time-vary parms not bound checked
+Warning 3 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
+Note 3 Information:  N parameters that are on or within 1% of min-max bound: 2; check results, variance may be suspect
+ 3 warnings  and 3 notes 

@@ -2,12 +2,12 @@ library(here)
 library(r4ss)
 source(file=file.path(here::here(), "R", "utils", "ss_utils.R"))
 
-retro.dir <- file.path(here::here(), "model", "Sensitivity_Anal", "5.8_Francis_Reweighting_2", "1_23.model.francis_2_retro")
+retro.dir <- file.path(here::here(), "model", "Sensitivity_Anal", "Base_Model", "5.23_Official_Base", "1_23.base.official_retro")
 if(dir.exists(retro.dir)){
   unlink(retro.dir, recursive=TRUE)
 }
 
-model_settings <- get_settings(settings = list(base_name = '1_23.model.francis_2',
+model_settings <- get_settings(settings = list(base_name = '1_23.base.official',
                                                run = "retro",
                                                init_values_src = 1,
                                                usepar=TRUE,
@@ -18,13 +18,14 @@ model_settings <- get_settings(settings = list(base_name = '1_23.model.francis_2
 
 
 model_settings$exe <- 'ss_osx'
-file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2"))
-run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/"), 
+file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official/"))
+run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/Base_Model/5.23_Official_Base/"), 
                       model_settings = model_settings)
 
 
 #### For plotting the base model with uncertainty on
-retro.output <- SSgetoutput(dirvec = c(file.path(here::here(), "model", "Sensitivity_Anal", "5.8_Francis_Reweighting_2", "1_23.model.francis_2", "run"), 
+base.dir <- retro.dir
+retro.output <- SSgetoutput(dirvec = c(file.path(here::here(), "model", "Sensitivity_Anal", "Base_Model", "5.23_Official_Base", "1_23.base.official", "run"), 
                                        file.path(base.dir, "retro", "retro-1"),
                                        file.path(base.dir, "retro", "retro-2"), 
                                        file.path(base.dir, "retro", "retro-3"), 
@@ -65,7 +66,7 @@ mapply(
   MoreArgs = list(
     summaryoutput = retroSummary,
     endyrvec = endyrvec,
-    legendloc = "topleft",
+    legendloc = "topright",
     plotdir = base.dir,
     print = TRUE, plot = FALSE, pdf = FALSE
   ),
@@ -83,3 +84,14 @@ mapply(
       )
     })
 )
+
+retrospective.dir <- file.path(here::here(), "model/Sensitivity_Anal/Base_Model/retros/")
+if(file.exists(retrospective.dir)){
+  unlink(retrospective.dir, recursive = TRUE)
+}
+
+file.rename(
+  from=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official_retro/"),
+  to=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/retros")
+)
+ 

@@ -501,3 +501,39 @@ NewSensAnal(
   base_model=c("23.STAR.base", "23.STAR.base", "23.STAR.base"),
   new_model=c("23.dt.low_045", "23.dt.base_045", "23.dt.high_045")
 )
+
+NewSensAnal(
+  pool="base_model",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name = "Official_Base",
+  script_model = "Official_Base_Analyses",
+  script_results = "Official_Base_Outputs",
+  object=c("Official Base"),
+  base_model=c("23.STAR.base"),
+  new_model =c("23.base.official")
+)
+
+NewSensAnal(
+  pool="base_model",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="Decision_Table_040",
+  script_model="Base_dt_040_Analyses",
+  script_results="Base_dt_040_Outputs",
+  object=c("Base Case P*=0.40", "Low-State P*=0.40", "High-State P*=0.40"),
+  base_model=c("23.base.official", "23.base.official", "23.base.official"),
+  new_model=c("23.base.dt_base_40", "23.base.dt_low_40", "23.base.dt_high_40")
+)
+
+NewSensAnal(
+  pool="base_model",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="Decision_Table_045",
+  script_model="Base_dt_045_Analyses",
+  script_results="Base_dt_045_Outputs",
+  object=c("Base Case P*=0.45", "Low-State P*=0.45", "High-State P*=0.45"),
+  base_model=c("23.base.official", "23.base.official", "23.base.official"),
+  new_model=c("23.base.dt_base_45", "23.base.dt_low_45", "23.base.dt_high_45")
+)
