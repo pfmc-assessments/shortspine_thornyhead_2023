@@ -112,7 +112,7 @@ var.to.save <- ls()
 
 
 # Path to the base model (23.model.francis_2) repertory
-Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
+Dir_23_model_francis_2 <- file.path(dir_SensAnal, 'Base_Model', '5.23_Official_Base', '1_23.base.official', 'run', fsep = fsep)
 
 
 # Path to the base model (23.model.francis_2) repertory
@@ -136,10 +136,10 @@ SensiMod <- SSgetoutput(dirvec = c(
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
-	'23.model.francis_2',
+	'Base',
 #	'23.model.francis_2',
-	'23.maturity.pgcurve',
-	'23.maturity.mix_curve')
+	'2013 Curve',
+	'Intermediate Curve')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -150,22 +150,14 @@ SSplotComparisons(
       # print = TRUE,
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c(
-	'23.model.francis_2',
-#	'23.model.francis_2',
-	'23.maturity.pgcurve',
-	'23.maturity.mix_curve')
+      legendlabels = names(SensiMod)
     )
 
 SSplotComparisons(
   Version_Summary,
   print = TRUE,
   plotdir = file.path(here::here(), 'doc', 'FinalFigs', 'Sensitivities', 'Maturity', fsep = fsep),
-  legendlabels = c(
-    'Base',
-    #	'23.model.francis_2',
-    '2013 Curve',
-    'Intermediate Curve')
+  legendlabels = names(SensiMod)
 )
 
 # Create comparison table for this analisys
