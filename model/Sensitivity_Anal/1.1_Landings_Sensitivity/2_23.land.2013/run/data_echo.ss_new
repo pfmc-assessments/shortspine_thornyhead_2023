@@ -5,7 +5,7 @@
 #_User_info_available_at:https://vlab.noaa.gov/group/stock-synthesis
 #_Source_code_at:_https://github.com/nmfs-stock-synthesis/stock-synthesis
 
-#_Start_time: Mon May  8 18:21:28 2023
+#_Start_time: Wed Jun 21 12:36:13 2023
 #_echo_input_data
 #C Data file for Shortspine Thornyhead - 2023 Assessment
 #C These data are the one from the 2013 model and updated for
@@ -159,16 +159,16 @@
 2010 1 1 770.3 0.01
 2011 1 1 424.3 0.01
 2012 1 1 380.5 0.01
-2013 1 1 547.977 0.01
-2014 1 1 433.116 0.01
-2015 1 1 503.137 0.01
-2016 1 1 577.189 0.01
-2017 1 1 606.856 0.01
-2018 1 1 525.044 0.01
-2019 1 1 402.947 0.01
-2020 1 1 248.473 0.01
-2021 1 1 226 0.01
-2022 1 1 261.159 0.01
+2013 1 1 570.112 0.01
+2014 1 1 456.135 0.01
+2015 1 1 513.664 0.01
+2016 1 1 587.713 0.01
+2017 1 1 634.827 0.01
+2018 1 1 595.892 0.01
+2019 1 1 460.135 0.01
+2020 1 1 258.094 0.01
+2021 1 1 302.811 0.01
+2022 1 1 506.295 0.01
 -999 1 2 0 0.01
 1901 1 2 2 0.01
 1902 1 2 2 0.01

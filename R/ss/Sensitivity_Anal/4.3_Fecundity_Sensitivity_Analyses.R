@@ -101,7 +101,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # If noHess = TRUE for a given model, then the Hessian matrix
 # won't be estimated.
 # Reminder - The following models are considered:# 	-  23.biology.no_fecundity 
-noHess <- c(FALSE)
+noHess <- c(TRUE)
 
 
 var.to.save <- ls()
@@ -130,7 +130,7 @@ var.to.save <- c(var.to.save, 'Dir_23_biology_no_fecundity')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.biology.no_fecundity", files="all")
+Restart_SA_modeldvpt(base.model="23.base.official", curr.model="23.biology.no_fecundity", files="all", Overwrite.base = TRUE)
 
 
 # 3.1  Work on the Starter file ----

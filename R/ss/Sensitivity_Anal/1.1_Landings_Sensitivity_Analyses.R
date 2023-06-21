@@ -141,7 +141,7 @@ var.to.save <- c(var.to.save, 'Dir_23_land_hist_impute')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.land.hist_impute", files="all")
+Restart_SA_modeldvpt(base.model="23.base.official", curr.model="23.land.hist_impute", files="all", Overwrite.base = TRUE)
 
 
 
@@ -341,19 +341,19 @@ run_SS(SS_version = '3.30.21',
 # 3.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_land_hist_impute, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_land_hist_impute, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
@@ -395,7 +395,7 @@ var.to.save <- c(var.to.save, 'Dir_23_land_2013')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.land.2013", files="all")
+Restart_SA_modeldvpt(base.model="23.base.official", curr.model="23.land.2013", files="all", Overwrite.base = TRUE)
 
 
 # 4.1  Work on the Starter file ----
@@ -594,19 +594,19 @@ run_SS(SS_version = '3.30.21',
 # 4.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_land_2013, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_land_2013, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
