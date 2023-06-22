@@ -4,7 +4,8 @@ library(kableExtra)
 
 model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", 
                  "Intermediate Maturity", "Imputed Landings", "2013 Landings")
-model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
+model.ids <- c("Base_Model/5.23_Official_Base/1_23.base.official",
+              #"5.8_Francis_Reweighting_2/1_23.model.francis_2", 
                "4.1_Growth_Sensitivity/2_23.growth.low", 
                "4.1_Growth_Sensitivity/1_23.growth.high", 
                "4.2_Maturity_Sensitivity/1_23.maturity.pgcurve", 
@@ -37,7 +38,7 @@ for(i in 1:length(model.dirs)){
   summary[11,i] <- derived["SPRratio_2023",]$Value
 }
 
-summary(c)
+#summary(c)
 
 #replist$likelihoods_used
 #replist$derived_quants
@@ -57,7 +58,8 @@ model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermed
                  "Imputed Landings", "2013 Landings", "ASHOP Landings", "LogNorm Error MBI", "DBI", 
                  "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD", "all retention blocks",
                  "all selectivity blocks", "ret + sel blocks")
-model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
+model.ids <- c("Base_Model/5.23_Official_Base/1_23.base.official",
+               #"5.8_Francis_Reweighting_2/1_23.model.francis_2", 
                "4.1_Growth_Sensitivity/2_23.growth.low", 
                "4.1_Growth_Sensitivity/1_23.growth.high", 
                "4.2_Maturity_Sensitivity/1_23.maturity.pgcurve", 
@@ -130,7 +132,8 @@ model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", "Intermed
                  "Imputed Landings", "2013 Landings", "ASHOP Landings", "LogNorm Error MBI", "DBI", 
                  "MBI Depth-cov.", "+ Slope Survey", "WCGBTS extra SD", "all retention blocks",
                  "all selectivity blocks", "ret + sel blocks")
-model.ids <- c("5.8_Francis_Reweighting_2/1_23.model.francis_2", 
+model.ids <- c("Base_Model/5.23_Official_Base/1_23.base.official",
+              #"5.8_Francis_Reweighting_2/1_23.model.francis_2", 
                "4.1_Growth_Sensitivity/2_23.growth.low", 
                "4.1_Growth_Sensitivity/1_23.growth.high", 
                "4.2_Maturity_Sensitivity/1_23.maturity.pgcurve", 

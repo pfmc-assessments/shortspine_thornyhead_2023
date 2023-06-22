@@ -174,16 +174,15 @@ Dir_23_model_francis <- file.path(dir_SensAnal, '5.3_Francis_Reweighting','1_23.
 # Path to the 23.model.recdevs_inityear_1996 repertory
 Dir_23_model_recdevs_inityear_1996 <- file.path(dir_SensAnal, '5.6_Update_Recdevs_Inityear','1_23.model.recdevs_inityear_1996' , 'run',fsep = fsep)
 
-# Path to the 23.model.francis_2 repertory
-Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2','1_23.model.francis_2' , 'run',fsep = fsep)
+# Path to the official BASE Model
+Dir_23_official_base <- file.path(dir_SensAnal, 'Base_Model','5.23_Official_Base', '1_23.base.official' , 'run',fsep = fsep)
 
 
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(
   Dir_23_mortality_update,
   Dir_23_model_francis,
-  #Dir_23_model_recdevs_inityear_1996,
-  Dir_23_model_francis_2))
+  Dir_23_official_base))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
