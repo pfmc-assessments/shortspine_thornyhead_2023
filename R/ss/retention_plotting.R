@@ -1,4 +1,4 @@
-Dirplot <- file.path("C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.14_Day2_Base_Update/1_23.base.day2.update/run")
+Dirplot <- file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official/run")
 
 replist <- SS_output(
   dir = Dirplot,
@@ -47,9 +47,9 @@ tmp3$infotable$longname[1] <- gsub(1916, 1995, tmp3$infotable$longname[1])
 
 # save plot of time-varying retention
 #dev.off()
-#png('Outputs/discard_data/retention.png', width=7, height=4, units='in',
-#    res=300, pointsize=9)
-#par(mfrow=c(1,3))
+png(file.path(here::here(), 'outputs/discard_data/retention.png'), width=7, height=4, units='in',
+   res=300, pointsize=9)
+par(mfrow=c(1,3))
 
 SSplotSelex(replist, fleets=1, sizefactors="Ret",
             labels = c("Length (cm)", 
@@ -60,7 +60,7 @@ SSplotSelex(replist, fleets=1, sizefactors="Ret",
 SSplotSelex(replist, fleets=2, sizefactors="Ret",
             labels = c("Length (cm)", 
                        "Age (yr)", "Year", "Retention", "Retention", "Discard mortality"),
-            years=1901:2022,,
+            years=1901:2022,
             subplot=1, infotable=tmp2$infotable)
 
 SSplotSelex(replist, fleets=3, sizefactors="Ret",
@@ -68,3 +68,8 @@ SSplotSelex(replist, fleets=3, sizefactors="Ret",
                        "Age (yr)", "Year", "Retention", "Retention", "Discard mortality"),
             years=1901:2022,
             subplot=1, infotable=tmp3$infotable)
+dev.off()
+file.copy(
+  from=file.path(here::here(), 'outputs/discard_data/retention.png'),
+  to=file.path(here::here(), "doc", "FinalFigs", "Base", "retention_curves.png")
+)

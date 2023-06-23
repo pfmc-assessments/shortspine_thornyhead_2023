@@ -159,6 +159,26 @@ names(out) <- c('Label', unique(tmp$Model))
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
 
+# Tables for executive summary
+##############################
+
+replist <- SS_output(Dir_23_base_official)
+SSexecutivesummary(
+  replist,
+)
+SSexecutivesummary(
+  replist,
+  tables=c('b', 'g', 'h', 'likes'),
+  format=FALSE,
+  match_digits = TRUE
+)
+
+file.copy(
+  from=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official/run/tables/"),
+  to=file.path(here::here(), "doc/FinalTables/Summary/"),
+  overwrite=TRUE,
+  recursive = TRUE
+)
 
 # get OFL Values and compute corresponding values of M
 ######################################################
