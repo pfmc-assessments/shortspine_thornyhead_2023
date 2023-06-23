@@ -415,7 +415,7 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_unce
 ```{r, results = "asis"}
 #Selectivity and Retention
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks.png"),
+sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks2.png"),
                   caption = "Time blocking for selectivity and retention for North and South trawl fleets.",
                   label = "timeblocks")
 

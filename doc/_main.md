@@ -458,6 +458,15 @@ There is uncertainty in catch estimates, and more so for historic periods and wh
 
 ## Decision table and projections{-}
 
+The standard deviation of the log of spawning biomass in 2023 is σ = 0.18. This value is in the adjustment of quotas based on scientific uncertainty (a process referred to by the notation “$P^*$”) when the value is greater than an assumed 0.36 minimum, as it is in this case. The associated offset would therefore be a multiplication of the OFL by 87.4%, which is the 40% quantile of a log-normal distribution with the associated σ. Twelve-year projections were conducted with a total catch assumed equal to the ACL calculated by applying this adjustment to the estimated OFL for each year. The selectivity and retention function and allocation of catch among fleets was assumed to match the values for the 2020-2022 timeblock. Catch for 2023 and 2024, the limits on which have already been set, were provided by the \gls{pfmc}, and correspond to a total catch of 756 mt.
+
+This default harvest projection applied to the base model indicated that the stock status would slowly decline from 39.4% in 2023 to 39.2% in 2024, before beginning a slow rebound to 40.1% by 2034. The associated OFL values over the period 2025–2034 would average 1,022 mt and the average ACL would be 718 mt. These values are near recent annual catch levels. In these projections, the stock status was always above 40%, so the 40-10 adjustment in the control rule had no impact on the projections.
+
+Additional projections were conducted for the base model and low and high states of nature (columns) under twi catch streams (rows) representing different levels of scientific uncertainty, and thus different values of $P^*$. The uncertainty in the \gls{ofl} associated with the base model was broad ($\sigma = 0.18$), and states of nature were chosen based on values of natural mortality (M) that encapsualted the range of M seen in the literature. The low state of nature used $M=0.03$ to fully encapsulate the low end of the range of M seen in assessments throughout the eastern Pacific. The high state of nature used M=0.05 to roughly encapsulate the value of M used by the 2013 assessment. 
+
+The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$).
+
+
 
 ## Scientific uncertainty{-}
 
@@ -896,9 +905,9 @@ Twelve-year projections predict that the population is unlikely to experience a 
 ## Model Diagnostics
 
 ### Convergence
-The maximum likelihood parameter estimates found by \gls{admb} indicated a well-converged model. The base model had a small maximum gradient component (0.0002317) and a positive definite Hessian matrix, both of which are associated with converged models.
+The maximum likelihood parameter estimates found by \gls{admb} indicated a well-converged model. The base model had a small maximum gradient component (0.000102) and a positive definite Hessian matrix, both of which are associated with converged models.
 
-Runs with 100 alternative sets of starting parameter values found no models with a better likelihood (Table \ref{tab:jittertab}). Of the 100 jittered model runs, 74 re-converged to the best estimates associated with the base model, while 76 re-converged to within 2% of the best estimate. No jittered model runs achieved a better likelihood than the base model. This indicates that the data is relatively informative about the population dynamics of the stock, as the model fits to the data were virtually identical.
+Runs with 100 alternative sets of starting parameter values found no models with a better likelihood (Table \ref{tab:jittertab}). Of the 100 jittered model runs, 23 re-converged to the best estimates associated with the base model, while 62 converged to a likelihood value ~6% higher than that of the best estimate. No jittered model runs achieved a better likelihood than the base model. The proclivity of the model to converge to a local minimum implies either a complex likelihood surface or very a flat likelihood around the minimum.
 
 ### Sensitivity Analyses
 #### Sensitivity to growth parameters
@@ -934,7 +943,7 @@ A likelihood profile over $\ln(R_0)$ was performed to assess the influence of th
 
 Likelihood values and model results were largely insensitive to changes in steepness (Figure \ref{fig:h_piner_prof}). The change in negative log likelihood over the range of $h = 0.5–1.0$ was less than 10 units with the largest contribution coming from recruitment and abundance indices. No other likelihood component had a change of greater than 1 unit. The lowest $B_0$ and depletion values were associated with the most productive population, with $h = 1.0$, but there was no qualitative difference between any of these cases (total change in depletion values across the range of $h$ tested was 0.02 units; Figure \ref{fig:h_spawnout}). The apparent lack of influence of h on population dynamics for shortspine thornyhead is likely the result of the relatively high estimated stock status across the entire time series, which makes estimation of h difficult. 
 
-A likelihood profile over natural mortality ($M$) found the model results to be quite sensitive to the assumed value of $M$: with all values of $M$ 0.025-0.055 resulting in likelihoods within 5 units of the base model (Figure \ref{fig:M_prof}). Meanwhile there was no support in the data for values of $M$ above 0.06 or below 0.02. Length composition data, particularly from the two trawl fleets, was the major contributor to the changes in likelihood observed over the range of tested values for $M$ (Figure \ref{fig:M_prof}). All plausible values of $M$ resulted in similar levels of depletion (Figure \ref{fig:M_relspawnout}), but a wide range of levels for unfished spawning output (Figure \ref{fig:M_spawnout})
+A likelihood profile over natural mortality ($M$) found the model results to be quite sensitive to the assumed value of $M$: with all values of $M$ 0.025-0.055 resulting in likelihoods within 5 units of the base model (Figure \ref{fig:M_prof}). Meanwhile there was no support in the data for values of $M$ above 0.06 or below 0.02. Length composition data, particularly from the south trawl fleet, was the major contributor to the changes in likelihood observed over the range of tested values for $M$ (Figure \ref{fig:M_prof}). All plausible values of $M$ resulted in similar levels of depletion (Figure \ref{fig:M_relspawnout}), but a wide range of levels for unfished spawning output (Figure \ref{fig:M_spawnout})
 
 Because reliable age data are sparse for shortspine thornyhead, making growth a major uncertainty in this assessment, a likelihood profile over growth coefficients, length at minimum age ($a_{min}$) and length at maximum age ($a_{max}$), for each sex, was conducted. For the profile, length at amin for females ranged from 10 cm to 15 cm and length at $a_{max}$ ranged from 60 cm to 150 cm. For males, length at $a_{min}$ ranged from 8cm to 12 cm and length at $a_{max}$ ranged from 55 cm to 140 cm. As with the growth sensitivity analysis described above, likelihood was minimized for higher growth scenarios (Figure \ref{fig:growth_prof}). Spawning biomass trajectories showed similar patterns to the growth sensitivity, with higher growth scenarios producing substantially higher spawning output (Figure \ref{fig:growth_spawnout}). Based on both the fishery and survey length compositions, the largest fish, under a high growth model, are not necessarily being observed in the data. This, in combination with a low natural mortality, may be driving the higher spawning output patterns under high growth scenarios.  
 
@@ -2325,7 +2334,7 @@ Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0015285 & 4 & 0.00
 \clearpage
 
 
-![Time blocking for selectivity and retention for North and South trawl fleets.\label{fig:timeblocks}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/timeblocks.png){width=100% height=100% alt="."}
+![Time blocking for selectivity and retention for North and South trawl fleets.\label{fig:timeblocks}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/timeblocks2.png){width=100% height=100% alt="."}
 
 ![Relative spawning output comparisons of the base model and selectivity sensitivities.\label{fig:selec_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
 
