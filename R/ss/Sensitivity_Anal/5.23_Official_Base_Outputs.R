@@ -110,29 +110,23 @@ SA_path <- file.path('model','Sensitivity_Anal','Base_Model','5.23_Official_Base
 Dir_23_base_official <- file.path(dir_SensAnal, '5.23_Official_Base','1_23.base.official' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
-SensiMod <- SSgetoutput(dirvec = c(
-	Dir_23_STAR_base,
-	Dir_23_base_official))
+SensiMod <- SSgetoutput(dirvec = Dir_23_base_official)
 
 # Rename the list holding the report files from each model
 names(SensiMod)
-names(SensiMod) <- c(
-	'23.STAR.base',
-	'23.base.official')
+names(SensiMod) <-'23.base.official'
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
 
 # make plots comparing the models
-SSplotComparisons(
-      Version_Summary,
-      # print = TRUE,
-      pdf = TRUE,
-      plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c(
-	'23.STAR.base',
-	'23.base.official')
-    )
+# SSplotComparisons(
+#       Version_Summary,
+#       # print = TRUE,
+#       pdf = TRUE,
+#       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
+#       legendlabels = 	'23.base.official')
+    
 
 # Create comparison table for this analisys
 # ####################################### #
