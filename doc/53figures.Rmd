@@ -401,15 +401,23 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_unce
 
 # Surveys 
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare2_spawnbio_uncertainty.png"),
-                  caption = "Spawning output comparisons of the base model and survey sensitivities.",
-                  label = "surv_sensitiv_spawning")
+# sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare2_spawnbio_uncertainty.png"),
+#                   caption = "Spawning output comparisons of the base model and survey sensitivities.",
+#                   label = "surv_sensitiv_spawning")
+# 
+# sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare4_Bratio_uncertainty.png"),
+#                   caption = "Relative spawning output comparisons of the base model and survey sensitivities.",
+#                   label = "surv_sensitiv_mngmt")
+```
 
-sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare4_Bratio_uncertainty.png"),
-                  caption = "Relative spawning output comparisons of the base model and survey sensitivities.",
-                  label = "surv_sensitiv_mngmt")
+\clearpage
 
+```{r, results = "asis"}
 #Selectivity and Retention
+
+sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks.png"),
+                  caption = "Time blocking for selectivity and retention for North and South trawl fleets.",
+                  label = "timeblocks")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "compare4_Bratio_uncertainty.png"),
                   caption = "Relative spawning output comparisons of the base model and selectivity sensitivities.",
@@ -418,5 +426,4 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "compare4_Bratio_u
 sa4ss::add_figure(filein = file.path(fig_dir4, "Retention", "compare4_Bratio_uncertainty.png"),
                   caption = "Relative spawning output comparisons of the base model and retention sensitivities.",
                   label = "reten_sensitiv_mngmt")
-
 ```

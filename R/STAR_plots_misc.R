@@ -21,6 +21,8 @@ dat %>%
   theme(legend.position = 'none', 
         legend.title=element_text(size=14), axis.text = element_text(size=14), axis.title.x = element_text(size=14), axis.title.y = element_text(size=14))
 
+ggsave(here::here("doc", "FinalFigs", "Sensitivities","Retention", "timeblocks.png"), dpi=300, height=7, width=10, units='in')
+
 
 #Spawning Plot
 dat2<-read.csv("Index_sdm_short-cpue-delta-gamma-scaleD-PredGrid.csv")
