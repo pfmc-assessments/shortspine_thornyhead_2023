@@ -212,7 +212,7 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \endgroup{}
 
 
-![Estimated landing history for shortspine thornyhead.\label{fig:catch_histES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
+![Estimated landing history for shortspine thornyhead.\label{fig:catch_histES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
 
 
 ## Data and assessment{-}
@@ -229,7 +229,7 @@ This assessment estimated 195 parameters. The log of the unfished equilibrium re
 
 
 
-![Summary of data sources used in the base model.\label{fig:assessment_data_timeseriesES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/data_plot.png){width=80% height=100% alt="."}
+![Summary of data sources used in the base model.\label{fig:assessment_data_timeseriesES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/data_plot.png){width=80% height=100% alt="."}
 
 ## Stock biomass and dynamics{-}
 
@@ -237,7 +237,7 @@ Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 trillion 
 
 
 
-![Estimated spawning output trajectory for shortspine thornyhead.\label{fig:ssb_trajectoryES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
+![Estimated spawning output trajectory for shortspine thornyhead.\label{fig:ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -309,7 +309,7 @@ Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \endgroup{}
 
 
-![Estimated recruitment timeseries.\label{fig:rec_trajectoryES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png){width=100% height=100% alt="."}
+![Estimated recruitment timeseries.\label{fig:rec_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png){width=100% height=100% alt="."}
 
 ## Exploitation status{-}
 The summary harvest rate (total catch divided by age-1 and older biomass) closely follows the landings trajectory. The harvest rates are estimated to have never exceeded 5% and have remained below 2% in the past decade. Expressing exploitation rates in terms of spawning potential ratio (SPR) indicates that the exploitation consistently exceeded the $SPR_{50\%}$ reference point from 1980-2018. However, the stock status is estimated to have never fallen below the $B_{40\%}$ management target, though the uncertainty interval around the 2023 estimate does encapsulate the $B_{40\%}$ target (Table \ref{tab:sprES}; Figures \ref{fig:rel_ssb_trajectoryES}-\ref{fig:phase_diagramES}).
@@ -347,16 +347,16 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \endgroup{}
 
 
-![Estimated spawning output relative to unfished equilibrium for shortspine thornyhead.\label{fig:rel_ssb_trajectoryES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
+![Estimated spawning output relative to unfished equilibrium for shortspine thornyhead.\label{fig:rel_ssb_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
 
 
-![Summary fishing mortality rate (total landings / summary biomass).\label{fig:summary_fES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
+![Summary fishing mortality rate (total landings / summary biomass).\label{fig:summary_fES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
 
 
-![Estimated relative fishing intensity as a function of spawning potential ratio (SPR).\label{fig:spr_trajectoryES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
+![Estimated relative fishing intensity as a function of spawning potential ratio (SPR).\label{fig:spr_trajectoryES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
 
 
-![Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.\label{fig:phase_diagramES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
+![Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.\label{fig:phase_diagramES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
 
 ## Ecosystem considerations{-}
 This stock assessment does not explicitly incorporate trophic interactions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
@@ -407,7 +407,7 @@ MSY (mt) & 1,227 & 1,027–1,426\\*
 \endgroup{}
 
 
-![Estimated yield curve with reference points.\label{fig:yieldcurveES}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
+![Estimated yield curve with reference points.\label{fig:yieldcurveES}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
 
 ## Management performance{-}
 Catches for shortspine thornyhead have not fully attained the catch limits in recent years. \Gls{acl}s have hovered around 2500 mt since 2013, while total mortality has never exceeded 1085 mt, and is often smaller than  that (Table \ref{tab:managementES}). The fishery for shortspine thornyhead may be limited more by the \gls{acl}s on sablefish, with which they co-occur, and by the challenging economics of deep sea fishing, than by the management measures currently in place.
@@ -464,9 +464,59 @@ This default harvest projection applied to the base model indicated that the sto
 
 Additional projections were conducted for the base model and low and high states of nature (columns) under twi catch streams (rows) representing different levels of scientific uncertainty, and thus different values of $P^*$. The uncertainty in the \gls{ofl} associated with the base model was broad ($\sigma = 0.18$), and states of nature were chosen based on values of natural mortality (M) that encapsualted the range of M seen in the literature. The low state of nature used $M=0.03$ to fully encapsulate the low end of the range of M seen in assessments throughout the eastern Pacific. The high state of nature used M=0.05 to roughly encapsulate the value of M used by the 2013 assessment. 
 
-The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$).
+The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$). The most pessimistic forecast scenario, combining the low state of nature (M=0.03) with the high catch stream (P*=0.45), resulted in a projected stock status of 39.9%, very close to the target value. All other projections led to a higher projected status, with a maximum of 89.1% for the combination of the high state of nature and low catch. Forecasts under the base case led to estimated status ranging from 2024 spawning depletion values of 67.2% in the high catch stream to 72.9% in the low catch stream.
 
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
 
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}}
+\caption{(\#tab:decisiontableES)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards.}\\
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Low: M = 0.03} & \multicolumn{2}{c}{Base: 0.04} & \multicolumn{2}{c}{High: M = 0.05} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
+Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:decisiontableES)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards. \textit{(continued)}}\\
+\toprule
+Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ACL P* = 0.4}}\\
+\hspace{1em}2023 & 756 & 13485 & 0.427 & 8717 & 0.394 & 9907 & \vphantom{1} 0.494\\
+\hspace{1em}2024 & 756 & 13334 & 0.422 & 8687 & 0.392 & 9965 & \vphantom{1} 0.497\\
+\hspace{1em}2025 & 711 & 13194 & 0.418 & 8666 & 0.391 & 10032 & 0.500\\
+\hspace{1em}2026 & 713 & 13067 & 0.414 & 8659 & 0.391 & 10113 & 0.504\\
+\hspace{1em}2027 & 716 & 12949 & 0.410 & 8660 & 0.391 & 10202 & 0.509\\
+\hspace{1em}2028 & 718 & 12841 & 0.406 & 8670 & 0.392 & 10298 & 0.513\\
+\hspace{1em}2029 & 720 & 12742 & 0.403 & 8688 & 0.392 & 10400 & 0.519\\
+\hspace{1em}2030 & 721 & 12652 & 0.401 & 8712 & 0.393 & 10509 & 0.524\\
+\hspace{1em}2031 & 722 & 12570 & 0.398 & 8744 & 0.395 & 10621 & 0.530\\
+\hspace{1em}2032 & 721 & 12496 & 0.396 & 8782 & 0.397 & 10738 & 0.535\\
+\hspace{1em}2033 & 720 & 12431 & 0.394 & 8826 & 0.399 & 10857 & 0.541\\
+\hspace{1em}2034 & 719 & 12372 & 0.392 & 8874 & 0.401 & 10978 & 0.547\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ACL P* = 0.45}}\\
+\hspace{1em}2023 & 756 & 13485 & 0.427 & 8717 & 0.394 & 9907 & 0.494\\
+\hspace{1em}2024 & 756 & 13334 & 0.422 & 8687 & 0.392 & 9965 & 0.497\\
+\hspace{1em}2025 & 866 & 13194 & 0.418 & 8666 & 0.391 & 10032 & 0.500\\
+\hspace{1em}2026 & 874 & 13056 & 0.413 & 8648 & 0.391 & 10103 & 0.504\\
+\hspace{1em}2027 & 883 & 12927 & 0.409 & 8639 & 0.390 & 10180 & 0.508\\
+\hspace{1em}2028 & 891 & 12806 & 0.405 & 8636 & 0.390 & 10264 & 0.512\\
+\hspace{1em}2029 & 897 & 12693 & 0.402 & 8641 & 0.390 & 10354 & 0.516\\
+\hspace{1em}2030 & 903 & 12588 & 0.398 & 8652 & 0.391 & 10449 & 0.521\\
+\hspace{1em}2031 & 909 & 12491 & 0.395 & 8669 & 0.391 & 10548 & 0.526\\
+\hspace{1em}2032 & 913 & 12401 & 0.393 & 8692 & 0.392 & 10650 & 0.531\\
+\hspace{1em}2033 & 916 & 12317 & 0.390 & 8719 & 0.394 & 10753 & 0.536\\
+\hspace{1em}2034 & 919 & 12240 & 0.387 & 8750 & 0.395 & 10858 & 0.541\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
 
 ## Scientific uncertainty{-}
 
@@ -962,6 +1012,15 @@ Major uncertainties in the model are centered around uncertainty in the biologic
 Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” ($B/B_0 = 0.40$) and “healthy” status relative to the reference points (Figure \ref{fig:relspawnout}). Sustainable total yield (landings plus discards) was estimated at 1,160 mt when using an $SPR_{50\%}$ reference harvest rate and ranged from 971-1,348 mt based on estimates of uncertainty (Table \ref{tab:refPoints}). The spawning output equivalent to 40% of the unfished spawning output ($B_{40\%}$) was 8.858 trillion eggs.  The most recent catches (landings plus discards) have been lower than the estimated long-term yields calculated using an $SPR_{50\%}$ reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full \gls{acl}. The \gls{ofl} and \gls{abc} values over the past 6 years have been approximately 3100 mt and 2,500 mt, respectively. Both of those values are higher than the \gls{ofl} and \gls{acl} values predicted in short-term forecasts, which are around 900 mt and 700 mt respectively for 2025–2026 (Table \ref{tab:projections}). This is reflected in the timeseries of low harvest rates (Figure \ref{fig:summary_f}), high 1-SPR values (Figure \ref{fig:spr_trajectory}), and the phase plot showing the history of being above the target biomass but also above the target fishing intensity reference points (Figure \ref{fig:phase_diagram}). The sharp decline in the \gls{ofl} and \gls{acl} in coming years is the result of continued decline in the relative spawning output of the stock, which has placed it very near the “precautionary” zone for management.
 
 ## Harvest Projections and Decision Tables
+The standard deviation of the log of spawning biomass in 2023 is σ = 0.18. This value is in the adjustment of quotas based on scientific uncertainty (a process referred to by the notation “$P^*$”) when the value is greater than an assumed 0.36 minimum, as it is in this case. The associated offset would therefore be a multiplication of the OFL by 87.4%, which is the 40% quantile of a log-normal distribution with the associated σ. Twelve-year projections were conducted with a total catch assumed equal to the ACL calculated by applying this adjustment to the estimated OFL for each year. The selectivity and retention function and allocation of catch among fleets was assumed to match the values for the 2020-2022 timeblock. Catch for 2023 and 2024, the limits on which have already been set, were provided by the \gls{pfmc}, and correspond to a total catch of 756 mt.
+
+This default harvest projection applied to the base model indicated that the stock status would slowly decline from 39.4% in 2023 to 39.2% in 2024, before beginning a slow rebound to 40.1% by 2034. The associated OFL values over the period 2025–2034 would average 1,022 mt and the average ACL would be 718 mt. These values are near recent annual catch levels. In these projections, the stock status was always above 40%, so the 40-10 adjustment in the control rule had no impact on the projections.
+
+Additional projections were conducted for the base model and low and high states of nature (columns) under two catch streams (rows) representing different levels of scientific uncertainty, and thus different values of $P^*$. The uncertainty in the \gls{ofl} associated with the base model was broad ($\sigma = 0.18$), and states of nature were chosen based on values of natural mortality (M) that encapsulated the range of M seen in the literature. The low state of nature used $M=0.03$ to fully encapsulate the low end of the range of M seen in assessments throughout the eastern Pacific. The high state of nature used M=0.05 to roughly encapsulate the value of M used by the 2013 assessment. 
+
+A decision table (Table \ref{tab:decisiontable}) was assembled using projections associated with the high and low states of nature (columns) under two catch streams (rows).
+
+The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$). The most pessimistic forecast scenario, combining the low state of nature (M=0.03) with the high catch stream (P*=0.45), resulted in a projected stock status of 39.9%, very close to the target value. All other projections led to a higher projected status, with a maximum of 89.1% for the combination of the high state of nature and low catch. Forecasts under the base case led to estimated status ranging from 2024 spawning depletion values of 67.2% in the high catch stream to 72.9% in the low catch stream.
 
 ## Evaluation of Scientific Uncertainty
 Scientific uncertainty was evaluated via several likelihood profiles and a wide range of sensitivity analyses, not all of which are reported on here. Likelihood profiles were performed over unfished recruitment ($R_0$), recruitment steepness ($h$), and natural mortality ($M$), as required by the Groundfish Terms of Reference. The profiles found the model results, particularly estimates of stock scale, to be relatively sensitive to changes to $R_0$ and M, as would be expected, but largely insensitive to changes in steepness. An additional likelihood profile was also run over growth, and found the model results to be quite sensitive to the assumed values of the growth curve. Sensitivities were performed using alternative growth and maturity curves, alternative time blocks for selectivity and retention, and alternative historical landings timeseries. Model results (particularly estimates of stock status) were largely insensitive to all changes except for growth.
@@ -1222,37 +1281,39 @@ Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \endgroup{}
 \newpage
 \begingroup\fontsize{10}{12}\selectfont
-\begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{ccc>{\centering\arraybackslash}p{2cm}cc}
+\begin{landscape}\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}ccc>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}}
 \caption{(\#tab:projections)Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.}\\
 \toprule
-Year & Predicted OFL (mt) & ABC (mt) & Age 1 Biomass (mt) & Spawning Output & Fraction Unfished\\
+Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC (mt) & Buffer & Spawning Output & Fraction Unfished\\
 \midrule
 \endfirsthead
 \caption[]{(\#tab:projections)Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model. \textit{(continued)}}\\
 \toprule
-Year & Predicted OFL (mt) & ABC (mt) & Age 1 Biomass (mt) & Spawning Output & Fraction Unfished\\
+Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC (mt) & Buffer & Spawning Output & Fraction Unfished\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 894.13 & 756.11 & 95,317.90 & 8,716.84 & 0.394\\
-2024 & 917.11 & 756.11 & 95,942.30 & 8,686.69 & 0.392\\
-2025 & 939.75 & 710.84 & 96,595.20 & 8,666.24 & 0.391\\
-2026 & 962.46 & 713.47 & 97,317.90 & 8,658.74 & 0.391\\
-2027 & 984.52 & 716.19 & 98,058.60 & 8,660.12 & 0.391\\
-2028 & 1,005.90 & 718.04 & 98,813.40 & 8,669.87 & 0.391\\
-2029 & 1,026.58 & 720.05 & 99,580.20 & 8,687.53 & 0.392\\
-2030 & 1,046.56 & 721.25 & 100,356.00 & 8,712.50 & 0.393\\
-2031 & 1,065.88 & 721.67 & 101,138.00 & 8,744.22 & 0.395\\
-2032 & 1,084.54 & 721.32 & 101,927.00 & 8,782.10 & 0.397\\
-2033 & 1,102.57 & 720.20 & 102,719.00 & 8,825.59 & 0.399\\
-2034 & 1,119.95 & 719.01 & 103,514.00 & 8,874.11 & 0.401\\*
+2023 & 3177 & 2078 & 755 & NA & NA & 0.762 & 8,716.84 & 0.394\\
+2024 & 3162 & 2030 & 755 & NA & NA & 0.747 & 8,686.69 & 0.392\\
+2025 & NA & NA & NA & 939.75 & 710.84 & 0.733 & 8,666.24 & 0.391\\
+2026 & NA & NA & NA & 962.46 & 713.47 & 0.719 & 8,658.74 & 0.391\\
+2027 & NA & NA & NA & 984.52 & 716.19 & 0.706 & 8,660.12 & 0.391\\
+2028 & NA & NA & NA & 1,005.90 & 718.04 & 0.693 & 8,669.87 & 0.391\\
+2029 & NA & NA & NA & 1,026.58 & 720.05 & 0.680 & 8,687.53 & 0.392\\
+2030 & NA & NA & NA & 1,046.56 & 721.25 & 0.667 & 8,712.50 & 0.393\\
+2031 & NA & NA & NA & 1,065.88 & 721.67 & 0.654 & 8,744.22 & 0.395\\
+2032 & NA & NA & NA & 1,084.54 & 721.32 & 0.642 & 8,782.10 & 0.397\\
+2033 & NA & NA & NA & 1,102.57 & 720.20 & 0.630 & 8,825.59 & 0.399\\
+2034 & NA & NA & NA & 1,119.95 & 719.01 & 0.618 & 8,874.11 & 0.401\\*
 \end{longtable}
 \endgroup{}
+\end{landscape}
 \endgroup{}
 
 \begingroup\fontsize{9}{11}\selectfont
@@ -1280,15 +1341,16 @@ Total Catch & 1031 & 858 & 889 & 942 & 1017 & 885 & 732 & 431 & 455 & 670 & NA\\
 Total Dead & 1111 & 928 & 929 & 992 & 1095 & 948 & 786 & 477 & 500 & 724 & NA\\
 (1-SPR)/(1-SPR\_50\%) & 1.29 & 1.16 & 1.15 & 1.19 & 1.25 & 1.14 & 1.00 & 0.68 & 0.69 & 0.88 & NA\\
 Exploitation Rate & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & 0.01 & NA\\
-Age 1+ Biomass (mt) & 92,838 & 92,518 & 92,466 & 92,487 & 92,513 & 92,496 & 92,687 & 93,099 & 93,882 & 94,694 & 216,885\\
+Age 1+ Biomass (mt) & 92,838 & 92,518 & 92,466 & 92,487 & 92,513 & 92,496 & 92,687 & 93,099 & 93,882 & 94,694 & 95,328\\
 Spawning Output & 9,626 & 9,476 & 9,348 & 9,228 & 9,112 & 8,997 & 8,902 & 8,829 & 8,787 & 8,754 & 8,717\\
 Lower Interval & 6,360 & 6,228 & 6,116 & 6,011 & 5,908 & 5,804 & 5,718 & 5,651 & 5,614 & 5,583 & 5,545\\
 Upper Interval & 12,892 & 12,724 & 12,579 & 12,444 & 12,315 & 12,190 & 12,086 & 12,006 & 11,960 & 11,925 & 11,889\\
 Recruits & 9,622 & 9,650 & 9,783 & 10,155 & 9,995 & 9,990 & 10,354 & 10,839 & 11,299 & 10,952 & 10,942\\
 Lower Interval & 4,001 & 3,996 & 4,016 & 4,111 & 4,024 & 3,990 & 4,097 & 4,230 & 4,349 & 4,253 & 4,249\\
 Upper Interval & 23,138 & 23,304 & 23,832 & 25,087 & 24,828 & 25,017 & 26,165 & 27,777 & 29,354 & 28,200 & 28,177\\
-Fraction Unfished & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4 & 0.4\\
-Interval & 0.4–0.5 & 0.4–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5 & 0.3–0.5\\*
+Fraction Unfished & 0.435 & 0.428 & 0.422 & 0.417 & 0.411 & 0.406 & 0.402 & 0.399 & 0.397 & 0.395 & 0.394\\
+Lower Interval & 0.360 & 0.353 & 0.347 & 0.341 & 0.336 & 0.330 & 0.325 & 0.322 & 0.320 & 0.318 & 0.316\\
+Upper Interval & 0.509 & 0.503 & 0.497 & 0.492 & 0.487 & 0.482 & 0.478 & 0.475 & 0.474 & 0.473 & 0.471\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -1597,6 +1659,59 @@ Year & Total Biomass (mt) & Spawning Output & Total Biomass (mt) & \% Unfished &
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}}
+\caption{(\#tab:decisiontable)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards.}\\
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Low: M = 0.03} & \multicolumn{2}{c}{Base: 0.04} & \multicolumn{2}{c}{High: M = 0.05} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
+Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
+\midrule
+\endfirsthead
+\caption[]{(\#tab:decisiontable)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards. \textit{(continued)}}\\
+\toprule
+Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ACL P* = 0.4}}\\
+\hspace{1em}2023 & 756 & 13485 & 0.427 & 8717 & 0.394 & 9907 & \vphantom{1} 0.494\\
+\hspace{1em}2024 & 756 & 13334 & 0.422 & 8687 & 0.392 & 9965 & \vphantom{1} 0.497\\
+\hspace{1em}2025 & 711 & 13194 & 0.418 & 8666 & 0.391 & 10032 & 0.500\\
+\hspace{1em}2026 & 713 & 13067 & 0.414 & 8659 & 0.391 & 10113 & 0.504\\
+\hspace{1em}2027 & 716 & 12949 & 0.410 & 8660 & 0.391 & 10202 & 0.509\\
+\hspace{1em}2028 & 718 & 12841 & 0.406 & 8670 & 0.392 & 10298 & 0.513\\
+\hspace{1em}2029 & 720 & 12742 & 0.403 & 8688 & 0.392 & 10400 & 0.519\\
+\hspace{1em}2030 & 721 & 12652 & 0.401 & 8712 & 0.393 & 10509 & 0.524\\
+\hspace{1em}2031 & 722 & 12570 & 0.398 & 8744 & 0.395 & 10621 & 0.530\\
+\hspace{1em}2032 & 721 & 12496 & 0.396 & 8782 & 0.397 & 10738 & 0.535\\
+\hspace{1em}2033 & 720 & 12431 & 0.394 & 8826 & 0.399 & 10857 & 0.541\\
+\hspace{1em}2034 & 719 & 12372 & 0.392 & 8874 & 0.401 & 10978 & 0.547\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ACL P* = 0.45}}\\
+\hspace{1em}2023 & 756 & 13485 & 0.427 & 8717 & 0.394 & 9907 & 0.494\\
+\hspace{1em}2024 & 756 & 13334 & 0.422 & 8687 & 0.392 & 9965 & 0.497\\
+\hspace{1em}2025 & 866 & 13194 & 0.418 & 8666 & 0.391 & 10032 & 0.500\\
+\hspace{1em}2026 & 874 & 13056 & 0.413 & 8648 & 0.391 & 10103 & 0.504\\
+\hspace{1em}2027 & 883 & 12927 & 0.409 & 8639 & 0.390 & 10180 & 0.508\\
+\hspace{1em}2028 & 891 & 12806 & 0.405 & 8636 & 0.390 & 10264 & 0.512\\
+\hspace{1em}2029 & 897 & 12693 & 0.402 & 8641 & 0.390 & 10354 & 0.516\\
+\hspace{1em}2030 & 903 & 12588 & 0.398 & 8652 & 0.391 & 10449 & 0.521\\
+\hspace{1em}2031 & 909 & 12491 & 0.395 & 8669 & 0.391 & 10548 & 0.526\\
+\hspace{1em}2032 & 913 & 12401 & 0.393 & 8692 & 0.392 & 10650 & 0.531\\
+\hspace{1em}2033 & 916 & 12317 & 0.390 & 8719 & 0.394 & 10753 & 0.536\\
+\hspace{1em}2034 & 919 & 12240 & 0.387 & 8750 & 0.395 & 10858 & 0.541\\*
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+\newpage
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
 \begin{longtable}[t]{l>{\raggedright\arraybackslash}p{2cm}}
 \caption{(\#tab:likelihoods)Likelihood components by source.}\\
 \toprule
@@ -1758,18 +1873,18 @@ Survey & Strata Definitions\\
 \endlastfoot
 Survey & Strata Definitions\\
 AFSC Slope & 2 strata:\\
- & 32.0-49.0 degrees N: 150-500 m, 500-1280 m\\
-NWFSC Combo & 7 strata\\
- & 32.0-34.5 degrees N: 183-550 m, 550-1280 m\\
-(West Coast Groundfish Bottom Trawl Survey) & 34.5-40.5 degrees N: 183-550 m, 550-1280 m\\
- & 40.5-49.0 degrees N: 100-183 m, 183-550 m, 550-1280 m\\
+ & <a0><a0><a0><a0><a0>32.0-49.0 degrees N: 150-500 m, 500-1280 m\\
+NWFSC Combo<a0> & 7 strata\\
+ & <a0><a0><a0><a0><a0>32.0-34.5 degrees N: 183-550 m, 550-1280 m\\
+(West Coast Groundfish Bottom Trawl Survey) & <a0><a0><a0><a0><a0>34.5-40.5 degrees N: 183-550 m, 550-1280 m\\
+ & <a0><a0><a0><a0><a0>40.5-49.0 degrees N: 100-183 m, 183-550 m, 550-1280 m\\
  & The depth breaks at 183 m and 550 m are associated with changes in sampling intensity of the survey and are recommended to be used.\\
 NWFSC Slope & 6 strata\\
- & 32.0-40.5 degrees N: 55-500m, 550-1280m\\
- & 40.5-43.0 degrees N: 55-550m, 550-1280m\\
- & 43.0-49.0 degrees N: 55-550m, 550-1280m\\
-AFSC Triennial 1 & 1 stratum: <=366 m\\
-AFSC Triennial 2 & 1 stratum: 366-500 m\\*
+ & <a0><a0><a0><a0><a0>32.0-40.5 degrees N: 55-500m, 550-1280m\\
+ & <a0><a0><a0><a0><a0>40.5-43.0 degrees N: 55-550m, 550-1280m\\
+ & <a0><a0><a0><a0><a0>43.0-49.0 degrees N: 55-550m, 550-1280m\\
+AFSC Triennial 1<a0> & 1 stratum: <=366 m\\
+AFSC Triennial 2<a0> & 1 stratum: 366-500 m\\*
 \end{longtable}
 \endgroup{}
 \endgroup{}
@@ -2176,169 +2291,169 @@ Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0015285 & 4 & 0.00
 
 ## Introduction and Data
 
-![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=75% alt="."}
+![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=75% alt="."}
 
-![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.\label{fig:thornyhead-ratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
+![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.\label{fig:thornyhead-ratio}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
 
-![Landing history for shortspine thornyhead.\label{fig:catch_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
+![Landing history for shortspine thornyhead.\label{fig:catch_hist}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
 
-![Summary of data sources used in the base model.\label{fig:assessment_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/data_plot.png){width=100% height=100% alt="."}
+![Summary of data sources used in the base model.\label{fig:assessment_data_timeseries}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/data_plot.png){width=100% height=100% alt="."}
 
-![Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png){width=100% height=100% alt="."}
+![Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png){width=100% height=100% alt="."}
 
-![Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png){width=100% height=100% alt="."}
+![Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png){width=100% height=100% alt="."}
 
-![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
+![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
 
-![Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.\label{fig:designbasedsurv}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2013_2023_survey_indices_comparison.png){width=100% height=100% alt="."}
+![Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.\label{fig:designbasedsurv}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/2013_2023_survey_indices_comparison.png){width=100% height=100% alt="."}
 
-![Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.\label{fig:modelbasedsurv}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_db_comp_wgcbts_tri.png){width=100% height=100% alt="."}
+![Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.\label{fig:modelbasedsurv}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_db_comp_wgcbts_tri.png){width=100% height=100% alt="."}
 
-![State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.\label{fig:state_indices}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_indices_state_comparison.png){width=100% height=100% alt="."}
+![State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.\label{fig:state_indices}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_indices_state_comparison.png){width=100% height=100% alt="."}
 
-![Summary of annual length composition data from available scientific surveys.\label{fig:survey_comps}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
+![Summary of annual length composition data from available scientific surveys.\label{fig:survey_comps}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
 
-![Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.\label{fig:growthcurve}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curves.png){width=100% height=100% alt="."}
+![Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.\label{fig:growthcurve}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curves.png){width=100% height=100% alt="."}
 
-![2023 length-weight relationship and fits to WCGBTS weight-length data.\label{fig:lengthweight}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/lengthweight.png){width=100% height=100% alt="."}
+![2023 length-weight relationship and fits to WCGBTS weight-length data.\label{fig:lengthweight}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/lengthweight.png){width=100% height=100% alt="."}
 
-![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="."}
+![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="."}
 
-![Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png){width=100% height=100% alt="."}
+![Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png){width=100% height=100% alt="."}
 
-![Fecundity-at-length relationship.\label{fig:fec}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/fecundity.png){width=100% height=100% alt="."}
+![Fecundity-at-length relationship.\label{fig:fec}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Data/fecundity.png){width=100% height=100% alt="."}
 
 \clearpage
 
 ## Bridging Analyses
 
 
-![Relative spawning biomass timeseries for models run on updated Stock Synthesis versions.\label{fig:bridge_bratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts2_Bratio.png){width=100% height=100% alt="."}
+![Relative spawning biomass timeseries for models run on updated Stock Synthesis versions.\label{fig:bridge_bratio}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts2_Bratio.png){width=100% height=100% alt="."}
 
-![Spawning output timeseries for piecewise data updates.\label{fig:bridge_spawnout_data}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts3_Spawning_Output.png){width=100% height=100% alt="."}
+![Spawning output timeseries for piecewise data updates.\label{fig:bridge_spawnout_data}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts3_Spawning_Output.png){width=100% height=100% alt="."}
 
-![Relative spawning biomass timeseries for piecewise data updates.\label{fig:bridge_bratio_data}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts4_Bratio.png){width=100% height=100% alt="."}
+![Relative spawning biomass timeseries for piecewise data updates.\label{fig:bridge_bratio_data}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/bridging/Bridg_ts4_Bratio.png){width=100% height=100% alt="."}
 
 \clearpage
 
 ## Base Model Results and Fits
 
-![Annual recruitment deviations with 95% intervals.\label{fig:recdevs}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/recdevs2_withbars.png){width=100% height=100% alt="."}
+![Annual recruitment deviations with 95% intervals.\label{fig:recdevs}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/recdevs2_withbars.png){width=100% height=100% alt="."}
 
-![Recommended bias adjustment for recruitment deviations, from Hamel and Cope (2022).\label{fig:recdevs_bias_adjust}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/recruit_fit_bias_adjust.png){width=100% height=100% alt="."}
+![Recommended bias adjustment for recruitment deviations, from Hamel and Cope (2022).\label{fig:recdevs_bias_adjust}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/recruit_fit_bias_adjust.png){width=100% height=100% alt="."}
 
-![Selectivity at length for each combination of sex and fleet. Note that the three commerical fishery fleets were not modeled as having sex-specific selectivity.\label{fig:selcurvs}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/sel01_multiple_fleets_length1.png){width=100% height=100% alt="."}
+![Selectivity at length for each combination of sex and fleet. Note that the three commerical fishery fleets were not modeled as having sex-specific selectivity.\label{fig:selcurvs}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/sel01_multiple_fleets_length1.png){width=100% height=100% alt="."}
 
-![Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitsTri1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_Triennial1.png){width=100% height=100% alt="."}
+![Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitsTri1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_Triennial1.png){width=100% height=100% alt="."}
 
-![Fit to index of abundance data for the WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitscombo}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_NWFSCcombo.png){width=100% height=100% alt="."}
+![Fit to index of abundance data for the WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitscombo}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_NWFSCcombo.png){width=100% height=100% alt="."}
 
-![Discard fraction (percent of total catch that is not landed) for the North trawl fleet.\label{fig:northtrl_disc}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_N.png){width=100% height=100% alt="."}
+![Discard fraction (percent of total catch that is not landed) for the North trawl fleet.\label{fig:northtrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_N.png){width=100% height=100% alt="."}
 
-![Discard fraction (percent of total catch that is not landed) for the South trawl fleet.\label{fig:southtrl_disc}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_S.png){width=100% height=100% alt="."}
+![Discard fraction (percent of total catch that is not landed) for the South trawl fleet.\label{fig:southtrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitTrawl_S.png){width=100% height=100% alt="."}
 
-![Discard fraction (percent of total catch that is not landed) for the Non-trawl fleet.\label{fig:nontrl_disc}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitNon-trawl.png){width=100% height=100% alt="."}
+![Discard fraction (percent of total catch that is not landed) for the Non-trawl fleet.\label{fig:nontrl_disc}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/discard_fitNon-trawl.png){width=100% height=100% alt="."}
 
-![Length comps, aggregated across time by fleet. Labels 'retained' and 'discard' indicate discarded or retained samples for each fleet. Panels without this designation represent the whole catch.\label{fig:lencomps_all}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__aggregated_across_time.png){width=100% height=100% alt="."}
+![Length comps, aggregated across time by fleet. Labels 'retained' and 'discard' indicate discarded or retained samples for each fleet. Panels without this designation represent the whole catch.\label{fig:lencomps_all}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__aggregated_across_time.png){width=100% height=100% alt="."}
 
-![Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:ntrawl_comps_1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt1mkt2_page1.png){width=100% height=100% alt="."}
+![Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:ntrawl_comps_1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt1mkt2_page1.png){width=100% height=100% alt="."}
 
-![Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:ntrawl_comps_2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt1mkt2_page2.png){width=100% height=100% alt="."}
+![Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:ntrawl_comps_2}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt1mkt2_page2.png){width=100% height=100% alt="."}
 
-![Annual length comps and model fit for South trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:strawl_comps_1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt2mkt2_page1.png){width=100% height=100% alt="."}
+![Annual length comps and model fit for South trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:strawl_comps_1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt2mkt2_page1.png){width=100% height=100% alt="."}
 
-![Annual length comps and model fit for South trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:strawl_comps_2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt2mkt2_page2.png){width=100% height=100% alt="."}
+![Annual length comps and model fit for South trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:strawl_comps_2}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt2mkt2_page2.png){width=100% height=100% alt="."}
 
-![Annual length comps and model fit for Non-trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:nontrawl_comps_1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt3mkt2_page1.png){width=100% height=100% alt="."}
+![Annual length comps and model fit for Non-trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:nontrawl_comps_1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt3mkt2_page1.png){width=100% height=100% alt="."}
 
-![Annual length comps and model fit for Non-trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:nontrawl_comps_2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt3mkt2_page2.png){width=100% height=100% alt="."}
+![Annual length comps and model fit for Non-trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:nontrawl_comps_2}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt3mkt2_page2.png){width=100% height=100% alt="."}
 
-![Length comps, whole catch, for the early-Triennial Survey (1980-1992). 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:fits_etri}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt4mkt0.png){width=100% height=100% alt="."}
+![Length comps, whole catch, for the early-Triennial Survey (1980-1992). 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:fits_etri}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt4mkt0.png){width=100% height=100% alt="."}
 
-![Length comps, whole catch, for the late-Triennial Survey (1995-2004). 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:fits_ltri}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt5mkt0.png){width=100% height=100% alt="."}
+![Length comps, whole catch, for the late-Triennial Survey (1995-2004). 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:fits_ltri}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt5mkt0.png){width=100% height=100% alt="."}
 
-![Length comps, whole catch, for the WCGBTS. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:fits_wcgbts}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt6mkt0.png){width=100% height=100% alt="."}
+![Length comps, whole catch, for the WCGBTS. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.\label{fig:fits_wcgbts}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit_flt6mkt0.png){width=100% height=100% alt="."}
 
-![Pearson residuals, whole catch, for the three fisheries fleets. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).\label{fig:resids_fisheries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__page1_multi-fleet_comparison.png){width=100% height=100% alt="."}
+![Pearson residuals, whole catch, for the three fisheries fleets. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).\label{fig:resids_fisheries}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__page1_multi-fleet_comparison.png){width=100% height=100% alt="."}
 
-![Pearson residuals, whole catch, for the three scientific surveys. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected). Red bubbles are female, blue bubbles are male, and grey bubble are unsexed.\label{fig:resids_survey}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__page2_multi-fleet_comparison.png){width=100% height=100% alt="."}
+![Pearson residuals, whole catch, for the three scientific surveys. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected). Red bubbles are female, blue bubbles are male, and grey bubble are unsexed.\label{fig:resids_survey}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/comp_lenfit__page2_multi-fleet_comparison.png){width=100% height=100% alt="."}
 
-![Mean individual body weight (kg) in discard for the North trawl fleet.\label{fig:weightNorthTrl}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_N.png){width=100% height=100% alt="."}
+![Mean individual body weight (kg) in discard for the North trawl fleet.\label{fig:weightNorthTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_N.png){width=100% height=100% alt="."}
 
-![Mean individual body weight (kg) in discard for the South trawl fleet.\label{fig:weightSouthTrl}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_S.png){width=100% height=100% alt="."}
+![Mean individual body weight (kg) in discard for the South trawl fleet.\label{fig:weightSouthTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltTrawl_S.png){width=100% height=100% alt="."}
 
-![Mean individual body weight (kg) in discard for the Non-trawl fleet.\label{fig:weightNonTrl}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltNon-trawl.png){width=100% height=100% alt="."}
+![Mean individual body weight (kg) in discard for the Non-trawl fleet.\label{fig:weightNonTrl}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/bodywt_fit_fltNon-trawl.png){width=100% height=100% alt="."}
 
-![Spawning output (eggs) with ~95% asymptotic intervals.\label{fig:spawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
+![Spawning output (eggs) with ~95% asymptotic intervals.\label{fig:spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
 
-![Relative spawning output: $B/B_0$ with ~95% asymptotic intervals.\label{fig:relspawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
+![Relative spawning output: $B/B_0$ with ~95% asymptotic intervals.\label{fig:relspawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
 
-![Summary fishing mortality rate (total landings / summary biomass).\label{fig:summary_f}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
+![Summary fishing mortality rate (total landings / summary biomass).\label{fig:summary_f}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/ts_summaryF.png){width=100% height=100% alt="."}
 
-![Estimated relative fishing intensity as a function of spawning potential ratio (SPR).\label{fig:spr_trajectory}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
+![Estimated relative fishing intensity as a function of spawning potential ratio (SPR).\label{fig:spr_trajectory}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR3_ratiointerval.png){width=100% height=100% alt="."}
 
-![Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.\label{fig:phase_diagram}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
+![Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.\label{fig:phase_diagram}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/SPR4_phase.png){width=100% height=100% alt="."}
 
-![Retention curves for all fleets.\label{fig:retencurvs}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/retention_curves.png){width=100% height=100% alt="."}
+![Retention curves for all fleets.\label{fig:retencurvs}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/retention_curves.png){width=100% height=100% alt="."}
 
 \clearpage
 
 ## Likelihood Profiles, Retrospectives, and Sensitivity Analyses
 
-![Piner panel plot showing the impact of changing $R_0$ on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:R0_prof}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_SR_LN(R0).png){width=100% height=100% alt="."}
+![Piner panel plot showing the impact of changing $R_0$ on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:R0_prof}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_SR_LN(R0).png){width=100% height=100% alt="."}
 
-![High to low values of $R_0$ and impact on spawning output.\label{fig:R0_spawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/SR_LN(R0)_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
+![High to low values of $R_0$ and impact on spawning output.\label{fig:R0_spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/SR_LN(R0)_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
 
-![Piner panel plot showing the impact of changing $h$ on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:h_piner_prof}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_SR_BH_steep.png){width=100% height=100% alt="."}
+![Piner panel plot showing the impact of changing $h$ on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:h_piner_prof}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_SR_BH_steep.png){width=100% height=100% alt="."}
 
-![High to low values of $h$ and impact on relative spawning output.\label{fig:h_spawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/SR_BH_steep_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
+![High to low values of $h$ and impact on relative spawning output.\label{fig:h_spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/SR_BH_steep_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
 
-![Piner panel plot showing the impact of changing natural mortality ($M$) on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:M_prof}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_NatM_break_1_Fem_GP_1.png){width=100% height=100% alt="."}
+![Piner panel plot showing the impact of changing natural mortality ($M$) on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:M_prof}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_NatM_break_1_Fem_GP_1.png){width=100% height=100% alt="."}
 
-![High to low values of $M$ and impact on spawning output.\label{fig:M_spawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/NatM_break_1_Fem_GP_1_trajectories_compare1_spawnbio.png){width=100% height=100% alt="."}
+![High to low values of $M$ and impact on spawning output.\label{fig:M_spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/NatM_break_1_Fem_GP_1_trajectories_compare1_spawnbio.png){width=100% height=100% alt="."}
 
-![High to low values of $M$ and impact on relative spawning output.\label{fig:M_relspawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
+![High to low values of $M$ and impact on relative spawning output.\label{fig:M_relspawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
 
-![Piner panel plot showing the impact of low to high $a_{max}$ assumptions on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:growth_prof}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_L_at_Amax_Fem_GP_1.png){width=100% height=100% alt="."}
+![Piner panel plot showing the impact of low to high $a_{max}$ assumptions on the overall (top), length composition (middle), and survy (bottom) likeihoods.\label{fig:growth_prof}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/piner_panel_L_at_Amax_Fem_GP_1.png){width=100% height=100% alt="."}
 
-![Low to high values of $a_{max}$ and impact on spawning output.\label{fig:growth_spawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/L_at_Amax_Fem_GP_1_trajectories_compare1_spawnbio.png){width=100% height=100% alt="."}
+![Low to high values of $a_{max}$ and impact on spawning output.\label{fig:growth_spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/L_at_Amax_Fem_GP_1_trajectories_compare1_spawnbio.png){width=100% height=100% alt="."}
 
-![High to low values of $M$ and impact on spawning output.\label{fig:M_spawnout}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Profiles/NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
-
-\clearpage
-
-
-![Impact of removing 1-5 years of data on estimated spawning output from retrospective analysis.\label{fig:retros_spawnbio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare1_spawnbio.png){width=100% height=100% alt="."}
-
-![Impact of removing 1-5 years of data on estimated relative sapwning output from retrospective analysis. Blue shaded region is the 95% confidence interval around the estimated timeseries from the 2023 base model.\label{fig:retros_bratio_uncertainty}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
-
-![Impact of removing 1-5 years of data on model fit to the WCGBTS indices of abundance.\label{fig:retros_indices}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare13_indices_flt6.png){width=100% height=100% alt="."}
-
-
-
-
-![Spawning output comparisons of the base model and high growth and low growth assumptions.\label{fig:growth_sensitiv_spawning}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Growth/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
-
-![Relative spawning output comparisons of the base model and high growth and low growth assumptions.\label{fig:growth_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Growth/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
-
-![Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.\label{fig:growth_sensitiv_indx}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Growth/compare13_indices_flt6){width=100% height=100% alt="."}
-
-![Spawning output comparisons of the base model and maturity sensitivities.\label{fig:mat_sensitiv_spawning}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Maturity/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
-
-![Relative spawning output comparisons of the base model and maturity sensitivities.\label{fig:mat_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Maturity/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
-
-![Spawning output comparisons of the base model and landing sensitivities.\label{fig:land_sensitiv_spawning}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Landings/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
-
-![Relative spawning output comparisons of the base model and landing sensitivities.\label{fig:land_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Landings/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+![High to low values of $M$ and impact on spawning output.\label{fig:M_spawnout}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Profiles/NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png){width=100% height=100% alt="."}
 
 \clearpage
 
 
-![Time blocking for selectivity and retention for North and South trawl fleets.\label{fig:timeblocks}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/timeblocks2.png){width=100% height=100% alt="."}
+![Impact of removing 1-5 years of data on estimated spawning output from retrospective analysis.\label{fig:retros_spawnbio}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare1_spawnbio.png){width=100% height=100% alt="."}
 
-![Relative spawning output comparisons of the base model and selectivity sensitivities.\label{fig:selec_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+![Impact of removing 1-5 years of data on estimated relative sapwning output from retrospective analysis. Blue shaded region is the 95% confidence interval around the estimated timeseries from the 2023 base model.\label{fig:retros_bratio_uncertainty}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
 
-![Relative spawning output comparisons of the base model and retention sensitivities.\label{fig:reten_sensitiv_mngmt}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Retention/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+![Impact of removing 1-5 years of data on model fit to the WCGBTS indices of abundance.\label{fig:retros_indices}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Retros/compare13_indices_flt6.png){width=100% height=100% alt="."}
+
+
+
+
+![Spawning output comparisons of the base model and high growth and low growth assumptions.\label{fig:growth_sensitiv_spawning}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Growth/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
+
+![Relative spawning output comparisons of the base model and high growth and low growth assumptions.\label{fig:growth_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Growth/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+
+![Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.\label{fig:growth_sensitiv_indx}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Growth/compare13_indices_flt6){width=100% height=100% alt="."}
+
+![Spawning output comparisons of the base model and maturity sensitivities.\label{fig:mat_sensitiv_spawning}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Maturity/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
+
+![Relative spawning output comparisons of the base model and maturity sensitivities.\label{fig:mat_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Maturity/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+
+![Spawning output comparisons of the base model and landing sensitivities.\label{fig:land_sensitiv_spawning}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Landings/compare2_spawnbio_uncertainty.png){width=100% height=100% alt="."}
+
+![Relative spawning output comparisons of the base model and landing sensitivities.\label{fig:land_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Landings/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+
+\clearpage
+
+
+![Time blocking for selectivity and retention for North and South trawl fleets.\label{fig:timeblocks}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/timeblocks2.png){width=100% height=100% alt="."}
+
+![Relative spawning output comparisons of the base model and selectivity sensitivities.\label{fig:selec_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
+
+![Relative spawning output comparisons of the base model and retention sensitivities.\label{fig:reten_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Retention/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
 
 <!--chapter:end:53figures.Rmd-->
 

@@ -216,53 +216,47 @@ This default harvest projection applied to the base model indicated that the sto
 
 Additional projections were conducted for the base model and low and high states of nature (columns) under twi catch streams (rows) representing different levels of scientific uncertainty, and thus different values of $P^*$. The uncertainty in the \gls{ofl} associated with the base model was broad ($\sigma = 0.18$), and states of nature were chosen based on values of natural mortality (M) that encapsualted the range of M seen in the literature. The low state of nature used $M=0.03$ to fully encapsulate the low end of the range of M seen in assessments throughout the eastern Pacific. The high state of nature used M=0.05 to roughly encapsulate the value of M used by the 2013 assessment. 
 
-The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$).
+The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$). The most pessimistic forecast scenario, combining the low state of nature (M=0.03) with the high catch stream (P*=0.45), resulted in a projected stock status of 39.9%, very close to the target value. All other projections led to a higher projected status, with a maximum of 89.1% for the combination of the high state of nature and low catch. Forecasts under the base case led to estimated status ranging from 2024 spawning depletion values of 67.2% in the high catch stream to 72.9% in the low catch stream.
 
 ```{r, results="asis"}
-# decision_table  = read.csv(file = file.path(here::here(), "data", "ss_outputs", "decision_table_values.csv"))
-# decision_table = decision_table[,1:6]
-# 
-# pstar0.4 = decision_table %>%
-#   mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
-#   filter(Pstar == 'P* = 0.4') %>% 
-#   select(Yr, Catch, Pstar, SO, Depletion, State) %>% 
-#   pivot_wider(names_from = State, 
-#               values_from = c(SO, Depletion)) %>% 
-#   select("Pstar", "Yr", 'Catch',
-#          "SO_Low", "Depletion_Low",
-#          "SO_Base", "Depletion_Base",
-#          "SO_High", "Depletion_High") 
-# 
-# pstar0.45 = decision_table %>%
-#   mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
-#   filter(Pstar == 'P* = 0.45') %>% 
-#   select(Yr, Catch, Pstar, SO, Depletion, State) %>% 
-#   pivot_wider(names_from = State, 
-#               values_from = c(SO, Depletion)) %>% 
-#   select("Pstar", "Yr", 'Catch',
-#          "SO_Low", "Depletion_Low",
-#          "SO_Base", "Depletion_Base",
-#          "SO_High", "Depletion_High") 
-# 
-# decision_data_wide = rbind(pstar0.4, pstar0.45)
-# 
-# dt <- decision_data_wide %>% 
-#   #select(-Pstar) %>% 
-#   kbl(col.names = c("", "Year", "Catch", 
-#                     "SO", "Dep.",
-#                     "SO", "Dep.",
-#                     "SO", "Dep."),
-#       align = "c") %>% 
-#   kable_classic(full_width = F, html_font = "Times New Roman") %>% 
-#   add_header_above(c(" " = 3, "Low State\nof Nature\n(M = 0.03)" = 2, "Base State of\nNature\n(M = 0.04)" = 2, "High State of\nNature\n(M = 0.05)" = 2))  %>% 
-#   column_spec(c(1,3,5,7,9), extra_css = "border-right: 1.5px solid black") %>%
-#   column_spec(1, extra_css = "border-left: 1.5px solid black")  %>%
-#   collapse_rows(columns = 1, valign = "middle") %>%
-#   row_spec(13, extra_css = "border-top: 1.5px solid;")
-# 
-# sa4ss::table_format(x = dt,
-#                   caption = "Decision table showing spawning output (SO) and depletion (dep) under full ACL attainment and two different P* values through 2034.",
-#                   label = "dtES")
+decision_table  = read.csv(file = file.path(here::here(), "data", "ss_outputs", "decision_table_values.csv"))
+decision_table = decision_table[,1:6]
+
+pstar0.4 = decision_table %>%
+  mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
+  filter(Pstar == 'P* = 0.4') %>%
+  select(Yr, Catch, Pstar, SO, Depletion, State) %>%
+  pivot_wider(names_from = State,
+              values_from = c(SO, Depletion)) %>%
+  select("Pstar", "Yr", 'Catch',
+         "SO_Low", "Depletion_Low",
+         "SO_Base", "Depletion_Base",
+         "SO_High", "Depletion_High")
+
+pstar0.45 = decision_table %>%
+  mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
+  filter(Pstar == 'P* = 0.45') %>%
+  select(Yr, Catch, Pstar, SO, Depletion, State) %>%
+  pivot_wider(names_from = State,
+              values_from = c(SO, Depletion)) %>%
+  select("Pstar", "Yr", 'Catch',
+         "SO_Low", "Depletion_Low",
+         "SO_Base", "Depletion_Base",
+         "SO_High", "Depletion_High")
+
+decision_data_wide = rbind(pstar0.4, pstar0.45) %>% select(-c(Pstar)) %>% write_csv(file=file.path(here::here(), "doc", "dt.csv"))
+
+dt <- read.csv(file.path(here::here(), "doc", "dt.csv"))
+
+sa4ss::table_format(x = dt,
+                     col_names = c("Year", "Catch", "SO", "Dep", "SO", "Dep", "SO", "Dep"),
+                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards.",
+                  label = "decisiontableES")  %>%
+    kableExtra::add_header_above(c(" " = 2, "Low: M = 0.03" = 2, 
+                                   "Base: 0.04" = 2, 
+                                   "High: M = 0.05" = 2)) %>% 
+  kableExtra::pack_rows(
+  index = c("ACL P* = 0.4" = 12, "ACL P* = 0.45" = 12))
 
 ```
 
