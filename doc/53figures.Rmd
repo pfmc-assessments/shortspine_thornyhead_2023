@@ -158,6 +158,25 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "sel01_multiple_fleets_length1.pn
                   caption = "Selectivity at length for each combination of sex and fleet. Note that the three commerical fishery fleets were not modeled as having sex-specific selectivity.", 
                   label = "selcurvs")
 
+#Time blocking 
+sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks2.png"),
+                  caption = "Time blocking for selectivity and retention for North and South trawl fleets.",
+                  label = "timeblocks")
+
+#Time blocking diagram
+sa4ss::add_figure(filein = file.path(fig_dir3, "blockingdiagram.png"), 
+                  caption = "Timeline of management and fleet behavior changes associated with selectivity and retention blocks.", 
+                  label = "diagram")
+
+#Blocked selectivity 
+sa4ss::add_figure(filein = file.path(fig_dir3, "selec_block.png"), 
+                  caption = "Selectivity curves for time blocks in the North Trawl, South Trawl, and Non-Trawl fleets.", 
+                  label = "selblocks")
+
+#Blocked retention
+sa4ss::add_figure(filein = file.path(fig_dir3, "retention_curves.png"), 
+                  caption = "Retention curves for time blocks in the North Trawl, South Trawl, and Non-Trawl fleets.", 
+                  label = "retblocks")
 #Fits to Tri
 sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_Triennial1.png"), 
                   caption = "Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
@@ -418,12 +437,4 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_unce
 sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks2.png"),
                   caption = "Time blocking for selectivity and retention for North and South trawl fleets.",
                   label = "timeblocks")
-
-sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "compare4_Bratio_uncertainty.png"),
-                  caption = "Relative spawning output comparisons of the base model and selectivity sensitivities.",
-                  label = "selec_sensitiv_mngmt")
-
-sa4ss::add_figure(filein = file.path(fig_dir4, "Retention", "compare4_Bratio_uncertainty.png"),
-                  caption = "Relative spawning output comparisons of the base model and retention sensitivities.",
-                  label = "reten_sensitiv_mngmt")
 ```

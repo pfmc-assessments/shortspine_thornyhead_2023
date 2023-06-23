@@ -463,7 +463,7 @@ allpars<-read.csv(file.path(tab_dir4, "Update_Data_comparison_table_all_params.c
 names(allpars)<-c("Model", "Source", "Value", "Phase", "Min", "Max", "Init", "Gradient", "Prior Type", "Prior", "Prior SD", "Prior Like", "Lower 95% CI", "Upper 95% CI")
 
 allpars <- allpars %>% 
-  filter(Model == "23.model.francis_2")%>%
+  filter(Model == "23.base.official")%>%
   select(Source, Value, Phase, Gradient, `Lower 95% CI`, `Upper 95% CI`)
 
 sa4ss::table_format(x = allpars,

@@ -1,4 +1,4 @@
-Label,Phase,23.fix_warnings,23.model.francis_2
-SR_LN(R0),4,10.2315,9.35448
-LnQ_base_Triennial1(4),-1,-0.914423,-0.472564
-LnQ_base_NWFSCcombo(6),-1,-0.212386,0.182302
+Label,Phase,23.base.official
+SR_LN(R0),4,9.43988
+LnQ_base_Triennial1(4),-1,-0.413825
+LnQ_base_NWFSCcombo(6),-1,0.259807

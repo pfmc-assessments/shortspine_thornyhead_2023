@@ -891,15 +891,13 @@ As in the previous shortspine thornyhead assessment, a Beverton-Holt stock recru
 The overall scale of the population is estimated through the log of the initial recruitment parameter ($R_0$). Recruitment deviations were additionally estimated for the years 1901-2022. Recruitment bias adjustments were phased in beginning in 1950, and were adjusted by a factor of 0.75 in the years 1982-2022 [@taylor_hiding_2013]. The $\sigma_R$ parameter which controls the variability in recruitment deviations was fixed at 0.5 as in the previous assessment. Past assessments performed likelihood profiles over $\sigma_R$, finding the model results to be relatively insensitive to its value, and thus further profiles over the parameter were not conducted here.
 
 #### Selectivity and Retention
-Gear selectivity parameters used in this assessment were specified as a function of size with the additional assumption that age 0 fish were not selected, regardless of their size. Separate size-based selectivity curves were fit to each fishery fleet and survey. 
+Gear selectivity parameters used in this assessment were specified as a function of size with the additional assumption that age 0 fish were not selected, regardless of their size. Separate size-based selectivity curves were fitted to each fishery fleet and survey. 
 
 The selectivity curves for all fisheries and surveys were allowed to be dome-shaped and modeled with double-normal selectivity. The double-normal selectivity curve parameterization has six parameters, including: (1) peak, the length at which individuals are first fully selected, (2) width of the selectivity plateau, (3) width of the ascending part of the curve, (4) width of the descending part of the curve, (5) starting selectivity, and (6) final selectivity. Parameters 5 and 6 were not estimated and fixed at 0.0. The 2013 model allowed for all selectivity parameters to be estimated, regardless of whether one or more were estimated to be on the parameter bound. This model fixed parameter 2 (the plateau width) to the value of -15 for the North Trawl and Non-trawl fleets to alleviate them hitting the lower parameter bound. Though exploratory models run with the plateau width on its lower bound still converged, fixing the parameter had negligible impact on the fits to the length composition data for those fleets. Sex-specific selectivity curves were fit to the \gls{s-wcgbt} and \gls{s-tri} length composition data.
 
-As a new exploration in this assessment, a sensitivity analysis was conducted to assess the response of the model to time-varying selectivity peak for trawl fleets. Different combinations of time blocks were considered, all designed to account for potential structural changes in these fisheries: 2003, for the implementation of rockfish conservation areas, 2011 for the start of the \gls{ifq} program and 2020 for potential COVID-induced changes in fisheries dynamics.
+As a new addition to this assessment, time-varying selectivity curves were estimated for the North and South trawl fleets. Three time blocks accounted for potential structural changes in these fisheries (Figure \ref{fig:diagram}): (1) the historical period from 1901—2002, (2) 2003—2010, for the implementation of rockfish conservation areas, and (3) 2011 for the start of the \gls{ifq} program through the present (Figure \ref{fig:timeblocks}). 
 
-Retention curves are defined as a logistic function of size. These are controlled by four parameters: (1) inflection, (2) slope, (3) asymptotic retention, and (4) male offset to inflection. Male offset to retention was fixed at 0 (i.e. no male offset was applied). The parameters for inflection and asymptotic retention (asymptotic retention was estimated for North Trawl and Non-Trawl, and fixed for South Trawl as estimate was hitting the upper parameter bound ) were modeled as time-varying quantities via use of time blocks, as was done in the 2013 assessment. Both North Trawl and South Trawl fleets were broken into the same three periods as in the 2013 assessment: (1) 1901–2006, (2) 2007–2010, (3) 2011–2022. The first break was based on observation of a strong reduction in discard rates for both North and South Trawl in this year, while the later break was associated with the beginning of the \gls{ifq} program. After merging the two Non-Trawl fleets previously considered in the 2013, the reasons that justified the time blocks used in the 2013 assessment were not pertinent anymore and we decided not to represent time-varying retention for this fleet.
-
-Alternative retention blocking schemes were investigated as part of a sensitivity analysis. Notably, a sequence of shorter time blocks starting after 2007 was investigated in order to better fit noticeably lower discards rates in the mid 2010s. Additionally, a short, 3-year, timeblock for the years 2020 and 2022 was also attempted, as discard rates were noticeably higher in those years than in previous.
+Retention curves are defined as a logistic function of size. These are controlled by four parameters: (1) inflection, (2) slope, (3) asymptotic retention, and (4) male offset to inflection. Male offset to retention was fixed at 0 (i.e., no male offset was applied). The parameters for inflection and asymptotic retention (asymptotic retention was estimated for North Trawl and Non-Trawl, and fixed for South Trawl as estimate was hitting the upper parameter bound) were modeled as time-varying quantities via use of time blocks. Time blocks were expanded from the 2013 assessment. Both North Trawl and South Trawl fleets were broken into six time blocks, with slight variation between fleets (Figure \ref{fig:timeblocks}) (1) 1901–1988, (2) 1989—2006, (3) 2007–2010, (4) 2011–2014 for North Trawl and 2011—2016 for South Trawl, (5) 2015—2019 for North Trawl and 2017—2019 for South Trawl, and finally (6) 2020—2022 for both trawl fleets. Notably, the sequence of shorter time blocks starting after 2006 noticeably improved fits to the lower discards rates seen in the mid-2010s. Additionally, a short, 3-year, time block for the years 2020 and 2022 was also included, as discard rates were noticeably higher in those years than in previous. After merging the two Non-Trawl fleets previously considered in the 2013, the reasons that justified the time blocks used in the 2013 assessment were not pertinent anymore and we decided not to represent time-varying retention for this fleet.
 
 #### Catchability
 Catchability coefficients (q) were calculated for each of the two survey abundance time series. Like the 2013 model, catchability was analytically for each survey using the Stock Synthesis “floatQ” option, though the exact analytical computation has changed from what was used in 2013 [@ss_manual_2020]. 
@@ -918,13 +916,13 @@ A complete set of parameter estimates are available in Table \ref{tab:allparstab
 The model estimated 135 annual recruitment deviations (1901-2034) as well as the log of unfished recruitment $\ln(R_0)$. Unfished recruitment was estimated to be ~12,580,000 annual age-0 recruits ($\ln(R_0) = 9.44$) while annual log deviations were generally estimated between -0.5 and 0.5 (Figure \ref{fig:recdevs} ; Table \ref{tab:rec}). Recruitment in 2003 was estimated to be substantially larger than other years. As in the 2013 assessment, uncertainty in the scale of annual deviations was substantially larger than the variation between the deviations. Recruitment bias adjustments were performed following the advice of @methot_adjusting_2011.
 
 #### Selectivity and Retention
-Selectivity curves for all three fisheries fleets and the three scientific surveys were estimated as dome-shaped (Figure \ref{fig:selcurvs}). 
+The 2023 assessment substantially extends the period over both length data of retained and discarded catch, and mean individual weight in discards and discard rates estimates are available. This data may reflect the dynamics of the thornyhead of the population but also structural, technical, or behavioral changes in the fishing fleets. Selectivity curves for all three fisheries fleets and the three scientific surveys were estimated as dome-shaped (Figure \ref{fig:selcurvs}). 
 
-The early- and late-period \gls{s-tri}s had narrow dome-shapes, with peak selectivity occurring at relatively small length (~26 cm, and ~22 cm respectively). This shape is consistent with the design of the survey which focused its sampling on the relatively shallow shelf, where younger, smaller, shortspine thornyhead live before migrating to deeper waters as they age and mature . There was little difference in the estimated selectivity curves between male and female fish. Meanwhile, the \gls{s-wcgbt} was estimated to have a wide plateau (beginning at ~30cm) over which the species is fully selected for, including the lengths over which the species spends the bulk of its lifespan. This indicates that the \gls{s-wcgbt} is sampling a large proportion of the stock, and that annual length composition data from the survey is likely a good representation of the true distribution of lengths in the population. 
+The early- and late-period \gls{s-tri}s had narrow dome-shapes, with peak selectivity occurring at relatively small length (~26 cm, and ~22 cm respectively). This shape is consistent with the design of the survey which focused its sampling on the relatively shallow shelf, where younger, smaller, shortspine thornyhead live before migrating to deeper waters as they age and mature. There was little difference in the estimated selectivity curves between male and female fish. Meanwhile, the \gls{s-wcgbt} was estimated to have a wide plateau (beginning at ~30cm) over which the species is fully selected for, including the lengths over which the species spends the bulk of its lifespan. This indicates that the \gls{s-wcgbt} is sampling a large proportion of the stock, and that annual length composition data from the survey is likely a good representation of the true distribution of lengths in the population. 
 
-The North Trawl fleet was estimated to have a dome-shaped curve with a small plateau around 28 cm in length, and a long tail that spanned nearly the entire range of observed lengths. The South trawl fleet was estimated to have a very large selectivity plateau, (beginning at ~30cm and ranging from 30-55cm), with very steep ascending and descending limbs. Finally the Non-Trawl fleet was estimated to have a relatively small plateau beginning at a much higher length than any other fleet or survey (~45 cm). This can be explained by the fact that  hook and line gear, the dominant gear type in the  Non-Trawl fleet, selectively catches larger shortspine thornyhead. 
+Time blocks on selectivity and retention were specified for the North Trawl and South Trawl fleets (Figure \ref{fig:timeblocks}), and were associated with changes to management changes and notable fleet behavior (Figures \ref{fig:diagram}; \ref{fig:selblocks}). The North Trawl fleet was estimated to have a dome-shaped selectivity curve, where in early time periods (1901-2002) the peak is around 28 cm in length, and in later blocks moves incrementally to the right. All time blocks have a long tail that spans nearly the entire range of observed lengths. The South trawl fleet was estimated to have a very large selectivity plateau, with early time periods (1901-2002) having the plateau ranging from 20-60cm and the later time periods (2006-2022) ranging from 30-70cm. All curves have steep ascending and descending limbs. Finally, the Non-Trawl fleet (no blocking) was estimated to have a relatively small plateau beginning at a much higher length than any other fleet or survey (~45 cm). This can be explained by the fact that hook and line gear, the dominant gear type in the Non-Trawl fleet, selectively catches larger shortspine thornyhead. 
 
-Retention curves for all three fisheries were asymptotic in shape, with the two trawl fisheries asymptoting at a retention value of 1.0 and the non-trawl fishery asymptoting a value just below 1.0 (Figure \ref{fig:retencurvs}), indicating that the Non-Trawl fishery still discards large fish in limited cases. Retention was modeled in distinct time blocks to allow for better fits to the discard rate data. The time-blocked fits to the North Trawl fleet show the fishery to have begin retaining smaller fish in more recent years than they have historically. A similar pattern is observed for the South Trawl fleet, but to a much smaller extent (Figure \ref{fig:retencurvs}).
+Retention curves for all three fisheries were asymptotic in shape, with the two trawl fisheries asymptoting at a retention value of 1.0 and the non-trawl fishery asymptoting a value just below 1.0 (Figure \ref{fig:retencurvs}), indicating that the Non-Trawl fishery still discards large fish in limited cases. Retention time blocks to allow for variation in retained sizes with fleet behavior and substantially improved fits to the discard rate data (Figure \ref{fig:retblocks}). The time-blocked fits to the North Trawl fleet show the fishery to have begun retaining smaller fish in more recent years than they have historically. A similar pattern is observed for the South Trawl fleet, but to a smaller extent (Figure \ref{fig:retencurvs}).
 
 ### Fits to the Data
 
@@ -968,11 +966,6 @@ The 2023 assessment used updated maturity-at-length information from the \gls{s-
 
 #### Sensitivity to Landings
 Two sensitivities were conducted to explore how changes in the historical landings timeseries effect modern-day estimates of stock status. One sensitivity replaces the historical landings reconstructions prior to 1962 with the imputed landings that were used in the 2005 and 2013 assessments. A second sensitivity replaces all landings information prior to 2013 with the values that were used in the 2013 assessment. There was little appreciable difference to base model fits across the two sensitivities (Figure \ref{fig:land_sensitiv_spawning}; Figure \ref{fig:land_sensitiv_mngmt}). This is likely due to the fact that historical catches (pre-1962), and changes in catches due to state-level catch reconstruction updates, were relatively small and thus would have had minimal impact of the biomass timeseries. 
-
-#### Sensitivity to retention and selectivity
-The 2023 assessment substantially extends the period over both length data of retained and discarded catch, mean individual weight in discards and discard rates estimates are available. This data may reflect the dynamics of the thornyhead of the population but also structural, technical or behavioral changes in the fishing fleets. Due to the uncertainty around the impact of such changes on the retention and selectivity of the fleets, we assessed the sensitivity of the model to alternative combinations of time blocks for these parameters. The sensitivity to time blocks in retention (inflection, asymptotic retention) was first performed and the most pertinent model (good fit to the data and parsimony) and the base model were then used to conduct the sensitivity to time blocks in selectivity (peak). Time blocks explored were based on a combination of breaks related to relevant changes to management or fleet behavior. A summary of blocking for selectivity and retention in the REVIEW  \ref{fig:timeblocks}.
-
-Setting up additional time blocks for the retention parameters improved the fit of the model to the length distributions and the discard rates, hence reducing the corresponding likelihood of the model. However, the impact on the other components of the model likelihood were very limited. None of the time blocks tested substantially reduced other components of the model likelihood. Except a slight offset for the estimated trends in spawning output between the models with selectivity change considered in 2011 only (Figure \ref{fig:selec_sensitiv_mngmt}), all model estimates produced similar diagnostic of the population status. In particular, with no regard to the number or the location of time blocks used for retention or selectivity, the fraction of unfished biomass overlay (Figure \ref{fig:reten_sensitiv_mngmt}).  
 
 #### Sensitivity to Abundance Index Methods
 The 2023 assessment uses model-based indices (MBIs) of abundance derived from geostatistical models, which differs from previously used design-based approaches (DBIs). There remains limited agreement on how best to approach model selection for such models. Therefore, two sensitivity analyses were conducted on the methods used to estimate indices of abundance: 1) using MBIs derived from a geostatistical model that assumed a lognormal error structure (compared to a gamma error structure in the base model); and 2) using newly calculated DBIs.
@@ -2038,15 +2031,15 @@ Source & Value & Phase & Gradient & Lower 95\% CI & Upper 95\% CI\\
 \endfoot
 \bottomrule
 \endlastfoot
-NatM\_break\_1\_Fem\_GP\_1 & 0.0400000 & -3 & NA & 0.040000 & 0.040000\\
+NatM\_break\_1\_Fem\_GP\_1 & 0.0400000 & -3 & NA & 0.040000 & 0.0400000\\
 NatM\_break\_2\_Fem\_GP\_1 & 0.0400000 & -3 & NA & NA & NA\\
 L\_at\_Amin\_Fem\_GP\_1 & 11.3832000 & -2 & NA & NA & NA\\
 L\_at\_Amax\_Fem\_GP\_1 & 73.6079000 & -2 & NA & NA & NA\\
 VonBert\_K\_Fem\_GP\_1 & 0.0098986 & -3 & NA & NA & NA\\
 CV\_young\_Fem\_GP\_1 & 0.1090340 & -3 & NA & NA & NA\\
 CV\_old\_Fem\_GP\_1 & 0.1090340 & -3 & NA & NA & NA\\
-Wtlen\_1\_Fem\_GP\_1 & 0.0000065 & -3 & NA & NA & NA\\
-Wtlen\_2\_Fem\_GP\_1 & 3.1797500 & -3 & NA & NA & NA\\
+Wtlen\_1\_Fem\_GP\_1 & 0.0000049 & -3 & NA & NA & NA\\
+Wtlen\_2\_Fem\_GP\_1 & 3.2600000 & -3 & NA & NA & NA\\
 Mat50\%\_Fem\_GP\_1 & 31.4247000 & -3 & NA & NA & NA\\
 Mat\_slope\_Fem\_GP\_1 & -0.1772910 & -3 & NA & NA & NA\\
 Eggs\_scalar\_Fem\_GP\_1 & 0.0000001 & -3 & NA & NA & NA\\
@@ -2058,137 +2051,137 @@ L\_at\_Amax\_Mal\_GP\_1 & 66.0728000 & -2 & NA & NA & NA\\
 VonBert\_K\_Mal\_GP\_1 & 0.0167854 & -3 & NA & NA & NA\\
 CV\_young\_Mal\_GP\_1 & 0.1090340 & -3 & NA & NA & NA\\
 CV\_old\_Mal\_GP\_1 & 0.1090340 & -3 & NA & NA & NA\\
-Wtlen\_1\_Mal\_GP\_1 & 0.0000067 & -3 & NA & NA & NA\\
-Wtlen\_2\_Mal\_GP\_1 & 3.1732500 & -3 & NA & NA & NA\\
+Wtlen\_1\_Mal\_GP\_1 & 0.0000050 & -3 & NA & NA & NA\\
+Wtlen\_2\_Mal\_GP\_1 & 3.2500000 & -3 & NA & NA & NA\\
 CohortGrowDev & 1.0000000 & -1 & NA & NA & NA\\
 FracFemale\_GP\_1 & 0.5000000 & -99 & NA & NA & NA\\
-SR\_LN(R0) & 9.3544800 & 4 & 0.0001044 & NA & NA\\
+SR\_LN(R0) & 9.4398800 & 4 & -0.0001186 & NA & NA\\
 SR\_BH\_steep & 0.7200000 & -2 & NA & NA & NA\\
 SR\_sigmaR & 0.5000000 & -4 & NA & NA & NA\\
 SR\_regime & 0.0000000 & -4 & NA & NA & NA\\
 SR\_autocorr & 0.0000000 & -1 & NA & NA & NA\\
-Early\_InitAge\_1 & -0.0212086 & 6 & -0.0000012 & NA & NA\\
-Early\_RecrDev\_1901 & -0.0231360 & 6 & 0.0000000 & NA & NA\\
-Early\_RecrDev\_1902 & -0.0254220 & 6 & 0.0000011 & NA & NA\\
-Early\_RecrDev\_1903 & -0.0283702 & 6 & -0.0000005 & NA & NA\\
-Early\_RecrDev\_1904 & -0.0319698 & 6 & 0.0000020 & NA & NA\\
-Early\_RecrDev\_1905 & -0.0355489 & 6 & 0.0000036 & NA & NA\\
-Early\_RecrDev\_1906 & -0.0385733 & 6 & -0.0000019 & NA & NA\\
-Early\_RecrDev\_1907 & -0.0414951 & 6 & 0.0000025 & NA & NA\\
-Early\_RecrDev\_1908 & -0.0451950 & 6 & -0.0000019 & NA & NA\\
-Early\_RecrDev\_1909 & -0.0487619 & 6 & 0.0000017 & NA & NA\\
-Early\_RecrDev\_1910 & -0.0529210 & 6 & -0.0000073 & NA & NA\\
-Early\_RecrDev\_1911 & -0.0562301 & 6 & 0.0000016 & NA & NA\\
-Early\_RecrDev\_1912 & -0.0571398 & 6 & 0.0000020 & NA & NA\\
-Early\_RecrDev\_1913 & -0.0571633 & 6 & 0.0000058 & NA & NA\\
-Early\_RecrDev\_1914 & -0.0614764 & 6 & 0.0000008 & NA & NA\\
-Early\_RecrDev\_1915 & -0.0662355 & 6 & -0.0000012 & NA & NA\\
-Early\_RecrDev\_1916 & -0.0686894 & 6 & -0.0000014 & NA & NA\\
-Early\_RecrDev\_1917 & -0.0705061 & 6 & 0.0000064 & NA & NA\\
-Early\_RecrDev\_1918 & -0.0722232 & 6 & 0.0000061 & NA & NA\\
-Early\_RecrDev\_1919 & -0.0747498 & 6 & -0.0000012 & NA & NA\\
-Early\_RecrDev\_1920 & -0.0764656 & 6 & -0.0000017 & NA & NA\\
-Early\_RecrDev\_1921 & -0.0784239 & 6 & 0.0000041 & NA & NA\\
-Early\_RecrDev\_1922 & -0.0795038 & 6 & 0.0000050 & NA & NA\\
-Early\_RecrDev\_1923 & -0.0797302 & 6 & 0.0000051 & NA & NA\\
-Early\_RecrDev\_1924 & -0.0801474 & 6 & 0.0000042 & NA & NA\\
-Early\_RecrDev\_1925 & -0.0800694 & 6 & 0.0000076 & NA & NA\\
-Early\_RecrDev\_1926 & -0.0794285 & 6 & 0.0000037 & NA & NA\\
-Early\_RecrDev\_1927 & -0.0781531 & 6 & 0.0000000 & NA & NA\\
-Early\_RecrDev\_1928 & -0.0761695 & 6 & -0.0000007 & NA & NA\\
-Early\_RecrDev\_1929 & -0.0734039 & 6 & 0.0000010 & NA & NA\\
-Early\_RecrDev\_1930 & -0.0697849 & 6 & 0.0000091 & NA & NA\\
-Early\_RecrDev\_1931 & -0.0652490 & 6 & -0.0000003 & NA & NA\\
-Early\_RecrDev\_1932 & -0.0597442 & 6 & 0.0000033 & NA & NA\\
-Early\_RecrDev\_1933 & -0.0532400 & 6 & 0.0000054 & NA & NA\\
-Early\_RecrDev\_1934 & -0.0457363 & 6 & 0.0000005 & NA & NA\\
-Early\_RecrDev\_1935 & -0.0372755 & 6 & 0.0000061 & NA & NA\\
-Early\_RecrDev\_1936 & -0.0279592 & 6 & 0.0000062 & NA & NA\\
-Early\_RecrDev\_1937 & -0.0179638 & 6 & 0.0000021 & NA & NA\\
-Early\_RecrDev\_1938 & -0.0075590 & 6 & 0.0000060 & NA & NA\\
-Early\_RecrDev\_1939 & 0.0028729 & 6 & 0.0000057 & NA & NA\\
-Early\_RecrDev\_1940 & 0.0128254 & 6 & 0.0000044 & NA & NA\\
-Early\_RecrDev\_1941 & 0.0216624 & 6 & 0.0000029 & NA & NA\\
-Early\_RecrDev\_1942 & 0.0286306 & 6 & 0.0000073 & NA & NA\\
-Early\_RecrDev\_1943 & 0.0328934 & 6 & 0.0000042 & NA & NA\\
-Early\_RecrDev\_1944 & 0.0335935 & 6 & 0.0000061 & NA & NA\\
-Early\_RecrDev\_1945 & 0.0299395 & 6 & 0.0000045 & NA & NA\\
-Early\_RecrDev\_1946 & 0.0213064 & 6 & 0.0000046 & NA & NA\\
-Early\_RecrDev\_1947 & 0.0073268 & 6 & 0.0000034 & NA & NA\\
-Early\_RecrDev\_1948 & -0.0120490 & 6 & 0.0000022 & NA & NA\\
-Early\_RecrDev\_1949 & -0.0365423 & 6 & 0.0000079 & NA & NA\\
-Early\_RecrDev\_1950 & -0.0655857 & 6 & 0.0000017 & NA & NA\\
-Early\_RecrDev\_1951 & -0.0981321 & 6 & 0.0000054 & NA & NA\\
-Early\_RecrDev\_1952 & -0.1333580 & 6 & 0.0000045 & NA & NA\\
-Early\_RecrDev\_1953 & -0.1702910 & 6 & 0.0000035 & NA & NA\\
-Early\_RecrDev\_1954 & -0.2079570 & 6 & 0.0000025 & NA & NA\\
-Early\_RecrDev\_1955 & -0.2453950 & 6 & 0.0000053 & NA & NA\\
-Early\_RecrDev\_1956 & -0.2817010 & 6 & 0.0000040 & NA & NA\\
-Early\_RecrDev\_1957 & -0.3159610 & 6 & 0.0000021 & NA & NA\\
-Early\_RecrDev\_1958 & -0.3472870 & 6 & 0.0000048 & NA & NA\\
-Early\_RecrDev\_1959 & -0.3747180 & 6 & 0.0000048 & NA & NA\\
-Early\_RecrDev\_1960 & -0.3971880 & 6 & 0.0000033 & NA & NA\\
-Early\_RecrDev\_1961 & -0.4134930 & 6 & 0.0000026 & NA & NA\\
-Early\_RecrDev\_1962 & -0.4223490 & 6 & 0.0000025 & NA & NA\\
-Early\_RecrDev\_1963 & -0.4223980 & 6 & 0.0000027 & NA & NA\\
-Early\_RecrDev\_1964 & -0.4124790 & 6 & 0.0000030 & NA & NA\\
-Early\_RecrDev\_1965 & -0.3919790 & 6 & 0.0000025 & NA & NA\\
-Early\_RecrDev\_1966 & -0.3610010 & 6 & 0.0000057 & NA & NA\\
-Early\_RecrDev\_1967 & -0.3206150 & 6 & 0.0000034 & NA & NA\\
-Early\_RecrDev\_1968 & -0.2730580 & 6 & 0.0000047 & NA & NA\\
-Early\_RecrDev\_1969 & -0.2207630 & 6 & 0.0000034 & NA & NA\\
-Early\_RecrDev\_1970 & -0.1660450 & 6 & 0.0000042 & NA & NA\\
-Early\_RecrDev\_1971 & -0.1102690 & 6 & 0.0000048 & NA & NA\\
-Early\_RecrDev\_1972 & -0.0555105 & 6 & -0.0000016 & NA & NA\\
-Early\_RecrDev\_1973 & -0.0064973 & 6 & 0.0000078 & NA & NA\\
-Early\_RecrDev\_1974 & 0.0285943 & 6 & 0.0000078 & NA & NA\\
-Early\_RecrDev\_1975 & 0.0417962 & 6 & 0.0000059 & NA & NA\\
-Early\_RecrDev\_1976 & 0.0316066 & 6 & 0.0000050 & NA & NA\\
-Early\_RecrDev\_1977 & 0.0060750 & 6 & 0.0000071 & NA & NA\\
-Early\_RecrDev\_1978 & -0.0207783 & 6 & -0.0000014 & NA & NA\\
-Early\_RecrDev\_1979 & -0.0349278 & 6 & 0.0000093 & NA & NA\\
-Early\_RecrDev\_1980 & -0.0286589 & 6 & 0.0000057 & NA & NA\\
-Early\_RecrDev\_1981 & -0.0059002 & 6 & 0.0000048 & NA & NA\\
-Early\_RecrDev\_1982 & 0.0173986 & 6 & 0.0000057 & NA & NA\\
-Early\_RecrDev\_1983 & 0.0267644 & 6 & 0.0000044 & NA & NA\\
-Early\_RecrDev\_1984 & 0.0234703 & 6 & 0.0000057 & NA & NA\\
-Early\_RecrDev\_1985 & 0.0169923 & 6 & 0.0000046 & NA & NA\\
-Early\_RecrDev\_1986 & 0.0125559 & 6 & 0.0000031 & NA & NA\\
-Early\_RecrDev\_1987 & 0.0167085 & 6 & 0.0000042 & NA & NA\\
-Early\_RecrDev\_1988 & 0.0381407 & 6 & 0.0000038 & NA & NA\\
-Early\_RecrDev\_1989 & 0.0642914 & 6 & 0.0000015 & NA & NA\\
-Early\_RecrDev\_1990 & 0.0829343 & 6 & 0.0000003 & NA & NA\\
-Early\_RecrDev\_1991 & 0.0490698 & 6 & 0.0000016 & NA & NA\\
-Early\_RecrDev\_1992 & 0.0039841 & 6 & 0.0000012 & NA & NA\\
-Early\_RecrDev\_1993 & -0.0254987 & 6 & -0.0000009 & NA & NA\\
-Early\_RecrDev\_1994 & -0.1043340 & 6 & -0.0000016 & NA & NA\\
-Early\_RecrDev\_1995 & -0.1125850 & 6 & -0.0000029 & NA & NA\\
-Main\_RecrDev\_1996 & -0.3889790 & 6 & 0.0000025 & NA & NA\\
-Main\_RecrDev\_1997 & -0.2999770 & 6 & -0.0000012 & NA & NA\\
-Main\_RecrDev\_1998 & -0.2388930 & 6 & -0.0000013 & NA & NA\\
-Main\_RecrDev\_1999 & -0.0452484 & 6 & -0.0000046 & NA & NA\\
-Main\_RecrDev\_2000 & 0.1842930 & 6 & -0.0000038 & NA & NA\\
-Main\_RecrDev\_2001 & 0.3730210 & 6 & -0.0000105 & NA & NA\\
-Main\_RecrDev\_2002 & 0.1797160 & 6 & -0.0000084 & NA & NA\\
-Main\_RecrDev\_2003 & 1.2078500 & 6 & -0.0000102 & NA & NA\\
-Main\_RecrDev\_2004 & 0.1423860 & 6 & -0.0000039 & NA & NA\\
-Main\_RecrDev\_2005 & 0.2522910 & 6 & -0.0000020 & NA & NA\\
-Main\_RecrDev\_2006 & 0.2805240 & 6 & -0.0000005 & NA & NA\\
-Main\_RecrDev\_2007 & 0.2594420 & 6 & 0.0000046 & NA & NA\\
-Main\_RecrDev\_2008 & 1.2964800 & 6 & -0.0000063 & NA & NA\\
-Main\_RecrDev\_2009 & 0.0628162 & 6 & 0.0000040 & NA & NA\\
-Main\_RecrDev\_2010 & -0.0717626 & 6 & 0.0000043 & NA & NA\\
-Main\_RecrDev\_2011 & -0.1599470 & 6 & 0.0000048 & NA & NA\\
-Main\_RecrDev\_2012 & -0.3369110 & 6 & 0.0000075 & NA & NA\\
-Main\_RecrDev\_2013 & -0.4389960 & 6 & 0.0000070 & NA & NA\\
-Main\_RecrDev\_2014 & -0.4468810 & 6 & 0.0000072 & NA & NA\\
-Main\_RecrDev\_2015 & -0.4461790 & 6 & 0.0000113 & NA & NA\\
-Main\_RecrDev\_2016 & -0.4270100 & 6 & 0.0000011 & NA & NA\\
-Main\_RecrDev\_2017 & -0.4622620 & 6 & 0.0000074 & NA & NA\\
-Main\_RecrDev\_2018 & -0.4757690 & 6 & 0.0000082 & NA & NA\\
-Late\_RecrDev\_2019 & -0.0641552 & 5 & 0.0000019 & NA & NA\\
-Late\_RecrDev\_2020 & -0.0132446 & 5 & -0.0000027 & NA & NA\\
-Late\_RecrDev\_2021 & 0.0443739 & 5 & -0.0000015 & NA & NA\\
+Early\_InitAge\_1 & 0.0129677 & 6 & -0.0000011 & NA & NA\\
+Main\_RecrDev\_1901 & 0.0125347 & 6 & 0.0000001 & NA & NA\\
+Main\_RecrDev\_1902 & 0.0128110 & 6 & 0.0000000 & NA & NA\\
+Main\_RecrDev\_1903 & 0.0127326 & 6 & 0.0000002 & NA & NA\\
+Main\_RecrDev\_1904 & 0.0113808 & 6 & 0.0000002 & NA & NA\\
+Main\_RecrDev\_1905 & 0.0098764 & 6 & -0.0000002 & NA & NA\\
+Main\_RecrDev\_1906 & 0.0092902 & 6 & -0.0000001 & NA & NA\\
+Main\_RecrDev\_1907 & 0.0087113 & 6 & -0.0000002 & NA & NA\\
+Main\_RecrDev\_1908 & 0.0073379 & 6 & -0.0000001 & NA & NA\\
+Main\_RecrDev\_1909 & 0.0063754 & 6 & -0.0000005 & NA & NA\\
+Main\_RecrDev\_1910 & 0.0044196 & 6 & -0.0000005 & NA & NA\\
+Main\_RecrDev\_1911 & 0.0037819 & 6 & -0.0000003 & NA & NA\\
+Main\_RecrDev\_1912 & 0.0063118 & 6 & -0.0000004 & NA & NA\\
+Main\_RecrDev\_1913 & 0.0097046 & 6 & -0.0000007 & NA & NA\\
+Main\_RecrDev\_1914 & 0.0105388 & 6 & -0.0000009 & NA & NA\\
+Main\_RecrDev\_1915 & 0.0058944 & 6 & -0.0000008 & NA & NA\\
+Main\_RecrDev\_1916 & 0.0047044 & 6 & -0.0000009 & NA & NA\\
+Main\_RecrDev\_1917 & 0.0041038 & 6 & -0.0000008 & NA & NA\\
+Main\_RecrDev\_1918 & 0.0029072 & 6 & -0.0000010 & NA & NA\\
+Main\_RecrDev\_1919 & 0.0045967 & 6 & -0.0000011 & NA & NA\\
+Main\_RecrDev\_1920 & 0.0015146 & 6 & -0.0000010 & NA & NA\\
+Main\_RecrDev\_1921 & -0.0046215 & 6 & -0.0000015 & NA & NA\\
+Main\_RecrDev\_1922 & -0.0023083 & 6 & -0.0000012 & NA & NA\\
+Main\_RecrDev\_1923 & -0.0031058 & 6 & -0.0000015 & NA & NA\\
+Main\_RecrDev\_1924 & -0.0046543 & 6 & -0.0000016 & NA & NA\\
+Main\_RecrDev\_1925 & -0.0062500 & 6 & -0.0000015 & NA & NA\\
+Main\_RecrDev\_1926 & -0.0078539 & 6 & -0.0000021 & NA & NA\\
+Main\_RecrDev\_1927 & -0.0094187 & 6 & -0.0000020 & NA & NA\\
+Main\_RecrDev\_1928 & -0.0108896 & 6 & -0.0000017 & NA & NA\\
+Main\_RecrDev\_1929 & -0.0122054 & 6 & -0.0000022 & NA & NA\\
+Main\_RecrDev\_1930 & -0.0133009 & 6 & -0.0000016 & NA & NA\\
+Main\_RecrDev\_1931 & -0.0141111 & 6 & -0.0000022 & NA & NA\\
+Main\_RecrDev\_1932 & -0.0145756 & 6 & -0.0000031 & NA & NA\\
+Main\_RecrDev\_1933 & -0.0146462 & 6 & -0.0000022 & NA & NA\\
+Main\_RecrDev\_1934 & -0.0142952 & 6 & -0.0000028 & NA & NA\\
+Main\_RecrDev\_1935 & -0.0135258 & 6 & -0.0000028 & NA & NA\\
+Main\_RecrDev\_1936 & -0.0123849 & 6 & -0.0000028 & NA & NA\\
+Main\_RecrDev\_1937 & -0.0109755 & 6 & -0.0000032 & NA & NA\\
+Main\_RecrDev\_1938 & -0.0094702 & 6 & -0.0000031 & NA & NA\\
+Main\_RecrDev\_1939 & -0.0081221 & 6 & -0.0000034 & NA & NA\\
+Main\_RecrDev\_1940 & -0.0072724 & 6 & -0.0000034 & NA & NA\\
+Main\_RecrDev\_1941 & -0.0073489 & 6 & -0.0000035 & NA & NA\\
+Main\_RecrDev\_1942 & -0.0088544 & 6 & -0.0000033 & NA & NA\\
+Main\_RecrDev\_1943 & -0.0123394 & 6 & -0.0000034 & NA & NA\\
+Main\_RecrDev\_1944 & -0.0183592 & 6 & -0.0000033 & NA & NA\\
+Main\_RecrDev\_1945 & -0.0274167 & 6 & -0.0000035 & NA & NA\\
+Main\_RecrDev\_1946 & -0.0398976 & 6 & -0.0000034 & NA & NA\\
+Main\_RecrDev\_1947 & -0.0560104 & 6 & -0.0000032 & NA & NA\\
+Main\_RecrDev\_1948 & -0.0757431 & 6 & -0.0000030 & NA & NA\\
+Main\_RecrDev\_1949 & -0.0988453 & 6 & -0.0000021 & NA & NA\\
+Main\_RecrDev\_1950 & -0.1248430 & 6 & -0.0000021 & NA & NA\\
+Main\_RecrDev\_1951 & -0.1529180 & 6 & -0.0000018 & NA & NA\\
+Main\_RecrDev\_1952 & -0.1823700 & 6 & -0.0000018 & NA & NA\\
+Main\_RecrDev\_1953 & -0.2123130 & 6 & -0.0000017 & NA & NA\\
+Main\_RecrDev\_1954 & -0.2418060 & 6 & -0.0000011 & NA & NA\\
+Main\_RecrDev\_1955 & -0.2698840 & 6 & -0.0000018 & NA & NA\\
+Main\_RecrDev\_1956 & -0.2956010 & 6 & -0.0000015 & NA & NA\\
+Main\_RecrDev\_1957 & -0.3179980 & 6 & -0.0000016 & NA & NA\\
+Main\_RecrDev\_1958 & -0.3361610 & 6 & -0.0000015 & NA & NA\\
+Main\_RecrDev\_1959 & -0.3491480 & 6 & -0.0000014 & NA & NA\\
+Main\_RecrDev\_1960 & -0.3559300 & 6 & -0.0000014 & NA & NA\\
+Main\_RecrDev\_1961 & -0.3554410 & 6 & -0.0000012 & NA & NA\\
+Main\_RecrDev\_1962 & -0.3466700 & 6 & -0.0000010 & NA & NA\\
+Main\_RecrDev\_1963 & -0.3286130 & 6 & -0.0000010 & NA & NA\\
+Main\_RecrDev\_1964 & -0.3006630 & 6 & -0.0000014 & NA & NA\\
+Main\_RecrDev\_1965 & -0.2630010 & 6 & -0.0000012 & NA & NA\\
+Main\_RecrDev\_1966 & -0.2167930 & 6 & -0.0000013 & NA & NA\\
+Main\_RecrDev\_1967 & -0.1645850 & 6 & -0.0000011 & NA & NA\\
+Main\_RecrDev\_1968 & -0.1099880 & 6 & -0.0000009 & NA & NA\\
+Main\_RecrDev\_1969 & -0.0568378 & 6 & -0.0000017 & NA & NA\\
+Main\_RecrDev\_1970 & -0.0075609 & 6 & -0.0000017 & NA & NA\\
+Main\_RecrDev\_1971 & 0.0379283 & 6 & -0.0000021 & NA & NA\\
+Main\_RecrDev\_1972 & 0.0804411 & 6 & -0.0000023 & NA & NA\\
+Main\_RecrDev\_1973 & 0.1179970 & 6 & -0.0000024 & NA & NA\\
+Main\_RecrDev\_1974 & 0.1443140 & 6 & -0.0000024 & NA & NA\\
+Main\_RecrDev\_1975 & 0.1517780 & 6 & -0.0000011 & NA & NA\\
+Main\_RecrDev\_1976 & 0.1369450 & 6 & -0.0000019 & NA & NA\\
+Main\_RecrDev\_1977 & 0.1061360 & 6 & -0.0000016 & NA & NA\\
+Main\_RecrDev\_1978 & 0.0726112 & 6 & -0.0000013 & NA & NA\\
+Main\_RecrDev\_1979 & 0.0507453 & 6 & -0.0000012 & NA & NA\\
+Main\_RecrDev\_1980 & 0.0489501 & 6 & -0.0000012 & NA & NA\\
+Main\_RecrDev\_1981 & 0.0637665 & 6 & -0.0000015 & NA & NA\\
+Main\_RecrDev\_1982 & 0.0783409 & 6 & -0.0000011 & NA & NA\\
+Main\_RecrDev\_1983 & 0.0766034 & 6 & -0.0000014 & NA & NA\\
+Main\_RecrDev\_1984 & 0.0597470 & 6 & -0.0000019 & NA & NA\\
+Main\_RecrDev\_1985 & 0.0381035 & 6 & -0.0000012 & NA & NA\\
+Main\_RecrDev\_1986 & 0.0187712 & 6 & -0.0000010 & NA & NA\\
+Main\_RecrDev\_1987 & 0.0097229 & 6 & -0.0000010 & NA & NA\\
+Main\_RecrDev\_1988 & 0.0185786 & 6 & -0.0000008 & NA & NA\\
+Main\_RecrDev\_1989 & 0.0348546 & 6 & -0.0000006 & NA & NA\\
+Main\_RecrDev\_1990 & 0.0439104 & 6 & 0.0000005 & NA & NA\\
+Main\_RecrDev\_1991 & -0.0037715 & 6 & 0.0000015 & NA & NA\\
+Main\_RecrDev\_1992 & -0.0725407 & 6 & 0.0000009 & NA & NA\\
+Main\_RecrDev\_1993 & -0.1421580 & 6 & 0.0000017 & NA & NA\\
+Main\_RecrDev\_1994 & -0.2705160 & 6 & 0.0000035 & NA & NA\\
+Main\_RecrDev\_1995 & -0.3525910 & 6 & 0.0000037 & NA & NA\\
+Main\_RecrDev\_1996 & -0.3218080 & 6 & 0.0000051 & NA & NA\\
+Main\_RecrDev\_1997 & -0.3064720 & 6 & 0.0000045 & NA & NA\\
+Main\_RecrDev\_1998 & -0.2649110 & 6 & 0.0000041 & NA & NA\\
+Main\_RecrDev\_1999 & -0.1048200 & 6 & 0.0000077 & NA & NA\\
+Main\_RecrDev\_2000 & 0.1181320 & 6 & 0.0000083 & NA & NA\\
+Main\_RecrDev\_2001 & 0.3668890 & 6 & 0.0000087 & NA & NA\\
+Main\_RecrDev\_2002 & 0.4814550 & 6 & 0.0000099 & NA & NA\\
+Main\_RecrDev\_2003 & 1.0281000 & 6 & 0.0000146 & NA & NA\\
+Main\_RecrDev\_2004 & 0.6050550 & 6 & 0.0000091 & NA & NA\\
+Main\_RecrDev\_2005 & 0.6389970 & 6 & 0.0000078 & NA & NA\\
+Main\_RecrDev\_2006 & 0.6460320 & 6 & 0.0000077 & NA & NA\\
+Main\_RecrDev\_2007 & 0.7599250 & 6 & 0.0000078 & NA & NA\\
+Main\_RecrDev\_2008 & 0.8541520 & 6 & 0.0000074 & NA & NA\\
+Main\_RecrDev\_2009 & 0.4976620 & 6 & 0.0000047 & NA & NA\\
+Main\_RecrDev\_2010 & 0.2394250 & 6 & 0.0000028 & NA & NA\\
+Main\_RecrDev\_2011 & 0.1032040 & 6 & 0.0000026 & NA & NA\\
+Main\_RecrDev\_2012 & -0.0337970 & 6 & 0.0000023 & NA & NA\\
+Main\_RecrDev\_2013 & -0.1115330 & 6 & 0.0000021 & NA & NA\\
+Main\_RecrDev\_2014 & -0.1054800 & 6 & 0.0000020 & NA & NA\\
+Main\_RecrDev\_2015 & -0.0890053 & 6 & 0.0000015 & NA & NA\\
+Main\_RecrDev\_2016 & -0.0490248 & 6 & 0.0000017 & NA & NA\\
+Main\_RecrDev\_2017 & -0.0623100 & 6 & 0.0000016 & NA & NA\\
+Main\_RecrDev\_2018 & -0.0601378 & 6 & 0.0000015 & NA & NA\\
+Late\_RecrDev\_2019 & -0.0315900 & 5 & 0.0000000 & NA & NA\\
+Late\_RecrDev\_2020 & 0.0066217 & 5 & 0.0000000 & NA & NA\\
+Late\_RecrDev\_2021 & 0.0397842 & 5 & 0.0000002 & NA & NA\\
 Late\_RecrDev\_2022 & 0.0000000 & 5 & 0.0000000 & NA & NA\\
 ForeRecr\_2023 & 0.0000000 & 5 & 0.0000000 & NA & NA\\
 ForeRecr\_2024 & 0.0000000 & 5 & 0.0000000 & NA & NA\\
@@ -2202,80 +2195,96 @@ ForeRecr\_2031 & 0.0000000 & 5 & 0.0000000 & NA & NA\\
 ForeRecr\_2032 & 0.0000000 & 5 & 0.0000000 & NA & NA\\
 ForeRecr\_2033 & 0.0000000 & 5 & 0.0000000 & NA & NA\\
 ForeRecr\_2034 & 0.0000000 & 5 & 0.0000000 & NA & NA\\
-LnQ\_base\_Triennial1(4) & -0.4725640 & -1 & NA & NA & NA\\
-Q\_extraSD\_Triennial1(4) & 0.0387429 & 4 & 0.0000001 & NA & NA\\
-LnQ\_base\_NWFSCcombo(6) & 0.1823020 & -1 & NA & NA & NA\\
-Size\_DblN\_peak\_Trawl\_N(1) & 27.8920000 & 1 & 0.0001238 & NA & NA\\
+LnQ\_base\_Triennial1(4) & -0.4138250 & -1 & NA & NA & NA\\
+Q\_extraSD\_Triennial1(4) & 0.0866586 & 4 & 0.0000001 & NA & NA\\
+LnQ\_base\_NWFSCcombo(6) & 0.2598070 & -1 & NA & NA & NA\\
+Size\_DblN\_peak\_Trawl\_N(1) & 25.3210000 & 1 & -0.0000683 & NA & NA\\
 Size\_DblN\_top\_logit\_Trawl\_N(1) & -15.0000000 & -3 & NA & NA & NA\\
-Size\_DblN\_ascend\_se\_Trawl\_N(1) & 4.6011700 & 3 & -0.0001243 & NA & NA\\
-Size\_DblN\_descend\_se\_Trawl\_N(1) & 6.9088400 & 4 & 0.0001059 & NA & NA\\
+Size\_DblN\_ascend\_se\_Trawl\_N(1) & 4.2979800 & 3 & 0.0000677 & NA & NA\\
+Size\_DblN\_descend\_se\_Trawl\_N(1) & 6.8307700 & 4 & -0.0000678 & NA & NA\\
 Size\_DblN\_start\_logit\_Trawl\_N(1) & -999.0000000 & -99 & NA & NA & NA\\
 Size\_DblN\_end\_logit\_Trawl\_N(1) & -999.0000000 & -99 & NA & NA & NA\\
-Retain\_L\_infl\_Trawl\_N(1) & 29.0502000 & 3 & -0.0002307 & NA & NA\\
-Retain\_L\_width\_Trawl\_N(1) & 2.7569300 & 3 & -0.0000938 & NA & NA\\
-Retain\_L\_asymptote\_logit\_Trawl\_N(1) & 9.9999800 & 3 & 0.0000000 & NA & NA\\
+Retain\_L\_infl\_Trawl\_N(1) & 34.8080000 & 3 & 0.0001028 & NA & NA\\
+Retain\_L\_width\_Trawl\_N(1) & 2.2890400 & 3 & 0.0000226 & NA & NA\\
+Retain\_L\_asymptote\_logit\_Trawl\_N(1) & 10.0000000 & 3 & 0.0000000 & NA & NA\\
 Retain\_L\_maleoffset\_Trawl\_N(1) & 0.0000000 & -4 & NA & NA & NA\\
-Size\_DblN\_peak\_Trawl\_S(2) & 29.4637000 & 1 & 0.0000586 & NA & NA\\
-Size\_DblN\_top\_logit\_Trawl\_S(2) & -0.4208990 & 3 & 0.0000671 & NA & NA\\
-Size\_DblN\_ascend\_se\_Trawl\_S(2) & 3.9103400 & 3 & -0.0000537 & NA & NA\\
-Size\_DblN\_descend\_se\_Trawl\_S(2) & 4.7143800 & 4 & 0.0000235 & NA & NA\\
+Size\_DblN\_peak\_Trawl\_S(2) & 20.0179000 & 1 & -0.0000626 & NA & NA\\
+Size\_DblN\_top\_logit\_Trawl\_S(2) & -0.6019960 & 3 & -0.0001331 & NA & NA\\
+Size\_DblN\_ascend\_se\_Trawl\_S(2) & 4.0047700 & 3 & 0.0000513 & NA & NA\\
+Size\_DblN\_descend\_se\_Trawl\_S(2) & 5.2208800 & 4 & -0.0000578 & NA & NA\\
 Size\_DblN\_start\_logit\_Trawl\_S(2) & -999.0000000 & -99 & NA & NA & NA\\
 Size\_DblN\_end\_logit\_Trawl\_S(2) & -999.0000000 & -99 & NA & NA & NA\\
-Retain\_L\_infl\_Trawl\_S(2) & 25.9045000 & 3 & -0.0000512 & NA & NA\\
-Retain\_L\_width\_Trawl\_S(2) & 2.7373100 & 3 & -0.0000433 & NA & NA\\
-Retain\_L\_asymptote\_logit\_Trawl\_S(2) & 10.0000000 & -3 & NA & NA & NA\\
+Retain\_L\_infl\_Trawl\_S(2) & 28.6998000 & 3 & 0.0001304 & NA & NA\\
+Retain\_L\_width\_Trawl\_S(2) & 2.1096100 & 3 & 0.0000191 & NA & NA\\
+Retain\_L\_asymptote\_logit\_Trawl\_S(2) & 10.0000000 & 3 & 0.0000000 & NA & NA\\
 Retain\_L\_maleoffset\_Trawl\_S(2) & 0.0000000 & -4 & NA & NA & NA\\
-Size\_DblN\_peak\_Non-trawl(3) & 45.3712000 & 2 & -0.0000012 & NA & NA\\
-Size\_DblN\_top\_logit\_Non-trawl(3) & -3.3853700 & 3 & -0.0000026 & NA & NA\\
-Size\_DblN\_ascend\_se\_Non-trawl(3) & 5.1284900 & 3 & -0.0000006 & NA & NA\\
-Size\_DblN\_descend\_se\_Non-trawl(3) & 4.7080400 & 4 & -0.0000042 & NA & NA\\
+Size\_DblN\_peak\_Non-trawl(3) & 44.8554000 & 2 & -0.0000035 & NA & NA\\
+Size\_DblN\_top\_logit\_Non-trawl(3) & -3.3001600 & 3 & -0.0000009 & NA & NA\\
+Size\_DblN\_ascend\_se\_Non-trawl(3) & 5.0106300 & 3 & 0.0000039 & NA & NA\\
+Size\_DblN\_descend\_se\_Non-trawl(3) & 4.6360400 & 4 & -0.0000021 & NA & NA\\
 Size\_DblN\_start\_logit\_Non-trawl(3) & -999.0000000 & -99 & NA & NA & NA\\
 Size\_DblN\_end\_logit\_Non-trawl(3) & -999.0000000 & -99 & NA & NA & NA\\
-Retain\_L\_infl\_Non-trawl(3) & 25.2560000 & 3 & 0.0000003 & NA & NA\\
-Retain\_L\_width\_Non-trawl(3) & 2.7244000 & 3 & -0.0000002 & NA & NA\\
-Retain\_L\_asymptote\_logit\_Non-trawl(3) & 1.4966000 & 3 & 0.0000018 & NA & NA\\
+Retain\_L\_infl\_Non-trawl(3) & 25.4880000 & 3 & -0.0000011 & NA & NA\\
+Retain\_L\_width\_Non-trawl(3) & 2.9771900 & 3 & -0.0000003 & NA & NA\\
+Retain\_L\_asymptote\_logit\_Non-trawl(3) & 1.5139700 & 3 & 0.0000013 & NA & NA\\
 Retain\_L\_maleoffset\_Non-trawl(3) & 0.0000000 & -4 & NA & NA & NA\\
-Size\_DblN\_peak\_Triennial1(4) & 26.7034000 & 2 & 0.0000003 & NA & NA\\
+Size\_DblN\_peak\_Triennial1(4) & 26.7371000 & 2 & -0.0000022 & NA & NA\\
 Size\_DblN\_top\_logit\_Triennial1(4) & -7.0000000 & -3 & NA & NA & NA\\
-Size\_DblN\_ascend\_se\_Triennial1(4) & 4.1400700 & 3 & 0.0000018 & NA & NA\\
-Size\_DblN\_descend\_se\_Triennial1(4) & 3.1583700 & 4 & -0.0000002 & NA & NA\\
+Size\_DblN\_ascend\_se\_Triennial1(4) & 4.1095800 & 3 & 0.0000018 & NA & NA\\
+Size\_DblN\_descend\_se\_Triennial1(4) & 3.1637200 & 4 & -0.0000005 & NA & NA\\
 Size\_DblN\_start\_logit\_Triennial1(4) & -999.0000000 & -99 & NA & NA & NA\\
 Size\_DblN\_end\_logit\_Triennial1(4) & -999.0000000 & -99 & NA & NA & NA\\
-SzSel\_Male\_Peak\_Triennial1(4) & -1.9920600 & 3 & -0.0000010 & NA & NA\\
-SzSel\_Male\_Ascend\_Triennial1(4) & -0.0989113 & 3 & 0.0000043 & NA & NA\\
+SzSel\_Male\_Peak\_Triennial1(4) & -1.9661900 & 3 & -0.0000003 & NA & NA\\
+SzSel\_Male\_Ascend\_Triennial1(4) & -0.1133280 & 3 & 0.0000022 & NA & NA\\
 SzSel\_Male\_Descend\_Triennial1(4) & 0.0000000 & -3 & NA & NA & NA\\
 SzSel\_Male\_Final\_Triennial1(4) & 0.0000000 & -3 & NA & NA & NA\\
 SzSel\_Male\_Scale\_Triennial1(4) & 1.0000000 & -4 & NA & NA & NA\\
-Size\_DblN\_peak\_Triennial2(5) & 23.1266000 & 2 & 0.0000001 & NA & NA\\
+Size\_DblN\_peak\_Triennial2(5) & 23.7004000 & 2 & -0.0000047 & NA & NA\\
 Size\_DblN\_top\_logit\_Triennial2(5) & -7.0000000 & -3 & NA & NA & NA\\
-Size\_DblN\_ascend\_se\_Triennial2(5) & 4.3565000 & 3 & 0.0000018 & NA & NA\\
-Size\_DblN\_descend\_se\_Triennial2(5) & 4.1375700 & 4 & 0.0000007 & NA & NA\\
+Size\_DblN\_ascend\_se\_Triennial2(5) & 4.3701400 & 3 & 0.0000076 & NA & NA\\
+Size\_DblN\_descend\_se\_Triennial2(5) & 4.0834600 & 4 & 0.0000009 & NA & NA\\
 Size\_DblN\_start\_logit\_Triennial2(5) & -999.0000000 & -99 & NA & NA & NA\\
 Size\_DblN\_end\_logit\_Triennial2(5) & -999.0000000 & -99 & NA & NA & NA\\
-SzSel\_Male\_Peak\_Triennial2(5) & -1.7395500 & 3 & -0.0000005 & NA & NA\\
-SzSel\_Male\_Ascend\_Triennial2(5) & -0.2840780 & 3 & 0.0000007 & NA & NA\\
+SzSel\_Male\_Peak\_Triennial2(5) & -1.9111400 & 3 & -0.0000024 & NA & NA\\
+SzSel\_Male\_Ascend\_Triennial2(5) & -0.3024540 & 3 & 0.0000134 & NA & NA\\
 SzSel\_Male\_Descend\_Triennial2(5) & 0.0000000 & -3 & NA & NA & NA\\
 SzSel\_Male\_Final\_Triennial2(5) & 0.0000000 & -3 & NA & NA & NA\\
 SzSel\_Male\_Scale\_Triennial2(5) & 1.0000000 & -4 & NA & NA & NA\\
-Size\_DblN\_peak\_NWFSCcombo(6) & 29.9823000 & 2 & 0.0000138 & NA & NA\\
-Size\_DblN\_top\_logit\_NWFSCcombo(6) & -0.8537680 & 3 & 0.0000046 & NA & NA\\
-Size\_DblN\_ascend\_se\_NWFSCcombo(6) & 4.9374300 & 3 & -0.0000211 & NA & NA\\
-Size\_DblN\_descend\_se\_NWFSCcombo(6) & 4.5447800 & 4 & 0.0000023 & NA & NA\\
+Size\_DblN\_peak\_NWFSCcombo(6) & 31.4279000 & 2 & -0.0000062 & NA & NA\\
+Size\_DblN\_top\_logit\_NWFSCcombo(6) & -0.9013760 & 3 & -0.0000035 & NA & NA\\
+Size\_DblN\_ascend\_se\_NWFSCcombo(6) & 4.9376900 & 3 & 0.0000119 & NA & NA\\
+Size\_DblN\_descend\_se\_NWFSCcombo(6) & 4.4634300 & 4 & -0.0000009 & NA & NA\\
 Size\_DblN\_start\_logit\_NWFSCcombo(6) & -999.0000000 & -99 & NA & NA & NA\\
 Size\_DblN\_end\_logit\_NWFSCcombo(6) & -999.0000000 & -99 & NA & NA & NA\\
-SzSel\_Male\_Peak\_NWFSCcombo(6) & -4.1440800 & 3 & 0.0000040 & NA & NA\\
-SzSel\_Male\_Ascend\_NWFSCcombo(6) & -0.5434570 & 3 & -0.0000282 & NA & NA\\
+SzSel\_Male\_Peak\_NWFSCcombo(6) & -4.3047300 & 3 & -0.0000028 & NA & NA\\
+SzSel\_Male\_Ascend\_NWFSCcombo(6) & -0.5187780 & 3 & 0.0000186 & NA & NA\\
 SzSel\_Male\_Descend\_NWFSCcombo(6) & 0.0000000 & -3 & NA & NA & NA\\
 SzSel\_Male\_Final\_NWFSCcombo(6) & 0.0000000 & -3 & NA & NA & NA\\
 SzSel\_Male\_Scale\_NWFSCcombo(6) & 1.0000000 & -4 & NA & NA & NA\\
-Retain\_L\_infl\_Trawl\_N(1)\_BLK1delta\_2007 & -5.7314400 & 4 & -0.0000607 & -7.379180 & -4.083690\\
-Retain\_L\_infl\_Trawl\_N(1)\_BLK1delta\_2011 & -2.4994900 & 4 & -0.0000675 & -3.712360 & -1.286620\\
-Retain\_L\_asymptote\_logit\_Trawl\_N(1)\_BLK1delta\_2007 & 0.0002155 & 4 & 0.0000000 & -0.391742 & 0.392173\\
-Retain\_L\_asymptote\_logit\_Trawl\_N(1)\_BLK1delta\_2011 & 0.0001030 & 4 & -0.0000002 & -0.391877 & 0.392083\\
-Retain\_L\_infl\_Trawl\_S(2)\_BLK2delta\_2007 & -5.2047800 & 4 & -0.0000120 & -7.293730 & -3.115830\\
-Retain\_L\_infl\_Trawl\_S(2)\_BLK2delta\_2011 & -3.4190500 & 4 & -0.0000137 & -4.345530 & -2.492580\\
-Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2007 & 0.0017796 & 4 & 0.0000004 & -0.389867 & 0.393426\\
-Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0015285 & 4 & 0.0000000 & -0.390168 & 0.393225\\*
+Size\_DblN\_peak\_Trawl\_N(1)\_BLK3delta\_2003 & 2.0183700 & 2 & -0.0000335 & -0.473024 & 4.5097700\\
+Size\_DblN\_peak\_Trawl\_N(1)\_BLK3delta\_2011 & 1.4096700 & 2 & -0.0000371 & -0.505628 & 3.3249800\\
+Retain\_L\_infl\_Trawl\_N(1)\_BLK1delta\_1989 & -5.9890100 & 4 & 0.0000246 & -10.000000 & -0.4797730\\
+Retain\_L\_infl\_Trawl\_N(1)\_BLK1delta\_2007 & -5.0800500 & 4 & 0.0000256 & -6.634900 & -3.5252000\\
+Retain\_L\_infl\_Trawl\_N(1)\_BLK1delta\_2011 & -1.3376000 & 4 & 0.0000283 & -2.884680 & 0.2094740\\
+Retain\_L\_infl\_Trawl\_N(1)\_BLK1delta\_2015 & -7.2102500 & 4 & 0.0000015 & -8.339310 & -6.0811900\\
+Retain\_L\_infl\_Trawl\_N(1)\_BLK1delta\_2020 & 6.3364100 & 4 & -0.0000008 & 5.322200 & 7.3506200\\
+Retain\_L\_asymptote\_logit\_Trawl\_N(1)\_BLK1delta\_1989 & 0.0005621 & 4 & 0.0000000 & -0.391326 & 0.3924500\\
+Retain\_L\_asymptote\_logit\_Trawl\_N(1)\_BLK1delta\_2007 & 0.0006698 & 4 & 0.0000000 & -0.391197 & 0.3925370\\
+Retain\_L\_asymptote\_logit\_Trawl\_N(1)\_BLK1delta\_2011 & 0.0005757 & 4 & 0.0000000 & -0.391310 & 0.3924610\\
+Retain\_L\_asymptote\_logit\_Trawl\_N(1)\_BLK1delta\_2015 & -0.0000345 & 4 & 0.0000000 & -0.392039 & 0.3919700\\
+Retain\_L\_asymptote\_logit\_Trawl\_N(1)\_BLK1delta\_2020 & -0.0000685 & 4 & 0.0000000 & -0.392082 & 0.3919450\\
+Size\_DblN\_peak\_Trawl\_S(2)\_BLK3delta\_2003 & 9.8182800 & 2 & -0.0000265 & 5.005980 & 14.6306000\\
+Size\_DblN\_peak\_Trawl\_S(2)\_BLK3delta\_2011 & 0.1307900 & 2 & -0.0000347 & -1.190200 & 1.4517800\\
+Retain\_L\_infl\_Trawl\_S(2)\_BLK2delta\_1989 & -2.1599500 & 4 & 0.0000394 & -3.971210 & -0.3486970\\
+Retain\_L\_infl\_Trawl\_S(2)\_BLK2delta\_2007 & -4.6270500 & 4 & 0.0000349 & -6.212500 & -3.0415900\\
+Retain\_L\_infl\_Trawl\_S(2)\_BLK2delta\_2011 & -3.8181100 & 4 & 0.0000340 & -4.998410 & -2.6378100\\
+Retain\_L\_infl\_Trawl\_S(2)\_BLK2delta\_2017 & 7.9020900 & 4 & 0.0000222 & 7.059290 & 8.7448800\\
+Retain\_L\_infl\_Trawl\_S(2)\_BLK2delta\_2020 & -0.4405970 & 4 & 0.0000267 & -0.786498 & -0.0946961\\
+Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_1989 & 0.0007199 & 4 & -0.0000001 & -0.391135 & 0.3925750\\
+Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2007 & 0.0010992 & 4 & -0.0000001 & -0.390682 & 0.3928800\\
+Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0008178 & 4 & 0.0000000 & -0.391018 & 0.3926540\\
+Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2017 & -0.0002348 & 4 & 0.0000000 & -0.392281 & 0.3918110\\
+Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2020 & -0.0000802 & 4 & 0.0000001 & -0.392096 & 0.3919350\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}
@@ -2343,6 +2352,14 @@ Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0015285 & 4 & 0.00
 ![Recommended bias adjustment for recruitment deviations, from Hamel and Cope (2022).\label{fig:recdevs_bias_adjust}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/recruit_fit_bias_adjust.png){width=100% height=100% alt="."}
 
 ![Selectivity at length for each combination of sex and fleet. Note that the three commerical fishery fleets were not modeled as having sex-specific selectivity.\label{fig:selcurvs}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/sel01_multiple_fleets_length1.png){width=100% height=100% alt="."}
+
+![Time blocking for selectivity and retention for North and South trawl fleets.\label{fig:timeblocks}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/timeblocks2.png){width=100% height=100% alt="."}
+
+![Timeline of management and fleet behavior changes associated with selectivity and retention blocks.\label{fig:diagram}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/blockingdiagram.png){width=100% height=100% alt="."}
+
+![Selectivity curves for time blocks in the North Trawl, South Trawl, and Non-Trawl fleets.\label{fig:selblocks}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/selec_block.png){width=100% height=100% alt="."}
+
+![Retention curves for time blocks in the North Trawl, South Trawl, and Non-Trawl fleets.\label{fig:retblocks}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/retention_curves.png){width=100% height=100% alt="."}
 
 ![Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:fitsTri1}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Base/index2_cpuefit_Triennial1.png){width=100% height=100% alt="."}
 
@@ -2450,10 +2467,6 @@ Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2011 & 0.0015285 & 4 & 0.00
 
 
 ![Time blocking for selectivity and retention for North and South trawl fleets.\label{fig:timeblocks}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/timeblocks2.png){width=100% height=100% alt="."}
-
-![Relative spawning output comparisons of the base model and selectivity sensitivities.\label{fig:selec_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Selectivity/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
-
-![Relative spawning output comparisons of the base model and retention sensitivities.\label{fig:reten_sensitiv_mngmt}](/Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/doc/FinalFigs/Sensitivities/Retention/compare4_Bratio_uncertainty.png){width=100% height=100% alt="."}
 
 <!--chapter:end:53figures.Rmd-->
 
