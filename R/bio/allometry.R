@@ -211,7 +211,7 @@ ggplot(data = dat %>%
        y = 'Weight (kg)',
        title = 'Shortspine thornyhead length-weight relationship',
        subtitle = paste0('NWFSC shelf/slope survey data, ', min(dat$Year), '-', max(dat$Year))) +
-  theme(legend.position = c(.1, .8))
+  theme(legend.position = c(.15, .8))
 
 ggsave('outputs/length-weight/lw_NWFSCcombo.png', height = 5,
        width = 7, dpi = 300)
@@ -237,7 +237,6 @@ ggplot(data = dat %>%
        title = 'Shortspine thornyhead length-weight relationship',
        subtitle = paste0('NWFSC shelf/slope survey data, ', min(dat$Year), '-', max(dat$Year))) +
   theme(legend.position = c(.1, .8))
-
 
 
 
