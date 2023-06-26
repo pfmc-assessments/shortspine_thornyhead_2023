@@ -45,28 +45,28 @@ author:
     first: A
     middle: 'L'
     family: Hayes
-  - name: Vladlena Gertseva
-    code: 4
-    first: V
-    middle: 'G'
-    family: Gertseva
   - name: Kiva L. Oken
     code: 4
     first: K
     middle: 'L'
     family: Oken
-  - name: Owen Hamel
+  - name: Vladlena Gertseva
     code: 4
-    first: O
-    middle: 'S'
-    family: Hamel
+    first: V
+    middle: 'G'
+    family: Gertseva
   - name: Melissa A. Haltuch
     code: 5
     first: M
     middle: 'A'
     family: Haltuch
+  - name: Owen Hamel
+    code: 4
+    first: O
+    middle: 'S'
+    family: Hamel
 author_list: Zahner. J.A, M.A. Heller-Shipley, H.A. Oleynik, S.G. Beyer, P-Y. Hernvann, M. Véron, A.N. Odell,
-   J.Y. Sullivan, A.L. Hayes, V.G. Gertseva, K.L. Oken, O.S. Hamel, M.A. Haltuch
+   J.Y. Sullivan, A.L. Hayes, K.L. Oken, V.G. Gertseva, M.A. Haltuch, O.S. Hamel, 
 affiliation:
   - code: 1
     address: School of Aquatic and Fishery Sciences, University of Washington, 1122
