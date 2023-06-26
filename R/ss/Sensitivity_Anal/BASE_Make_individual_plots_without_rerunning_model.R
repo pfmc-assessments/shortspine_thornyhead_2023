@@ -51,7 +51,7 @@ source(file=file.path(dir_script,'utils','sensistivity_analysis_utils.R', fsep=f
 
 
 # Path to the BASE Model repertory
-Dir_23_model_base <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2','1_23.model.francis_2' , 'run',fsep = fsep)
+Dir_23_model_base <- file.path(dir_SensAnal, 'Base_Model', '5.23_Official_Base','1_23.base.official' , 'run',fsep = fsep)
 
   replist <- SS_output(
     dir = Dir_23_model_base,

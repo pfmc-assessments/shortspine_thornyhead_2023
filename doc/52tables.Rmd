@@ -32,8 +32,10 @@ print.numeric <- function(x, digits) {
 
 ```{r, results='asis'}
 
-#These are all labeled a-i
+#Executive Tables 
+#These are all labeled a-i in the executive summary
 
+#Table 1 
 catch_tab<-read.csv(file.path(tab_dir1, "a_Catches_ES.csv"))
 #catch_tab <- round(catch_tab, 2)
 names(catch_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")  
@@ -42,7 +44,7 @@ sa4ss::table_format(x = catch_tab,
                   label = "catches")
 
 #Spawning stock output
-
+#Table 2 
 ssb_tab<-read.csv(file.path(tab_dir1, "b_SSB_ES.csv"))
 ssb_tab <- data.frame(
       ssb_tab$Year,
@@ -52,7 +54,7 @@ ssb_tab <- data.frame(
 colnames(ssb_tab) <- c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")
 # 
 sa4ss::table_format(x = ssb_tab,
-                    caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
+                    caption = "Spawning output (billions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
                     label = "ssb",
                     custom_width = TRUE,
                     col_to_adjust = c(2, 3, 4, 5),
@@ -62,6 +64,7 @@ sa4ss::table_format(x = ssb_tab,
 
 ```{r, results='asis'}
 #Recruitment
+#Table 3 
 rec_tab<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
 names(rec_tab)<-c("Year", "Recruitment", "95% CI", "RecDevs", "RecDev 95% CI")    
 sa4ss::table_format(x = rec_tab,
@@ -72,10 +75,11 @@ sa4ss::table_format(x = rec_tab,
                   width=c("2.5cm"))
 
 #SPR
+#Table 4 
 spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
-names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
+names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR_$50\\%$)", "95% CI", "Exploitation Rate", "95% CI")    
 sa4ss::table_format(x = spr_tab,
-                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\\%})$",
+                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{50\\%})$",
                   label = "spr",
                   custom_width = TRUE,
                   col_to_adjust = c(2),
@@ -84,6 +88,7 @@ sa4ss::table_format(x = spr_tab,
 \newpage
 ```{r, results='asis'}
 #Reference Points 
+#Table 5 
 ref_tab<-read.csv(file.path(tab_dir1, "e_ReferencePoints_ES.csv"))
 names(ref_tab)<-c("Variable of Interest", "Estimate", "95% CI")  
 sa4ss::table_format(x = ref_tab,
@@ -94,15 +99,16 @@ sa4ss::table_format(x = ref_tab,
 \newpage
 ```{r, results='asis'}
 #management 
+#Table 6 
 mngmt_tab<-read.csv(file.path(tab_dir1, "f_Manage_ES.csv"))
 names(mngmt_tab)<-c("Year", "OFL", "ABC", "ACL", "Landings", "Total Mortality") 
 
 #Management values from https://www.pcouncil.org/harvest-specifications-regulations-and-seasons/
-ofl<-c(2333,2310,3203,3169,3144,3116,3089,3063,3211,3194)
+ofl<-c(2333,2310,3203,3169,3144,3116,3089,3063,3211,3194) #, 3177)
 
-abc<-c(2230,2208,2668,2640,2619,2596,2573,2551,2183,2130)
+abc<-c(2230,2208,2668,2640,2619,2596,2573,2551,2183,2130) #, 2078)
 
-acl<-c(1937,1918,2668,2639,2619,2596,2573,2552,2184,2130)
+acl<-c(1937,1918,2668,2639,2619,2596,2573,2552,2184,2130) #, 2078)
 
 mngmt_tab<-mngmt_tab%>%
   mutate(OFL = ofl,
@@ -119,6 +125,7 @@ sa4ss::table_format(x = mngmt_tab,
 \newpage
 ```{r, results='asis'}
 #Projections
+#Table 7 
 proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES.csv"))
 
 proj_tab <- data.frame(
@@ -130,49 +137,65 @@ proj_tab <- data.frame(
         print(proj_tab$Fraction.Unfished, 3)
       )
 
-names(proj_tab)<-c("Year", "Predicted OFL (mt)", "ABC (mt)", "Age 1 Biomass (mt)", "Spawning Output", "Fraction Unfished") 
+names(proj_tab)<-c("Year", "pred_OFL", "ABC_catch", "age1", "SO", "dep")
+
+proj_tab <- proj_tab %>% as_tibble %>%
+  mutate(
+    ofl.adopt = c(3177, 3162, rep(NA, 10)),
+    abc.adopt = c(2078, 2030, rep(NA, 10)),
+    catch = c(755, 755, rep(NA, 10)),
+    ofl = c(NA, NA, pred_OFL[3:12]),
+    abc = c(NA, NA, ABC_catch[3:12]),
+    buffer = c(0.762, 0.747, 0.733, 0.719, 0.706, 0.693, 0.680, 0.667, 0.654, 0.642, 0.630, 0.618)
+  ) %>%
+  select(Year, ofl.adopt, abc.adopt, catch, ofl, abc, buffer, SO, dep) %>%
+  as.data.frame
+
+names(proj_tab)<-c("Year", "Adopted OFL (mt)", "Adopted ABC (mt)", "Assumed Catch (mt)", "OFL (mt)", "ABC (mt)", "Buffer", "Spawning Output", "Fraction Unfished") 
 sa4ss::table_format(x = proj_tab,
                   caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.",
                   label = "projections",
                   custom_width = TRUE,
-                  col_to_adjust = c(4),
-                  width=c("2cm"))
+                  col_to_adjust = c(2, 3, 4, 8, 9),
+                  width=c("2cm", "2cm", "2cm", "2cm", "2cm"),
+                  landscape=TRUE)
 
-#Summary Tables 
+#Summary Table
+#Table 8 
 sum_tab<-read.csv(file.path(tab_dir1, "i_Summary_ES.csv"))
 names(sum_tab)<-c("Quantity", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
 
 #Split lower and upper intervals into two rows for table formatting
 
 # tmp<-sum_tab %>% #slice first row of interest
-#   slice(9) %>%
-#   pivot_longer(cols= -Quantity, names_to = "Year")%>%
-#   separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
+# slice(9) %>%
+# pivot_longer(cols= -Quantity, names_to = "Year")%>%
+# separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
 # 
 # tmp<-tmp%>% #Convert back to wide form
 #   pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
 #   mutate(Quantity = "Lower Interval")%>%
 #   bind_rows(tmp%>%
-#               pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
-#               mutate(Quantity = "Upper Interval"))
+#                pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
+#                mutate(Quantity = "Upper Interval"))
 # 
-# tmp2<-sum_tab %>% #Repeat for second row of interest 
-#   slice(11) %>%
-#   pivot_longer(cols= -Quantity, names_to = "Year")%>%
-#   separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
+#  tmp2<-sum_tab %>% #Repeat for second row of interest
+#    slice(11) %>%
+#    pivot_longer(cols= -Quantity, names_to = "Year")%>%
+#    separate(value, into = c("Lower Interval", "Upper Interval"), sep = "–", convert = TRUE)
 # 
-# tmp2<-tmp2%>% #Convert back to wide form
-#   pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
-#   mutate(Quantity = "Lower Interval")%>%
-#   bind_rows(tmp2%>%
-#               pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
-#               mutate(Quantity = "Upper Interval"))
-
-# sum_tab<-bind_rows(slice(sum_tab, 1:8), #Bind together
-#           tmp,
-#           slice(sum_tab, 10),
-#           tmp2,
-#           slice(sum_tab,12:13))
+#  tmp2<-tmp2%>% #Convert back to wide form
+#    pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Lower Interval`)%>%
+#    mutate(Quantity = "Lower Interval")%>%
+#    bind_rows(tmp2%>%
+#                pivot_wider(id_cols = Quantity, names_from = Year, values_from = `Upper Interval`)%>%
+#                mutate(Quantity = "Upper Interval"))
+# 
+#  sum_tab<-bind_rows(slice(sum_tab, 1:8), #Bind together
+#            tmp,
+#            slice(sum_tab, 10),
+#            tmp2,
+#            slice(sum_tab,12:13))
 
 #Add OFL and ACL
 sum_tab[1,2:11]<-ofl
@@ -180,10 +203,12 @@ sum_tab[1,12]<-3177 #OFL for 2023
 sum_tab[2,2:11]<-acl
 sum_tab[2,12]<-2078 #ACL for 2023
 
-sum_tab[3,2:11] <- print.numeric(as.numeric(unlist(sum_tab[3,2:11])), 0)
-sum_tab[4,2:11] <- print.numeric(as.numeric(unlist(sum_tab[4,2:11])), 0)
-sum_tab[5,2:11] <- print.numeric(as.numeric(unlist(sum_tab[5,2:11])), 2)
-sum_tab[6,2:11] <- print.numeric(as.numeric(unlist(sum_tab[6,2:11])), 2)
+ sum_tab[3,2:11] <- print.numeric(as.numeric(unlist(sum_tab[3,2:11])), 0)
+ sum_tab[4,2:11] <- print.numeric(as.numeric(unlist(sum_tab[4,2:11])), 0)
+ sum_tab[5,2:11] <- print.numeric(as.numeric(unlist(sum_tab[5,2:11])), 2)
+ sum_tab[6,2:11] <- print.numeric(as.numeric(unlist(sum_tab[6,2:11])), 2)
+ sum_tab[7, 12] <- 95328
+ 
 sum_tab[7,2:12] <- comma(as.numeric(unlist(sum_tab[7,2:12])), 0)
 sum_tab[8,2:12] <- comma(as.numeric(unlist(sum_tab[8,2:12])), 0)
 sum_tab[9,2:12] <- comma(as.numeric(unlist(sum_tab[9,2:12])), 0)
@@ -202,7 +227,8 @@ sa4ss::table_format(x = sum_tab,
                   font_size = 9,
                   landscape = TRUE)
 
-#Catches 
+#Catches
+#Table 9
 allcatches_tab<-read.csv(file.path(tab_dir1, "Catches_All_Years.csv"))
 names(allcatches_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")
 sa4ss::table_format(x = allcatches_tab,
@@ -210,8 +236,9 @@ sa4ss::table_format(x = allcatches_tab,
                   label = "allcatch")
 
 #Time Series
+#Table 10
 ts_tab<-read.csv(file.path(tab_dir1, "TimeSeries.csv"))
-names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Total Biomass (mt)", "% Unfished", "Age 0 Recruits", "Total Mortality", "SPR Ratio", "Expl Rate")
+names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Age 1+ Biomass (mt)", "% Unfished", "Age 0 Recruits", "Total Mortality", "SPR Ratio", "Expl Rate")
 sa4ss::table_format(x = ts_tab,
                     digits = 2,
                   caption = "Time series of population estimates from the base model.",
@@ -219,27 +246,73 @@ sa4ss::table_format(x = ts_tab,
                   font_size = 9)
 ```
 \newpage
+```{r, results="asis"}
+decision_table  = read.csv(file = file.path(here::here(), "data", "ss_outputs", "decision_table_values.csv"))
+decision_table = decision_table[,1:6]
+
+pstar0.4 = decision_table %>%
+  mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
+  filter(Pstar == 'P* = 0.4') %>%
+  select(Yr, Catch, Pstar, SO, Depletion, State) %>%
+  pivot_wider(names_from = State,
+              values_from = c(SO, Depletion)) %>%
+  select("Pstar", "Yr", 'Catch',
+         "SO_Low", "Depletion_Low",
+         "SO_Base", "Depletion_Base",
+         "SO_High", "Depletion_High")
+
+pstar0.45 = decision_table %>%
+  mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
+  filter(Pstar == 'P* = 0.45') %>%
+  select(Yr, Catch, Pstar, SO, Depletion, State) %>%
+  pivot_wider(names_from = State,
+              values_from = c(SO, Depletion)) %>%
+  select("Pstar", "Yr", 'Catch',
+         "SO_Low", "Depletion_Low",
+         "SO_Base", "Depletion_Base",
+         "SO_High", "Depletion_High")
+
+decision_data_wide = rbind(pstar0.4, pstar0.45) %>% select(-c(Pstar)) %>% write_csv(file=file.path(here::here(), "doc", "dt.csv"))
+
+dt <- read.csv(file.path(here::here(), "doc", "dt.csv"))
+
+sa4ss::table_format(x = dt,
+                     col_names = c("Year", "Catch", "SO", "Dep", "SO", "Dep", "SO", "Dep"),
+                  caption = "Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels.",
+                  label = "decisiontable")  %>%
+    kableExtra::add_header_above(c(" " = 2, "Low: M = 0.03" = 2, 
+                                   "Base: 0.04" = 2, 
+                                   "High: M = 0.05" = 2)) %>% 
+  kableExtra::pack_rows(
+  index = c("ACL P* = 0.4" = 12, "ACL P* = 0.45" = 12))
+
+```
+
+\newpage
 ```{r, results='asis'}
 #Like
+#Table 11
 like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
 like_tab$Total <- print.numeric(like_tab$Total, 3)
 names(like_tab)<-c("Source", "Likelihood Component")
 sa4ss::table_format(x = like_tab,
-                  caption = "Likelihood components by source.",
+                  caption = "Likelihood components by source for the base model.",
                   label = "likelihoods",
                   align = c("l", "l"))
 ```
 
 \newpage
 ```{r, results='asis'}
-#Fishery Length Comp Sample Sizes 
-
+#Fishery Length Comp Sample Sizes for landings
+#Table 12
 lensamp_tab<-read.csv(file.path(tab_dir2,"lencomps_samplesizes.csv"))
 names(lensamp_tab)<-c("Year", "Samples North Trawl", "Tows North Trawl","Samples South Trawl", "Tows South Trawl","Samples Non-trawl", "Tows Non-trawl")
 sa4ss::table_format(x = lensamp_tab,
                   caption = "Sample sizes of length compostion samples for shortspine thornyhead landings.",
                   label = "lensamp")
 
+#Fishery Length Comp Sample Sizes for discards
+#Table 13
 disclensamp_tab<-read.csv(file.path(tab_dir2,"discard_lencomp_samplesizes.csv"))
 names(disclensamp_tab)<-c("Year", "North Trawl", "South Trawl", "Non-trawl")
 sa4ss::table_format(x = disclensamp_tab,
@@ -251,7 +324,8 @@ sa4ss::table_format(x = disclensamp_tab,
 
 \newpage
 ```{r, results='asis'}
-
+#Survey Strata
+#Table 14
 surv_strat <- readLines(file.path(tab_dir2, "SurveyStrat.csv"))
 surv_strat <- trimws(surv_strat)
 surv_strat <- gsub("<a0>", "", surv_strat)
@@ -282,6 +356,8 @@ sa4ss::table_format(x = surv_strat,
 ```
 \newpage
 ```{r, results = 'asis'}
+#Survey Sample Sizes 
+#Table 15
 survinfo_tab<-read.csv(file.path(tab_dir1, "haul.sample.info.master.csv"))
 
 survinfo_tab<-survinfo_tab[,2:5]
@@ -294,9 +370,11 @@ survinfo_tab<-survinfo_tab%>%
     survey == "nwfsc combo" ~ "WCGBTS",
     survey == "nwfsc slope" ~ "NWFSC Slope",
     TRUE ~ survey  # Keep the original name if it doesn't match any condition
-  )) %>%
-  rename(Fish=samples, Survey=survey, Hauls=hauls)
-  
+  ))# %>%
+ # rename("Fish"= samples, "Survey"=survey, "Hauls"=hauls)
+
+colnames(survinfo_tab)<- c("Year", "Survey", "Fish", "Hauls")
+ 
 sa4ss::table_format(x = survinfo_tab,
                    caption = "Survey samples and hauls for each of the fishery independent surveys for available years spanning from 1989 to 2022.",
                    label = "survinfo",
@@ -306,7 +384,9 @@ sa4ss::table_format(x = survinfo_tab,
 ```
 \newpage
 ```{r, results = 'asis'}
-jitter_tab<-read.csv(file.path(tab_dir3, "jitter_results_summary.csv"))
+#Jitter results 
+#Table 16
+jitter_tab<-read.csv(file.path(tab_dir3, "jitter_results.csv"))
 names(jitter_tab)<-c("Total Likelihood", "Change from Base", "% Change","Frequency")
 sa4ss::table_format(x = jitter_tab,
                    caption = "Jitter results.",
@@ -318,8 +398,17 @@ sa4ss::table_format(x = jitter_tab,
 ```
 \newpage
 ```{r, results = 'asis'}
+#Likekihoods for sensitivities 
+#Table 17
 sensitiv_tab<-read.csv(file.path(tab_dir3, "summary.csv"))
 names(sensitiv_tab)<-c("Source", "Base Model", "Low Growth","High Growth", "2013 Maturity", "Indeterm. Maturity", "Imputed Landings", "2013 Landings")
+
+sensitiv_tab_round<-round(sensitiv_tab[,2:8], 2)
+Source<-sensitiv_tab[,1]
+
+sensitiv_tab<-cbind(Source,sensitiv_tab_round)
+
+
 sa4ss::table_format(x = sensitiv_tab,
                   caption = "Comparison of likelihoods for all sensitivity analyses",
                   label = "sentivititytab",
@@ -340,39 +429,41 @@ sa4ss::table_format(x = sensitiv_tab,
 ```
 \newpage
 ```{r, results = 'asis'}
-
+#Time blocking for selectivity and retention 
+#Table 18
 # Let's clean this up. I think we can remove some of the columns as not every 
 # combination tested yielded particularly interesting results.
-timeblock_tab<-read.csv(file.path(tab_dir3, "sensi_ret_sel_summary.csv"))
-timeblock_tab$Year <- as.character(timeblock_tab$Year)
-
-timeblock<-flextable(timeblock_tab) %>%
-  flextable::bold(part = "header") %>%
-  flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
-  flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
-  flextable::merge_at(i = grep("Non-Trawl", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
-  flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
-  flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
-  flextable::merge_at(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 ) %>%
-  flextable::merge_at(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 ) %>%
-  flextable::rotate(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 , rotation="btlr", align = "center") %>%
-  flextable::rotate(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 , rotation="btlr", align = "center") %>%
-  flextable::rotate(j = 2 , rotation="btlr", align = "center")
-
-
-sa4ss::table_format(x = timeblock_tab,
-                  caption = "Blocked parameters and the years for blocking and justification for all fleets.",
-                  label = "timeblocking",
-                  landscape = TRUE)
+# timeblock_tab<-read.csv(file.path(tab_dir3, "sensi_ret_sel_summary.csv"))
+# timeblock_tab$Year <- as.character(timeblock_tab$Year)
+# 
+# timeblock<-flextable(timeblock_tab) %>%
+#   flextable::bold(part = "header") %>%
+#   flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
+#   flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
+#   flextable::merge_at(i = grep("Non-Trawl", timeblock_tab$Fleet[which(timeblock_tab$Type=="Retention")]), j = 2 ) %>%
+#   flextable::merge_at(i = grep("TrawlN", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
+#   flextable::merge_at(i = grep("TrawlS", timeblock_tab$Fleet[which(timeblock_tab$Type=="Selectivity")])+length(which(timeblock_tab$Type=="Retention")), j = 2 ) %>%
+#   flextable::merge_at(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 ) %>%
+#   flextable::merge_at(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 ) %>%
+#   flextable::rotate(i = 1:length(which(timeblock_tab$Type=="Retention")), j = 1 , rotation="btlr", align = "center") %>%
+#   flextable::rotate(i = (length(which(timeblock_tab$Type=="Retention"))+1):nrow(timeblock_tab), j = 1 , rotation="btlr", align = "center") %>%
+#   flextable::rotate(j = 2 , rotation="btlr", align = "center")
+# 
+# 
+# sa4ss::table_format(x = timeblock_tab,
+#                   caption = "Blocked parameters and the years for blocking and justification for all fleets.",
+#                   label = "timeblocking",
+#                   landscape = TRUE)
 ```
 \newpage
 ```{r, results = 'asis'}
-
+#Parameter Estimates
+#Table 18
 allpars<-read.csv(file.path(tab_dir4, "Update_Data_comparison_table_all_params.csv"))
 names(allpars)<-c("Model", "Source", "Value", "Phase", "Min", "Max", "Init", "Gradient", "Prior Type", "Prior", "Prior SD", "Prior Like", "Lower 95% CI", "Upper 95% CI")
 
 allpars <- allpars %>% 
-  filter(Model == "23.model.francis_2")%>%
+  filter(Model == "23.base.official")%>%
   select(Source, Value, Phase, Gradient, `Lower 95% CI`, `Upper 95% CI`)
 
 sa4ss::table_format(x = allpars,

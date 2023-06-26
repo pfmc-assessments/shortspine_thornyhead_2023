@@ -24,7 +24,7 @@ This assessment applies to `r spp` (*`r spp.sci`*) off of the west coast of the 
 ## Catches{-}
 Historically, landings of `r spp` remained under 500 metric tons until the late 1960s when landings began to increase steadily, rising to a peak of 4,815 mt in 1989, followed by a sharp decline during a period when trip limits and other management measures were imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995-1998. Landings fell below 1,000 mt per year from 1999-2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
 
-Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for `r spp` have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. 
+Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for `r spp` have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. Catches from the At-Sea Hake fishery were integrated into the North Trawl fleet. 
 
 ```{r, results='asis'}
 
@@ -51,13 +51,13 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"),
 
 The most recent assessment for `r spp` was conducted in 2013 [@taylor_stephens_2013]. Stock status was determined to be above the management target and catches did not attain the full management limits, so reassessment of thornyheads has not been a higher priority. This assessment uses Stock Synthesis [@methot_stock_2013] Version 3.30.21, used in many other recent US West Coast assessments. 
 					
-Data were divided into three fishery fleets: North trawl (the waters off Washington and Oregon), South trawl (the waters off California), and coastwide Non-trawl, and three survey fleets: the \gls{s-tri} from 1980-2004, which was divided into early (pre-1995) and late period (post-1995) to account for a change in depth-sampling, and the \gls{s-wcgbt}, 2003-2022 (Figure \ref{fig:assessment_data_timeseriesES}). 
+Data were divided into three fishery fleets: North trawl (the waters off Washington and Oregon including the At-Sea Hake fishery), South trawl (the waters off California), and coastwide Non-trawl, and three survey fleets: the \gls{s-tri} from 1980-2004, which was divided into early (pre-1995) and late period (post-1995) to account for a change in depth-sampling, and the \gls{s-wcgbt}, 2003-2022 (Figure \ref{fig:assessment_data_timeseriesES}). 
 
 Most data used in the 2013 assessment were newly pulled and processed for this assessment, including length compositions from all fishing and survey fleets, indices of abundance derived from new geostatistical analyses, discard rates from both a 1980s observer study [@pikitch_evaluation_1988] and the current \gls{wcgop}, historical catch data from Washington, Oregon, and California, and all reported catches from 1981-2022. The only data  taken from the previous assessment without reanalysis were discard rates from the \gls{edcp} study in the 1990s. 
 
-New maturity analyses of samples collected in the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (Melissa Head, \gls{nwfsc}, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of females spawning. This assessment also assumes a new fecundity relationship, in which fecundity is modeled as a power function of length. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
+New maturity analyses of samples collected by the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (Melissa Head, \gls{nwfsc}, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of females spawning. This assessment also assumes a new fecundity relationship, in which fecundity is modeled as a power function of length. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
 
-This assessment estimated 180 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 43 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
+This assessment estimated 197 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 59 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
 
 ```{r, results = "asis"}
@@ -70,7 +70,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"),
 
 ## Stock biomass and dynamics{-}
 
-Unfished equilibrium spawning output ($B_0$) is estimated to be 20.332 trillion eggs, with a 95% confidence interval of 16.338-24.327 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.372 trillion eggs (5.346-11.201 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 41.4% (33\%-49\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.6%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
+Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 trillion eggs, with a 95% confidence interval of 18.166-26.124 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.717 trillion eggs (5.545-11.889 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 39.4% (31.6\%-47.1\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.5%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
 
 
 ```{r, results = "asis"}
@@ -97,7 +97,7 @@ sa4ss::table_format(x = ssb_tab,
 ```
 
 ## Recruitment{-}
-This assessment assumed a Beverton-Holt stock recruitment relationship. Steepness ($h$, the fraction of expected equilibrium recruitment associated with 20% of equilibrium spawning biomass) was fixed at 0.72, slightly higher than what was assumed in previous assessments ($h=0.60$). The scale of the population is largely determined by the log of unfished recruitment ($R_0$), which was estimated to be 9.354. This results in an unfished recruitment of 11,550,000 recruits (9,281,000–13,820,000). Recruitment variation ($\sigma_R$) was fixed at 0.50, as was done in the 2013 assessment. Recruitment deviations were estimated for the years 1901 through 2022, and ranged from -0.5 to 1.5 on the log scale. Estimated recruitments do not show high variability, and the uncertainty in each estimate is greater than the variability between estimates (Table \ref{tab:recES}; Figure \ref{fig:rec_trajectoryES}).
+This assessment assumed a Beverton-Holt stock recruitment relationship. Steepness ($h$, the fraction of expected equilibrium recruitment associated with 20% of equilibrium spawning biomass) was fixed at 0.72, slightly higher than what was assumed in previous assessments ($h=0.60$). The scale of the population is largely determined by the log of unfished recruitment ($R_0$), which was estimated to be 9.439. This results in an unfished recruitment of 12,580,000 recruits (10,320,000-14,841,000). Recruitment variation ($\sigma_R$) was fixed at 0.50, as was done in the 2013 assessment. Recruitment deviations were estimated for the years 1901 through 2022, and ranged from -0.5 to 1.5 on the log scale. Estimated recruitments do not show high variability, and the uncertainty in each estimate is greater than the variability between estimates (Table \ref{tab:recES}; Figure \ref{fig:rec_trajectoryES}).
 
 ```{r, results='asis'}
 rec_tab<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
@@ -114,13 +114,13 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts11_Age-0_recruits_(1000s)_with
 ```
 
 ## Exploitation status{-}
-The summary harvest rate (total catch divided by age-1 and older biomass) closely follows the landings trajectory. The harvest rates are estimated to have never exceeded 5% and have remained below 2% in the past decade. Expressing exploitation rates in terms of spawning potential ratio (SPR) indicates that the exploitation consistently exceeded the $SPR_{50\%}$ reference point from 1980-2018. However, the stock status is estimated to have never fallen below the $B_{40\%}$ management target, though the uncertainty interval around the 2023 estimate does encapsulate the $B_{40\%}$ target (Table \ref{tab:sprES}; Figures \ref{fig:rel_ssb_trajectoryES}-\ref{fig:phase_diagramES}).
+The summary harvest rate (total catch divided by age-1 and older biomass) closely follows the landings trajectory. The harvest rates are estimated to have never exceeded 5% and have remained below 2% in the past decade. Expressing exploitation rates in terms of spawning potential ratio (SPR) indicates that the exploitation consistently exceeded the $SPR_{50\%}$ reference point from 1980-2018. However, the stock status is estimated to have only fallen below the $B_{40\%}$ management target starting in 2020 (Table \ref{tab:sprES}; Figures \ref{fig:rel_ssb_trajectoryES}-\ref{fig:phase_diagramES}).
 
 ```{r, results='asis'}
 spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
 names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
 sa4ss::table_format(x = spr_tab,
-                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\\%})$. ",
+                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{40\\%})$. ",
                   label = "sprES")
 ```
 
@@ -153,7 +153,7 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"),
 This stock assessment does not explicitly incorporate trophic interactions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
 
 ## Reference points{-}
-Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” ($B/B_0 = 0.40$) and “healthy” ($B/B_0 > 0.40$) status relative to the reference points (Figure \ref{fig:yieldcurveES}). Sustainable total yield (landings plus discards) was estimated at 1,060 mt when using an $SPR_{50\%}$ reference harvest rate and ranged from 870–1,250 mt based on estimates of uncertainty (Table \ref{tab:refPointsES}). The spawning output equivalent to 40% of the unfished spawning output ($B_{40\%}$) was 8.273 trillion eggs.  The most recent total mortality (landings plus discards) have been lower than the estimated long-term yields calculated using an $SPR_{50\%}$ reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full \gls{acl}. The \gls{ofl} and \gls{abc} values over the past 6 years have been approximately 3100 mt and 2,500 mt, respectively.
+Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” ($B/B_0 = 0.40$) and “healthy” ($B/B_0 > 0.40$) status relative to the reference points (Figure \ref{fig:yieldcurveES}). Sustainable total yield (landings plus discards) was estimated at 1,108 mt when using an $SPR_{50\%}$ reference harvest rate and ranged from 929-1,288 mt based on estimates of uncertainty (Table \ref{tab:refPointsES}). The spawning output equivalent to 40% of the unfished spawning output ($B_{40\%}$) was 8.858 trillion eggs.  The most recent total mortality (landings plus discards) have been lower than the estimated long-term yields calculated using an $SPR_{50\%}$ reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full \gls{acl}. The \gls{ofl} and \gls{abc} values over the past 6 years have been approximately 3100 mt and 2,500 mt, respectively.
 
 ```{r, results='asis'}
 #Reference Points 
@@ -197,12 +197,68 @@ sa4ss::table_format(x = mngmt_tab,
 
 ## Unresolved problems and major uncertainties{-}
 
-Major uncertainties in the model are centered around uncertainty in biological processes including growth, maturity, and mortality. The absence of reliable ageing methods for `r spp`, particularly, makes it difficult to estimate growth and natural mortality. Sensitivities demonstrated that changes to the growth curve have large effects on the estimated stock status. Likelihood profiles over natural mortality demonstrate the model to be quite sensitive to its assumed value. There is insufficient information in the data to estimate mortality directly, constraining us to use meta-analyses or other mortality estimators, which frequently make use of aging information that is unavailable, and again, highly uncertain for `r spp`. Due to imperfect seasonal and spatial coverage of histological data for `r spp`, there is significant uncertainty about the shape of the species’ maturity curve, though the model appears to be largely insensitive to variations in maturity.
+Major uncertainties in the model are centered around uncertainty in biological processes including growth, maturity, and mortality. The absence of reliable ageing methods for `r spp`, particularly, makes it difficult to estimate growth and natural mortality.
 
-This model fails to fully capture the observed increase in abundance seen in the \gls{s-wcgbt} index time series in 2021 and 2022. The model also fails to fully capture the peak of the length compositions for the North trawl fleet, underestimating the number of mid-sized fish that the fleet takes. This underestimation appears to be consistent, particularly in the last 10 years, implying a possible recent change in selectivity.
+The assessment does not include age composition data; there is no production ageing of thornyheads for the U.S. West Coast (or Alaska). The assessment model used external estimates of a Von Bertalanffy growth curve based on the Butler research age dataset. The ages in these data were averaged from two age-readers. Nonetheless, there will still be ageing error in the averages. It was also not described how fish were selected for aging or whether they were representative of the overall stock. Age measurement errors and sampling methods are both sources of bias in Von Bertalanffy parameter estimates.
+
+The \gls{s-wcgbt} model-based indices generally followed the design-based trends (Figure \ref{fig:modelbasedsurv}); however, the 2021 and 2022 model-based indices are substantially higher than the design-based indices. Confidence intervals for the model-based indices do not cover the 2021 design-based index, and barely cover the 2022 index. The assessment model could not fit the last two model-based indices which is a potential concern. It is a source of uncertainty why there is such a difference in design- and model-based indices in 2021 and 2022.
+
+`r Spp` along the Pacific coast could be assessed as a single stock, but recognized that there is a lack of information of recruitment dynamics (e.g., larval transport) that may indicate functional substock structure. These fish do not move much and may be territorial which are attributes that can contribute to substock structure.
+
+There is uncertainty in catch estimates, and more so for historic periods and when interpolations are used to fill in catches for some years. This uncertainty was not quantified and provided to the Panel. There is an important need for STATs to provide information on the quality of the annual catch estimates, and more specifically to quantify the uncertainty in these estimates. This technical deficiency is common to many assessments.
+
 
 ## Decision table and projections{-}
-*TBD*
+
+The standard deviation of the log of spawning biomass in 2023 is $\sigma = 0.18$. This value is in the adjustment of quotas based on scientific uncertainty (a process referred to by the notation “$P^*$”) when the value is greater than an assumed 0.36 minimum, as it is in this case. The associated offset would therefore be a multiplication of the OFL by 76.2%, which is the 40% quantile of a log-normal distribution with the associated $\sigma$. Twelve-year projections were conducted with a total catch assumed equal to the ACL calculated by applying this adjustment to the estimated OFL for each year. The selectivity and retention function and allocation of catch among fleets was assumed to match the values for the 2020-2022 timeblock. Catch for 2023 and 2024, the limits on which have already been set, were provided by the \gls{pfmc}, and correspond to a total catch of 756 mt.
+
+This default harvest projection applied to the base model indicated that the stock status would slowly decline from 39.4% in 2023 to 39.2% in 2024, before beginning a slow rebound to 40.1% by 2034. The associated OFL values over the period 2025–2034 would average 1,022 mt and the average ACL would be 718 mt. These values are near recent annual catch levels.
+
+Additional projections were conducted for the base model and low and high states of nature (columns) under two catch streams (rows) representing different levels of scientific uncertainty, and thus different values of $P^*$. The uncertainty in the \gls{ofl} associated with the base model was broad ($\sigma = 0.18$), and states of nature were chosen based on values of natural mortality (M) that encapsualted the range of M seen in the literature. The low state of nature used $M=0.03$ to fully encapsulate the low end of the range of M seen in assessments throughout the eastern Pacific. The high state of nature used M=0.05 to roughly encapsulate the value of M used by the 2013 assessment. 
+
+The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$). The most pessimistic forecast scenario, combining the low state of nature (M=0.03) with the high catch stream (P*=0.45), resulted in a projected stock status of 38.7%, very close to the target value. All other projections led to a higher projected status, with a maximum of 54.7% for the combination of the high state of nature and low catch. Forecasts under the base case led to estimated status ranging from 2024 spawning depletion values of 39.1% in both catch scenarios.
+
+```{r, results="asis"}
+decision_table  = read.csv(file = file.path(here::here(), "data", "ss_outputs", "decision_table_values.csv"))
+decision_table = decision_table[,1:6]
+
+pstar0.4 = decision_table %>%
+  mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
+  filter(Pstar == 'P* = 0.4') %>%
+  select(Yr, Catch, Pstar, SO, Depletion, State) %>%
+  pivot_wider(names_from = State,
+              values_from = c(SO, Depletion)) %>%
+  select("Pstar", "Yr", 'Catch',
+         "SO_Low", "Depletion_Low",
+         "SO_Base", "Depletion_Base",
+         "SO_High", "Depletion_High")
+
+pstar0.45 = decision_table %>%
+  mutate(Pstar = recode(Pstar, "0.4" = 'P* = 0.4', "0.45" = 'P* = 0.45')) %>%
+  filter(Pstar == 'P* = 0.45') %>%
+  select(Yr, Catch, Pstar, SO, Depletion, State) %>%
+  pivot_wider(names_from = State,
+              values_from = c(SO, Depletion)) %>%
+  select("Pstar", "Yr", 'Catch',
+         "SO_Low", "Depletion_Low",
+         "SO_Base", "Depletion_Base",
+         "SO_High", "Depletion_High")
+
+decision_data_wide = rbind(pstar0.4, pstar0.45) %>% select(-c(Pstar)) %>% write_csv(file=file.path(here::here(), "doc", "dt.csv"))
+
+dt <- read.csv(file.path(here::here(), "doc", "dt.csv"))
+
+sa4ss::table_format(x = dt,
+                     col_names = c("Year", "Catch", "SO", "Dep", "SO", "Dep", "SO", "Dep"),
+                  caption = "Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels.",
+                  label = "decisiontableES")  %>%
+    kableExtra::add_header_above(c(" " = 2, "Low: M = 0.03" = 2, 
+                                   "Base: 0.04" = 2, 
+                                   "High: M = 0.05" = 2)) %>% 
+  kableExtra::pack_rows(
+  index = c("ACL P* = 0.4" = 12, "ACL P* = 0.45" = 12))
+
+```
 
 ## Scientific uncertainty{-}
 
@@ -213,13 +269,12 @@ The model estimated uncertainty around the 2024 spawning biomass was $\sigma= 0.
 Research and data needs for future assessments include the following: 
 
 1. Research into aging methods and availability of reliable age data would be valuable for future stock assessments. Otoliths have been collected in good quantities from the \gls{s-wcgbt}, but there is currently no validated aging method for `r spp`. 
-2. Additional investigation into growth patterns would provide valuable information for future population projections. We acknowledge that additional work on aging `r spp` would be required to make such additional growth research possible.
+2. Additional investigation into growth patterns would provide valuable information for future population projections. We acknowledge that additional work on aging `r spp` would be required to make such additional growth research possible. Use of an "Errors-as-Variables" approach (e.g. Dey et al. 2019) could be applied to the Butler growth dataset.
 3. More investigation into maturity of `r spp` is necessary to understand the patterns in maturity observed in \gls{s-wcgbt} samples. 
 4. Information on possible migration of `r spp` would be valuable for understanding stock dynamics. Analysis of trace elements and stable isotopes in `r spp` otoliths may provide valuable information on the extent of potential migrations. Possible connections between migration and maturity could likewise be explored. 
 5. A greater understanding of the connection between thornyheads and bottom type could be used to refine the indices of abundance. Thornyheads are very well sampled in trawlable habitat, but the extrapolation of density to a survey stratum could be improved by accounting for the proportion of different bottom types within a stratum and the relative density of thornyheads within each bottom type.
 6. Additional investigation into spatial stock structure could be valuable for determining whether future assessments should develop a spatial assessment model, or if `r spp` should be assessed at distinct spatial scales in the future.
 7. Further research into the Dirichilet-Multinmoial (DMN) data-weighting method for length-composition data is needed for integration with length-based data-moderate assessments like `r spp`. The DMN method has not, to date, been thoroughly simulation tested with length-composition data, and an attempted sensitivity analysis performed for the 2023 assessment failed to converge entirely. This is a general research need, and is widely applicable to many data-moderate or length-based assessments, not just `r spp`.
 
-*We were recently provided with non-nominal shortspine thornyhead catches from the At-Sea Hake Fishery that have not yet been integrated into the model presented here. Additionally, recent analyses have identified selectivity/retention time blocks that vastly improve model fits to the available data with minimal changes to stock scale or status. This new information will be integrated into the base model in the coming weeks. As such, the model and results that will be presented at STAR panel on June 5-9, 2023, may differ slightly than what is presented here.*
 
 

@@ -1,0 +1,27 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  biological_Info 
+# Specific item in that topic:  Sensitivity to weight-length relationship 
+# 	- Sensitivity to weight-length relationship 
+# Author:  Sabrina Beyer 
+# Date: 2023-06-06 18:26:58 
+# Sensitivity Analysis ID: Item 4.4 
+# Name of the model created: 23.WL.updated 
+# *** 
+# 
+# This analysis has been developped based on the following model:  23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/model/Sensitivity_Anal/4.4_WL_Sensitivity 
+# Name of the script used to build the new model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.4_WL_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/sgbey/Documents/Github/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/4.4_WL_Sensitivity_Outputs.R .R
+# 
+# Features: 
+Sensitivity of the model to a new W-L relationship removing small fish <= 16cm 
+# ============================================================ #
+

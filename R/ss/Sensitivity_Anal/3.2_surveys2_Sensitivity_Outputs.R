@@ -112,34 +112,36 @@ var.to.save <- ls()
 
 
 # Path to the base model (23.model.francis_2) repertory
-Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
+#Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
 
 
 # Path to the base model (23.model.francis_2) repertory
-Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
+Dir_23_model_francis_2 <- file.path(dir_SensAnal, "Base_Model", '5.23_Official_Base', '1_23.base.official', 'run', fsep = fsep)
 
 # Root directory for this sensitivity analysis
 SA_path <- file.path('model','Sensitivity_Anal','3.2_surveys2_Sensitivity',fsep = fsep)
 # Path to the 23.surveys.db repertory
 Dir_23_surveys_db <- file.path(dir_SensAnal, '3.2_surveys2_Sensitivity','1_23.surveys.db' , 'run',fsep = fsep)
-
+Dir_23_surveys_gamvln <- file.path(dir_SensAnal, '3.1_surveys_Sensitivity','1_23.surveys.gamvln' , 'run',fsep = fsep)
 # Path to the 23.surveys.wcgbts_depth repertory
-Dir_23_surveys_wcgbts_depth <- file.path(dir_SensAnal, '3.2_surveys2_Sensitivity','2_23.surveys.wcgbts_depth' , 'run',fsep = fsep)
+#Dir_23_surveys_wcgbts_depth <- file.path(dir_SensAnal, '3.2_surveys2_Sensitivity','2_23.surveys.wcgbts_depth' , 'run',fsep = fsep)
 
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(
-	Dir_23_model_francis_2,
+	#Dir_23_model_francis_2,
 	Dir_23_model_francis_2,
 	Dir_23_surveys_db,
-	Dir_23_surveys_wcgbts_depth))
+	Dir_23_surveys_gamvln))
+	#Dir_23_surveys_wcgbts_depth))
 
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.surveys.db',
-	'23.surveys.wcgbts_depth')
+	#'23.model.francis_2',
+	'Base',
+	'DBIs',
+	'MBIs - LogNormal')
+	#'23.surveys.wcgbts_depth')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -150,12 +152,16 @@ SSplotComparisons(
       # print = TRUE,
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c(
-	'23.model.francis_2',
-	'23.model.francis_2',
-	'23.surveys.db',
-	'23.surveys.wcgbts_depth')
+      legendlabels = names(SensiMod)
     )
+
+SSplotComparisons(
+  Version_Summary,
+  print = TRUE,
+  #pdf = TRUE,
+  plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
+  legendlabels = names(SensiMod)
+)
 
 # Create comparison table for this analisys
 # ####################################### #

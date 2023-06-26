@@ -1,0 +1,21 @@
+Note 1 Information: Max data length bin: 72  < max pop len bins: 90; so will accumulate larger pop len bins
+Warning 1 Adjustment: Fleet: 5  SS3 changed Q to not estimate because it is set to float
+Warning 2 : Converting asymptotic retention parameter to 1/(1+e(-x)) format for fleet: 1 parm: 9
+++      because parm min was >=0.0
+++      old min, max, init, prior:  0.0001 1 0.9 0.9; search for <now check> in echoinput.sso for parm_type
+Warning 3 : new min, max, init, prior:  -10 10 2.19722 2.19722
+Warning 4 : Converting asymptotic retention parameter to 1/(1+e(-x)) format for fleet: 2 parm: 19
+++      because parm min was >=0.0
+++      old min, max, init, prior:  0.0001 1 0.9 0.9; search for <now check> in echoinput.sso for parm_type
+Warning 5 : new min, max, init, prior:  -10 10 2.19722 2.19722
+Warning 6 : Converting asymptotic retention parameter to 1/(1+e(-x)) format for fleet: 3 parm: 29
+++      because parm min was >=0.0
+++      old min, max, init, prior:  0.0001 1 0.9 0.9; search for <now check> in echoinput.sso for parm_type
+Warning 7 : new min, max, init, prior:  -10 10 2.19722 2.19722
+Warning 8 : Final gradient: 11684.6 is larger than final_conv: 0.0001
+Warning 9 : Main recdev biasadj is >2 times ratio of rmse to sigmaR
+Warning 10 : Early recdev biasadj is >2 times ratio of rmse to sigmaR
+Warning 11 : Time-vary parms not bound checked
+Warning 12 : Reminder: Number of lamdas !=0.0 and !=1.0:  2
+Note 2 Information:  N parameters that are on or within 1% of min-max bound: 2; check results, variance may be suspect
+ 12 warnings  and 2 notes 

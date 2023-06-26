@@ -1,0 +1,44 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Low-State 045 
+# 	- Base Case 045 
+# 	- High-State 045 
+# Author:  Team Thornyhead 
+# Date: 2023-06-08 15:42:54 
+# Sensitivity Analysis ID: Item 5.22 
+# Names of the models created:
+# 	- 23.dt.low_045 
+# 	- 23.dt.base_045 
+# 	- 23.dt.high_045 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.dt.low_045 				 23.STAR.base 
+# 23.dt.base_045 				 23.STAR.base 
+# 23.dt.high_045 				 23.STAR.base 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.22_STAR_decision_table_045 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.22_STAR_decision_table_045_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.22_STAR_decision_table_045_Outputs.R .R
+# 
+# General features: 
+# Decision table for STAR panel using P*=0.45. Axes of uncertainty are on natural mortality. 
+# 
+# Model features:
+# - Model 23.dt.low_045:
+# M=0.0373 
+# - Model 23.dt.base_045:
+# M=0.040 
+# - Model 23.dt.high_045:
+# M=0.046 
+# ============================================================ #
+

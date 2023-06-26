@@ -1,0 +1,44 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Prelim DT - Low State 
+# 	- Prelim DT - Base State 
+# 	- Prelim DT - High State 
+# Author:  Joshua Zahner 
+# Date: 2023-05-30 21:28:27 
+# Sensitivity Analysis ID: Item 5.13 
+# Names of the models created:
+# 	- 23.decision.low 
+# 	- 23.decision.mid 
+# 	- 23.decision.high 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.decision.low 				 23.model.francis_2 
+# 23.decision.mid 				 23.model.francis_2 
+# 23.decision.high 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/5.13_Initial_Decision_Table 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.13_Initial_Decision_Table_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.13_Initial_Decision_Table_Results.R .R
+# 
+# General features: 
+# Preliminary decision table for STAR Panel. 
+# 
+# Model features:
+# - Model 23.decision.low:
+# Low state of nature. Low growth + Low Mortality 
+# - Model 23.decision.mid:
+# Base state of nature. Base growth + Base mortality 
+# - Model 23.decision.high:
+# High state of nature. High growth + High mortality 
+# ============================================================ #
+

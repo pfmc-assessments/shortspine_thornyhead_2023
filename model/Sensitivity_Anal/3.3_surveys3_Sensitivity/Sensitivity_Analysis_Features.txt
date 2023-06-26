@@ -1,0 +1,44 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  surveys 
+# Specific item in that topic: 
+# 	- 2 survey vs 4 survey structure 
+# 	- extra SD on WCGBTS 
+# 	- No Triennial Survey 
+# Author:  Andrea Odell 
+# Date: 2023-06-01 10:56:12 
+# Sensitivity Analysis ID: Item 3.3 
+# Names of the models created:
+# 	- 23.surveys.useslope 
+# 	- 23.surveys.extaSDwcgbts 
+# 	- 23.surveys.notriennial 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.surveys.useslope 				 23.model.francis_2 
+# 23.surveys.extaSDwcgbts 				 23.model.francis_2 
+# 23.surveys.notriennial 				 23.model.francis_2 
+# 
+# Results are stored in the following foler: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/model/Sensitivity_Anal/3.3_surveys3_Sensitivity 
+# Name of the script used to build the new model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/3.3_surveys3_Sensitivity_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/andrea/Desktop/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/3.3_surveys3_Sensitivity_Outputs.R .R
+# 
+# General features: 
+# This sensitivity analysis broadly explores the effect of different survey structures to understand the importance (or lack thereof) of the slope surveys and the triennial surveys 
+# 
+# Model features:
+# - Model 23.surveys.useslope:
+# 4 survey structure (slope surveys included) 
+# - Model 23.surveys.extaSDwcgbts:
+# base model + additional estimated SD for WCGBTS 
+# - Model 23.surveys.notriennial:
+# 1 survey structure (triennial excluded) 
+# ============================================================ #
+

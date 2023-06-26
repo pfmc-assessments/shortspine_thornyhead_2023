@@ -99,7 +99,8 @@ DialogBox <- function(message,
 Restart_SA_modeldvpt <-
   function(base.model = NULL,
            curr.model = NULL,
-           files = NULL) {
+           files = NULL,
+           Overwrite.base = FALSE) {
     mess1 <-
       "Do you want rebuild from scratch one (or several) SS input file(s) for this sensitivity analysis?
 This ensures that you start from the same basis as your base model if you already have
@@ -144,7 +145,8 @@ written one or several new input files for your new model."
       if (!is.null(SSfiles))
         copy_BaseModel_SSinputs(base_model = modelBase,
                                 Dvpt_model = modelDvpt,
-                                SS_file = SSfiles)
+                                SS_file = SSfiles,
+                                Overwrite_base = Overwrite.base)
     }
   }
 # ----------------------------------------------------------
@@ -433,6 +435,12 @@ update_Models_SA_table <- function(Models_SA, dir_SensAnal) {
 #' 3. Function to start a new sensitivity analysis ----
 #' ----------------------------------------------------------- #
 #'
+#' @param pool (character string) - Indicates in which pool of the workflow 
+#' the sensitivity analysis is developed. When working on bridging model, 
+#' \code{pool = ''}, when working on sensitivity analyses for the 
+#' "Base Model" chosen for the year of the assessment, \code{pool = 'base_model'} 
+#' and, when working on sensitivity analyses realized during the STAR Panel, 
+#' \code{pool = 'star_panel'}. 
 #' @param topic (character string)- Indicates the main topic of the sensitivity
 #' analysis. This HAS to be either"transition",  "landings", "discards", "surveys",
 #' "biological_Info", or "model".
@@ -473,7 +481,8 @@ update_Models_SA_table <- function(Models_SA, dir_SensAnal) {
 #' 5. Generate SA-specific templates for the scripts to build and analyze the models
 #
 
-NewSensAnal <- function(topic = NULL,
+NewSensAnal <- function(pool = "",
+                        topic = NULL,
                         object = NULL,
                         author = NULL,
                         folder_name = NULL,
@@ -486,8 +495,19 @@ NewSensAnal <- function(topic = NULL,
   
   dir_model <- file.path(here::here(), "model", fsep = fsep)
   dir_script <- file.path(here::here(), "R", fsep = fsep)
-  dir_SensAnal <-
-    file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
+  # dir_SensAnal <-
+  #   file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
+  if(pool == ""){
+    tmpDirPool <- ""
+  } else if (pool == "base_model"){
+    tmpDirPool <- "Base_Model"
+  } else if (pool == "star_panel"){
+    tmpDirPool <- "STAR_Panel"
+  } else {
+    stop("This pool('",pool,"')does not exist in the workflow")
+  }
+  dir_SensAnal <- file.path(dir_model, "Sensitivity_Anal", tmpDirPool, fsep = fsep)
+  
   dirScript_SensAnal  <-
     file.path(dir_script, "ss", "Sensitivity_Anal", fsep = fsep)
   
@@ -766,7 +786,7 @@ NewSensAnal <- function(topic = NULL,
     )
     stop()
   } else {
-    dir.create(WD)
+    dir.create(WD, recursive = TRUE)
   }
   # Create directory for plots (comparison of models)
   dir.create(file.path(WD, "SA_plots", fsep = fsep))
@@ -782,15 +802,28 @@ NewSensAnal <- function(topic = NULL,
     # Create directory
     dir.create(tmpWD)
     # Save the directory
-    pathMod <-
-      c(pathMod,
-        file.path(
-          "model",
-          "Sensitivity_Anal",
-          folder_name,
-          paste0(m, "_", new_model[m])
-        ))
-    
+    # pathMod <-
+    #   c(pathMod,
+    #     file.path(
+    #       "model",
+    #       "Sensitivity_Anal",
+    #       folder_name,
+    #       paste0(m, "_", new_model[m])
+    #     ))
+    if(pool == ""){
+      pathMod <-
+        c(pathMod,
+          file.path("model", "Sensitivity_Anal", folder_name, paste0(m, "_", new_model[m])))
+    } else if (pool == "base_model"){
+      pathMod <-
+        c(pathMod,
+          file.path("model", "Sensitivity_Anal", "Base_Model", folder_name, paste0(m, "_", new_model[m])))
+    } else if (pool == "star_panel"){
+      pathMod <-
+        c(pathMod,
+          file.path("model", "Sensitivity_Anal", "STAR_Panel", folder_name, paste0(m, "_", new_model[m])))
+    }
+
     if (m == 1)
       cat("- Copying SS input files from :\n")
     
@@ -1163,7 +1196,14 @@ write_SA_files <- function(out = NULL,
     cat("dir_script <- file.path(here::here(), 'R', fsep = fsep)\n")
     cat("\n")
     cat("# Path to the Sensitivity analysis folder", "\n")
-    cat("dir_SensAnal <- file.path(dir_model, 'Sensitivity_Anal', fsep = fsep)\n")
+    # cat("dir_SensAnal <- file.path(dir_model, 'Sensitivity_Anal', fsep = fsep)\n")
+    if(pool == ""){
+      cat("dir_SensAnal <- file.path(dir_model, 'Sensitivity_Anal', fsep = fsep)\n")
+    } else if (pool == "base_model"){
+      cat("dir_SensAnal <- file.path(dir_model, 'Sensitivity_Anal', 'Base_Model', fsep = fsep)\n")
+    } else if(pool == "star_panel"){
+      cat("dir_SensAnal <- file.path(dir_model, 'Sensitivity_Anal', 'STAR_Panel', fsep = fsep)\n")
+    }
     cat("\n")
     cat("# Path to data folder", "\n")
     cat("dir_data <- file.path(here::here(), 'data', 'for_ss', fsep = fsep)\n")
@@ -1198,7 +1238,7 @@ write_SA_files <- function(out = NULL,
 # If noHess = TRUE for a given model, then the Hessian matrix
 # won't be estimated.\n"
       )
-      cat("# Reminder - The following models are considered:")
+      cat("# Reminder - The following models are considered:\n")
       for (m in 1:length(Modcomp[, 'new_model']))
         cat("# \t- ", Modcomp[, 'new_model'][m], "\n")
       tmpHess <- rep(FALSE, length(Modcomp[, 'new_model']))
@@ -1332,22 +1372,58 @@ write_SA_files <- function(out = NULL,
       cat("# ----------------------------------------------------------- #\n")
       cat("\n")
       cat("# Path to the", Modcomp[m, "new_model"], "repertory\n")
-      tmp <-
-        gsub(
-          pattern = file.path("model", "Sensitivity_Anal", fsep = fsep),
-          replacement = "",
-          x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+      # tmp <-
+      #   gsub(
+      #     pattern = file.path("model", "Sensitivity_Anal", fsep = fsep),
+      #     replacement = "",
+      #     x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+      #   )
+      # tmp <-
+      #   stringr::str_split_fixed(string = tmp,
+      #                            pattern = fsep,
+      #                            n = 3)
+      # cat(
+      #   paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
+      #   "<- file.path(dir_SensAnal,",
+      #   paste0("'", paste(tmp[2], tmp[3], sep = "','"), "'"),
+      #   ",fsep = fsep)\n"
+      # )
+      if(pool == ""){
+        tmp <-
+          gsub(
+            pattern = file.path("model", "Sensitivity_Anal", fsep = fsep),
+            replacement = "",
+            x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+          )
+        tmp <-
+          stringr::str_split_fixed(string = tmp,
+                                   pattern = fsep,
+                                   n = 3)
+        cat(
+          paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
+          "<- file.path(dir_SensAnal,",
+          paste0("'", paste(tmp[2], tmp[3], sep = "','"), "'"),
+          ",fsep = fsep)\n"
         )
-      tmp <-
-        stringr::str_split_fixed(string = tmp,
-                                 pattern = fsep,
-                                 n = 3)
-      cat(
-        paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
-        "<- file.path(dir_SensAnal,",
-        paste0("'", paste(tmp[2], tmp[3], sep = "','"), "'"),
-        ",fsep = fsep)\n"
-      )
+      } else if(pool == "base_model" || pool == "star_panel"){
+        tmp <-
+          gsub(
+            pattern = file.path("model", "Sensitivity_Anal", fsep = fsep),
+            replacement = "",
+            x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+          )
+        tmp <-
+          stringr::str_split_fixed(string = tmp,
+                                   pattern = fsep,
+                                   n = 4)
+        cat(
+          paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
+          "<- file.path(dir_SensAnal,",
+          paste0("'", paste(tmp[3], tmp[4], sep = "','"), "'"),
+          ",fsep = fsep)\n"
+        )
+      }
+
       Dirmod <-
         paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"]))
       cat("\n")
@@ -1383,7 +1459,11 @@ write_SA_files <- function(out = NULL,
 # to start again from scratch and get the same\n"
       )
       cat("# basis of comparison.\n")
-      cat("Restart_SA_modeldvpt()\n")
+      # cat("Restart_SA_modeldvpt()\n")
+      cat("Restart_SA_modeldvpt(
+      base.model = '",Modcomp[m, "base_model"],"',
+      curr.model = '",Modcomp[m, "new_model"],"',
+      files = 'all')\n", sep = "")
       cat("\n")
       cat("\n")
       
@@ -1411,16 +1491,16 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the starter file for the model\n")
       cat(
-        "# SS_writestarter(
-      # mylist = ",
+        "SS_writestarter(
+      mylist = ",
         ext[1],
         ",
-      # dir = ",
+      dir = ",
         paste0(Dirmod, ","),
         "
-      # overwrite = TRUE,
-      # verbose = TRUE
-      # )\n"
+      overwrite = TRUE,
+      verbose = TRUE
+      )\n"
       )
       cat("\n")
       cat("# Check file structure\n")
@@ -1469,16 +1549,16 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the data file for the model\n")
       cat(
-        "# SS_writedat(
-      # datlist = ",
+        "SS_writedat(
+      datlist = ",
         ext[2],
         ",
-      # outfile =",
+      outfile =",
         paste0("file.path(", Dirmod, ","),
         "'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n"
+      version = '3.30',
+      overwrite = TRUE
+      )\n"
       )
       cat("\n")
       cat("# Check file structure\n")
@@ -1548,16 +1628,16 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the control file for the model\n")
       cat(
-        "# SS_writectl(
-      # ctllist = ",
+        "SS_writectl(
+      ctllist = ",
         ext[3],
         ",
-      # outfile =",
+      outfile =",
         paste0("file.path(", Dirmod, ","),
         "'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n"
+      version = '3.30',
+      overwrite = TRUE
+      )\n"
       )
       cat("# Check file structure\n")
       cat("# We actually need to run the model to check the file structure\n")
@@ -1600,18 +1680,18 @@ write_SA_files <- function(out = NULL,
       cat("\n")
       cat("# Save the forecast file for the model\n")
       cat(
-        "# SS_writeforecast(
-      # mylist = ",
+        "SS_writeforecast(
+      mylist = ",
         ext[4],
         ",
-      # dir =",
+      dir =",
         paste0(Dirmod, ","),
         "
-      # file = 'forecast.ss',
-      # writeAll = TRUE,
-      # verbose = TRUE,
-      # overwrite = TRUE
-      # )\n"
+      file = 'forecast.ss',
+      writeAll = TRUE,
+      verbose = TRUE,
+      overwrite = TRUE
+      )\n"
       )
       cat("\n")
       cat("# Check file structure\n")
@@ -1813,6 +1893,22 @@ write_SA_files <- function(out = NULL,
                                  n = 3)
       tmp <- tmp[!tmp %in% ""]
       
+      # if (ModcompBase[m, "base_model"] %in% c("13.sq", "23.sq.fixQ")) {
+      #   cat(
+      #     paste0("Dir_", gsub('\\.', '_', ModcompBase[m, "base_model"])),
+      #     " <- file.path(here::here(), ",
+      #     paste0("'", paste(tmp, collapse = "', '"), "'"),
+      #     ", 'run', fsep = fsep)\n"
+      #   )
+      # } else {
+      #   cat(
+      #     paste0("Dir_", gsub('\\.', '_', ModcompBase[m, "base_model"])),
+      #     " <- file.path(dir_SensAnal, ",
+      #     paste0("'", paste(tmp, collapse = "', '"), "'"),
+      #     ", 'run', fsep = fsep)\n",
+      #     sep = ""
+      #   )
+      # }
       if (ModcompBase[m, "base_model"] %in% c("13.sq", "23.sq.fixQ")) {
         cat(
           paste0("Dir_", gsub('\\.', '_', ModcompBase[m, "base_model"])),
@@ -1820,7 +1916,7 @@ write_SA_files <- function(out = NULL,
           paste0("'", paste(tmp, collapse = "', '"), "'"),
           ", 'run', fsep = fsep)\n"
         )
-      } else {
+      } else if(pool ==""){
         cat(
           paste0("Dir_", gsub('\\.', '_', ModcompBase[m, "base_model"])),
           " <- file.path(dir_SensAnal, ",
@@ -1828,7 +1924,16 @@ write_SA_files <- function(out = NULL,
           ", 'run', fsep = fsep)\n",
           sep = ""
         )
+      } else if ((pool == "base_model" && ModcompBase[m, "base_model"] == "23.model.francis_2") || pool == "star_panel"){
+        cat(
+          paste0("Dir_", gsub('\\.', '_', ModcompBase[m, "base_model"])),
+          " <- file.path(dirname(dir_SensAnal), ",
+          paste0("'", paste(tmp, collapse = "', '"), "'"),
+          ", 'run', fsep = fsep)\n",
+          sep = ""
+        )
       }
+      
       cat("\n")
       SaveDir <-
         c(SaveDir, paste0("Dir_", gsub('\\.', '_', ModcompBase[m, "base_model"])))
@@ -1848,28 +1953,75 @@ write_SA_files <- function(out = NULL,
           sep = ""
         )
         cat("\n")
+        cat("\n")
       }
       # Check if the new model is already in the base model
       if (!Modcomp[m, "new_model"] %in% Modcomp[m, "base_model"]) {
         # Path to each new model directory
         Dirmod <- NULL
         cat("# Path to the", Modcomp[m, "new_model"], "repertory\n")
-        tmp <-
-          gsub(
-            pattern = file.path("model", "Sensitivity_Anal", fsep = fsep),
-            replacement = "",
-            x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+        
+        # tmp <-
+        #   gsub(
+        #     pattern = file.path("model", "Sensitivity_Anal", fsep = fsep),
+        #     replacement = "",
+        #     x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+        #   )
+        # tmp <-
+        #   stringr::str_split_fixed(string = tmp,
+        #                            pattern = fsep,
+        #                            n = 3)
+        # cat(
+        #   paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
+        #   "<- file.path(dir_SensAnal,",
+        #   paste0("'", paste(tmp[2], tmp[3], sep = "','"), "'"),
+        #   ", 'run',fsep = fsep)\n"
+        # )
+        if(pool == ""){
+          tmp <-
+            gsub(
+              pattern = file.path("model", "Sensitivity_Anal", fsep = fsep),
+              replacement = "",
+              x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+            )
+          tmp <-
+            stringr::str_split_fixed(string = tmp,
+                                     pattern = fsep,
+                                     n = 3)
+          cat(
+            paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
+            "<- file.path(dir_SensAnal,",
+            paste0("'", paste(tmp[2], tmp[3], sep = "','"), "'"),
+            ", 'run',fsep = fsep)\n"
           )
-        tmp <-
-          stringr::str_split_fixed(string = tmp,
-                                   pattern = fsep,
-                                   n = 3)
-        cat(
-          paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
-          "<- file.path(dir_SensAnal,",
-          paste0("'", paste(tmp[2], tmp[3], sep = "','"), "'"),
-          ", 'run',fsep = fsep)\n"
-        )
+        } else if(pool == "base_model" || pool == "star_panel"){
+          if(pool == "base_model"){
+            tmp <-
+              gsub(
+                pattern = file.path("model", "Sensitivity_Anal", "Base_Model", fsep = fsep),
+                replacement = "",
+                x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+              )
+          } else {
+            tmp <-
+              gsub(
+                pattern = file.path("model", "Sensitivity_Anal", "STAR_Panel", fsep = fsep),
+                replacement = "",
+                x = Models_SA[Models_SA$`Model name` == Modcomp[m, "new_model"], "path"]
+              )
+          }
+          tmp <-
+            stringr::str_split_fixed(string = tmp,
+                                     pattern = fsep,
+                                     n = 3)
+          cat(
+            paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])),
+            "<- file.path(dir_SensAnal,",
+            paste0("'", paste(tmp[2], tmp[3], sep = "','"), "'"),
+            ", 'run',fsep = fsep)\n"
+          )
+        }
+        
         cat("\n")
         SaveDir <-
           c(SaveDir, paste0("Dir_", gsub('\\.', '_', Modcomp[m, "new_model"])))
@@ -1958,18 +2110,35 @@ write_SA_files <- function(out = NULL,
 #' delete (e.g., "Item 0.1"). Please refer to the "Summery_sensitivity_analysis.pdf" file for the
 #' name. If \code{SA_ID = "all}, then all sensitivity analyses (except the one called "Item 0.0")
 #' will be deleted.
-#
+#' @param pool (character string) - Indicates in which pool of the workflow 
+#' the sensitivity analysis is developed. When working on bridging model, 
+#' \code{pool = ''}, when working on sensitivity analyses for the 
+#' "Base Model" chosen for the year of the assessment, \code{pool = 'base_model'}
+#' and, when working on sensitivity analyses for the STAR Panel,
+#' \code{pool = 'star_panel'}.
 #' @author Matthieu Veron
 #  Contact: mveron@uw.edu
 #'
-remove_SA <- function(SA_ID = NULL) {
+remove_SA <- function(SA_ID = NULL, 
+                      pool = '') {
   # local declarations
   fsep <- .Platform$file.sep
   
   dir_model <- file.path(here::here(), "model", fsep = fsep)
   dir_script <- file.path(here::here(), "R", fsep = fsep)
-  dir_SensAnal <-
-    file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
+  # dir_SensAnal <-
+  #   file.path(dir_model, "Sensitivity_Anal", fsep = fsep)
+  if(pool == ""){
+    tmpDirpool <- ""
+  } else if(pool == "base_model"){
+    tmpDirpool <- "Base_Model"
+  } else if(pool == "star_panel"){
+    tmpDirpool <- "STAR_Panel"
+  } else {
+    stop("This pool ('",pool,"') does not exist in the workflow.")
+  }
+  dir_SensAnal <- file.path(dir_model, "Sensitivity_Anal", tmpDirpool, fsep = fsep)
+  
   dirScript_SensAnal  <-
     file.path(dir_script, "ss", "Sensitivity_Anal", fsep = fsep)
   
@@ -2103,13 +2272,17 @@ remove_SA <- function(SA_ID = NULL) {
 #' and paste all the input files (starter.ss, forecast.ss, control.ss, data.ss
 #' and either 'data_echo.ss_new' or 'data.ss_new')
 #' from the base model directory to your current model in development.
+#' @param Overwrite_base (logical) - Overwrite the base model to be used. If 
+#' \code{Overwrite_base = TRUE}, then a "new base" model can be used as a basis
+#' to restart the SA.
 #'
 #' @author Matthieu Veron
 #  Contact: mveron@uw.edu
 #'
 copy_BaseModel_SSinputs <- function(base_model = NULL,
                                     Dvpt_model = NULL,
-                                    SS_file = NULL) {
+                                    SS_file = NULL,
+                                    Overwrite_base = NULL) {
   # local declarations
   fsep <- .Platform$file.sep
   # Directories
@@ -2132,12 +2305,14 @@ copy_BaseModel_SSinputs <- function(base_model = NULL,
   colnames(Models_SA) <- gsub(" ", "_", colnames(Models_SA))
   
   # check the inputs
-  if (dim(dplyr::filter(SumUp, Base_model == base_model &
-                        New_model == Dvpt_model))[1] == 0) {
-    stop(
-      "This sensitivty analysis has not been implemented. Please check the definition
+  if(!Overwrite_base){
+    if (dim(dplyr::filter(SumUp, Base_model == base_model &
+                          New_model == Dvpt_model))[1] == 0) {
+      stop(
+        "This sensitivty analysis has not been implemented. Please check the definition
 of both your 'base mode' and 'development model.\n"
-    )
+      )
+    }
   }
   
   # check for presence of SS files
@@ -3207,16 +3382,16 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writestarter(
-      # mylist = ",
+      "SS_writestarter(
+      mylist = ",
       ext[1],
       ",
-      # dir = ",
+      dir = ",
       paste0(Dirmod, ","),
       "
-      # overwrite = TRUE,
-      # verbose = TRUE
-      # )\n",
+      overwrite = TRUE,
+      verbose = TRUE
+      )\n",
       file = out,
       append = TRUE
     )
@@ -3312,16 +3487,16 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writedat(
-      # datlist = ",
+      "SS_writedat(
+      datlist = ",
       ext[2],
       ",
-      # outfile =",
+      outfile =",
       paste0("file.path(", Dirmod, ","),
       "'SST_data.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n",
+      version = '3.30',
+      overwrite = TRUE
+      )\n",
       file = out,
       append = TRUE
     )
@@ -3434,16 +3609,16 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writectl(
-      # ctllist = ",
+      "SS_writectl(
+      ctllist = ",
       ext[3],
       ",
-      # outfile =",
+      outfile =",
       paste0("file.path(", Dirmod, ","),
       "'SST_control.ss', fsep = fsep),
-      # version = '3.30',
-      # overwrite = TRUE
-      # )\n",
+      version = '3.30',
+      overwrite = TRUE
+      )\n",
       file = out,
       append = TRUE
     )
@@ -3527,18 +3702,18 @@ Append_SA_analyses_Script <- function(out = NULL,
         file = out,
         append = TRUE)
     cat(
-      "# SS_writeforecast(
-      # mylist = ",
+      "SS_writeforecast(
+      mylist = ",
       ext[4],
       ",
-      # dir =",
+      dir =",
       paste0(Dirmod, ","),
       "
-      # file = 'forecast.ss',
-      # writeAll = TRUE,
-      # verbose = TRUE,
-      # overwrite = TRUE
-      # )\n",
+      file = 'forecast.ss',
+      writeAll = TRUE,
+      verbose = TRUE,
+      overwrite = TRUE
+      )\n",
       file = out,
       append = TRUE
     )

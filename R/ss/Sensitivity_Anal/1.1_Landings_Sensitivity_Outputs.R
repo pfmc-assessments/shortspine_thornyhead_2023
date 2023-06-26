@@ -112,7 +112,7 @@ var.to.save <- ls()
 
 
 # Path to the base model (23.model.francis_2) repertory
-Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
+Dir_23_model_francis_2 <- file.path(dir_SensAnal, 'Base_Model', '5.23_Official_Base', '1_23.base.official', 'run', fsep = fsep)
 
 # Root directory for this sensitivity analysis
 SA_path <- file.path('model','Sensitivity_Anal','1.1_Landings_Sensitivity',fsep = fsep)
@@ -131,9 +131,9 @@ SensiMod <- SSgetoutput(dirvec = c(
 # Rename the list holding the report files from each model
 names(SensiMod)
 names(SensiMod) <- c(
-	'23.model.francis_2',
-	'23.land.hist_impute',
-	'23.land.2013')
+	"Base",
+	"Imputed Historical Landings",
+	'2013 Historical Landings')
 
 # summarize the results
 Version_Summary <- SSsummarize(SensiMod)
@@ -144,10 +144,7 @@ SSplotComparisons(
       # print = TRUE,
       pdf = TRUE,
       plotdir = file.path(SA_path, 'SA_plots', fsep = fsep),
-      legendlabels = c(
-	'23.model.francis_2',
-	'23.land.hist_impute',
-	'23.land.2013')
+      legendlabels = names(SensiMod)
     )
 
 SSplotComparisons(
@@ -155,10 +152,7 @@ SSplotComparisons(
   print = TRUE,
   #pdf = TRUE,
   plotdir = file.path(here::here(), 'doc', 'FinalFigs', 'Sensitivities', 'Landings', fsep = fsep),
-  legendlabels = c(
-    'Base',
-    'Historical Imputation',
-    '2013 Historical Landings')
+  legendlabels = names(SensiMod)
 )
 
 # Create comparison table for this analisys

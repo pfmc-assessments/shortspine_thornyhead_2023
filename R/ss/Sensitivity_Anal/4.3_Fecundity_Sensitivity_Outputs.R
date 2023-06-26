@@ -102,7 +102,7 @@ var.to.save <- ls()
 
 
 # Path to the base model (23.model.francis_2) repertory
-Dir_23_model_francis_2 <- file.path(dir_SensAnal, '5.8_Francis_Reweighting_2', '1_23.model.francis_2', 'run', fsep = fsep)
+Dir_23_model_francis_2 <- file.path(dir_SensAnal, 'Base_Model', '5.23_Official_Base', '1_23.base.official', 'run', fsep = fsep)
 
 # Root directory for this sensitivity analysis
 SA_path <- file.path('model','Sensitivity_Anal','4.3_Fecundity_Sensitivity',fsep = fsep)

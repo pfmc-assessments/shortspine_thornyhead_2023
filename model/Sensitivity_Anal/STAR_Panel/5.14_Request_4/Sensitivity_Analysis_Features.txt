@@ -1,0 +1,29 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Estimate Maximum Retention 
+# Author:  P.Y. HERNVANN 
+# Date: 2023-06-06 17:08:45 
+# Sensitivity Analysis ID: Item 5.14 
+# Name of the model created:
+# 	- 23.est.max.ret 
+# *** 
+# 
+# This analysis has been developped based on the following model: 
+# 23.blkret.T3.blksel.T3 
+# 
+# Results are stored in the following foler: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.14_Request_4 
+# Name of the script used to build the new model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.14_Request_4_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 C:/Users/pyher/Documents/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.14_Request_4_Outputs.R .R
+# 
+# Features: 
+#  Estimate the maximum retention for Panel Request 4 
+# ============================================================ #
+

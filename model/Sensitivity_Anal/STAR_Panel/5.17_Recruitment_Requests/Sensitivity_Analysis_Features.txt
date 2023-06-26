@@ -1,0 +1,39 @@
+# ============================================================ #
+#              Sensitivity analysis description 
+# ============================================================ #
+# 
+# *** 
+# Topic of the sensitivity analysis:  model 
+# Specific item in that topic: 
+# 	- Recuritment Bias Adustment 
+# 	- New Recruitment Main Period 
+# Author:  Joshua Zahner 
+# Date: 2023-06-08 08:18:59 
+# Sensitivity Analysis ID: Item 5.17 
+# Names of the models created:
+# 	- 23.model.rec_biasadj 
+# 	- 23.model.rec_main_period 
+# *** 
+# 
+# This analysis has been developed based on the following model(s): 
+# New model 					 Base model
+# 23.model.rec_biasadj 				 23.base.day2.update 
+# 23.model.rec_main_period 				 23.base.day2.update 
+# 
+# Results are stored in the following foler: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/model/Sensitivity_Anal/STAR_Panel/5.17_Recruitment_Requests 
+# Name of the script used to build the new model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.17_Recruitment_Requests_Analyses.R .R
+# Name of the script used to analyze the results from this model: 
+#	 /Users/jzahner/Desktop/Projects/shortspine_thornyhead_2023/R/ss/Sensitivity_Anal/5.17_Recruitment_Requests_Outputs.R .R
+# 
+# General features: 
+# Additional recruitment requests from STAR Panel, commensurate with Request 7. 
+# 
+# Model features:
+# - Model 23.model.rec_biasadj:
+# Base model + new recrutiment bias adjustment 
+# - Model 23.model.rec_main_period:
+# Base Model + shorter main period deviates 
+# ============================================================ #
+

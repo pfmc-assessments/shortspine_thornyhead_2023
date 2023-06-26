@@ -112,8 +112,7 @@ load(file.path(dir_data,'SST_SS_2023_Data_Parameters.RData', fsep = fsep))
 # won't be estimated.
 # Reminder - The following models are considered:# 	-  23.growth.high 
 # 	-  23.growth.low 
-noHess <- c(FALSE,FALSE)
-
+noHess <- c(TRUE,TRUE)
 
 var.to.save <- ls()
 # ----------------------------------------------------------- 
@@ -141,7 +140,7 @@ var.to.save <- c(var.to.save, 'Dir_23_growth_high')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.growth.high", files="all")
+Restart_SA_modeldvpt(base.model="23.base.official", curr.model="23.growth.high", files="all", Overwrite.base = TRUE)
 
 
 # 3.1  Work on the Starter file ----
@@ -340,26 +339,26 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.growth.highfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = '' # ifelse(noHess[1], yes = '-nohess', no = '')
+      extra = ifelse(noHess[1], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
 # 3.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_growth_high, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_growth_high, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 
@@ -401,7 +400,7 @@ var.to.save <- c(var.to.save, 'Dir_23_growth_low')
 # wrote a new SS input file for your new model and need to modify it (It ensure
 # to start again from scratch and get the same
 # basis of comparison.
-Restart_SA_modeldvpt(base.model="23.model.francis_2", curr.model="23.growth.low", files="all")
+Restart_SA_modeldvpt(base.model="23.base.official", curr.model="23.growth.low", files="all", Overwrite.base = TRUE)
 
 
 # 4.1  Work on the Starter file ----
@@ -591,26 +590,26 @@ run_SS(SS_version = '3.30.21',
       # copy the input files from the23.growth.lowfolder
       cleanRun = TRUE,
       # clean the folder after the run
-      extra = '' #ifelse(noHess[2], yes = '-nohess', no = '')
+      extra = ifelse(noHess[2], yes = '-nohess', no = '')
       # this is if we want to use '-nohess'
       )
 
 # 4.6  Let's plot the outputs from this model ----
 # ======================= #
 # read the model output and print diagnostic messages
-Dirplot <- file.path(Dir_23_growth_low, 'run', fsep = fsep)
-
-replist <- SS_output(
-      dir = Dirplot,
-      verbose = TRUE,
-      printstats = TRUE
-      )
-
-# plots the results (store in the 'plots' sub-directory)
-SS_plots(replist,
-      dir = Dirplot,
-      printfolder = 'plots'
-      )
+# Dirplot <- file.path(Dir_23_growth_low, 'run', fsep = fsep)
+# 
+# replist <- SS_output(
+#       dir = Dirplot,
+#       verbose = TRUE,
+#       printstats = TRUE
+#       )
+# 
+# # plots the results (store in the 'plots' sub-directory)
+# SS_plots(replist,
+#       dir = Dirplot,
+#       printfolder = 'plots'
+#       )
 
 # =======================
 

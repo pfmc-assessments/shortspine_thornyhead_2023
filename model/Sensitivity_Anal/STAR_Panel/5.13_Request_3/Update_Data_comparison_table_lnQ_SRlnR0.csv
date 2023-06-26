@@ -1,0 +1,4 @@
+Label,Phase,23.model.francis_2,23.STAR.Panel.M.045,23.STAR.Panel.M.05
+SR_LN(R0),4,9.35448,9.49952,9.62379
+LnQ_base_Triennial1(4),-1,-0.472564,-0.572487,-0.653957
+LnQ_base_NWFSCcombo(6),-1,0.182302,0.0787591,6.35574e-5

@@ -326,6 +326,16 @@ NewSensAnal(topic = "landings",
             base_model = c("23.model.francis_2"),
             new_model = c("23.landings.ashop"))
 
+NewSensAnal(
+  topic = "model",
+  object = c("Prelim DT - Low State", "Prelim DT - Base State", "Prelim DT - High State"),
+  author = "Joshua Zahner",
+  folder_name = "Initial_Decision_Table",
+  script_model = "Initial_Decision_Table_Analyses",
+  script_results = "Initial_Decision_Table_Results",
+  base_model = c("23.model.francis_2", "23.model.francis_2", "23.model.francis_2"),
+  new_model = c("23.decision.low", "23.decision.mid", "23.decision.high")
+)
 
 #NewSensAnal(topic = "surveys",
 #            # names are based on new model
@@ -343,3 +353,187 @@ NewSensAnal(topic = "landings",
 # Add_Newmodel(SA_ID = "Item 3.2", new_model="23.surveys.useslope", base_model="23.model.francis_2", object = "Surveys")
 # Add_Newmodel(SA_ID = "Item 1.1", new_model="23.landings.4fleet", base_model="23.model.francis_2", object = "Landings")
 
+
+# 4 survey structure sensitivity analysis
+#NewSensAnal(topic = "surveys",
+#            # names are based on new model
+#            object = c("2 survey vs 4 survey structure", "extra SD on WCGBTS", "No Triennial Survey"),
+#            author = "Andrea Odell",
+#            folder_name = "surveys3_Sensitivity",
+#            script_model = "surveys3_Sensitivity_Analyses",
+#            script_results = "surveys3_Sensitivity_Outputs",
+#            base_model = c("23.model.francis_2"),
+#            new_model = c("23.surveys.useslope", "23.surveys.extaSDwcgbts", "23.surveys.notriennial"))
+
+NewSensAnal(topic="landings", 
+            object = "23.landings.4fleet", 
+            author = "Adam Hayes",
+            folder_name = "Landings_4fleet",
+            script_model = "Landings_4fleet_Analyses",
+            script_results = "Landings_4fleet_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.landings.4fleet"))
+
+
+
+
+# Sensitivity analyses for the STAR Panel
+# ============================================================ #
+
+# Request 3
+# Provide two sensitivity runs with M=0.045 and M=0.05, reported in the format 
+# requested in request #1. 
+# Additionally, show the fits to survey indices and all length comps.
+NewSensAnal(pool = "star_panel",
+            topic="model", 
+            author = "Matthieu VERON",
+            folder_name = "Request_3",
+            script_model = "Request_3_Analyses",
+            script_results = "Request_3_Outputs",
+            object = c("Fix M at 0.045", "Fix M at 0.05"), 
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.STAR.Panel.M.045", "23.STAR.Panel.M.05"))
+
+# Request 4
+# Provide two sensitivity runs with M=0.045 and M=0.05, reported in the format 
+# requested in request #1. 
+# Additionally, show the fits to survey indices and all length comps.
+NewSensAnal(pool = "star_panel",
+            topic="model", 
+            author = "P.Y. HERNVANN",
+            folder_name = "Request_4",
+            script_model = "Request_4_Analyses",
+            script_results = "Request_4_Outputs",
+            object = c("Estimate Maximum Retention"), 
+            base_model = c("23.blkret.T3.blksel.T3"),
+            new_model = c("23.est.max.ret"))
+
+
+# length comp reweighting 
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("Length Comp Re-weight"),
+            author = "Andrea Odell",
+            folder_name = "Length_Comp_Reweight",
+            script_model = "Length_Comp_Reweight_Analyses",
+            script_results = "Length_Comp_Reweight_Outputs",
+            base_model = c("23.model.francis_2"),
+            new_model = c("23.length.comp.reweight"))
+
+NewSensAnal(topic = "model",
+            # names are based on new model
+            object = c("lenght comp combo only", "lenght comp add triennial", "lenght comp add NonTrawl", "lenght comp add SouthTrawl", "lenght comp add NorthTrawl"),
+            author = "Andrea Odell",
+            folder_name = "LenComp_Reweight_by_Fleet",
+            script_model = "LenComp_Reweight_by_Fleet_Analyses",
+            script_results = "LenComp_Reweight_by_Fleet_Outputs",
+            base_model = c("23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2","23.model.francis_2"),
+            new_model = c("23.lencomp.Combo.Only", "23.lencomp.AddTriennial", "23.lencomp.AddNonTrawl", "23.lencomp.AddSouthTrawl", "23.lencomp.AddNorthTrawl"))
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model", 
+  author = "Joshua Zahner",
+  folder_name = "Recruitment_Requests",
+  script_model = "Recruitment_Requests_Analyses",
+  script_results = "Recruitment_Requests_Outputs",
+  object = c("Recuritment Bias Adustment", "New Recruitment Main Period"), 
+  base_model = c("23.base.day2.update", "23.base.day2.update"),
+  new_model = c("23.model.rec_biasadj", "23.model.rec_main_period")
+)
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model", 
+  author = "Joshua Zahner",
+  folder_name = "Recruitment_Requests_2",
+  script_model = "Recruitment_Requests_2_Analyses",
+  script_results = "Recruitment_Requests_2_Outputs",
+  object = c("New Recruitment Main Period Full"), 
+  base_model = c("23.base.day2.update"),
+  new_model = c("23.model.rec_long_main_period")
+)
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model", 
+  author = "Sabrina Beyer", 
+  folder_name = "SigmaR_non_sum_to_zero",
+  script_model = "SigmaR_non_sum_to_zero_Analyses",
+  script_results = "SigmaR_non_sum_to_zero_Outputs",
+  object = c("SigmaR_non_sum_to_zero"), 
+  base_model = c("23.base.day2.update"),
+  new_model = c("23.model.SigmaR.non.zero")
+)
+
+NewSensAnal(
+  pool = "star_panel",
+  topic = "model",
+  author = "Team Thornyhead",
+  folder_name = "STAR_base",
+  script_model = "STAR_base_Analyses",
+  script_results = "STAR_base_Outputs",
+  object = c("STAR Approved Base Model"),
+  base_model = c("23.model.rec_long_main_period"),
+  new_model = c("23.STAR.base")
+)
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="STAR_decision_table_040",
+  script_model="STAR_decision_table_040_Analyses",
+  script_results="STAR_decision_table_040_Outputs",
+  object=c("Low-State 040", "Base Case 040", "High-State 040"),
+  base_model=c("23.STAR.base", "23.STAR.base", "23.STAR.base"),
+  new_model=c("23.dt.low", "23.dt.base", "23.dt.high")
+)
+
+NewSensAnal(
+  pool="star_panel",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="STAR_decision_table_045",
+  script_model="STAR_decision_table_045_Analyses",
+  script_results="STAR_decision_table_045_Outputs",
+  object=c("Low-State 045", "Base Case 045", "High-State 045"),
+  base_model=c("23.STAR.base", "23.STAR.base", "23.STAR.base"),
+  new_model=c("23.dt.low_045", "23.dt.base_045", "23.dt.high_045")
+)
+
+NewSensAnal(
+  pool="base_model",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name = "Official_Base",
+  script_model = "Official_Base_Analyses",
+  script_results = "Official_Base_Outputs",
+  object=c("Official Base"),
+  base_model=c("23.STAR.base"),
+  new_model =c("23.base.official")
+)
+
+NewSensAnal(
+  pool="base_model",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="Decision_Table_040",
+  script_model="Base_dt_040_Analyses",
+  script_results="Base_dt_040_Outputs",
+  object=c("Base Case P*=0.40", "Low-State P*=0.40", "High-State P*=0.40"),
+  base_model=c("23.base.official", "23.base.official", "23.base.official"),
+  new_model=c("23.base.dt_base_40", "23.base.dt_low_40", "23.base.dt_high_40")
+)
+
+NewSensAnal(
+  pool="base_model",
+  topic="model",
+  author="Team Thornyhead",
+  folder_name="Decision_Table_045",
+  script_model="Base_dt_045_Analyses",
+  script_results="Base_dt_045_Outputs",
+  object=c("Base Case P*=0.45", "Low-State P*=0.45", "High-State P*=0.45"),
+  base_model=c("23.base.official", "23.base.official", "23.base.official"),
+  new_model=c("23.base.dt_base_45", "23.base.dt_low_45", "23.base.dt_high_45")
+)

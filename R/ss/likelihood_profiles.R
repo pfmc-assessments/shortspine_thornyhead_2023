@@ -1,4 +1,4 @@
- library(here)
+library(here)
 library(r4ss)
 source(file=file.path(here::here(), "R", "utils", "ss_utils.R"))
 
@@ -12,22 +12,27 @@ profile.settings <- get_settings_profile(parameters = 'SR_LN(R0)',
                                          use_prior_like = 0)
 
 
-model_settings <- get_settings(settings = list(base_name = '1_23.model.francis_2',
+model_settings <- get_settings(settings = list(base_name = '1_23.base.official',
                                                run = "profile",
                                                profile_details = profile.settings,
                                                init_values_src = 1,
                                                usepar=TRUE,
                                                globalpar=TRUE,
                                                parstring="SR_parm[1]"
-                                               )
-                               )
+)
+)
 
 
 model_settings$exe <- 'ss_osx'
-file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2"))
-run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/"), 
+file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official"))
+run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/Base_Model/5.23_Official_Base/"), 
                       model_settings = model_settings)
 
+
+file.rename(
+  from=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official_profile_SR_LN(R0)_prior_like_0/"),
+  to=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/profiles/R0")
+)
 
 ##### Run profile for Steepness #####
 
@@ -38,22 +43,26 @@ profile.settings <- get_settings_profile(parameters = 'SR_BH_steep',
                                          use_prior_like = 0)
 
 
-model_settings <- get_settings(settings = list(base_name = '1_23.model.francis_2',
+model_settings <- get_settings(settings = list(base_name = '1_23.base.official',
                                                run = "profile",
                                                profile_details = profile.settings,
                                                init_values_src = 1,
                                                usepar=TRUE,
                                                globalpar=TRUE,
                                                parstring="SR_parm[2]"
-                                               )
-                               )
+)
+)
 
 
 model_settings$exe <- 'ss_osx'
-file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2"))
-run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/"), 
+file.copy(here::here("model/ss_executables/SS_V3_30_21/ss_osx"), here::here("model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official"))
+run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/Base_Model/5.23_Official_Base/"), 
                       model_settings = model_settings)
 
+file.rename(
+  from=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official_profile_SR_BH_steep_prior_like_0/"),
+  to=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/profiles/steepness")
+)
 
 # Run profile for Natural Mortality -----------
 #Using r4ss::profile, I believe it *is* possible, you can set linenum or string to be 
@@ -61,24 +70,24 @@ run_diagnostics_MacOS(mydir = here::here("model/Sensitivity_Anal/5.8_Francis_Rew
 # would be a matrix along the lines of cbind(seq(m.low, m.high, length.out = n), nrow = n, ncol = 2)
 
 custom.profile <- function(dir,
-                          oldctlfile = "control.ss_new",
-                          masterctlfile = lifecycle::deprecated(),
-                          newctlfile = "control_modified.ss",
-                          linenum = NULL,
-                          string = NULL,
-                          profilevec = NULL,
-                          usepar = FALSE,
-                          globalpar = FALSE,
-                          parlinenum = NULL,
-                          parstring = NULL,
-                          saveoutput = TRUE,
-                          overwrite = TRUE,
-                          whichruns = NULL,
-                          prior_check = TRUE,
-                          read_like = TRUE,
-                          exe = "ss",
-                          verbose = TRUE,
-                          ...) {
+                           oldctlfile = "control.ss_new",
+                           masterctlfile = lifecycle::deprecated(),
+                           newctlfile = "control_modified.ss",
+                           linenum = NULL,
+                           string = NULL,
+                           profilevec = NULL,
+                           usepar = FALSE,
+                           globalpar = FALSE,
+                           parlinenum = NULL,
+                           parstring = NULL,
+                           saveoutput = TRUE,
+                           overwrite = TRUE,
+                           whichruns = NULL,
+                           prior_check = TRUE,
+                           read_like = TRUE,
+                           exe = "ss",
+                           verbose = TRUE,
+                           ...) {
   # Ensure wd is not changed by the function
   orig_wd <- getwd()
   on.exit(setwd(orig_wd))
@@ -403,19 +412,20 @@ custom.profile <- function(dir,
 
 # note: don't run this in your main directory
 # make a copy in case something goes wrong
-base.dir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run")
-mydir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_mortality")
+base.dir <- file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official/run")
+mydir <- file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official_profile_mortality")
 
-file.copy(
-  base.dir,
-  mydir
-)
+if(!file.exists(mydir)){
+  dir.create(mydir)
+}
+apply(as.matrix(list.files(base.dir, full.names=TRUE)), 1, function(f) file.copy(f, mydir, overwrite=TRUE))
 
 # the following commands related to starter.ss could be done by hand
 # read starter file
 starter <- SS_readstarter(file.path(mydir, "starter.ss"))
 # change control file name in the starter file
 starter[["ctlfile"]] <- "control_modified.ss"
+starter[["init_values_src"]] <- 1
 # make sure the prior likelihood is calculated
 # for non-estimated quantities
 starter[["prior_like"]] <- 1
@@ -439,7 +449,9 @@ profilemodels <- custom.profile(
   oldctlfile = "SST_control.ss",
   newctlfile = "control_modified.ss",
   string = string, # subset of parameter label
+  parlinenum=c(5, 7, 31, 33),
   profilevec = m.vec,
+  usepar=TRUE,
   extras = "-nohess"
 )
 
@@ -449,7 +461,7 @@ profilemodels <- SSgetoutput(dirvec = mydir, keyvec = 1:nrow(m.vec))
 profilesummary <- SSsummarize(profilemodels)
 
 # OPTIONAL COMMANDS TO ADD MODEL WITH PROFILE PARAMETER ESTIMATED
-rep <- r4ss::SS_output(file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run"),
+rep <- r4ss::SS_output(file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official/run/"),
                        covar = FALSE,
                        printstats = FALSE, verbose = FALSE
 )
@@ -462,70 +474,79 @@ nwfscDiag::profile_plot(
   profilesummary = profilesummary
 )
 
-# Run profile for growth ---------
-  #if (FALSE) {
-  # note: don't run this in your main directory
-  # make a copy in case something goes wrong
-  mydir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_growth")
-  
-  file.copy("model/ss_executables/SS_V3_30_21/ss_osx", mydir)
-  
-  # the following commands related to starter.ss could be done by hand
-  # read starter file
-  starter <- SS_readstarter("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_growth/starter.ss")
-  # change control file name in the starter file
-  starter[["ctlfile"]] <- "control_modified.ss"
-  # make sure the prior likelihood is calculated
-  # for non-estimated quantities
-  starter[["prior_like"]] <- 1
-  # write modified starter file
-  SS_writestarter(starter, dir = mydir, overwrite = TRUE)
-  
-  # Low growth - 10.24, 66.25, 8.25, 59.47
-  # High growth - 14.23, 92.01, 11.47, 82.59
-  # 10-15, 60-100, 8-12, 55-90
-  # 0.5, 4, 0.4, 3.5
-  
-  # vector of values to profile over
-  g.vec <- cbind(seq(10, 15, length.out=11), seq(60, 150, length.out=11), seq(8, 12, length.out=11), seq(55, 140, length.out=11))
-  Nprofile <- length(g.vec)
-  
-  # make a vector for string 
-  string <- c("L_at_Amin_Fem_GP_1","L_at_Amax_Fem_GP_1","L_at_Amin_Mal_GP_1","L_at_Amax_Mal_GP_1")
-  
-  
-  colnames(g.vec) <- string
-  
-  # run profile command
-  profilemodels <- custom.profile(
-    exe = "ss_osx",
-    dir = mydir,
-    oldctlfile = "SST_control.ss",
-    newctlfile = "control_modified.ss",
-    string = string, # subset of parameter label
-    profilevec = g.vec,
-    extras = "-nohess"
-  )
-  
-  # below copied from r4ss vignette 
-  
-  # read the output files (with names like Report1.sso, Report2.sso, etc.)
-  profilemodels <- SSgetoutput(dirvec = mydir, keyvec = 1:nrow(g.vec))
-  # summarize output
-  profilesummary <- SSsummarize(profilemodels)
-  
-  # OPTIONAL COMMANDS TO ADD MODEL WITH PROFILE PARAMETER ESTIMATED
-  rep <- r4ss::SS_output(file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run"),
-                         covar = FALSE,
-                         printstats = FALSE, verbose = FALSE
-  )
-  
+profile.dir <- file.path(here::here(), "model/Sensitivity_Anal/Base_Model/profiles/mortality")
+if(file.exists(profile.dir)){
+  unlink(profile.dir, recursive = TRUE)
+}
 
-# "L_at_Amin_Fem_GP_1","L_at_Amax_Fem_GP_1","L_at_Amin_Mal_GP_1","L_at_Amax_Mal_GP_1"
-  nwfscDiag::profile_plot(
-    mydir = mydir,
-    para = "L_at_Amax_Mal_GP_1",
-    rep = rep,
-    profilesummary = profilesummary
-  )
-  
+file.rename(
+  from=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/5.23_Official_Base/1_23.base.official_profile_mortality/"),
+  to=file.path(here::here(), "model/Sensitivity_Anal/Base_Model/profiles/mortality")
+)
+
+# Run profile for growth ---------
+#if (FALSE) {
+# note: don't run this in your main directory
+# make a copy in case something goes wrong
+# mydir <- file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_growth")
+# 
+# file.copy("model/ss_executables/SS_V3_30_21/ss_osx", mydir)
+# 
+# # the following commands related to starter.ss could be done by hand
+# # read starter file
+# starter <- SS_readstarter("model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2_profile_growth/starter.ss")
+# # change control file name in the starter file
+# starter[["ctlfile"]] <- "control_modified.ss"
+# # make sure the prior likelihood is calculated
+# # for non-estimated quantities
+# starter[["prior_like"]] <- 1
+# # write modified starter file
+# SS_writestarter(starter, dir = mydir, overwrite = TRUE)
+# 
+# # Low growth - 10.24, 66.25, 8.25, 59.47
+# # High growth - 14.23, 92.01, 11.47, 82.59
+# # 10-15, 60-100, 8-12, 55-90
+# # 0.5, 4, 0.4, 3.5
+# 
+# # vector of values to profile over
+# g.vec <- cbind(seq(10, 15, length.out=11), seq(60, 150, length.out=11), seq(8, 12, length.out=11), seq(55, 140, length.out=11))
+# Nprofile <- length(g.vec)
+# 
+# # make a vector for string 
+# string <- c("L_at_Amin_Fem_GP_1","L_at_Amax_Fem_GP_1","L_at_Amin_Mal_GP_1","L_at_Amax_Mal_GP_1")
+# 
+# 
+# colnames(g.vec) <- string
+# 
+# # run profile command
+# profilemodels <- custom.profile(
+#   exe = "ss_osx",
+#   dir = mydir,
+#   oldctlfile = "SST_control.ss",
+#   newctlfile = "control_modified.ss",
+#   string = string, # subset of parameter label
+#   profilevec = g.vec,
+#   extras = "-nohess"
+# )
+# 
+# # below copied from r4ss vignette 
+# 
+# # read the output files (with names like Report1.sso, Report2.sso, etc.)
+# profilemodels <- SSgetoutput(dirvec = mydir, keyvec = 1:nrow(g.vec))
+# # summarize output
+# profilesummary <- SSsummarize(profilemodels)
+# 
+# # OPTIONAL COMMANDS TO ADD MODEL WITH PROFILE PARAMETER ESTIMATED
+# rep <- r4ss::SS_output(file.path(here::here(), "model/Sensitivity_Anal/5.8_Francis_Reweighting_2/1_23.model.francis_2/run"),
+#                        covar = FALSE,
+#                        printstats = FALSE, verbose = FALSE
+# )
+# 
+# 
+# # "L_at_Amin_Fem_GP_1","L_at_Amax_Fem_GP_1","L_at_Amin_Mal_GP_1","L_at_Amax_Mal_GP_1"
+# nwfscDiag::profile_plot(
+#   mydir = mydir,
+#   para = "L_at_Amax_Mal_GP_1",
+#   rep = rep,
+#   profilesummary = profilesummary
+# )

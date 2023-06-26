@@ -57,7 +57,7 @@ if(!file.exists(file.path)){
 }
 
 # File path for depth covariate included
-file.path <- file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023_depth=.csv")
+file.path <- file.path(here::here("data/processed/surveys"), "sdm_tmb_indices_2023_depth.csv")
 if(!file.exists(file.path)){
   wcgbt.indices.dg <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dg_depth.Rdata"), "WCGBTS", "delta-gamma")
   wcgbt.indices.dln <- read.geostat.index(file.path(here::here("data/raw"), "wcgbts_index_dln_depth.Rdata"), "WCGBTS", "delta-lognormal")
@@ -92,7 +92,7 @@ if(!file.exists(file.path)){
 }
 
 indices <- read_csv(file.path, col_names = TRUE, col_types="dfddddddff") %>% 
-  filter(method=="delta-gamma", survey %in% c("Triennial", "WCGBTS")) %>%
+  filter(method=="delta-gamma") %>%
   mutate(
     area=case_when(area=="Total" ~ "Coastwide",
                    area=="California" ~ "California",
@@ -142,11 +142,13 @@ ggplot(indices, aes(x=year, y=est, ymin=lwr, ymax=upr, color=area, fill=area))+
 
 
 dbi <- read_csv(file.path(here::here(), "data", "processed", "surveys", "survey_indices_2023.csv")) %>%
-    filter(survey %in% c("AFSC Triennial Shelf Survey 1", "AFSC Triennial Shelf Survey 2", "West Coast Groundfish Bottom Trawl Survey")) %>%
+    #filter(survey %in% c("AFSC Triennial Shelf Survey 1", "AFSC Triennial Shelf Survey 2", "West Coast Groundfish Bottom Trawl Survey")) %>%
     mutate(
       assessment="2023",
       survey=case_when(survey == "AFSC Triennial Shelf Survey 1" ~ "Triennial",
                        survey == "AFSC Triennial Shelf Survey 2" ~ "Triennial 2",
+                       survey == "NWFSC Slope Survey" ~ "NWSlope",
+                       survey == "AFSC Slope Survey" ~ "AKSlope",
                        survey == "West Coast Groundfish Bottom Trawl Survey" ~ "WCGBTS")
     )
     
@@ -156,19 +158,19 @@ dbi <- read_csv(file.path(here::here(), "data", "processed", "surveys", "survey_
     # )
 
 format.indices <- indices %>% 
-      filter(area == "Total") %>%
-      select(year, est, lwr, upr, se, method, survey) %>%
+      filter(area == "Coastwide") %>%
+      dplyr::select(year, est, lwr, upr, se, method, survey) %>%
       mutate(
         Fleet=NA,
         Season=NA,
-        # survey=case_when(survey == "Triennial" ~ "Triennial",
-        #                  survey == "WCGBTS" ~ "West Coast Groundfish Bottom Trawl Survey",
-        #                  survey == "NWFSC Slope Survey" ~ "NWFSC Slope Survey",
-        #                  survey == "AFSC Slope Survey" ~ "AFSC Slope Survey")
+        survey=case_when(survey == "Triennial" ~ "Triennial",
+                         survey == "WCGBTS" ~ "West Coast Groundfish Bottom Trawl Survey",
+                         survey == "NWFSC Slope Survey" ~ "NWSlope",
+                         survey == "AFSC Slope Survey" ~ "AKSlope")
       ) %>%
       rename(Value=est, lci=lwr, uci=upr, seLogB=se, Year=year) %>%
       relocate(Year, Season, Fleet, Value, seLogB, survey, lci, uci, method) %>% 
-      filter(method=="delta-gamma", survey %in% c("Triennial", "Triennial 2", "WCGBTS"))
+      filter(method=="delta-gamma")
 
 ggplot(dbi, aes(x=Year, y=Value, ymin=lci, ymax=uci, color=survey, fill=survey, group=survey))+
   geom_pointrange(linetype="longdash")+
