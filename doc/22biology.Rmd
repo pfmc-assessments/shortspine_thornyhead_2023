@@ -8,7 +8,7 @@
 
 #### Maturity   
 @pearson_gunderson_2003 estimated a length at 50% maturity of 18.2 cm on the West Coast, with most females maturing between 17 and 19 cm. This was represented in the 2005 and 2013 assessments by the logistic function,
-\begin{equation} M(L) = (1 + e^{-2.3(L-18.2)})-1\end{equation}
+\begin{equation} M(L) = (1 + e^{-2.3(L-18.2)})^{-1}\end{equation}
 
 where L is the length in cm.
 
