@@ -60,7 +60,6 @@ Males: $L{a_{1}}$ = 9.2 cm; $L{a_{2}}$ = 66.1 cm; $k$ = 0.0168 per year
 For reference, the equivalent von-Bertalanffy growth parameters are:  
   
 Females: $t{_0}$ = -8.931; $L{_{inf}}$ = 111.0 cm; $k$ = 0.0099 per year
-
 Males: $t{_0}$ = -5.314; $L{_{inf}}$ = 79.4 cm; $k$ = 0.0168 per year  
 
 `r Spp` are slow-growing fish that appear to continue to grow throughout their lifespan (i.e., the growth curve does not asymptote). The new growth curves estimated using the Bulter dataset exhibited similar trends to those assumed in the 2005 and 2013 assessments (Figure \ref{fig:growthcurve}). The male curves were almost identical, with the 2005/2013 curve exhibiting slightly lower length-at-age at young ages and slightly higher length-at-age at older ages. The 2005/2013 female curve was defined by a higher growth rate, leading to the higher length-at-age in the intermediate age range.
