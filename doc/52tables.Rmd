@@ -54,7 +54,7 @@ ssb_tab <- data.frame(
 colnames(ssb_tab) <- c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")
 # 
 sa4ss::table_format(x = ssb_tab,
-                    caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
+                    caption = "Spawning output (billions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
                     label = "ssb",
                     custom_width = TRUE,
                     col_to_adjust = c(2, 3, 4, 5),
@@ -77,9 +77,9 @@ sa4ss::table_format(x = rec_tab,
 #SPR
 #Table 4 
 spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
-names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
+names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR_$50\\%$)", "95% CI", "Exploitation Rate", "95% CI")    
 sa4ss::table_format(x = spr_tab,
-                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{30\\%})$",
+                  caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{50\\%})$",
                   label = "spr",
                   custom_width = TRUE,
                   col_to_adjust = c(2),
@@ -238,7 +238,7 @@ sa4ss::table_format(x = allcatches_tab,
 #Time Series
 #Table 10
 ts_tab<-read.csv(file.path(tab_dir1, "TimeSeries.csv"))
-names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Total Biomass (mt)", "% Unfished", "Age 0 Recruits", "Total Mortality", "SPR Ratio", "Expl Rate")
+names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Age 1+ Biomass (mt)", "% Unfished", "Age 0 Recruits", "Total Mortality", "SPR Ratio", "Expl Rate")
 sa4ss::table_format(x = ts_tab,
                     digits = 2,
                   caption = "Time series of population estimates from the base model.",
@@ -278,7 +278,7 @@ dt <- read.csv(file.path(here::here(), "doc", "dt.csv"))
 
 sa4ss::table_format(x = dt,
                      col_names = c("Year", "Catch", "SO", "Dep", "SO", "Dep", "SO", "Dep"),
-                  caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards.",
+                  caption = "Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels.",
                   label = "decisiontable")  %>%
     kableExtra::add_header_above(c(" " = 2, "Low: M = 0.03" = 2, 
                                    "Base: 0.04" = 2, 
@@ -296,7 +296,7 @@ like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
 like_tab$Total <- print.numeric(like_tab$Total, 3)
 names(like_tab)<-c("Source", "Likelihood Component")
 sa4ss::table_format(x = like_tab,
-                  caption = "Likelihood components by source.",
+                  caption = "Likelihood components by source for the base model.",
                   label = "likelihoods",
                   align = c("l", "l"))
 ```
@@ -386,7 +386,7 @@ sa4ss::table_format(x = survinfo_tab,
 ```{r, results = 'asis'}
 #Jitter results 
 #Table 16
-jitter_tab<-read.csv(file.path(tab_dir3, "jitter_results_summary.csv"))
+jitter_tab<-read.csv(file.path(tab_dir3, "jitter_results.csv"))
 names(jitter_tab)<-c("Total Likelihood", "Change from Base", "% Change","Frequency")
 sa4ss::table_format(x = jitter_tab,
                    caption = "Jitter results.",

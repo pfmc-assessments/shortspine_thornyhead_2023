@@ -3,6 +3,7 @@ library(here)
 library(float)
 library(flextable)
 library(kableExtra)
+library(tidyverse)
 
 fig_dir1 <- here::here("doc", "FinalFigs", "Intro")
 fig_dir2 <- here::here("doc", "FinalFigs", "Data")

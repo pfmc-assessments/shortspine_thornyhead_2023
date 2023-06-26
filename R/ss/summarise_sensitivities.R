@@ -3,7 +3,8 @@ library(r4ss)
 library(kableExtra)
 
 model.names <- c("Base", "Low Growth", "High Growth", "2013 Maturity", 
-                 "Intermediate Maturity", "Imputed Landings", "2013 Landings")
+                 "Intermediate Maturity", "Imputed Landings", "2013 Landings",
+                 "DBIs", "MBIs - Lognormal")
 model.ids <- c("Base_Model/5.23_Official_Base/1_23.base.official",
               #"5.8_Francis_Reweighting_2/1_23.model.francis_2", 
                "4.1_Growth_Sensitivity/2_23.growth.low", 
@@ -11,7 +12,9 @@ model.ids <- c("Base_Model/5.23_Official_Base/1_23.base.official",
                "4.2_Maturity_Sensitivity/1_23.maturity.pgcurve", 
                "4.2_Maturity_Sensitivity/2_23.maturity.mix_curve", 
                "1.1_Landings_Sensitivity/1_23.land.hist_impute", 
-               "1.1_Landings_Sensitivity/2_23.land.2013")
+               "1.1_Landings_Sensitivity/2_23.land.2013",
+               "3.2_surveys2_Sensitivity/1_23.surveys.db",
+               "3.1_surveys_Sensitivity/1_23.surveys.gamvln")
 
 sensi.dir <- file.path(here::here(), "model", "Sensitivity_Anal")
 

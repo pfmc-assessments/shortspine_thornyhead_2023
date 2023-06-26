@@ -295,11 +295,6 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "SPR3_ratiointerval.png"),
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"), 
                   caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.", 
                   label = "phase_diagram")
-
-#Retention Curve 
-sa4ss::add_figure(filein = file.path(fig_dir3, "retention_curves.png"), 
-                  caption = "Retention curves for all fleets.", 
-                  label = "retencurvs")
 ```
 
 \clearpage
@@ -339,18 +334,6 @@ sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectori
                   caption = "High to low values of $M$ and impact on relative spawning output.", 
                   label = "M_relspawnout")
 
-#growth
-sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_L_at_Amax_Fem_GP_1.png"), 
-                  caption = "Piner panel plot showing the impact of low to high $a_{max}$ assumptions on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
-                  label = "growth_prof")
-
-sa4ss::add_figure(filein = file.path(fig_dir6, "L_at_Amax_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
-                  caption = "Low to high values of $a_{max}$ and impact on spawning output.", 
-                  label = "growth_spawnout")
-
-sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png"), 
-                  caption = "High to low values of $M$ and impact on spawning output.", 
-                  label = "M_spawnout")
 ```
 
 \clearpage
@@ -420,21 +403,11 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_unce
 
 # Surveys 
 
-# sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare2_spawnbio_uncertainty.png"),
-#                   caption = "Spawning output comparisons of the base model and survey sensitivities.",
-#                   label = "surv_sensitiv_spawning")
-# 
-# sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare4_Bratio_uncertainty.png"),
-#                   caption = "Relative spawning output comparisons of the base model and survey sensitivities.",
-#                   label = "surv_sensitiv_mngmt")
-```
+sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare2_spawnbio_uncertainty.png"),
+                  caption = "Spawning output comparisons of the base model and survey sensitivities.",
+                  label = "surv_sensitiv_spawning")
 
-\clearpage
-
-```{r, results = "asis"}
-#Selectivity and Retention
-
-sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks2.png"),
-                  caption = "Time blocking for selectivity and retention for North and South trawl fleets.",
-                  label = "timeblocks")
+sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare4_Bratio_uncertainty.png"),
+                  caption = "Relative spawning output comparisons of the base model and survey sensitivities.",
+                  label = "surv_sensitiv_mngmt")
 ```
