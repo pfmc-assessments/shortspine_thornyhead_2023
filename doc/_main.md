@@ -1,6 +1,6 @@
 ---
 geometry: margin=1in
-month: "June"
+month: "July"
 year: "2023"
 preamble: |
 csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
@@ -79,7 +79,7 @@ author:
     first: M
     middle: 'A'
     family: Haltuch
-  - name: Owen Hamel
+  - name: Owen S. Hamel
     code: 4
     first: O
     middle: 'S'
@@ -177,7 +177,7 @@ This assessment applies to shortspine thornyhead (*Sebastolobus alascanus*) off 
 ## Catches{-}
 Historically, landings of shortspine thornyhead remained under 500 metric tons until the late 1960s when landings began to increase steadily, rising to a peak of 4,815 mt in 1989, followed by a sharp decline during a period when trip limits and other management measures were imposed in the 1990s. Since the institution of separate trip limits for shortspine and longspine thornyhead, the fishery has had more moderate removals of between 1,000 and 2,000 mt per year from 1995-1998. Landings fell below 1,000 mt per year from 1999-2006, then rose to 1,531 in 2009 and have declined since that time. Recreational fishery landings of thornyheads were negligible, so only commercial landings were included in the model. 
 
-Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for shortspine thornyhead have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when the catch shares system began. Catches from the At-Sea Hake fishery were integrated into the North Trawl fleet. 
+Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for shortspine thornyhead have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when under the catch shares system. Catches from the At-Sea Hake fishery were integrated into the North Trawl fleet. 
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -223,7 +223,7 @@ Data were divided into three fishery fleets: North trawl (the waters off Washing
 
 Most data used in the 2013 assessment were newly pulled and processed for this assessment, including length compositions from all fishing and survey fleets, indices of abundance derived from new geostatistical analyses, discard rates from both a 1980s observer study [@pikitch_evaluation_1988] and the current \gls{wcgop}, historical catch data from Washington, Oregon, and California, and all reported catches from 1981-2022. The only data  taken from the previous assessment without reanalysis were discard rates from the \gls{edcp} study in the 1990s. 
 
-New maturity analyses of samples collected by the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (Melissa Head, \gls{nwfsc}, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of females spawning. This assessment also assumes a new fecundity relationship, in which fecundity is modeled as a power function of length. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also slightly updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
+New maturity analyses of samples collected by the \gls{s-wcgbt} in 2011, 2013, 2014, 2016 and 2018 were available for this assessment (Melissa Head, \gls{nwfsc}, pers. comm.). The larger number and better spatial coverage of these samples allowed the use of statistical modeling to better understand the spatial variation in the proportion of females spawning. This assessment also assumes a new fecundity relationship, in which fecundity is modeled as a power function of length. New growth curves were estimated, using data from @butler_1995, which were similar to the curves assumed in the 2005 and 2013 assessments. In the previous assessment, a Beverton-Holt stock recruitment relationship was assumed and steepness ($h$) was fixed at 0.60. This assessment fixed steepness at 0.72, as recommended by @thorson_steepness_2019. Natural mortality ($M$) was also updated, from 0.0505 in the 2013 assessment, to be fixed at 0.04. 
 
 This assessment estimated 197 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 59 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
@@ -435,9 +435,9 @@ Year & OFL & ABC & ACL & Landings & Total Mortality\\
 2016 & 3169 & 2640 & 2639 & 942.38 & 992.09\\
 2017 & 3144 & 2619 & 2619 & 1,016.94 & 1,094.53\\
 2018 & 3116 & 2596 & 2596 & 885.44 & 948.28\\
-2019 & 3089 & 2573 & 2573 & 731.55 & 785.62\\
-2020 & 3063 & 2551 & 2552 & 431.26 & 477.36\\
-2021 & 3211 & 2183 & 2184 & 454.94 & 499.93\\
+2019 & 3089 & 2573 & 1983 & 731.55 & 785.62\\
+2020 & 3063 & 2551 & 1669 & 431.26 & 477.36\\
+2021 & 3211 & 2183 & 2183 & 454.94 & 499.93\\
 2022 & 3194 & 2130 & 2130 & 670.12 & 724.14\\*
 \end{longtable}
 \endgroup{}
@@ -458,13 +458,13 @@ There is uncertainty in catch estimates, and more so for historic periods and wh
 
 ## Decision table and projections{-}
 
-The standard deviation of the log of spawning biomass in 2023 is $\sigma = 0.18$. This value is in the adjustment of quotas based on scientific uncertainty (a process referred to by the notation “$P^*$”) when the value is greater than an assumed 0.36 minimum, as it is in this case. The associated offset would therefore be a multiplication of the OFL by 76.2%, which is the 40% quantile of a log-normal distribution with the associated $\sigma$. Twelve-year projections were conducted with a total catch assumed equal to the ACL calculated by applying this adjustment to the estimated OFL for each year. The selectivity and retention function and allocation of catch among fleets was assumed to match the values for the 2020-2022 timeblock. Catch for 2023 and 2024, the limits on which have already been set, were provided by the \gls{pfmc}, and correspond to a total catch of 756 mt.
+The calculated standard deviation of the log of spawning biomass in 2023 is $\sigma = 0.18$. This value is  ess than the standard , Category 2, sigma on OFL of 1.0, which is therefore used in the adjustment of quotas based on scientific uncertainty. The associated offset would therefore be a multiplication of the OFL by 76.2% in 2025 and decreasing in future years, which is the 40% quantile of a log-normal distribution with the associated $\sigma$. Twelve-year projections were conducted with a total catch assumed equal to the ACL calculated by applying this adjustment to the estimated OFL for each year. The selectivity and retention function and allocation of catch among fleets was assumed to match the values for the 2020-2022 timeblock. Catch for 2023 and 2024, the limits on which have already been set, were provided by the \gls{pfmc}, and correspond to a total catch of 756 mt.
 
 This default harvest projection applied to the base model indicated that the stock status would slowly decline from 39.4% in 2023 to 39.2% in 2024, before beginning a slow rebound to 40.1% by 2034. The associated OFL values over the period 2025–2034 would average 1,022 mt and the average ACL would be 718 mt. These values are near recent annual catch levels.
 
 Additional projections were conducted for the base model and low and high states of nature (columns) under two catch streams (rows) representing different levels of scientific uncertainty, and thus different values of $P^*$. The uncertainty in the \gls{ofl} associated with the base model was broad ($\sigma = 0.18$), and states of nature were chosen based on values of natural mortality (M) that encapsualted the range of M seen in the literature. The low state of nature used $M=0.03$ to fully encapsulate the low end of the range of M seen in assessments throughout the eastern Pacific. The high state of nature used M=0.05 to roughly encapsulate the value of M used by the 2013 assessment. 
 
-The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$). The most pessimistic forecast scenario, combining the low state of nature (M=0.03) with the high catch stream (P*=0.45), resulted in a projected stock status of 38.7%, very close to the target value. All other projections led to a higher projected status, with a maximum of 54.7% for the combination of the high state of nature and low catch. Forecasts under the base case led to estimated status ranging from 2024 spawning depletion values of 39.1% in both catch scenarios.
+The catch streams chosen for the decision table were represented as total catch rather than landed catch, but discard rates were low under IFQs, so the difference in between total catch and landings is small, and represent catch under two distinct levels of P* ($P^*=0.40$ and $P^*=0.45$). The most pessimistic forecast scenario, combining the low state of nature (M=0.03) with the high catch stream (P*=0.45), resulted in a projected stock status of 38.7%, still very close to the target value, though there is a declining trend owing to a decline in productivity. All other projections led to a higher projected status, with a maximum of 54.7% for the combination of the high state of nature and low catch. Forecasts under the base case led to estimated depletion values of 39.1% in both catch scenarios, and incerasing status at near the end of the projection period.
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -554,7 +554,7 @@ Research and data needs for future assessments include the following:
 ## Basic Information
 This assessment reports the status of shortspine thornyhead (_Sebastolobus alascanus_) off the US West coast using data through 2022.
 
-Shortspine thornyhead are found in the waters off the West Coast of the United States, from northern Baja California to the Bering Sea, at depths of 20 meters to over 1,500 meters. The majority of the spawning biomass occurs in the oxygen minimum zone between 600 and 1,400 meters. The distribution of the smallest shortspine thornyhead suggests that they tend to settle at  100–400 meters and are believed to exhibit ontogenetic migration down the slope, although large individuals are found across the depth range. Higher densities (kg/ha) of shortspine thornyhead occur in shallower areas (under 400 meters) off Oregon and Washington, whereas in California, they occur in deeper areas (above 400 meters; Figure \ref{fig:stock-map}).
+Shortspine thornyhead are found in the waters off the West Coast of the United States, from northern Baja California to the Bering Sea, at depths of 20 meters to over 1,500 meters. The majority of the spawning biomass occurs in the oxygen minimum zone between 600 and 1,400 meters. The distribution of the smallest shortspine thornyhead suggests that they tend to settle at  100–400 meters and are believed to exhibit ontogenetic migration down the slope, although large individuals are found across the depth range. Higher densities (kg/ha) of shortspine thornyhead occur in shallower areas (shallow than 400 meters) off Oregon and Washington, whereas in California, they occur in deeper areas (deeper than 400 meters; Figure \ref{fig:stock-map}).
 
 Despite variation in density across the coast, survey data suggest that shortspine thornyheads are present in almost all trawlable areas below 500 meters, as they are caught in 91% of trawl survey hauls deeper than 500 m. Camera-tows show that thornyheads are spaced randomly across the sea floor, indicating a lack of schooling and territoriality [@du_preez_shortspine_2011; @wakefield_1990].
 
@@ -667,7 +667,7 @@ Commercial fishery length-composition data were obtained from \gls{pacfin} for 1
 
 Only randomly collected samples were used. The sample sizes associated with the length compositions from the fishing fleets are shown in Table \ref{tab:lensamp} (landings) and Table \ref{tab:disclensamp} (discards).
 
-Input sample sizes, ${N_{input}}$, for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Stewart, pers. comm.): 
+Input sample sizes, ${N_{input}}$, for fishery length frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (Ian Stewart, pers. comm.): 
 
 \begin{equation} {N_{input} = N_{trips} + 0.138N_{fish}}\qquad\text{ when }\frac{N_{fish}}{N_{trips}}<44 \end{equation}
 
@@ -1295,18 +1295,18 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ABC
 \endfoot
 \bottomrule
 \endlastfoot
-2023 & 3177 & 2078 & 755 & NA & NA & 0.762 & 8,716.84 & 0.394\\
-2024 & 3162 & 2030 & 755 & NA & NA & 0.747 & 8,686.69 & 0.392\\
-2025 & NA & NA & NA & 939.75 & 710.84 & 0.733 & 8,666.24 & 0.391\\
-2026 & NA & NA & NA & 962.46 & 713.47 & 0.719 & 8,658.74 & 0.391\\
-2027 & NA & NA & NA & 984.52 & 716.19 & 0.706 & 8,660.12 & 0.391\\
-2028 & NA & NA & NA & 1,005.90 & 718.04 & 0.693 & 8,669.87 & 0.391\\
-2029 & NA & NA & NA & 1,026.58 & 720.05 & 0.680 & 8,687.53 & 0.392\\
-2030 & NA & NA & NA & 1,046.56 & 721.25 & 0.667 & 8,712.50 & 0.393\\
-2031 & NA & NA & NA & 1,065.88 & 721.67 & 0.654 & 8,744.22 & 0.395\\
-2032 & NA & NA & NA & 1,084.54 & 721.32 & 0.642 & 8,782.10 & 0.397\\
-2033 & NA & NA & NA & 1,102.57 & 720.20 & 0.630 & 8,825.59 & 0.399\\
-2034 & NA & NA & NA & 1,119.95 & 719.01 & 0.618 & 8,874.11 & 0.401\\*
+2023 & 3177 & 2078 & 755 & NA & NA & NA & 8,716.84 & 0.394\\
+2024 & 3162 & 2030 & 755 & NA & NA & NA & 8,686.69 & 0.392\\
+2025 & NA & NA & NA & 939.75 & 710.84 & 0.762 & 8,666.24 & 0.391\\
+2026 & NA & NA & NA & 962.46 & 713.47 & 0.747 & 8,658.74 & 0.391\\
+2027 & NA & NA & NA & 984.52 & 716.19 & 0.733 & 8,660.12 & 0.391\\
+2028 & NA & NA & NA & 1,005.90 & 718.04 & 0.719 & 8,669.87 & 0.391\\
+2029 & NA & NA & NA & 1,026.58 & 720.05 & 0.706 & 8,687.53 & 0.392\\
+2030 & NA & NA & NA & 1,046.56 & 721.25 & 0.693 & 8,712.50 & 0.393\\
+2031 & NA & NA & NA & 1,065.88 & 721.67 & 0.680 & 8,744.22 & 0.395\\
+2032 & NA & NA & NA & 1,084.54 & 721.32 & 0.667 & 8,782.10 & 0.397\\
+2033 & NA & NA & NA & 1,102.57 & 720.20 & 0.654 & 8,825.59 & 0.399\\
+2034 & NA & NA & NA & 1,119.95 & 719.01 & 0.642 & 8,874.11 & 0.401\\*
 \end{longtable}
 \endgroup{}
 \end{landscape}

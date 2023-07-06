@@ -60,7 +60,7 @@ author:
     first: M
     middle: 'A'
     family: Haltuch
-  - name: Owen Hamel
+  - name: Owen S. Hamel
     code: 4
     first: O
     middle: 'S'

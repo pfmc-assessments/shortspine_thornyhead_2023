@@ -146,7 +146,7 @@ proj_tab <- proj_tab %>% as_tibble %>%
     catch = c(755, 755, rep(NA, 10)),
     ofl = c(NA, NA, pred_OFL[3:12]),
     abc = c(NA, NA, ABC_catch[3:12]),
-    buffer = c(0.762, 0.747, 0.733, 0.719, 0.706, 0.693, 0.680, 0.667, 0.654, 0.642, 0.630, 0.618)
+    buffer = c(NA, NA, 0.762, 0.747, 0.733, 0.719, 0.706, 0.693, 0.680, 0.667, 0.654, 0.642)
   ) %>%
   select(Year, ofl.adopt, abc.adopt, catch, ofl, abc, buffer, SO, dep) %>%
   as.data.frame
