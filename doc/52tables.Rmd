@@ -125,7 +125,7 @@ sa4ss::table_format(x = mngmt_tab,
 \newpage
 ```{r, results='asis'}
 #Projections
-#Table 7 
+#Table 7 - P*= 0.4
 proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES.csv"))
 
 proj_tab <- data.frame(
@@ -153,15 +153,53 @@ proj_tab <- proj_tab %>% as_tibble %>%
 
 names(proj_tab)<-c("Year", "Adopted OFL (mt)", "Adopted ABC (mt)", "Assumed Catch (mt)", "OFL (mt)", "ACL (mt)", "Buffer", "Spawning Output", "Fraction Unfished") 
 sa4ss::table_format(x = proj_tab,
-                  caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.",
+                  caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished using P*=0.4. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.",
                   label = "projections",
                   custom_width = TRUE,
                   col_to_adjust = c(2, 3, 4, 8, 9),
                   width=c("2cm", "2cm", "2cm", "2cm", "2cm"),
                   landscape=TRUE)
 
+#Projections
+#Table 8 - P*= 0.45
+proj_tab<-read.csv(file.path(tab_dir1, "g_Projections_ES_045.csv"))
+
+proj_tab <- data.frame(
+        proj_tab$Year,
+        comma(proj_tab$Predicted.OFL..mt., 2),
+        comma(proj_tab$ABC.Catch..mt., 2),
+        comma(proj_tab$Age.1..Biomass..mt., 2),
+        comma(proj_tab$Spawning.Output, 2),
+        print(proj_tab$Fraction.Unfished, 3)
+      )
+
+names(proj_tab)<-c("Year", "pred_OFL", "ABC_catch", "age1", "SO", "dep")
+
+
+proj_tab <- proj_tab %>% as_tibble %>%
+  mutate(
+    ofl.adopt = c(3177, 3162, rep(NA, 10)),
+    abc.adopt = c(2078, 2030, rep(NA, 10)),
+    catch = c(755, 755, rep(NA, 10)),
+    ofl = c(NA, NA, pred_OFL[3:12]),
+    abc = c(NA, NA, ABC_catch[3:12]),
+    buffer = c(NA, NA, 0.874, 0.865, 0.857, 0.849, 0.841, 0.833, 0.826, 0.818, 0.810, 0.803)
+  ) %>%
+  select(Year, ofl.adopt, abc.adopt, catch, ofl, abc, buffer, SO, dep) %>%
+  as.data.frame
+
+names(proj_tab)<-c("Year", "Adopted OFL (mt)", "Adopted ABC (mt)", "Assumed Catch (mt)", "OFL (mt)", "ACL (mt)", "Buffer", "Spawning Output", "Fraction Unfished") 
+sa4ss::table_format(x = proj_tab,
+                  caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished using P*=0.45. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.",
+                  label = "projections",
+                  custom_width = TRUE,
+                  col_to_adjust = c(2, 3, 4, 8, 9),
+                  width=c("2cm", "2cm", "2cm", "2cm", "2cm"),
+                  landscape=TRUE)
+
+
 #Summary Table
-#Table 8 
+#Table 9 
 sum_tab<-read.csv(file.path(tab_dir1, "i_Summary_ES.csv"))
 names(sum_tab)<-c("Quantity", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
 
@@ -228,7 +266,7 @@ sa4ss::table_format(x = sum_tab,
                   landscape = TRUE)
 
 #Catches
-#Table 9
+#Table 10
 allcatches_tab<-read.csv(file.path(tab_dir1, "Catches_All_Years.csv"))
 names(allcatches_tab)<-c("Year", "North Trawl", "South Trawl", "Non-Trawl", "Total Landings", "Total Dead")
 sa4ss::table_format(x = allcatches_tab,
@@ -236,7 +274,7 @@ sa4ss::table_format(x = allcatches_tab,
                   label = "allcatch")
 
 #Time Series
-#Table 10
+#Table 11
 ts_tab<-read.csv(file.path(tab_dir1, "TimeSeries.csv"))
 names(ts_tab)<-c("Year", "Total Biomass (mt)", "Spawning Output", "Age 1+ Biomass (mt)", "% Unfished", "Age 0 Recruits", "Total Mortality", "SPR Ratio", "Expl Rate")
 sa4ss::table_format(x = ts_tab,
@@ -291,7 +329,7 @@ sa4ss::table_format(x = dt,
 \newpage
 ```{r, results='asis'}
 #Like
-#Table 11
+#Table 12
 like_tab<-read.csv(file.path(tab_dir1, "likelihoods.csv"))
 like_tab$Total <- print.numeric(like_tab$Total, 3)
 names(like_tab)<-c("Source", "Likelihood Component")
@@ -304,7 +342,7 @@ sa4ss::table_format(x = like_tab,
 \newpage
 ```{r, results='asis'}
 #Fishery Length Comp Sample Sizes for landings
-#Table 12
+#Table 13
 lensamp_tab<-read.csv(file.path(tab_dir2,"lencomps_samplesizes.csv"))
 names(lensamp_tab)<-c("Year", "Samples North Trawl", "Tows North Trawl","Samples South Trawl", "Tows South Trawl","Samples Non-trawl", "Tows Non-trawl")
 sa4ss::table_format(x = lensamp_tab,
@@ -312,7 +350,7 @@ sa4ss::table_format(x = lensamp_tab,
                   label = "lensamp")
 
 #Fishery Length Comp Sample Sizes for discards
-#Table 13
+#Table 14
 disclensamp_tab<-read.csv(file.path(tab_dir2,"discard_lencomp_samplesizes.csv"))
 names(disclensamp_tab)<-c("Year", "North Trawl", "South Trawl", "Non-trawl")
 sa4ss::table_format(x = disclensamp_tab,
@@ -325,7 +363,7 @@ sa4ss::table_format(x = disclensamp_tab,
 \newpage
 ```{r, results='asis'}
 #Survey Strata
-#Table 14
+#Table 15
 surv_strat <- readLines(file.path(tab_dir2, "SurveyStrat.csv"))
 surv_strat <- trimws(surv_strat)
 surv_strat <- gsub("<a0>", "", surv_strat)
@@ -357,7 +395,7 @@ sa4ss::table_format(x = surv_strat,
 \newpage
 ```{r, results = 'asis'}
 #Survey Sample Sizes 
-#Table 15
+#Table 16
 survinfo_tab<-read.csv(file.path(tab_dir1, "haul.sample.info.master.csv"))
 
 survinfo_tab<-survinfo_tab[,2:5]
@@ -385,7 +423,7 @@ sa4ss::table_format(x = survinfo_tab,
 \newpage
 ```{r, results = 'asis'}
 #Jitter results 
-#Table 16
+#Table 17
 jitter_tab<-read.csv(file.path(tab_dir3, "jitter_results.csv"))
 names(jitter_tab)<-c("Total Likelihood", "Change from Base", "% Change","Frequency")
 sa4ss::table_format(x = jitter_tab,
@@ -399,7 +437,7 @@ sa4ss::table_format(x = jitter_tab,
 \newpage
 ```{r, results = 'asis'}
 #Likekihoods for sensitivities 
-#Table 17
+#Table 18
 sensitiv_tab<-read.csv(file.path(tab_dir3, "summary.csv"))
 names(sensitiv_tab)<-c("Source", "Base Model", "Low Growth","High Growth", "2013 Maturity", "Indeterm. Maturity", "Imputed Landings", "2013 Landings")
 
@@ -458,7 +496,7 @@ sa4ss::table_format(x = sensitiv_tab,
 \newpage
 ```{r, results = 'asis'}
 #Parameter Estimates
-#Table 18
+#Table 19
 allpars<-read.csv(file.path(tab_dir4, "Update_Data_comparison_table_all_params.csv"))
 names(allpars)<-c("Model", "Source", "Value", "Phase", "Min", "Max", "Init", "Gradient", "Prior Type", "Prior", "Prior SD", "Prior Like", "Lower 95% CI", "Upper 95% CI")
 

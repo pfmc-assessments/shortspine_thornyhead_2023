@@ -132,7 +132,7 @@ Dir_23_base_dt_high_45 <- file.path(dir_SensAnal, '5.25_Decision_Table_045','3_2
 
 # Extract the outputs for all models
 SensiMod <- SSgetoutput(dirvec = c(
-	Dir_23_base_official,
+	#Dir_23_base_official,
 	Dir_23_base_dt_base_45,
 	Dir_23_base_dt_low_45,
 	Dir_23_base_dt_high_45))
@@ -185,3 +185,17 @@ names(out) <- c('Label', unique(tmp$Model))
 
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
+
+## Executive summary tables 
+
+replist <- SS_output(Dir_23_base_dt_base_45)
+SSexecutivesummary(
+  replist,
+)
+SSexecutivesummary(
+  replist,
+  tables=('g'),
+  format=FALSE,
+  match_digits = TRUE
+)
+
