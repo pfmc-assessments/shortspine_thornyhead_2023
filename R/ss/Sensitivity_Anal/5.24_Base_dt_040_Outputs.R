@@ -185,3 +185,10 @@ names(out) <- c('Label', unique(tmp$Model))
 
 out %>%
   readr::write_csv(paste(SA_path, 'Update_Data_comparison_table_likelihoods_and_brps.csv', sep = fsep))
+
+# Projections Tables
+####################
+
+SSexecutivesummary(
+  replist = SS_output(Dir_23_base_dt_base_40),
+)

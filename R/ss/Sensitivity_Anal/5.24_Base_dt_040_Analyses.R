@@ -282,7 +282,7 @@ var.to.save <- ls()
 # Read in the file
 ForeFile <- file.path(Dir_23_base_dt_base_40, 'forecast.ss', fsep = fsep)
 file.copy(
-    from = file.path(here::here(), "model", "sst_forecast_STAR_Pstar_40.ss"),
+    from = file.path(here::here(), "model", "sst_forecast_40.ss"),
     to=ForeFile,
     overwrite = TRUE
 )

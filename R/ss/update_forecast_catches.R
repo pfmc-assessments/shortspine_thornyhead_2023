@@ -34,7 +34,7 @@ update.forecast.files <- function(model.dir, forecast.file){
   SS_writeforecast(
     mylist =  Fore,
     dir = file.path(here::here(), "model"), 
-    file = 'sst_forecast_STAR_Pstar_40.ss',
+    file = forecast.file,
     writeAll = TRUE,
     verbose = TRUE,
     overwrite = TRUE
@@ -57,7 +57,7 @@ Fore <-SS_readforecast(
   readAll = T
 )
 
-model.dir <- file.path(here::here(), "model", "Sensitivity_Anal", "STAR_Panel", "5.22_STAR_decision_table_045", "2_23.dt.base_045", "run")
+model.dir <- file.path(here::here(), "model", "Sensitivity_Anal", "Base_Model", "5.25_Decision_Table_045", "1_23.base.dt_base_45", "run")
 model <- SS_output(model.dir)
 
 Fore$Flimitfraction <- 1
