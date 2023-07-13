@@ -191,7 +191,7 @@ proj_tab <- proj_tab %>% as_tibble %>%
 names(proj_tab)<-c("Year", "Adopted OFL (mt)", "Adopted ABC (mt)", "Assumed Catch (mt)", "OFL (mt)", "ACL (mt)", "Buffer", "Spawning Output", "Fraction Unfished") 
 sa4ss::table_format(x = proj_tab,
                   caption = "Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished using P*=0.45. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.",
-                  label = "projections",
+                  label = "projections_45",
                   custom_width = TRUE,
                   col_to_adjust = c(2, 3, 4, 8, 9),
                   width=c("2cm", "2cm", "2cm", "2cm", "2cm"),
