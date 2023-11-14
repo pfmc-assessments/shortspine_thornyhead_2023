@@ -84,6 +84,7 @@ model/Sensitivity_Anal/Base_Model/retros/*
 !doc/FinalFigs/Sensitivities/Maturity/*.png
 !doc/FinalFigs/Sensitivities/Selectivity/*.png
 !doc/FinalFigs/Sensitivities/Retention/*.png
+!doc/FinalFigs/Sensitivities/Surveys/*.png
 !doc/FinalFigs/bridging/*.png
 !doc/FinalFigs/Jitters/*.png
 !doc/FinalFigs/Profiles/*.png

@@ -216,3 +216,63 @@ file.rename(from = file.path(dir_out, "compare4_Bratio_uncertainty.png", fsep = 
             to = file.path(dir_out, "Bridg_ts6_Bratio.png", fsep = fsep))
 file.rename(from = file.path(dir_out, "compare11_recdevs.png", fsep = fsep),
             to = file.path(dir_out, "Bridg_ts7_recdevs.png", fsep = fsep))
+
+
+
+# ----------------------------------------------------------- 
+#Survey Selectivity comparisons 
+dir_out <- file.path(here::here(),'doc','FinalFigs','Sensitivities', 'Surveys', fsep = fsep)
+if(!dir.exists(dir_out))
+  dir.create(dir_out)
+
+# Paths ----
+
+# Path to the official BASE Model
+Dir_23_official_base <- file.path(dir_SensAnal, 'Base_Model','5.23_Official_Base', '1_23.base.official' , 'run',fsep = fsep)
+
+# Path to the Survey sensitivity DBIs
+Dir_23_dbi <- file.path(dir_SensAnal, '3.2_surveys2_Sensitivity', '1_23.surveys.db' , 'run',fsep = fsep)
+
+# Path to the Survey sensitivity MBIs- LogNormal
+Dir_23_mbi_ln <- file.path(dir_SensAnal, '3.1_surveys_Sensitivity', '1_23.surveys.gamvln' , 'run',fsep = fsep)
+
+
+# Extract the outputs for all models
+SensiMod <- SSgetoutput(dirvec = c(
+  Dir_23_official_base,
+  Dir_23_dbi,
+  Dir_23_mbi_ln))
+
+# Rename the list holding the report files from each model
+names(SensiMod)
+# names(SensiMod) <- c(
+#   '23.mortality.update',
+#   '23.model.fleetstruct_5',
+#   '23.model.recdevs_Update',
+#   '23.Base.model')
+
+names(SensiMod) <- c(
+  'Base',
+  'DBIs',
+  'MBIs - LogNormal'
+  )
+
+
+# summarize the results
+Version_Summary <- SSsummarize(SensiMod)
+
+# make plots comparing the models
+SSplotComparisons(
+  Version_Summary,
+  print = TRUE,
+  subplots = c(2,4,11),
+  plotdir = dir_out,
+  legendlabels = names(SensiMod),
+  uncertainty=c(TRUE, FALSE, FALSE)
+)
+# file.rename(from = file.path(dir_out, "compare2_spawnbio_uncertainty.png", fsep = fsep),
+#             to = file.path(dir_out, "Bridg_ts5_Spawning_Output.png", fsep = fsep))
+# file.rename(from = file.path(dir_out, "compare4_Bratio_uncertainty.png", fsep = fsep),
+#             to = file.path(dir_out, "Bridg_ts6_Bratio.png", fsep = fsep))
+# file.rename(from = file.path(dir_out, "compare11_recdevs.png", fsep = fsep),
+#             to = file.path(dir_out, "Bridg_ts7_recdevs.png", fsep = fsep))
