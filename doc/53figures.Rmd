@@ -27,60 +27,72 @@ knitr::opts_chunk$set(fig.pos = 'h')
 #Figure 1 Coastwide CPUE plot from NWFSC combo survey
 sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
                   caption = "Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.", 
+                  alt_caption = "Buble plots of coastwide CPUE. The highest densities of shortspine thornyhead appear to be concentrated along certain stretches of the coastline, particularly off the coast of Oregon. Biomass density is visually stratified by depth, with lower concentrations represented by lighter and smaller circles, tapering off in areas further from shore and at the northern and southern extents of the survey area.",
                   label = "stock-map",
                   height=75)
 
 # Figure 2 Unid thornyheads and proportion shortspine
 sa4ss::add_figure(filein = file.path(fig_dir1, "thornyhead-ratio.png "), 
                   caption = "Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.", 
+                  alt_caption = "The upper graph displays the historical catch in metric tons of unidentified thornyheads along the West Coast from 1980 to recent years by state with non-trawl gear shown in orange and trawl gear shown in blue. The lower graph presents the proportion of shortspine species in the identified thornyhead catch, with data points for trawl and non-trawl gear connected by lines. Both graphs show significant variability over time, with non-trawl gear consistently having a higher proportion of shortspine species compared to trawl gear, as indicated by the higher orange line across all three states.",
                   label = "thornyhead-ratio")
 
 # Figure 3 Catch history
 sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"), 
-                  caption = "Landing history for shortspine thornyhead.", 
+                  caption = "Landing history for shortspine thornyhead.",
+                  alt_caption = "Stacked barplot of catches by fleet. See Table 10 for the time series shown in this figure.",
                   label = "catch_hist")
 
 # Figure 4 Data Sources Figure
 sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"), 
-                  caption = "Summary of data sources used in the base model.", 
+                  caption = "Summary of data sources used in the base model.",
+                  alt_caption = "Tabular information for this figure can be found in the data file.",
                   label = "assessment_data_timeseries")
 
 #Figure 5 Discard history
 sa4ss::add_figure(filein = file.path(fig_dir3, "catch7 discards stacked plot (depends on multiple fleets).png"), 
-                  caption = "Predicted discards based estimated retention and selectivity for each fleet.", 
+                  caption = "Predicted discards based estimated retention and selectivity for each fleet.",
+                  alt_caption = "Stacked barplot of discards by fleet. Tabular information for this figure can be found in the data file.",
                   label = "disc_hist")
 
 #Figure 6 Discard Rates 
 sa4ss::add_figure(filein = file.path(fig_dir2, "SST_WCGOP_GEMM_discard_rates_3fleet.png"), 
                   caption = "Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.", 
+                  alt_caption = "Discard rates are shown in a scatter plot, separated by North trawl (green), South trawl (blue), and non-trawl fleets (orange). The North trawl fleet, shows a decreasing trend over time, with a peak in 2003 at around 0.3. The South trawl fleet shows values generally below 0.2 and a relatively stable trend, with some increased discard rates in recent years. The non-trawl fleet has wider variability within years compared to the trawl fleets, but rates are stable.",
                   label = "disc_rates_WCGOP")
 
 # Figure 7 Survey Data Sources 
 sa4ss::add_figure(filein = file.path(fig_dir2, "survey_data_timeseries.png"), 
-                  caption = "Summary of survey data sources used in the base model.", 
+                  caption = "Summary of survey data sources used in the base model.",
+                  alt_caption = "Tabular information for this figure can be found in the data file.",
                   label = "survey_data_timeseries")
 
 #Figure 8 Design Based Survey
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "2013_2023_survey_indices_comparison.png"), 
-                  caption = "Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.", 
+                  caption = "Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.",
+                  alt_caption = "Line plot and error of all surveys on the west coast from 1980-2023.",
                   label = "designbasedsurv")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "geostat_db_comp_wgcbts_tri.png"), 
                   caption = "Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.", 
+                  alt_caption = "Line plot and error of the Triennial and WCGBTS biomass from 1980-2023.",
                   label = "modelbasedsurv")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "geostat_indices_state_comparison.png"), 
                   caption = "State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.", 
+                  alt_caption = "Line plot and error of abundance index timeseries for Triennial and WCGBTS surveys, by state. Triennial abundance for all states is flat, with WA and CA at lower levels than OR. In the WCGBTS, there is an increasing trend, with CA at the highest levels, followed by OR, with WA biomass at the lowest magnitude.",
                   label = "state_indices")
 
 #Figure 9 Survey Length Comps 
 sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"), 
-                  caption = "Summary of annual length composition data from available scientific surveys.", 
+                  caption = "Summary of annual length composition data from available scientific surveys.",
+                  alt_caption = "Plots of aggregated survey length compositions by year for males, females, and unsexed fish across all length distributions.",
                   label = "survey_comps")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curves.png"),
                   caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.",
+                  alt_caption = "Scatter plots of age-length relationships for female and male shortspine thornyhead in the 2005/2015 assessment compared to the 2023 assessment, as well as unsexed animals from the Kline dataset. The growth curve for unsexed fish indicates a wider range of lengths at any given age compared to sexed individuals, with the males showing generally slower growth than females.",
                   label = "growthcurve")
 
 # #Figure 10 Growth Curve LAA1
@@ -96,6 +108,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curves.png"),
 #Figure 12 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "lengthweight.png"), 
                   caption = "2023 length-weight relationship and fits to WCGBTS weight-length data.", 
+                  alt_caption = "A scatter plot showing the allometric curve of the length-weight relationship of shortspine thornyhead from NWFSC shelf/slope survey data, where as the length of the fish increases, the weight also increases. Females tend to grow larger than males.",
                   label = "lengthweight")
 
 ### Figure at the end of this code floating 
@@ -103,15 +116,18 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "lengthweight.png"),
 #Figure 13 Maturity 2
 sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_curves.png"), 
                   caption = "Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.", 
+                  alt_caption = "Variations of a logistic growth curve showing the proportion of animals mature by size.",
                   label = "mat2")
 
 #Figure 1 Maturity 1
 sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_fit.png"), 
                   caption = "Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.", 
+                  alt_caption = "A matrix of scatter plots shows the probability of maturing at various lengths across different depth and latitude, with each plot representing a unique combination of depth (less than 250m to greater than 1000m) and latitude.",
                   label = "mat1")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "fecundity.png"), 
-                  caption = "Fecundity-at-length relationship.", 
+                  caption = "Fecundity-at-length relationship.",
+                  alt_caption = "The fecundity-at-length relationship for shortspine thornyhead, with fecundity on the y-axis plotted on a logarithmic scale against fish length on the x-axis. The curve steeply increases as length grows, indicating a rise in fecundity with size, as quantified by the formula 'Fec = 0.0544 L^3.978', from Cooper et al. 2005.",
                   label = "fec")
 
 # NO CAPTION SHOWING

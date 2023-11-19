@@ -54,7 +54,7 @@ ssb_tab <- data.frame(
 colnames(ssb_tab) <- c("Year", "Spawning Output", "Spawning Output 95% CI", "Fraction Unfished", "Fraction Unfished 95% CI")
 # 
 sa4ss::table_format(x = ssb_tab,
-                    caption = "Spawning output (billions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
+                    caption = "Spawning output (millions of eggs) and fraction unfished with associated 95\\% confidence intervals (CI) from the base model.",
                     label = "ssb",
                     custom_width = TRUE,
                     col_to_adjust = c(2, 3, 4, 5),

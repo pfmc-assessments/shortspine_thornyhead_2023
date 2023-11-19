@@ -182,13 +182,13 @@ Commercial landings are dominantly bottom trawl caught, and non-trawl landings i
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
 \caption{(\#tab:catchesES)Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. Total dead fish is the combined landings and model estimated discards.}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endfirsthead
-\caption[]{Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. Total dead fish is the combined landings and model estimated discards. (\textit{continued)}}\\
+\caption[]{(\#tab:catchesES)Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. Total dead fish is the combined landings and model estimated discards. \textit{(continued)}}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
@@ -248,7 +248,7 @@ Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 trillion 
 Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model. (\textit{continued)}}\\
+\caption[]{(\#tab:ssbES)Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
 \toprule
 Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
 \midrule
@@ -278,13 +278,13 @@ This assessment assumed a Beverton-Holt stock recruitment relationship. Steepnes
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
 \caption{(\#tab:recES)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model.}\\
 \toprule
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model. (\textit{continued)}}\\
+\caption[]{(\#tab:recES)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
 \toprule
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
@@ -317,13 +317,13 @@ The summary harvest rate (total catch divided by age-1 and older biomass) closel
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}>{\centering\arraybackslash}p{2.2cm}}
 \caption{(\#tab:sprES)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{40\%})$. }\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{40\%})$.  (\textit{continued)}}\\
+\caption[]{(\#tab:sprES)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{40\%})$.  \textit{(continued)}}\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
@@ -373,7 +373,7 @@ Reference points were calculated using the estimated catch distribution in the f
 Variable of Interest & Estimate & 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Summary of reference points and management quantities, including estimates of the  95\% intervals. (\textit{continued)}}\\
+\caption[]{(\#tab:refPointsES)Summary of reference points and management quantities, including estimates of the  95\% intervals. \textit{(continued)}}\\
 \toprule
 Variable of Interest & Estimate & 95\% CI\\
 \midrule
@@ -414,13 +414,13 @@ Catches for shortspine thornyhead have not fully attained the catch limits in re
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
 \caption{(\#tab:managementES)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards.}\\
 \toprule
 Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \midrule
 \endfirsthead
-\caption[]{Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards. (\textit{continued)}}\\
+\caption[]{(\#tab:managementES)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality is a function of both landings and model estimated discards. \textit{(continued)}}\\
 \toprule
 Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \midrule
@@ -469,15 +469,15 @@ The catch streams chosen for the decision table were represented as total catch 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}}
-\caption{\label{tab:decisiontableES}Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels.}\\
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}}
+\caption{(\#tab:decisiontableES)Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels.}\\
 \toprule
 \multicolumn{2}{c}{ } & \multicolumn{2}{c}{Low: M = 0.03} & \multicolumn{2}{c}{Base: 0.04} & \multicolumn{2}{c}{High: M = 0.05} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
 Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
 \midrule
 \endfirsthead
-\caption[]{Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels. (\textit{continued)}}\\
+\caption[]{(\#tab:decisiontableES)Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels. \textit{(continued)}}\\
 \toprule
 Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
 \midrule
@@ -1074,13 +1074,13 @@ Additionally, we would like to acknowledge the hard work of Kelli Johnson, Chant
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
 \caption{(\#tab:catches)Recent landings by fleet, total landings summed across fleets, and the total mortality including discards.}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endfirsthead
-\caption[]{Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. (\textit{continued)}}\\
+\caption[]{(\#tab:catches)Recent landings by fleet, total landings summed across fleets, and the total mortality including discards. \textit{(continued)}}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
@@ -1107,12 +1107,12 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \begingroup\fontsize{10}{12}\selectfont
 
 \begin{longtable}[t]{c>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{3cm}}
-\caption{(\#tab:ssb)Spawning output (billions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model.}\\
+\caption{(\#tab:ssb)Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model.}\\
 \toprule
 Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Spawning output (billions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model. (\textit{continued)}}\\
+\caption[]{(\#tab:ssb)Spawning output (millions of eggs) and fraction unfished with associated 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
 \toprule
 Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction Unfished 95\% CI\\
 \midrule
@@ -1146,7 +1146,7 @@ Year & Spawning Output & Spawning Output 95\% CI & Fraction Unfished & Fraction 
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Estimated recent trend in recruitment and recruitment deviations (RecDevs) and the 95\% confidence intervals (CI) from the base model. (\textit{continued)}}\\
+\caption[]{(\#tab:rec)Estimated recent trend in recruitment and recruitment deviations (RecDevs) and the 95\% confidence intervals (CI) from the base model. \textit{(continued)}}\\
 \toprule
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 \midrule
@@ -1179,7 +1179,7 @@ Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
 Year & (1-SPR)/(1-SPR\_\$50\textbackslash{}\%\$) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{50\%})$ (\textit{continued)}}\\
+\caption[]{(\#tab:spr)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95\% intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{50\%})$ \textit{(continued)}}\\
 \toprule
 Year & (1-SPR)/(1-SPR\_\$50\textbackslash{}\%\$) & 95\% CI & Exploitation Rate & 95\% CI\\
 \midrule
@@ -1211,7 +1211,7 @@ Year & (1-SPR)/(1-SPR\_\$50\textbackslash{}\%\$) & 95\% CI & Exploitation Rate &
 Variable of Interest & Estimate & 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{Summary of reference points and management quantities, including estimates of the  95\% intervals. (\textit{continued)}}\\
+\caption[]{(\#tab:refPoints)Summary of reference points and management quantities, including estimates of the  95\% intervals. \textit{(continued)}}\\
 \toprule
 Variable of Interest & Estimate & 95\% CI\\
 \midrule
@@ -1253,7 +1253,7 @@ MSY (mt) & 1,227 & 1,027–1,426\\*
 Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \midrule
 \endfirsthead
-\caption[]{Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality includes fishery catch and model estimated discards. (\textit{continued)}}\\
+\caption[]{(\#tab:management)Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). Total mortality includes fishery catch and model estimated discards. \textit{(continued)}}\\
 \toprule
 Year & OFL & ABC & ACL & Landings & Total Mortality\\
 \midrule
@@ -1286,7 +1286,7 @@ Year & OFL & ABC & ACL & Landings & Total Mortality\\
 Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ACL (mt) & Buffer & Spawning Output & Fraction Unfished\\
 \midrule
 \endfirsthead
-\caption[]{Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished using P*=0.4. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model. (\textit{continued)}}\\
+\caption[]{(\#tab:projections)Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished using P*=0.4. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model. \textit{(continued)}}\\
 \toprule
 Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ACL (mt) & Buffer & Spawning Output & Fraction Unfished\\
 \midrule
@@ -1322,7 +1322,7 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ACL
 Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ACL (mt) & Buffer & Spawning Output & Fraction Unfished\\
 \midrule
 \endfirsthead
-\caption[]{Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished using Pstar=0.45. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.  (\textit{continued)}}\\
+\caption[]{(\#tab:projections45)Projections of potential OFLs (mt), ABCs (mt), estimated spawning output, and fraction unfished using Pstar=0.45. The OFL and ABC for years 2023 and 2024 are fixed, while the OFL and ABC for years 2025 and on are estimated by the model.  \textit{(continued)}}\\
 \toprule
 Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ACL (mt) & Buffer & Spawning Output & Fraction Unfished\\
 \midrule
@@ -1358,7 +1358,7 @@ Year & Adopted OFL (mt) & Adopted ABC (mt) & Assumed Catch (mt) & OFL (mt) & ACL
 Quantity & 2013 & 2014 & 2015 & 2016 & 2017 & 2018 & 2019 & 2020 & 2021 & 2022 & 2023\\
 \midrule
 \endfirsthead
-\caption[]{Summary of recent estimates and managment quantities. (\textit{continued)}}\\
+\caption[]{(\#tab:summarytab)Summary of recent estimates and managment quantities. \textit{(continued)}}\\
 \toprule
 Quantity & 2013 & 2014 & 2015 & 2016 & 2017 & 2018 & 2019 & 2020 & 2021 & 2022 & 2023\\
 \midrule
@@ -1391,13 +1391,13 @@ Upper Interval & 0.509 & 0.503 & 0.497 & 0.492 & 0.487 & 0.482 & 0.478 & 0.475 &
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}>{\centering\arraybackslash}p{1.33cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}>{\centering\arraybackslash}p{1.83cm}}
 \caption{(\#tab:allcatch)Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. Total dead includes fishery catch and model estimated discards.}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
 \endfirsthead
-\caption[]{Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. Total dead includes fishery catch and model estimated discards. (\textit{continued)}}\\
+\caption[]{(\#tab:allcatch)Landings (mt) by fleet for all years, total landings (mt), and total mortality (mt) summed by year. Total dead includes fishery catch and model estimated discards. \textit{(continued)}}\\
 \toprule
 Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \midrule
@@ -1535,13 +1535,13 @@ Year & North Trawl & South Trawl & Non-Trawl & Total Landings & Total Dead\\
 \begingroup\fontsize{9}{11}\selectfont
 \begingroup\fontsize{9}{11}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{0.89cm}>{\centering\arraybackslash}p{0.89cm}>{\centering\arraybackslash}p{0.89cm}>{\centering\arraybackslash}p{0.89cm}>{\centering\arraybackslash}p{0.89cm}>{\centering\arraybackslash}p{0.89cm}>{\centering\arraybackslash}p{0.89cm}>{\centering\arraybackslash}p{0.89cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}>{\centering\arraybackslash}p{1.22cm}}
 \caption{(\#tab:ts)Time series of population estimates from the base model.}\\
 \toprule
 Year & Total Biomass (mt) & Spawning Output & Age 1+ Biomass (mt) & \% Unfished & Age 0 Recruits & Total Mortality & SPR Ratio & Expl Rate\\
 \midrule
 \endfirsthead
-\caption[]{Time series of population estimates from the base model. (\textit{continued)}}\\
+\caption[]{(\#tab:ts)Time series of population estimates from the base model. \textit{(continued)}}\\
 \toprule
 Year & Total Biomass (mt) & Spawning Output & Age 1+ Biomass (mt) & \% Unfished & Age 0 Recruits & Total Mortality & SPR Ratio & Expl Rate\\
 \midrule
@@ -1691,15 +1691,15 @@ Year & Total Biomass (mt) & Spawning Output & Age 1+ Biomass (mt) & \% Unfished 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}>{\centering\arraybackslash}p{1cm}}
-\caption{\label{tab:decisiontable}Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels.}\\
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}>{\centering\arraybackslash}p{1.38cm}}
+\caption{(\#tab:decisiontable)Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels.}\\
 \toprule
 \multicolumn{2}{c}{ } & \multicolumn{2}{c}{Low: M = 0.03} & \multicolumn{2}{c}{Base: 0.04} & \multicolumn{2}{c}{High: M = 0.05} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
 Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
 \midrule
 \endfirsthead
-\caption[]{Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels. (\textit{continued)}}\\
+\caption[]{(\#tab:decisiontable)Summary table of 12-year projections beginning in 2025 for alternate states of nature based on natural mortality. Columns range over low, mid, and high state of nature, and rows range over different assumptions of catch levels. \textit{(continued)}}\\
 \toprule
 Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
 \midrule
@@ -1750,7 +1750,7 @@ Year & Catch & SO & Dep & SO & Dep & SO & Dep\\
 Source & Likelihood Component\\
 \midrule
 \endfirsthead
-\caption[]{Likelihood components by source for the base model. (\textit{continued)}}\\
+\caption[]{(\#tab:likelihoods)Likelihood components by source for the base model. \textit{(continued)}}\\
 \toprule
 Source & Likelihood Component\\
 \midrule
@@ -1782,13 +1782,13 @@ Crash Pen & 0.000\\*
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.14cm}>{\centering\arraybackslash}p{1.14cm}>{\centering\arraybackslash}p{1.14cm}>{\centering\arraybackslash}p{1.14cm}>{\centering\arraybackslash}p{1.14cm}>{\centering\arraybackslash}p{1.14cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}>{\centering\arraybackslash}p{1.57cm}}
 \caption{(\#tab:lensamp)Sample sizes of length compostion samples for shortspine thornyhead landings.}\\
 \toprule
 Year & Samples North Trawl & Tows North Trawl & Samples South Trawl & Tows South Trawl & Samples Non-trawl & Tows Non-trawl\\
 \midrule
 \endfirsthead
-\caption[]{Sample sizes of length compostion samples for shortspine thornyhead landings. (\textit{continued)}}\\
+\caption[]{(\#tab:lensamp)Sample sizes of length compostion samples for shortspine thornyhead landings. \textit{(continued)}}\\
 \toprule
 Year & Samples North Trawl & Tows North Trawl & Samples South Trawl & Tows South Trawl & Samples Non-trawl & Tows Non-trawl\\
 \midrule
@@ -1852,7 +1852,7 @@ Year & Samples North Trawl & Tows North Trawl & Samples South Trawl & Tows South
 Year & North Trawl & South Trawl & Non-trawl\\
 \midrule
 \endfirsthead
-\caption[]{Sample sizes of length compostion samples for discards. (\textit{continued)}}\\
+\caption[]{(\#tab:disclensamp)Sample sizes of length compostion samples for discards. \textit{(continued)}}\\
 \toprule
 Year & North Trawl & South Trawl & Non-trawl\\
 \midrule
@@ -1894,7 +1894,7 @@ Year & North Trawl & South Trawl & Non-trawl\\
 Survey & Strata \vphantom{1} Definitions\\
 \midrule
 \endfirsthead
-\caption[]{Survey stratification information for each of the fishery independent surveys (\textit{continued)}}\\
+\caption[]{(\#tab:surveystrat)Survey stratification information for each of the fishery independent surveys \textit{(continued)}}\\
 \toprule
 Survey & Strata Definitions\\
 \midrule
@@ -1930,7 +1930,7 @@ AFSC Triennial 2 & 1 stratum: 366-500 m\\*
 Year & Survey & Fish & Hauls\\
 \midrule
 \endfirsthead
-\caption[]{Survey samples and hauls for each of the fishery independent surveys for available years spanning from 1989 to 2022. (\textit{continued)}}\\
+\caption[]{(\#tab:survinfo)Survey samples and hauls for each of the fishery independent surveys for available years spanning from 1989 to 2022. \textit{(continued)}}\\
 \toprule
 Year & Survey & Fish & Hauls\\
 \midrule
@@ -1986,7 +1986,7 @@ Year & Survey & Fish & Hauls\\
 Total Likelihood & Change from Base & \% Change & Frequency\\
 \midrule
 \endfirsthead
-\caption[]{Jitter results. (\textit{continued)}}\\
+\caption[]{(\#tab:jittertab)Jitter results. \textit{(continued)}}\\
 \toprule
 Total Likelihood & Change from Base & \% Change & Frequency\\
 \midrule
@@ -2017,7 +2017,7 @@ Total Likelihood & Change from Base & \% Change & Frequency\\
 Source & Base Model & Low Growth & High Growth & 2013 Maturity & Indeterm. Maturity & Imputed Landings & 2013 Landings\\
 \midrule
 \endfirsthead
-\caption[]{Comparison of likelihoods for all sensitivity analyses (\textit{continued)}}\\
+\caption[]{(\#tab:sentivititytab)Comparison of likelihoods for all sensitivity analyses \textit{(continued)}}\\
 \toprule
 Source & Base Model & Low Growth & High Growth & 2013 Maturity & Indeterm. Maturity & Imputed Landings & 2013 Landings\\
 \midrule
@@ -2057,7 +2057,7 @@ Relative SPR & 0.89 & 0.75 & 1.04 & 0.86 & 0.87 & 0.92 & 0.88\\*
 Source & Value & Phase & Gradient & Lower 95\% CI & Upper 95\% CI\\
 \midrule
 \endfirsthead
-\caption[]{All parameter estimates for the proposed base model (\textit{continued)}}\\
+\caption[]{(\#tab:allparstab)All parameter estimates for the proposed base model \textit{(continued)}}\\
 \toprule
 Source & Value & Phase & Gradient & Lower 95\% CI & Upper 95\% CI\\
 \midrule
@@ -2335,37 +2335,37 @@ Retain\_L\_asymptote\_logit\_Trawl\_S(2)\_BLK2delta\_2020 & -0.0000802 & 4 & 0.0
 
 ## Introduction and Data
 
-![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=75% alt="."}
+![Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.\label{fig:stock-map}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/stock-map.png ){width=100% height=75% alt="Buble plots of coastwide CPUE. The highest densities of shortspine thornyhead appear to be concentrated along certain stretches of the coastline, particularly off the coast of Oregon. Biomass density is visually stratified by depth, with lower concentrations represented by lighter and smaller circles, tapering off in areas further from shore and at the northern and southern extents of the survey area."}
 
-![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.\label{fig:thornyhead-ratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="."}
+![Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.\label{fig:thornyhead-ratio}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Intro/thornyhead-ratio.png ){width=100% height=100% alt="The upper graph displays the historical catch in metric tons of unidentified thornyheads along the West Coast from 1980 to recent years by state with non-trawl gear shown in orange and trawl gear shown in blue. The lower graph presents the proportion of shortspine species in the identified thornyhead catch, with data points for trawl and non-trawl gear connected by lines. Both graphs show significant variability over time, with non-trawl gear consistently having a higher proportion of shortspine species compared to trawl gear, as indicated by the higher orange line across all three states."}
 
-![Landing history for shortspine thornyhead.\label{fig:catch_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="."}
+![Landing history for shortspine thornyhead.\label{fig:catch_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch2 landings stacked.png){width=100% height=100% alt="Stacked barplot of catches by fleet. See Table 10 for the time series shown in this figure."}
 
-![Summary of data sources used in the base model.\label{fig:assessment_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/data_plot.png){width=100% height=100% alt="."}
+![Summary of data sources used in the base model.\label{fig:assessment_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/data_plot.png){width=100% height=100% alt="Tabular information for this figure can be found in the data file."}
 
-![Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png){width=100% height=100% alt="."}
+![Predicted discards based estimated retention and selectivity for each fleet.\label{fig:disc_hist}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Base/catch7 discards stacked plot (depends on multiple fleets).png){width=100% height=100% alt="Stacked barplot of discards by fleet. Tabular information for this figure can be found in the data file."}
 
-![Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png){width=100% height=100% alt="."}
+![Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.\label{fig:disc_rates_WCGOP}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/SST_WCGOP_GEMM_discard_rates_3fleet.png){width=100% height=100% alt="Discard rates are shown in a scatter plot, separated by North trawl (green), South trawl (blue), and non-trawl fleets (orange). The North trawl fleet, shows a decreasing trend over time, with a peak in 2003 at around 0.3. The South trawl fleet shows values generally below 0.2 and a relatively stable trend, with some increased discard rates in recent years. The non-trawl fleet has wider variability within years compared to the trawl fleets, but rates are stable."}
 
-![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="."}
+![Summary of survey data sources used in the base model.\label{fig:survey_data_timeseries}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/survey_data_timeseries.png){width=100% height=100% alt="Tabular information for this figure can be found in the data file."}
 
-![Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.\label{fig:designbasedsurv}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2013_2023_survey_indices_comparison.png){width=100% height=100% alt="."}
+![Abundance index timeseries. Points with shaded regions were calculated with survey data through 2023 using the `nwfscSurvey` R package, while points with errorbars are taken directly from the 2013 assessment which used GLMs.\label{fig:designbasedsurv}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2013_2023_survey_indices_comparison.png){width=100% height=100% alt="Line plot and error of all surveys on the west coast from 1980-2023."}
 
-![Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.\label{fig:modelbasedsurv}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_db_comp_wgcbts_tri.png){width=100% height=100% alt="."}
+![Abundance index timeseries. Points with shaded regions are the derived from geostatistical models, while points with errorbars are derived from design-based calculations.\label{fig:modelbasedsurv}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_db_comp_wgcbts_tri.png){width=100% height=100% alt="Line plot and error of the Triennial and WCGBTS biomass from 1980-2023."}
 
-![State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.\label{fig:state_indices}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_indices_state_comparison.png){width=100% height=100% alt="."}
+![State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.\label{fig:state_indices}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/geostat_indices_state_comparison.png){width=100% height=100% alt="Line plot and error of abundance index timeseries for Triennial and WCGBTS surveys, by state. Triennial abundance for all states is flat, with WA and CA at lower levels than OR. In the WCGBTS, there is an increasing trend, with CA at the highest levels, followed by OR, with WA biomass at the lowest magnitude."}
 
-![Summary of annual length composition data from available scientific surveys.\label{fig:survey_comps}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="."}
+![Summary of annual length composition data from available scientific surveys.\label{fig:survey_comps}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/2023_length_compositions.png){width=100% height=100% alt="Plots of aggregated survey length compositions by year for males, females, and unsexed fish across all length distributions."}
 
-![Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.\label{fig:growthcurve}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curves.png){width=100% height=100% alt="."}
+![Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.\label{fig:growthcurve}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/growth_curves.png){width=100% height=100% alt="Scatter plots of age-length relationships for female and male shortspine thornyhead in the 2005/2015 assessment compared to the 2023 assessment, as well as unsexed animals from the Kline dataset. The growth curve for unsexed fish indicates a wider range of lengths at any given age compared to sexed individuals, with the males showing generally slower growth than females."}
 
-![2023 length-weight relationship and fits to WCGBTS weight-length data.\label{fig:lengthweight}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/lengthweight.png){width=100% height=100% alt="."}
+![2023 length-weight relationship and fits to WCGBTS weight-length data.\label{fig:lengthweight}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/lengthweight.png){width=100% height=100% alt="A scatter plot showing the allometric curve of the length-weight relationship of shortspine thornyhead from NWFSC shelf/slope survey data, where as the length of the fish increases, the weight also increases. Females tend to grow larger than males."}
 
-![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="."}
+![Maturity curves considered in the present assessment (Head (2023)) and alternative versions considered in the sensitivity analysis.\label{fig:mat2}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/comparison_alternative_maturity_curves.png){width=100% height=100% alt="Variations of a logistic growth curve showing the proportion of animals mature by size."}
 
-![Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png){width=100% height=100% alt="."}
+![Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.\label{fig:mat1}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/head2023_maturity_latdepth_glm_fit.png){width=100% height=100% alt="A matrix of scatter plots shows the probability of maturing at various lengths across different depth and latitude, with each plot representing a unique combination of depth (less than 250m to greater than 1000m) and latitude."}
 
-![Fecundity-at-length relationship.\label{fig:fec}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/fecundity.png){width=100% height=100% alt="."}
+![Fecundity-at-length relationship.\label{fig:fec}](C:/GitHub/Official_shortspine_thornyhead_2023/doc/FinalFigs/Data/fecundity.png){width=100% height=100% alt="The fecundity-at-length relationship for shortspine thornyhead, with fecundity on the y-axis plotted on a logarithmic scale against fish length on the x-axis. The curve steeply increases as length grows, indicating a rise in fecundity with size, as quantified by the formula 'Fec = 0.0544 L^3.978', from Cooper et al. 2005."}
 
 \clearpage
 
