@@ -38,7 +38,8 @@ sa4ss::table_format(x = catch_tab,
 ```{r, results = "asis"}
 # Figure 3 Catch history
 sa4ss::add_figure(filein = file.path(fig_dir3, "catch2 landings stacked.png"), 
-                  caption = "Estimated landing history for shortspine thornyhead.", 
+                  caption = "Estimated landing history for shortspine thornyhead.",
+                  alt_caption = "Stacked barplot of catches by fleet. See Table 10 for the time series shown in this figure.",
                   label = "catch_histES")
 
 # sa4ss::add_figure(filein = file.path(fig_dir2, "SST_WCGOP_GEMM_discard_rates_3fleet.png"), 
@@ -64,6 +65,7 @@ This assessment estimated 197 parameters. The log of the unfished equilibrium re
 #Data sources
 sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"),
                   caption = "Summary of data sources used in the base model.",
+                  alt_caption = "Tabular information for this figure can be found in the data file.",
                   label = "assessment_data_timeseriesES",
                   width=80)
 ```
@@ -76,6 +78,7 @@ Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 trillion 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
                   caption = "Estimated spawning output trajectory for shortspine thornyhead.", 
+                  alt_caption = "Spawning output trajectory in number of eggs from 1990-2022. Mean estimates of spaning output are shown as open circle and 95\\% asymptotic foncident intervals are shown as dashed lines. The trajectory shows largely unchanging spanwing output from 1900-1970 before spawning output began to decrease. The decline in spawning output continues through to 2022.",
                   label = "ssb_trajectoryES")
 ```
 
@@ -110,6 +113,7 @@ sa4ss::table_format(x = rec_tab,
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"), 
                   caption = "Estimated recruitment timeseries.", 
+                  alt_caption = "Estimated recuitment in 1000s of eggs and confidence intervals. There is an increased period of recruitment estimated in the 2000 to 2010 period.",
                   label = "rec_trajectoryES")
 ```
 
@@ -127,24 +131,28 @@ sa4ss::table_format(x = spr_tab,
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
                   caption = "Estimated spawning output relative to unfished equilibrium for shortspine thornyhead.", 
+                  alt_caption = "Relative spawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle and 95\\% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0) the target level of relative spawning output (0.40) and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.",
                   label = "rel_ssb_trajectoryES")
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts_summaryF.png"), 
                   caption = "Summary fishing mortality rate (total landings / summary biomass).", 
+                  alt_caption = "Summary fishing mortality rate calculated as total landings divided by summary biomass from 1900-2020. Mean estimates are shown as closed points and 95\\% confidence intervals are shown with error bars. Fishing mortality began increaseing in the early 1960s before peaking in the late 1980s at \\sim 4\\%. More recent fishing mortality rates are \\sim 1\\%",
                   label = "summary_fES")
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR3_ratiointerval.png"), 
                   caption = "Estimated relative fishing intensity as a function of spawning potential ratio (SPR).", 
+                  alt_caption = "Relative fishing intensity as a function of the spawning potential ratio from 1900-2022. Annual mean estimated are shown as open blue points while 95\\% confidence intervals are shown as dashed blue lines. Relative fihsing intensity rose above the target level of 1.0 in the early 1970s and remained above the traget level until 2020.",
                   label = "spr_trajectoryES")
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"), 
                   caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95\\% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95\\% region accoutninf for estimated correlation between the two quantities.",  
+                  alt_caption = "A phase plot showing the time trajectory of relative spawning output vs relative fishing intensity. Annual estimates aere shown as colored points. A shaded ellipse around the 2022 estimate shows the estimated uncertainty in the 2022 estimated. The trajectory shows the stock to have been consistenly fished above the target fishing intensity for much of the time series while relative spawning output has declined since the early 1970s.",
                   label = "phase_diagramES")
 
 ```
@@ -169,6 +177,7 @@ sa4ss::table_format(x = ref_tab,
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "yield2_yield_curve_with_refpoints.png"), 
                   caption = "Estimated yield curve with reference points.", 
+                  alt_caption = "Current yield is lower than the maximum sustainable yield but the population is slightly above biomass target.",
                   label = "yieldcurveES")
 ```
 
