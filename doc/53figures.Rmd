@@ -108,7 +108,7 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curves.png"),
 #Figure 12 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "lengthweight.png"), 
                   caption = "2023 length-weight relationship and fits to WCGBTS weight-length data.", 
-                  alt_caption = "A scatter plot showing the allometric curve of the length-weight relationship of shortspine thornyhead from NWFSC shelf/slope survey data, where as the length of the fish increases, the weight also increases. Females tend to grow larger than males.",
+                  alt_caption = "Scatter plot showing the allometric curve of the length-weight relationship of shortspine thornyhead from NWFSC shelf/slope survey data, where as the length of the fish increases, the weight also increases. Females tend to grow larger than males.",
                   label = "lengthweight")
 
 ### Figure at the end of this code floating 
@@ -141,14 +141,17 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "fecundity.png"),
 
 sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts2_Bratio.png"), 
                   caption = "Relative spawning biomass timeseries for models run on updated Stock Synthesis versions.", 
+                  alt_caption = "Relative spawning output trajectories of the 2013 base model in Stock Synthesis version 3.24 (blue), version 3.30.21 with parameters fixed (red), and version 3.30.21 with parameters estimated (green). The overall trajectories of all versions are similar.",
                   label = "bridge_bratio")
 
 sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts3_Spawning_Output.png"), 
                   caption = "Spawning output timeseries for piecewise data updates.", 
+                  alt_caption = "Spawning output timeseries for the 2013 model in Stock Synthesis version 3.30.21, and ten piecewise data updates including landings, discards, survey, length comps, and life history data. Each additionally data update reflects a change in the estimated spawning output, with a general downward trend. Data additions of fishery length compositions, disard weights, maturity, fecundity, and natural mortality fall outside of the 2013 model confidence bounds at some point in the timeseries.",
                   label = "bridge_spawnout_data")
 
 sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts4_Bratio.png"), 
                   caption = "Relative spawning biomass timeseries for piecewise data updates", 
+                  alt_caption = "Relative spawning output timeseries for the 2013 model in Stock Synthesis version 3.30.21, and ten piecewise data updates including landings, discards, survey, length comps, and life history data. Each additionally data update reflects a change in the estimated spawning output. Most data additions are within confidence bounds of the 2013 except for updated survey and fishery length compositions, and updated discard weights.",
                   label = "bridge_bratio_data")
 
 ```
@@ -163,74 +166,89 @@ sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts4_Bratio.png"),
 #annual log deviations
 sa4ss::add_figure(filein = file.path(fig_dir3, "recdevs2_withbars.png"), 
                   caption = "Annual recruitment deviations with 95% intervals.", 
+                  alt_caption = "See table 20 for tabular data.",
                   label = "recdevs")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "recruit_fit_bias_adjust.png"), 
                   caption = "Recommended bias adjustment for recruitment deviations, from Hamel and Cope (2022).", 
+                  alt_caption = "Time series comparing the bias adjustment within the model (red), and an estimated alternative (blue), and a dashed pink line shows a bias adjustment within the model. Points below and above the zero line suggest deviations from the model's expectations, with a prominent negative variation from 2000-2012.",
                   label = "recdevs_bias_adjust")
 
 #selectivity curves
 sa4ss::add_figure(filein = file.path(fig_dir3, "sel01_multiple_fleets_length1.png"), 
-                  caption = "Selectivity at length for each combination of sex and fleet. Note that the three commerical fishery fleets were not modeled as having sex-specific selectivity.", 
+                  caption = "Selectivity at length for each combination of sex and fleet. Note that the three commerical fishery fleets were not modeled as having sex-specific selectivity.",
+                  alt_caption = "See Report.sso for time series of fleet specific selectivity.",
                   label = "selcurvs")
 
 #Time blocking 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks2.png"),
                   caption = "Time blocking for selectivity and retention for North and South trawl fleets.",
+                  alt_caption = "Time blocks representing changes in selectivity and retention for both North and South trawl fleets (blue and yellow respectively)from 1960 to 2023 where each horizontal bar represents the specific period where selectivity or retention was estimated.",
                   label = "timeblocks")
 
 #Time blocking diagram
 sa4ss::add_figure(filein = file.path(fig_dir3, "blockingdiagram.png"), 
                   caption = "Timeline of management and fleet behavior changes associated with selectivity and retention blocks.", 
+                  alt_caption = "Timeline graphic of key management and fleet behavior changes over time, affecting retention and selectivity for North and South trawl fisheries. Notable interventions, such as deep species management in 1989 and implementation of Individual Fishing Quotas (IFQs) in 2011, are marked, with the impact of COVID-19 noted in 2020.",
                   label = "diagram")
 
 #Blocked selectivity 
 sa4ss::add_figure(filein = file.path(fig_dir3, "selec_block.png"), 
                   caption = "Selectivity curves for time blocks in the North Trawl, South Trawl, and Non-Trawl fleets.", 
+                  alt_caption = "See Report.sso for time series of selectivity estimates by fleet and block.",
                   label = "selblocks")
 
 #Blocked retention
 sa4ss::add_figure(filein = file.path(fig_dir3, "retention_curves.png"), 
                   caption = "Retention curves for time blocks in the North Trawl, South Trawl, and Non-Trawl fleets.", 
+                  alt_caption = "See Report.sso for time series of retention estimates by fleet and block.",
                   label = "retblocks")
 #Fits to Tri
 sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_Triennial1.png"), 
                   caption = "Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  alt_caption = "Fits are within the estimated confidence intervals.",
                   label = "fitsTri1")
 
 #Fits to combo
 sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_NWFSCcombo.png"), 
                   caption = "Fit to index of abundance data for the WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  alt_caption = "Fits are within the estimated confidence intervals except for the terminal point of the time series where the model is just below the lower confidence bound.",
                   label = "fitscombo")
 
 #Discard fits Trawl N
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_N.png"), 
                   caption = "Discard fraction (percent of total catch that is not landed) for the North trawl fleet.", 
+                  alt_caption = "Time series of the discard fraction for the North trawl fleet. Data points with error bars indicate annual variability, with a general trend of high discard rates in the early years that decrease over time.",
                   label = "northtrl_disc")
 #Discard fits Trawl S
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_S.png"), 
                   caption = "Discard fraction (percent of total catch that is not landed) for the South trawl fleet.", 
+                  alt_caption = "Time series of the discard fraction for the South trawl fleet. Discard rates decrese from 2002-2016 and then increase again.",
                   label = "southtrl_disc")
 
-#Discard fits Trawl S
+#Discard fits Nontrawl
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitNon-trawl.png"), 
                   caption = "Discard fraction (percent of total catch that is not landed) for the Non-trawl fleet.", 
+                  alt_caption = "Time series of the discard fraction for non-trawl fleets. There is variability, but model estimates are held at 0.2, which falls within confidence bounds.",
                   label = "nontrl_disc")
 
 #all length comps 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit__aggregated_across_time.png"), 
                   caption = "Length comps, aggregated across time by fleet. Labels 'retained' and 'discard' indicate discarded or retained samples for each fleet. Panels without this designation represent the whole catch.", 
+                  alt_caption = "Aggredated length compositions for all fleets. Fits are generally good, with the exception of non-trawl discards which underestimates size 20-40cm fish.",
                   label = "lencomps_all")
 
 #Trawl North length comps 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt1mkt2_page1.png"), 
                   caption = "Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
+                  alt_caption = "Length composition data and associated model fits for the Northern trawl fleet from 1981-2011. Model fits are generally acceptable, but some years have very low samples sizes and the corresponding model fits are poor (1981-1990; 1994-1996)",
                   label = "ntrawl_comps_1")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt1mkt2_page2.png"), 
-                  caption = "Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
+                  caption = "Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.",
+                  alt_caption = "Length composition data and associated model fits for the Northern trawl fleet from 2012-2022. Model fits are generally good.",
                   label = "ntrawl_comps_2")
-
+########################################################################
 #Trawl South length comps 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt2mkt2_page1.png"), 
                   caption = "Annual length comps and model fit for South trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
@@ -308,7 +326,7 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asym
 #Relative spawning output- Management 
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
                   caption = "Relative spawning output: $B/B_0$ with ~95% asymptotic intervals.", 
-                  alt_caption = "Relative pawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle, and 95% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0), the target level of relative spawning output (0.40), and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.",
+                  alt_caption = "Relative spawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle, and 95% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0), the target level of relative spawning output (0.40), and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.",
                   label = "relspawnout")
 
 # Fishing Rate
@@ -366,7 +384,7 @@ sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_NatM_break_1_Fem_GP_
 
 sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
                   caption = "High to low values of $M$ and impact on spawning output.", 
-                  alt_caption = "Spawning output trajevtories assuming levels of natural mortality ranging friom 0.025 to 0.055 in 0.005 increments. The natural mortality rate greatly effects stock scale with models that assumed lower natural mortality rates estimating higher unfished spawning outputs levels. The overall trajectories are similar regardless of the mortality rate.",
+                  alt_caption = "Spawning output trajectories assuming levels of natural mortality ranging friom 0.025 to 0.055 in 0.005 increments. The natural mortality rate greatly effects stock scale with models that assumed lower natural mortality rates estimating higher unfished spawning outputs levels. The overall trajectories are similar regardless of the mortality rate.",
                   label = "M_spawnout")
 
 sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png"), 
@@ -460,6 +478,6 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare2_spawnbio_unc
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare4_Bratio_uncertainty.png"),
                   caption = "Relative spawning output comparisons of the base model and survey sensitivities.",
-                  alt_caption = "Relatiev spawning output comparisons for three models assuming different treatments of the WCGBTS indices of abundance. Minimal differences between the models are observed.",
+                  alt_caption = "Relative spawning output comparisons for three models assuming different treatments of the WCGBTS indices of abundance. Minimal differences between the models are observed.",
                   label = "surv_sensitiv_mngmt")
 ```
