@@ -27,14 +27,14 @@ knitr::opts_chunk$set(fig.pos = 'h')
 #Figure 1 Coastwide CPUE plot from NWFSC combo survey
 sa4ss::add_figure(filein = file.path(fig_dir1, "stock-map.png "), 
                   caption = "Biomass of shortspine thornyhead found in the NWFSC West Coast Groundfish Bottom Trawl Survey annual survey (2003-2022) coastwide.", 
-                  alt_caption = "Buble plots of coastwide CPUE. The highest densities of shortspine thornyhead appear to be concentrated along certain stretches of the coastline, particularly off the coast of Oregon. Biomass density is visually stratified by depth, with lower concentrations represented by lighter and smaller circles, tapering off in areas further from shore and at the northern and southern extents of the survey area.",
+                  alt_caption = "Bubble plots of coastwide CPUE. The highest densities of shortspine thornyhead appear to be concentrated along certain stretches of the coastline particularly off the coast of Oregon. Biomass density is visually stratified by depth with lower concentrations represented by lighter and smaller circles tapering off in areas further from shore and at the northern and southern extents of the survey area.",
                   label = "stock-map",
                   height=75)
 
 # Figure 2 Unid thornyheads and proportion shortspine
 sa4ss::add_figure(filein = file.path(fig_dir1, "thornyhead-ratio.png "), 
                   caption = "Unidentified thornyhead catches (mt) and the proportion identified as shortspines, calculated as the ratio of shortspine thornyhead catches to combined longspine and shortspine catches.", 
-                  alt_caption = "The upper graph displays the historical catch in metric tons of unidentified thornyheads along the West Coast from 1980 to recent years by state with non-trawl gear shown in orange and trawl gear shown in blue. The lower graph presents the proportion of shortspine species in the identified thornyhead catch, with data points for trawl and non-trawl gear connected by lines. Both graphs show significant variability over time, with non-trawl gear consistently having a higher proportion of shortspine species compared to trawl gear, as indicated by the higher orange line across all three states.",
+                  alt_caption = "The upper graph displays the historical catch in metric tons of unidentified thornyheads along the West Coast from 1980 to recent years by state with non-trawl gear shown in orange and trawl gear shown in blue. The lower graph presents the proportion of shortspine species in the identified thornyhead catch with data points for trawl and non-trawl gear connected by lines. Both graphs show significant variability over time with non-trawl gear consistently having a higher proportion of shortspine species compared to trawl gear as indicated by the higher orange line across all three states.",
                   label = "thornyhead-ratio")
 
 # Figure 3 Catch history
@@ -58,7 +58,7 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "catch7 discards stacked plot (de
 #Figure 6 Discard Rates 
 sa4ss::add_figure(filein = file.path(fig_dir2, "SST_WCGOP_GEMM_discard_rates_3fleet.png"), 
                   caption = "Discard rates from the WCGOP data set with catch share and non-catch share considerations from the GEMM dataset.", 
-                  alt_caption = "Discard rates are shown in a scatter plot, separated by North trawl (green), South trawl (blue), and non-trawl fleets (orange). The North trawl fleet, shows a decreasing trend over time, with a peak in 2003 at around 0.3. The South trawl fleet shows values generally below 0.2 and a relatively stable trend, with some increased discard rates in recent years. The non-trawl fleet has wider variability within years compared to the trawl fleets, but rates are stable.",
+                  alt_caption = "Discard rates are shown in a scatter plot separated by North trawl (green) South trawl (blue) and non-trawl fleets (orange). The North trawl fleet shows a decreasing trend over time with a peak in 2003 at around 0.3. The South trawl fleet shows values generally below 0.2 and a relatively stable trend with some increased discard rates in recent years. The non-trawl fleet has wider variability within years compared to the trawl fleets but rates are stable.",
                   label = "disc_rates_WCGOP")
 
 # Figure 7 Survey Data Sources 
@@ -81,18 +81,18 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "geostat_db_comp_wgcbts_tri.png")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "geostat_indices_state_comparison.png"), 
                   caption = "State level trends in abundance indices for the Triennial Surveys and WCGBTS. Coastwide indices were computed separately and should not be interpretred as the sum of the state-level indixes.", 
-                  alt_caption = "Line plot and error of abundance index timeseries for Triennial and WCGBTS surveys, by state. Triennial abundance for all states is flat, with WA and CA at lower levels than OR. In the WCGBTS, there is an increasing trend, with CA at the highest levels, followed by OR, with WA biomass at the lowest magnitude.",
+                  alt_caption = "Line plot and error of abundance index timeseries for Triennial and WCGBTS surveys by state. Triennial abundance for all states is flat with WA and CA at lower levels than OR. In the WCGBTS there is an increasing trend with CA at the highest levels followed by OR with WA biomass at the lowest magnitude.",
                   label = "state_indices")
 
 #Figure 9 Survey Length Comps 
 sa4ss::add_figure(filein = file.path(fig_dir2, "2023_length_compositions.png"), 
                   caption = "Summary of annual length composition data from available scientific surveys.",
-                  alt_caption = "Plots of aggregated survey length compositions by year for males, females, and unsexed fish across all length distributions.",
+                  alt_caption = "Plots of aggregated survey length compositions by year for males females and unsexed fish across all length distributions.",
                   label = "survey_comps")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curves.png"),
                   caption = "Comparison of growth curves used in the 2005/2013 assessment and the 2023 assessment, as well as high and low growth sensitivities.",
-                  alt_caption = "Scatter plots of age-length relationships for female and male shortspine thornyhead in the 2005/2015 assessment compared to the 2023 assessment, as well as unsexed animals from the Kline dataset. The growth curve for unsexed fish indicates a wider range of lengths at any given age compared to sexed individuals, with the males showing generally slower growth than females.",
+                  alt_caption = "Scatter plots of age-length relationships for female and male shortspine thornyhead in the 2005/2015 assessment compared to the 2023 assessment as well as unsexed animals from the Kline dataset. The growth curve for unsexed fish indicates a wider range of lengths at any given age compared to sexed individuals with the males showing generally slower growth than females.",
                   label = "growthcurve")
 
 # #Figure 10 Growth Curve LAA1
@@ -102,13 +102,13 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curves.png"),
 # 
 # #Figure 11 Growth Curve LAA1
 # sa4ss::add_figure(filein = file.path(fig_dir2, "growth_curve_sensitivities_LAA2.png"), 
-#                   caption = "2023 growth curves with +25% and -10% uncertainity intervals. The upper and low uncertainty bounds were used to conduct sensitivty analyses to the assessment model.", 
+#                   caption = "2023 growth curves with +25\\% and -10\\% uncertainity intervals. The upper and low uncertainty bounds were used to conduct sensitivty analyses to the assessment model.", 
 #                   label = "growth_LAA2")
 
 #Figure 12 Growth Curve LAA1
 sa4ss::add_figure(filein = file.path(fig_dir2, "lengthweight.png"), 
                   caption = "2023 length-weight relationship and fits to WCGBTS weight-length data.", 
-                  alt_caption = "Scatter plot showing the allometric curve of the length-weight relationship of shortspine thornyhead from NWFSC shelf/slope survey data, where as the length of the fish increases, the weight also increases. Females tend to grow larger than males.",
+                  alt_caption = "Scatter plot showing the allometric curve of the length-weight relationship of shortspine thornyhead from NWFSC shelf/slope survey data where as the length of the fish increases the weight also increases. Females tend to grow larger than males.",
                   label = "lengthweight")
 
 ### Figure at the end of this code floating 
@@ -122,12 +122,12 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "comparison_alternative_maturity_
 #Figure 1 Maturity 1
 sa4ss::add_figure(filein = file.path(fig_dir2, "head2023_maturity_latdepth_glm_fit.png"), 
                   caption = "Fit of the maturity curves per size and depth classes. Classes are designed for visual check of the model predictions only since the model assumes continuous and not categorical response to these variables.", 
-                  alt_caption = "A matrix of scatter plots shows the probability of maturing at various lengths across different depth and latitude, with each plot representing a unique combination of depth (less than 250m to greater than 1000m) and latitude.",
+                  alt_caption = "A matrix of scatter plots shows the probability of maturing at various lengths across different depth and latitude with each plot representing a unique combination of depth (less than 250m to greater than 1000m) and latitude.",
                   label = "mat1")
 
 sa4ss::add_figure(filein = file.path(fig_dir2, "fecundity.png"), 
                   caption = "Fecundity-at-length relationship.",
-                  alt_caption = "The fecundity-at-length relationship for shortspine thornyhead, with fecundity on the y-axis plotted on a logarithmic scale against fish length on the x-axis. The curve steeply increases as length grows, indicating a rise in fecundity with size, as quantified by the formula 'Fec = 0.0544 L^3.978', from Cooper et al. 2005.",
+                  alt_caption = "The fecundity-at-length relationship for shortspine thornyhead with fecundity on the y-axis plotted on a logarithmic scale against fish length on the x-axis. The curve steeply increases as length grows indicating a rise in fecundity with size as quantified by the formula 'Fec = 0.0544 L^3.978' from Cooper et al. 2005.",
                   label = "fec")
 
 # NO CAPTION SHOWING
@@ -141,17 +141,17 @@ sa4ss::add_figure(filein = file.path(fig_dir2, "fecundity.png"),
 
 sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts2_Bratio.png"), 
                   caption = "Relative spawning biomass timeseries for models run on updated Stock Synthesis versions.", 
-                  alt_caption = "Relative spawning output trajectories of the 2013 base model in Stock Synthesis version 3.24 (blue), version 3.30.21 with parameters fixed (red), and version 3.30.21 with parameters estimated (green). The overall trajectories of all versions are similar.",
+                  alt_caption = "Relative spawning output trajectories of the 2013 base model in Stock Synthesis version 3.24 (blue) version 3.30.21 with parameters fixed (red) and version 3.30.21 with parameters estimated (green). The overall trajectories of all versions are similar.",
                   label = "bridge_bratio")
 
 sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts3_Spawning_Output.png"), 
                   caption = "Spawning output timeseries for piecewise data updates.", 
-                  alt_caption = "Spawning output timeseries for the 2013 model in Stock Synthesis version 3.30.21, and ten piecewise data updates including landings, discards, survey, length comps, and life history data. Each additionally data update reflects a change in the estimated spawning output, with a general downward trend. Data additions of fishery length compositions, disard weights, maturity, fecundity, and natural mortality fall outside of the 2013 model confidence bounds at some point in the timeseries.",
+                  alt_caption = "Spawning output timeseries for the 2013 model in Stock Synthesis version 3.30.21 and ten piecewise data updates including landings discards survey length comps and life history data. Each additionally data update reflects a change in the estimated spawning output with a general downward trend. Data additions of fishery length compositions disard weights maturity fecundity and natural mortality fall outside of the 2013 model confidence bounds at some point in the timeseries.",
                   label = "bridge_spawnout_data")
 
 sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts4_Bratio.png"), 
                   caption = "Relative spawning biomass timeseries for piecewise data updates", 
-                  alt_caption = "Relative spawning output timeseries for the 2013 model in Stock Synthesis version 3.30.21, and ten piecewise data updates including landings, discards, survey, length comps, and life history data. Each additionally data update reflects a change in the estimated spawning output. Most data additions are within confidence bounds of the 2013 except for updated survey and fishery length compositions, and updated discard weights.",
+                  alt_caption = "Relative spawning output timeseries for the 2013 model in Stock Synthesis version 3.30.21 and ten piecewise data updates including landings discards survey length comps and life history data. Each additionally data update reflects a change in the estimated spawning output. Most data additions are within confidence bounds of the 2013 except for updated survey and fishery length compositions and updated discard weights.",
                   label = "bridge_bratio_data")
 
 ```
@@ -165,13 +165,13 @@ sa4ss::add_figure(filein = file.path(fig_dir8, "Bridg_ts4_Bratio.png"),
 
 #annual log deviations
 sa4ss::add_figure(filein = file.path(fig_dir3, "recdevs2_withbars.png"), 
-                  caption = "Annual recruitment deviations with 95% intervals.", 
+                  caption = "Annual recruitment deviations with 95\\% intervals.", 
                   alt_caption = "See table 20 for tabular data.",
                   label = "recdevs")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "recruit_fit_bias_adjust.png"), 
                   caption = "Recommended bias adjustment for recruitment deviations, from Hamel and Cope (2022).", 
-                  alt_caption = "Time series comparing the bias adjustment within the model (red), and an estimated alternative (blue), and a dashed pink line shows a bias adjustment within the model. Points below and above the zero line suggest deviations from the model's expectations, with a prominent negative variation from 2000-2012.",
+                  alt_caption = "Time series comparing the bias adjustment within the model (red) and an estimated alternative (blue) and a dashed pink line shows a bias adjustment within the model. Points below and above the zero line suggest deviations from the model's expectations with a prominent negative variation from 2000-2012.",
                   label = "recdevs_bias_adjust")
 
 #selectivity curves
@@ -189,7 +189,7 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Selectivity", "timeblocks2.png")
 #Time blocking diagram
 sa4ss::add_figure(filein = file.path(fig_dir3, "blockingdiagram.png"), 
                   caption = "Timeline of management and fleet behavior changes associated with selectivity and retention blocks.", 
-                  alt_caption = "Timeline graphic of key management and fleet behavior changes over time, affecting retention and selectivity for North and South trawl fisheries. Notable interventions, such as deep species management in 1989 and implementation of Individual Fishing Quotas (IFQs) in 2011, are marked, with the impact of COVID-19 noted in 2020.",
+                  alt_caption = "Timeline graphic of key management and fleet behavior changes over time affecting retention and selectivity for North and South trawl fisheries. Notable interventions such as deep species management in 1989 and implementation of Individual Fishing Quotas (IFQs) in 2011 are marked with the impact of COVID-19 noted in 2020.",
                   label = "diagram")
 
 #Blocked selectivity 
@@ -205,20 +205,20 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "retention_curves.png"),
                   label = "retblocks")
 #Fits to Tri
 sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_Triennial1.png"), 
-                  caption = "Fit to index of abundance data for the Triennial Survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  caption = "Fit to index of abundance data for the Triennial Survey. Lines indicate 95\\% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
                   alt_caption = "Fits are within the estimated confidence intervals.",
                   label = "fitsTri1")
 
 #Fits to combo
 sa4ss::add_figure(filein = file.path(fig_dir3, "index2_cpuefit_NWFSCcombo.png"), 
-                  caption = "Fit to index of abundance data for the WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
+                  caption = "Fit to index of abundance data for the WCGBTS. Lines indicate 95\\% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.", 
                   alt_caption = "Fits are within the estimated confidence intervals except for the terminal point of the time series where the model is just below the lower confidence bound.",
                   label = "fitscombo")
 
 #Discard fits Trawl N
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_N.png"), 
                   caption = "Discard fraction (percent of total catch that is not landed) for the North trawl fleet.", 
-                  alt_caption = "Time series of the discard fraction for the North trawl fleet. Data points with error bars indicate annual variability, with a general trend of high discard rates in the early years that decrease over time.",
+                  alt_caption = "Time series of the discard fraction for the North trawl fleet. Data points with error bars indicate annual variability with a general trend of high discard rates in the early years that decrease over time.",
                   label = "northtrl_disc")
 #Discard fits Trawl S
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_S.png"), 
@@ -229,19 +229,19 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitTrawl_S.png"),
 #Discard fits Nontrawl
 sa4ss::add_figure(filein = file.path(fig_dir3, "discard_fitNon-trawl.png"), 
                   caption = "Discard fraction (percent of total catch that is not landed) for the Non-trawl fleet.", 
-                  alt_caption = "Time series of the discard fraction for non-trawl fleets. There is variability, but model estimates are held at 0.2, which falls within confidence bounds.",
+                  alt_caption = "Time series of the discard fraction for non-trawl fleets. There is variability but model estimates are held at 0.2 which falls within confidence bounds.",
                   label = "nontrl_disc")
 
 #all length comps 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit__aggregated_across_time.png"), 
                   caption = "Length comps, aggregated across time by fleet. Labels 'retained' and 'discard' indicate discarded or retained samples for each fleet. Panels without this designation represent the whole catch.", 
-                  alt_caption = "Aggredated length compositions for all fleets. Fits are generally good, with the exception of non-trawl discards which underestimates size 20-40cm fish.",
+                  alt_caption = "Aggredated length compositions for all fleets. Fits are generally good with the exception of non-trawl discards which underestimates size 20-40cm fish.",
                   label = "lencomps_all")
 
 #Trawl North length comps 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt1mkt2_page1.png"), 
                   caption = "Annual length comps and model fit for North trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Length composition data and associated model fits for the Northern trawl fleet from 1981-2011. Model fits are generally acceptable, but some years have very low samples sizes and the corresponding model fits are poor (1981-1990; 1994-1996)",
+                  alt_caption = "Length composition data and associated model fits for the Northern trawl fleet from 1981-2011. Model fits are generally acceptable but some years have very low samples sizes and the corresponding model fits are poor (1981-1990; 1994-1996)",
                   label = "ntrawl_comps_1")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt1mkt2_page2.png"), 
@@ -252,51 +252,51 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt1mkt2_page2.png")
 #Trawl South length comps 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt2mkt2_page1.png"), 
                   caption = "Annual length comps and model fit for South trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Length composition data from the southern trawl fleet and associated model fits to the data for the years 1981-2004. Model fits to the data are generally acceptable, but with substantial annual variability.",
+                  alt_caption = "Length composition data from the southern trawl fleet and associated model fits to the data for the years 1981-2004. Model fits to the data are generally acceptable but with substantial annual variability.",
                   label = "strawl_comps_1")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt2mkt2_page2.png"), 
                   caption = "Annual length comps and model fit for South trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Length composition data from the southern trawl fleet and associated model fits to the data for the years 2005-2022. Model fits to the data are generally acceptable, but with substantial annual variability.",
+                  alt_caption = "Length composition data from the southern trawl fleet and associated model fits to the data for the years 2005-2022. Model fits to the data are generally acceptable but with substantial annual variability.",
                   label = "strawl_comps_2")
 
 #Non-Trawl length comps 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt3mkt2_page1.png"), 
                   caption = "Annual length comps and model fit for Non-trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Length composition data from the coastwide non-trawl fleet and associated model fits to the data for the years 1985-2009. Model fits to the data are generally acceptable, but with substantial annual variability. Many individuals years possess low effective sample sizes, leading to poor model fits to the data in those years.",
+                  alt_caption = "Length composition data from the coastwide non-trawl fleet and associated model fits to the data for the years 1985-2009. Model fits to the data are generally acceptable but with substantial annual variability. Many individuals years possess low effective sample sizes leading to poor model fits to the data in those years.",
                   label = "nontrawl_comps_1")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt3mkt2_page2.png"), 
                   caption = "Annual length comps and model fit for Non-trawl retained catch. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Length composition data from the coastwide non-trawl fleet and associated model fits to the data for the years 2010-2022. Model fits to the data are generally acceptable, but with substantial annual variability. Many individuals years possess low effective sample sizes, leading to poor model fits to the data in those years.",
+                  alt_caption = "Length composition data from the coastwide non-trawl fleet and associated model fits to the data for the years 2010-2022. Model fits to the data are generally acceptable but with substantial annual variability. Many individuals years possess low effective sample sizes leading to poor model fits to the data in those years.",
                   label = "nontrawl_comps_2")
 
 #Length comps whole catch, surveys
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt4mkt0.png"), 
                   caption = "Length comps, whole catch, for the early-Triennial Survey (1980-1992). 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Sex-specific length composition and associated model fits from the Triennial Survey for the years 1989 and 1992. Fit to female length compositions shown in red and fit to male length copmpositions in blue. Model fit to both sexes is generally acceptable, and effective sample sizes are >300 for both sexes in both years.",
+                  alt_caption = "Sex-specific length composition and associated model fits from the Triennial Survey for the years 1989 and 1992. Fit to female length compositions shown in red and fit to male length copmpositions in blue. Model fit to both sexes is generally acceptable and effective sample sizes are >300 for both sexes in both years.",
                   label = "fits_etri")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt5mkt0.png"), 
                   caption = "Length comps, whole catch, for the late-Triennial Survey (1995-2004). 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Sex-specific length composition and associated model fits from the Triennial Survey for the years 1995, 1998, 2001, and 2004. Fit to female length compositions shown in red and fit to male length copmpositions in blue. Model fit to both sexes is generally acceptable, and effective sample sizes are >200 for both sexes in all years.",
+                  alt_caption = "Sex-specific length composition and associated model fits from the Triennial Survey for the years 1995 1998 2001 and 2004. Fit to female length compositions shown in red and fit to male length copmpositions in blue. Model fit to both sexes is generally acceptable and effective sample sizes are >200 for both sexes in all years.",
                   label = "fits_ltri")
 
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit_flt6mkt0.png"), 
                   caption = "Length comps, whole catch, for the WCGBTS. 'N adj.' is the input sample size after data-weighting adjustment. N eff. is the calculated effective sample size used in the McAllister-Ianelli tuning method.", 
-                  alt_caption = "Sex-specxific length compositions and associated model fits from the WCGBTS for the years 2003-2022. Sex-specific composition data was available for 2003 and 2004, and thus composition data and model fits are shown for the both sexes in aggregate. Model fits for both sexes are generally acceptable in all years, but with substantial inter-annual variation.",
+                  alt_caption = "Sex-specxific length compositions and associated model fits from the WCGBTS for the years 2003-2022. Sex-specific composition data was available for 2003 and 2004 and thus composition data and model fits are shown for the both sexes in aggregate. Model fits for both sexes are generally acceptable in all years but with substantial inter-annual variation.",
                   label = "fits_wcgbts")
 
 #Pearsons resids fisheries
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit__page1_multi-fleet_comparison.png"), 
                   caption = "Pearson residuals, whole catch, for the three fisheries fleets. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).", 
-                  alt_caption = "Bubble plot showing pearson residuals for the length compositions for all three fisheries, including both retained catch and discarded catch. No substantial pattern is observed in the residuals for any fleet that indicate substantial model misspecification.",
+                  alt_caption = "Bubble plot showing pearson residuals for the length compositions for all three fisheries including both retained catch and discarded catch. No substantial pattern is observed in the residuals for any fleet that indicate substantial model misspecification.",
                   label = "resids_fisheries")
 
 #Pearsons resids surveys
 sa4ss::add_figure(filein = file.path(fig_dir3, "comp_lenfit__page2_multi-fleet_comparison.png"), 
                   caption = "Pearson residuals, whole catch, for the three scientific surveys. Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected). Red bubbles are female, blue bubbles are male, and grey bubble are unsexed.", 
-                  alt_caption = "Bubble plot showing sex-specific pearson residuals for the length compositions for the early and later-period Treinnial survey and the WCBTS. Blue bubbles indicate residuals for females, while red bubble indicate residuals for males. Sex-specific composition data was not avaialble from the WCGBTS in 2003 and 2004, and bubbles for those years are black indicating their sex-aggregated data. No substantial pattern is observed in the residuals for any combination of survey and sex that indicate substantial model misspecification.",
+                  alt_caption = "Bubble plot showing sex-specific pearson residuals for the length compositions for the early and later-period Treinnial survey and the WCBTS. Blue bubbles indicate residuals for females while red bubble indicate residuals for males. Sex-specific composition data was not avaialble from the WCGBTS in 2003 and 2004 and bubbles for those years are black indicating their sex-aggregated data. No substantial pattern is observed in the residuals for any combination of survey and sex that indicate substantial model misspecification.",
                   label = "resids_survey")
 
 #Mean Weights North Trawl
@@ -314,37 +314,37 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltTrawl_S.png"),
 #Mean Weights Non-trawl
 sa4ss::add_figure(filein = file.path(fig_dir3, "bodywt_fit_fltNon-trawl.png"), 
                   caption = "Mean individual body weight (kg) in discard for the Non-trawl fleet.", 
-                  alt_caption = "Data and model fits for individual weights in kilograms from 2003-2022 in the coastwide non-trawl fleet. Data are shown as open circles with associated standard error bars. Model fits are shown as a dashed blue line. The model fits to the data show a declining in mean body weight over the time period, while the data show an increase in mean body weight since 2010.",
+                  alt_caption = "Data and model fits for individual weights in kilograms from 2003-2022 in the coastwide non-trawl fleet. Data are shown as open circles with associated standard error bars. Model fits are shown as a dashed blue line. The model fits to the data show a declining in mean body weight over the time period while the data show an increase in mean body weight since 2010.",
                   label = "weightNonTrl")
 
 #Spawning output
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
-                  caption = "Spawning output (eggs) with ~95% asymptotic intervals.", 
-                  alt_caption = "Spawning output trajectory in number of eggs from 1990-2022. Mean estimates of spaning output are shown as open circle, and 95% asymptotic foncident intervals are shown as dashed lines. The trajectory shows largely unchanging spanwing output from 1900-1970, before spawning output began to decrease. The decline in spawning output continues through to 2022.",
+                  caption = "Spawning output (eggs) with \\sim 95\\% asymptotic intervals.", 
+                  alt_caption = "Spawning output trajectory in number of eggs from 1990-2022. Mean estimates of spaning output are shown as open circle and 95\\% asymptotic foncident intervals are shown as dashed lines. The trajectory shows largely unchanging spanwing output from 1900-1970 before spawning output began to decrease. The decline in spawning output continues through to 2022.",
                   label = "spawnout")
 
 #Relative spawning output- Management 
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
-                  caption = "Relative spawning output: $B/B_0$ with ~95% asymptotic intervals.", 
-                  alt_caption = "Relative spawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle, and 95% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0), the target level of relative spawning output (0.40), and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.",
+                  caption = "Relative spawning output: $B/B_0$ with \\sim  95\\% asymptotic intervals.", 
+                  alt_caption = "Relative spawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle and 95\\% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0) the target level of relative spawning output (0.40) and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.",
                   label = "relspawnout")
 
 # Fishing Rate
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts_summaryF.png"), 
                   caption = "Summary fishing mortality rate (total landings / summary biomass).", 
-                  alt_caption = "Summary fishing mortality rate, calculated as total landings divided by summary biomass from 1900-2020. Mean estimates are shown as closed points, and 95% confidence intervals are shown with error bars. Fishing mortality began increaseing in the early 1960s, before peaking in the late 1980s at ~4%. More recent fishing mortality rates are ~1%",
+                  alt_caption = "Summary fishing mortality rate calculated as total landings divided by summary biomass from 1900-2020. Mean estimates are shown as closed points and 95\\% confidence intervals are shown with error bars. Fishing mortality began increaseing in the early 1960s before peaking in the late 1980s at \\sim 4\\%. More recent fishing mortality rates are \\sim 1\\%",
                   label = "summary_f")
 
 # SPR Trajectory
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR3_ratiointerval.png"), 
                   caption = "Estimated relative fishing intensity as a function of spawning potential ratio (SPR).", 
-                  alt_caption = "Relative fishing intensity, as a function of the spawning potential ratio, from 1900-2022. Annual mean estimated are shown as open blue points, while 95% confidence intervals are shown as dashed blue lines. Relative fihsing intensity rose above the target level of 1.0 in the early 1970s and remained above the traget level until 2020.",
+                  alt_caption = "Relative fishing intensity as a function of the spawning potential ratio from 1900-2022. Annual mean estimated are shown as open blue points while 95\\% confidence intervals are shown as dashed blue lines. Relative fihsing intensity rose above the target level of 1.0 in the early 1970s and remained above the traget level until 2020.",
                   label = "spr_trajectory")
 
 # Phase Diagram
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"), 
-                  caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.", 
-                  alt_caption = "A phase plot showing the time trajectory of relative spawning output vs relative fishing intensity. Annual estimates aere shown as colored points. A shaded ellipse around the 2022 estimate shows the estimated uncertainty in the 2022 estimated. The trajectory shows the stock to have been consistenly fished above the target fishing intensity for much of the time series, while relative spawning output has declined since the early-1970s.",
+                  caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95\\% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95\\% region accoutninf for estimated correlation between the two quantities.", 
+                  alt_caption = "A phase plot showing the time trajectory of relative spawning output vs relative fishing intensity. Annual estimates aere shown as colored points. A shaded ellipse around the 2022 estimate shows the estimated uncertainty in the 2022 estimated. The trajectory shows the stock to have been consistenly fished above the target fishing intensity for much of the time series while relative spawning output has declined since the early-1970s.",
                   label = "phase_diagram")
 ```
 
@@ -357,18 +357,18 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"),
 #R0
 sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_SR_LN(R0).png"), 
                   caption = "Piner panel plot showing the impact of changing $R_0$ on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
-                  alt_caption = "Three plots showing the effect of varying the the R0 parameter on the total likelihood (top panel), length composition likelihood (middle panel), and survey likelihoods (bottom panel). Top panel shows that length composition data pushes the model towards estimated a value R0 of 9.5, while survey index data is best fit by higher values of R0.",
+                  alt_caption = "Three plots showing the effect of varying the the R0 parameter on the total likelihood (top panel) length composition likelihood (middle panel) and survey likelihoods (bottom panel). Top panel shows that length composition data pushes the model towards estimated a value R0 of 9.5 while survey index data is best fit by higher values of R0.",
                   label = "R0_prof")
 
 sa4ss::add_figure(filein = file.path(fig_dir6, "SR_LN(R0)_trajectories_compare3_Bratio.png"), 
                   caption = "High to low values of $R_0$ and impact on spawning output.", 
-                  alt_caption = "Relative spawning output trajectories assuminng levels of log R0 ranging from 9.00 to 10.00 in increments of 0.05. As the value of log R0 becomes lower, relative spawning output declines faster and to lower levels by 2022. Under R0=9.00, estimated 2022 relative spawning output is below the minimum threshold of 0.25.",
+                  alt_caption = "Relative spawning output trajectories assuminng levels of log R0 ranging from 9.00 to 10.00 in increments of 0.05. As the value of log R0 becomes lower relative spawning output declines faster and to lower levels by 2022. Under R0=9.00 estimated 2022 relative spawning output is below the minimum threshold of 0.25.",
                   label = "R0_spawnout")
 
 #h
 sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_SR_BH_steep.png"), 
                   caption = "Piner panel plot showing the impact of changing $h$ on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
-                  alt_caption = "Three plots showing the effect of varying the the steepness parameter on the total likelihood (top panel), length composition likelihood (middle panel), and survey likelihoods (bottom panel). Top panel shows that the length composition datasets are best fit by lower values of steepness, while index and recruitment data are best fit by higher values. The total likelihood decreases as steepness approaches a value of 1.0.",
+                  alt_caption = "Three plots showing the effect of varying the the steepness parameter on the total likelihood (top panel) length composition likelihood (middle panel) and survey likelihoods (bottom panel). Top panel shows that the length composition datasets are best fit by lower values of steepness while index and recruitment data are best fit by higher values. The total likelihood decreases as steepness approaches a value of 1.0.",
                   label = "h_piner_prof")
 
 sa4ss::add_figure(filein = file.path(fig_dir6, "SR_BH_steep_trajectories_compare3_Bratio.png"), 
@@ -379,17 +379,17 @@ sa4ss::add_figure(filein = file.path(fig_dir6, "SR_BH_steep_trajectories_compare
 #M
 sa4ss::add_figure(filein = file.path(fig_dir6, "piner_panel_NatM_break_1_Fem_GP_1.png"), 
                   caption = "Piner panel plot showing the impact of changing natural mortality ($M$) on the overall (top), length composition (middle), and survy (bottom) likeihoods.", 
-                  alt_caption = "Three plots showing the effect of varying the the natural mortality parameter on the total likelihood (top panel), length composition likelihood (middle panel), and survey likelihoods (bottom panel). Top panel shows that the length composition datasets are best fit by lower values of mortality, while index and recruitment data are best fit by higher values. The total likelihood decreases as moratlity approaches a value of 0.025.",
+                  alt_caption = "Three plots showing the effect of varying the the natural mortality parameter on the total likelihood (top panel) length composition likelihood (middle panel) and survey likelihoods (bottom panel). Top panel shows that the length composition datasets are best fit by lower values of mortality while index and recruitment data are best fit by higher values. The total likelihood decreases as moratlity approaches a value of 0.025.",
                   label = "M_prof")
 
 sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectories_compare1_spawnbio.png"), 
                   caption = "High to low values of $M$ and impact on spawning output.", 
-                  alt_caption = "Spawning output trajectories assuming levels of natural mortality ranging friom 0.025 to 0.055 in 0.005 increments. The natural mortality rate greatly effects stock scale with models that assumed lower natural mortality rates estimating higher unfished spawning outputs levels. The overall trajectories are similar regardless of the mortality rate.",
+                  alt_caption = "Spawning output trajectories assuming levels of natural mortality ranging from 0.025 to 0.055 in 0.005 increments. The natural mortality rate greatly effects stock scale with models that assumed lower natural mortality rates estimating higher unfished spawning outputs levels. The overall trajectories are similar regardless of the mortality rate.",
                   label = "M_spawnout")
 
 sa4ss::add_figure(filein = file.path(fig_dir6, "NatM_break_1_Fem_GP_1_trajectories_compare3_Bratio.png"), 
                   caption = "High to low values of $M$ and impact on relative spawning output.", 
-                  alt_caption = "Relative spawning output trajectories assuminng levels of natural mortality ranging from 0.025 to 0.055 in increments of 0.005. Higher levels of natural mortality lead to more optimistic estimates of stock status in 2022, while natural mortality vales in the range of 0.035-0.045 lead to most pessimistic outlooks on stock status.",
+                  alt_caption = "Relative spawning output trajectories assuminng levels of natural mortality ranging from 0.025 to 0.055 in increments of 0.005. Higher levels of natural mortality lead to more optimistic estimates of stock status in 2022 while natural mortality vales in the range of 0.035-0.045 lead to most pessimistic outlooks on stock status.",
                   label = "M_relspawnout")
 
 ```
@@ -407,8 +407,8 @@ sa4ss::add_figure(filein = file.path(fig_dir5, "compare1_spawnbio.png"),
 
 #Spawnbio WITH uncertainty
 sa4ss::add_figure(filein = file.path(fig_dir5, "compare4_Bratio_uncertainty.png"), 
-                  caption = "Impact of removing 1-5 years of data on estimated relative sapwning output from retrospective analysis. Blue shaded region is the 95% confidence interval around the estimated timeseries from the 2023 base model.", 
-                  alt_caption = "Retrospective peels for 1-5 years of relative spawning output shown in different colors. A 95% confidence interval around the 2022 base model appears as a blue shaded region. No substantial retrospective bias is observed. Mohn's rho is negative for all years, ranging from -0.03 with one year of data removed to -0.16 with 5 years of data removed.",
+                  caption = "Impact of removing 1-5 years of data on estimated relative sapwning output from retrospective analysis. Blue shaded region is the 95\\% confidence interval around the estimated timeseries from the 2023 base model.", 
+                  alt_caption = "Retrospective peels for 1-5 years of relative spawning output shown in different colors. A 95\\% confidence interval around the 2022 base model appears as a blue shaded region. No substantial retrospective bias is observed. Mohn's rho is negative for all years ranging from -0.03 with one year of data removed to -0.16 with 5 years of data removed.",
                   label = "retros_bratio_uncertainty")
 
 #index 
@@ -432,36 +432,36 @@ sa4ss::add_figure(filein = file.path(fig_dir5, "compare13_indices_flt6.png"),
 #Growth
 sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare2_spawnbio_uncertainty.png"),
                   caption = "Spawning output comparisons of the base model and high growth and low growth assumptions.",
-                  alt_caption = "Trajectories of spawning output for three different models assuming different growth pattern. Base case growth, in blue, is shown with a 95% confidence interval. Spawning output in the low growth model is smaller than in the base case, but within the confidence interval. Spawning output in the high growth model is higher than in the base case, and is outside the confidence interval.",
+                  alt_caption = "Trajectories of spawning output for three different models assuming different growth pattern. Base case growth in blue is shown with a 95\\% confidence interval. Spawning output in the low growth model is smaller than in the base case but within the confidence interval. Spawning output in the high growth model is higher than in the base case and is outside the confidence interval.",
                   label = "growth_sensitiv_spawning")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare4_Bratio_uncertainty.png"),
                   caption = "Relative spawning output comparisons of the base model and high growth and low growth assumptions.",
-                  alt_caption = "Relative spawning output trajectories for three models assuming different growth patterns. The base model is shown with a 95% confidence interval. All models are within the confidence interval over the entire timespan.",
+                  alt_caption = "Relative spawning output trajectories for three models assuming different growth patterns. The base model is shown with a 95\\% confidence interval. All models are within the confidence interval over the entire timespan.",
                   label = "growth_sensitiv_mngmt")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Growth", "compare13_indices_flt6"),
                   caption = "Comparison of fits to combo survey data between the base model and high growth and low growth sensitivities.",
-                  alt_caption = "Model fits to the WCGBTS index of abundance under three different growth models. The high growth model leads to the best fits to the most recent WCGBTS survey indices, while the low growth models fail to fully capture recent increases in the indices of abundance.",
+                  alt_caption = "Model fits to the WCGBTS index of abundance under three different growth models. The high growth model leads to the best fits to the most recent WCGBTS survey indices while the low growth models fail to fully capture recent increases in the indices of abundance.",
                   label = "growth_sensitiv_indx")
 
 #Maturity
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare2_spawnbio_uncertainty.png"),
                   caption = "Spawning output comparisons of the base model and maturity sensitivities.",
-                  alt_caption = "Trajectories of spawning output for three different models assuming different maturity schedules. The base maturity model, in blue, is shown with a 95% confidence interval. Spawning output for the models that assumed the 2013 maturity curve and an intermediate maturity curve results in slightly higher estimates of unfished spawning output, but such estimated remained within the confidence interval for the base modlel.",
+                  alt_caption = "Trajectories of spawning output for three different models assuming different maturity schedules. The base maturity model in blue is shown with a 95\\% confidence interval. Spawning output for the models that assumed the 2013 maturity curve and an intermediate maturity curve results in slightly higher estimates of unfished spawning output but such estimated remained within the confidence interval for the base modlel.",
                   label = "mat_sensitiv_spawning")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Maturity", "compare4_Bratio_uncertainty.png"),
                   caption = "Relative spawning output comparisons of the base model and maturity sensitivities.",
-                  alt_caption = "Relative spawning output trajectories for three models assuming different maturity schedules. The base model is shown with 95% confidence intervals. The trajectories are very simliar regradless of which maturity schedule is assumed.",
+                  alt_caption = "Relative spawning output trajectories for three models assuming different maturity schedules. The base model is shown with 95\\% confidence intervals. The trajectories are very simliar regradless of which maturity schedule is assumed.",
                   label = "mat_sensitiv_mngmt")
  
 # Landings 
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare2_spawnbio_uncertainty.png"),
                   caption = "Spawning output comparisons of the base model and landing sensitivities.",
-                  alt_caption = "Trajectories of spawning output assuming different treatments of historical catch datasets. The base model is shown with a 95% confidence interval. Alternative models behave similarly to the base model and trajectories are within the confidence interval for the base model.",
+                  alt_caption = "Trajectories of spawning output assuming different treatments of historical catch datasets. The base model is shown with a 95\\% confidence interval. Alternative models behave similarly to the base model and trajectories are within the confidence interval for the base model.",
                   label = "land_sensitiv_spawning")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_uncertainty.png"),
@@ -473,7 +473,7 @@ sa4ss::add_figure(filein = file.path(fig_dir4, "Landings", "compare4_Bratio_unce
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare2_spawnbio_uncertainty.png"),
                   caption = "Spawning output comparisons of the base model and survey sensitivities.",
-                  alt_caption = "Trajectories of spawning output assuming different treatements of the WCGBTS indices of abundance. The base model is shown with 95% confidence intervals. Models that used design-based index formulations and model-based indices with a lognormal error structure resulted in slightly reduced estimates of spawning output across the timeseries.",
+                  alt_caption = "Trajectories of spawning output assuming different treatements of the WCGBTS indices of abundance. The base model is shown with 95\\% confidence intervals. Models that used design-based index formulations and model-based indices with a lognormal error structure resulted in slightly reduced estimates of spawning output across the timeseries.",
                   label = "surv_sensitiv_spawning")
 
 sa4ss::add_figure(filein = file.path(fig_dir4, "Surveys", "compare4_Bratio_uncertainty.png"),

@@ -40,5 +40,5 @@ setwd(file.path(here::here(), "doc"))
 #              latin = "Sebastolobus alascanus",
 #              coast = "US West",
 #              create_dir = FALSE)
-bookdown::render_book("00a.Rmd", clean = TRUE, output_dir = getwd())
+bookdown::render_book("00a.Rmd", clean = FALSE, output_dir = getwd())
 setwd("..")

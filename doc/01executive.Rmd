@@ -144,10 +144,11 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "SPR3_ratiointerval.png"),
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"), 
-                  caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95% region accoutninf for estimated correlation between the two quantities.",  
+                  caption = "Phase plot of biomass ratio vs. spawning potential ratio (SPR) ratio. Points represent the annual biomass ratio and SPR ratio. Lines through the final point show 95\\% intervals based on the asymptotic uncertainty for each dimension, while the shaded ellipse is a 95\\% region accoutninf for estimated correlation between the two quantities.",  
                   label = "phase_diagramES")
 
 ```
+\clearpage
 
 ## Ecosystem considerations{-}
 This stock assessment does not explicitly incorporate trophic interactions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
