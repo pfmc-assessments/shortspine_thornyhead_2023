@@ -15,7 +15,6 @@ fig_dir7 <- here::here("doc", "FinalFigs", "Jitters")
 fig_dir8 <- here::here("doc", "FinalFigs", "bridging")
 
 tab_dir1 <- here::here("doc", "FinalTables", "Summary")
-#tab_dir1 <- here::here("model", "Sensitivity_Anal", "5.8_Francis_Reweighting_2", "1_23.model.francis_2", "run", "tables")
 tab_dir2 <- here::here("doc", "FinalTables", "Data")
 tab_dir3 <- here::here("doc", "FinalTables", "Sensitivities")
 tab_dir4 <- here::here("doc", "FinalTables", "Model")

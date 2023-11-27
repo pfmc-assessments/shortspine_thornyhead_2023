@@ -26,6 +26,8 @@ Historically, landings of `r spp` remained under 500 metric tons until the late 
 
 Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for `r spp` have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when under the catch shares system. Catches from the At-Sea Hake fishery were integrated into the North Trawl fleet. 
 
+\clearpage
+
 ```{r, results='asis'}
 
 catch_tab<-read.csv(file.path(tab_dir1, "a_Catches_ES.csv"))
@@ -60,19 +62,19 @@ New maturity analyses of samples collected by the \gls{s-wcgbt} in 2011, 2013, 2
 
 This assessment estimated 197 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 59 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
+\clearpage
 
 ```{r, results = "asis"}
 #Data sources
 sa4ss::add_figure(filein = file.path(fig_dir2, "data_plot.png"),
                   caption = "Summary of data sources used in the base model.",
                   alt_caption = "Tabular information for this figure can be found in the data file.",
-                  label = "assessment_data_timeseriesES",
-                  width=80)
+                  label = "assessment_data_timeseriesES")
 ```
 
 ## Stock biomass and dynamics{-}
 
-Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 trillion eggs, with a 95% confidence interval of 18.166-26.124 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.717 trillion eggs (5.545-11.889 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 39.4% (31.6\%-47.1\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.5%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
+Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 billion eggs, with a 95% confidence interval of 18.166-26.124 billion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.717 billion eggs (5.545-11.889 billion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 39.4% (31.6\%-47.1\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.5%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
 
 
 ```{r, results = "asis"}
@@ -107,7 +109,10 @@ rec_tab<-read.csv(file.path(tab_dir1, "c_Recr_ES.csv"))
 names(rec_tab)<-c("Year", "Recruitment", "95% CI", "RecDevs", "RecDev 95% CI")    
 sa4ss::table_format(x = rec_tab,
                   caption = "Estimated recent trend in recruitment and recruitment deviations and the 95\\% confidence intervals (CI) from the base model.",
-                  label = "recES")
+                  label = "recES",
+                  custom_width = TRUE,
+                  col_to_adjust = c(2, 3, 4, 5),
+                  width = c('3cm', '2cm', '2cm', '3cm'))
 ```
 
 ```{r, results = "asis"}
@@ -125,21 +130,27 @@ spr_tab<-read.csv(file.path(tab_dir1, "d_SPR_ES.csv"))
 names(spr_tab)<-c("Year", "(1-SPR)/(1-SPR 50%)", "95% CI", "Exploitation Rate", "95% CI")    
 sa4ss::table_format(x = spr_tab,
                   caption = "Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{40\\%})$. ",
-                  label = "sprES")
+                  label = "sprES",
+                  custom_width = TRUE,
+                  col_to_adjust = c(2, 3, 4, 5),
+                  width = c('3cm', '2cm', '2cm', '3cm'))
 ```
+\clearpage
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts9_Relative_spawning_output_intervals.png"), 
                   caption = "Estimated spawning output relative to unfished equilibrium for shortspine thornyhead.", 
                   alt_caption = "Relative spawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle and 95\\% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0) the target level of relative spawning output (0.40) and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.",
-                  label = "rel_ssb_trajectoryES")
+                  label = "rel_ssb_trajectoryES",
+                  height = 80)
 ```
 
 ```{r, results = "asis"}
 sa4ss::add_figure(filein = file.path(fig_dir3, "ts_summaryF.png"), 
                   caption = "Summary fishing mortality rate (total landings / summary biomass).", 
                   alt_caption = "Summary fishing mortality rate calculated as total landings divided by summary biomass from 1900-2020. Mean estimates are shown as closed points and 95\\% confidence intervals are shown with error bars. Fishing mortality began increaseing in the early 1960s before peaking in the late 1980s at \\sim 4\\%. More recent fishing mortality rates are \\sim 1\\%",
-                  label = "summary_fES")
+                  label = "summary_fES",
+                  height = 80)
 ```
 
 ```{r, results = "asis"}
@@ -159,10 +170,10 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "SPR4_phase.png"),
 \clearpage
 
 ## Ecosystem considerations{-}
-This stock assessment does not explicitly incorporate trophic interactions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
+This stock assessment does not explicitly incorporate trophic int∂eractions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
 
 ## Reference points{-}
-Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” ($B/B_0 = 0.40$) and “healthy” ($B/B_0 > 0.40$) status relative to the reference points (Figure \ref{fig:yieldcurveES}). Sustainable total yield (landings plus discards) was estimated at 1,108 mt when using an $SPR_{50\%}$ reference harvest rate and ranged from 929-1,288 mt based on estimates of uncertainty (Table \ref{tab:refPointsES}). The spawning output equivalent to 40% of the unfished spawning output ($B_{40\%}$) was 8.858 trillion eggs.  The most recent total mortality (landings plus discards) have been lower than the estimated long-term yields calculated using an $SPR_{50\%}$ reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full \gls{acl}. The \gls{ofl} and \gls{abc} values over the past 6 years have been approximately 3100 mt and 2,500 mt, respectively.
+Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” ($B/B_0 = 0.40$) and “healthy” ($B/B_0 > 0.40$) status relative to the reference points (Figure \ref{fig:yieldcurveES}). Sustainable total yield (landings plus discards) was estimated at 1,108 mt when using an $SPR_{50\%}$ reference harvest rate and ranged from 929-1,288 mt based on estimates of uncertainty (Table \ref{tab:refPointsES}). The spawning output equivalent to 40% of the unfished spawning output ($B_{40\%}$) was 8.858 billion eggs.  The most recent total mortality (landings plus discards) have been lower than the estimated long-term yields calculated using an $SPR_{50\%}$ reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full \gls{acl}.
 
 ```{r, results='asis'}
 #Reference Points 
@@ -183,6 +194,9 @@ sa4ss::add_figure(filein = file.path(fig_dir3, "yield2_yield_curve_with_refpoint
 
 ## Management performance{-}
 Catches for `r spp` have not fully attained the catch limits in recent years. \Gls{acl}s have hovered around 2500 mt since 2013, while total mortality has never exceeded 1085 mt, and is often smaller than  that (Table \ref{tab:managementES}). The fishery for `r spp` may be limited more by the \gls{acl}s on sablefish, with which they co-occur, and by the challenging economics of deep sea fishing, than by the management measures currently in place.
+
+\clearpage
+
 ```{r, results='asis'}
 #management 
 mngmt_tab<-read.csv(file.path(tab_dir1, "f_Manage_ES.csv"))

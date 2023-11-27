@@ -179,6 +179,8 @@ Historically, landings of shortspine thornyhead remained under 500 metric tons u
 
 Commercial landings are dominantly bottom trawl caught, and non-trawl landings include all other gear types, the majority of which is longline (Table \ref{tab:catchesES}; Figure \ref{fig:catch_histES}). For this assessment, trawl landings were divided into northern (the waters off Washington and Oregon) and southern (the waters off California) fleets. Non-trawl landings represent one, coastwide, fleet. Discard rates (landings divided by total catch) for shortspine thornyhead have been estimated as high as 43% per year, but are more frequently below 20%. Discard rates in the trawl fleets, available from the \gls{wcgop}, declined from 2003–2011 and have since increased from 2012-present, when under the catch shares system. Catches from the At-Sea Hake fishery were integrated into the North Trawl fleet. 
 
+\clearpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -232,18 +234,19 @@ New maturity analyses of samples collected by the \gls{s-wcgbt} in 2011, 2013, 2
 
 This assessment estimated 197 parameters. The log of the unfished equilibrium recruitment, $ln(R_0)$, controls the scale of the population and annual deviations around the stock-recruit curve (135 parameters) allow for more uncertainty in the population trajectory. In addition, 59 selectivity and retention parameters for the three fishery fleets and three surveys allowed for estimation of annual length compositions and discards rates. Two catchability parameters were analytically computed from the data, and one additional parameter, representing additional variability in the early Triennial survey, was directly estimated by the model.
 
+\clearpage
 
 
 \begin{figure}
 {\centering
-\includegraphics[alt=Tabular information for this figure can be found in the data file.,width=0.8\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/assessment_models/pac_sspt_23/doc/FinalFigs/Data/data_plot.png}
+\includegraphics[alt=Tabular information for this figure can be found in the data file.,width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/assessment_models/pac_sspt_23/doc/FinalFigs/Data/data_plot.png}
 }
 \caption{Summary of data sources used in the base model.\label{fig:assessment_data_timeseriesES}}
 \end{figure}
 
 ## Stock biomass and dynamics{-}
 
-Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 trillion eggs, with a 95% confidence interval of 18.166-26.124 trillion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.717 trillion eggs (5.545-11.889 trillion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 39.4% (31.6\%-47.1\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.5%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
+Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 billion eggs, with a 95% confidence interval of 18.166-26.124 billion eggs. The $B_0$ estimate here is not comparable to previous assessment as the integration of new fecundity and maturity assumptions have changed the output units from traditional biomass to spawned  eggs. Spawning output is estimated to have remained stable until the early-1970s before beginning to decline near linearly through the present day. The estimated spawning output in 2023 is 8.717 billion eggs (5.545-11.889 billion eggs), which represents a stock status or “depletion” ($B_{2023}/B_0$) of 39.4% (31.6\%-47.1\%; Table \ref{tab:ssbES}; Figure \ref{fig:ssb_trajectoryES}). The depletion in 2013 was estimated to be 43.5%, a large decrease from what was estimated by the 2013 assessment (~75%). The standard deviation of the log of spawning biomass in 2023 is 0.18, which is less than the 0.36 minimum assumed for use in $p^*$ adjustments to \gls{ofl} values. 
 
 
 
@@ -293,7 +296,7 @@ This assessment assumed a Beverton-Holt stock recruitment relationship. Steepnes
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{3cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{3cm}}
 \caption{(\#tab:recES)Estimated recent trend in recruitment and recruitment deviations and the 95\% confidence intervals (CI) from the base model.}\\
 \toprule
 Year & Recruitment & 95\% CI & RecDevs & RecDev 95\% CI\\
@@ -337,7 +340,7 @@ The summary harvest rate (total catch divided by age-1 and older biomass) closel
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
-\begin{longtable}[t]{c>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.6cm}}
+\begin{longtable}[t]{c>{\centering\arraybackslash}p{3cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{3cm}}
 \caption{(\#tab:sprES)Estimated recent trend in relative fishing intensity, exploitation rate, and the 95 percent intervals. The spawning potential ratio (SPR) is utilized in the relative fishing intensity calculation as $(1-SPR)/(1-SPR_{40\%})$. }\\
 \toprule
 Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
@@ -365,11 +368,12 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \end{longtable}
 \endgroup{}
 \endgroup{}
+\clearpage
 
 
 \begin{figure}
 {\centering
-\includegraphics[alt=Relative spawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle and 95\% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0) the target level of relative spawning output (0.40) and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.,width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/assessment_models/pac_sspt_23/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png}
+\includegraphics[alt=Relative spawning output trajectory in number of eggs relative the number of eggs under unfished conditions from 1990-2022. Mean estimates of spaning output are shown as open circle and 95\% asymptotic foncident intervals are shown as dashed lines. Three horizontal lines indicate the unfished relative spawning output (1.0) the target level of relative spawning output (0.40) and the minimum threshold for relative spawning output (0.25). The trajectory shows a decline in relative spawning output begining in the 1970s. Relative spawning output in 2022 is 0.40.,width=1\textwidth,height=0.8\textheight]{/Users/jzahner/Desktop/Projects/assessment_models/pac_sspt_23/doc/FinalFigs/Base/ts9_Relative_spawning_output_intervals.png}
 }
 \caption{Estimated spawning output relative to unfished equilibrium for shortspine thornyhead.\label{fig:rel_ssb_trajectoryES}}
 \end{figure}
@@ -377,7 +381,7 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 
 \begin{figure}
 {\centering
-\includegraphics[alt=Summary fishing mortality rate calculated as total landings divided by summary biomass from 1900-2020. Mean estimates are shown as closed points and 95\% confidence intervals are shown with error bars. Fishing mortality began increaseing in the early 1960s before peaking in the late 1980s at \sim 4\%. More recent fishing mortality rates are \sim 1\%.,width=1\textwidth,height=1\textheight]{/Users/jzahner/Desktop/Projects/assessment_models/pac_sspt_23/doc/FinalFigs/Base/ts_summaryF.png}
+\includegraphics[alt=Summary fishing mortality rate calculated as total landings divided by summary biomass from 1900-2020. Mean estimates are shown as closed points and 95\% confidence intervals are shown with error bars. Fishing mortality began increaseing in the early 1960s before peaking in the late 1980s at \sim 4\%. More recent fishing mortality rates are \sim 1\%.,width=1\textwidth,height=0.8\textheight]{/Users/jzahner/Desktop/Projects/assessment_models/pac_sspt_23/doc/FinalFigs/Base/ts_summaryF.png}
 }
 \caption{Summary fishing mortality rate (total landings / summary biomass).\label{fig:summary_fES}}
 \end{figure}
@@ -400,10 +404,10 @@ Year & (1-SPR)/(1-SPR 50\%) & 95\% CI & Exploitation Rate & 95\% CI\\
 \clearpage
 
 ## Ecosystem considerations{-}
-This stock assessment does not explicitly incorporate trophic interactions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
+This stock assessment does not explicitly incorporate trophic int∂eractions, habitat factors or environmental factors into the assessment model. More predation, diet, and habitat work, and mechanistic linkages to environmental conditions would be needed to incorporate these elements into the stock assessment.
 
 ## Reference points{-}
-Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” ($B/B_0 = 0.40$) and “healthy” ($B/B_0 > 0.40$) status relative to the reference points (Figure \ref{fig:yieldcurveES}). Sustainable total yield (landings plus discards) was estimated at 1,108 mt when using an $SPR_{50\%}$ reference harvest rate and ranged from 929-1,288 mt based on estimates of uncertainty (Table \ref{tab:refPointsES}). The spawning output equivalent to 40% of the unfished spawning output ($B_{40\%}$) was 8.858 trillion eggs.  The most recent total mortality (landings plus discards) have been lower than the estimated long-term yields calculated using an $SPR_{50\%}$ reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full \gls{acl}. The \gls{ofl} and \gls{abc} values over the past 6 years have been approximately 3100 mt and 2,500 mt, respectively.
+Reference points were calculated using the estimated catch distribution in the final year of the model (2023). In general, the population is on the boundary between “precautionary” ($B/B_0 = 0.40$) and “healthy” ($B/B_0 > 0.40$) status relative to the reference points (Figure \ref{fig:yieldcurveES}). Sustainable total yield (landings plus discards) was estimated at 1,108 mt when using an $SPR_{50\%}$ reference harvest rate and ranged from 929-1,288 mt based on estimates of uncertainty (Table \ref{tab:refPointsES}). The spawning output equivalent to 40% of the unfished spawning output ($B_{40\%}$) was 8.858 billion eggs.  The most recent total mortality (landings plus discards) have been lower than the estimated long-term yields calculated using an $SPR_{50\%}$ reference point, but not as low as the lower bound of the 95% uncertainty interval. However, this is due to the fishery not fully attaining the full \gls{acl}.
 
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
@@ -457,6 +461,9 @@ MSY (mt) & 1,227 & 1,027–1,426\\*
 
 ## Management performance{-}
 Catches for shortspine thornyhead have not fully attained the catch limits in recent years. \Gls{acl}s have hovered around 2500 mt since 2013, while total mortality has never exceeded 1085 mt, and is often smaller than  that (Table \ref{tab:managementES}). The fishery for shortspine thornyhead may be limited more by the \gls{acl}s on sablefish, with which they co-occur, and by the challenging economics of deep sea fishing, than by the management measures currently in place.
+
+\clearpage
+
 \begingroup\fontsize{10}{12}\selectfont
 \begingroup\fontsize{10}{12}\selectfont
 
@@ -995,7 +1002,7 @@ Like the fishery derived length compositions, survey-derived length compositions
 Mean body weight of discarded fish was well fit in the two trawl fleets, and no major trends were observed in either the data of the model estimates (Figure \ref{fig:weightNorthTrl}; Figure \ref{fig:weightSouthTrl}; Figure \ref{fig:weightNonTrl}). Mean discard weight in the Non-Trawl fleet was observed to have increased in the last ten years, but this trend was not captured by the model. The model, instead, fit a declining trend in discard weight to the Non-Trawl fleet data (Figure \ref{fig:weightNonTrl}). The reason for this disparity between the observed data and the model fit is unclear.
 
 ### Population Trajectory
-Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 trillion eggs (18.166-26.124 trillion eggs). The $B_0$ estimate is not directly comparable to estimates made in previous assessments, which assumed no fecundity relationship, and thus calculated $B_0$ in terms of biomass rather than egg production. Spawning output is estimated to have remained stable until the mid-1960s and then declined in the 1970s to about 80% in the mid-1980s, followed by a slower decline under the lower catch levels in the 2000s (Table \ref{tab:ts};  Figure \ref{fig:spawnout}). While the spawning output of the stock has declined near linearly since 1975, total biomass has stabilized in recent decades around ~85,000 mt. The estimated spawning output in 2023 is 8.717 trillion eggs (5.545-11.889 trillion eggs), which represents a stock status (depletion level) of 39.4% (31.6%-47.1%; Table \ref{tab:projections}, Figure \ref{fig:relspawnout}). The new depletion estimated for 2013 is 43.5%, which is significantly lower than the 74.2% estimated for 2013 in the previous assessment. 
+Unfished equilibrium spawning output ($B_0$) is estimated to be 22.145 billion eggs (18.166-26.124 billion eggs). The $B_0$ estimate is not directly comparable to estimates made in previous assessments, which assumed no fecundity relationship, and thus calculated $B_0$ in terms of biomass rather than egg production. Spawning output is estimated to have remained stable until the mid-1960s and then declined in the 1970s to about 80% in the mid-1980s, followed by a slower decline under the lower catch levels in the 2000s (Table \ref{tab:ts};  Figure \ref{fig:spawnout}). While the spawning output of the stock has declined near linearly since 1975, total biomass has stabilized in recent decades around ~85,000 mt. The estimated spawning output in 2023 is 8.717 billion eggs (5.545-11.889 billion eggs), which represents a stock status (depletion level) of 39.4% (31.6%-47.1%; Table \ref{tab:projections}, Figure \ref{fig:relspawnout}). The new depletion estimated for 2013 is 43.5%, which is significantly lower than the 74.2% estimated for 2013 in the previous assessment. 
 
 Twelve-year projections predict that the population is unlikely to experience a large increase in spawning output or spawning biomass in the near future, if the full \gls{acl} is taken each year.
 
