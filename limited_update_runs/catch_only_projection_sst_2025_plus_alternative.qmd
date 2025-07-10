@@ -1,0 +1,272 @@
+---
+title: "Catch only projection for shortspine thornyhead"
+author: "Kiva L. Oken" 
+affiliation: 'NOAA Fisheries Northwest Fisheries Science Center, 2725 Montlake Blvd E, Seattle, WA 98112'
+date: today
+format: 
+  pdf:
+    template: catch_only_projection_template.tex
+params:
+  species: "shortspine thornyhead"
+  assess_year: 2023
+  current_year: 2025
+  final_proj_year: 2036
+  category: 2
+  sigma: 1
+  p_star: 0.45
+  spawn_output_decimals: 2
+  dir_original: "../model/Sensitivity_Anal/Base_Model/5.25_Decision_Table_045/1_23.base.dt_base_45/run"
+  dir_new: "cop1"
+  dir_new2: "cop2b"
+  spawn_output_units: "(billions of eggs)"
+---
+
+
+```{r}
+#| label: parameters
+#| echo: false
+#| warning: false
+#| message: false
+species <- params$species
+Species <- stringr::str_to_sentence(params$species)
+assess_year <- params$assess_year
+current_year <- params$current_year
+final_proj_year <- params$final_proj_year
+category <- params$category
+sigma <- params$sigma
+p_star <- params$p_star
+spawn_output_decimals <- params$spawn_output_decimals
+
+# original model
+model_original <- r4ss::SS_output(
+    dir = params$dir_original,
+    verbose = FALSE,
+    printstats = FALSE,
+    hidewarn = TRUE
+)
+
+# catch-only projection
+model <- r4ss::SS_output(
+    dir = params$dir_new, # this is the directory where I ran the standard Catch-only projection model
+    verbose = FALSE,
+    printstats = FALSE,
+    hidewarn = TRUE
+)
+
+# catch-only projection Alternative 1
+model2 <- r4ss::SS_output(
+    dir = params$dir_new2, # this is the directory where I ran the standard Catch-only projection model
+    verbose = FALSE,
+    printstats = FALSE,
+    hidewarn = TRUE
+)
+
+table_caption <- glue::glue("Original {assess_year} projection and new catch-only projection for OFLs (mt), buffer, ABCs (mt), actual & assumed catch (mt), ACLs (mt), spawning output {params$spawn_output_units}, and stock status (fraction of unfished spawning output) given the removals. The gray shading indicates values associated with the original {assess_year} assessment projection. In both the original model and the new projection, the removals for years beyond the values in the 'Actual & Assumed Removals' columns are the ACL values estimated from that model.")
+
+table_caption2 <- glue::glue("Original {assess_year} projection and alternative catch-only projection in which the 2026 assumed catches are set to 67% of the ACL from a projection only through 2025 (2026 ACL in a catch-only projection through 2025 = 834 mt) rather than fixed at the values calculated by the GMT based on the current harvest specifications. See caption of table above for additional details.")
+```
+
+This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. This analysis updates catches between `r assess_year` - `r current_year` to the removals by year from the Groundfish Multiyear Mortality (GEMM) report. The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the Groundfish Management Team (GMT) for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
+
+An alternative projection is provided in the second table where the assumed catch in 2026 is based on ACL from a new catch-only projection through 2025 rather than the current harvest specifications. An assumption of 67% attainment of the ACL estimated by the GMT was used in all cases.
+
+```{r}
+#| label: calc-table
+#| echo: false
+#| warning: false
+#| message: false
+
+# define ranges of years to get values
+all_years <- assess_year:final_proj_year
+proj_years <- (current_year + 2):final_proj_year
+proj_years2 <- (current_year + 1):final_proj_year
+catch_years <- assess_year:(current_year + 1)
+catch_years2 <- assess_year:(current_year)
+diff_years <- current_year - assess_year
+
+# function to get model outputs
+catch_only_projection_table <- function(model, all_years, proj_years, catch_years) {
+    # get realized catch from model output
+    catch <- model$derived_quants |>
+        dplyr::filter(Label %in% paste0("ForeCatch_", catch_years)) |>
+        dplyr::reframe(
+            Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
+            Catch = Value
+        )
+    ofl <- model$derived_quants |>
+        dplyr::filter(Label %in% paste0("OFLCatch_", proj_years)) |>
+        dplyr::reframe(
+            Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
+            OFL = Value
+        )
+    acl <- model$derived_quants |>
+        dplyr::filter(Label %in% paste0("ForeCatch_", proj_years)) |>
+        dplyr::reframe(
+            Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
+            ACL = Value
+        )
+    sb <- model$derived_quants |>
+        dplyr::filter(Label %in% paste0("SSB_", all_years)) |>
+        dplyr::reframe(
+            Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
+            SB = Value
+        )
+    status <- model$derived_quants |>
+        dplyr::filter(Label %in% paste0("Bratio_", all_years)) |>
+        dplyr::reframe(
+            Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
+            status = round(Value, 3)
+        )
+
+    # get buffer from PEPtools function
+    Buffer <- PEPtools::get_buffer(
+        years = all_years, sigma = sigma, pstar = p_star,
+        verbose = FALSE
+    ) |>
+        dplyr::rename(Year = year, Buffer = buffer) |>
+        dplyr::filter(Year %in% proj_years)
+
+    # combine all the tables above (joined by year)
+    table <- purrr::reduce(
+        list(ofl, Buffer, acl, sb, status, catch),
+        ~ dplyr::full_join(.x, .y, by = "Year")
+    ) |>
+        dplyr::arrange(Year) |>
+        dplyr::relocate(Catch, .after = Year) |>
+        dplyr::mutate(
+            Buffer_from_ratio = dplyr::case_when(
+                status >= model$btarg ~ round(ACL / OFL, 3),
+                .default = NA # ratio doesn't work for years with 40-10 adjustment
+            ),
+            .after = Buffer
+        ) |>
+        dplyr::mutate(
+            ABC = Buffer * OFL,
+            .after = Buffer_from_ratio
+        ) |>
+        dplyr::rename(
+            `Actual & Assumed Removals` = Catch,
+            `Stock Status` = status,
+            `Spawning Output` = SB,
+        )
+}
+
+combine_tables <- function(table1, table2) {
+    dplyr::full_join(
+        table1,
+        table2,
+        by = "Year"
+    ) |>
+        dplyr::select(
+            c(
+                "Year",
+                "OFL (yyyy)", "OFL",
+                "Buffer",
+                "ABC (yyyy)", "ABC",
+                "Actual & Assumed Removals (yyyy)", "Actual & Assumed Removals",
+                "ACL (yyyy)", "ACL",
+                "Spawning Output", "Stock Status (yyyy)", "Stock Status"
+            )
+        ) |>
+        dplyr::rename_with(.fn = function(x) {
+            gsub("yyyy", assess_year, x)
+        })
+}
+
+# function to apply gt formatting to the table
+format_table <- function(table) {
+    table |>
+        gt::gt() |>
+        gt::fmt_number(
+            columns = tidyselect::starts_with("Actual") | tidyselect::starts_with("OFL") | tidyselect::starts_with("ABC") | tidyselect::starts_with("ACL"),
+            decimals = 0
+        ) |>
+        gt::fmt_number(
+            columns = tidyselect::contains("Spawning"),
+            decimals = spawn_output_decimals
+        ) |>
+        gt::tab_options(
+            table.font.size = 11, # reduced font size
+            latex.use_longtable = TRUE
+        ) |>
+        gt::sub_missing(
+            columns = tidyselect::everything(),
+            missing_text = "---"
+        ) |>
+        gt::cols_align(
+            align = "center"
+        ) |>
+        gt::cols_width(
+            everything() ~ px(65)
+        ) |>
+        gt::data_color(
+            columns = tidyselect::contains(paste(assess_year)),
+            palette = "gray90",
+            na_color = "gray90"
+        ) |>
+        gt::as_latex()
+}
+
+table <- catch_only_projection_table(model,
+    all_years = all_years, proj_years = proj_years, catch_years = catch_years
+)
+table_original <- catch_only_projection_table(model_original,
+    all_years = head(all_years, 12), proj_years = proj_years - diff_years, catch_years = catch_years - diff_years
+)
+table2 <- catch_only_projection_table(model2,
+    all_years = all_years, proj_years = proj_years2, catch_years = catch_years2
+)
+```
+
+```{r}
+#| label: warning-about-buffer
+#| echo: false
+#| warning: true
+#| message: true
+
+if (any(abs(table$Buffer_from_ratio - table$Buffer) > 0.01, na.rm = TRUE)) {
+    cli::cli_alert_warning("ACL / OFL differs from buffer calculated by PEPtools::get_buffer() by more than 0.01 for years with status > target. See values below.")
+    print(table)
+} else {
+    table <- dplyr::select(table, -Buffer_from_ratio)
+}
+
+if (any(abs(table_original$Buffer_from_ratio - table_original$Buffer) > 0.01, na.rm = TRUE)) {
+    cli::cli_alert_warning("ACL / OFL differs from buffer calculated by PEPtools::get_buffer() by more than 0.01 for years with status > target. See values below.")
+    print(table_original)
+} else {
+    table_original <- dplyr::select(table_original, -"Buffer_from_ratio")
+}
+
+table_original <- table_original |>
+    dplyr::select(-Buffer, -"Spawning Output") |>
+    dplyr::rename_with(~ paste(.x, "(yyyy)"), .cols = -Year)
+# combine the two tables
+wide_table <- combine_tables(table, table_original)
+
+wide_table2 <- combine_tables(table2, table_original)
+# move 2026 ACL to assumed catch column
+wide_table2$"Actual & Assumed Removals"[wide_table2$Year == 2026] <- 
+  wide_table2$ACL[wide_table2$Year == 2026]
+wide_table2$ACL[wide_table2$Year == 2026] <- NA  
+```
+
+```{r}
+#| label: tbl-proj
+#| echo: false
+#| warning: false
+#| message: false
+#| eval: true
+#| tbl-cap: !expr table_caption
+format_table(wide_table)
+```
+
+```{r}
+#| label: tbl-proj2
+#| echo: false
+#| warning: false
+#| message: false
+#| eval: true
+#| tbl-cap: !expr table_caption2
+format_table(wide_table2)
+```
