@@ -63,12 +63,12 @@ model2 <- r4ss::SS_output(
 
 table_caption <- glue::glue("Original {assess_year} projection and new catch-only projection for OFLs (mt), buffer, ABCs (mt), actual & assumed catch (mt), ACLs (mt), spawning output {params$spawn_output_units}, and stock status (fraction of unfished spawning output) given the removals. The gray shading indicates values associated with the original {assess_year} assessment projection. In both the original model and the new projection, the removals for years beyond the values in the 'Actual & Assumed Removals' columns are the ACL values estimated from that model.")
 
-table_caption2 <- glue::glue("Original {assess_year} projection and alternative catch-only projection in which the 2026 assumed catches are set to 67% of the ACL from a projection only through 2025 (2026 ACL in a catch-only projection through 2025 = 834 mt) rather than fixed at the values calculated by the GMT based on the current harvest specifications. See caption of table above for additional details.")
+table_caption2 <- glue::glue("Original {assess_year} projection and alternative catch-only projection in which the 2026 assumed catches are set to 67% of a new ACL based on actual and assumed catches through 2025 rather than fixed at the values calculated by the GMT based on the current harvest specifications. See caption of table above for additional details.")
 ```
 
-This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. This analysis updates catches between `r assess_year` - `r current_year` to the removals by year from the Groundfish Multiyear Mortality (GEMM) report. The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the Groundfish Management Team (GMT) for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
+This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. This analysis updates catches between `r assess_year` - `r current_year - 1` to the best information about removals as provided by the Groundfish Management Team (GMT). The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the GMT for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
 
-An alternative projection is provided in the second table where the assumed catch in 2026 is based on ACL from a new catch-only projection through 2025 rather than the current harvest specifications. An assumption of 67% attainment of the ACL estimated by the GMT was used in all cases.
+An alternative projection is provided in the second table. First, a new ACL for 2026 is calculated based on assumed catches through 2025. Then, a full projection is done using the same assumption of 67% ACL attainment and similar apportioning by fleet in 2026 as the projection in @tbl-proj, but applied to the newly calculated 2026 ACL.
 
 ```{r}
 #| label: calc-table
@@ -248,7 +248,22 @@ wide_table2 <- combine_tables(table2, table_original)
 # move 2026 ACL to assumed catch column
 wide_table2$"Actual & Assumed Removals"[wide_table2$Year == 2026] <- 
   wide_table2$ACL[wide_table2$Year == 2026]
-wide_table2$ACL[wide_table2$Year == 2026] <- NA  
+# calculate 2026 ACL from ABC
+# get 2026 stock status for use in 40-10 or 25-5 rule
+D <- wide_table2$"Stock Status"[wide_table2$Year == 2026]
+#
+adj <- 1.0
+# 40-10 rule for most species
+if (D < model$btarg & model$btarg == 0.40) {
+  adj <- (4/3)*(D-0.1)/D
+}
+# 25-5 rule for flatfish
+if (D < model$btarg & model$btarg == 0.25) {
+  adj <- (25/20)*(D-0.05)/D
+}
+# calculate ACL from adjustment * ABC
+wide_table2$ACL[wide_table2$Year == 2026] <- 
+  adj * wide_table2$ABC[wide_table2$Year == 2026]
 ```
 
 ```{r}
