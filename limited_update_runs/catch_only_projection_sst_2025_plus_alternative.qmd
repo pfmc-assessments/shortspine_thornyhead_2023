@@ -18,6 +18,7 @@ params:
   dir_original: "../model/Sensitivity_Anal/Base_Model/5.25_Decision_Table_045/1_23.base.dt_base_45/run"
   dir_new: "cop1"
   dir_new2: "cop2b"
+  dir_new3: "cop3"
   spawn_output_units: "(billions of eggs)"
 ---
 
@@ -55,7 +56,15 @@ model <- r4ss::SS_output(
 
 # catch-only projection Alternative 1
 model2 <- r4ss::SS_output(
-    dir = params$dir_new2, # this is the directory where I ran the standard Catch-only projection model
+    dir = params$dir_new2, 
+    verbose = FALSE,
+    printstats = FALSE,
+    hidewarn = TRUE
+)
+
+# catch-only projection Alternative 2
+model3 <- r4ss::SS_output(
+    dir = params$dir_new3,
     verbose = FALSE,
     printstats = FALSE,
     hidewarn = TRUE
@@ -64,11 +73,14 @@ model2 <- r4ss::SS_output(
 table_caption <- glue::glue("Original {assess_year} projection and new catch-only projection for OFLs (mt), buffer, ABCs (mt), actual & assumed catch (mt), ACLs (mt), spawning output {params$spawn_output_units}, and stock status (fraction of unfished spawning output) given the removals. The gray shading indicates values associated with the original {assess_year} assessment projection. In both the original model and the new projection, the removals for years beyond the values in the 'Actual & Assumed Removals' columns are the ACL values estimated from that model.")
 
 table_caption2 <- glue::glue("Original {assess_year} projection and alternative catch-only projection in which the 2026 assumed catches are set to 67% of a new ACL based on actual and assumed catches through 2025 rather than fixed at the values calculated by the GMT based on the current harvest specifications. See caption of table above for additional details.")
+
+table_caption3 <- glue::glue("Original {assess_year} projection and alternative catch-only projection in which the 2026 assumed catches are set to 67% of a new ACL based on 1) a category 1 sigma of 0.5 and 2) actual and assumed catches through 2025 rather than fixed at the values calculated by the GMT based on the current harvest specifications. The listed buffer in 2026 is for a category 1 assessment, and does not apply to the 2023 ABC. See caption of table above for additional details.")
+
 ```
 
 This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. This analysis updates catches between `r assess_year` - `r current_year - 1` to the best information about removals as provided by the Groundfish Management Team (GMT). The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the GMT for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
 
-An alternative projection is provided in the second table. First, a new ACL for 2026 is calculated based on assumed catches through 2025. Then, a full projection is done using the same assumption of 67% ACL attainment and similar apportioning by fleet in 2026 as the projection in @tbl-proj, but applied to the newly calculated 2026 ACL.
+Two alternative projections are provided. In @tbl-proj2, first, a new ACL for 2026 is calculated based on assumed catches through 2025. Then, a full projection is done using the same assumption of 67% ACL attainment and similar apportioning by fleet in 2026 as the projection in @tbl-proj, but applied to the newly calculated 2026 ACL. In @tbl-proj3, first, a new ACL for 2026 is calculated based on assumed catches through 2025 *and* a category 1 sigma of 0.5. Then, the same full projection is done assuming 67% attainment. 
 
 ```{r}
 #| label: calc-table
@@ -216,6 +228,9 @@ table_original <- catch_only_projection_table(model_original,
 table2 <- catch_only_projection_table(model2,
     all_years = all_years, proj_years = proj_years2, catch_years = catch_years2
 )
+table3 <- catch_only_projection_table(model3,
+    all_years = all_years, proj_years = proj_years2, catch_years = catch_years2
+)
 ```
 
 ```{r}
@@ -244,6 +259,7 @@ table_original <- table_original |>
 # combine the two tables
 wide_table <- combine_tables(table, table_original)
 
+# alternative COP 1
 wide_table2 <- combine_tables(table2, table_original)
 # move 2026 ACL to assumed catch column
 wide_table2$"Actual & Assumed Removals"[wide_table2$Year == 2026] <- 
@@ -264,7 +280,39 @@ if (D < model$btarg & model$btarg == 0.25) {
 # calculate ACL from adjustment * ABC
 wide_table2$ACL[wide_table2$Year == 2026] <- 
   adj * wide_table2$ABC[wide_table2$Year == 2026]
+
+# alternative COP 2
+wide_table3 <- combine_tables(table3, table_original)
+# move 2026 ACL to assumed catch column
+wide_table3$"Actual & Assumed Removals"[wide_table3$Year == 2026] <- 
+  wide_table3$ACL[wide_table3$Year == 2026]
+
+# calculated 2026 ABC from OFL
+wide_table3$ABC[wide_table3$Year == 2026] <- 
+  wide_table3$OFL[wide_table3$Year == 2026] * 
+  PEPtools::get_buffer(2023:2026, sigma = 0.5, pstar = 0.45, verbose = FALSE)[4, 'buffer']
+
+# calculate 2026 ACL from ABC
+# get 2026 stock status for use in 40-10 or 25-5 rule
+D <- wide_table3$"Stock Status"[wide_table3$Year == 2026]
+#
+adj <- 1.0
+# 40-10 rule for most species
+if (D < model$btarg & model$btarg == 0.40) {
+  adj <- (4/3)*(D-0.1)/D
+}
+# 25-5 rule for flatfish
+if (D < model$btarg & model$btarg == 0.25) {
+  adj <- (25/20)*(D-0.05)/D
+}
+# calculate ACL from adjustment * OFL
+wide_table3$ACL[wide_table3$Year == 2026] <- 
+  adj * wide_table3$ABC[wide_table3$Year == 2026] #ABC
+
+wide_table3$Buffer[wide_table3$Year == 2026] <- PEPtools::get_buffer(2023:2026, sigma = 0.5, pstar = 0.45, verbose = FALSE)[4, 'buffer']
 ```
+
+::: {.landscape}
 
 ```{r}
 #| label: tbl-proj
@@ -276,6 +324,8 @@ wide_table2$ACL[wide_table2$Year == 2026] <-
 format_table(wide_table)
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-proj2
 #| echo: false
@@ -284,4 +334,16 @@ format_table(wide_table)
 #| eval: true
 #| tbl-cap: !expr table_caption2
 format_table(wide_table2)
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: tbl-proj3
+#| echo: false
+#| warning: false
+#| message: false
+#| eval: true
+#| tbl-cap: !expr table_caption3
+format_table(wide_table3)
 ```

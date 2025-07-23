@@ -213,3 +213,24 @@ cop_alt_out <- SS_output('limited_update_runs/cop2b')
 list(out_2023, cop_out, cop_alt_out) |>
   SSsummarize() |> 
   SStableComparisons(names = c('ForeCatch', 'R0'))
+
+### 2nd alternative COP
+
+cop <- SS_read('limited_update_runs/cop1')
+
+ofl_2026 <- cop_out$derived_quants['OFLCatch_2026', 'Value']
+D_2026 <- cop_out$derived_quants['Bratio_2026', 'Value']
+
+new_buffer <- attain_2026 * 
+  PEPtools::get_buffer(2023:2026, sigma = 0.5, pstar = 0.45)[4, 'buffer'] *
+  (4/3)*(D_2026-0.1)/D_2026
+
+cop$fore$ForeCatch <-  filter(fore_catch, year == 2026) |>
+  mutate(prop = catch_or_F / sum(catch_or_F)) |>
+  select(-catch_or_F) |>
+  mutate(catch_or_F = ofl_2026 * prop * new_buffer) |>
+  select(-prop) |>
+  bind_rows(filter(fore_catch, year != 2026)) |>
+  arrange(year, fleet)
+
+SS_write(cop, 'limited_update_runs/cop3', overwrite = TRUE)
