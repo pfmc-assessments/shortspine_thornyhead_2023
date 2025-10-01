@@ -55,7 +55,7 @@ model <- r4ss::SS_output(
 table_caption <- glue::glue("Adopted 2025 catch-only update projection and projection with updated HCR for 2027 and 2028. Table includes OFLs (mt), buffer, ABCs (mt), actual & assumed catch (mt), ACLs (mt), spawning output {params$spawn_output_units}, and stock status (fraction of unfished spawning output) given the removals. The gray shading indicates values associated with the original catch-only update. For 2029 and beyond, the default HCR with 40-10 rule and P* of {params$pstar} is assumed")
 ```
 
-This document details new projections for `r species` based on the 2026 catch-only projection adopted by the Council (G.8 Attachment 2, Table 3 from the September, 2025 Council meeting). The specifications through 2026 remain unchanged. The ABC and ACL for 2027 and 2028 are all assumed to be 902 mt. Relative allocations among the three fleets are assumed the same as the GMT projected relative allocations for 2025 and 2026.
+This document details new projections for `r species` based on the 2026 catch-only projection adopted by the Council (G.8 Attachment 2, Table 3 from the September, 2025 Council meeting). The specifications through 2026 remain unchanged. The ABCs and ACLs for 2027 and 2028 are all assumed to be 902 mt.
 
 ```{r}
 #| label: calc-table
@@ -274,6 +274,6 @@ wide_table3$Buffer[wide_table3$Year == 2026] <- PEPtools::get_buffer(2023:2026, 
 #| warning: false
 #| message: false
 #| eval: true
-#| tbl-cap: "Adopted 2025 catch-only update projection and projection with updated HCR for 2027 and 2028. Table includes OFLs (mt), buffer, ABCs (mt), actual & assumed catch (mt), ACLs (mt), spawning output (billions of eggs), and stock status (fraction of unfished spawning output) given the removals. The gray shading indicates values associated with the original catch-only update. For 2029 and beyond, the default HCR with 40-10 rule and P* of 0.45 is assumed"
+#| tbl-cap: "Adopted 2025 catch-only update projection and projection with updated HCR for 2027 and 2028. Table includes OFLs (mt), buffer, ABCs (mt), actual & assumed catch (mt), ACLs (mt), spawning output (billions of eggs), and stock status (fraction of unfished spawning output) given the removals. The gray shading indicates values associated with the adopted catch-only update (G.8 Attachment 2, Table 3 from the September, 2025 Council meeting). For 2029 and beyond, the default HCR with 40-10 rule and P* of 0.45 is assumed"
 format_table(wide_table3)
 ```
