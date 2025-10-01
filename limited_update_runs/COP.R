@@ -234,3 +234,27 @@ cop$fore$ForeCatch <-  filter(fore_catch, year == 2026) |>
   arrange(year, fleet)
 
 SS_write(cop, 'limited_update_runs/cop3', overwrite = TRUE)
+
+### New projections for 2027-2028 biennium
+
+cop <- SS_read('limited_update_runs/cop3')
+cop_out <- SS_output('limited_update_runs/cop3')
+
+catch_27_28 <- SS_ForeCatch(cop_out) |>
+  rename(year = `#Year`) |>
+  filter(year %in% 2027:2028) |>
+  group_by(year) |>
+  mutate(pct = `dead(B)`/sum(`dead(B)`),
+         catch_or_F = pct * 902) |>
+  select(year, seas = Seas, fleet = Fleet, catch_or_F)
+
+new_spex <- cop
+new_spex$fore$ForeCatch <- bind_rows(cop$fore$ForeCatch,
+                                     catch_27_28) |>
+  as.data.frame()
+new_spex$fore$Flimitfraction_m[new_spex$fore$Flimitfraction_m$year %in% 2027:2028, 'fraction'] <- 1
+
+new_spex$fore$FirstYear_for_caps_and_allocations <- 2029
+
+SS_write(new_spex, 'limited_update_runs/spex_27_28', overwrite = TRUE)
+  
