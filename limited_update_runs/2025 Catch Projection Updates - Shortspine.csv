@@ -1,0 +1,67 @@
+Year,Com. north trawl (WA/OR),Com. south trawl (CA),Com. non-trawl (coastwide),Total ,OFL,ACL,% of ACL,Trawl Allocation,IFQ Allocation,IFQ Projection,Non-Trawl Allocation,,,,,,,,,,,,,,,,,,,
+2023,339.3,31.2,70.2,441,,,,,,,,,,,,,Commercial non-trawl ,,,,,Commercial Trawl ,,,,,,,,
+2024,525.7,33.5,75.9,635,,,,,,,,,,,,,2023,Straight from GEMM,,,,2023,GEMM total mort split (sector and area) by landings ,,,,,,,
+2025,371.1,32.5,142.0,546,940,815,67%,476,406,184-197,268,,,,,,2024,Landings  + three year average GEMM discard mort,,,,2024,PaFIN Landing + GEMM discard mort split (sector and area) by landings ,,,,,,,
+2026,379.5,34.1,142.0,556,961,825,67%,534,464,186-207,218,,,,,,2025,GEMM 5 yr avg,,,,2025,IFQ Projections - Gearswitchers + at sea (three year average) + research set aside + Tribal set aside ,,,,,,,
+,,,,,,,,,,,,,,,,,2026,GEMM 5 yr avg ,,,,2026,IFQ Projections - Gearswitchers + at sea (three year average) + research set aside + Tribal set aside ,,,,,,,
+"NOTE: Put IFQ gear switchers in non-trawl, and then deduct that much from IFQ projection; use 5-year average",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Use 5-year average or 2019 MAX from GEMM for com non-trawl (coastwide) - includes incidental and gear switchers,,,,,,,,,,,,,,,,,,2024,,,,,,,,,,,,
+Ask Will for Tribal contributions,,,,,,,,,,,,,,,,,PacFIN Landings,73.4169,,,,,,,,,,,,
+Do we put research into trawl?,yes!,,,,,,,,,,,,,,,,Landings  + three year average GEMM discard mort,2.525123377,,,,2023,,,,,,,,
+,,,,,,,,,,,,,,,,,Total ,75.94202338,,,,,GEMM,PacFIN Landings,,,% landings ,,% * GEMM,
+Non-trawl Coastwide Comm Shortspine Thornyhead (GEMM),,,,,,,,,,,,,,,,,,,,,,Row Labels,Sum of total_discard_with_mort_rates_applied_and_landings_mt,CA,OR/WA,Total landings,CA,OR/WA,CA,OR/WA
+Sum of total_discard_with_mort_rates_applied_and_landings_mt,,,,,,,,,,,,,,,,,,,,,,CS - Bottom Trawl,218.5166777,18.0903,187.5675,205.6578,0.08796311154,0.9120368885,19.22140689,199.2952708
+Row Labels,2019,2020,2021,2022,2023,5-yr ave,,Gear switching ave total,,,,Stock summary (GMT016),,,,,,,,,,At-Sea Hake CP,74.28022482,0.0133,73.7854,73.7987,0.0001802199768,0.99981978,0.01338678039,74.26683804
+CS - Hook & Line,7.9,0,0,0,0,1.6,,1.9,,,,Shortspine Coastwide,2025,2026,,,,,,,,CS EM - Bottom Trawl,29.72029149,11.1258,17.5242,28.65,0.3883350785,0.6116649215,11.54143173,18.17885976
+CS - Pot,0.2,0.4,0.2,0.2,0.1,0.2,,,,,,Annual Catch Limit,815.32,824.77,,,,,,,,At-Sea Hake MSCV,25.6202175,0.2133,25.2429,25.4562,0.008379098216,0.9916209018,0.2146743187,25.40554318
+CS EM - Pot,0.2,0,0,0,0.5,0.1,,Incidental OA ave total,,,,Tribal,50,50,,,,,,,,Midwater Hake,17.2842307,0,17.2299,17.2299,0,1,0,17.2842307
+Directed P Halibut,0.6,0.9,1.3,0.9,1.8,1.1,,3.0,,,,EFP,0,0,,,,,,,,Midwater Rockfish,0.842006981,0.0031,0.0108,0.0139,0.2230215827,0.7769784173,0.1877857296,0.6542212514
+Incidental,0,0,1.1,1.5,6.8,1.9,,"Comm ""Non-trawl"" ave total",,,,Research,16.3,16.3,,,,,,,,Midwater Rockfish EM,0.289662878,0,0.1189,0.1189,0,1,0,0.289662878
+,,,,,,,,,,,,,,,,,,,,,,Tribal ,3.959,0,3.959,3.959,0,1,0,3.959
+LE Fixed Gear DTL - Hook & Line,106.5,66.9,54.6,46.1,42.7,63.4,,83.1,,,,Incidental OA,5.7,5.7,,,,,,,,Grand Total,366.5533121,,,,,,31.17868545,339.3336266
+LE Fixed Gear DTL - Pot,0,0,0,0.1,0,0.0,,,,,,Set-aside Total,72,72,,,,,,,,,,,,,,,,
+LE Sablefish - Hook & Line,24,15.8,18.2,10.1,14.8,16.6,,,,,,Fishery Harvest Guideline,743.32,752.77,,,,,,,,,,,,,,,,
+LE Sablefish - Pot,0.1,0.3,0.1,0.1,0.1,0.1,,,,,,Allocation Trawl Percent,64,71,,,,,,,,2024,,,,,,,,
+Nearshore,0.3,0.7,1.2,0.2,0.6,0.6,,,,,,Allocation Trawl MT,475.72,534.47,,,,,,,,GEMM 3yr avg mort. Mort less than 0.2 was not distributed ,,,,,,,,
+OA Fixed Gear - Hook & Line,2.9,1.4,1.1,3.2,2.8,2.3,,,,,,At-sea Whiting Set-asides,70,70,,,,,,,,CS - Bottom Trawl,70.53524008,,,,,,,
+OA Fixed Gear - Pot,0,0.3,0.2,0.1,0,0.1,,,,,,SB IFQ Total,743.32,682.77,,,,,,,,At-Sea Hake MSCV,62.97491449,,,,,,,
+Grand Total,142.6,86.6,78,62.5,70.2,88.0,,88.0,,,,Allocation Non Trawl Percent,36,29,,,,,,,,At-Sea Hake CP,45.94365268,,,,,,,
+,,,,,,,,,,,,Allocation Non Trawl MT,267.6,218.3,,,,,,,,LE Sablefish - Hook & Line,4.454599708,,,,,,,
+Looking at the SSPN/LSTH,,,,,,,,,,,,,,,,,,,,,,LE Fixed Gear DTL - Hook & Line,2.10999044,,,,,,,
+species,Shortspine/Longspine Thornyhead,,,,,,,"Figure below lookings at Landings only (no discards) -- just for reference in SSPN and SABL trends. Includes LE Fixed Gear DTL, Limited Entry Sablefish, OA Fixed Gear, and Nearshore FOS codes",,,,,,,,,,,,,,CS EM - Bottom Trawl,0.863841197,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,Directed P Halibut,0.790638555,,,,,,,
+Sum of total_discard_with_mort_rates_applied_and_landings_mt,Column Labels,,,,,,,,,,,,,,,,,,,,,OA Fixed Gear - Hook & Line,0.610099476,,,,,,,
+Row Labels,2019,2020,2021,2023,Grand Total,,,,,,,,,,,,,,,,,,,,,,,,,
+Mixed thornyheads,4.5,0.3,0,0,4.8,,,,,,,,,,,,,,,,,2024 Landings ,,,,Percent ,,GEMM 3yr discards,Percent * GEMM + landings ,
+CS - Hook & Line,0.1,,,,0.1,,,,,,,,,,,,,,,,,,CA,OR/WA,Total ,CA,OR/WA,CW,CA,OR/WA
+CS - Pot,,0,0,,0,,,,,,,,,,,,,,,,,Catch Shares,17.7035,205.7847,223.4882,0.07921447307,0.9207855269,70.53524008,23.29091188,270.7325282
+CS EM - Pot,0,,,0,0,,,,,,,,,,,,,,,,,Catch Shares EM,9.7749,9.8961,19.671,0.4969193229,0.5030806771,0.863841197,10.20415938,10.33068181
+Directed P Halibut,0,,,0,0,,,,,,,,,,,,,,,,,Midwater Hake,,1.1006,1.1006,0,1,0,0,1.1006
+Incidental,0,,,,0,,,,,,,,,,,,,,,,,Midwater Hake EM,,84.3704,84.3704,0,1,0,0,84.3704
+LE Fixed Gear DTL - Hook & Line,3.8,0.1,,,3.9,,,,,,,,,,,,,,,,,Midwater Rockfish,,0.0233,0.0233,0,1,0,0,0.0233
+LE Fixed Gear DTL - Pot,0.1,,,,0.1,,,,,,,,,,,,,,,,,Midwater Rockfish EM,,0.0017,0.0017,0,1,0,0,0.0017
+LE Sablefish - Hook & Line,0.4,0,0,,0.5,,,,,,,,,,,,,,,,,CATCHER PROCESSOR,,145.9918,145.9918,0,1,Discards included in norpac,0,145.9918
+LE Sablefish - Pot,,,,0,0,,,,,,,,,,,,,,,,,MOTHERSHIP,,8.9635,8.9635,0,1,Discards included in norpac,0,8.9635
+,,,,,,,,,,,,,,,,,,,,,,Tribal,,4.157,4.157,0,1,,0,4.157
+OA Fixed Gear - Hook & Line,,0.1,0,,0.1,,,,,,,,,,,,,,,,,,,,,,,,33.49507126,525.67151
+OA Fixed Gear - Pot,0,0,,,0,,,,,,,,,,,,,,,,,2025,,,,,,,,
+Grand Total,4.5,0.3,0,0,4.8,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,Below is the inseason version through the current year (data pulled 5/27/2025),,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,2025,2026,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,Projected ,Projected ,North % - 3 year avg PacFIN Landings ,South %,,,,
+,,,,,,,,,,,,,,,,,,,,,,IFQ Projections CW,197,207,0.8351471,0.1648529,,,,
+,,,,,,,,,,,,,,,,,,,,,,gear switchers three year average ,-0.3,-0.3,1,0,,,,
+,,,,,,,,,,,,,,,,,,,,,,At sea three year average ,140,140,1,0,,,,
+,,,,,,,,,,,,,,,,,,,,,,Tribal ,50,50,1,0,,,,
+,,,,,,,,,,,,,,,,,,,,,,Research ,16.3,16.3,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,North ,,,South ,,,,
+,,,,,,,,,,,,,,,,,,,,,,,2025,2026,,2025,2026,,,
+,,,,,,,,,,,,,,,,,,,,,,IFQ Projections CW,164.5,172.9,,32.4760213,34.1245503,,,
+,,,,,,,,,,,,,,,,,,,,,,gear switchers three year average ,-0.3,-0.3,,0,0,,,
+,,,,,,,,,,,,,,,,,,,,,,At sea three year average ,140,140,,0,0,,,
+,,,,,,,,,,,,,,,,,,,,,,Tribal ,50,50,,0,0,,,
+,,,,,,,,,,,,,,,,,,,,,,Research ,16.3,16.3,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,Total ,371.1,379.5,,32.4760213,34.1245503,,,
