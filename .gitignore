@@ -112,5 +112,7 @@ model/Sensitivity_Anal/Base_Model/retros/*
 # Ignore the .html from the model directories 
 model/*/run/plots
 model/*/*/*/run/plots
+*/*/plots
+*.html
 
 doc/_main.pdf
